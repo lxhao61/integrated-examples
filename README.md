@@ -13,24 +13,24 @@
 ### 服务端单一应用配置示例
 1. [naiveproxy(caddy2+forwardproxy)](https://github.com/lxhao61/integrated-examples/tree/master/naiveproxy(caddy2%2Bforwardproxy)) （naiveproxy应用，基于h2或h3代理。）
 ---
-a. [v2ray(vless\vmess-kcp-seed)](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%5Cvmess%2Bkcp%2Bseed)) （vless或vmess的kcp应用。若网络极差，推荐部署。）
+1. [v2ray(vless\vmess-kcp-seed)](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%5Cvmess%2Bkcp%2Bseed)) （vless或vmess的kcp应用。若网络极差，推荐部署。）
 ---
 1. [v2ray(vless\vmess-ws)+caddy2\nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%5Cvmess%2Bws)%2Bcaddy2%5Cnginx) （caddy2或nginx反向代理vless或vmess的ws应用。）
-2. [v2ray(socks\shadowsocks+ws)+caddy2\nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(socks%5Cshadowsocks%2Bws)%2Bcaddy2%5Cnginx) （caddy2或nginx反向代理socks或shadowsocks的ws应用。） 
-3. [v2ray(SS+v2ray-plugin)+caddy2\nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(SS%2Bv2ray-plugin)%2Bcaddy2%5Cnginx) （caddy2或nginx反向代理shadowsocks加v2ray-plugin的ws应用。）
-4. [v2ray(trojan+ws)+caddy2\nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(trojan%2Bws)%2Bcaddy2%5Cnginx) （caddy2或nginx反向代理兼容trojan-go的ws应用。）
+2. [v2ray(socks\shadowsocks-ws)+caddy2\nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(socks%5Cshadowsocks%2Bws)%2Bcaddy2%5Cnginx) （caddy2或nginx反向代理socks或shadowsocks的ws应用。） 
+3. [v2ray(SS- v2ray-plugin)+caddy2\nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(SS%2Bv2ray-plugin)%2Bcaddy2%5Cnginx) （caddy2或nginx反向代理shadowsocks加v2ray-plugin的ws应用。）
+4. [v2ray(trojan-ws)+caddy2\nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(trojan%2Bws)%2Bcaddy2%5Cnginx) （caddy2或nginx反向代理兼容trojan-go的ws应用。）
 ---
-1. [v2ray(vless\vmess+h2c)+caddy2](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%5Cvmess%2Bh2c)%2Bcaddy2) （caddy2反向代理vless或vmess的h2应用。） 
+1. [v2ray(vless\vmess-h2c)+caddy2](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%5Cvmess%2Bh2c)%2Bcaddy2) （caddy2反向代理vless或vmess的h2应用。） 
 ---
-1. [v2ray(vless\vmess+grpc)+caddy2\nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%5Cvmess%2Bgrpc)%2Bcaddy2%5Cnginx) （caddy2或nginx反向代理vless或vmess的grpc应用。） 
+1. [v2ray(vless\vmess-grpc)+caddy2\nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%5Cvmess%2Bgrpc)%2Bcaddy2%5Cnginx) （caddy2或nginx反向代理vless或vmess的grpc应用。） 
 ---
-1. [trojan\trojan-go+caddy2](https://github.com/lxhao61/integrated-examples/tree/master/trojan%5Ctrojan-go%2Bcaddy2) （trojan或trojan-go应用，web回落给caddy2。）  
-2. [trojan\trojan-go+nginx](https://github.com/lxhao61/integrated-examples/tree/master/trojan%5Ctrojan-go%2Bnginx) （trojan或trojan-go应用，web回落给nginx。）  
+1. [trojan-go\trojan+caddy2](https://github.com/lxhao61/integrated-examples/tree/master/trojan%5Ctrojan-go%2Bcaddy2) （trojan或trojan-go应用，web回落给caddy2。）  
+2. [trojan-go\trojan+nginx](https://github.com/lxhao61/integrated-examples/tree/master/trojan%5Ctrojan-go%2Bnginx) （trojan或trojan-go应用，web回落给nginx。）  
 ---
-1. [v2ray(vless+tcp+tls)+caddy2](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%2Btcp%2Btls)%2Bcaddy2) （vless的tcp应用，web回落给caddy2。）  
-2. [v2ray(vless+tcp+tls)+nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%2Btcp%2Btls)%2Bnginx) （vless的tcp应用，web回落给nginx。）  
-3. [v2ray(trojan+tcp+tls)+caddy2](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(trojan%2Btcp%2Btls)%2Bcaddy2) （兼容trojan应用，web回落给caddy2。）  
-4. [v2ray(trojan+tcp+tls)+nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(trojan%2Btcp%2Btls)%2Bnginx) （兼容trojan应用，web回落给nginx。）  
+1. [v2ray(vless-tcp-tls)+caddy2](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%2Btcp%2Btls)%2Bcaddy2) （vless的tcp应用，web回落给caddy2。）  
+2. [v2ray(vless-tcp-tls)+nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%2Btcp%2Btls)%2Bnginx) （vless的tcp应用，web回落给nginx。）  
+3. [v2ray(trojan-tcp-tls)+caddy2](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(trojan%2Btcp%2Btls)%2Bcaddy2) （兼容trojan应用，web回落给caddy2。）  
+4. [v2ray(trojan-tcp-tls)+nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(trojan%2Btcp%2Btls)%2Bnginx) （兼容trojan应用，web回落给nginx。）  
 
 ### 服务端综合应用配置示例
 #### &emsp;以trojan或trojan-go为主、caddy2(naiveproxy)为辅的综合应用。
