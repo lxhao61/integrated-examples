@@ -1,0 +1,44 @@
+  
+{
+    order reverse_proxy before header
+    admin off
+    servers unix//dev/shm/h1h2c.sock { //与下边进程监听对应
+        protocol {
+            allow_h2c //开启h2c server支持
+        }
+    }
+}
+
+:80 { //http默认监听端口
+    redir https://{host}{uri} permanent //http自动跳转https,让网站看起来更真实。
+}
+
+:88 { //启用进程绑定后此端口失效，仅做标记作用。
+    bind unix//dev/shm/h1h2c.sock //启用进程绑定后执行进程监听，仅接收web回落。
+    log {
+        output file /var/log/caddy/access.log
+        level  ERROR
+    }
+
+    reverse_proxy /SeuW56Es 127.0.0.1:2005 { //分流出h2,与v2ray h2 path对应；转发给v2ray h2 端口对应。
+        transport http {
+            versions h2c
+        }
+    }
+
+    @grpc { //匹配器标签。此标签仅标识，但要与下边‘reverse_proxy’中匹配器标签对应。
+        protocol grpc //分流出grpc,与本机v2ray grpc对应。
+    }
+    reverse_proxy @grpc 127.0.0.1:2009 { //转发给本机vless+grpc对应端口
+        transport http {
+            versions h2c
+        }
+    }
+
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" //启用HSTS
+    }
+    file_server {
+        root /var/www/html //修改成自己存放的web文件路径
+    }
+}
