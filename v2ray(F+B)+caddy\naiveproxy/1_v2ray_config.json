@@ -1,0 +1,111 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "error": "/var/log/xray/error.log", //若使用v2ray，此处目录名称xray改成v2ray。
+    "access": "/var/log/xray/access.log" //若使用v2ray，此处目录名称xray改成v2ray。
+  },
+  "inbounds": [
+    {
+      "port": 443, //监听端口
+      "protocol": "trojan",
+      "settings": {
+        "clients": [
+          {
+            "password":"diy443", //修改成自己密码
+            "flow": "xtls-rprx-direct", //启用xtls，必须增加此条参数；否则删除。v2ray从v4.33.0版开始删除了xtls应用，如要使用此应用，建议选用xray。
+            "email": "443@gmail.com"
+          }
+        ],
+        "fallbacks": [
+          {
+            "dest": 88, //h2与http/1.1回落共用此端口，回落到web服务器。需web服务器同一端口，同时支持h2c server与http/1.1 server应用。
+            "xver": 0 //caddy发行版不支持PROXY protocol，如用发行版此处值必须为0。
+          },
+          {
+            "path": "/HALdGZ9k", //通过路径分流出ws
+            "dest": 2001, //分流后转发到2001端口
+            "xver": 0 //关闭PROXY protocol发送，不发送真实来源IP和端口给如下vless+ws应用。另默认为0，此条参数可以省略不写。
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "xtls", //如启用xtls，tls必须改成xtls；否则恢复tls。
+        "xtlsSettings": { //如启用xtls，tlsSettings必须改成xtlsSettings；否则恢复tlsSettings。
+          "alpn":[
+            "h2", //启用h2连接，web回落也需配置支持h2回落；否则不一致（裸奔），容易被墙探测出，从而被封。
+            "http/1.1" //启用http/1.1连接，web回落也需配置支持http/1.1回落；否则不一致（裸奔），容易被墙探测出，从而被封。
+          ],
+          "minVersion": "1.2", //最低tls版本设置，Xray v1.1.4版及以后支持（可选项参数，可以不配置。）。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
+          "preferServerCipherSuites": true, //首选服务端密码套件开关（与下面密码套件配合），Xray v1.1.4版及以后支持（可选项参数，可以不配置。）。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
+          "cipherSuites": "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256", //密码套件，Xray v1.1.4版及以后支持（可选项参数，可以不配置。）。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
+          "certificates": [
+            {
+              "ocspStapling": 3600, //ocspStapling检查更新时间间隔。Xray v1.2.0版及以后支持（可选项参数，可以不配置。）。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
+              "certificateFile": "/etc/ssl/tls/xx.yy.crt", //换成你的证书，绝对路径。
+              "keyFile": "/etc/ssl/tls/xx.yy.key" //换成你的私钥，绝对路径。
+            }
+          ]
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    },
+    {
+      "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
+      "port": 2001, //监听端口
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "048e0bf2-dd56-11e9-aa37-5600024c1d6a", //修改成自己的UUID
+            "email": "2001@gmail.com"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "ws", 
+        "security": "none",
+        "wsSettings": {
+          "path": "/HALdGZ9k" //修改成自己的path
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "blocked"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
