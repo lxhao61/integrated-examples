@@ -63,7 +63,7 @@
       "settings": {
         "clients": [
           {
-            "password":"diy2007", //修改成自己密码
+            "password":"diy2007", //修改成自己密码,可以与上密码diy443相同。
             "email": "2007@gmail.com"
           }
         ]
