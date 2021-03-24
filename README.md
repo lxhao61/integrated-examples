@@ -23,7 +23,7 @@
 3. [v2ray(SS- v2ray-plugin)+caddy2\nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(SS%2Bv2ray-plugin)%2Bcaddy2%5Cnginx) （caddy2或nginx反向代理shadowsocks加v2ray-plugin的ws应用。）
 4. [v2ray(trojan-ws)+caddy2\nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(trojan%2Bws)%2Bcaddy2%5Cnginx) （caddy2或nginx反向代理兼容trojan-go的ws应用。）
 ---
-1. [v2ray(vless\vmess-h2c)+caddy2](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%5Cvmess%2Bh2c)%2Bcaddy2) （caddy2反向代理vless或vmess的h2应用。） 
+1. [v2ray(vless\vmess-h2c)+caddy2](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%5Cvmess%2Bh2c)%2Bcaddy2) （caddy2反向代理vless或vmess的h2c应用。） 
 ---
 1. [v2ray(vless\vmess-grpc)+caddy2\nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%5Cvmess%2Bgrpc)%2Bcaddy2%5Cnginx) （caddy2或nginx反向代理vless或vmess的grpc应用。） 
 ---
