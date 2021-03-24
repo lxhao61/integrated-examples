@@ -18,17 +18,17 @@
 ---
 1. [v2ray(vless\vmess-kcp-seed)](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%5Cvmess%2Bkcp%2Bseed)) （包括vless-kcp-seed与vmess-kcp-seed两种应用。标记为A。）
 ---
-1. [v2ray(vless\vmess-ws)+caddy2\nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%5Cvmess%2Bws)%2Bcaddy2%5Cnginx) （包括vless-ws-tls-web与vmess-ws-tls-web两种反代应用。标记为B。）
-2. [v2ray(socks\shadowsocks-ws)+caddy2\nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(socks%5Cshadowsocks%2Bws)%2Bcaddy2%5Cnginx) （包括socks-ws-tls-web与shadowsocks-ws-tls-web两种反代应用。）
+1. [v2ray(vless\vmess-ws)+caddy2\nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%5Cvmess%2Bws)%2Bcaddy2%5Cnginx) （包括vless-ws-tls与vmess-ws-tls两种反代应用。标记为B。）
+2. [v2ray(socks\shadowsocks-ws)+caddy2\nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(socks%5Cshadowsocks%2Bws)%2Bcaddy2%5Cnginx) （包括socks-ws-tls与shadowsocks-ws-tls两种反代应用。）
 3. [v2ray(SS- v2ray-plugin)+caddy2\nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(SS%2Bv2ray-plugin)%2Bcaddy2%5Cnginx) （shadowsocks-<v2ray-plugin>-tls反代应用。标记为C。）
-4. [v2ray(trojan-ws)+caddy2\nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(trojan%2Bws)%2Bcaddy2%5Cnginx) （trojan-ws-tls-web反代应用。）
+4. [v2ray(trojan-ws)+caddy2\nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(trojan%2Bws)%2Bcaddy2%5Cnginx) （trojan-ws-tls反代应用。）
 ---
 1. [v2ray(vless\vmess-h2c)+caddy2](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%5Cvmess%2Bh2c)%2Bcaddy2) （包括vless+h2c+tls与vmess+h2c+tls两种反代应用。标记为D。） 
 ---
-1. [v2ray(vless-tcp-tls)+caddy2](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%2Btcp%2Btls)%2Bcaddy2) （vless-tcp-tls-web回落应用。标记为E。）
-2. [v2ray(vless-tcp-tls)+nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%2Btcp%2Btls)%2Bnginx) （vless-tcp-tls-web回落应用。标记为F。）
-3. [v2ray(trojan-tcp-tls)+caddy2](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(trojan%2Btcp%2Btls)%2Bcaddy2) （trojan-tcp-tls-web回落应用。标记为G。）
-4. [v2ray(trojan-tcp-tls)+nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(trojan%2Btcp%2Btls)%2Bnginx) （trojan-tcp-tls-web回落应用。标记为H。）
+1. [v2ray(vless-tcp-tls)+caddy2](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%2Btcp%2Btls)%2Bcaddy2) （vless-tcp-tls回落应用。标记为E。）
+2. [v2ray(vless-tcp-tls)+nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%2Btcp%2Btls)%2Bnginx) （vless-tcp-tls回落应用。标记为F。）
+3. [v2ray(trojan-tcp-tls)+caddy2](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(trojan%2Btcp%2Btls)%2Bcaddy2) （trojan-tcp-tls回落应用。标记为G。）
+4. [v2ray(trojan-tcp-tls)+nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(trojan%2Btcp%2Btls)%2Bnginx) （trojan-tcp-tl回落应用。标记为H。）
 ---
 1. [v2ray(vless\vmess-grpc)+caddy2\nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%5Cvmess%2Bgrpc)%2Bcaddy2%5Cnginx) （包括vless+grpc+tls与vmess+grpc+tls两种反代应用。标记为I。） 
 
