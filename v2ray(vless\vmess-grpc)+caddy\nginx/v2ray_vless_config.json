@@ -1,0 +1,60 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "error": "/var/log/v2ray/error.log", //若使用xray，此处目录名称v2ray改成xray。
+    "access": "/var/log/v2ray/access.log" //若使用xray，此处目录名称v2ray改成xray。
+  },
+  "inbounds": [
+    {
+      "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
+      "port": 2009, //监听端口，此端口收发caddy2转来的数据。
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "058e0bf3-dd56-11e9-aa37-5600024c1d6a", //修改成自己的UUID
+            "email": "2009@gmail.com"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "none",
+        "grpcSettings": {
+          "serviceName": "cdngrpc" //服务路径，相当于HTTP/2与WebSocket中的Path。修改成自己的服务路径。
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    },
+  ],
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "blocked"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
