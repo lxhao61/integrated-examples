@@ -23,7 +23,7 @@
           },
           {
             "path": "/9ALdGZ9k", //通过路径分流出ws
-            "dest": "@trojanws", //分流后转给vless-ws处理,即@vless-ws进程。
+            "dest": "@trojan-ws", //分流后转给trojan-ws处理,即@trojan-ws进程。
             "xver": 0 //关闭PROXY protocol发送，不发送真实来源IP和端口给如下trojan-ws应用。另默认为0，此条参数可以省略不写。
           }
         ]
@@ -57,12 +57,12 @@
       }
     },
     {
-      "listen": "@trojanws", //监听@trojanws进程
+      "listen": "@trojan-ws", //监听@trojan-ws进程
       "protocol": "trojan",
       "settings": {
         "clients": [
           {
-            "password":"diy2007", //修改成自己密码
+            "password":"diy2007", //修改成自己密码,可以与上密码diy443相同。
             "email": "2007@gmail.com"
           }
         ]
