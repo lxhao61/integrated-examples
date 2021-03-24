@@ -1,0 +1,86 @@
+{
+  "admin": {
+    "disabled": true
+  },
+  "logging": {
+    "logs": {
+      "default": {
+        "level": "ERROR",
+        "writer": {
+          "output": "file",
+          "filename": "/var/log/caddy/access.log"
+        }
+      }
+    }
+  },
+  "apps": {
+    "http": {
+      "servers": {
+        "h1": {
+          "listen": [":80"], //http默认监听端口
+          "routes": [{
+            "handle": [{
+              "handler": "static_response",
+              "status_code": 301, 
+              "headers": {
+                "Location": ["https://{http.request.host}{http.request.uri}"] //http自动跳转https,让网站看起来更真实。
+              }
+            }],
+            "terminal": true
+          }]
+        },
+        "h1h2c": {
+          "listen": ["unix//dev/shm/h1h2c.sock"], //h2c与http/1.1 server进程监听，仅接收web回落。
+          "routes": [{
+            "match": [{
+              "path": ["/SeuW56Es"] //分流出h2,与v2ray h2 path对应。
+            }],
+            "handle": [{
+              "handler": "reverse_proxy",
+              "transport": {
+                "protocol": "http",
+                "versions": ["h2c"]
+              },
+              "upstreams": [{
+                "dial": "127.0.0.1:2005" //与v2ray h2 端口对应
+              }]
+            }],
+            "terminal": true
+          },
+          {
+            "match": [{
+              "protocol": "grpc" //与本机vless+grpc对应,分流出grpc。
+            }],
+            "handle": [{
+              "handler": "reverse_proxy",
+              "transport": {
+                "protocol": "http",
+                "versions": ["h2c"]
+              },
+              "upstreams": [{
+                "dial": "127.0.0.1:2009" //转发给本机vless+grpc对应端口
+              }]
+            }],
+            "terminal": true
+          },
+          {
+            "handle": [{
+              "handler": "headers",
+              "response": {
+                "set": {
+                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
+                }
+              }
+            },
+            {
+              "handler": "file_server",
+              "root": "/var/www/html" //修改成自己存放的web文件路径
+            }],
+            "terminal": true
+          }],
+          "allow_h2c": true //开启h2c server支持
+        }
+      }
+    }
+  }
+}
