@@ -1,6 +1,6 @@
 介绍：
 
-v2ray（Xray） 前置（监听443端口），利用 vless-tcp-tls 强大的回落/分流特性，实现除 v2ray（Xray） kcp 外共用443端口。vless-tcp-tls 以 h2 或 http/1.1 自适应协商连接，分流 ws（WebSocket）连接，其它连接回落给 caddy；caddy 再处理，对 h2c 与 grpc 进行反向代理，若有 naiveproxy 就进行正向代理。包括应用如下：
+v2ray（Xray） 前置（监听443端口），利用 trojan-tcp-tls 强大的回落/分流特性，实现除 v2ray（Xray） kcp 外共用443端口。trojan-tcp-tls 以 h2 或 http/1.1 自适应协商连接，分流 ws（WebSocket）连接，其它连接回落给 caddy；caddy 再处理，对 h2c 与 grpc 进行反向代理，若有 naiveproxy 就进行正向代理。包括应用如下：
 
 1、trojan-tcp-tls（回落/分流配置。）
 
