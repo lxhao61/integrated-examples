@@ -24,6 +24,6 @@
 
 4、caddy2 的 Caddyfile 配置与 caddy.json 配置二选一（效果一样）。支持自动 https，即自动申请与更新证书与私钥，自动 http 重定向到 https。
 
-5、本示例配置支持 ws（WebSocket）与 grpc 的 CDN 加速。
+5、支持 ws（WebSocket）与 grpc 的 CDN 加速。
 
 6、配置1：全部端口转发。配置2：vless+ws+tls应用进程转发，其它端口转发。
