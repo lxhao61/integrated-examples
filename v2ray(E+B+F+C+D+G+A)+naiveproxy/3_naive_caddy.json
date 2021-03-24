@@ -137,6 +137,22 @@
             "terminal": true
           },
           {
+            "match": [{
+              "protocol": "grpc" //与本机vless+grpc对应,分流出grpc。
+            }],
+            "handle": [{
+              "handler": "reverse_proxy",
+              "transport": {
+                "protocol": "http",
+                "versions": ["h2c"]
+              },
+              "upstreams": [{
+                "dial": "127.0.0.1:2009" //转发给本机vless+grpc对应端口
+              }]
+            }],
+            "terminal": true
+          },
+          {
             "handle": [{
               "handler": "headers",
               "response": {
