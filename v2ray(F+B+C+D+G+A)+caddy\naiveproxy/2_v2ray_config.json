@@ -7,16 +7,15 @@
   "inbounds": [
     {
       "port": 443, //监听端口
-      "protocol": "vless",
+      "protocol": "trojan",
       "settings": {
         "clients": [
           {
-            "id": "048e0bf2-dd56-11e9-aa37-5600024c1d6a", //修改成自己的UUID
+            "password":"diy443", //修改成自己密码
             "flow": "xtls-rprx-direct", //启用xtls，必须增加此条参数；否则删除。v2ray从v4.33.0版开始删除了xtls应用，如要使用此应用，建议选用xray。
             "email": "443@gmail.com"
           }
         ],
-        "decryption": "none",
         "fallbacks": [
           {
             "dest": "/dev/shm/h1h2c.sock", //h2与http/1.1回落共用此进程，回落到web服务器。需web服务器同一进程，同时支持h2c server与http/1.1 server应用。
