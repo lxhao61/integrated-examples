@@ -13,9 +13,9 @@ xx.yy { //修改成自己的域名
         level  ERROR
     }
     @grpc { //匹配器标签。此标签仅标识，但要与下边‘reverse_proxy’中匹配器标签对应。
-        protocol grpc //与本机v2ray grpc对应
+        protocol grpc //与vless-grpc或vmess-grpc应用中protocol对应
     }
-    reverse_proxy @grpc 127.0.0.1:2009 { //转发给本机v2ray对应端口
+    reverse_proxy @grpc 127.0.0.1:2009 { //转发给本机vless-grpc或vmess-grpc应用对应端口
         transport http {
             versions h2c
         }
