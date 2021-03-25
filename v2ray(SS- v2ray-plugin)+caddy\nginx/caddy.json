@@ -20,7 +20,7 @@
           "listen": [":443"],
           "routes": [{
             "match": [{
-              "path": ["/ss1v2ray"], //与本机v2ray-plugin path对应。
+              "path": ["/ss1v2ray"], //与本机v2ray-plugin path对应
               "header": {
                 "Connection": ["*Upgrade*"],
                 "Upgrade": ["websocket"]
