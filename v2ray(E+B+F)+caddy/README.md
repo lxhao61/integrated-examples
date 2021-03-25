@@ -2,7 +2,7 @@
 
 v2ray（Xray） 前置（监听443端口），vless-tcp-tls 以 h2 或 http/1.1 自适应协商连接，分流 ws（WebSocket）连接，回落给 trojan-tcp，trojan-tcp 处理后再回落给 caddy。其应用如下：
 
-1、vless-tcp-tls（回落/分流配置。）
+1、vless-tcp-tls（tls由自己提供。）
 
 2、vless-ws-tls（tls由vless-tcp-tls提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
 
@@ -28,11 +28,11 @@ v2ray（Xray） 前置（监听443端口），vless-tcp-tls 以 h2 或 http/1.1 
 
 利用 caddy 支持 SNI 分流特性，对 vless-tcp-tls 与 trojan-tcp-tls 进行 SNI 分流（四层转发），实现共用443端口。vless-tcp-tls 以 h2 或 http/1.1 自适应协商连接，分流 ws（WebSocket）连接，非 v2ray（Xray） 的 web 连接回落给 caddy。trojan-tcp-tls 也以 h2 或 http/1.1 自适应协商连接，非 v2ray（Xray） 的 web 连接也回落给 caddy。v2ray（Xray） 包括应用如下：
 
-1、vless-tcp-tls（回落/分流配置。）
+1、vless-tcp-tls（tls由自己提供。）
 
 2、vless-ws-tls（tls由vless-tcp-tls提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
 
-3、trojan-tcp-tls（回落配置。）
+3、trojan-tcp-tls（tls由自己提供。）
 
 注意：
 
