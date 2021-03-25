@@ -32,7 +32,7 @@
           },
           {
             "match": [{
-              "path": ["/HALdGZ9k"], //与本机vless-ws path对应,分流出ws。
+              "path": ["/HALdGZ9k"], //与vless-ws应用中path对应
               "header": {
                 "Connection": ["*Upgrade*"],
                 "Upgrade": ["websocket"]
@@ -44,14 +44,14 @@
                 "protocol": "http"
               },
               "upstreams": [{
-                "dial": "127.0.0.1:2001" //转发给本机vless-ws对应端口
+                "dial": "127.0.0.1:2001" //转发给本机vless-ws应用对应端口
               }]
             }],
             "terminal": true
           },
           {
             "match": [{
-              "path": ["/ss1v2ray"], //与本机v2ray-plugin path对应,分流出ws。
+              "path": ["/ss1v2ray"], //与Xray-plugin或v2ray-plugin模块中path对应
               "header": {
                 "Connection": ["*Upgrade*"],
                 "Upgrade": ["websocket"]
@@ -63,14 +63,14 @@
                 "protocol": "http"
               },
               "upstreams": [{
-                "dial": "127.0.0.1:2002" //转发给本机v2ray-plugin对应端口
+                "dial": "127.0.0.1:2002" //转发给本机Xray-plugin或v2ray-plugin模块对应端口
               }]
             }],
             "terminal": true
           },
           {
             "match": [{
-              "path": ["/SeuW56Es"] //与本机vless-h2c path对应,分流出h2c。
+              "path": ["/SeuW56Es"] //与vless-h2c应用中path对应
             }],
             "handle": [{
               "handler": "reverse_proxy",
@@ -79,14 +79,14 @@
                 "versions": ["h2c"]
               },
               "upstreams": [{
-                "dial": "127.0.0.1:2005" //转发给本机vless-h2c对应端口
+                "dial": "127.0.0.1:2005" //转发给本机vless-h2c应用对应端口
               }]
             }],
             "terminal": true
           },
           {
             "match": [{
-              "protocol": "grpc" //与本机vless-grpc对应,分流出grpc。
+              "protocol": "grpc" //与vless-grpc应用中network对应
             }],
             "handle": [{
               "handler": "reverse_proxy",
@@ -95,7 +95,7 @@
                 "versions": ["h2c"]
               },
               "upstreams": [{
-                "dial": "127.0.0.1:2009" //转发给本机vless-grpc对应端口
+                "dial": "127.0.0.1:2009" //转发给本机vless-grpc应用对应端口
               }]
             }],
             "terminal": true
