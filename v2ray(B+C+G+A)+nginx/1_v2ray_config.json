@@ -1,0 +1,167 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "error": "/var/log/xray/error.log", //若使用v2ray，此处目录名称xray改成v2ray。
+    "access": "/var/log/xray/access.log" //若使用v2ray，此处目录名称xray改成v2ray。
+  },
+  "inbounds": [
+    {
+      "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
+      "port": 2001, //监听端口
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "048e0bf2-dd56-11e9-aa37-5600024c1d6a", //修改成自己的UUID
+            "email": "2001@gmail.com"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "path": "/HALdGZ9k" //修改成自己的path
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    },
+    {
+      "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
+      "port": 2002, //监听端口
+      "protocol": "dokodemo-door",
+      "settings": {
+        "address": "v1.mux.cool",
+        "network": "tcp,udp",
+        "followRedirect": false
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "path": "/SS1v2ray" //修改成自己的path
+        }
+      },
+      "tag": "ddws", //标签，与routing中标签对应。
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    },
+    {
+      "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
+      "port": 2003, //监听端口
+      "protocol": "shadowsocks",
+      "settings": {
+        "email": "2003@gmail.com",
+        "method": "chacha20-poly1305",
+        "password": "diy2003", //修改成自己的密码
+        "ota": false,
+        "network": "tcp,udp"
+      }
+    },
+    {
+      "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
+      "port": 2009, //监听端口，此端口收发caddy2转来的数据。
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "058e0bf3-dd56-11e9-aa37-5600024c1d6a", //修改成自己的UUID
+            "email": "2009@gmail.com"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "none",
+        "grpcSettings": {
+          "serviceName": "cdngrpc" //服务路径，相当于HTTP/2与WebSocket中的Path。修改成自己的服务路径。
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    },
+    {
+      "port": 2053, //监听端口
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "0a652466-dd56-11e9-aa37-5600024c1d6a", //修改成自己的UUID
+            "email": "2053@gmail.com"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "kcp",
+        "security": "none",
+        "kcpSettings": {
+          "congestion": true, //启用拥塞控制
+          "seed": "60VoqhfjP79nBQyU" //seed密码，修改成自己的。
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "type": "field",
+        "inboundTag": [
+          "ddws" //与inbounds中标签对应
+        ],
+        "outboundTag": "ssds" //与outbounds中标签对应
+      },
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "blocked"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "ssds", //标签，与routing中标签对应。
+      "protocol": "freedom",
+      "settings": {
+        "redirect": "127.0.0.1:2003" //转发给本地2003端口
+      }
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
