@@ -13,7 +13,7 @@ xx.yy { //修改成自己的域名
         level  ERROR
     }
     @plugin_ws { //匹配器标签。此标签仅区分，多个不同代理需要改成不同名称，但要与下边‘reverse_proxy’中匹配器标签对应。
-        path /ss1v2ray //分流出ws,与本机v2ray-plugin path对应。
+        path /ss1v2ray //与本机v2ray-plugin path对应
         header Connection *Upgrade*
         header Upgrade websocket
     }
