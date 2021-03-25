@@ -20,7 +20,7 @@
           "listen": [":443"],
           "routes": [{
             "match": [{
-              "path": ["/SeuW56Es"] //分流出h2,与本机v2ray path对应。
+              "path": ["/SeuW56Es"] //与本机v2ray path对应,分流出h2c。
             }],
             "handle": [{
               "handler": "reverse_proxy",
