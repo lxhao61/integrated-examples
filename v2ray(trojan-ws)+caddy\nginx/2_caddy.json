@@ -20,7 +20,7 @@
           "listen": [":443"],
           "routes": [{
             "match": [{
-              "path": ["/9ALdGZ9k"], //与本机v2ray path对应,分流出ws。
+              "path": ["/9ALdGZ9k"], //与本机v2ray path对应
               "header": {
                 "Connection": ["*Upgrade*"],
                 "Upgrade": ["websocket"]
