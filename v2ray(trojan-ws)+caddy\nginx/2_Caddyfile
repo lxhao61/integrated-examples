@@ -13,7 +13,7 @@ xx.yy { //修改成自己的域名
         level  ERROR
     }
     @v2ray_ws { /标签。此标签仅区分，多个代理需要改成不同名称，但要与下边‘reverse_proxy’中标识对应。
-        path /9ALdGZ9k  //与本机v2ray path对应,分流出ws。
+        path /9ALdGZ9k  //与本机v2ray path对应
         header Connection *Upgrade*
         header Upgrade websocket
     }
