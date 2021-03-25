@@ -20,7 +20,7 @@
           "listen": [":443"],
           "routes": [{
             "match": [{
-              "protocol": "grpc" //与本机v2ray grpc对应
+              "protocol": "grpc" //与vless-grpc或vmess-grpc应用中network对应
             }],
             "handle": [{
               "handler": "reverse_proxy",
@@ -29,7 +29,7 @@
                 "versions": ["h2c"]
               },
               "upstreams": [{
-                "dial": "127.0.0.1:2009" //转发给本机v2ray对应端口
+                "dial": "127.0.0.1:2009" //转发给本机vless-grpc或vmess-grpc应用对应端口
               }]
             }],
             "terminal": true
