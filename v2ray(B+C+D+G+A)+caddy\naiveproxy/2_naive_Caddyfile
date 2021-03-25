@@ -27,11 +27,11 @@
     }
 
     @vws { //匹配器标签。此标签仅区分，多个不同代理需要改成不同名称，但要与下边‘reverse_proxy’中匹配器标签对应。
-        path /HALdGZ9k //与vless-ws或vmess-ws应用中path对应
+        path /HALdGZ9k //与vless-ws应用中path对应
         header Connection *Upgrade*
         header Upgrade websocket
     }
-    reverse_proxy @vws unix//dev/shm/vws.sock //转发给本机vless-ws或vmess-ws应用对应进程
+    reverse_proxy @vws unix//dev/shm/vws.sock //转发给本机vless-ws应用对应进程
 
     @pws { //匹配器标签。此标签仅区分，多个不同代理需要改成不同名称，但要与下边‘reverse_proxy’中匹配器标签对应。
         path /ss1v2ray //与Xray-plugin或v2ray-plugin模块中path对应
