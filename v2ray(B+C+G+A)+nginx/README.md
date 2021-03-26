@@ -24,4 +24,4 @@
 
 6、nginx 不支持 h2c proxy，故 nginx 不能实现 v2ray（Xray） 的 h2c 反向代理。
 
-7、配置1：nginx SNI 的进程分流及启用了 PROXY protocol，端口转发。配置2：nginx SNI 的进程分流及启用了 PROXY protocol；vless-ws-tls应用进程转发，其它端口转发。
+7、配置1：nginx SNI 的端口分流及启用了 PROXY protocol，端口转发。配置2：nginx SNI 的进程分流及启用了 PROXY protocol；vless-ws-tls应用进程转发，其它端口转发。
