@@ -19,13 +19,8 @@
         "decryption": "none",
         "fallbacks": [
           {
-            "alpn": "h2", //h2回落匹配
             "dest": "@trojan-tcp", //回落给trojan-tcp处理,即@trojan-tcp程。
             "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给如下trojan-tcp应用。1或2表示PROXY protocol插件版本。多级传递，建议配置2。
-          },
-          {
-            "dest": "/dev/shm/h1.sock", //http/1.1回落进程
-            "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给nginx。1或2表示PROXY protocol插件版本。与上一致，此处建议配置2。
           },
           {
             "path": "/HALdGZ9k", //通过路径分流
@@ -83,7 +78,7 @@
         "network": "ws",
         "security": "none",
         "wsSettings": {
-          "acceptProxyProtocol": true, //开启PROXY protocol接收，接收vless+tcp分流前真实来源IP和端口。
+          "acceptProxyProtocol": true, //开启PROXY protocol接收，接收vless-tcp-tls分流前真实来源IP和端口。
           "path": "/HALdGZ9k" //修改成自己的path
         }
       },
@@ -108,7 +103,7 @@
         "network": "ws",
         "security": "none",
         "wsSettings": {
-          "acceptProxyProtocol": true, //开启PROXY protocol接收，接收vless+tcp分流前真实来源IP和端口。
+          "acceptProxyProtocol": true, //开启PROXY protocol接收，接收vless-tcp-tls分流前真实来源IP和端口。
           "path": "/SS1v2ray" //修改成自己的path
         }
       },
@@ -153,7 +148,12 @@
         ],
         "fallbacks": [
           {
+            "alpn": "h2", //h2回落匹配
             "dest": "/dev/shm/h2c.sock", //h2回落进程
+            "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给nginx。1或2表示PROXY protocol插件版本。多级传递，建议配置2。
+          },
+          {
+            "dest": "/dev/shm/h1.sock", //http/1.1回落进程
             "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给nginx。1或2表示PROXY protocol插件版本。多级传递，建议配置2。
           }
         ]
@@ -162,7 +162,7 @@
         "network": "tcp",
         "security": "none",
         "tcpSettings": {
-          "acceptProxyProtocol": true //开启PROXY protocol接收，接收vless-tcp回落前真实来源IP和端口。
+          "acceptProxyProtocol": true //开启PROXY protocol接收，接收vless-tcp-tls回落前真实来源IP和端口。
         }
       },
       "sniffing": {
