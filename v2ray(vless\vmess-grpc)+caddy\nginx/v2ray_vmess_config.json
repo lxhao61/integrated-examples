@@ -33,7 +33,7 @@
           "tls"
         ]
       }
-    },
+    }
   ],
   "routing": {
     "domainStrategy": "IPIfNonMatch",
