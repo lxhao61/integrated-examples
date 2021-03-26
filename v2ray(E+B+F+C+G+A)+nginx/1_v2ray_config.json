@@ -105,8 +105,13 @@
         ],
         "fallbacks": [
           {
+            "alpn": "h2", //h2回落匹配
             "dest": 82, //h2回落端口
             "xver": 0 //关闭PROXY protocol发送，不发送真实来源IP和端口给nginx。另默认为0，此条参数可以省略不写。
+          },
+          {
+            "dest": 81, //http/1.1回落端口
+            "xver": 0 ///关闭PROXY protocol发送，不发送真实来源IP和端口给nginx。另默认为0，此条参数可以省略不写。
           },
           {
             "path": "/SS1v2ray", //通过路径分流
