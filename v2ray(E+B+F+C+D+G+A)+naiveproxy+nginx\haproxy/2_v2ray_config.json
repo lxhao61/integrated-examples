@@ -6,7 +6,7 @@
   },
   "inbounds": [
     {
-      "listen": "/dev/shm/vless.sock", //vless+tcp进程
+      "listen": "/dev/shm/vless.sock", //vless-tcp-tls进程
       "protocol": "vless",
       "settings": {
         "clients": [
@@ -85,7 +85,7 @@
       }
     },
     {
-      "listen": "/dev/shm/trojan.sock", //trojan+tcp进程
+      "listen": "/dev/shm/trojan.sock", //trojan-tcp-tls进程
       "protocol": "trojan",
       "settings": {
         "clients": [
