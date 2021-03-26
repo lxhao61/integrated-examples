@@ -11,7 +11,7 @@
       "protocol": "dokodemo-door",
       "settings": {
         "address": "v1.mux.cool",
-        "network": "tcp,udp",
+        "network": "tcp",
         "followRedirect": false
       },
       "streamSettings": {
@@ -39,7 +39,7 @@
         "method": "chacha20-poly1305",
         "password": "diy2003", //修改成自己的密码
         "ota": false,
-        "network": "tcp,udp"
+        "network": "tcp"
       }
     }
   ],
