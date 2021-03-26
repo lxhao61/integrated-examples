@@ -1,4 +1,5 @@
 介绍：
+
 因 nginx 不支持 http/1.1 server 与 h2 server 共用一个端口或一个进程（Unix Domain Socket 应用），利用 nginx 支持 SNI 分流特性，对 http/1.1 server 与 h2 server 进行 SNI 分流（四层转发），实现共用443端口。分别实现 ws（WebSocket） 反向代理与实现 gRPC 反向代理的综合应用。包括应用如下：
 
 1、vless-ws-tls（tls由nginx提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
