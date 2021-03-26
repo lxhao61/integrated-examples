@@ -18,7 +18,12 @@
         ],
         "fallbacks": [
           {
+            "alpn": "h2", //h2回落匹配
             "dest": "/dev/shm/h2c.sock", //h2回落进程
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给nginx。1或2表示PROXY protocol插件版本。
+          },
+          {
+            "dest": "/dev/shm/h1.sock", //http/1.1回落进程
             "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给nginx。1或2表示PROXY protocol插件版本。
           }
         ]
@@ -28,7 +33,8 @@
         "security": "xtls", //如启用xtls，tls必须改成xtls；否则恢复tls。
         "xtlsSettings": { //如启用xtls，tlsSettings必须改成xtlsSettings；否则恢复tlsSettings。
           "alpn":[
-            "h2" //启用h2连接，web回落也需配置支持h2回落；否则不一致（裸奔），容易被墙探测出，从而被封。
+            "h2", //启用h2连接，web回落也需配置支持h2回落；否则不一致（裸奔），容易被墙探测出，从而被封。
+            "http/1.1" //启用http/1.1连接，web回落也需配置支持http/1.1回落；否则不一致（裸奔），容易被墙探测出，从而被封。
           ],
           "minVersion": "1.2", //最低tls版本设置，Xray v1.1.4版及以后支持（可选项参数，可以不配置。）。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
           "preferServerCipherSuites": true, //首选服务端密码套件开关（与下面密码套件配合），Xray v1.1.4版及以后支持（可选项参数，可以不配置。）。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
