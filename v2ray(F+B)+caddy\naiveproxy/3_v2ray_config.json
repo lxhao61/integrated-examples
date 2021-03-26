@@ -19,11 +19,11 @@
         "fallbacks": [
           {
             "dest": "/dev/shm/h1h2c.sock", //h2与http/1.1回落共用此进程，回落到web服务器。需web服务器同一进程，同时支持h2c server与http/1.1 server应用。
-            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给caddy2。caddy2用支持PROXY protocol插件的定制版。1或2表示PROXY protocol插件版本。
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给caddy。caddy用支持PROXY protocol插件的定制版。1或2表示PROXY protocol插件版本。
           },
           {
-            "path": "/HALdGZ9k", //通过路径分流出ws
-            "dest": "@vless-ws", //分流后转给vless+ws处理,即@vless-ws进程。
+            "path": "/HALdGZ9k", //通过路径分流
+            "dest": "@vless-ws", //分流后转给vless-ws处理,即@vless-ws进程。
             "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给如下vless+ws应用。1或2表示PROXY protocol插件版本。
           }
         ]
