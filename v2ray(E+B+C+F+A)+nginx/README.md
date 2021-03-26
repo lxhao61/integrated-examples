@@ -1,6 +1,6 @@
 介绍：
 
-v2ray（Xray） 前置（监听443端口），vless-tcp-tls 以 h2 或 http/1.1 自适应协商连接，分流 ws（WebSocket）连接，非 v2ray（Xray） 的 http/1.1 连接直接回落给 nginx，而余下的 h2 连接回落给 trojan-tcp，trojan-tcp 处理后再回落给 nginx。其应用如下：
+v2ray（Xray） 前置（监听443端口），vless-tcp-tls 以 h2 或 http/1.1 自适应协商连接，分流 ws（WebSocket）连接，其它连接回落给 trojan-tcp，trojan-tcp 处理后再回落给 nginx。其应用如下：
 
 1、vless-tcp-tls（tls由自己提供。）
 
