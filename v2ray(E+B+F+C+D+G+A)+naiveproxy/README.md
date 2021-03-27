@@ -1,6 +1,6 @@
 介绍：
 
-此配置包括 v2ray（Xray）、naiveproxy（caddy）应用。利用 caddy 支持 SNI 分流特性，对 v2ray（vless-tcp-tls）、v2ray（trojan-tcp-tls）、naiveproxy（caddy）进行 SNI 分流（四层转发），实现除 v2ray kcp 外共用443端口。另 caddy 同时为 v2ray（vless-tcp-tls）与 v2ray（trojan-tcp-tls） 提供回落服务，为 v2ray（Xray） 的 h2c 与 grpc 进行反向代理，为 naiveproxy 提供正向代理。包括应用如下：
+此配置包括 v2ray（Xray）、naiveproxy（caddy）应用。利用 caddy 支持 SNI 分流特性，对 v2ray（vless-tcp-tls）、v2ray（trojan-tcp-tls）、naiveproxy（caddy）进行 SNI 分流（四层转发），实现除 v2ray kcp 外共用443端口。caddy 同时为 v2ray（vless-tcp-tls）与 v2ray（trojan-tcp-tls） 提供回落服务，为 v2ray（Xray） 的 h2c 与 grpc 进行反向代理，为 naiveproxy 提供正向代理。包括应用如下：
 
 1、vless-tcp-tls（tls由自己提供。）
 
