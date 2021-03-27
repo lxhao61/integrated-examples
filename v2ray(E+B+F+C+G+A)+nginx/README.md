@@ -20,7 +20,7 @@
 
 2、nginx 支持 h2c server，但不支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用），故 v2ray（vless-tcp-tls） 或 v2ray（trojan-tcp-tls） 的端口回落或进程回落必须分开，分别对应 http/1.1 与 h2 回落。
 
-3、nginx 不支持 h2c proxy，故 nginx 不能实现 v2ray 的 h2（http/2）反向代理。
+3、nginx 不支持 h2c proxy，故 nginx 不能实现 v2ray 的 h2c（http/2）反向代理。
 
 4、nginx 预编译程序包一般不带支持 SNI 分流协议的模块。如要使用此项协议应用，需加 stream_ssl_preread_module 模块构建自定义模板，再进行源代码编译和安装。
 
