@@ -40,9 +40,8 @@
             }],
             "handle": [{
               "handler": "proxy",
-              "proxy_header": "v2", //采用改进的caddy-l4插件编译的才同时支持PROXY protocol发送。v1或v2表示PROXY protocol版本，SNI分流建议采用v2版。
               "upstreams": [{
-                "dial": ["unix//dev/shm/trojan.sock"] //与trojan-tcp-tls进程对应
+                "dial": ["127.0.0.1:6443"] //与trojan（trojan-go）端口对应
               }]
             }]
           },
