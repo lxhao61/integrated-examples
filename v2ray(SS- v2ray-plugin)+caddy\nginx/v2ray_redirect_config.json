@@ -71,7 +71,7 @@
       "tag": "ssds", //标签，与routing中标签对应。
       "protocol": "freedom",
       "settings": {
-        "redirect": "127.0.0.1:2004" //转发给本地2003端口
+        "redirect": "127.0.0.1:2004" //转发给本地2004端口
       }
     },
     {
