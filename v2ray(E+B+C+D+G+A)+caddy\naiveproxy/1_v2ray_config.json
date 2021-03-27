@@ -24,7 +24,7 @@
           },
           {
             "path": "/HALdGZ9k", //通过路径分流
-            "dest": 2002, //分流后转发到2002端口
+            "dest": 2001, //分流后转发到2001端口
             "xver": 0 //关闭PROXY protocol发送，不发送真实来源IP和端口给如下vless-ws应用。另默认为0，此条参数可以省略不写。
           },
           {
@@ -64,7 +64,7 @@
     },
     {
       "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2002, //监听端口
+      "port": 2001, //监听端口
       "protocol": "vless",
       "settings": {
         "clients": [
@@ -92,7 +92,7 @@
     },
     {
       "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2003, //监听端口
+      "port": 2002, //监听端口
       "protocol": "dokodemo-door",
       "settings": {
         "address": "v1.mux.cool",
@@ -117,12 +117,12 @@
     },
     {
       "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2004, //监听端口
+      "port": 2003, //监听端口
       "protocol": "shadowsocks",
       "settings": {
-        "email": "2004@gmail.com",
+        "email": "2003@gmail.com",
         "method": "chacha20-poly1305",
-        "password": "diy2004", //修改成自己的密码
+        "password": "diy2003", //修改成自己的密码
         "ota": false,
         "network": "tcp,udp"
       }
@@ -243,7 +243,7 @@
       "tag": "ssds", //标签，与routing中标签对应。
       "protocol": "freedom",
       "settings": {
-        "redirect": "127.0.0.1:2004" //转发给本地2004端口
+        "redirect": "127.0.0.1:2003" //转发给本地2003端口
       }
     },
     {
