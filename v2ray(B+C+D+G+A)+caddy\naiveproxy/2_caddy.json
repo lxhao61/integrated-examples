@@ -51,7 +51,7 @@
                 "protocol": "http"
               },
               "upstreams": [{
-                "dial": "127.0.0.1:2003" //转发给本机Xray-plugin或v2ray-plugin模块对应端口
+                "dial": "127.0.0.1:2002" //转发给本机Xray-plugin或v2ray-plugin模块对应端口
               }]
             }],
             "terminal": true
