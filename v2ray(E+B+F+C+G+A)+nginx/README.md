@@ -26,6 +26,6 @@
 
 5、nginx 预编译程序包可能不带支持 PROXY protocol 协议的模块。如要使用此项协议应用，需加 http_realip_module 与 stream_realip_module 两模块构建自定义模板，再进行源代码编译和安装。另编译时选取源代码版本建议不要低于1.13.11。
 
-6、此方法采用的是 SNI 方式实现共用 443 端口，支持 vless-tcp-tls 与 trojan-tcp-tls 完美共存，支持各自 xtls 应用，但需多个域名（多个证书或通配符证书）来标记分流。
+6、此方法采用的是 SNI 方式实现共用 443 端口，支持 vless-tcp-tls、trojan-tcp-tls、nginx（http/2 server） 完美共存，支持 vless-tcp-tls 与 trojan-tcp-tls 各自 xtls 应用，但需多个域名（多个证书或通配符证书）来标记分流。
 
 7、配置1：端口转发、端口回落\分流及 nginx SNI 的端口分流，没有启用 PROXY protocol。配置2：进程转发、进程回落\分流及 nginx SNI 的进程分流，没有启用 PROXY protocol。配置3：进程转发、进程回落\分流及 nginx SNI 的进程分流，启用了 PROXY protocol。
