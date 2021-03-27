@@ -1,0 +1,64 @@
+{
+    order reverse_proxy before header
+    order forward_proxy before reverse_proxy
+    admin off
+    servers :443 {
+        protocol {
+            experimental_http3 //开启http3 server支持
+        }
+    }
+}
+
+:443, xx.yy { //xx.yy修改成自己的域名
+    tls {
+        ciphers TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+        alpn h2 http/1.1
+    }
+    log {
+        output file /var/log/caddy/access.log
+        level  ERROR
+    }
+
+    forward_proxy {
+        basic_auth user pass //naiveproxy账号与密码，修改为自己的。
+        hide_ip
+        hide_via
+        probe_resistance unsplash.com:443
+    }
+
+    @vws { //匹配器标签。此标签仅区分，多个不同代理需要改成不同名称，但要与下边‘reverse_proxy’中匹配器标签对应。
+        path /HALdGZ9k //与vless-ws应用中path对应
+        header Connection *Upgrade*
+        header Upgrade websocket
+    }
+    reverse_proxy @vws 127.0.0.1:2001 //转发给本机vless-ws应用对应端口
+
+    @pws { //匹配器标签。此标签仅区分，多个不同代理需要改成不同名称，但要与下边‘reverse_proxy’中匹配器标签对应。
+        path /ss1v2ray //与Xray-plugin或v2ray-plugin模块中path对应
+        header Connection *Upgrade*
+        header Upgrade websocket
+    }
+    reverse_proxy @pws 127.0.0.1:2002 //转发给本机Xray-plugin或v2ray-plugin模块对应端口
+
+    reverse_proxy /SeuW56Es 127.0.0.1:2005 { //与vless-h2c应用中path对应，转发给本机vless-h2c应用对应端口。
+        transport http {
+            versions h2c
+        }
+    }
+
+    @grpc { //匹配器标签。此标签仅标识，但要与下边‘reverse_proxy’中匹配器标签对应。
+        protocol grpc //与vless-grpc应用中network对应
+    }
+    reverse_proxy @grpc 127.0.0.1:2009 { //转发给本机vless-grpc应用对应端口
+        transport http {
+            versions h2c
+        }
+    }
+
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" //启用HSTS
+    }
+    file_server {
+        root /var/www/html //修改成自己存放的web文件路径
+    }
+}
