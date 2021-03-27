@@ -40,7 +40,7 @@
             "handle": [{
               "handler": "proxy",
               "upstreams": [{
-                "dial": ["unix//dev/shm/trojan.sock"] //与trojan-tcp-tls进程对应
+                "dial": ["127.0.0.1:6443"] //与trojan（trojan-go）端口对应
               }]
             }]
           },
