@@ -1,0 +1,66 @@
+{
+  "admin": {
+    "disabled": true
+  },
+  "logging": {
+    "logs": {
+      "default": {
+        "level": "ERROR",
+        "writer": {
+          "output": "file",
+          "filename": "/var/log/caddy/access.log"
+        }
+      }
+    }
+  },
+  "apps": {
+    "http": {
+      "servers": {
+        "h1": {
+          "listen": [":80"], //http默认监听端口
+          "routes": [{
+            "handle": [{
+              "handler": "static_response",
+              "status_code": 301, 
+              "headers": {
+                "Location": ["https://{http.request.host}{http.request.uri}"] //http自动跳转https,让网站看起来更真实。
+              }
+            }],
+            "terminal": true
+          }]
+        },
+        "h1&h2c": {
+          "listen": ["127.0.0.1:88"], //本机端口监听，避免除本机外的机器探测及非安全web访问，仅接收web回落。
+          "routes": [{
+            "handle": [{
+              "handler": "forward_proxy",
+              "auth_user": "user", //naiveproxy账号，修改为自己的。
+              "auth_pass": "pass", //naiveproxy密码，修改为自己的。
+              "hide_ip": true,
+              "hide_via": true,
+              "probe_resistance": {
+                "domain": "unsplash.com:443"
+              }
+            }]
+          },
+          {
+            "handle": [{
+              "handler": "headers",
+              "response": {
+                "set": {
+                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
+                }
+              }
+            },
+            {
+              "handler": "file_server",
+              "root": "/var/www/html" //修改成自己存放的web文件路径
+            }],
+            "terminal": true
+          }],
+          "allow_h2c": true //开启h2c server支持
+        }
+      }
+    }
+  }
+}
