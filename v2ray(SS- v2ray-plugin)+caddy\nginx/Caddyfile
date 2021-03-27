@@ -17,7 +17,7 @@ xx.yy { //修改成自己的域名
         header Connection *Upgrade*
         header Upgrade websocket
     }
-    reverse_proxy @pws 127.0.0.1:2003 //转发给本机Xray-plugin或v2ray-plugin模块对应端口
+    reverse_proxy @pws 127.0.0.1:2002 //转发给本机Xray-plugin或v2ray-plugin模块对应端口
     header {
         Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" //启用HSTS
     }
