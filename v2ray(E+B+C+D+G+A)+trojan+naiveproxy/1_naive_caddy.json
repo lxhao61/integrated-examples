@@ -40,7 +40,7 @@
             "handle": [{
               "handler": "proxy",
               "upstreams": [{
-                "dial": ["127.0.0.1:2006"] //与trojan-tcp-tls端口对应
+                "dial": ["127.0.0.1:6443"] //与trojan（trojan-go）端口对应
               }]
             }]
           },
