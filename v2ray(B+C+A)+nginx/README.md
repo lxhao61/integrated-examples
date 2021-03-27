@@ -10,7 +10,7 @@
 
 注意：
 
-1、nginx 不支持 h2c proxy，故 nginx 不能实现 v2ray（Xray） 的 h2c 反向代理。
+1、nginx 不支持 h2c proxy，故 nginx 不能实现 v2ray（Xray） 的 h2c（http/2）反向代理。
 
 2、若系统版本过低，其对应发行版仓库自带 nginx 预编译程序包可能不支持 tls1.3；如需要支持 tls1.3，必须先升级 OpenSSl 版本大于 1.1.1，再进行 nginx 源代码编译和安装。
 
