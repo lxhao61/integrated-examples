@@ -7,7 +7,7 @@
   "inbounds": [
     {
       "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2003, //监听端口
+      "port": 2002, //监听端口
       "protocol": "dokodemo-door",
       "settings": {
         "address": "v1.mux.cool",
@@ -32,7 +32,7 @@
     },
     {
       "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2004, //监听端口
+      "port": 2003, //监听端口
       "protocol": "shadowsocks",
       "settings": {
         "email": "2003@gmail.com",
@@ -71,7 +71,7 @@
       "tag": "ssds", //标签，与routing中标签对应。
       "protocol": "freedom",
       "settings": {
-        "redirect": "127.0.0.1:2004" //转发给本地2004端口
+        "redirect": "127.0.0.1:2003" //转发给本地2003端口
       }
     },
     {
