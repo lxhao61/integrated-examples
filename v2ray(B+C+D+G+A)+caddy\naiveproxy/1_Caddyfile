@@ -18,14 +18,14 @@ xx.yy { //修改成自己的域名
         header Connection *Upgrade*
         header Upgrade websocket
     }
-    reverse_proxy @vws 127.0.0.1:2001 //转发给本机vless-ws应用对应端口
+    reverse_proxy @vws 127.0.0.1:2002 //转发给本机vless-ws应用对应端口
 
     @pws { //匹配器标签。此标签仅区分，多个不同代理需要改成不同名称，但要与下边‘reverse_proxy’中匹配器标签对应。
         path /ss1v2ray //与Xray-plugin或v2ray-plugin模块中path对应
         header Connection *Upgrade*
         header Upgrade websocket
     }
-    reverse_proxy @pws 127.0.0.1:2002 //转发给本机Xray-plugin或v2ray-plugin模块对应端口
+    reverse_proxy @pws 127.0.0.1:2003 //转发给本机Xray-plugin或v2ray-plugin模块对应端口
 
     reverse_proxy /SeuW56Es 127.0.0.1:2005 { //与vless-h2c应用中path对应，转发给本机vless-h2c应用对应端口。
         transport http {
