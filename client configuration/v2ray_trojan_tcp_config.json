@@ -1,0 +1,61 @@
+{
+  "log": {},
+  "inbounds": [
+    {
+      "port": "1080",
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": true
+      }
+    },
+    {
+      "port": "1081",
+      "protocol": "http",
+      "settings": {}
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "xx.yy", //改成服务端配置的对应域名
+            "port": 443, //改成服务端配置的对应端口（如没有SNI分流共用端口，就是trojan监听端口。）
+            "password": "diy443", //修改成自己服务器端配置的密码
+            "flow": "xtls-rprx-direct" //启用xtls必须增加此条参数，参数值可自己调整；否则删除此条参数。另支持xtls必须v2ray版本不小于v4.31.3，且服务端已配置支持。
+          }
+        ]
+      },
+      "streamSettings": {
+        "security": "xtls", //如启用xtls，tls必须改成xtls。
+        "network": "tcp",
+        "tcpSettings": {}
+      }
+    },
+    {
+      "tag": "direct", //如果要使用路由，这个tag是一定要有的，在这里direct就是freedom的一个标号；在路由中说direct，V2Ray就知道是这里的freedom了。
+      "protocol": "freedom",
+      "settings": {}
+    }
+  ],
+  "routing": {
+    "domainStrategy": "IPOnDemand",
+    "rules": [
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "domain": ["geosite:cn"] //中国大陆主流网站的域名
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "ip": [
+          "geoip:cn", //中国大陆的IP
+          "geoip:private" //私有地址IP，如路由器等。
+        ]
+      }
+    ]
+  }
+}
