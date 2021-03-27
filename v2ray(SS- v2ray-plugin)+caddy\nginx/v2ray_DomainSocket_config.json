@@ -7,7 +7,7 @@
   "inbounds": [
     {
       "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2003, //监听端口
+      "port": 2002, //监听端口
       "protocol": "dokodemo-door",
       "settings": {
         "address": "v1.mux.cool",
@@ -32,7 +32,7 @@
     },
     {
       "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2004, //此端口无实际用处，但必须存在。
+      "port": 2003, //此端口无实际用处，但必须存在。
       "protocol": "shadowsocks",
       "settings": {
         "email": "2003@gmail.com",
