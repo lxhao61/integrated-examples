@@ -1,0 +1,36 @@
+{
+    "run_type": "client",
+    "local_addr": "127.0.0.1",
+    "local_port": 1080,
+    "remote_addr": "xx.yy", //改成服务端配置的对应域名
+    "remote_port": 443, //改成服务端配置的对应端口（如没有SNI分流共用端口，就是自己监听端口。）
+    "password": [
+        "password" //改成服务端设置的对应密码
+    ],
+    "ssl": {
+        "sni": "xx.yy" //改成服务端配置的对应域名（通配域名）
+    },
+    "router": {
+        "enabled": true, //路由策略开启。建议开启。
+        "bypass": [
+            "geoip:cn",
+            "geoip:private",
+            "geosite:cn",
+            "geosite:geolocation-cn"
+        ],
+        "block": [
+            "geosite:category-ads"
+        ],
+        "proxy": [
+            "geosite:geolocation-!cn"
+        ],
+        "default_policy": "proxy",
+        "geoip": "/trojan-go/geoip.dat", //修改成geoip.dat路径
+        "geosite": "/trojan-go/geosite.dat" //修改成geosite.dat路径
+    },
+    "websocket": {
+        "enabled": true, //websocket开启,默认可以关闭。
+        "path": "/9ALdGZ9k", //修改成自己配置的路径
+        "host": "xx.yy" //修改成自己域名
+  }
+}
