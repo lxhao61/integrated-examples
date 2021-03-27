@@ -1,0 +1,59 @@
+//原配置参数（默认HTTP-01 challenge或TLS-ALPN-01 challenge方式申请非通配符tls证书。）：
+.........<省略>........
+    tls {
+        ciphers TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+        alpn http/1.1 h2
+    }
+.........<省略>........
+
+//cloudflare以dns api方式申请tls证书（DNS-01 challenge方式申请tls证书。）
+.........<省略>........
+    tls {
+        ciphers TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+        alpn http/1.1 h2
+        dns cloudflare e09062f1fd2545555fc8a15fceda2222 //换成你cloudflare的api，此api是你配置相关生成的，详细参考官方及cloudflare插件github。
+    }
+.........<省略>........
+注意：
+1、原来域名改成通配符域名（*.xx.yy），就申请通配符tls证书；否则就申请普通tls证书。
+2、caddy2采用dns api方式申请的通配符tls证书，不包括根域名证书。如要根域名证书，需加根域名申请。
+
+
+//原配置参数（其它第三方软件申请tls证书，手工配置路径加载。）：
+{
+.........<省略>........
+    admin off
+.........<省略>........
+}
+.........<省略>........
+:7443 { //本机https server端口监听，提供naiveproxy、h2c proxy等应用。
+    bind 127.0.0.1 //只监听本机，避免本机外的机器探测到上面端口。
+    tls /etc/ssl/tls/xx.yy.crt /etc/ssl/tls/xx.yy.key { //换成你的证书与私钥，绝对路径。
+        ciphers TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+        alpn h2 http/1.1
+    }
+.........<省略>........
+
+//cloudflare以dns api方式申请tls证书（DNS-01 challenge方式申请tls证书。）
+{
+    http_port 808
+    https_port 7443
+.........<省略>........
+    admin off
+    storage file_system {
+        root /home/tls //存放tls证书路径及目录
+    }
+.........<省略>........
+}
+.........<省略>........
+:7443, *.xx.yy, xx.yy { //换成你的域名,*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。若不要根域名部分，可以取消。
+    bind 127.0.0.1 //只监听本机，避免本机外的机器探测到上面端口。
+    tls {
+        ciphers TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+        alpn http/1.1 h2
+        dns cloudflare e09062f1fd2545555fc8a15fceda2222 //换成你cloudflare的api，此api是你配置相关生成的，详细参考官方及cloudflare插件github。
+    }
+.........<省略>........
+注意：
+1、caddy2采用dns api方式申请的通配符tls证书，不包括根域名证书。如要根域名证书，需加根域名申请。
+2、不支持进程监听模式。
