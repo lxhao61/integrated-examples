@@ -1,7 +1,7 @@
 {
     "run_type": "server",
     "local_addr": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-    "local_port": 7443, //监听端口
+    "local_port": 6443, //监听端口
     "remote_addr": "127.0.0.1",
     "remote_port": 81, //http/1.1回落端口
     "password": [
