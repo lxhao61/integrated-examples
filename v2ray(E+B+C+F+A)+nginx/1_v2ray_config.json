@@ -19,7 +19,7 @@
         "decryption": "none",
         "fallbacks": [
           {
-            "dest": 5443, //回落给trojan-tcp处理
+            "dest": 6443, //回落给trojan-tcp处理
             "xver": 0 //关闭PROXY protocol发送，不发送真实来源IP和端口给如下trojan-tcp应用。另默认为0，此条参数可以省略不写。
           },
           {
@@ -129,13 +129,13 @@
     },
     {
       "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 5443, //监听端口，对应上回落端口。
+      "port": 6443, //监听端口，对应上回落端口。
       "protocol": "trojan",
       "settings": {
         "clients": [
           {
-            "password":"diy5443", //修改成自己密码
-            "email": "5443@gmail.com"
+            "password":"diy6443", //修改成自己密码
+            "email": "6443@gmail.com"
           }
         ],
         "fallbacks": [
