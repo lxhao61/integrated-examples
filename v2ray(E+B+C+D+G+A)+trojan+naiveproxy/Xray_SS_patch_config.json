@@ -1,0 +1,50 @@
+//Xray从v1.2.3版开始支持Shadowsocks AEAD单端口多用户，配置方法与vmess、vless、trojan协议配置单端口多用户类似。AEAD就是aes-256-gcm、aes-128-gcm、chacha20-poly1305加密算法。
+//原来配置：
+.........<省略>........
+      "settings": {
+        "email": "2003@gmail.com",
+        "method": "chacha20-poly1305",
+        "password": "diy2003", //修改成自己的密码
+        "ota": false,
+        "network": "tcp,udp"
+      },
+.........<省略>........
+
+//现在配置（可如下修改）：
+//单用户
+.........<省略>........
+      "settings": {
+        "clients": [
+          {
+            "method": "chacha20-poly1305",
+            "password": "diy2003", //修改成自己的密码
+            "email": "2003@gmail.com"
+          }
+        ],
+        "network": "tcp,udp"
+      },
+.........<省略>........
+
+//多用户
+.........<省略>........
+      "settings": {
+        "clients": [
+          {
+            "method": "aes-256-gcm",
+            "password": "diy2013", //修改成自己的密码
+            "email": "2013@gmail.com"
+          },
+          {
+            "method": "aes-128-gcm",
+            "password": "diy2023", //修改成自己的密码
+            "email": "2023@gmail.com"
+          },
+          {
+            "method": "chacha20-poly1305",
+            "password": "diy2033", //修改成自己的密码
+            "email": "2033@gmail.com"
+          }
+        ],
+        "network": "tcp,udp"
+      },
+.........<省略>........
