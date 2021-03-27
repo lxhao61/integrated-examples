@@ -22,6 +22,6 @@
 
 5、nginx 支持 h2c server，但不支持 http/1.1 server 与 h2 server 共用一个端口或一个进程（Unix Domain Socket 应用），故两者都启用必须分开。采用 SNI 方式实现共用443端口，需多个域名（多个证书或通配符证书）来标记区分。
 
-6、nginx 不支持 h2c proxy，故 nginx 不能实现 v2ray（Xray） 的 h2c 反向代理。
+6、nginx 不支持 h2c proxy，故 nginx 不能实现 v2ray（Xray） 的 h2c（http/2）反向代理。
 
 7、配置1：nginx SNI 的端口分流及启用了 PROXY protocol，端口转发。配置2：nginx SNI 的进程分流及启用了 PROXY protocol；vless-ws-tls应用进程转发，其它端口转发。
