@@ -20,7 +20,7 @@
         "fallbacks": [
           {
             "dest": "/dev/shm/h1h2c.sock", //h2与http/1.1回落共用此进程，回落到web服务器。需web服务器同一进程，同时支持h2c server与http/1.1 server应用。
-            "xver": 0 //caddy2发行版不支持PROXY protocol，如用发行版此处值必须为0。
+            "xver": 0 //caddy发行版不支持PROXY protocol，如用发行版此处值必须为0。
           }
         ]
       },
