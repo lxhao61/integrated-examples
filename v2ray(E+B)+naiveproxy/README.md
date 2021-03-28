@@ -1,12 +1,12 @@
 介绍：
 
-v2ray（Xray） 前置（监听443端口），利用 vless-tcp-tls 强大的回落/分流特性，实现了共用443端口。vless-tcp-tls 以 h2 或 http/1.1 自适应协商连接，分流 ws（WebSocket）连接，非 v2ray（Xray） 的连接回落给 caddy；若有 naiveproxy 就进行正向代理。其应用如下：
+v2ray（Xray） 前置（监听443端口），利用 vless+tcp+tls 强大的回落/分流特性，实现了共用443端口。vless+tcp+tls 以 h2 或 http/1.1 自适应协商连接，分流 ws（WebSocket）连接，非 v2ray（Xray） 的连接回落给 caddy；若有 naiveproxy 就进行正向代理。其应用如下：
 
-1、E=vless-tcp-tls（tls由自己提供。）
+1、E=vless+tcp+tls（tls由自己提供。）
 
-2、B=vless-ws-tls（tls由vless-tcp-tls提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
+2、B=vless+ws+tls（tls由vless+tcp+tls提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
 
-3、naiveproxy （带有forwardproxy插件的caddy才支持naiveproxy应用，否则仅上边应用。tls由vless-tcp-tls提供及处理，不需配置。）
+3、naiveproxy （带有forwardproxy插件的caddy才支持naiveproxy应用，否则仅上边应用。tls由vless+tcp+tls提供及处理，不需配置。）
 
 注意：
 
@@ -16,7 +16,7 @@ v2ray（Xray） 前置（监听443端口），利用 vless-tcp-tls 强大的回�
 
 3、caddy 发行版不支持 PROXY protocol（接收）。如要支持 PROXY protocol 需选 caddy2-proxyprotocol 插件定制编译，或下载本人 github 中编译好的 caddy 来使用即可。
 
-4、本示例中 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可，但目前 naive_Caddyfile 配置虽然可用，但会产生很多报错日志（暂不能解决）。
+4、本示例中 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可。
 
 5、使用本人 github 中编译好的 caddy 文件，才同时支持 h2c server、naiveproxy 及 PROXY protocol 等应用。
 
