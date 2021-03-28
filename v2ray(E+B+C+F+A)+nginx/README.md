@@ -2,15 +2,15 @@
 
 v2ray（Xray） 前置（监听443端口），vless-tcp-tls 以 h2 或 http/1.1 自适应协商连接，分流 ws（WebSocket）连接，其它连接回落给 trojan-tcp，trojan-tcp 处理后再回落给 nginx。其应用如下：
 
-1、vless-tcp-tls（tls由自己提供。）
+1、E=vless-tcp-tls（tls由自己提供。）
 
-2、vless-ws-tls（tls由vless-tcp-tls提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
+2、B=vless-ws-tls（tls由vless-tcp-tls提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
 
-3、SS- v2ray-plugin-tls（tls由vless-tcp-tls提供及处理，不需配置。）
+3、C=SS- v2ray-plugin-tls（tls由vless-tcp-tls提供及处理，不需配置。）
 
-4、trojan-tcp-tls（tls由vless-tcp-tls提供及处理，不需配置。）
+4、F=trojan-tcp-tls（tls由vless-tcp-tls提供及处理，不需配置。）
 
-5、vless-kcp-seed（可改成vmess-kcp-seed，或添加它。）
+5、A=vless-kcp-seed（可改成vmess-kcp-seed，或添加它。）
 
 注意：
 
