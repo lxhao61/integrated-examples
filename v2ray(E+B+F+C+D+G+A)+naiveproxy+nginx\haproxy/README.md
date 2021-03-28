@@ -1,20 +1,20 @@
 介绍：
 
-此配置包括 v2ray（Xray）、naiveproxy（caddy）应用。利用 haproxy 或 nginx 支持 SNI 分流特性，对 v2ray（vless-tcp-tls）、v2ray（trojan-tcp-tls）、naiveproxy（caddy）进行 SNI 分流（四层转发），实现除 v2ray kcp 外共用443端口。另 caddy 为 v2ray（vless-tcp-tls） 与 v2ray（trojan-tcp-tls） 提供回落服务，为 v2ray（Xray） 的 h2c 与 grpc 进行反向代理，为 naiveproxy 提供正向代理。包括应用如下：
+此配置包括 v2ray（Xray）、naiveproxy（caddy）应用。利用 haproxy 或 nginx 支持 SNI 分流特性，对 v2ray（vless+tcp+tls）、v2ray（trojan+tcp+tls）、naiveproxy（caddy）进行 SNI 分流（四层转发），实现除 v2ray kcp 外共用443端口。另 caddy 为 v2ray（vless+tcp+tls） 与 v2ray（trojan+tcp+tls） 提供回落服务，为 v2ray（Xray） 的 h2c 与 grpc 进行反向代理，为 naiveproxy 提供正向代理。包括应用如下：
 
-1、E=vless-tcp-tls（tls由自己提供。）
+1、E=vless+tcp+tls（tls由自己提供,且对vless+ws+tls分流。）
 
-2、B=vless-ws-tls（tls由vless-tcp-tls提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
+2、B=vless+ws+tls（tls由vless+tcp+tls提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
 
-3、F=trojan-tcp-tls（回落/分流配置。）
+3、F=trojan+tcp+tls（tls由自己提供,且对SS+v2ray-plugin+tls分流。）
 
-4、C=SS+v2ray-plugin（tls由trojan-tcp-tls提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
+4、C=SS+v2ray-plugin+tls（tls由trojan+tcp+tls提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
 
-5、D=vless-h2c-tls（tls由naiveproxy提供及处理，不需配置；另可改成或添加vmess-h2c-tls应用，参考反向代理h2的单一示例。）
+5、D=vless+h2c+tls（tls由naiveproxy提供及处理，不需配置；另可改成或添加vmess+h2c+tls应用，参考反向代理h2的单一示例。）
 
-6、G=vless-grpc-tls（tls由naiveproxy提供及处理，不需配置；另可改成或添加vmess-grpc-tls应用，参考反向代理grpc的单一示例。）
+6、G=vless+grpc+tls（tls由naiveproxy提供及处理，不需配置；另可改成或添加vmess+grpc+tls应用，参考反向代理grpc的单一示例。）
 
-7、A=vless-kcp-seed（可改成vmess-kcp-seed，或添加它。）
+7、A=vless+kcp+seed（可改成vmess+kcp+seed，或添加它。）
 
 8、naiveproxy （tls由自己提供。）
 
@@ -38,7 +38,7 @@
 
 9、nginx 预编译程序包可能不带支持 PROXY protocol 协议的模块。如要使用此项协议应用，需加 http_realip_module 与 stream_realip_module 两模块构建自定义模板，再进行源代码编译和安装。另编译时选取源代码版本建议不要低于1.13.11。
 
-10、此方法采用的是 SNI 方式实现共用443端口，支持 v2ray（vless-tcp-tls）、v2ray（trojan-tcp-tls）、naiveproxy（caddy）完美共存，支持各自特色应用，但需多个域名（多个证书或通配符证书）来标记分流。
+10、此方法采用的是 SNI 方式实现共用443端口，支持 v2ray（vless+tcp+tls）、v2ray（trojan+tcp+tls）、naiveproxy（caddy）完美共存，支持各自特色应用，但需多个域名（多个证书或通配符证书）来标记分流。
 
 11、配置1：端口转发、端口回落\分流及 haproxy 或 nginx SNI 的端口分流，没有启用 PROXY protocol。配置2：进程转发、进程回落\分流及 haproxy 或 nginx SNI 的进程分流，没有启用 PROXY protocol。配置3：进程转发、进程回落\分流及 haproxy 或 nginx SNI 的进程分流，启用了 PROXY protocol。
 
