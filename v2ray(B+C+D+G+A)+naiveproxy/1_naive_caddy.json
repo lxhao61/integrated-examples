@@ -70,7 +70,7 @@
           },
           {
             "match": [{
-              "path": ["/SeuW56Es"] //与vless-h2c应用中path对应
+              "path": ["/SeuW56Es"] //与vless+h2c应用中path对应
             }],
             "handle": [{
               "handler": "reverse_proxy",
@@ -86,7 +86,7 @@
           },
           {
             "match": [{
-              "protocol": "grpc" //与vless-grpc应用中network对应
+              "protocol": "grpc" //与vless+grpc应用中network对应
             }],
             "handle": [{
               "handler": "reverse_proxy",
