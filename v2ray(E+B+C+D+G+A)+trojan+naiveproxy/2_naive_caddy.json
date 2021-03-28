@@ -27,7 +27,7 @@
             "handle": [{
               "handler": "proxy",
               "upstreams": [{
-                "dial": ["unix//dev/shm/vless.sock"] //与vless-tcp-tls进程对应
+                "dial": ["unix//dev/shm/vless.sock"] //转发给vless+tcp+tls监听进程
               }]
             }]
           },
@@ -40,7 +40,7 @@
             "handle": [{
               "handler": "proxy",
               "upstreams": [{
-                "dial": ["127.0.0.1:6443"] //与trojan（trojan-go）端口对应
+                "dial": ["127.0.0.1:6443"] //转发给trojan（trojan-go）监听端口
               }]
             }]
           },
@@ -53,7 +53,7 @@
             "handle": [{
               "handler": "proxy",
               "upstreams": [{
-                "dial": ["unix//dev/shm/naive.sock"] //与caddy https server进程对应
+                "dial": ["unix//dev/shm/naive.sock"] //转发给caddy https server监听进程
               }]
             }]
           }]
