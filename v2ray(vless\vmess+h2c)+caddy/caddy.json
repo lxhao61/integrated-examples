@@ -29,7 +29,7 @@
                 "versions": ["h2c"]
               },
               "upstreams": [{
-                "dial": "127.0.0.1:2005" //转发给本机vless+h2c或vmess+h2c应用对应端口
+                "dial": "127.0.0.1:2005" //转发给本机vless+h2c或vmess+h2c监听端口
               }]
             }],
             "terminal": true
