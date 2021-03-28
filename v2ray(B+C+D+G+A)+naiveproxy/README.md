@@ -4,7 +4,7 @@
 
 1、B=vless-ws-tls（tls由caddy提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
 
-2、C=SS- v2ray-plugin -tls（tls由caddy提供及处理，不需配置。）
+2、C=SS+v2ray-plugin（tls由caddy提供及处理，不需配置。）
 
 3、D=vless-h2c-tls（tls由caddy提供及处理，不需配置；另可改成或添加vmess-h2c-tls应用，参考反向代理h2c的单一示例。）
 
