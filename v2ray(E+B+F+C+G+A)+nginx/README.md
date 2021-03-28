@@ -2,17 +2,17 @@
 
 利用 nginx 支持 SNI 分流特性，对 v2ray（vless-tcp-tls）、v2ray（trojan-tcp-tls）、nginx（http/2 server） 进行 SNI 分流（四层转发），实现除 v2ray kcp 外共用443端口。nginx 同时为 v2ray（vless-tcp-tls）与 v2ray（trojan-tcp-tls） 提供回落服务，为 v2ray（Xray） 的 grpc 进行反向代理。包括应用如下：
 
-1、vless-tcp-tls（tls由自己提供。）
+1、E=vless-tcp-tls（tls由自己提供。）
 
-2、vless-ws-tls（tls由vless-tcp-tls提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
+2、B=vless-ws-tls（tls由vless-tcp-tls提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
 
-3、trojan-tcp-tls（tls由自己提供。）
+3、F=trojan-tcp-tls（tls由自己提供。）
 
-4、SS- v2ray-plugin -tls（tls由trojan-tcp-tls提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
+4、C=SS- v2ray-plugin -tls（tls由trojan-tcp-tls提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
 
-5、vless-grpc-tls（tls由naiveproxy提供及处理，不需配置；另可改成或添加vmess-grpc-tls应用，参考反向代理grpc的单一示例。）
+5、G=vless-grpc-tls（tls由naiveproxy提供及处理，不需配置；另可改成或添加vmess-grpc-tls应用，参考反向代理grpc的单一示例。）
 
-6、vless-kcp-seed（可改成vmess-kcp-seed，或添加它。）
+6、A=vless-kcp-seed（可改成vmess-kcp-seed，或添加它。）
 
 注意：
 
