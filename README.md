@@ -46,11 +46,11 @@
 #### &emsp;以Xray或v2ray为主、caddy(naiveproxy)为辅的综合应用。
 1. [v2ray(B+C+D+I+A)+caddy\naiveproxy](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(complete%2Bh2c%26grpc-tcp)%2Bcaddy2%5Cnaiveproxy) （caddy反向代理的综合应用，或加naiveproxy应用。）
 ---
-1. [v2ray(vless-tcp&ws-tls)+caddy\naiveproxy](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%2Btcp%26ws%2Btls)%2Bcaddy2%5Cnaiveproxy)（vless的tcp与ws应用，web回落给caddy2，或加naiveproxy应用。）
+1. [v2ray(vless-tcp&ws-tls)+caddy\naiveproxy](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%2Btcp%26ws%2Btls)%2Bcaddy2%5Cnaiveproxy)（vless的tcp与ws应用，web回落给caddy，或加naiveproxy应用。）
 2. [v2ray(E+B+C+D+I+A)+caddy\naiveproxy](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(complete%2Bh2c)%2Bcaddy2%5Cnaiveproxy) （Xray或v2ray综合应用加反向代理h2应用，或加naiveproxy应用。）
 ---
-1. [v2ray(vless&trojan+tcp&ws+tls)+caddy](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%26trojan%2Btcp%26ws%2Btls)%2Bcaddy2) （回落终极部署/套娃方式，或caddy2 SNI共用端口。）
-2. [v2ray(complete+trojan+h2c)+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(complete%2Btrojan%2Bh2c)%2Bnaiveproxy) （Xray或v2ray全部应用加naiveproxy应用及caddy2 SNI共用端口。）
+1. [v2ray(vless&trojan+tcp&ws+tls)+caddy](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%26trojan%2Btcp%26ws%2Btls)%2Bcaddy2) （回落终极部署/套娃方式，或caddy SNI共用端口。）
+2. [v2ray(complete+trojan+h2c)+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(complete%2Btrojan%2Bh2c)%2Bnaiveproxy) （Xray或v2ray全部应用加naiveproxy应用及caddy SNI共用端口。）
 #### &emsp;兼顾各自优势的综合应用。
 1. [v2ray(complete)+nginx+trojan](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(complete)%2Bnginx%2Btrojan) （Xray或v2ray加trojan应用及nginx SNI共用端口。）
 2. [v2ray(complete+h2c)+naiveproxy+trojan](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(complete%2Bh2c)%2Bnaiveproxy%2Btrojan) （Xray或v2ray加naiveproxy、trojan应用及caddy SNI共用端口。）  
