@@ -45,16 +45,16 @@
         probe_resistance unsplash.com:443
     }
 
-    reverse_proxy /SeuW56Es 127.0.0.1:2005 { //与vless-h2c应用中path对应，转发给本机vless-h2c应用对应端口。
+    reverse_proxy /SeuW56Es 127.0.0.1:2005 { //与vless+h2c应用中path对应，转发给本机vless+h2c监听端口。
         transport http {
             versions h2c
         }
     }
 
     @grpc { //匹配器标签。此标签仅标识，但要与下边‘reverse_proxy’中匹配器标签对应。
-        protocol grpc //与vless-grpc应用中network对应
+        protocol grpc //与vless+grpc应用中network对应
     }
-    reverse_proxy @grpc 127.0.0.1:2009 { //转发给本机vless-grpc应用对应端口
+    reverse_proxy @grpc 127.0.0.1:2009 { //转发给本机vless+grpc监听端口
         transport http {
             versions h2c
         }
