@@ -2,11 +2,11 @@
 
 此配置包括 v2ray（Xray）、naiveproxy（caddy）应用。利用 haproxy 或 nginx 支持 SNI 分流特性，对 v2ray（vless+tcp+tls）、v2ray（trojan+tcp+tls）、naiveproxy（caddy）进行 SNI 分流（四层转发），实现除 v2ray kcp 外共用443端口。另 caddy 为 v2ray（vless+tcp+tls） 与 v2ray（trojan+tcp+tls） 提供回落服务，为 v2ray（Xray） 的 h2c 与 grpc 进行反向代理，为 naiveproxy 提供正向代理。包括应用如下：
 
-1、E=vless+tcp+tls（tls由自己提供,且对vless+ws+tls分流。）
+1、E=vless+tcp+tls（tls由自己提供，且对vless+ws+tls分流。）
 
 2、B=vless+ws+tls（tls由vless+tcp+tls提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
 
-3、F=trojan+tcp+tls（tls由自己提供,且对SS+v2ray-plugin+tls分流。）
+3、F=trojan+tcp+tls（tls由自己提供，且对SS+v2ray-plugin+tls分流。）
 
 4、C=SS+v2ray-plugin+tls（tls由trojan+tcp+tls提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
 
