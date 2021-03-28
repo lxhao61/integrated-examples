@@ -1,16 +1,16 @@
 介绍：
 
-v2ray（Xray） 前置（监听443端口），vless-tcp-tls 以 h2 或 http/1.1 自适应协商连接，分流 ws（WebSocket）连接，回落给 trojan-tcp，trojan-tcp 处理后再回落给 caddy。其应用如下：
+v2ray（Xray） 前置（监听443端口），vless+tcp+tls 以 h2 或 http/1.1 自适应协商连接，分流 ws（WebSocket）连接，回落给 trojan+tcp，trojan+tcp 处理后再回落给 caddy。其应用如下：
 
-1、E=vless-tcp-tls（tls由自己提供。）
+1、E=vless+tcp+tls（tls由自己提供。）
 
-2、B=vless-ws-tls（tls由vless-tcp-tls提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
+2、B=vless+ws+tls（tls由vless+tcp+tls提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
 
-3、C=SS+v2ray-plugin（tls由vless-tcp-tls提供及处理，不需配置。）
+3、C=SS+v2ray-plugin+tls（tls由vless+tcp+tls提供及处理，不需配置。）
 
-4、F=trojan-tcp-tls（tls由vless-tcp-tls提供及处理，不需配置。）
+4、F=trojan+tcp+tls（tls由vless+tcp+tls提供及处理，不需配置。）
 
-5、A=vless-kcp-seed（可改成vmess-kcp-seed，或添加它。）
+5、A=vless+kcp+seed（可改成vmess+kcp+seed，或添加它。）
 
 注意：
 
@@ -24,6 +24,6 @@ v2ray（Xray） 前置（监听443端口），vless-tcp-tls 以 h2 或 http/1.1 
 
 5、本示例中 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。
 
-6、此方法采用的是套娃方式实现共用443端口，支持 vless-tcp-tls 与 trojan-tcp-tls 完美共存，且仅需要一个域名及普通证书即可搞定，但 vless-tcp-tls 不支持 xtls 应用。
+6、此方法采用的是套娃方式实现共用443端口，支持 vless+tcp+tls 与 trojan+tcp+tls 完美共存，且仅需要一个域名及普通证书即可搞定，但 trojan+tcp+tls 不支持 xtls 应用。
 
 7、配置1：端口转发、端口回落\分流，没有启用 PROXY protocol。配置2：进程转发、进程回落\分流，没有启用 PROXY protocol。配置3：进程转发、进程回落\分流，启用了 PROXY protocol。
