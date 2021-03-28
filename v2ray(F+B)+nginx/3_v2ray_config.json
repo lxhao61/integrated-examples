@@ -28,8 +28,8 @@
           },
           {
             "path": "/HALdGZ9k", //通过路径分流
-            "dest": "@vless-ws", //分流后转给vless-ws处理,即@vless-ws进程。
-            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给如下vless-ws应用。1或2表示PROXY protocol插件版本。
+            "dest": "@vless-ws", //分流后转给vless+ws监听进程
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给如下vless+ws应用。1或2表示PROXY protocol插件版本。
           }
         ]
       },
@@ -62,7 +62,7 @@
       }
     },
     {
-      "listen": "@vless-ws", //监听@vless-ws进程
+      "listen": "@vless-ws", //less+ws监听进程
       "protocol": "vless",
       "settings": {
         "clients": [
@@ -77,7 +77,7 @@
         "network": "ws",
         "security": "none",
         "wsSettings": {
-          "acceptProxyProtocol": true, //开启PROXY protocol接收，接收vless+tcp分流前真实来源IP和端口。
+          "acceptProxyProtocol": true, //开启PROXY protocol接收，接收trojan+tcp+tls分流前真实来源IP和端口。
           "path": "/HALdGZ9k" //修改成自己的path
         }
       },
