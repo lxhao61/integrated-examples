@@ -6,7 +6,7 @@ v2ray（Xray） 前置（监听443端口），利用 trojan-tcp-tls 强大的回
 
 2、B=vless-ws-tls（tls由trojan-tcp-tls提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
 
-3、C=SS- v2ray-plugin-tls（tls由trojan-tcp-tls提供及处理，不需配置。）
+3、C=SS+v2ray-plugin（tls由trojan-tcp-tls提供及处理，不需配置。）
 
 4、D=vless-h2c-tls（tls由trojan-tcp-tls提供及处理，不需配置；另可改成或添加vmess-h2c-tls应用，参考反向代理h2c的单一示例。）
 
