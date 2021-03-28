@@ -17,7 +17,7 @@ xx.yy { //修改成自己的域名
         header Connection *Upgrade*
         header Upgrade websocket
     }
-    reverse_proxy @tws 127.0.0.1:2007 //转发给本机trojan+ws应用对应端口
+    reverse_proxy @tws 127.0.0.1:2007 //转发给本机trojan+ws监听端口
     header {
         Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" //启用HSTS
     }
