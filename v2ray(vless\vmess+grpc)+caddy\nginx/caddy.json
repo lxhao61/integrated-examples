@@ -29,7 +29,7 @@
                 "versions": ["h2c"]
               },
               "upstreams": [{
-                "dial": "127.0.0.1:2009" //转发给本机vless+grpc或vmess+grpc应用对应端口
+                "dial": "127.0.0.1:2009" //转发给本机vless+grpc或vmess+grpc监听端口
               }]
             }],
             "terminal": true
