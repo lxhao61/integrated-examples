@@ -25,7 +25,7 @@
           {
             "path": "/HALdGZ9k", //通过路径分流
             "dest": 2001, //分流后转发到2001端口
-            "xver": 0 //关闭PROXY protocol发送，不发送真实来源IP和端口给如下vless-ws应用。另默认为0，此条参数可以省略不写。
+            "xver": 0 //关闭PROXY protocol发送，不发送真实来源IP和端口给如下vless+ws应用。另默认为0，此条参数可以省略不写。
           }
         ]
       },
