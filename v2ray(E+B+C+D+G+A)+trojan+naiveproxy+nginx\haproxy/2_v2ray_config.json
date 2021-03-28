@@ -6,7 +6,7 @@
   },
   "inbounds": [
     {
-      "listen": "/dev/shm/vless.sock", //vless-tcp-tls进程
+      "listen": "/dev/shm/vless.sock", //vless-tcp-tls监听进程
       "protocol": "vless",
       "settings": {
         "clients": [
@@ -24,12 +24,12 @@
           },
           {
             "path": "/HALdGZ9k", //通过路径分流
-            "dest": "@vless-ws", //分流后转给vless+ws处理,即@vless-ws监听进程。
+            "dest": "@vless-ws", //分流后转给vless+ws监听进程
             "xver": 0 //关闭PROXY protocol发送，不发送真实来源IP和端口给如下vless+ws应用。另默认为0，此条参数可以省略不写。
           },
           {
             "path": "/SS1v2ray", //通过路径分流
-            "dest": 2002, //分流后转发到2002端口
+            "dest": 2002, //分流后转给Xray-plugin或v2ray-plugin监听端口
             "xver": 0 //关闭PROXY protocol发送，不发送真实来源IP和端口给如下SS- v2ray-plugin应用。另默认为0，此条参数可以省略不写。
           }
         ]
@@ -63,7 +63,7 @@
       }
     },
     {
-      "listen": "@vless-ws", //@vless-ws监听进程
+      "listen": "@vless-ws", //vless+ws监听端口
       "protocol": "vless",
       "settings": {
         "clients": [
@@ -91,7 +91,7 @@
     },
     {
       "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2002, //监听端口
+      "port": 2002, //Xray-plugin或v2ray-plugin监听端口
       "protocol": "dokodemo-door",
       "settings": {
         "address": "v1.mux.cool",
@@ -136,7 +136,7 @@
     },
     {
       "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2005, //监听端口
+      "port": 2005, //vless+h2c监听端口
       "protocol": "vless",
       "settings": {
         "clients": [
@@ -167,7 +167,7 @@
     },
     {
       "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2009, //监听端口
+      "port": 2009, //vless+grpc监听端口
       "protocol": "vless",
       "settings": {
         "clients": [
