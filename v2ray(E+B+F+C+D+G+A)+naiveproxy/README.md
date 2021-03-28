@@ -8,7 +8,7 @@
 
 3、F=trojan-tcp-tls（tls由自己提供。）
 
-4、C=SS- v2ray-plugin -tls（tls由trojan-tcp-tls提供及处理，不需配置。）
+4、C=SS+v2ray-plugin（tls由trojan-tcp-tls提供及处理，不需配置。）
 
 5、D=vless-h2c-tls（tls由naiveproxy提供及处理，不需配置；另可改成或添加vmess-h2c-tls应用，参考反向代理h2的单一示例。）
 
