@@ -23,12 +23,12 @@
           },
           {
             "path": "/HALdGZ9k", //通过路径分流
-            "dest": "@vless-ws", //分流后转给vless-ws处理,即@vless-ws进程。
-            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给如下vless-ws应用。1或2表示PROXY protocol插件版本。
+            "dest": "@vless-ws", //分流后转给vless+ws监听进程
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给如下vless+ws应用。1或2表示PROXY protocol插件版本。
           },
           {
             "path": "/SS1v2ray", //通过路径分流
-            "dest": 2002, //分流后转发到2002端口
+            "dest": 2002, //分流后转给Xray-plugin或v2ray-plugin监听端口
             "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给如下SS- v2ray-plugin应用。1或2表示PROXY protocol插件版本。
           }
         ]
@@ -62,7 +62,7 @@
       }
     },
     {
-      "listen": "@vless-ws", //监听@vless-ws进程
+      "listen": "@vless-ws", //vless+ws监听进程
       "protocol": "vless",
       "settings": {
         "clients": [
@@ -77,7 +77,7 @@
         "network": "ws",
         "security": "none",
         "wsSettings": {
-          "acceptProxyProtocol": true, //开启PROXY protocol接收，接收vless+tcp分流前真实来源IP和端口。
+          "acceptProxyProtocol": true, //开启PROXY protocol接收，接收trojan+tcp+tls分流前真实来源IP和端口。
           "path": "/HALdGZ9k" //修改成自己的path
         }
       },
@@ -91,7 +91,7 @@
     },
     {
       "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2002, //监听端口
+      "port": 2002, //Xray-plugin或v2ray-plugin监听端口
       "protocol": "dokodemo-door",
       "settings": {
         "address": "v1.mux.cool",
@@ -102,7 +102,7 @@
         "network": "ws",
         "security": "none",
         "wsSettings": {
-          "acceptProxyProtocol": true, //开启PROXY protocol接收，接收vless+tcp分流前真实来源IP和端口。
+          "acceptProxyProtocol": true, //开启PROXY protocol接收，接收trojan+tcp+tls分流前真实来源IP和端口。
           "path": "/SS1v2ray" //修改成自己的path
         }
       },
@@ -137,7 +137,7 @@
     },
     {
       "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2005, //监听端口
+      "port": 2005, //vless+h2c监听端口
       "protocol": "vless",
       "settings": {
         "clients": [
@@ -168,7 +168,7 @@
     },
     {
       "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2009, //监听端口
+      "port": 2009, //vless+grpc监听端口
       "protocol": "vless",
       "settings": {
         "clients": [
