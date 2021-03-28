@@ -1,0 +1,73 @@
+{
+  "log": {},
+  "inbounds": [
+    {
+      "port": "1080",
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": true
+      }
+    },
+    {
+      "port": "1081",
+      "protocol": "http",
+      "settings": {}
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "xx.yy", //改成服务端配置的对应域名或ip
+            "port": 2053, //改成服务端配置的对应端口
+            "users": [
+              {
+                "id": "0a652466-dd56-11e9-aa37-5600024c1d6a", //改成服务端配置的对应UUID
+                "alterId": 0, //为0启用VMessAEAD；如服务器端开启才实际启用，否则实际不启用。如服务器端大于0（即关闭VMessAEAD的），此处数字要与服务器端一致。
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "security": "none",
+        "network": "kcp",
+        "kcpSettings": {
+          "congestion": true,
+          "seed": "60VoqhfjP79nBQyU" //seed密码，改成服务端设置的对应密码。
+        }
+      },
+      "mux": {
+        "enabled": true, //建议开启
+        "concurrency": 4 //此数据根据网络情况调整。表示4条传输进程复合一个链路发出。
+      }
+    },
+    {
+      "tag": "direct", //如果要使用路由，这个tag是一定要有的，在这里direct就是freedom的一个标号；在路由中说direct，V2Ray就知道是这里的freedom了。
+      "protocol": "freedom",
+      "settings": {}
+    }
+  ],
+  "routing": {
+    "domainStrategy": "IPOnDemand",
+    "rules": [
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "domain": ["geosite:cn"] //中国大陆主流网站的域名
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "ip": [
+          "geoip:cn", //中国大陆的IP
+          "geoip:private" //私有地址IP，如路由器等。
+        ]
+      }
+    ]
+  }
+}
