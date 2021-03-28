@@ -70,7 +70,7 @@
           },
           {
             "match": [{
-              "path": ["/SeuW56Es"] //与vless-h2c应用中path对应
+              "path": ["/SeuW56Es"] //与vless+h2c应用中path对应
             }],
             "handle": [{
               "handler": "reverse_proxy",
@@ -79,14 +79,14 @@
                 "versions": ["h2c"]
               },
               "upstreams": [{
-                "dial": "127.0.0.1:2005" //转发给本机vless-h2c应用对应端口
+                "dial": "127.0.0.1:2005" //转发给本机vless+h2c监听端口
               }]
             }],
             "terminal": true
           },
           {
             "match": [{
-              "protocol": "grpc" //与vless-grpc应用中network对应
+              "protocol": "grpc" //与vless+grpc应用中network对应
             }],
             "handle": [{
               "handler": "reverse_proxy",
@@ -95,7 +95,7 @@
                 "versions": ["h2c"]
               },
               "upstreams": [{
-                "dial": "127.0.0.1:2009" //转发给本机vless-grpc应用对应端口
+                "dial": "127.0.0.1:2009" //转发给本机vless+grpc监听端口
               }]
             }],
             "terminal": true
