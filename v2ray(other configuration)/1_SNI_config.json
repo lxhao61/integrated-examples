@@ -1,0 +1,51 @@
+.........<省略>........
+//如下配置插入inbounds首位（全局参数）
+    {
+      "port": 443, //SNI分流应用的监听端口
+      "protocol": "dokodemo-door",
+      "settings": {
+        "address": "0.0.0.0",
+        "network": "tcp",
+        "followRedirect": false
+      },
+      "sniffing": {
+        "enabled": true, //开启流量探测
+        "destOverride": [
+          "tls" //tls探测,以实现SNI分流应用。
+        ]
+      }
+    },
+.........<省略>........
+//如下配置插入routing首位（如下是两个域名示例，若多个就增加相关部分即可。）（各分项参数）
+      {
+        "type": "field",
+        "domain": [
+          "zv.xx.yy" //修改成自己域名
+        ],
+        "outboundTag": "zv" //与outbounds中标签对应
+      },
+      {
+        "type": "field",
+        "domain": [
+          "zt.xx.yy" //修改成自己域名
+        ],
+        "outboundTag": "zt" //与outbounds中标签对应
+      },
+.........<省略>........
+//如下配置插入outbounds末尾标记blocked部分之前（如下是两个端口/域名示例，若多个就增加相关部分即可。）（各分项参数）
+.........<省略>........
+    {
+      "tag": "zv", //标签，与routing中标签对应。
+      "protocol": "freedom",
+      "settings": {
+        "redirect": "127.0.0.1:8443" //与应用的端口对应
+      }
+    },
+    {
+      "tag": "zt", //标签，与routing中标签对应。
+      "protocol": "freedom",
+      "settings": {
+        "redirect": "127.0.0.1:2006" //与应用的端口对应
+      }
+    },
+.........<省略>........
