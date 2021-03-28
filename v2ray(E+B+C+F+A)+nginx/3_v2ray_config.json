@@ -19,17 +19,17 @@
         "decryption": "none",
         "fallbacks": [
           {
-            "dest": "@trojan-tcp", //回落给trojan-tcp处理,即@trojan-tcp程。
-            "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给如下trojan-tcp应用。1或2表示PROXY protocol插件版本。多级传递，建议配置2。
+            "dest": "@trojan-tcp", //回落给trojan+tcp监听进程
+            "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给如下trojan+tcp应用。1或2表示PROXY protocol插件版本。多级传递，建议配置2。
           },
           {
             "path": "/HALdGZ9k", //通过路径分流
-            "dest": "@vless-ws", //分流后转给vless-ws处理,即@vless-ws进程。
+            "dest": "@vless-ws", //分流后转给vless+ws监听进程
             "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给如下vless-ws应用。1或2表示PROXY protocol插件版本。与上一致，此处建议配置2。
           },
           {
             "path": "/SS1v2ray", //通过路径分流
-            "dest": 2002, //分流后转发到2002端口
+            "dest": 2002, //分流后转给Xray-plugin或v2ray-plugin监听端口
             "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给如下SS- v2ray-plugin应用。1或2表示PROXY protocol插件版本。与上一致，此处建议配置2。
           }
         ]
@@ -63,7 +63,7 @@
       }
     },
     {
-      "listen": "@vless-ws", //监听@vless-ws进程
+      "listen": "@vless-ws", //vless+ws监听进程
       "protocol": "vless",
       "settings": {
         "clients": [
@@ -78,7 +78,7 @@
         "network": "ws",
         "security": "none",
         "wsSettings": {
-          "acceptProxyProtocol": true, //开启PROXY protocol接收，接收vless-tcp-tls分流前真实来源IP和端口。
+          "acceptProxyProtocol": true, //开启PROXY protocol接收，接收vless+tcp+tls分流前真实来源IP和端口。
           "path": "/HALdGZ9k" //修改成自己的path
         }
       },
@@ -92,7 +92,7 @@
     },
     {
       "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2002, //监听端口
+      "port": 2002, //Xray-plugin或v2ray-plugin监听端口
       "protocol": "dokodemo-door",
       "settings": {
         "address": "v1.mux.cool",
@@ -103,7 +103,7 @@
         "network": "ws",
         "security": "none",
         "wsSettings": {
-          "acceptProxyProtocol": true, //开启PROXY protocol接收，接收vless-tcp-tls分流前真实来源IP和端口。
+          "acceptProxyProtocol": true, //开启PROXY protocol接收，接收vless+tcp+tls分流前真实来源IP和端口。
           "path": "/SS1v2ray" //修改成自己的path
         }
       },
@@ -137,7 +137,7 @@
       }
     },
     {
-      "listen": "@trojan-tcp", //监听@trojan-tcp进程，对应上回落进程。
+      "listen": "@trojan-tcp", //trojan+tcp监听进程
       "protocol": "trojan",
       "settings": {
         "clients": [
@@ -162,7 +162,7 @@
         "network": "tcp",
         "security": "none",
         "tcpSettings": {
-          "acceptProxyProtocol": true //开启PROXY protocol接收，接收vless-tcp-tls回落前真实来源IP和端口。
+          "acceptProxyProtocol": true //开启PROXY protocol接收，接收vless+tcp+tls回落前真实来源IP和端口。
         }
       },
       "sniffing": {
