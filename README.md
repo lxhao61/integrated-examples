@@ -25,8 +25,8 @@
 ---
 1. [v2ray(vless\vmess-h2c)+caddy](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%5Cvmess%2Bh2c)%2Bcaddy2) （包括vless-h2c-tls与vmess-h2c-tls反代应用。vless-h2c-tls标记为D。） 
 ---
-1. [v2ray(vless-tcp-tls)+caddy](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%2Btcp%2Btls)%2Bcaddy2) （vless-tcp-tls回落应用。标记为E。）
-2. [v2ray(vless-tcp-tls)+nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%2Btcp%2Btls)%2Bnginx) （vless-tcp-tls回落应用。标记为E。）
+1. [v2ray(vless\trojan-tcp-tls)+caddy](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%2Btcp%2Btls)%2Bcaddy2) （包括vless-tcp-tls与trojan-tcp-tls回落应用。分别标记为E与F。）
+2. [v2ray(vless\trojan-tcp-tls)+nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%2Btcp%2Btls)%2Bnginx) （vless-tcp-tls回落应用。标记为E。）
 3. [v2ray(trojan-tcp-tls)+caddy](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(trojan%2Btcp%2Btls)%2Bcaddy2) （trojan-tcp-tls回落应用。标记为F。）
 4. [v2ray(trojan-tcp-tls)+nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(trojan%2Btcp%2Btls)%2Bnginx) （trojan-tcp-tls回落应用。标记为F。）
 ---
