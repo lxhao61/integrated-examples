@@ -1,6 +1,6 @@
 介绍：
 
-通过 caddy 前置 v2ray（Xray） server 实现 gRPC 反向代理，tls 由 caddy 或 nginx 提供及处理；包括 vless-grpc-tls 与 vmess-grpc-tls 两种应用。
+通过 caddy 前置（监听443端口）实现 gRPC 反向代理，tls 由 caddy 或 nginx 提供及处理；包括 vless-grpc-tls 与 vmess-grpc-tls 两种应用。
 
 原理图： v2ray client <------ gRPC+tls ------> caddy\nginx <- gRPC -> v2ray server
 
