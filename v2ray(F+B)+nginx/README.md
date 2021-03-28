@@ -1,10 +1,10 @@
 介绍：
 
-v2ray（Xray） 前置（监听443端口），利用 trojan-tcp-tls 强大的回落/分流特性，实现了共用443端口。trojan-tcp-tls 以 h2 或 http/1.1 自适应协商连接，分流 ws（WebSocket）连接，非 v2ray（Xray） 的 web 连接回落给 nginx。其应用如下：
+v2ray（Xray） 前置（监听443端口），利用 trojan+tcp+tls 强大的回落/分流特性，实现了共用443端口。trojan+tcp+tls 以 h2 或 http/1.1 自适应协商连接，分流 ws（WebSocket）连接，非 v2ray（Xray） 的 web 连接回落给 nginx。其应用如下：
 
-1、F=trojan-tcp-tls（tls由自己提供。）
+1、F=trojan+tcp+tls（tls由自己提供。）
 
-2、B=vless-ws-tls（tls由trojan-tcp-tls提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
+2、B=vless-ws-tls（tls由trojan+tcp+tls提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
 
 注意：
 
