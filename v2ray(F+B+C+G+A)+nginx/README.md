@@ -2,15 +2,15 @@
 
 v2ray（Xray） 前置（监听443端口），利用 trojan-tcp-tls 强大的回落/分流特性，实现除 v2ray（Xray） kcp 外共用443端口。trojan-tcp-tls 以 h2 或 http/1.1 自适应协商连接，分流 ws（WebSocket）连接，其它连接回落给 nginx；nginx 再处理，对 grpc 进行反向代理。包括应用如下：
 
-1、trojan-tcp-tls（tls由自己提供。）
+1、F=trojan-tcp-tls（tls由自己提供。）
 
-2、vless-ws-tls（tls由trojan-tcp-tls提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
+2、B=vless-ws-tls（tls由trojan-tcp-tls提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
 
-3、SS- v2ray-plugin-tls（tls由trojan-tcp-tls提供及处理，不需配置。）
+3、C=SS- v2ray-plugin-tls（tls由trojan-tcp-tls提供及处理，不需配置。）
 
-4、vless-grpc-tls（tls由trojan-tcp-tls提供及处理，不需配置；另可改成或添加vmess-grpc-tls应用，参考反向代理grpc的单一示例。）
+4、G=vless-grpc-tls（tls由trojan-tcp-tls提供及处理，不需配置；另可改成或添加vmess-grpc-tls应用，参考反向代理grpc的单一示例。）
 
-5、vless-kcp-seed（可改成vmess-kcp-seed，或添加它。）
+5、A=vless-kcp-seed（可改成vmess-kcp-seed，或添加它。）
 
 注意：
 
