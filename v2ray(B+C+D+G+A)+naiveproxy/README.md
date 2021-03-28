@@ -2,15 +2,15 @@
 
 除 v2ray（Xray） kcp 外，所用应用共用443端口。此端口由 caddy 监听（即 caddy 前置），反向代理 v2ray（Xray） 的 ws（WebSocket） 、 h2c 及 gRPC，若有 naiveproxy 就进行正向代理。包括应用如下：
 
-1、vless-ws-tls（tls由caddy提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
+1、B=vless-ws-tls（tls由caddy提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
 
-2、SS- v2ray-plugin -tls（tls由caddy提供及处理，不需配置。）
+2、C=SS- v2ray-plugin -tls（tls由caddy提供及处理，不需配置。）
 
-3、vless-h2c-tls（tls由caddy提供及处理，不需配置；另可改成或添加vmess-h2c-tls应用，参考反向代理h2c的单一示例。）
+3、D=vless-h2c-tls（tls由caddy提供及处理，不需配置；另可改成或添加vmess-h2c-tls应用，参考反向代理h2c的单一示例。）
 
-4、vless-grpc-tls（tls由caddy提供及处理，不需配置；另可改成或添加vmess-grpc-tls应用，参考反向代理grpc的单一示例。）
+4、G=vless-grpc-tls（tls由caddy提供及处理，不需配置；另可改成或添加vmess-grpc-tls应用，参考反向代理grpc的单一示例。）
 
-5、vless-kcp-seed（可改成vmess-kcp-seed，或添加它。）
+5、A=vless-kcp-seed（可改成vmess-kcp-seed，或添加它。）
 
 6、naiveproxy （带有forwardproxy插件的caddy才支持naiveproxy应用，否则仅上边应用。tls由caddy提供及处理。）
 
