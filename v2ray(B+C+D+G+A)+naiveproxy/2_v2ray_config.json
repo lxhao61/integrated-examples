@@ -34,7 +34,7 @@
     },
     {
       "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2002, //监听端口
+      "port": 2002, //Xray-plugin或v2ray-plugin监听端口
       "protocol": "dokodemo-door",
       "settings": {
         "address": "v1.mux.cool",
@@ -79,7 +79,7 @@
     },
     {
       "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2005, //监听端口
+      "port": 2005, //vless+h2c监听端口
       "protocol": "vless",
       "settings": {
         "clients": [
@@ -110,7 +110,7 @@
     },
     {
       "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2009, //监听端口
+      "port": 2009, //vless+grpc监听端口
       "protocol": "vless",
       "settings": {
         "clients": [
