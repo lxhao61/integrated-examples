@@ -1,10 +1,10 @@
 介绍：
 
-v2ray（Xray） 前置（监听443端口），利用 vless+tcp+tls 强大的回落/分流特性，实现除 v2ray（Xray） kcp 外共用443端口。vless+tcp+tls 以 h2 或 http/1.1 自适应协商连接，分流 ws（WebSocket）连接，其它连接回落给 caddy；caddy 再处理，对 h2c 与 grpc 进行反向代理，若有 naiveproxy 就进行正向代理。包括应用如下：
+v2ray（Xray） 前置（监听443端口），利用 vless+tcp+tls 强大的回落/分流特性，实现除 v2ray（Xray） kcp 外共用443端口。vless+tcp+tls 以 h2 或 http/1.1 自适应协商连接，分流 WebSocket（WS） 连接，其它连接回落给 caddy；caddy 再处理，对 h2c 与 grpc 进行反向代理，若有 naiveproxy 就进行正向代理。包括应用如下：
 
 1、E=vless+tcp+tls（tls由自己提供。）
 
-2、B=vless+ws+tls（tls由vless+tcp+tls提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
+2、B=vless+WS+tls（tls由vless+tcp+tls提供及处理，不需配置；另可改成或添加其它WS应用，参考反向代理WS类的单一示例。）
 
 3、C=SS+v2ray-plugin+tls（tls由vless+tcp+tls提供及处理，不需配置。）
 
@@ -32,6 +32,4 @@ v2ray（Xray） 前置（监听443端口），利用 vless+tcp+tls 强大的回�
 
 7、使用本人 github 中编译好的 caddy 文件，才可同时支持 h2c server、h2c proxy、naiveproxy 及 PROXY protocol 等应用。
 
-8、支持 ws（WebSocket）与 grpc 的 CDN 加速。
-
-9、配置1：端口转发、端口回落\分流，没有启用 PROXY protocol。配置2：进程转发、进程回落\分流，没有启用 PROXY protocol。配置3：进程转发、进程回落\分流，启用了 PROXY protocol。
+8、配置1：端口转发、端口回落\分流，没有启用 PROXY protocol。配置2：进程转发、进程回落\分流，没有启用 PROXY protocol。配置3：进程转发、进程回落\分流，启用了 PROXY protocol。
