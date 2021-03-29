@@ -34,7 +34,7 @@
 #### &emsp;以trojan或trojan-go为主、caddy(naiveproxy)为辅的综合应用。
 1. [trojan-go\trojan+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bnaiveproxy) （trojan-go或trojan与naiveproxy应用，web回落给caddy。）
 #### &emsp;以Xray或v2ray为主、nginx为辅的综合应用。
-1. [v2ray(B+C+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(B%2BC%2BA)%2Bnginx) （反向代理ws的综合应用。）
+1. [v2ray(B+C+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(B%2BC%2BA)%2Bnginx) （反向代理WebSocket的综合应用。）
 2. [v2ray(B+C+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(B%2BC%2BG%2BA)%2Bnginx) （反向代理ws与grpc的综合应用。）
 ---
 1. [v2ray(E+B)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB)%2Bnginx) （以vless+tcp+tls为主的简单应用。）
@@ -46,7 +46,7 @@
 1. [v2ray(E+B+C+F+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BF%2BA)%2Bnginx) （以套娃方式兼顾vless\trojan+tcp+tls的综合应用。）
 2. [v2ray(E+B+F+C+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BF%2BC%2BG%2BA)%2Bnginx) （以nginx SNI兼顾vless\trojan+tcp+tls的综合应用）
 #### &emsp;以Xray或v2ray为主、caddy(naiveproxy)为辅的综合应用。
-1. [v2ray(B+C+D+G+A)+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(B%2BC%2BD%2BG%2BA)%2Bnaiveproxy) （反向代理ws、h2c、grpc的综合应用及naiveproxy应用。）
+1. [v2ray(B+C+D+G+A)+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(B%2BC%2BD%2BG%2BA)%2Bnaiveproxy) （反向代理WebSocket、h2c、grpc的综合应用及naiveproxy应用。）
 ---
 1. [v2ray(E+B)+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB)%2Bnaiveproxy)（以vless+tcp+tls为主的简单应用及naiveproxy应用。）
 2. [v2ray(E+B+C+D+G+A)+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BD%2BG%2BA)%2Bnaiveproxy) （以vless+tcp+tls为主的综合应用及naiveproxy应用。）
@@ -66,7 +66,7 @@
 1. 所有Xray或v2ray配置文件都配置了禁用BT。如不需要，可以删除相关配置，参考v2ray(other configuration)中BT_config.json文件。  
 2. v2ray从版本v4.33.0删除了xtls应用，故若还想用xtls应用，请选Xray。Xray是v2ray的超集（更好的整体性能和xtls等一系列增强，且完全兼容。），也是因为这个应用分家独自发展。   
 3. Xray或v2ray单一核心应用简记。A=vless+kcp+seed、B=vless+ws+tls、C=SS+v2ray-plugin+tls、D=vless+h2c+tls、E=vless+tcp+tls、F=trojan+tcp+tls、G=vless+grpc+tls。
-4. ws（WebSocket）类应用与grpc应用都支持CDN加速。  
+4. WebSocket类应用与grpc应用都支持CDN加速。  
 5. naiveproxy=caddy+forwardproxy（服务端）。此程序文件已编译好，本人github下载即可。  
 6. 目前caddy的https服务进程监听采用Unix Domain Socket应用不支持h3；若开启h3，caddy无法启动。  
 
