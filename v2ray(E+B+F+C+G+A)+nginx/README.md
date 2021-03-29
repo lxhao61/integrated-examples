@@ -4,11 +4,11 @@
 
 1、E=vless+tcp+tls（tls由自己提供。）
 
-2、B=vless+ws+tls（tls由vless+tcp+tls提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
+2、B=vless+WS+tls（tls由vless+tcp+tls提供及处理，不需配置；另可改成或添加其它WS类应用，参考反向代理WS类的单一示例。）
 
 3、F=trojan+tcp+tls（tls由自己提供。）
 
-4、C=SS+v2ray-plugin+tls（tls由trojan+tcp+tls提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
+4、C=SS+v2ray-plugin+tls（tls由trojan+tcp+tls提供及处理，不需配置。）
 
 5、G=vless+grpc+tls（tls由nginx提供及处理，不需配置；另可改成或添加vmess+grpc+tls应用，参考反向代理grpc的单一示例。）
 
