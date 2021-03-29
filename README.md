@@ -11,8 +11,8 @@
 * **注：** 端口转发、端口回落\分流、SNI的端口分流指基于local loopback应用，不同应用实现的方式；进程转发、进程回落\分流、SNI的进程分流指基于Unix Domain Socket应用，不同应用实现的方式。
 
 ### 服务端单一应用配置示例
-1. [trojan-go\trojan+caddy](https://github.com/lxhao61/integrated-examples/tree/master/trojan%5Ctrojan-go%2Bcaddy) （trojan-go或trojan应用，web回落给caddy。）  
-2. [trojan-go\trojan+nginx](https://github.com/lxhao61/integrated-examples/tree/master/trojan%5Ctrojan-go%2Bnginx) （trojan-go或trojan应用，web回落给nginx。）  
+1. [trojan-go\trojan+caddy](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bcaddy) （trojan-go或trojan应用，web回落给caddy。）  
+2. [trojan-go\trojan+nginx](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bnginx) （trojan-go或trojan应用，web回落给nginx。）  
 ---
 1. [naiveproxy(caddy+forwardproxy)](https://github.com/lxhao61/integrated-examples/tree/master/naiveproxy(caddy2%2Bforwardproxy)) （naiveproxy应用，基于h2或h3代理。）
 ---
