@@ -44,4 +44,4 @@
 
 13、若采用配置2、且使用 nginx SNI 来分流的，又想 naiveproxy 开启 http/3 代理支持，可参考配置1。nginx 添加 udp 代理。naiveproxy 把进程转发改成端口转发，且 naiveproxy http/3 开启。
 
-14、若除了实现最多应用的科学上网、还需提供实际网站服务，推荐本示例、网站服务可由 nginx 或 caddy 提供服务；否则推荐采用 v2ray(complete+h2c)+naiveproxy+trojan 示例。
+14、若除了实现最多应用的科学上网、还需提供实际网站服务，推荐本示例、网站服务可由 nginx 或 caddy 提供服务；否则推荐采用 [v2ray(E+B+C+D+G+A)+trojan+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BD%2BG%2BA)%2Btrojan%2Bnaiveproxy) 示例。
