@@ -18,7 +18,7 @@
 ---
 1. [v2ray(vless\vmess+kcp+seed)](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%5Cvmess%2Bkcp%2Bseed)) （包括vless+kcp+seed与vmess+kcp+seed应用。vless+kcp+seed标记为A。）
 ---
-1. [v2ray(vless\vmess+ws)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%5Cvmess%2Bws)%2Bcaddy2%5Cnginx) （包括vless+ws+tls与vmess+ws+tls反代应用。vless-ws-tls标记为B。）
+1. [v2ray(vless\vmess+ws)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%5Cvmess%2Bws)%2Bcaddy2%5Cnginx) （包括vless+ws+tls与vmess+ws+tls反代应用。vless+ws+tls标记为B。）
 2. [v2ray(socks\SS+ws)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(socks%5Cshadowsocks%2Bws)%2Bcaddy2%5Cnginx) （包括socks+ws+tls与shadowsocks+ws+tls反代应用。）
 3. [v2ray(SS+v2ray+plugin)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(SS%2Bv2ray-plugin)%2Bcaddy2%5Cnginx) （v2ray-plugin的反代应用。标记为C。）
 4. [v2ray(trojan+ws)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(trojan%2Bws)%2Bcaddy2%5Cnginx) （trojan+ws+tls反代应用。）
@@ -26,9 +26,7 @@
 1. [v2ray(vless\vmess+h2c)+caddy](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%5Cvmess%2Bh2c)%2Bcaddy2) （包括vless+h2c+tls与vmess+h2c+tls反代应用。vless+h2c+tls标记为D。） 
 ---
 1. [v2ray(vless\trojan+tcp+tls)+caddy](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%2Btcp%2Btls)%2Bcaddy2) （包括vless+tcp+tls与trojan+tcp+tls回落应用。分别标记为E与F。）
-2. [v2ray(vless\trojan+tcp+tls)+nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%2Btcp%2Btls)%2Bnginx) （vless+tcp+tls回落应用。标记为E。）
-3. [v2ray(trojan+tcp+tls)+caddy](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(trojan%2Btcp%2Btls)%2Bcaddy2) （trojan+tcp+tls回落应用。标记为F。）
-4. [v2ray(trojan+tcp+tls)+nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(trojan%2Btcp%2Btls)%2Bnginx) （trojan+tcp+tls回落应用。标记为F。）
+2. [v2ray(vless\trojan+tcp+tls)+nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%2Btcp%2Btls)%2Bnginx) （包括vless+tcp+tls与trojan+tcp+tls回落应用。分别标记为E与F。）
 ---
 1. [v2ray(vless\vmess+grpc)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(vless%5Cvmess%2Bgrpc)%2Bcaddy2%5Cnginx)（包括vless+grpc+tls与vmess+grpc+tls反代应用。vless+grpc+tls标记为G。） 
 
@@ -62,7 +60,7 @@
 1. 所有Xray或v2ray配置文件都配置了禁用BT。如不需要，可以删除相关配置，参考v2ray(other configuration)中BT_config.json文件。  
 2. v2ray从版本v4.33.0删除了xtls应用，故若还想用xtls应用，请选Xray。Xray是v2ray的超集（更好的整体性能和xtls等一系列增强，且完全兼容。），也是因为这个应用分家独自发展。   
 3. complete表示包含Xray或v2ray的vless+tcp+tls、vless+ws+tls、SS+v2ray-plugin+tls、vless+kcp+seed的综合应用。  
-4. 所有ws（WebSocket）类应用支持CDN加速。  
+4. 所有ws（WebSocket）类应用与grpc应用都支持CDN加速。  
 5. naiveproxy=caddy+forwardproxy（服务端）。此程序文件已编译好，本人github下载即可。  
 6. 目前caddy2的https服务进程监听采用Unix Domain Socket应用不支持h3；若开启h3，caddy无法启动。  
 
