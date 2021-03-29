@@ -20,7 +20,7 @@
 ---
 1. [v2ray(vless\vmess+ws)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(vless%5Cvmess%2Bws)%2Bcaddy%5Cnginx) （vless+ws+tls与vmess+ws+tls反代应用。vless+ws+tls标记为B。）
 2. [v2ray(socks\SS+ws)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(socks%5CSS%2Bws)%2Bcaddy%5Cnginx) （socks+ws+tls与shadowsocks+ws+tls反代应用。）
-3. [v2ray(SS+v2ray-plugin)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(SS%2Bv2ray-plugin)%2Bcaddy%5Cnginx) （SS+v2ray-plugin+tls反代应用。标记为C。）
+3. [v2ray(SS+v2ray-plugin)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(SS%2Bv2ray-plugin)%2Bcaddy%5Cnginx) （shadowsocks+v2ray-plugin+tls反代应用。标记为C。）
 4. [v2ray(trojan+ws)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(trojan%2Bws)%2Bcaddy%5Cnginx) （trojan+ws+tls反代应用。）
 ---
 1. [v2ray(vless\vmess+h2c)+caddy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(vless%5Cvmess%2Bh2c)%2Bcaddy) （vless+h2c+tls与vmess+h2c+tls反代应用。vless+h2c+tls标记为D。）
