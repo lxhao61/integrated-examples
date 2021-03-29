@@ -56,10 +56,11 @@
         }
     }
 
-    @grpc { //匹配器标签。此标签仅标识，但要与下边‘reverse_proxy’中匹配器标签对应。
-        protocol grpc //与vless+grpc应用中network对应
+    @vgrpc { //匹配器标签。此标签仅区分，多个不同代理需要改成不同名称，但要与下边‘reverse_proxy’中匹配器标签对应。
+        protocol grpc
+        path /cdngrpc/* //与vless+grpc应用中serviceName对应
     }
-    reverse_proxy @grpc 127.0.0.1:2009 { //转发给本机vless+grpc监听端口
+    reverse_proxy @vgrpc 127.0.0.1:2009 { //转发给本机vless+grpc监听端口
         transport http {
             versions h2c
         }
