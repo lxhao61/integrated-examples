@@ -4,7 +4,7 @@ v2ray（Xray） 前置（监听443端口），vless+tcp+tls 以 h2 或 http/1.1 
 
 1、E=vless+tcp+tls（tls由自己提供。）
 
-2、B=vless+WS+tls（tls由vless+tcp+tls提供及处理，不需配置；另可改成或添加其它ws类应用，参考反向代理ws类的单一示例。）
+2、B=vless+WS+tls（tls由vless+tcp+tls提供及处理，不需配置；另可改成或添加其它WS类应用，参考反向代理WS类的单一示例。）
 
 3、C=SS+v2ray-plugin+tls（tls由vless+tcp+tls提供及处理，不需配置。）
 
