@@ -32,7 +32,7 @@
 
 ### 服务端综合应用配置示例
 #### &emsp;以trojan或trojan-go为主、caddy(naiveproxy)为辅的综合应用。
-1. [trojan-go\trojan+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bnaiveproxy) （trojan-go或trojan与naiveproxy应用，web回落给caddy。）
+1. [trojan-go\trojan+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bnaiveproxy) （trojan-go或trojan与naiveproxy的应用。）
 #### &emsp;以Xray或v2ray为主、nginx为辅的综合应用。
 1. [v2ray(B+C+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(B%2BC%2BA)%2Bnginx) （反向代理WebSocket的综合应用。）
 2. [v2ray(B+C+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(B%2BC%2BG%2BA)%2Bnginx) （反向代理WebSocket与grpc的综合应用。）
