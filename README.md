@@ -32,7 +32,7 @@
 
 ### 服务端综合应用配置示例
 #### &emsp;以trojan或trojan-go为主、caddy2(naiveproxy)为辅的综合应用。
-1. [trojan-go\trojan+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/master/trojan%5Ctrojan-go%2Bnaiveproxy) （trojan或trojan-go应用，web回落给caddy及naiveproxy应用。）
+1. [trojan-go\trojan+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/master/trojan%5Ctrojan-go%2Bnaiveproxy) （trojan-go或trojan应用，web回落给caddy及naiveproxy应用。）
 #### &emsp;以Xray或v2ray为主、nginx为辅的综合应用。
 1. [v2ray(B+C+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(complete-tcp)%2Bnginx) （nginx反向代理ws的综合应用。）
 2. [v2ray(B+C+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(complete-tcp)%2Bnginx) （nginx反向代理grpc的综合应用。）
@@ -82,5 +82,5 @@
 &emsp;[service configuration](https://github.com/lxhao61/integrated-examples/tree/master/service%20configuration)（配置软件服务由systemd管理。）
 
 ### 使用/贡献指南  
-1. 若科学上网相关软件增加新功能，开始在服务端单一应用配置示例中添加；过一段时间稳定后才会服务端综合应用配置示例中添加。如除trojan-tcp套娃外，vless-tcp-tls及trojan-tcp-tls的xtls已全部加上。  
+1. 若科学上网相关软件增加新功能，开始在服务端单一应用配置示例中添加；过一段时间稳定后才会服务端综合应用配置示例中添加。如除trojan-tcp套娃外，vless+tcp+tls及trojan+tcp+tls的xtls已全部加上。  
 2. 欢迎你提交 PR ,如对现行配置示例优化修订，或将自己使用的配置制作模板提交等。
