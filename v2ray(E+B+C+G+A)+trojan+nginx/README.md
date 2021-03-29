@@ -12,7 +12,7 @@
 
 5、A=vless+kcp+seed（可改成vmess+kcp+seed，或添加它。）
 
-6、trojan或trojan-go
+6、trojan或trojan-go（tls由自己提供。）
 
 注意：
 
