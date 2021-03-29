@@ -2,7 +2,7 @@
 1. 示例实现了端口转发到进程转发及PROXY protocol的从低到高（效率）应用支持。
 2. 示例实现了端口回落\分流到进程回落\分流及PROXY protocol的从低到高（效率）应用支持。
 3. 示例实现了nginx SNI/caddy SNI/haproxy SNI及v2ray SNI的端口分流到进程分流及PROXY protocol的从低到高（效率）应用支持。
-4. 除v2ray(vless\vmess-kcp-seed)示例外，所有示例实现了回落或反代网站都支持http自动跳转到https，且SSL/TLS安全评估报告为A+。
+4. 除v2ray(vless\vmess+kcp+seed)示例外，所有示例实现了回落或反代网站都支持http自动跳转到https，且SSL/TLS安全评估报告为A+。
 5. naiveproxy(caddy)除进程监听（server进程）外，实现了支持h3代理应用，即quic协议传输。
 6. nginx实现了nginx SNI分流时同时udp代理，支持naiveproxy h3代理应用。
 7. caddy实现了Caddyfile配置开启h2c server、PROXY protocol、naiveproxy等应用支持，让caddy配置简单化。
@@ -32,19 +32,19 @@
 
 ### 服务端综合应用配置示例
 #### &emsp;以trojan或trojan-go为主、caddy2(naiveproxy)为辅的综合应用。
-1. [trojan-go\trojan+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bnaiveproxy) （trojan-go或trojan应用，web回落给caddy及naiveproxy应用。）
+1. [trojan-go\trojan+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bnaiveproxy) （trojan-go或trojan与naiveproxy应用，web回落给caddy。）
 #### &emsp;以Xray或v2ray为主、nginx为辅的综合应用。
 1. [v2ray(B+C+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(B%2BC%2BA)%2Bnginx) （nginx反向代理ws的综合应用。）
 2. [v2ray(B+C+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(B%2BC%2BG%2BA)%2Bnginx) （nginx反向代理grpc的综合应用。）
 ---
-1. [v2ray(E+B)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB)%2Bnginx) （vless的tcp与ws类应用，web回落给nginx。）
-2. [v2ray(E+B+C+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BG%2BA)%2Bnginx) （Xray或v2ray综合应用。）
+1. [v2ray(E+B)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB)%2Bnginx) （以vless+tcp+tls分流\回落的简单应用，web回落给nginx。）
+2. [v2ray(E+B+C+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BG%2BA)%2Bnginx) （以vless+tcp+tls分流\回落的综合应用，web回落给nginx。）
 ---
-1. [v2ray(F+B)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(F%2BB)%2Bnginx) （trojan的tcp与ws类应用，web回落给nginx。）
-2. [v2ray(F+B+C+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(F%2BB%2BC%2BG%2BA)%2Bnginx) （Xray或v2ray综合应用。）
+1. [v2ray(F+B)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(F%2BB)%2Bnginx) （以trojan+tcp+tls分流\回落的简单应用，web回落给nginx。）
+2. [v2ray(F+B+C+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(F%2BB%2BC%2BG%2BA)%2Bnginx) （以trojan+tcp+tls分流\回落的综合应用，web回落给nginx。）
 ---
-1. [v2ray(E+B+C+F+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BF%2BA)%2Bnginx) （回落终极部署/套娃方式，或nginx SNI共用端口。）
-2. [v2ray(E+B+F+C+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BF%2BC%2BG%2BA)%2Bnginx) （加trojan的Xray或v2ray综合应用及nginx SNI共用端口。）
+1. [v2ray(E+B+C+F+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BF%2BA)%2Bnginx) （回落终极部署/套娃方式。）
+2. [v2ray(E+B+F+C+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BF%2BC%2BG%2BA)%2Bnginx) （以vless+tcp+tls与trojan+tcp+tls分流\回落兼顾的综合应用，nginx SNI共用端口。）
 #### &emsp;以Xray或v2ray为主、caddy(naiveproxy)为辅的综合应用。
 1. [v2ray(B+C+D+G+A)+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(B%2BC%2BD%2BG%2BA)%2Bnaiveproxy) （caddy反向代理的综合应用，或加naiveproxy应用。）
 ---
