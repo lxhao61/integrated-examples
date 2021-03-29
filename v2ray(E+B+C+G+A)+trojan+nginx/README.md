@@ -12,6 +12,8 @@
 
 5、A=vless+kcp+seed（可改成vmess+kcp+seed，或添加它。）
 
+6、trojan或trojan-go
+
 注意：
 
 1、Xray 版本不小于 1.4.0 或 v2ray 版本不小于v4.36.2，才完美支持 grpc 应用。
