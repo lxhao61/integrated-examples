@@ -70,7 +70,8 @@
           },
           {
             "match": [{
-              "path": ["/SeuW56Es"] //与vless+h2c应用中path对应
+              "protocol": "grpc",
+              "path": ["/cdngrpc/*"] //与vless+grpc或vmess+grpc应用中serviceName对应
             }],
             "handle": [{
               "handler": "reverse_proxy",
