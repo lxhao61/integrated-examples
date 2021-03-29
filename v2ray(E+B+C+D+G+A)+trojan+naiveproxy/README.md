@@ -16,6 +16,8 @@
 
 7、naiveproxy （tls由自己提供。）
 
+8、trojan或trojan-go （tls由自己提供。）
+
 注意：
 
 1、Xray 版本不小于 1.4.0 或 v2ray 版本不小于v4.36.2，才完美支持 grpc 应用。
