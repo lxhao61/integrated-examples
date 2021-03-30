@@ -54,6 +54,7 @@
               "handler": "proxy",
               "upstreams": [{
                 "dial": ["127.0.0.1:7443"] //转给caddy https server监听端口
+              }]
             }]
           }]
         }
