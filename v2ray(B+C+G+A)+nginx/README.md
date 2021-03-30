@@ -1,6 +1,6 @@
 介绍：
 
-利用 nginx 支持 SNI 分流特性，对 http/1.1 server 与 h2 server 进行 SNI 分流（四层转发），实现 WebSocket（http/1.1） 的反向代理与 gRPC（h2c） 的反向代理共用443端口。包括应用如下：
+利用 nginx 支持 SNI 分流特性，对 http/1.1 server 与 h2 server 进行 SNI 分流（四层转发），实现 WebSocket（http/1.1） 的反向代理与 gRPC 的反向代理共用443端口。包括应用如下：
 
 1、B=vless+WS+tls（tls由nginx提供及处理，不需配置；另可改成或添加其它WS类应用，参考反向代理WS类的单一示例。）
 
@@ -12,7 +12,7 @@
 
 注意：
 
-1、Xray 版本不小于 1.4.0 或 v2ray 版本不小于v4.36.2，才完美支持 gRPC（h2c）应用。
+1、Xray 版本不小于 1.4.0 或 v2ray 版本不小于v4.36.2，才完美支持 gRPC 应用。
 
 2、若系统版本过低，其对应发行版仓库自带 nginx 预编译程序包可能不支持 tls1.3；如需要支持 tls1.3，必须先升级 OpenSSl 版本大于 1.1.1，再进行 nginx 源代码编译和安装。
 
