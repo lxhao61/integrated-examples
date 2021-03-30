@@ -1,6 +1,6 @@
 介绍：
 
-1、本配置采用 v2ray（Xray） 自带 shadowsocks（SS） 应用加自身 v2ray（Xray） ‘分离’ 出的 v2ray-plugin（Xray-plugin） 模块，直接实现 shadowsocks 加 v2ray-plugin（Xray-plugin） 的 WebSocket 应用（服务端），客户端使用 shadowsocks 加 v2ray-plugin（Xray-plugin） 插件即可。
+1、本配置采用 Xray\v2ray 自带 shadowsocks（SS） 应用加自身 Xray\v2ray ‘分离’ 出的 v2ray-plugin（Xray-plugin） 模块，直接实现 shadowsocks 加 v2ray-plugin（Xray-plugin） 的 WebSocket 应用（服务端），客户端使用 shadowsocks 加 v2ray-plugin（Xray-plugin） 插件即可。
 
 2、通过 caddy 或 nginx 前置（监听443端口）实现 WebSocket（WS） 反向代理，tls 由 caddy 或 nginx 提供及处理。
 
@@ -8,7 +8,7 @@
 
 注意：
 
-1、本配置 shadowsocks+v2ray-plugin 插件的 WebSocket 应用不等于 v2ray 的 shadowsocks+WebSocket 应用，两者不兼容。它仅兼容 shadowsocks 客户端的 WebSocket 应用，即 shadowsocks 客户端须配合 v2ray-plugin 插件使用。
+1、本配置 shadowsocks+v2ray-plugin 插件的 WebSocket 应用不等于 Xray\v2ray 的 shadowsocks+WebSocket 应用，两者不兼容。它仅兼容 shadowsocks 客户端的 WebSocket 应用，即 shadowsocks 客户端须配合 v2ray-plugin 插件使用。
 
 2、v2ray_DS_config.json 采用 Unix Domain Socket 连接 shadowsocks 应用与 v2ray-plugin（Xray-plugin）模块，模块效率高；但在 Windows 10 Build 17036 前不可用。v2ray_redirect_config.json 采用 local loopback 连接 shadowsocks 应用与 v2ray-plugin（Xray-plugin）模块，效率稍低，但可适用全部服务器。
 
