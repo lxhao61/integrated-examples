@@ -1,6 +1,6 @@
 介绍：
 
-v2ray（Xray） 前置（监听443端口），利用 vless+tcp+tls 强大的回落/分流特性，实现除 v2ray（Xray） kcp 外共用443端口。vless+tcp+tls 以 h2 或 http/1.1 自适应协商连接，分流 WebSocket（WS） 连接，其它连接回落给 nginx；nginx 再处理，对 grpc 进行反向代理。包括应用如下：
+Xray\v2ray 前置（监听443端口），利用 vless+tcp+tls 强大的回落/分流特性，实现除 Xray\v2ray kcp 外共用443端口。vless+tcp+tls 以 h2 或 http/1.1 自适应协商连接，分流 WebSocket（WS） 连接，其它连接回落给 nginx；nginx 再处理，对 grpc 进行反向代理。包括应用如下：
 
 1、E=vless+tcp+tls（tls由自己提供。）
 
@@ -18,7 +18,7 @@ v2ray（Xray） 前置（监听443端口），利用 vless+tcp+tls 强大的回�
 
 2、nginx 支持 h2c server，但不支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用）；故此 vless+tcp+tls 应用中的回落端口或进程必须分开，分别对应。
 
-3、nginx 不支持 h2c proxy，故 nginx 不能实现 v2ray 的 h2c（http/2）反向代理。
+3、nginx 不支持 h2c proxy，故 nginx 不能实现 Xray\v2ray 的 h2c 反向代理。
 
 4、nginx 预编译程序包可能不带支持 PROXY protocol 协议的模块。如要使用此项协议应用，需加 http_realip_module（必须加） 及 stream_realip_module（可选加） 两模块构建自定义模板，再进行源代码编译和安装。另编译时选取源代码版本建议不要低于1.13.11。
 
