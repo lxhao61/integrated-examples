@@ -1,6 +1,6 @@
 介绍：
 
-此示例包括 v2ray（Xray）、naiveproxy（caddy）、trojan（trojan-go）应用。利用 haproxy 或 nginx 支持 SNI 分流特性，对 v2ray（vless+tcp+tls）、naiveproxy（caddy）、trojan（trojan-go）进行 SNI 分流（四层转发），实现除 v2ray（Xray） kcp 外共用443端口。caddy 同时为 v2ray（vless+tcp+tls）与 trojan（trojan-go）提供 web 回落服务，为 v2ray（Xray） 的 h2c 与 grpc 进行反向代理，为 naiveproxy 提供正向代理。包括应用如下：
+此示例包括 Xray\v2ray、naiveproxy（caddy）、trojan（trojan-go）应用。利用 haproxy 或 nginx 支持 SNI 分流特性，对 Xray\v2ray（vless+tcp+tls）、naiveproxy（caddy）、trojan（trojan-go）进行 SNI 分流（四层转发），实现除 Xray\v2ray kcp 外共用443端口。caddy 同时为 Xray\v2ray（vless+tcp+tls）与 trojan（trojan-go）提供 web 回落服务，为 Xray\v2ray 的 h2c 与 grpc 进行反向代理，为 naiveproxy 提供正向代理。包括应用如下：
 
 1、E=vless+tcp+tls（tls由自己提供。）
 
@@ -22,7 +22,7 @@
 
 1、Xray 版本不小于 1.4.0 或 v2ray 版本不小于v4.36.2，才完美支持 grpc 应用。
 
-2、caddy 等于或大于 v2.2.0-rc.1 版才支持 h2c proxy，即支持 v2ray（Xray） 的 h2c（grpc） 反向代理。
+2、caddy 等于或大于 v2.2.0-rc.1 版才支持 h2c proxy，即支持 Xray\v2ray 的 h2c（grpc） 反向代理。
 
 3、caddy 等于或大于 v2.3.0 版才支持 Caddyfile 配置开启 h2c server。
 
@@ -40,7 +40,7 @@
 
 10、因 trojan(trojan-go) 不支持 PROXY protocol（接收与发送），故 trojan(trojan-go) 不启用此项应用，从而回落部分不启用 PROXY protocol（接收与发送）。另外 nginx SNI 中的 PROXY protocol 发送是针对共用端口全局模式，故配置3不再使用 nginx。
 
-11、此方法采用的是 SNI 方式实现共用443端口，支持 v2ray（vless+tcp+tls）、naiveproxy（caddy）、trojan（trojan-go）完美共存，支持各自特色应用，但需多个域名（多个证书或通配符证书）来标记分流。
+11、此方法采用的是 SNI 方式实现共用443端口，支持 Xray\v2ray（vless+tcp+tls）、naiveproxy（caddy）、trojan（trojan-go）完美共存，支持各自特色应用，但需多个域名（多个证书或通配符证书）来标记分流。
 
 12、配置1：端口转发、端口回落\分流及 haproxy 或 nginx SNI 的端口分流，没有启用 PROXY protocol。配置2：进程转发、端口回落\分流及 haproxy 或 nginx SNI 的进程分流（trojan除外），没有启用 PROXY protocol。配置3：进程转发、端口回落\分流及 haproxy SNI 的进程分流（trojan除外），启用了 PROXY protocol（回落部分除外）。
 
