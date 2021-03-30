@@ -47,7 +47,7 @@
           {
             "match": [{
               "tls": {
-                "sni": ["zc.xx.yy"] //修改成自己规划对应https server的域名
+                "sni": ["zc.xx.yy"] //修改成自己规划对应caddy https server的域名
               }
             }],
             "handle": [{
