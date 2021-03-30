@@ -1,12 +1,10 @@
 介绍：
 
-本项示例包括 vless+tcp+tls 与 trojan+tcp+tls 两种应用。
+本项示例包括 vless+tcp+tls 与 trojan+tcp+tls 两种应用，实现了 v2ray（Xray） 前置（监听443端口），以 h2 或 http/1.1 自适应协商连接，非 v2ray（Xray） 的 web 连接回落给 caddy。
 
-v2ray(vless+tcp+tls)+caddy 配置实现了 v2ray（Xray） 前置（监听443端口），以 h2 或 http/1.1 自适应协商连接，非 v2ray（Xray） 的 web 连接回落给 caddy。  
 原理图： v2ray client <------ tcp+tls ------> v2ray server <- web回落 -> caddy
 
-v2ray(trojan+tcp+tls)+caddy 配置实现了 v2ray（Xray） 前置（监听443端口），以 h2 或 http/1.1 自适应协商连接，非 v2ray（Xray） 的 web 连接回落给 caddy，实现了兼容 trojan，即可直接使用 trojan 客户端连接。  
-原理图：v2ray\trojan client <------ tcp+tls ------> v2ray server <- web回落 -> caddy
+其中trojan+tcp+tls实现了兼容 trojan，即可直接使用 trojan 客户端连接。  
 
 注意：
 
