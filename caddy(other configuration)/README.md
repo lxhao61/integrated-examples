@@ -1,12 +1,12 @@
 一、分别回落 caddy 不同网站的配置方法
 
-此方法解决 v2ray（Xray） 前置监听443后，不影响原来 caddy 前置时，不同域名访问不同网站问题。
+此方法解决 Xray\v2ray 前置监听443后，不影响原来 caddy 前置时，不同域名访问不同网站问题。
 
 注意：
 
-1、若不同域名没有使用通配符证书，那么还需要在 v2ray（Xray） 中并列配置多个域名对应的证书及私钥。
+1、若不同域名没有使用通配符证书，那么还需要在 Xray\v2ray 中并列配置多个域名对应的证书及私钥。
 
-2、此回落到不同网站是 v2ray（Xray） 解除 tls 后 caddy 进行的 host（域名）分流。
+2、此回落到不同网站是 Xray\v2ray 解除 tls 后 caddy 进行的 host（域名）分流。
 
 3、caddy json 配置才支持此应用， Caddyfile 配置不支持。因 Caddyfile 配置参数是简化的，非完整的。
 
@@ -14,7 +14,7 @@
 
 二、caddy SNI 分流的配置方法
 
-此方法也可以解决 v2ray（Xray）应用与网站应用（原网站不想做回落网站，或 nginx/caddy 等有多个网站应用。）共用443端口问题。
+此方法也可以解决 Xray\v2ray 应用与网站应用（原网站不想做回落网站，或 nginx\caddy 等有多个网站应用。）共用443端口问题。
 
 注意：
 
@@ -32,7 +32,7 @@
 
 1、dnspod、cloudflare、dnspodcn 以 DNS API 方式申请证书与私钥，可以申请普通证书，也可以申请通配符证书。
 
-2、v2ray（Xray）可以直接使用 /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/wildcard_.xx.yy 路径及目录中通配符证书及私钥。
+2、Xray\v2ray 可以直接使用 /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/wildcard_.xx.yy 路径及目录中通配符证书及私钥。
 
 注意：
 
@@ -40,6 +40,6 @@
 
 2、cloudflare 已不支持 freenom 的免费域名以 DNS API 方式申请证书与私钥了。
 
-3、v2ray（Xray）可以直接使用 caddy 以 DNS API 方式申请的证书与私钥，配合 Xray 服务端（版本必须不低于 v1.3.0）更新 OCSP 数据前自动检查并重载证书与私钥，可实现 Xray 服务端证书与私钥的申请及更新自动化；否则 v2ray（Xray）服务端（Xray 版本低于 v1.3.0）不支持自动热重载证书，caddy 证书到期更新后需手动重启 v2ray（Xray）来重新加载更新的证书。
+3、Xray\v2ray 可以直接使用 caddy 以 DNS API 方式申请的证书与私钥，配合 Xray 服务端（版本必须不低于 v1.3.0）更新 OCSP 数据前自动检查并重载证书与私钥，可实现 Xray 服务端证书与私钥的申请及更新自动化；否则 Xray\v2ray 服务端（Xray 版本低于 v1.3.0）不支持自动热重载证书，caddy 证书到期更新后需手动重启 Xray\v2ray 来重新加载更新的证书。
 
 4、推荐采用 json 配置，否则采用 Caddyfile 配置必须启用额外无用端口来联动实现自动申请及更新证书与私钥。另外采用 Caddyfile 配置 DNS API 方式申请证书与私钥仅支持端口监听模式。
