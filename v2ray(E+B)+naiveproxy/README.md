@@ -1,6 +1,6 @@
 介绍：
 
-v2ray（Xray） 前置（监听443端口），利用 vless+tcp+tls 强大的回落/分流特性，实现了共用443端口。vless+tcp+tls 以 h2 或 http/1.1 自适应协商连接，分流 WebSocket（WS） 连接，非 v2ray（Xray） 的连接回落给 caddy；若有 naiveproxy 就进行正向代理。其应用如下：
+Xray\v2ray 前置（监听443端口），利用 vless+tcp+tls 强大的回落/分流特性，实现了共用443端口。vless+tcp+tls 以 h2 或 http/1.1 自适应协商连接，分流 WebSocket（WS） 连接，非 Xray\v2ray 的连接回落给 caddy；若有 naiveproxy 就进行正向代理。其应用如下：
 
 1、E=vless+tcp+tls（tls由自己提供。）
 
