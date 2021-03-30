@@ -1,6 +1,6 @@
 介绍：
 
-利用 nginx 支持 SNI 分流特性，对 v2ray（vless+tcp+tls）、trojan（trojan-go）、nginx（http/2 server） 进行 SNI 分流（四层转发），实现除 v2ray kcp 外共用443端口。nginx 同时为 v2ray（vless+tcp+tls）与 trojan（trojan-go） 提供回落服务，为 v2ray（Xray） 的 grpc 进行反向代理。包括应用如下：
+利用 nginx 支持 SNI 分流特性，对 Xray\v2ray（vless+tcp+tls）、trojan（trojan-go）、nginx（http/2 server） 进行 SNI 分流（四层转发），实现除 Xray\v2ray kcp 外共用443端口。nginx 同时为 Xray\v2ray（vless+tcp+tls）与 trojan（trojan-go） 提供回落服务，为 Xray\v2ray 的 grpc 进行反向代理。包括应用如下：
 
 1、E=vless+tcp+tls（tls由自己提供。）
 
@@ -24,7 +24,7 @@
 
 4、nginx 支持 h2c server，但不支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用），故 v2ray（vless+tcp+tls） 或 trojan（trojan-go） 的端口回落或进程回落必须分开，分别对应 http/1.1 与 h2 回落。
 
-5、nginx 不支持 h2c proxy，故 nginx 不能实现 v2ray 的 h2c（http/2）反向代理。
+5、nginx 不支持 h2c proxy，故 nginx 不能实现 Xray\v2ray 的 h2c 反向代理。
 
 6、nginx 预编译程序包一般不带支持 SNI 分流协议的模块。如要使用此项协议应用，需加 stream_ssl_preread_module 模块构建自定义模板，再进行源代码编译和安装。
 
