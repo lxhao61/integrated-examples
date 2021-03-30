@@ -1,6 +1,6 @@
 介绍：
 
-v2ray（Xray） 前置（监听443端口），vless+tcp+tls 以 h2 或 http/1.1 自适应协商连接，分流 WebSocket（WS） 连接，回落给 trojan+tcp，trojan+tcp 处理后再回落给 caddy。其应用如下：
+Xray\v2ray 前置（监听443端口），vless+tcp+tls 以 h2 或 http/1.1 自适应协商连接，分流 WebSocket（WS） 连接，回落给 trojan+tcp，trojan+tcp 处理后再回落给 caddy。其应用如下：
 
 1、E=vless+tcp+tls（tls由自己提供。）
 
