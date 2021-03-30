@@ -4,7 +4,7 @@
 
 原理图： v2ray client <------ tcp+tls ------> v2ray server <- web回落 -> caddy
 
-其中trojan+tcp+tls实现了兼容 trojan，即可直接使用 trojan 客户端连接。  
+其中 trojan+tcp+tls 还实现了兼容 trojan，即可直接使用 trojan 客户端连接。  
 
 注意：
 
