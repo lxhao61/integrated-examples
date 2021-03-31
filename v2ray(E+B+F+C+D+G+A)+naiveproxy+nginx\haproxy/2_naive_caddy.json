@@ -48,8 +48,8 @@
           }],
           "allow_h2c": true //开启h2c server支持
         },
-        "naive": {
-          "listen": ["unix//dev/shm/naive.sock"], //https server进程监听,提供naiveproxy、h2c proxy等应用。
+        "https": {
+          "listen": ["unix//dev/shm/https.sock"], //https server进程监听,为naiveproxy、h2c proxy等应用服务。
           "routes": [{
             "handle": [{
               "handler": "forward_proxy",
