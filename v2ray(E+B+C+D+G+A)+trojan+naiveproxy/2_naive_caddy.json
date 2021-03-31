@@ -53,7 +53,7 @@
             "handle": [{
               "handler": "proxy",
               "upstreams": [{
-                "dial": ["unix//dev/shm/naive.sock"] //转给caddy https server监听进程
+                "dial": ["unix//dev/shm/https.sock"] //转给caddy https server监听进程
               }]
             }]
           }]
@@ -95,7 +95,7 @@
           "allow_h2c": true //开启h2c server支持
         },
         "https": {
-          "listen": ["unix//dev/shm/naive.sock"], //本机https server监听进程，为naiveproxy、h2c proxy等应用服务。
+          "listen": ["unix//dev/shm/https.sock"], //本机https server监听进程，为naiveproxy、h2c proxy等应用服务。
           "routes": [{
             "handle": [{
               "handler": "forward_proxy",
