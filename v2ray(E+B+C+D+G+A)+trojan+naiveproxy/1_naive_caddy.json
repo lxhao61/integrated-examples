@@ -27,7 +27,7 @@
             "handle": [{
               "handler": "proxy",
               "upstreams": [{
-                "dial": ["127.0.0.1:8443"] //转给vless+tcp+tls监听端口
+                "dial": ["127.0.0.1:8443"] //转给vless+tcp+tls本地监听端口
               }]
             }]
           },
@@ -40,7 +40,7 @@
             "handle": [{
               "handler": "proxy",
               "upstreams": [{
-                "dial": ["127.0.0.1:6443"] //转给trojan（trojan-go）监听端口
+                "dial": ["127.0.0.1:6443"] //转给trojan（trojan-go）本地监听端口
               }]
             }]
           },
@@ -53,7 +53,7 @@
             "handle": [{
               "handler": "proxy",
               "upstreams": [{
-                "dial": ["127.0.0.1:7443"] //转给caddy https server监听端口
+                "dial": ["127.0.0.1:7443"] //转给caddy https server本地监听端口
               }]
             }]
           }]
@@ -95,7 +95,7 @@
           "allow_h2c": true //开启h2c server支持
         },
         "https": {
-          "listen": ["127.0.0.1:7443"], //本机https server监听端口，为naiveproxy、h2c proxy等应用服务。
+          "listen": ["127.0.0.1:7443"], //https server本地监听端口，为naiveproxy、h2c proxy等应用服务。
           "routes": [{
             "handle": [{
               "handler": "forward_proxy",
