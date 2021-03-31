@@ -101,7 +101,7 @@
           "allow_h2c": true //开启h2c server支持
         },
         "https": {
-          "listen": ["unix//dev/shm/https.sock"], //本机https server监听进程，为naiveproxy、h2c proxy等应用服务。
+          "listen": ["unix//dev/shm/https.sock"], //https server监听进程，为naiveproxy、h2c proxy等应用服务。
           "listener_wrappers": [{
             "wrapper": "proxy_protocol" //开启PROXY protocol接收
           }, 
