@@ -14,7 +14,7 @@
 
 6、A=vless+kcp+seed（可改成vmess+kcp+seed，或添加它。）
 
-7、naiveproxy （tls由自己提供。）
+7、naiveproxy （tls由caddy提供。）
 
 8、trojan或trojan-go （tls由自己提供。）
 
