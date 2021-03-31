@@ -47,13 +47,13 @@
           {
             "match": [{
               "tls": {
-                "sni": ["zc.xx.yy"] //修改成自己规划对应caddy https server的域名
+                "sni": ["zc.xx.yy"] //修改成自己规划对应https server的域名
               }
             }],
             "handle": [{
               "handler": "proxy",
               "upstreams": [{
-                "dial": ["127.0.0.1:7443"] //转给caddy https server本地监听端口
+                "dial": ["127.0.0.1:7443"] //转给https server本地监听端口
               }]
             }]
           }]
