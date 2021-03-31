@@ -40,7 +40,7 @@
             "handle": [{
               "handler": "proxy",
               "upstreams": [{
-                "dial": ["127.0.0.1:6443"] //转给trojan（trojan-go）监听端口
+                "dial": ["127.0.0.1:6443"] //转给trojan（trojan-go）本地监听端口
               }]
             }]
           },
