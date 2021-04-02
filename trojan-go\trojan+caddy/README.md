@@ -8,6 +8,7 @@ trojan\trojan-go client ------ https ------> trojan\trojan-go server
              web client ------ https ------> trojan\trojan-go server <-- web回落 --> caddy（web server）
 
 注意：
+
 1、caddy 等于或大于 v2.3.0 版才支持 Caddyfile 配置开启 h2c server。
 
 2、caddy 支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用）。
