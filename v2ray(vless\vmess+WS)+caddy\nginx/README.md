@@ -4,7 +4,7 @@
 
 原理图：
 
-web client <------ WebSocket+tls ------> caddy\nginx（web server）
+web client <------ WebSocket+tls ------> caddy\nginx（web server）  
 Xray\v2ray client <------ WebSocket+tls ------> caddy\nginx <-- WebSocket --> Xray\v2ray server
 
 注意：
