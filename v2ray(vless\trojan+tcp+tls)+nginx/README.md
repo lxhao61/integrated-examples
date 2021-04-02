@@ -6,7 +6,7 @@
 
 原理图：
 
-Xray\v2ray client <------ tcp+tls ------> Xray\v2ray server
+Xray\v2ray client <------ tcp+tls ------> Xray\v2ray server  
 web client <------ tcp+tls ------> Xray\v2ray server <-- web回落 --> nginx（web server）
 
 其中 trojan+tcp+tls 还实现了兼容 trojan，即可直接使用 trojan 客户端连接。
