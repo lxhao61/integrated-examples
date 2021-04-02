@@ -5,11 +5,13 @@
 trojan\trojan-go client ------ https ------> trojan\trojan-go server  
              web client ------ https ------> trojan\trojan-go server <-- web回落 --> caddy（web server）
 
+```mermaid
 graph LR
 A[方形] -->B(圆角)
     B --> C{条件a}
     C -->|a=1| D[结果1]
     C -->|a=2| E[结果2]
+```
 
 注意：  
 1、caddy 等于或大于 v2.3.0 版才支持 Caddyfile 配置开启 h2c server。  
