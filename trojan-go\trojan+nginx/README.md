@@ -4,8 +4,8 @@
 
 原理图：
 
-trojan\trojan-go client ------ https ------> trojan\trojan-go server  
-             web client ------ https ------> trojan\trojan-go server <-- web回落 --> nginx（web server）
+trojan\trojan-go client <------ https ------> trojan\trojan-go server  
+             web client <------ https ------> trojan\trojan-go server <-- web回落 --> nginx（web server）
 
 注意：
 
