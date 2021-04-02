@@ -4,7 +4,7 @@
 
 2、通过 caddy 或 nginx 前置（监听443端口）实现 WebSocket（WS） 反向代理，tls 由 caddy 或 nginx 提供及处理。
 
-原理图： shadowsocks client <------ WebSocket+tls ------> caddy\nginx <- WebSocket -> Xray\v2ray server
+原理图： shadowsocks client ------ WebSocket+tls ------> caddy\nginx <-- WebSocket --> Xray\v2ray server
 
 注意：
 
