@@ -6,7 +6,7 @@
 
 原理图：
 
-web client <------ WebSocket+tls ------> caddy\nginx（web server）  
+web client <------ https ------> caddy\nginx（web server）  
 trojan-go\Xray\v2ray client <------ WebSocket+tls ------> caddy\nginx <-- WebSocket --> Xray\v2ray server
 
 注意：
