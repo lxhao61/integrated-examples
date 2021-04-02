@@ -2,7 +2,7 @@
 
 本配置是 trojan 或 trojan-go 应用，以 h2 或 http/1.1 自适应协商连接，非trojan 或 trojan-go 的 https 连接回落给 caddy；若是 naiveproxy 数据就进行正向代理。其应用如下：
 
-1、trojan(trojan-go)（回落配置。）
+1、trojan(trojan-go)（回落配置，tls由自己提供。）
 
 2、naiveproxy （带有forwardproxy插件的caddy才支持naiveproxy应用。tls由trojan(trojan-go)提供及处理，不需配置。）
 
