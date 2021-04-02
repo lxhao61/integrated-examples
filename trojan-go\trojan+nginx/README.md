@@ -2,7 +2,9 @@
 
 本配置是 trojan 或 trojan-go 应用，trojan 以 h2 或 http/1.1 自适应协商连接，trojan-go 以 h2 协商连接；非 trojan 或 trojan-go 的 https 连接回落给 nginx（即解除 tls 后的 web 连接转给 nginx 处理），tls 由 trojan 或 trojan-go 提供及处理。
 
-原理图： trojan\trojan-go client ------ https ------> trojan\trojan-go server <-- web回落 --> nginx
+原理图：  
+trojan\trojan-go client ------ https ------> trojan\trojan-go server  
+             web client ------ https ------> trojan\trojan-go server <-- web回落 --> nginx（web server）
 
 注意：
 
