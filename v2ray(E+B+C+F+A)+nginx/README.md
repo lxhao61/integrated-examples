@@ -2,7 +2,7 @@
 
 Xray\v2ray 前置（监听443端口），vless+tcp+tls 以 h2 或 http/1.1 自适应协商连接，分流 WebSocket（WS） 连接，其它连接回落给 trojan+tcp，trojan+tcp 处理后再回落给 nginx。其应用如下：
 
-1、E=vless+tcp+tls（tls由自己提供。）
+1、E=vless+tcp+tls（回落/分流配置，tls由自己提供。）
 
 2、B=vless+WS+tls（tls由vless+tcp+tls提供及处理，不需配置；另可改成或添加其它WS类应用，参考反向代理WS类的单一示例。）
 
