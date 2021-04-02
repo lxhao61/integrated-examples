@@ -2,7 +2,7 @@
 
 介绍：
 
-本项示例包括 vless+tcp+tls 与 trojan+tcp+tls 两种应用，实现了 Xray\v2ray 前置（监听443端口），以 h2 或 http/1.1 自适应协商连接，非 Xray\v2ray 的 web 连接回落给 nginx（即解除 tls 后的 web 连接转给 nginx 处理）,tls 由 vless+tcp+tls 或 trojan+tcp+tls 提供及处理。
+本项示例包括 vless+tcp+tls 与 trojan+tcp+tls 两种应用，实现了 Xray\v2ray 前置（监听443端口），以 h2 或 http/1.1 自适应协商连接，非 Xray\v2ray 的 web 连接回落给 nginx（即解除 tls 后的 web 连接转给 nginx 处理），tls 由 vless+tcp+tls 或 trojan+tcp+tls 提供及处理。
 
 原理图： Xray\v2ray client <------ tcp+tls ------> Xray\v2ray server <- web回落 -> nginx
 
