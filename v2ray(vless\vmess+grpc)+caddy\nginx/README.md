@@ -2,10 +2,10 @@
 
 通过 caddy 前置（监听443端口）实现 gRPC 反向代理，tls 由 caddy 或 nginx 提供及处理；包括 vless+grpc+tls 与 vmess+grpc+tls 两种应用。
 
-原理图：
+原理：
 
-web client <------ http/2 ------> caddy\nginx（web server）  
-Xray\v2ray client <------ gRPC+tls ------> caddy\nginx <-- gRPC --> Xray\v2ray server
+默认流程：web client <------ http/2 ------> caddy\nginx（web server）  
+匹配流程：Xray\v2ray client <------ gRPC+tls ------> caddy\nginx <-- gRPC --> Xray\v2ray server
 
 注意：
 
