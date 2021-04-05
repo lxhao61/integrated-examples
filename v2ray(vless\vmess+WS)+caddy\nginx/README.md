@@ -2,10 +2,10 @@
 
 通过 caddy 或 nginx 前置（监听443端口）实现 WebSocket（WS） 反向代理，tls 由 caddy 或 nginx 提供及处理；包括 vless+WS+tls 与 vmess+WS+tls 两种应用。
 
-原理图：
+原理：
 
-web client <------ https（http/1.1+tls） ------> caddy\nginx（web server）  
-Xray\v2ray client <------ WebSocket+tls ------> caddy\nginx <-- WebSocket --> Xray\v2ray server
+默认流程：web client <------ https（http/1.1+tls） ------> caddy\nginx（web server）  
+匹配流程：Xray\v2ray client <------ WebSocket+tls ------> caddy\nginx <-- WebSocket --> Xray\v2ray server
 
 注意：
 
