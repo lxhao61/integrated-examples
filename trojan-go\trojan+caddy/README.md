@@ -4,8 +4,8 @@
 
 原理：
 
-trojan\trojan-go client <------ https ------> trojan\trojan-go server  （默认流程）  
-web client <------ https ------> trojan\trojan-go server <-- web回落 --> caddy（web server）（匹配流程）
+默认流程：trojan\trojan-go client <------ https ------> trojan\trojan-go server  
+匹配流程：web client <------ https ------> trojan\trojan-go server <-- web回落 --> caddy（web server）
 
 注意：
 
