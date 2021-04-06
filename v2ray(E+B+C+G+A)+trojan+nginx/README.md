@@ -30,4 +30,4 @@
 
 7、此方法采用的是 SNI 方式实现共用443端口，支持 v2ray（vless+tcp+tls）、trojan（trojan-go）、nginx（http/2 server） 完美共存，支持各自特色应用，但需多个域名（多个证书或通配符证书）来标记分流。
 
-8、配置1：采用端口转发、端口回落\分流、端口分流，没有启用 PROXY protocol。配置2：采用进程转发、端口回落\分流、进程分流（对应trojan除外），没有启用 PROXY protocol。
+8、配置1：采用端口分流、端口回落\分流、端口转发，没有启用 PROXY protocol。配置2：采用进程分流（对应trojan采用端口分流）、端口回落\分流（分流到vless+WS采用进程分流）、进程转发，没有启用 PROXY protocol。
