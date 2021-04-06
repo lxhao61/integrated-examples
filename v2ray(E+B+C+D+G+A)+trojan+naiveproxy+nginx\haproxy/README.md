@@ -42,7 +42,7 @@
 
 11、此方法采用的是 SNI 方式实现共用443端口，支持 Xray\v2ray（vless+tcp+tls）、naiveproxy（caddy）、trojan（trojan-go）完美共存，支持各自特色应用，但需多个域名（多个证书或通配符证书）来标记分流。
 
-12、配置1：采用端口分流、端口回落\分流、端口转发，没有启用 PROXY protocol。配置2：采用进程分流（对应trojan除外）、进程回落\分流、进程转发，没有启用 PROXY protocol。配置3：采用进程分流（对应trojan除外）、进程回落\分流、进程转发，启用了 PROXY protocol（端口回落除外）。
+12、配置1：采用端口分流、端口回落\分流、端口转发，没有启用 PROXY protocol。配置2：采用进程分流（对应trojan采用端口分流）、进程回落\分流、进程转发，没有启用 PROXY protocol。配置3：采用进程分流（对应trojan采用端口分流）、进程回落\分流、进程转发，启用了 PROXY protocol（对应trojan除外）。
 
 13、若采用配置2、且使用 nginx SNI 来分流的，又想 naiveproxy 开启 http/3 代理支持，可参考配置1。nginx 添加 udp 代理。naiveproxy 把进程转发改成端口转发，且 naiveproxy http/3 开启。
 
