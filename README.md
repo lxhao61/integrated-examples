@@ -8,7 +8,7 @@
 7. caddy实现了Caddyfile配置开启h2c server、PROXY protocol、naiveproxy等应用支持，让caddy配置简单化。
 8. caddy实现了json配置SNI分流应用，且同时支持端口或进程分别PROXY protocol发送，灵活性等同haproxy SNI分流。
 9. Xray或v2ray服务端可以直接使用caddy以DNS API方式申请的证书与私钥，配合Xray服务端（版本必须不低于 v1.3.0）更新OCSP数据前自动检查并重载证书与私钥，可实现Xray服务端证书与私钥的申请及更新自动化。
-* **注：** 反代应用的端口转发、回落应用的端口回落\分流、SNI分流应用的端口分流指基于local loopback不同实现的方式；反代应用的进程转发、回落应用的进程回落\分流、SNI分流应用的进程分流指基于Unix Domain Socket不同实现的方式。
+* **注：** 端口转发、端口回落\分流、端口分流指基于local loopback不同实现的方式；进程转发、进程回落\分流、进程分流指基于Unix Domain Socket不同实现的方式。
 
 ### 服务端单一应用配置示例
 1. [trojan-go\trojan+caddy](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bcaddy) （trojan-go或trojan应用，web回落给caddy。）  
