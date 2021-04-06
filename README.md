@@ -1,14 +1,14 @@
 **这里是搭建主流科学上网的优化配置及最优组合示例。如是不太了解科学上网，建议先依次从简单到复杂参考及部署。**  
-1. 示例实现了反代应用的端口转发到进程转发的从低到高（效率）应用支持。
+1. 示例实现了SNI分流应用的端口分流到进程分流及PROXY protocol的从低到高（效率）应用支持。
 2. 示例实现了回落应用的端口回落\分流到进程回落\分流及PROXY protocol的从低到高（效率）应用支持。
-3. 示例实现了SNI分流应用的端口分流到进程分流及PROXY protocol的从低到高（效率）应用支持。
+3. 示例实现了反代应用的端口转发到进程转发的从低到高（效率）应用支持。
 4. 除v2ray(vless\vmess+kcp+seed)示例外，所有示例的回落或反代网站都支持http自动跳转到https，且SSL/TLS安全评估报告为A+。
 5. naiveproxy(caddy)除进程监听（server进程）外，实现了支持h3代理应用，即quic协议传输。
 6. nginx实现了nginx SNI分流时同时udp代理，支持naiveproxy h3代理应用。
 7. caddy实现了Caddyfile配置开启h2c server、PROXY protocol、naiveproxy等应用支持，让caddy配置简单化。
 8. caddy实现了json配置SNI分流应用，且同时支持端口或进程分别PROXY protocol发送，灵活性等同haproxy SNI分流。
 9. Xray或v2ray服务端可以直接使用caddy以DNS API方式申请的证书与私钥，配合Xray服务端（版本必须不低于 v1.3.0）更新OCSP数据前自动检查并重载证书与私钥，可实现Xray服务端证书与私钥的申请及更新自动化。
-* **注：** 端口转发、端口回落\分流、端口分流指基于local loopback不同实现的方式；进程转发、进程回落\分流、进程分流指基于Unix Domain Socket不同实现的方式。
+* **注：** 端口分流、端口回落\分流、端口转发是指基于local loopback实现的不同方式；进程分流、进程回落\分流、进程转发是指基于Unix Domain Socket实现的不同方式。
 
 ### 服务端单一应用配置示例
 1. [trojan-go\trojan+caddy](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bcaddy) （trojan-go或trojan应用，web回落给caddy。）  
