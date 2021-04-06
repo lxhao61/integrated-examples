@@ -22,4 +22,4 @@ Xray\v2ray 前置（监听443端口），vless+tcp+tls 以 h2 或 http/1.1 自�
 
 4、此方法采用的是套娃方式实现共用443端口，支持 vless+tcp+tls 与 trojan+tcp+tls 完美共存，且仅需要一个域名及普通证书即可搞定，但 trojan+tcp+tls（tls由vless+tcp+tls提供及处理） 不支持 xtls 应用。
 
-5、配置1：端口转发、端口回落\分流，没有启用 PROXY protocol。配置2：进程转发、进程回落\分流，没有启用 PROXY protocol。配置3：进程转发、进程回落\分流，启用了 PROXY protocol。
+5、配置1：采用端口转发、端口回落\分流，没有启用 PROXY protocol。配置2：采用进程转发、进程回落\分流，没有启用 PROXY protocol。配置3：采用进程转发、进程回落\分流，启用了 PROXY protocol。
