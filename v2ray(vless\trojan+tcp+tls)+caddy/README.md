@@ -21,4 +21,4 @@
 
 5、本示例中 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。
 
-6、配置1：采用端口回落，没有启用 PROXY protocol。配置2：采用进程回落，没有启用 PROXY protocol。配置3：采用进程回落，启用了 PROXY protocol。
+6、配置1：采用端口回落。配置2：采用进程回落。配置3：采用进程回落，且启用了 PROXY protocol。
