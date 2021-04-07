@@ -32,4 +32,4 @@ Xray\v2ray 前置（监听443端口），利用 vless+tcp+tls 强大的回落/�
 
 7、使用本人 github 中编译好的 caddy 文件，才可同时支持 h2c server、h2c proxy、naiveproxy 及 PROXY protocol 等应用。
 
-8、配置1：采用端口回落\分流、端口转发，端口回落\分流没有启用 PROXY protocol。配置2：采用进程回落\分流、进程转发，端口回落\分流没有启用 PROXY protocol。配置3：采用进程回落\分流、进程转发，端口回落\分流启用了 PROXY protocol。
+8、配置1：采用端口回落\分流、端口转发。配置2：采用进程回落\分流、端口转发。配置3：采用进程回落\分流、端口转发，且启用了 PROXY protocol。
