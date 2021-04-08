@@ -140,8 +140,7 @@
       }
     },
     {
-      "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2009, //vless+grpc监听端口
+      "listen": "/dev/shm/vgrpc.sock", //vless+grpc监听进程
       "protocol": "vless",
       "settings": {
         "clients": [
