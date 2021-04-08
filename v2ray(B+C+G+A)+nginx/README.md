@@ -24,6 +24,4 @@
 
 6、若系统版本过低，其对应发行版仓库自带 nginx 预编译程序包可能不支持 tls1.3；如需要支持 tls1.3，必须先升级 OpenSSl 版本大于 1.1.1，再进行 nginx 源代码编译和安装。
 
-7、nginx 不支持 h2c proxy，故 nginx 不能实现 Xray\v2ray 的 h2c 反向代理。
-
-8、配置1：采用端口分流、端口转发，且启用了 PROXY protocol。配置2：采用进程分流、进程转发（SS+v2ray-plugin采用端口转发），且启用了 PROXY protocol。
+7、配置1：采用端口分流、端口转发，且启用了 PROXY protocol。配置2：采用进程分流、进程转发（SS+v2ray-plugin采用端口转发），且启用了 PROXY protocol。
