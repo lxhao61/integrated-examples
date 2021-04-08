@@ -18,7 +18,7 @@
 
 3、nginx 预编译程序包可能不带支持 PROXY protocol 协议的模块。如要使用此项协议应用，需加 http_realip_module 与 stream_realip_module 两模块构建自定义模板，再进行源代码编译和安装。另编译时选取源代码版本建议不要低于1.13.11。
 
-4、若采用 nginx 反向代理 gRPC，配置 nginx 时需要启用 http/2，因为 gRPC 必须使用 HTTP/2 传输数据。使用源码编译和安装，编译时需要加入 http_ssl 和 http_v2 模块。
+4、采用 nginx 反向代理 gRPC，配置 nginx 时需要启用 http/2，因为 gRPC 必须使用 HTTP/2 传输数据。使用源码编译和安装，编译时需要加入 http_ssl 和 http_v2 模块。
 
 5、nginx 支持 http/2 server，但不支持 http/1.1 server 与 http/2 server 共用一个端口或一个进程（Unix Domain Socket 应用），故两者都启用必须分开。采用 SNI 方式实现共用443端口，需多个域名（多个证书或通配符证书）来标记区分。
 
