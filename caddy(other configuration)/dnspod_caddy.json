@@ -36,7 +36,7 @@
             "root": "/home/tls" //存放tls证书路径及目录
           },
           "issuers": [{
-            "module": "acme",
+            "module": "acme", //可以改为zerossl，采用zerossl申请证书及秘钥。
             "challenges": {
               "dns": {
                 "provider": {
@@ -101,7 +101,7 @@
             "root": "/home/tls" //存放tls证书路径及目录
           },
           "issuers": [{
-            "module": "acme",
+            "module": "acme", //可以改为zerossl，采用zerossl申请证书及秘钥。
             "challenges": {
               "dns": {
                 "provider": {
