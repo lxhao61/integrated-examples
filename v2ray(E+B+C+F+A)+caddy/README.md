@@ -28,4 +28,4 @@ Xray\v2ray 前置（监听443端口），vless+tcp+tls 以 h2 或 http/1.1 自�
 
 7、配置1：采用端口回落\分流、端口转发。配置2：采用进程回落\分流、端口转发。配置3：采用进程回落\分流、端口转发，且启用了 PROXY protocol。
 
-8、可以使用 caddy 以 DNS API 方式申请证书与私钥，实现自动申请与更新证书与私钥，详见 [caddy(other configuration)](https://github.com/lxhao61/integrated-examples/tree/main/caddy(other%20configuration)) （caddy的特殊应用配置方法。）
+8、可以使用 caddy 以 DNS API 方式申请证书与私钥，实现自动申请与更新证书与私钥，详见 [caddy(other configuration)](https://github.com/lxhao61/integrated-examples/tree/main/caddy(other%20configuration)) （caddy的特殊应用配置方法。）。
