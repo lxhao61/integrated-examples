@@ -40,11 +40,8 @@
             "challenges": {
               "dns": {
                 "provider": {
-                  "Language": "en",
-                  "name": "dnspodcn",
-                  "BaseURL": "https://dnsapi.cn",
-                  "AppID": "148867",
-                  "AppToken": "e09062f1fd2543933fc8a15fceda3907"
+                  "name": "cloudflare",
+                  "api_token": "e09062f1fd2545555fc8a15fceda2222" //换成你cloudflare的api，此api是你配置相关生成的，详细参考官方及cloudflare插件github。
                 }
               }
             }
