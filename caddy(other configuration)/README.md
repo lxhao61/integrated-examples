@@ -32,7 +32,7 @@
 
 1、dnspod、cloudflare、dnspodcn 以 DNS API 方式申请证书与私钥，可以申请普通证书，也可以申请通配符证书。
 
-2、Xray\v2ray 可以直接使用 caddy 以 DNS API 方式申请的证书与私钥，配合 Xray 服务端（版本必须不低于 v1.3.0）更新 OCSP 数据前自动检查并重载证书与私钥，可实现 Xray 服务端证书与私钥的申请及更新自动化；否则 Xray\v2ray 服务端（Xray 版本低于 v1.3.0）不支持自动热重载证书，caddy 证书到期更新后需手动重启 Xray\v2ray 来重新加载更新的证书。
+2、Xray\v2ray\trojan\trojan-go 可以直接使用 caddy 以 DNS API 方式申请的证书与私钥，配合 Xray 服务端（版本必须不低于 v1.3.0）更新 OCSP 数据前自动检查并重载证书与私钥，可实现 Xray 服务端证书与私钥的申请及更新自动化；否则 Xray\v2ray\trojan\trojan-go 服务端（Xray 版本低于 v1.3.0）不支持自动热重载证书，caddy 证书到期更新后需手动重启 Xray\v2ray\trojan\trojan-go 来重新加载更新的证书。
 
 注意：
 
