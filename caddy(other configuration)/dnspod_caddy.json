@@ -41,7 +41,7 @@
               "dns": {
                 "provider": {
                   "name": "dnspod",
-                  "auth_token": "1232456.e09062f1fd2545555fc8a15fceda2222"//换成你dnspod.cn的DP_Id与DP_Key，中间用.隔开。
+                  "auth_token": "1232456.e09062f1fd2545555fc8a15fceda2222"//换成你dnspod.com的DP_Id与DP_Key，中间用.隔开。
                 }
               }
             }
@@ -103,7 +103,7 @@
               "dns": {
                 "provider": {
                   "name": "dnspod",
-                  "auth_token": "1232456.e09062f1fd2545555fc8a15fceda2222"//换成你dnspod.cn的DP_Id与DP_Key，中间用.隔开。
+                  "auth_token": "1232456.e09062f1fd2545555fc8a15fceda2222"//换成你dnspod.com的DP_Id与DP_Key，中间用.隔开。
                 }
               }
             }
