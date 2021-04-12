@@ -107,7 +107,7 @@
         "inboundTag": [
           "ddws" //与inbounds中标签对应
         ],
-        "outboundTag": "ssds" //与outbounds中标签对应
+        "outboundTag": "ssrr" //与outbounds中标签对应
       },
       {
         "type": "field",
@@ -124,7 +124,7 @@
       "settings": {}
     },
     {
-      "tag": "ssds", //标签，与routing中标签对应。
+      "tag": "ssrr", //标签，与routing中标签对应。
       "protocol": "freedom",
       "settings": {
         "redirect": "127.0.0.1:2003" //转发给本地2003端口
