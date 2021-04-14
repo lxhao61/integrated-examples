@@ -6,7 +6,7 @@
 
 原理：
 
-默认流程：web client <------ https（http/1.1+tls）-------> caddy\nginx（web server）  
+默认流程：web client <------ https（http/1.1+tls） -------> caddy\nginx（web server）  
 匹配流程：shadowsocks client <------ WebSocket+tls ------> caddy\nginx <-- WebSocket --> Xray\v2ray server
 
 注意：
