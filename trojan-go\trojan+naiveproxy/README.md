@@ -1,10 +1,10 @@
 介绍：
 
-此示例包括 trojan\trojan-go、naiveproxy（caddy） 应用。trojan\trojan-go 以 h2 或 http/1.1 自适应协商连接，非 trojan\trojan-go 的 https 连接回落给 caddy；caddy 再处理，若是 naiveproxy 数据就进行正向代理。其应用如下：
+此示例包括 trojan-go\trojan、naiveproxy（caddy） 应用。trojan-go\trojan 以 h2 或 http/1.1 自适应协商连接，非 trojan-go\trojan 的 https 连接回落给 caddy；caddy 再处理，若是 naiveproxy 数据就进行正向代理。其应用如下：
 
-1、trojan或trojan-go （回落配置，tls由自己提供。）
+1、trojan-go或trojan （回落配置，tls由自己提供。）
 
-2、naiveproxy （带有forwardproxy插件的caddy才支持naiveproxy应用。tls由trojan(trojan-go)提供及处理，不需配置。）
+2、naiveproxy （带有forwardproxy插件的caddy才支持naiveproxy应用。tls由trojan-go\trojan提供及处理，不需配置。）
 
 注意：
 
@@ -12,9 +12,9 @@
 
 2、caddy 支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用）。
 
-3、因 trojan\trojan-go 不支持 Unix Domain Socket，故不能采用进程回落。
+3、因 trojan-go\trojan 不支持 Unix Domain Socket，故不能采用进程回落。
 
-4、因 trojan\trojan-go 不支持 PROXY protocol（发送），故不启用此项应用。
+4、因 trojan-go\trojan 不支持 PROXY protocol（发送），故不启用此项应用。
 
 5、使用本人 github 中编译好的 caddy 文件，才支持 naiveproxy 等应用。
 
