@@ -1,6 +1,6 @@
 介绍：
 
-此示例包括 Xray\v2ray、naiveproxy（caddy）、trojan\trojan-go 应用。利用 haproxy 或 nginx 支持 SNI 分流特性，对 Xray\v2ray（vless+tcp+tls）、naiveproxy（caddy）、trojan\trojan-go 进行 SNI 分流（四层转发），实现除 Xray\v2ray kcp 外共用443端口。caddy 同时为 Xray\v2ray（vless+tcp+tls）与 trojan\trojan-go 提供 web 回落服务，为 Xray\v2ray 的 h2c 与 grpc 进行反向代理，为 naiveproxy 提供正向代理。包括应用如下：
+此示例包括 Xray\v2ray、naiveproxy（caddy）、trojan-go\trojan 应用。利用 haproxy 或 nginx 支持 SNI 分流特性，对 Xray\v2ray（vless+tcp+tls）、naiveproxy（caddy）、trojan-go\trojan 进行 SNI 分流（四层转发），实现除 Xray\v2ray kcp 外共用443端口。caddy 同时为 Xray\v2ray（vless+tcp+tls）与 trojan-go\trojan 提供 web 回落服务，为 Xray\v2ray 的 h2c 与 grpc 进行反向代理，为 naiveproxy 提供正向代理。包括应用如下：
 
 1、E=vless+tcp+tls（回落/分流配置，tls由自己提供。）
 
@@ -16,7 +16,7 @@
 
 7、naiveproxy （tls由caddy提供。）
 
-8、trojan或trojan-go（tls由自己提供。）
+8、trojan-go或trojan（tls由自己提供。）
 
 注意：
 
@@ -36,13 +36,13 @@
 
 8、nginx 预编译程序包一般不带支持 SNI 分流协议的模块。如要使用此项协议应用，需加 stream_ssl_preread_module 模块构建自定义模板，再进行源代码编译和安装。
 
-9、因 trojan\trojan-go 不支持 Unix Domain Socket，故 trojan\trojan-go 不启用此项应用，从而回落部分仅端口回落及端口监听。
+9、因 trojan-go\trojan 不支持 Unix Domain Socket，故 trojan-go\trojan 不启用此项应用，从而回落部分仅端口回落及端口监听。
 
-10、因 trojan\trojan-go 不支持 PROXY protocol（接收与发送），故 trojan\trojan-go 不启用此项应用，从而回落部分不启用 PROXY protocol（接收与发送）。另外 nginx SNI 中的 PROXY protocol 发送是针对共用端口全局模式，故配置3不再使用 nginx。
+10、因 trojan-go\trojan 不支持 PROXY protocol（接收与发送），故 trojan-go\trojan 不启用此项应用，从而回落部分不启用 PROXY protocol（接收与发送）。另外 nginx SNI 中的 PROXY protocol 发送是针对共用端口全局模式，故配置3不再使用 nginx。
 
-11、此方法采用的是 SNI 方式实现共用443端口，支持 Xray\v2ray（vless+tcp+tls）、naiveproxy（caddy）、trojan\trojan-go 完美共存，支持各自特色应用，但需多个域名（多个证书或通配符证书）来标记分流。
+11、此方法采用的是 SNI 方式实现共用443端口，支持 Xray\v2ray（vless+tcp+tls）、naiveproxy（caddy）、trojan-go\trojan 完美共存，支持各自特色应用，但需多个域名（多个证书或通配符证书）来标记分流。
 
-12、配置1：采用端口分流、端口回落\分流、端口转发。配置2：采用进程分流（对应trojan\trojan-go采用端口分流）、端口回落\分流（分流到vless+WS采用进程分流）、端口转发。配置3：采用进程分流（对应trojan采用端口分流）、端口回落\分流（分流vless+WS采用进程分流）、端口转发，且启用了 PROXY protocol（对应trojan\trojan-go除外）。
+12、配置1：采用端口分流、端口回落\分流、端口转发。配置2：采用进程分流（对应trojan-go\trojan采用端口分流）、端口回落\分流（分流到vless+WS采用进程分流）、端口转发。配置3：采用进程分流（对应trojan-go\trojan采用端口分流）、端口回落\分流（分流vless+WS采用进程分流）、端口转发，且启用了 PROXY protocol（对应trojan-go\trojan除外）。
 
 13、若采用配置2、且使用 nginx SNI 来分流的，又想 naiveproxy 开启 http/3 代理支持，可参考配置1。nginx 添加 udp 代理。naiveproxy 把进程转发改成端口转发，且 naiveproxy http/3 开启。
 
