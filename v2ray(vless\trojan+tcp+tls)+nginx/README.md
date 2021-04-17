@@ -13,7 +13,7 @@
 
 1、v2ray v4.31.0 版本及以后才支持 trojan 协议。
 
-2、nginx 支持 h2c server，但不支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用），故 http/1.1 与 h2 的回落端口或进程须分开。
+2、nginx 支持 h2c server，但不支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用），故 http/1.1 与 h2 的回落端口或进程须分开，分别对应。
 
 3、nginx 预编译程序包可能不带支持 PROXY protocol 协议的模块。如要使用此项协议应用，需加 http_realip_module（必须加） 及 stream_realip_module（可选加） 两模块构建自定义模板，再进行源代码编译和安装。另编译时选取源代码版本建议不要低于1.13.11。
 
