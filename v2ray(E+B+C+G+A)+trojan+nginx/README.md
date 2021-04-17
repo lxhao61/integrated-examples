@@ -24,7 +24,7 @@
 
 4、因 nginx SNI 中的 PROXY protocol（发送）是针对共用端口全部开启（全局模式），而 trojan-go\trojan 不支持 PROXY protocol（接收与发送），故所有配置不启用此项应用。
 
-5、nginx 支持 h2c server，但不支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用），故 Xray\v2ray（vless+tcp+tls） 或 trojan-go\trojan 的端口回落或进程回落必须分开，分别对应 http/1.1 与 h2 回落。
+5、nginx 支持 h2c server，但不支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用），故 Xray\v2ray（vless+tcp+tls） 与 trojan-go\trojan 应用中的 http/1.1 与 h2 回落端口或进程须分开，分别对应。
 
 6、nginx 预编译程序包一般不带支持 SNI 分流协议的模块。如要使用此项协议应用，需加 stream_ssl_preread_module 模块构建自定义模板，再进行源代码编译和安装。
 
