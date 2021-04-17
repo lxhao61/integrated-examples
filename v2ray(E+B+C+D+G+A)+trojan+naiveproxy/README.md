@@ -1,6 +1,6 @@
 介绍：
 
-此示例包括 Xray\v2ray、naiveproxy（caddy）、trojan（trojan-go）应用。利用 caddy 支持 SNI 分流特性，对 Xray\v2ray（vless+tcp+tls）、naiveproxy（caddy）、trojan（trojan-go）进行 SNI 分流（四层转发），实现除 Xray\v2ray kcp 外共用443端口。caddy 同时为 Xray\v2ray（vless+tcp+tls）与 trojan（trojan-go）提供 web 回落服务，为 Xray\v2ray 的 h2c 与 grpc 进行反向代理，为 naiveproxy 提供正向代理。包括应用如下：
+此示例包括 Xray\v2ray、naiveproxy（caddy）、trojan\trojan-go 应用。利用 caddy 支持 SNI 分流特性，对 Xray\v2ray（vless+tcp+tls）、naiveproxy（caddy）、trojan（trojan-go）进行 SNI 分流（四层转发），实现除 Xray\v2ray kcp 外共用443端口。caddy 同时为 Xray\v2ray（vless+tcp+tls）与 trojan（trojan-go）提供 web 回落服务，为 Xray\v2ray 的 h2c 与 grpc 进行反向代理，为 naiveproxy 提供正向代理。包括应用如下：
 
 1、E=vless+tcp+tls（回落/分流配置，tls由自己提供。）
 
@@ -32,11 +32,11 @@
 
 6、使用本人 github 中编译好的 caddy 文件，才可同时支持 SNI 分流、naiveproxy、h2c server、h2c proxy 及 PROXY protocol 等应用。
 
-7、因 trojan(trojan-go) 不支持 Unix Domain Socket，故 trojan(trojan-go) 不启用此项应用，从而回落部分仅端口回落及端口监听。
+7、因 trojan\trojan-go 不支持 Unix Domain Socket，故 trojan\trojan-go 不启用此项应用，从而回落部分仅端口回落及端口监听。
 
-8、因 trojan(trojan-go) 不支持 PROXY protocol（接收与发送），故 trojan(trojan-go) 不启用此项应用，从而回落部分不启用 PROXY protocol（接收与发送）。
+8、因 trojan\trojan-go 不支持 PROXY protocol（接收与发送），故 trojan\trojan-go 不启用此项应用，从而回落部分不启用 PROXY protocol（接收与发送）。
 
-9、此方法采用的是 SNI 方式实现共用443端口，支持 Xray\v2ray（vless+tcp+tls）、naiveproxy（caddy）、trojan（trojan-go）完美共存，支持各自特色应用，但需多个域名（多个证书或通配符证书）来标记分流。
+9、此方法采用的是 SNI 方式实现共用443端口，支持 Xray\v2ray（vless+tcp+tls）、naiveproxy（caddy）、trojan\trojan-go 完美共存，支持各自特色应用，但需多个域名（多个证书或通配符证书）来标记分流。
 
 10、配置1：采用端口分流、端口回落\分流、端口转发。配置2：采用进程分流（对应trojan采用端口分流）、端口回落\分流（分流vless+WS采用进程分流）、端口转发。配置3：采用进程分流（对应trojan采用端口分流）、端口回落\分流（分流vless+WS采用进程分流）、端口转发，且启用了 PROXY protocol（对应trojan除外）。
 
