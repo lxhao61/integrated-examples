@@ -20,7 +20,7 @@
 
 2、采用 nginx 反向代理 gRPC，配置 nginx 时需要启用 http/2，因为 gRPC 必须使用 HTTP/2 传输数据。使用源码编译和安装，编译时需要加入 http_ssl 和 http_v2 模块。
 
-3、nginx 支持 h2c server，但不支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用），故 v2ray（vless+tcp+tls） 或 v2ray（trojan+tcp+tls） 的端口回落或进程回落必须分开，分别对应 http/1.1 与 h2 回落。
+3、nginx 支持 h2c server，但不支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用），故 Xray\v2ray（vless+tcp+tls） 与 Xray\v2ray（trojan+tcp+tls） 应用中的 http/1.1 与 h2 回落端口或进程须分开，分别对应。
 
 4、nginx 预编译程序包一般不带支持 SNI 分流协议的模块。如要使用此项协议应用，需加 stream_ssl_preread_module 模块构建自定义模板，再进行源代码编译和安装。
 
