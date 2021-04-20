@@ -67,7 +67,7 @@
 #### &emsp;以上所有实例注意:
 1. 所有Xray或v2ray配置文件都配置了禁用BT。如不需要，可以删除相关配置，参考v2ray(other configuration)中BT_config.json文件。  
 2. v2ray从版本v4.33.0删除了xtls应用，故若还想用xtls应用，请选Xray。Xray是v2ray的超集（更好的整体性能和xtls等一系列增强，且完全兼容。），也是因为这个应用分家独自发展。   
-3. Xray或v2ray单一核心应用简记。A=vless+kcp+seed、B=vless+WS+tls、C=SS+v2ray-plugin+tls、D=vless+h2c+tls、E=vless+tcp+tls、F=trojan+tcp+tls、G=vless+grpc+tls。
+3. Xray或v2ray单一核心应用简记：A=vless+kcp+seed、B=vless+WS+tls、C=SS+v2ray-plugin+tls、D=vless+h2c+tls、E=vless+tcp+tls、F=trojan+tcp+tls、G=vless+grpc+tls。
 4. WebSocket（WS）类应用与grpc应用都支持CDN加速。  
 5. naiveproxy=caddy+forwardproxy（服务端）。此程序文件已编译好，本人github下载即可。  
 6. 目前caddy的https服务进程监听采用Unix Domain Socket应用不支持h3；若开启h3，caddy无法启动。  
