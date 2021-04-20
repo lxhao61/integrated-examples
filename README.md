@@ -4,7 +4,7 @@
 3. 示例实现了反代应用的端口转发到进程转发的从低到高（效率）应用支持。
 4. 除v2ray(vless\vmess+kcp+seed)示例及应用外，其它示例及应用都支持流量伪装与防探测，且提供流量伪装的回落或反代网站都支持http自动跳转到https，SSL/TLS安全评估报告为A+等，与访问真实网站完全一致。
 5. naiveproxy(caddy)除进程监听（server进程）外，实现了支持h3代理应用，即quic协议传输。
-6. nginx实现了nginx SNI分流时同时udp代理，支持naiveproxy h3代理应用。
+6. nginx实现了nginx SNI分流（域名规则的TCP转发）与定向UDP转发，以支持SNI分流后的naiveproxy h3代理应用。
 7. caddy实现了Caddyfile配置开启h2c server、PROXY protocol、naiveproxy等应用支持，让caddy配置简单化。
 8. caddy实现了json配置SNI分流应用，且同时支持端口或进程分别PROXY protocol发送，灵活性等同haproxy SNI分流。
 9. Xray服务端可以直接使用caddy以DNS API方式申请的证书与私钥，配合Xray服务端（版本必须不低于 v1.3.0）更新OCSP数据前自动检查并重载证书与私钥，可实现Xray服务端证书与私钥的申请及更新自动化。
@@ -37,10 +37,10 @@
 1. [v2ray(B+C+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(B%2BC%2BA)%2Bnginx) （反向代理WebSocket的综合应用。）
 2. [v2ray(B+C+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(B%2BC%2BG%2BA)%2Bnginx) （以nginx SNI兼顾反向代理WebSocket与grpc的综合应用。）
 ---
-1. [v2ray(E+B)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB)%2Bnginx) （vless+tcp+tls回落\分流应用。）
+1. [v2ray(E+B)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB)%2Bnginx) （vless+tcp+tls回落\分流简单应用。）
 2. [v2ray(E+B+C+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BG%2BA)%2Bnginx) （以vless+tcp+tls为主的综合应用。）
 ---
-1. [v2ray(F+B)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(F%2BB)%2Bnginx) （trojan+tcp+tls回落\分流应用。）
+1. [v2ray(F+B)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(F%2BB)%2Bnginx) （trojan+tcp+tls回落\分流简单应用。）
 2. [v2ray(F+B+C+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(F%2BB%2BC%2BG%2BA)%2Bnginx) （以trojan+tcp+tls为主的综合应用。）
 ---
 1. [v2ray(E+B+C+F+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BF%2BA)%2Bnginx) （以套娃方式兼顾vless\trojan+tcp+tls的综合应用。）
@@ -48,10 +48,10 @@
 #### &emsp;以Xray或v2ray为主、caddy(naiveproxy)为辅的综合应用。
 1. [v2ray(B+C+D+G+A)+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(B%2BC%2BD%2BG%2BA)%2Bnaiveproxy) （反向代理WebSocket、h2c、grpc加naiveproxy的综合应用。）
 ---
-1. [v2ray(E+B)+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB)%2Bnaiveproxy)（vless+tcp+tls回落\分流应用加naiveproxy应用。）
+1. [v2ray(E+B)+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB)%2Bnaiveproxy)（vless+tcp+tls回落\分流简单应用加naiveproxy应用。）
 2. [v2ray(E+B+C+D+G+A)+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BD%2BG%2BA)%2Bnaiveproxy) （以vless+tcp+tls为主加naiveproxy的综合应用。）
 ---
-1. [v2ray(F+B)+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(F%2BB)%2Bnaiveproxy)（trojan+tcp+tls回落\分流应用加naiveproxy应用。）
+1. [v2ray(F+B)+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(F%2BB)%2Bnaiveproxy)（trojan+tcp+tls回落\分流简单应用加naiveproxy应用。）
 2. [v2ray(F+B+C+D+G+A)+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(F%2BB%2BC%2BD%2BG%2BA)%2Bnaiveproxy) （以trojan+tcp+tls为主加naiveproxy的综合应用。）
 ---
 1. [v2ray(E+B+C+F+A)+caddy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BF%2BA)%2Bcaddy) （以套娃方式兼顾vless\trojan+tcp+tls的综合应用。）
