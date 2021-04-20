@@ -3,7 +3,7 @@
 2. 示例实现了回落应用的端口回落\分流到进程回落\分流及启用PROXY protocol的从低到高（效率）应用支持。
 3. 示例实现了反代应用的端口转发到进程转发的从低到高（效率）应用支持。
 4. 除v2ray(vless\vmess+kcp+seed)示例及应用外，其它示例及应用都支持流量伪装与防探测，且提供流量伪装的回落或反代网站都支持http自动跳转到https，SSL/TLS安全评估报告为A+等，与访问（探测）真实网站完全一致。
-5. nginx可同时实现了nginx SNI分流（TCP转发）与定向UDP转发，以支持SNI分流后的naiveproxy http/3代理应用。
+5. nginx同时实现了nginx SNI分流（TCP转发）与定向UDP转发，以支持SNI分流后的naiveproxy http/3代理应用。
 6. caddy实现了Caddyfile配置开启h2c server、PROXY protocol、naiveproxy等应用支持，让caddy配置简单化。
 7. caddy实现了json配置SNI分流应用，且同时支持端口或进程分别PROXY protocol发送，灵活性等同haproxy SNI分流。
 8. Xray服务端可直接使用caddy以DNS API方式申请的证书与私钥，配合Xray服务端（版本必须不低于 v1.3.0）更新OCSP数据前自动检查并重载证书与私钥，可实现Xray服务端证书与私钥的申请及更新自动化。
