@@ -3,7 +3,7 @@
 2. 示例实现了回落应用的端口回落\分流到进程回落\分流及启用PROXY protocol的从低到高（效率）应用支持。
 3. 示例实现了反代应用的端口转发到进程转发的从低到高（效率）应用支持。
 4. 除v2ray(vless\vmess+kcp+seed)示例及应用外，其它示例及应用都支持流量伪装与防探测，且提供流量伪装的回落或反代网站都支持http自动跳转到https，SSL/TLS安全评估报告为A+等，与访问（探测）真实网站完全一致。
-5. nginx可同时实现了nginx SNI分流（TCP转发）与定向UDP转发，以支持SNI分流后的naiveproxy h3代理应用。
+5. nginx可同时实现了nginx SNI分流（TCP转发）与定向UDP转发，以支持SNI分流后的naiveproxy http/3代理应用。
 6. caddy实现了Caddyfile配置开启h2c server、PROXY protocol、naiveproxy等应用支持，让caddy配置简单化。
 7. caddy实现了json配置SNI分流应用，且同时支持端口或进程分别PROXY protocol发送，灵活性等同haproxy SNI分流。
 8. Xray服务端可直接使用caddy以DNS API方式申请的证书与私钥，配合Xray服务端（版本必须不低于 v1.3.0）更新OCSP数据前自动检查并重载证书与私钥，可实现Xray服务端证书与私钥的申请及更新自动化。
@@ -13,7 +13,7 @@
 1. [trojan-go\trojan+caddy](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bcaddy) （trojan-go或trojan应用，web回落给caddy。）
 2. [trojan-go\trojan+nginx](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bnginx) （trojan-go或trojan应用，web回落给nginx。）
 ---
-1. [naiveproxy(caddy+forwardproxy)](https://github.com/lxhao61/integrated-examples/tree/main/naiveproxy(caddy%2Bforwardproxy)) （naiveproxy应用，基于h2或h3代理。）
+1. [naiveproxy(caddy+forwardproxy)](https://github.com/lxhao61/integrated-examples/tree/main/naiveproxy(caddy%2Bforwardproxy)) （naiveproxy应用，基于http/2或http/3代理。）
 ---
 1. [v2ray(vless\vmess+kcp+seed)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(vless%5Cvmess%2Bkcp%2Bseed)) （vless+kcp+seed与vmess+kcp+seed应用。vless+kcp+seed标记为A。）
 ---
@@ -69,7 +69,7 @@
 3. Xray或v2ray单一核心应用简记：A=vless+kcp+seed、B=vless+WS+tls、C=SS+v2ray-plugin+tls、D=vless+h2c+tls、E=vless+tcp+tls、F=trojan+tcp+tls、G=vless+grpc+tls。
 4. WebSocket（WS）类应用与grpc应用都支持CDN加速。
 5. naiveproxy=caddy+forwardproxy（服务端）。此程序文件已编译好，本人github下载即可。
-6. 目前caddy的https服务进程监听采用Unix Domain Socket应用不支持h3；若开启h3，caddy无法启动。
+6. 目前caddy的https服务进程监听采用Unix Domain Socket应用不支持http/3；若开启http/3，caddy无法启动。
 
 ### 服务端特殊应用配置示例
 1. [v2ray(other configuration)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(other%20configuration)) （Xray或v2ray的特殊应用配置方法。）
