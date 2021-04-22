@@ -1,6 +1,6 @@
 介绍：
 
-Xray\v2ray 前置（监听443端口），利用 vless+tcp+tls 强大的回落/分流特性，实现除 Xray\v2ray kcp 外共用443端口。vless+tcp+tls 以 h2 或 http/1.1 自适应协商连接，分流 WebSocket（WS） 连接，其它连接回落给 caddy；caddy 再处理，对 h2c 与 grpc 进行反向代理，若有 naiveproxy 就进行正向代理。包括应用如下：
+Xray\v2ray 前置（监听443端口），利用 vless+tcp+tls 强大的回落/分流特性，实现除 Xray\v2ray kcp 外共用443端口。vless+tcp+tls 以 h2 或 http/1.1 自适应协商连接，分流 WebSocket（WS） 连接，其它连接回落给 caddy；caddy 再处理，对 h2c 与 gRPC 进行反向代理，若有 naiveproxy 就进行正向代理。包括应用如下：
 
 1、E=vless+tcp+tls（回落/分流配置，tls由自己提供。）
 
@@ -10,7 +10,7 @@ Xray\v2ray 前置（监听443端口），利用 vless+tcp+tls 强大的回落/�
 
 4、D=vless+h2c+tls（tls由vless+tcp+tls提供及处理，不需配置；另可改成或添加vmess+h2c+tls应用，参考反向代理h2c的单一示例。）
 
-5、G=vless+grpc+tls（tls由vless+tcp+tls提供及处理，不需配置；另可改成或添加vmess+grpc+tls应用，参考反向代理grpc的单一示例。）
+5、G=vless+grpc+tls（tls由vless+tcp+tls提供及处理，不需配置；另可改成或添加vmess+grpc+tls应用，参考反向代理gRPC的单一示例。）
 
 6、A=vless+kcp+seed（可改成vmess+kcp+seed，或添加它。）
 
@@ -18,7 +18,7 @@ Xray\v2ray 前置（监听443端口），利用 vless+tcp+tls 强大的回落/�
 
 注意：
 
-1、Xray 版本不小于 1.4.0 或 v2ray 版本不小于v4.36.2，才完美支持 grpc 应用。
+1、Xray 版本不小于 1.4.0 或 v2ray 版本不小于v4.36.2，才完美支持 gRPC 应用。
 
 2、caddy 等于或大于 v2.2.0-rc.1 版才支持 h2c proxy，即支持 Xray\v2ray 的 h2c（gRPC） 反向代理。
 
