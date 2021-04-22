@@ -1,6 +1,6 @@
 介绍：
 
-此示例包括 Xray\v2ray、naiveproxy（caddy）、trojan-go\trojan 应用。利用 haproxy 或 nginx 支持 SNI 分流特性，对 Xray\v2ray（vless+tcp+tls）、naiveproxy（caddy）、trojan-go\trojan 进行 SNI 分流（四层转发），实现除 Xray\v2ray kcp 外共用443端口。caddy 同时为 Xray\v2ray（vless+tcp+tls）与 trojan-go\trojan 提供 web 回落服务，为 Xray\v2ray 的 h2c 与 grpc 进行反向代理，为 naiveproxy 提供正向代理。包括应用如下：
+此示例包括 Xray\v2ray、naiveproxy（caddy）、trojan-go\trojan 应用。利用 haproxy 或 nginx 支持 SNI 分流特性，对 Xray\v2ray（vless+tcp+tls）、naiveproxy（caddy）、trojan-go\trojan 进行 SNI 分流（四层转发），实现除 Xray\v2ray kcp 外共用443端口。caddy 同时为 Xray\v2ray（vless+tcp+tls）与 trojan-go\trojan 提供 web 回落服务，为 Xray\v2ray 的 h2c 与 gRPC 进行反向代理，为 naiveproxy 提供正向代理。包括应用如下：
 
 1、E=vless+tcp+tls（回落/分流配置，tls由自己提供。）
 
@@ -10,7 +10,7 @@
 
 4、D=vless+h2c+tls（tls由caddy提供及处理，不需配置；另可改成或添加vmess+h2c+tls应用，参考反向代理h2的单一示例。）
 
-5、G=vless+grpc+tls（tls由caddy提供及处理，不需配置；另可改成或添加vmess+grpc+tls应用，参考反向代理grpc的单一示例。）
+5、G=vless+grpc+tls（tls由caddy提供及处理，不需配置；另可改成或添加vmess+grpc+tls应用，参考反向代理gRPC的单一示例。）
 
 6、A=vless+kcp+seed（可改成vmess+kcp+seed，或添加它。）
 
@@ -20,9 +20,9 @@
 
 注意：
 
-1、Xray 版本不小于 1.4.0 或 v2ray 版本不小于v4.36.2，才完美支持 grpc 应用。
+1、Xray 版本不小于 1.4.0 或 v2ray 版本不小于v4.36.2，才完美支持 gRPC 应用。
 
-2、caddy 等于或大于 v2.2.0-rc.1 版才支持 h2c proxy，即支持 Xray\v2ray 的 h2c（grpc） 反向代理。
+2、caddy 等于或大于 v2.2.0-rc.1 版才支持 h2c proxy，即支持 Xray\v2ray 的 h2c（gRPC） 反向代理。
 
 3、caddy 等于或大于 v2.3.0 版才支持 Caddyfile 配置开启 h2c server。
 
@@ -44,7 +44,7 @@
 
 12、配置1：采用端口分流、端口回落\分流、端口转发。配置2：采用进程分流（对应trojan-go\trojan采用端口分流）、端口回落\分流（分流到vless+WS采用进程分流）、端口转发。配置3：采用进程分流（对应trojan-go\trojan采用端口分流）、端口回落\分流（分流vless+WS采用进程分流）、端口转发，且启用了 PROXY protocol（对应trojan-go\trojan除外）。
 
-13、若采用配置2、且使用 nginx SNI 来分流的，又想 naiveproxy 开启 http/3 代理支持，可参考配置1。nginx 添加 udp 代理。naiveproxy 把进程转发改成端口转发，且 naiveproxy http/3 开启。
+13、若采用配置2、且使用 nginx SNI 来分流的，又想 naiveproxy 开启 http/3 代理支持，可参考配置1。nginx 添加定向 UDP 转发。naiveproxy 把进程转发改成端口转发，且 naiveproxy http/3 开启。
 
 14、若除了实现最多应用的科学上网、还需提供实际网站服务，推荐本示例、网站服务可由 nginx 或 caddy 提供服务；否则推荐采用 [v2ray(E+B+C+D+G+A)+trojan+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BD%2BG%2BA)%2Btrojan%2Bnaiveproxy) 示例。
 
