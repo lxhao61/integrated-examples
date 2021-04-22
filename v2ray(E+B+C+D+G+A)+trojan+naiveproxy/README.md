@@ -8,7 +8,7 @@
 
 3、C=SS+v2ray-plugin+tls（tls由vless+tcp+tls提供及处理，不需配置。）
 
-4、D=vless+h2c+tls（tls由caddy提供及处理，不需配置；另可改成或添加vmess+h2c+tls应用，参考反向代理h2的单一示例。）
+4、D=vless+h2c+tls（tls由caddy提供及处理，不需配置；另可改成或添加vmess+h2c+tls应用，参考反向代理h2c的单一示例。）
 
 5、G=vless+grpc+tls（tls由caddy提供及处理，不需配置；另可改成或添加vmess+grpc+tls应用，参考反向代理gRPC的单一示例。）
 
