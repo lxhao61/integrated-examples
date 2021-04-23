@@ -9,7 +9,7 @@ xx.yy { //修改成自己的域名
 
 //dnspodcn以dns api方式申请tls证书（以上参数修改如下）
 .........<省略>........
-xx.yy { //换成你的域名，xx.yy表示申请普通证书（此处xx.yy是根域名）。
+*.xx.yy, xx.yy { //换成你的域名,*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。若不要根域名部分，可以取消。
     tls {
         ciphers TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
         alpn http/1.1 h2
@@ -17,7 +17,7 @@ xx.yy { //换成你的域名，xx.yy表示申请普通证书（此处xx.yy是根
     }
 .........<省略>........
 注意：
-1、域名改成通配符域名（*.xx.yy），就申请通配符tls证书；否则就申请普通tls证书。
+1、caddy采用dns api方式申请的通配符tls证书，不包括根域名证书。如要根域名证书，需加根域名申请，即如上两者都配置。
 
 
 //原配置参数（仅回落，无启用https应用。）：
@@ -40,13 +40,13 @@ xx.yy { //换成你的域名，xx.yy表示申请普通证书（此处xx.yy是根
 .........<省略>........
 }
 .........<省略>........
-:7443, xx.yy { //换成你的域名，xx.yy表示申请普通证书（此处xx.yy是根域名）。
+:7443, *.xx.yy, xx.yy { //换成你的域名,*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。若不要根域名部分，可以取消。
     tls {
         dns dnspodcn 1232456 e09062f1fd2545555fc8a15fceda2222 //换成你dnspod.cn的DP_Id与DP_Key
     }
 }
 注意：
-1、域名改成通配符域名（*.xx.yy），就申请通配符tls证书；否则就申请普通tls证书。
+1、caddy采用dns api方式申请的通配符tls证书，不包括根域名证书。如要根域名证书，需加根域名申请，即如上两者都配置。
 
 
 //原配置参数（其它第三方软件申请tls证书，手工配置路径加载。）：
@@ -76,7 +76,7 @@ xx.yy { //换成你的域名，xx.yy表示申请普通证书（此处xx.yy是根
 .........<省略>........
 }
 .........<省略>........
-:7443, *.xx.yy { //本机https server端口监听，提供naiveproxy、h2c proxy等应用。*.xx.yy改成自己的通配符域名。
+:7443, *.xx.yy, xx.yy { //换成你的域名,*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。若不要根域名部分，可以取消。
     bind 127.0.0.1 //只监听本机，避免本机外的机器探测到上面端口。
     tls {
         ciphers TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
@@ -85,5 +85,5 @@ xx.yy { //换成你的域名，xx.yy表示申请普通证书（此处xx.yy是根
     }
 .........<省略>........
 注意：
-1、caddy采用dns api方式申请的通配符tls证书，不包括根域名证书。如要根域名证书，需加根域名申请。
+1、caddy采用dns api方式申请的通配符tls证书，不包括根域名证书。如要根域名证书，需加根域名申请，即如上两者都配置。
 2、不支持进程监听模式。
