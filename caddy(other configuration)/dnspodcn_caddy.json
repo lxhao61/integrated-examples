@@ -18,7 +18,7 @@
   }
 }
 
-//cloudflare以dns api方式申请tls证书（以上参数修改如下）
+//dnspodcn以dns api方式申请tls证书（以上参数修改如下）
 .........<省略>........
           "tls_connection_policies": [{
             "match": {
