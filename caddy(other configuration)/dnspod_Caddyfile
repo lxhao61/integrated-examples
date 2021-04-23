@@ -9,7 +9,7 @@ xx.yy { //修改成自己的域名
 
 //dnspod以dns api方式申请tls证书（以上参数修改如下）
 .........<省略>........
-*.xx.yy, xx.yy { //换成你的域名,*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。两者可以二选一配置。
+*.xx.yy, xx.yy { //换成你的域名。*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。两者可以二选一配置。
     tls {
         ciphers TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
         alpn http/1.1 h2
@@ -40,7 +40,7 @@ xx.yy { //修改成自己的域名
 .........<省略>........
 }
 .........<省略>........
-:7443, *.xx.yy, xx.yy { //换成你的域名,*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。两者可以二选一配置。
+:7443, *.xx.yy, xx.yy { //换成你的域名。*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。两者可以二选一配置。
     tls {
         dns dnspod 1232456.e09062f1fd2545555fc8a15fceda2222 //换成你dnspod.com的DP_Id与DP_Key
     }
@@ -76,7 +76,7 @@ xx.yy { //修改成自己的域名
 .........<省略>........
 }
 .........<省略>........
-:7443, *.xx.yy, xx.yy { //换成你的域名,*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。若不要根域名部分，可以取消。
+:7443, *.xx.yy, xx.yy { //换成你的域名。*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。若不要根域名部分，可以取消。
     bind 127.0.0.1 //只监听本机，避免本机外的机器探测到上面端口。
     tls {
         ciphers TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
