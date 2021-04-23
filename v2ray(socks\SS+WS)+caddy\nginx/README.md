@@ -1,6 +1,6 @@
 介绍：
 
-通过 caddy 或 nginx 前置（监听443端口）实现 WebSocket（WS） 反向代理，tls 由 caddy 或 nginx 提供及处理；包括 socks+WS+tls 与 shadowsocks+WS+tls 两种应用。
+通过 caddy 或 nginx 前置（监听443端口）实现 WebSocket（WS） 反向代理，tls 由 caddy 或 nginx 提供及处理；包括 socks+ws+tls 与 shadowsocks+ws+tls 两种应用。
 
 原理：
 
