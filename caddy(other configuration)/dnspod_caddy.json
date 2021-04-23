@@ -32,7 +32,7 @@
     },
     "tls": {
       "certificates": {
-        "automate": ["*.xx.yy","xx.yy"] //换成你的域名，*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。两者可以二选一配置。
+        "automate": ["*.xx.yy","xx.yy"] //换成你的域名。*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。两者可以二选一配置。
       },
       "automation": {
         "policies": [{
@@ -89,7 +89,7 @@
     },
     "tls": {
       "certificates": {
-        "automate": ["*.xx.yy","xx.yy"] //换成你的域名，*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。两者可以二选一配置。
+        "automate": ["*.xx.yy","xx.yy"] //换成你的域名。*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。两者可以二选一配置。
       },
       "automation": {
         "policies": [{
@@ -151,7 +151,7 @@
 .........<省略>........
     "tls": {
       "certificates": {
-        "automate": ["*.xx.yy","xx.yy"] //换成你的域名，*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。若不要根域名部分，可以取消。
+        "automate": ["*.xx.yy","xx.yy"] //换成你的域名。*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。若不要根域名部分，可以取消。
       },
       "automation": {
         "policies": [{
