@@ -4,7 +4,7 @@ Xray\v2ray 前置（监听443端口），利用 trojan+tcp+tls 强大的回落/�
 
 1、F=trojan+tcp+tls（回落/分流配置，tls由自己提供。）
 
-2、B=vless+WS+tls（tls由trojan+tcp+tls提供及处理，不需配置；另可改成或添加其它WS类应用，参考反向代理WS类的单一示例。）
+2、B=vless+ws+tls（tls由trojan+tcp+tls提供及处理，不需配置；另可改成或添加其它WS类应用，参考反向代理WS类的单一示例。）
 
 3、naiveproxy（带有forwardproxy插件的caddy才支持naiveproxy应用，否则仅上边应用。tls由trojan+tcp+tls提供及处理，不需配置。）
 
