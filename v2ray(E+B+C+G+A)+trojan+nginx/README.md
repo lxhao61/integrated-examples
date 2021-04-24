@@ -28,6 +28,6 @@
 
 6、nginx 预编译程序包一般不带支持 SNI 分流协议的模块。如要使用此项协议应用，需加 stream_ssl_preread_module 模块构建自定义模板，再进行源代码编译和安装。
 
-7、此方法采用的是 SNI 方式实现共用443端口，支持 Xray\v2ray（vless+tcp+tls）、trojan-go\trojan、nginx（http/2 server） 完美共存，支持各自特色应用，但需多个域名（多个证书或通配符证书）来标记分流。
+7、此方法采用的是 SNI 方式实现共用443端口，支持 Xray\v2ray（vless+tcp+tls）、trojan-go\trojan、nginx（http/2 server） 完美共存，支持各自特色应用，但需多个域名来标记分流。
 
 8、配置1：采用端口分流、端口回落\分流、端口转发。配置2：采用进程分流（对应trojan-go\trojan采用端口分流）、端口回落\分流（分流vless+WS采用进程分流）、进程转发。
