@@ -10,8 +10,8 @@
     ],
     "log_level": 1,
     "ssl": {
-        "cert": "/etc/ssl/tls/xx.yy.crt", //换成你的证书，绝对路径。
-        "key": "/etc/ssl/tls/xx.yy.key", //换成你的私钥，绝对路径。
+        "cert": "/etc/ssl/tls/xx.yy.crt", //换成你的通配符证书，绝对路径。
+        "key": "/etc/ssl/tls/xx.yy.key", //换成你的通配符私钥，绝对路径。
         "key_password": "",
         "cipher": "ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384",
         "cipher_tls13": "TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384",
