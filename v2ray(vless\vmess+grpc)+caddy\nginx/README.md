@@ -15,10 +15,12 @@
 
 3、因 caddy 实现 h2c 反向代理仅支持端口转发，故通过 caddy 实现 gRPC 反向代理也仅支持端口转发，不支持进程转发。
 
-4、caddy 的 Caddyfile 配置与 caddy.json 配置二选一（效果一样）。支持自动 https，即自动申请与更新证书与私钥，自动 http 重定向到 https。
+4、通过 caddy 实现的 gRPC 反向代理与 cloudflare CDN 目前存在兼容问题，故 caddy 反向代理 gRPC 不支持 cloudflare 的 CDN 应用。
 
-5、若采用 nginx 反向代理 gRPC，配置 nginx 时需要启用 http/2，因为 gRPC 必须使用 http/2 传输数据。使用源码编译和安装，编译时需要加入 http_ssl 和 http_v2 模块。
+5、caddy 的 Caddyfile 配置与 caddy.json 配置二选一（效果一样）。支持自动 https，即自动申请与更新证书与私钥，自动 http 重定向到 https。
 
-6、如果系统版本过低，其对应发行版仓库自带 nginx 预编译程序包可能不支持 tls1.3；如需要支持 tls1.3，必须先升级 OpenSSl 版本大于 1.1.1，再进行 nginx 源代码编译和安装。
+6、若采用 nginx 反向代理 gRPC，配置 nginx 时需要启用 http/2，因为 gRPC 必须使用 http/2 传输数据。使用源码编译和安装，编译时需要加入 http_ssl 和 http_v2 模块。
 
-7、配置1：采用端口转发。配置2：采用进程转发。
+7、如果系统版本过低，其对应发行版仓库自带 nginx 预编译程序包可能不支持 tls1.3；如需要支持 tls1.3，必须先升级 OpenSSl 版本大于 1.1.1，再进行 nginx 源代码编译和安装。
+
+8、配置1：采用端口转发。配置2：采用进程转发。
