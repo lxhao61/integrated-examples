@@ -15,7 +15,7 @@
 
 3、因 caddy 实现 h2c 反向代理仅支持端口转发，故通过 caddy 实现 gRPC 反向代理也仅支持端口转发，不支持进程转发。
 
-4、通过 caddy 实现的 gRPC 反向代理与 cloudflare CDN 目前存在兼容问题，故 caddy 反向代理 gRPC 不支持 cloudflare 的 CDN 应用。
+4、通过 caddy 实现的 gRPC 反向代理与 cloudflare CDN 目前存在兼容问题，故 caddy 反向代理 gRPC 不能启用 cloudflare 的 CDN 应用。
 
 5、caddy 的 Caddyfile 配置与 caddy.json 配置二选一（效果一样）。支持自动 https，即自动申请与更新证书与私钥，自动 http 重定向到 https。
 
