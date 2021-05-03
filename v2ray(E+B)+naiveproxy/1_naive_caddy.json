@@ -44,6 +44,9 @@
             }]
           },
           {
+            "match": [{
+              "host": ["xx.yy"] //限定域名访问
+            }],
             "handle": [{
               "handler": "headers",
               "response": {
@@ -58,6 +61,9 @@
             }],
             "terminal": true
           }],
+          "automatic_https": {
+            "disable": true //完全禁用自动https
+          },
           "allow_h2c": true //开启h2c server支持
         }
       }
