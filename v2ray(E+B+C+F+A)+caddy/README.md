@@ -22,7 +22,7 @@ Xray\v2ray 前置（监听443端口），vless+tcp+tls 以 h2 或 http/1.1 自�
 
 4、caddy 发行版不支持 PROXY protocol（接收）。如要支持 PROXY protocol 需选 caddy2-proxyprotocol 插件定制编译，或下载本人 github 中编译好的 caddy 来使用即可。
 
-5、本示例中 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。
+5、本示例中 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可。推荐使用 json 格式配置，可能配置优化更好。
 
 6、此方法采用的是套娃方式实现共用443端口，支持 vless+tcp+tls 与 trojan+tcp+tls 完美共存，且仅需要一个域名及普通证书即可搞定，但 trojan+tcp+tls（tls由vless+tcp+tls提供及处理） 不支持 xtls 应用。
 
