@@ -47,7 +47,7 @@
           {
             "match": [{
               "tls": {
-                "sni": ["zc.xx.yy"] //修改成自己规划对应https server的域名
+                "sni": ["zh.xx.yy"] //修改成自己规划对应https server的域名
               }
             }],
             "handle": [{
@@ -79,7 +79,7 @@
           "listen": ["127.0.0.1:88"], //本机端口监听，避免除本机外的机器探测及非安全web访问，仅接收web回落。
           "routes": [{
             "match": [{
-              "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改成自己的域名。
+              "host": ["zv.xx.yy","zt.xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改成自己的SNI分流对应域名。
             }],
             "handle": [{
               "handler": "headers",
@@ -149,7 +149,7 @@
           },
           {
             "match": [{
-              "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改成自己的域名。
+              "host": ["zh.xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改成自己的SNI分流对应域名。
             }],
             "handle": [{
               "handler": "headers",
@@ -175,7 +175,7 @@
           "automatic_https": {
             "disable": true //禁用自动https
           },
-          "experimental_http3": false //关闭http3 server支持。目前采用caddy2 SNI分流，不支持UDP。
+          "experimental_http3": false //关闭http3 server支持。目前采用caddy SNI分流，不支持UDP。
         }
       }
     },
