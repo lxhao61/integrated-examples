@@ -62,7 +62,7 @@
             "terminal": true
           }],
           "automatic_https": {
-            "disable": true //完全禁用自动https
+            "disable": true //禁用自动https
           },
           "allow_h2c": true //开启h2c server支持
         }
