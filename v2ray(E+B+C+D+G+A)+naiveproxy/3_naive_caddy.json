@@ -80,6 +80,9 @@
             "terminal": true
           },
           {
+            "match": [{
+              "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改成自己的域名。
+            }],
             "handle": [{
               "handler": "headers",
               "response": {
@@ -94,6 +97,9 @@
             }],
             "terminal": true
           }],
+          "automatic_https": {
+            "disable": true //禁用自动https
+          },
           "allow_h2c": true //开启h2c server支持
         }
       }
