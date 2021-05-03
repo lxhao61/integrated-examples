@@ -45,7 +45,7 @@
           },
           {
             "match": [{
-              "host": ["xx.yy"] //限定域名访问
+              "host": ["xx.yy"] //限定域名访问，修改成自己的域名。
             }],
             "handle": [{
               "handler": "headers",
