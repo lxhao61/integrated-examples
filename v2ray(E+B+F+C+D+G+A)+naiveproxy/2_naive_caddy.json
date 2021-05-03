@@ -182,8 +182,8 @@
     "tls": {
       "certificates": {
         "load_files": [{
-          "certificate": "/etc/ssl/tls/xx.yy.crt", //换成你的证书，绝对路径。
-          "key": "/etc/ssl/tls/xx.yy.key", //换成你的私钥，绝对路径。
+          "certificate": "/etc/ssl/tls/xx.yy.crt", //换成你的证书（此处示例是通配符证书），绝对路径。
+          "key": "/etc/ssl/tls/xx.yy.key", //换成你的私钥（此处示例是通配符私钥），绝对路径。
           "tags": ["tls-1"]
         }]
       }
