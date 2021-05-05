@@ -136,9 +136,29 @@
     "tls": {
       "certificates": {
         "load_files": [{
-          "certificate": "/etc/ssl/tls/xx.yy.crt", //换成你的证书（此处示例是通配符证书），绝对路径。
-          "key": "/etc/ssl/tls/xx.yy.key", //换成你的私钥（此处示例是通配符私钥），绝对路径。
+          "certificate": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zh.xx.yy/zh.xx.yy.crt", //换成你的证书，绝对路径。
+          "key": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zh.xx.yy/zh.xx.yy.key", //换成你的密钥，绝对路径。
           "tags": ["tls01"]
+        }]
+      }
+    }
+  }
+}
+//上边tls部分改成如下，可申请普通证书及密钥给Xray\v2ray及自己使用。推荐Xray使用，配合Xray（版本必须不低于v1.3.0）自动重载证书及密钥（OCSP Stapling），可实现示例所需证书及密钥申请与更新完全自动化。
+    "tls": {
+      "certificates": {
+        "automate": ["zv.xx.yy","zt.xx.yy","zh.xx.yy"] //修改成自己的域名
+      },
+      "automation": {
+        "policies": [{
+          "storage": {
+            "module": "file_system",
+            "root": "/home/tls" //存放证书及密钥的基本路径
+          },
+          "key_type": "p256", //申请密钥的类型，可选参数。
+          "issuers": [{
+            "module": "acme" //必须acme与zerossl二选一（固定证书及密钥绝对路径便于引用）。acme表示从Let's Encrypt申请证书及密钥，zerossl表示从ZeroSSL申请证书及密钥。
+          }]
         }]
       }
     }
