@@ -34,13 +34,13 @@
           {
             "match": [{
               "tls": {
-                "sni": ["zt.xx.yy"] //修改成自己规划对应trojan（trojan-go）的域名
+                "sni": ["zt.xx.yy"] //修改成自己规划对应trojan-go\trojan的域名
               }
             }],
             "handle": [{
               "handler": "proxy",
               "upstreams": [{
-                "dial": ["127.0.0.1:6443"] //转给trojan（trojan-go）本地监听端口
+                "dial": ["127.0.0.1:6443"] //转给trojan-go\trojan本地监听端口
               }]
             }]
           },
@@ -180,8 +180,8 @@
     "tls": {
       "certificates": {
         "load_files": [{
-          "certificate": "/etc/ssl/tls/xx.yy.crt", //换成你的证书（此处示例是通配符证书），绝对路径。
-          "key": "/etc/ssl/tls/xx.yy.key", //换成你的私钥（此处示例是通配符私钥），绝对路径。
+          "certificate": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zh.xx.yy/zh.xx.yy.crt", //换成你的证书，绝对路径。
+          "key": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zh.xx.yy/zh.xx.yy.key", //换成你的密钥，绝对路径。
           "tags": ["tls01"]
         }]
       }
