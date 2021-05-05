@@ -38,9 +38,6 @@
             }],
             "handle": [{
               "handler": "reverse_proxy",
-              "transport": {
-                "protocol": "http"
-              },
               "upstreams": [{
                 "dial": "unix//dev/shm/vws.sock" //转发给本机vless+ws监听进程
               }]
@@ -57,9 +54,6 @@
             }],
             "handle": [{
               "handler": "reverse_proxy",
-              "transport": {
-                "protocol": "http"
-              },
               "upstreams": [{
                 "dial": "127.0.0.1:2002" //转发给本机Xray-plugin或v2ray-plugin监听端口
               }]
@@ -100,6 +94,9 @@
             "terminal": true
           },
           {
+            "match": [{
+              "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改成自己的域名。
+            }],
             "handle": [{
               "handler": "headers",
               "response": {
@@ -120,7 +117,8 @@
             },
             "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"],
             "alpn": ["h2","http/1.1"]
-          }]
+          }],
+          "experimental_http3": true //开启http3 server支持
         }
       }
     },
