@@ -55,7 +55,7 @@
           "allow_h2c": true //开启h2c server支持
         }
       }
-//申请tls证书及密钥给Xray\v2ray使用。推荐Xray使用，配合Xray服务端（版本必须不低于 v1.3.0）更新OCSP数据前自动检查并重载证书与私钥，可实现Xray服务端证书与私钥的申请及更新自动化。
+//申请tls证书及密钥给Xray\v2ray使用。推荐Xray使用，配合Xray（版本必须不低于 v1.3.0）自动重载证书（OCSP Stapling），可实现示例tls证书及密钥的申请及更新自动化。
     },
     "tls": {
       "certificates": {
