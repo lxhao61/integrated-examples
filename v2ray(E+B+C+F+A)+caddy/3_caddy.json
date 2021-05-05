@@ -75,8 +75,8 @@
             "module": "acme" //必须acme与zerossl二选一（固定证书及密钥绝对路径便于引用）。acme表示从Let's Encrypt申请证书及密钥，zerossl表示从ZeroSSL申请证书及密钥。
           }]
         }]
-//相关参数到此处为止。若不让caddy申请证书及密钥给Xray\v2ray使用，删除此部分参数即可。
       }
+//相关参数到此处为止。若不让caddy申请证书及密钥给Xray\v2ray使用，删除此部分参数即可。
     }
   }
 }
