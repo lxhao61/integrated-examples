@@ -24,7 +24,7 @@
         basic_auth user pass //naiveproxy账号与密码，修改为自己的。
         hide_ip
         hide_via
-        probe_resistance unsplash.com:443
+        probe_resistance
     }
 
     reverse_proxy /SeuW56Es 127.0.0.1:2005 { //与vless+h2c应用中path对应，转发给本机vless+h2c监听端口。
