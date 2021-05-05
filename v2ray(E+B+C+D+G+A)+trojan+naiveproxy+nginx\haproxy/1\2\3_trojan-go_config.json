@@ -14,8 +14,8 @@
   "udp_timeout": 60,
   "ssl": {
     "verify_hostname": true,
-    "cert": "/etc/ssl/tls/zt.xx.yy.crt", //换成你的证书，绝对路径。
-    "key": "/etc/ssl/tls/zt.xx.yy.key", //换成你的密钥，绝对路径。
+    "cert": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zt.xx.yy/zt.xx.yy.crt", //换成你的证书，绝对路径。
+    "key": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zt.xx.yy/zt.xx.yy.key", //换成你的密钥，绝对路径。
     "key_password": "",
     "cipher": "",
     "curves": "",
