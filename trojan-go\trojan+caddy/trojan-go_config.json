@@ -15,7 +15,7 @@
   "ssl": {
     "verify_hostname": true,
     "cert": "/etc/ssl/tls/xx.yy.crt", //换成你的证书，绝对路径。
-    "key": "/etc/ssl/tls/xx.yy.key", //换成你的私钥，绝对路径。
+    "key": "/etc/ssl/tls/xx.yy.key", //换成你的密钥，绝对路径。
     "key_password": "",
     "cipher": "",
     "curves": "",
