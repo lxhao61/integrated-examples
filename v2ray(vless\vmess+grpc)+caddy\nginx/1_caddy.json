@@ -32,10 +32,12 @@
               "upstreams": [{
                 "dial": "127.0.0.1:2009" //转发给本机vless+grpc或vmess+grpc监听端口
               }]
-            }],
-            "terminal": true
+            }]
           },
           {
+            "match": [{
+              "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改成自己的域名。
+            }],
             "handle": [{
               "handler": "headers",
               "response": {
@@ -47,8 +49,7 @@
             {
               "handler": "file_server",
               "root": "/var/www/html" //修改为自己存放的web文件路径
-            }],
-            "terminal": true
+            }]
           }],
           "tls_connection_policies": [{
             "match": {
@@ -58,11 +59,6 @@
             "alpn": ["h2","http/1.1"]
           }]
         }
-      }
-    },
-    "tls": {
-      "certificates": {
-        "automate": ["xx.yy"] //修改成自己的域名
       }
     }
   }
