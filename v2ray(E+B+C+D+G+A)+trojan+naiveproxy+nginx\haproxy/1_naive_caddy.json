@@ -123,7 +123,7 @@
           "automatic_https": {
             "disable": true //禁用自动https
           },
-          "experimental_http3": false //关闭http3 server支持。目前采用caddy SNI分流，不支持UDP。
+          "experimental_http3": true //开启http3 server支持。若采用haproxy SNI分流，不支持UDP，此项可关闭。
         }
       }
     },
@@ -147,7 +147,7 @@
           "automatic_https": {
             "disable": true //禁用自动https
           },
-          "experimental_http3": false //关闭http3 server支持。目前采用caddy SNI分流，不支持UDP。
+          "experimental_http3": true //开启http3 server支持。若采用haproxy SNI分流，不支持UDP，此项可关闭。
         }
       }
     },
