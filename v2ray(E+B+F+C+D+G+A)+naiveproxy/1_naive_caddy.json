@@ -158,7 +158,7 @@
               "root": "/var/www/html" //修改为自己存放的web文件路径
             }]
           }],
-//tls部分
+//tls部分（从此开始到结尾）
           "tls_connection_policies": [{
             "certificate_selection": {
               "any_tag": ["tls01"]
