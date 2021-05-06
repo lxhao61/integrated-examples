@@ -28,7 +28,7 @@
       "automation": {
         "policies": [{
           "issuers": [{
-            "module": "acme", //可以改为zerossl，采用zerossl申请证书及秘钥。
+            "module": "acme", //可以改为zerossl，采用zerossl申请证书及密钥。
             "challenges": {
               "dns": {
                 "provider": {
@@ -81,7 +81,7 @@
           },
           "key_type": "p256", //申请密钥的类型，可选参数。
           "issuers": [{
-            "module": "acme", //可以改为zerossl，采用zerossl申请证书及秘钥。
+            "module": "acme", //可以改为zerossl，采用zerossl申请证书及密钥。
             "challenges": {
               "dns": {
                 "provider": {
@@ -146,7 +146,7 @@
           },
           "key_type": "p256", //申请密钥的类型，可选参数。
           "issuers": [{
-            "module": "acme", //可以改为zerossl，采用zerossl申请证书及秘钥。
+            "module": "acme", //可以改为zerossl，采用zerossl申请证书及密钥。
             "challenges": {
               "dns": {
                 "provider": {
