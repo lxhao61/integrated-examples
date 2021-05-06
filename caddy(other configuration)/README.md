@@ -1,6 +1,6 @@
-一、回落 caddy 分流到不同网站的配置方法
+一、caddy 接受回落后分流到不同网站的配置方法
 
-此方法解决 Xray\v2ray 前置监听443后，不影响原来 caddy 前置时，不同域名访问不同网站问题。
+此方法解决 Xray\v2ray 前置监听443后，不影响原来 caddy 前置时，不同域名访问不同网站问题。见 shunt_caddy.json 配置。
 
 注意：
 
@@ -8,7 +8,7 @@
 
 2、此回落到不同网站是 Xray\v2ray 解除 tls 后 caddy 进行的 host（域名）分流。
 
-3、caddy json 配置才支持此应用， Caddyfile 配置不支持。因 Caddyfile 配置参数是简化的，非完整的。
+3、caddy 的 json 配置才支持此应用， Caddyfile 配置不支持。因 Caddyfile 配置参数是简化的，非完整的。
 
 4、也可以用 caddy SNI 或 haproxy SNI 等分流来解决问题（不同方法，达到相同效果。）。caddy SNI 配置示例见如下介绍。haproxy SNI 配置示例参考示例中用 haproxy SNI 分流的 haproxy 配置。
 
