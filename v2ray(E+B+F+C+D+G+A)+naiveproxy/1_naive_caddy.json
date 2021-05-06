@@ -71,8 +71,7 @@
               "headers": {
                 "Location": ["https://{http.request.host}{http.request.uri}"] //http自动跳转https,让网站看起来更真实。
               }
-            }],
-            "terminal": true
+            }]
           }]
         },
         "h1h2c": {
@@ -92,8 +91,7 @@
             {
               "handler": "file_server",
               "root": "/var/www/html" //修改成自己存放的web文件路径
-            }],
-            "terminal": true
+            }]
           }],
           "automatic_https": {
             "disable": true //禁用自动https
@@ -125,8 +123,7 @@
               "upstreams": [{
                 "dial": "127.0.0.1:2005" //转发给本机vless+h2c监听端口
               }]
-            }],
-            "terminal": true
+            }]
           },
           {
             "match": [{
@@ -142,8 +139,7 @@
               "upstreams": [{
                 "dial": "127.0.0.1:2009" //转发给本机vless+grpc监听端口
               }]
-            }],
-            "terminal": true
+            }]
           },
           {
             "match": [{
@@ -160,8 +156,7 @@
             {
               "handler": "file_server",
               "root": "/var/www/html" //修改为自己存放的web文件路径
-            }],
-            "terminal": true
+            }]
           }],
           "tls_connection_policies": [{
             "certificate_selection": {
