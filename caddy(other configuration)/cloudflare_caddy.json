@@ -12,7 +12,7 @@
 //cloudflare以dns api方式申请tls证书（以上参数修改如下）
 .........<省略>........
             "match": [{
-              "host": ["*.xx.yy","xx.yy"] //修改成自己的域名。*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。两者可以二选一配置。
+              "host": ["*.xx.yy","xx.yy"] //修改成自己的域名。*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。可二选一配置。
             }],
 .........<省略>........
             "match": {
@@ -27,12 +27,8 @@
     "tls": {
       "automation": {
         "policies": [{
-          "storage": {
-            "module": "file_system",
-            "root": "/home/tls" //存放tls证书路径及目录
-          },
           "issuers": [{
-            "module": "acme", //可以改为zerossl，采用zerossl申请证书及秘钥。
+            "module": "acme", //可以改为zerossl，采用zerossl申请证书及密钥。
             "challenges": {
               "dns": {
                 "provider": {
@@ -48,10 +44,10 @@
   }
 }
 注意：
-1、caddy采用dns api方式申请的通配符tls证书，不包括根域名证书。如要根域名证书，需加根域名申请，即如上两者都配置。
+1、caddy采用dns api方式申请的通配符tls证书，不包括根域名证书。如要根域名证书，需加根域名申请，见上示例配置。
 
 
-//原配置参数（仅回落，无启用https应用。）：
+//原配置参数（回落及反代应用，无https应用。）：
 .........<省略>........
             "match": [{
               "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改成自己的域名。
@@ -72,16 +68,17 @@
     },
     "tls": {
       "certificates": {
-        "automate": ["*.xx.yy","xx.yy"] //换成你的域名。*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。两者可以二选一配置。
+        "automate": ["*.xx.yy","xx.yy"] //修改成自己的域名。*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。可二选一配置。
       },
       "automation": {
         "policies": [{
           "storage": {
             "module": "file_system",
-            "root": "/home/tls" //存放tls证书路径及目录
+            "root": "/home/tls" //存放证书及密钥的基本路径
           },
+          "key_type": "p256", //申请密钥的类型，可选参数。
           "issuers": [{
-            "module": "acme", //可以改为zerossl，采用zerossl申请证书及秘钥。
+            "module": "acme", //必须acme与zerossl二选一（固定证书及密钥绝对路径便于引用）。acme表示从Let's Encrypt申请证书及密钥，zerossl表示从ZeroSSL申请证书及密钥。
             "challenges": {
               "dns": {
                 "provider": {
@@ -96,24 +93,24 @@
     }
   }
 }
-1、caddy采用dns api方式申请的通配符tls证书，不包括根域名证书。如要根域名证书，需加根域名申请，即如上两者都配置。
+1、caddy采用dns api方式申请的通配符tls证书，不包括根域名证书。如要根域名证书，需加根域名申请，见上示例配置。
 
 
-//原配置参数（其它第三方软件申请tls证书，手工配置路径加载。）：
+//原配置参数（回落及反代应用，且https应用。）：
 .........<省略>........
             "match": [{
               "host": ["zh.xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改成自己的SNI分流对应域名。
             }],
 .........<省略>........
           "tls_connection_policies": [{
-.........<省略>........
+//.........<省略>........
           }],
 .........<省略>........
 
 //cloudflare以dns api方式申请tls证书（以上参数修改如下）
 .........<省略>........
             "match": [{
-              "host": ["*.xx.yy","xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改成自己的SNI分流对应域名。
+              "host": ["zh.xx.yy","xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改成自己的SNI分流对应域名。
             }],
 .........<省略>........
           "tls_connection_policies": [{
@@ -123,22 +120,23 @@
           "automatic_https": {
             "disable": true //禁用自动https
           },
-          "experimental_http3": false //关闭http3 server支持。目前采用caddy SNI分流，不支持UDP。
+          "experimental_http3": false //关闭http3 server支持。是否开启参考原配置。
         }
       }
     },
     "tls": {
       "certificates": {
-        "automate": ["*.xx.yy","xx.yy"] //换成你的域名。*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。若不要根域名部分，可以取消。
+        "automate": ["*.xx.yy","xx.yy"] //换成你的域名。*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。若不要根域名，可以取消。
       },
       "automation": {
         "policies": [{
           "storage": {
             "module": "file_system",
-            "root": "/home/tls" //存放tls证书路径及目录
+            "root": "/home/tls" //存放证书及密钥的基本路径
           },
+          "key_type": "p256", //申请密钥的类型，可选参数。
           "issuers": [{
-            "module": "acme", //可以改为zerossl，采用zerossl申请证书及秘钥。
+            "module": "acme", //必须acme与zerossl二选一（固定证书及密钥绝对路径便于引用）。acme表示从Let's Encrypt申请证书及密钥，zerossl表示从ZeroSSL申请证书及密钥。
             "challenges": {
               "dns": {
                 "provider": {
@@ -154,4 +152,4 @@
   }
 }
 注意：
-1、caddy采用dns api方式申请的通配符tls证书，不包括根域名证书。如要根域名证书，需加根域名申请，即如上两者都配置。
+1、caddy采用dns api方式申请的通配符tls证书，不包括根域名证书。如要根域名证书，需加根域名申请，见上示例配置。
