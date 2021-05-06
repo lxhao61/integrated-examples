@@ -25,8 +25,7 @@
               "headers": {
                 "Location": ["https://{http.request.host}{http.request.uri}"] //http自动跳转https,让网站看起来更真实。
               }
-            }],
-            "terminal": true
+            }]
           }]
         },
         "h1&h2c": {
@@ -56,8 +55,7 @@
             {
               "handler": "file_server",
               "root": "/var/www/html" //修改成自己存放的web文件路径
-            }],
-            "terminal": true
+            }]
           }],
           "automatic_https": {
             "disable": true //禁用自动https
