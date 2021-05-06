@@ -28,9 +28,6 @@
             }],
             "handle": [{
               "handler": "reverse_proxy",
-              "transport": {
-                "protocol": "http"
-              },
               "upstreams": [{
                 "dial": "127.0.0.1:2001" //转发给本机vless+ws或vmess+ws监听端口
               }]
