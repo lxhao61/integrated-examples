@@ -41,8 +41,7 @@
               "upstreams": [{
                 "dial": "127.0.0.1:2001" //转发给本机vless+ws监听端口
               }]
-            }],
-            "terminal": true
+            }]
           },
           {
             "match": [{
@@ -57,8 +56,7 @@
               "upstreams": [{
                 "dial": "127.0.0.1:2002" //转发给本机Xray-plugin或v2ray-plugin监听端口
               }]
-            }],
-            "terminal": true
+            }]
           },
           {
             "match": [{
@@ -73,8 +71,7 @@
               "upstreams": [{
                 "dial": "127.0.0.1:2005" //转发给本机vless+h2c监听端口
               }]
-            }],
-            "terminal": true
+            }]
           },
           {
             "match": [{
@@ -90,8 +87,7 @@
               "upstreams": [{
                 "dial": "127.0.0.1:2009" //转发给本机vless+grpc监听端口
               }]
-            }],
-            "terminal": true
+            }]
           },
           {
             "match": [{
@@ -108,8 +104,7 @@
             {
               "handler": "file_server",
               "root": "/var/www/html" //修改成自己存放的web文件路径
-            }],
-            "terminal": true
+            }]
           }],
           "tls_connection_policies": [{
             "match": {
@@ -120,11 +115,6 @@
           }],
           "experimental_http3": true //开启http3 server支持
         }
-      }
-    },
-    "tls": {
-      "certificates": {
-        "automate": ["xx.yy"] //修改成自己的域名
       }
     }
   }
