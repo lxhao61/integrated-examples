@@ -184,6 +184,7 @@
     }
   }
 }
+
 //上边tls部分改成如下，可申请普通证书及密钥给Xray\v2ray及自己使用。推荐Xray使用，配合Xray（版本必须不低于v1.3.0）自动重载证书及密钥（OCSP Stapling），可实现示例所需证书及密钥申请与更新完全自动化。
           "tls_connection_policies": [{
             "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"],
