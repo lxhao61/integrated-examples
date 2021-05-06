@@ -38,6 +38,9 @@
             "terminal": true
           },
           {
+            "match": [{
+              "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改成自己的域名。
+            }],
             "handle": [{
               "handler": "headers",
               "response": {
@@ -60,11 +63,6 @@
             "alpn": ["http/1.1","h2"]
           }]
         }
-      }
-    },
-    "tls": {
-      "certificates": {
-        "automate": ["xx.yy"] //修改成自己的域名
       }
     }
   }
