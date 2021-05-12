@@ -7,6 +7,7 @@
 6. 实现了caddy Caddyfile配置开启h2c server、PROXY protocol、naiveproxy等应用支持，让caddy配置简单化。
 7. 实现了caddy json配置SNI分流应用，且同时支持端口或进程分别PROXY protocol发送，灵活性等同haproxy SNI分流。
 8. 实现了Xray与caddy相关应用的证书及密钥申请与更新全自动化。
+9. 实现了CDN应用（caddy反向代理gRPC应用除外）与正常应用共存配置。
 * **备注：** 端口分流、端口回落\分流、端口转发是指基于local loopback实现的不同方式；进程分流、进程回落\分流、进程转发是指基于Unix Domain Socket实现的不同方式。
 
 ### 服务端单一应用配置示例
@@ -67,7 +68,7 @@
 1. 所有Xray或v2ray配置文件都配置了禁用BT。如不需要，可以删除相关配置，参考v2ray(other configuration)中BT_config.json文件。
 2. v2ray从版本v4.33.0删除了xtls应用，故若还想用xtls应用，请选Xray。Xray是v2ray的超集（更好的整体性能和xtls等一系列增强，且完全兼容。），也是因为这个应用分家独自发展。
 3. Xray或v2ray单一核心应用简记：A=vless+kcp+seed、B=vless+ws+tls、C=SS+v2ray-plugin+tls、D=vless+h2c+tls、E=vless+tcp+tls、F=trojan+tcp+tls、G=vless+grpc+tls。
-4. WebSocket（WS）类应用与gRPC应用都支持CDN加速。
+4. WebSocket（WS）类应用与gRPC应用都支持CDN应用（caddy反向代理gRPC应用除外）。
 5. naiveproxy=caddy+forwardproxy（服务端）。此程序文件已编译好，本人github下载即可。
 6. 目前caddy的https服务进程监听采用Unix Domain Socket应用不支持http/3；若开启http/3，caddy无法启动。
 
