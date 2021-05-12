@@ -16,10 +16,10 @@ Xray\v2ray 前置（监听443端口），利用 vless+tcp+tls 强大的回落/�
 
 3、caddy 发行版不支持 PROXY protocol（接收）。如要支持 PROXY protocol 需选 caddy2-proxyprotocol 插件定制编译，或下载本人 github 中编译好的 caddy 来使用即可。
 
-4、本示例中 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可。推荐使用 json 格式配置，可能配置优化更好。
+4、本示例中 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可。推荐使用 json 格式配置，配置优化更好（如支持申请证书及密钥等）。
 
 5、使用本人 github 中编译好的 caddy 文件，才同时支持 h2c server、naiveproxy 及 PROXY protocol 等应用。
 
-6、配置1：采用端口回落\分流。配置2：采用进程回落\分流。配置3：采用进程回落\分流，且启用了 PROXY protocol。
+6、Xray 所需证书及密钥推荐使用 caddy 申请的证书及密钥，实现证书及密钥申请与更新完全自动化。
 
-7、可以使用 caddy 以 DNS API 方式申请证书与私钥，实现自动申请与更新证书与私钥，详见 [caddy(other configuration)](https://github.com/lxhao61/integrated-examples/tree/main/caddy(other%20configuration)) （caddy的特殊应用配置方法。）。
+7、配置1：采用端口回落\分流。配置2：采用进程回落\分流。配置3：采用进程回落\分流，且启用了 PROXY protocol。
