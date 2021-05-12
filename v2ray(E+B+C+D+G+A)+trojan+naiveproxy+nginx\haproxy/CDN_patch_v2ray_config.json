@@ -1,0 +1,29 @@
+//多组域名使用各自普通证书及密钥配置补丁
+//原配置参数：
+.........<省略>........
+          "certificates": [
+            {
+              "ocspStapling": 3600, //ocspStapling检查更新时间间隔。Xray v1.2.0版及以后支持（可选项参数，可以不配置。）。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
+              "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zv.xx.yy/zv.xx.yy.crt", //换成你的证书，绝对路径。
+              "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zv.xx.yy/zv.xx.yy.key" //换成你的密钥，绝对路径。
+            }
+          ]
+.........<省略>........
+
+//以上参数修改如下：
+.........<省略>........
+          "certificates": [
+            {
+              "ocspStapling": 3600, //ocspStapling检查更新时间间隔。Xray v1.2.0版及以后支持（可选项参数，可以不配置。）。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
+              "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zv.xx.yy/zv.xx.yy.crt", //换成你的证书，绝对路径。
+              "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zv.xx.yy/zv.xx.yy.key" //换成你的密钥，绝对路径。
+            },
+            {
+              "ocspStapling": 3600, //ocspStapling检查更新时间间隔。Xray v1.2.0版及以后支持（可选项参数，可以不配置。）。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
+              "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/z1.xx.yy/z1.xx.yy.crt", //换成你的证书，绝对路径。
+              "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/z1.xx.yy/z1.xx.yy.key" //换成你的密钥，绝对路径。
+            }
+          ]
+.........<省略>........
+注意：
+1、zv.xx.yy、zt.xx.yy、z1.xx.yy表示不同域名（推荐采用根域名相同的二级域名即可）。
