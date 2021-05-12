@@ -28,10 +28,12 @@ Xray\v2ray 前置（监听443端口），利用 vless+tcp+tls 强大的回落/�
 
 5、caddy 发行版不支持 PROXY protocol（接收）。如要支持 PROXY protocol 需选 caddy2-proxyprotocol 插件定制编译，或下载本人 github 中编译好的 caddy 来使用即可。
 
-6、本示例中 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可。推荐使用 json 格式配置，可能配置优化更好。
+6、使用本人 github 中编译好的 caddy 文件，才可同时支持 h2c server、h2c proxy、naiveproxy 及 PROXY protocol 等应用。
 
-7、使用本人 github 中编译好的 caddy 文件，才可同时支持 h2c server、h2c proxy、naiveproxy 及 PROXY protocol 等应用。
+7、本示例中 caddy 的 Caddyfile 格式配置（不支持由自己申请证书及密钥）与 json 格式配置二选一即可。推荐使用 json 格式配置，配置优化更好（如支持由自己申请证书及密钥）。
 
-8、Xray 所需证书及密钥推荐使用 caddy 申请的证书及密钥，配合 Xray（版本必须不低于v1.3.0）自动重载证书及密钥（OCSP Stapling），可实现证书及密钥申请与更新完全自动化。
+8、不能使用非 caddy（自带 ACME 客户端） 的 ACME 客户端在当前服务器上申请与更新普通证书及密钥，因普通证书及密钥申请与更新需占用或监听80端口（或443端口），从而与当前应用端口冲突。
 
-9、配置1：采用端口回落\分流、端口转发。配置2：采用进程回落\分流、端口转发。配置3：采用进程回落\分流、端口转发，且启用了 PROXY protocol。
+9、Xray 所需证书及密钥推荐使用 caddy 申请的证书及密钥，配合 Xray（版本必须不低于v1.3.0）自动重载证书及密钥（OCSP Stapling），可实现证书及密钥申请与更新完全自动化。
+
+10、配置1：采用端口回落\分流、端口转发。配置2：采用进程回落\分流、端口转发。配置3：采用进程回落\分流、端口转发，且启用了 PROXY protocol。
