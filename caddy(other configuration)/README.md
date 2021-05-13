@@ -40,8 +40,8 @@
 
 2、cloudflare 已不支持 freenom 的免费域名以 DNS API 方式申请证书及密钥了。
 
-3、acme 申请证书及密钥路径，通配符证书及密钥在 /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/wildcard_.xx.yy 目录中,普通证书及密钥在 /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy 目录中。zerossl 申请证书及密钥路径，与 acme 申请证书与私钥路径类似。
+3、acme 申请证书及密钥路径，通配符证书及密钥在 /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/wildcard_.xx.yy 目录中,普通证书及密钥在 /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy 目录中。zerossl 申请证书及密钥路径，与 acme 申请证书及密钥路径类似。
 
 4、推荐采用 json 配置，否则采用 Caddyfile 配置必须启用额外无用端口来联动实现自动申请及更新证书及密钥。另外采用 Caddyfile 配置 DNS API 方式申请证书及密钥仅支持端口监听模式。
 
-5、配置示例仅提供了 dnspod（dnspod.com插件，国际版。）、cloudflare、dnspodcn（dnspod.cn插件，中国版。）三种最常见插件，其它插件配置类似，可参考cloudflare配置示例。
+5、仅提供了 dnspod（dnspod.com插件，国际版。）、cloudflare、dnspodcn（dnspod.cn插件，中国版。）三种最常见插件配置示例，其它插件配置类似，参考cloudflare配置示例。
