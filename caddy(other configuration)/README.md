@@ -30,7 +30,7 @@
 
 三、caddy 以 DNS API 方式申请证书与私钥
 
-1、dnspod、cloudflare、dnspodcn 以 DNS API 方式申请证书与私钥，可以申请普通证书，也可以申请通配符证书。
+1、以 DNS API 方式申请证书及密钥，可以申请普通证书，也可以申请通配符证书。
 
 2、Xray\v2ray\trojan\trojan-go 可以直接使用 caddy 以 DNS API 方式申请的证书与私钥，配合Xray（版本必须不低于v1.3.0）自动重载证书及密钥（OCSP Stapling），可实现示例所需证书及密钥申请与更新完全自动化；否则 Xray\v2ray\trojan\trojan-go 服务端（Xray 版本低于 v1.3.0）不支持重载证书及密钥，caddy 证书及密钥到期更新后需手动重启 Xray\v2ray\trojan\trojan-go 来重新加载更新的证书及密钥。
 
@@ -38,8 +38,10 @@
 
 1、dnspod 分 dnspod.com（国际版）与 dnspod.cn（中国版），故两者插件不通用，必须对应各自 dnspod 域名解析使用。
 
-2、cloudflare 已不支持 freenom 的免费域名以 DNS API 方式申请证书与私钥了。
+2、cloudflare 已不支持 freenom 的免费域名以 DNS API 方式申请证书及密钥了。
 
-3、acme 申请证书与私钥路径，通配符证书与私钥在 /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/wildcard_.xx.yy 目录中,普通证书与私钥在 /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy 目录中。zerossl 申请证书与私钥路径，与 acme 申请证书与私钥路径类似。
+3、acme 申请证书及密钥路径，通配符证书及密钥在 /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/wildcard_.xx.yy 目录中,普通证书及密钥在 /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy 目录中。zerossl 申请证书及密钥路径，与 acme 申请证书与私钥路径类似。
 
-4、推荐采用 json 配置，否则采用 Caddyfile 配置必须启用额外无用端口来联动实现自动申请及更新证书与私钥。另外采用 Caddyfile 配置 DNS API 方式申请证书与私钥仅支持端口监听模式。
+4、推荐采用 json 配置，否则采用 Caddyfile 配置必须启用额外无用端口来联动实现自动申请及更新证书及密钥。另外采用 Caddyfile 配置 DNS API 方式申请证书及密钥仅支持端口监听模式。
+
+5、配置示例仅提供了 dnspod（dnspod.com插件，国际版。）、cloudflare、dnspodcn（dnspod.cn插件，中国版。）三种最常见插件，其它插件配置类似，可参考cloudflare配置示例。
