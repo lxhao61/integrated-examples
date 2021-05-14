@@ -1,30 +1,30 @@
 {
     order reverse_proxy before header
     admin off
+    log { #注意：版本不小于v2.4.0才支持日志全局配置，否则各自配置。
+        output file /var/log/caddy/access.log
+        level  ERROR
+    }
 }
 
-xx.yy { //修改成自己的域名
+xx.yy { #修改成自己的域名
     tls {
         ciphers TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
         alpn h2 http/1.1
     }
-    log {
-        output file /var/log/caddy/access.log
-        level  ERROR
-    }
-    @vgrpc { //匹配器标签。此标签仅区分，多个不同代理需要改成不同名称，但要与下边‘reverse_proxy’中匹配器标签对应。
+    @vgrpc { #匹配器标签。此标签仅区分，多个不同代理需要改成不同名称，但要与下边‘reverse_proxy’中匹配器标签对应。
         protocol grpc
-        path /cdngrpc/* //与vless+grpc或vmess+grpc应用中serviceName对应
+        path /cdngrpc/* #与vless+grpc或vmess+grpc应用中serviceName对应
     }
-    reverse_proxy @vgrpc 127.0.0.1:2009 { //转发给本机vless+grpc或vmess+grpc监听端口
+    reverse_proxy @vgrpc 127.0.0.1:2009 { #转发给本机vless+grpc或vmess+grpc监听端口
         transport http {
             versions h2c
         }
     }
     header {
-        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" //启用HSTS
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
     }
     file_server {
-        root /var/www/html //修改成自己存放的web文件路径
+        root /var/www/html #修改成自己存放的web文件路径
     }
 }
