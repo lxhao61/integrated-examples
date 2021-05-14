@@ -1,6 +1,10 @@
 {
     order forward_proxy before header
     admin off
+    log { #注意：版本不小于v2.4.0才支持日志全局配置，否则一一单项配置。
+        output file /var/log/caddy/access.log
+        level  ERROR
+    }
     servers :443 {
         protocol {
             experimental_http3 #开启http3 server支持
@@ -12,10 +16,6 @@
     tls {
         ciphers TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
         alpn h2 http/1.1
-    }
-    log {
-        output file /var/log/caddy/access.log
-        level  ERROR
     }
 
     forward_proxy {
