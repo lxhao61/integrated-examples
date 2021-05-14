@@ -12,7 +12,7 @@
 }
 
 :80 { #http默认监听端口
-    redir https://{host}{uri} permanent //http自动跳转https,让网站看起来更真实。
+    redir https://{host}{uri} permanent #http自动跳转https,让网站看起来更真实。
 }
 
 :88 { #监听端口，仅接收web回落。
