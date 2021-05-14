@@ -2,7 +2,7 @@
     order reverse_proxy before header
     order forward_proxy before reverse_proxy
     admin off
-    log { #注意：版本不小于v2.4.0才支持日志全局配置，否则一一单项配置。
+    log { #注意：版本不小于v2.4.0才支持日志全局配置，否则各自配置。
         output file /var/log/caddy/access.log
         level  ERROR
     }
