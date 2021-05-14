@@ -1,6 +1,10 @@
 {
     order forward_proxy before header
     admin off
+    log { #注意：版本不小于v2.4.0才支持日志全局配置，否则一一单项配置。
+        output file /var/log/caddy/access.log
+        level  ERROR
+    }
     servers 127.0.0.1:88 { #与下边端口监听对应
         protocol {
             allow_h2c #开启h2c server支持
@@ -14,10 +18,6 @@
 
 :88 { #监听端口，仅接收web回落。
     bind 127.0.0.1 #只监听本机，避免本机外的机器探测到上面端口。
-    log {
-        output file /var/log/caddy/access.log
-        level  ERROR
-    }
 
     forward_proxy {
         basic_auth user pass #naiveproxy账号与密码，修改为自己的。
