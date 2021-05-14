@@ -1,6 +1,10 @@
 {
     order forward_proxy before header
     admin off
+    log { #注意：版本不小于v2.4.0才支持日志全局配置，否则各自配置。
+        output file /var/log/caddy/access.log
+        level  ERROR
+    }
     servers unix//dev/shm/h1h2c.sock { //与下边进程监听对应
         protocol {
             allow_h2c //开启h2c server支持
@@ -14,10 +18,6 @@
 
 :88 { //启用进程绑定后此端口失效，仅做标记作用。
     bind unix//dev/shm/h1h2c.sock //启用进程绑定后执行进程监听，仅接收web回落。
-    log {
-        output file /var/log/caddy/access.log
-        level  ERROR
-    }
 
     forward_proxy {
         basic_auth user pass //naiveproxy账号与密码，修改为自己的。
