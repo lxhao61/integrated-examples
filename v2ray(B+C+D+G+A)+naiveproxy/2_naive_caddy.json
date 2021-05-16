@@ -21,8 +21,8 @@
           "routes": [{
             "handle": [{
               "handler": "forward_proxy",
-              "auth_user": "user", //naiveproxy账号，修改为自己的。
-              "auth_pass": "pass", //naiveproxy密码，修改为自己的。
+              "auth_user": "user", //naiveproxy账号，更改为自己的。
+              "auth_pass": "pass", //naiveproxy密码，更改为自己的。
               "hide_ip": true,
               "hide_via": true,
               "probe_resistance": {}
@@ -91,7 +91,7 @@
           },
           {
             "match": [{
-              "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改为自己的域名。
+              "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
             }],
             "handle": [{
               "handler": "headers",
@@ -103,7 +103,7 @@
             },
             {
               "handler": "file_server",
-              "root": "/var/www/html" //修改为自己存放的web文件路径
+              "root": "/var/www/html" //更改为自己存放的web文件路径
             }]
           }],
           "tls_connection_policies": [{
@@ -116,7 +116,7 @@
     },
     "tls": {
       "certificates": {
-        "automate": ["xx.yy"] //修改为自己的域名
+        "automate": ["xx.yy"] //更改为自己的域名
       }
     }
   }
