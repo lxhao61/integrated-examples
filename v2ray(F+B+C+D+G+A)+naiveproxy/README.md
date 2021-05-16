@@ -30,7 +30,7 @@ Xray\v2ray 前置（监听443端口），利用 trojan+tcp+tls 强大的回落/�
 
 6、使用本人 github 中编译好的 caddy 文件，才可同时支持 h2c server、h2c proxy、naiveproxy 及 PROXY protocol 等应用。
 
-7、本示例中 caddy 的 Caddyfile 格式配置（不支持由自己申请证书及密钥）与 json 格式配置二选一即可。推荐使用 json 格式配置，配置优化更好（如支持由自己申请证书及密钥）。
+7、本示例中 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可。推荐使用 json 格式配置，配置优化更好。
 
 8、不能使用非 caddy（自带 ACME 客户端） 的 ACME 客户端在当前服务器上申请与更新普通证书及密钥，因普通证书及密钥申请与更新需占用或监听80端口（或443端口），从而与当前应用端口冲突。
 
