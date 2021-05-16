@@ -6,6 +6,7 @@
         output file /var/log/caddy/access.log
         level  ERROR
     }
+    auto_https off
     servers unix//dev/shm/h1h2c.sock { #与下边进程监听对应	
         listener_wrappers {	
             proxy_protocol #开启PROXY protocol接收	
@@ -14,7 +15,7 @@
             allow_h2c #开启h2c server支持
         }
     }
-    servers unix//dev/shm/naive.sock { #与下边进程监听对应
+    servers unix//dev/shm/https.sock { #与下边进程监听对应
         listener_wrappers {
             proxy_protocol #开启PROXY protocol接收
             tls
