@@ -35,7 +35,7 @@
           }],
           "routes": [{
             "match": [{
-              "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改成自己的域名。
+              "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
             }],
             "handle": [{
               "handler": "headers",
@@ -47,7 +47,7 @@
             },
             {
               "handler": "file_server",
-              "root": "/var/www/html" //修改成自己存放的web文件路径
+              "root": "/var/www/html" //更改为自己存放的web文件路径
             }]
           }],
           "automatic_https": {
@@ -56,25 +56,6 @@
           "allow_h2c": true //开启h2c server支持
         }
       }
-//申请普通证书及密钥给Xray\v2ray使用。推荐Xray使用，配合Xray（版本必须不低于v1.3.0）自动重载证书及密钥（OCSP Stapling），可实现示例所需证书及密钥申请与更新完全自动化。
-    },
-    "tls": {
-      "certificates": {
-        "automate": ["xx.yy"] //修改成自己的域名
-      },
-      "automation": {
-        "policies": [{
-          "storage": {
-            "module": "file_system",
-            "root": "/home/tls" //存放证书及密钥的基本路径
-          },
-          "key_type": "p256", //申请密钥的类型，可选参数。
-          "issuers": [{
-            "module": "acme" //必须acme与zerossl二选一（固定证书及密钥绝对路径便于引用）。acme表示从Let's Encrypt申请证书及密钥，zerossl表示从ZeroSSL申请证书及密钥。
-          }]
-        }]
-      }
-//相关参数到此处为止。若不让caddy申请证书及密钥给Xray\v2ray使用，删除此部分参数即可。
     }
   }
 }
