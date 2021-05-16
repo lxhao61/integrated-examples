@@ -33,8 +33,8 @@
           "routes": [{
             "handle": [{
               "handler": "forward_proxy",
-              "auth_user": "user", //naiveproxy账号，修改为自己的。
-              "auth_pass": "pass", //naiveproxy密码，修改为自己的。
+              "auth_user": "user", //naiveproxy账号，更改为自己的。
+              "auth_pass": "pass", //naiveproxy密码，更改为自己的。
               "hide_ip": true,
               "hide_via": true,
               "probe_resistance": {}
