@@ -103,7 +103,7 @@
             },
             {
               "handler": "file_server",
-              "root": "/var/www/html" //修改成自己存放的web文件路径
+              "root": "/var/www/html" //修改为自己存放的web文件路径
             }]
           }],
           "tls_connection_policies": [{
