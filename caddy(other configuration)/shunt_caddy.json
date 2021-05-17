@@ -2,8 +2,8 @@
 .........<省略>........
             {
               "handler": "file_server",
-              "root": "/var/www/html" //修改成自己存放的web文件路径
-            }],
+              "root": "/var/www/html" //更改为自己存放的web文件路径
+            }]
 .........<省略>........
 
 //分别回落分流到不同网站，以上参数修改为如下：（示例仅配置了两个网站/域名的回落分流；如需要多个网站/域名，增加对应参数即可。）
@@ -11,63 +11,21 @@
               "handler": "subroute",
               "routes": [{
                 "match": [{
-                  "host": ["za.xx.yy"] //修改成自己分流的域名
+                  "host": ["za.xx.yy"] //更改为分流的域名
                 }],
                 "handle": [{
                   "handler": "file_server",
-                  "root": "/var/www/za" //修改为域名对应存放的web文件路径
-                }],
-                "terminal": true
+                  "root": "/var/www/za" //更改为域名对应存放的web文件路径
+                }]
               },
               {
                 "match": [{
-                  "host": ["zb.xx.yy"] //修改成自己分流的域名
+                  "host": ["zb.xx.yy"] //更改为分流的域名
                 }],
                 "handle": [{
                   "handler": "file_server",
-                  "root": "/var/www/zb" //修改为域名对应存放的web文件路径
-                }],
-                "terminal": true
+                  "root": "/var/www/zb" //更改为域名对应存放的web文件路径
+                }]
               }]
-            }],
-.........<省略>........
-
-//若实际网站应用，建议配置如下：
-            {
-              "handler": "subroute",
-              "routes": [{
-                "match": [{
-                  "host": ["za.xx.yy"] //修改成自己分流的域名
-                }],
-                "handle": [{
-                  "handler": "encode", //启用编码压缩（此部分参数是网站应用优化，虽与回落分流无关，但建议添加此部分。）
-                  "encodings": {
-                    "gzip": {"level": 4}, //gzip压缩等级（此部分参数是网站应用优化，虽与回落分流无关，但建议添加此部分。）
-                    "zstd": {}
-                  }
-                },
-                {
-                  "handler": "file_server",
-                  "root": "/var/www/za" //修改为域名对应存放的web文件路径
-                }],
-                "terminal": true
-              },
-              {
-                "match": [{
-                  "host": ["zb.xx.yy"] //修改成自己分流的域名
-                }],
-                "handle": [{
-                  "handler": "encode", //启用编码压缩（此部分参数是网站应用优化，虽与回落分流无关，但建议添加此部分。）
-                  "encodings": {
-                    "gzip": {"level": 4}, //gzip压缩等级（此部分参数是网站应用优化，虽与回落分流无关，但建议添加此部分。）
-                    "zstd": {}
-                  }
-                },
-                {
-                  "handler": "file_server",
-                  "root": "/var/www/zb" //修改为域名对应存放的web文件路径
-                }],
-                "terminal": true
-              }]
-            }],
+            }]
 .........<省略>........
