@@ -1,12 +1,34 @@
 //原回落配置的相关参数：
 .........<省略>........
+          {
+            "match": [{
+              "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
+            }],
+            "handle": [{
+              "handler": "headers",
+              "response": {
+                "set": {
+                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
+                }
+              }
+            },
             {
               "handler": "file_server",
               "root": "/var/www/html" //更改为自己存放的web文件路径
             }]
+          }],
 .........<省略>........
 
 //分别回落分流到不同网站，以上参数修改为如下：（示例仅配置了两个网站/域名的回落分流；如需要多个网站/域名，增加对应参数即可。）
+          {
+            "handle": [{
+              "handler": "headers",
+              "response": {
+                "set": {
+                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
+                }
+              }
+            },
             {
               "handler": "subroute",
               "routes": [{
