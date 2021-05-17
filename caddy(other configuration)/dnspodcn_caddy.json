@@ -1,30 +1,24 @@
-//原配置参数（仅反代，启用https应用。）：
+//一、无SNI分流的反代为主应用（caddy提供https应用）
+//原配置参数：
 //.........<省略>........
             "match": [{
-              "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改成自己的域名。
+              "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
             }],
 //.........<省略>........
-            "match": {
-              "sni": ["xx.yy"] //修改成自己的域名
-            },
+      "certificates": {
+        "automate": ["xx.yy"] //自动化管理域名证书（包括获取、更新证书及加载证书）。更改为自己的域名。
+      }
 //.........<省略>........
 
-//dnspodcn以dns api方式申请tls证书（以上参数修改如下）
+//以dns api方式申请tls证书（以上参数修改如下）：
 //.........<省略>........
             "match": [{
-              "host": ["*.xx.yy","xx.yy"] //修改成自己的域名。*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。可二选一配置。
+              "host": ["*.xx.yy"] //限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
             }],
 //.........<省略>........
-            "match": {
-              "sni": ["*.xx.yy","xx.yy"] //修改成自己的域名
-            },
-            "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"],
-            "alpn": ["http/1.1","h2"]
-          }]
-        }
-      }
-    },
-    "tls": {
+      "certificates": {
+        "automate": ["*.xx.yy"] //自动化管理域名证书（包括获取、更新证书及加载证书）。更改为自己的域名。*.xx.yy表示申请通配符证书。
+      },
       "automation": {
         "policies": [{
           "issuers": [{
@@ -47,10 +41,12 @@
   }
 }
 //注意：
-//1、caddy采用dns api方式申请的通配符tls证书，不包括根域名证书。如要根域名证书，需加根域名申请，见上示例配置。
+//1、caddy采用dns api方式申请的通配符证书及密钥，不包括根域名，仅此根域名二级域名能用。
+//2、调整限定域名访问范围，不严格可直接更改为通配符域名。
 
 
-//原配置参数（回落及反代应用，无https应用。）：
+//二、无SNI分流的回落为主应用（caddy提供http应用）
+//原配置参数：
 //.........<省略>........
             "match": [{
               "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改成自己的域名。
@@ -59,10 +55,10 @@
           "allow_h2c": true //开启h2c server支持
 //.........<省略>........
 
-//dnspodcn以dns api方式申请tls证书（以上参数修改如下）
+//以dns api方式申请tls证书（以上参数修改如下）：
 //.........<省略>........
             "match": [{
-              "host": ["*.xx.yy","xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改成自己的域名。
+              "host": ["*.xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改成自己的域名。
             }],
 //.........<省略>........
           "allow_h2c": true //开启h2c server支持
@@ -71,7 +67,7 @@
     },
     "tls": {
       "certificates": {
-        "automate": ["*.xx.yy","xx.yy"] //修改成自己的域名。*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。可二选一配置。
+        "automate": ["*.xx.yy"] //自动化管理域名证书（包括获取、更新证书及加载证书）。更改为自己的域名。*.xx.yy表示申请通配符证书。
       },
       "automation": {
         "policies": [{
@@ -79,9 +75,8 @@
             "module": "file_system",
             "root": "/home/tls" //存放证书及密钥的基本路径
           },
-          "key_type": "p256", //申请密钥的类型，可选参数。
           "issuers": [{
-            "module": "acme", //可以改为zerossl，采用zerossl申请证书及密钥。
+            "module": "acme", //必须acme与zerossl二选一（固定证书及密钥的绝对路径便于引用）。acme表示从Let's Encrypt申请证书及密钥，zerossl表示从ZeroSSL申请证书及密钥。
             "challenges": {
               "dns": {
                 "provider": {
@@ -100,44 +95,49 @@
   }
 }
 //注意：
-//1、caddy采用dns api方式申请的通配符tls证书，不包括根域名证书。如要根域名证书，需加根域名申请，见上示例配置。
+//1、caddy采用dns api方式申请的通配符证书及密钥，不包括根域名，仅此根域名二级域名能用。
+//2、调整限定域名访问范围，不严格可直接更改为通配符域名。
 
 
-//原配置参数（回落及反代应用，且https应用。）：
-//.........<省略>........
-            "match": [{
-              "host": ["zh.xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改成自己的SNI分流对应域名。
-            }],
+//三、SNI分流的综合应用（caddy提供http与https应用）
+//原配置参数：
 //.........<省略>........
           "tls_connection_policies": [{
             "certificate_selection": {
-              "any_tag": ["tls01"] //采用外部证书及密钥才有此部分参数
+              "any_tag": ["tls01"]
             },
             "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"],
             "alpn": ["h2","http/1.1"]
           }],
 //.........<省略>........
-
-//dnspodcn以dns api方式申请tls证书（以上参数修改如下）
-//.........<省略>........
-            "match": [{
-              "host": ["zh.xx.yy","xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改成自己的SNI分流对应域名。
-            }],
-//.........<省略>........
-          "tls_connection_policies": [{
-            "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"],
-            "alpn": ["h2","http/1.1"]
-          }],
-          "automatic_https": {
-            "disable": true //禁用自动https
-          },
-          "experimental_http3": false //关闭http3 server支持。是否开启参考原配置。
         }
       }
     },
     "tls": {
       "certificates": {
-        "automate": ["*.xx.yy","xx.yy"] //修改成自己的域名。*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。若不要根域名，可以取消。
+        "load_files": [{
+          "certificate": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zh.xx.yy/zh.xx.yy.crt", //换成你的证书，绝对路径。
+          "key": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zh.xx.yy/zh.xx.yy.key", //换成你的密钥，绝对路径。
+          "tags": ["tls01"]
+        }]
+      }
+    }
+  }
+}
+
+//以dns api方式申请tls证书（以上参数修改如下）：
+//.........<省略>........
+          "tls_connection_policies": [{
+            "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"],
+            "alpn": ["h2","http/1.1"]
+          }],
+//.........<省略>........
+        }
+      }
+    },
+    "tls": {
+      "certificates": {
+        "automate": ["*.xx.yy"] //自动化管理域名证书（包括获取、更新证书及加载证书）。更改为自己的域名。*.xx.yy表示申请通配符证书。
       },
       "automation": {
         "policies": [{
@@ -145,9 +145,8 @@
             "module": "file_system",
             "root": "/home/tls" //存放证书及密钥的基本路径
           },
-          "key_type": "p256", //申请密钥的类型，可选参数。
           "issuers": [{
-            "module": "acme", //可以改为zerossl，采用zerossl申请证书及密钥。
+            "module": "acme", //必须acme与zerossl二选一（固定证书及密钥的绝对路径便于引用）。acme表示从Let's Encrypt申请证书及密钥，zerossl表示从ZeroSSL申请证书及密钥。
             "challenges": {
               "dns": {
                 "provider": {
@@ -166,4 +165,5 @@
   }
 }
 //注意：
-//1、caddy采用dns api方式申请的通配符tls证书，不包括根域名证书。如要根域名证书，需加根域名申请，见上示例配置。
+//1、caddy采用dns api方式申请的通配符证书及密钥，不包括根域名，仅此根域名二级域名能用。
+//2、可能需要调整限定域名访问范围，不严格可直接更改为通配符域名。
