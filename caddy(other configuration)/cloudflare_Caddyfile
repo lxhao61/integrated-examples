@@ -1,93 +1,134 @@
-#原配置参数（仅反代，启用https应用。）：
+#一、无SNI分流的反代为主应用（caddy提供https应用）
+#原配置参数：
+{
 #.........<省略>........
-xx.yy { #修改成自己的域名
-    tls {
-        ciphers TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
-        alpn http/1.1 h2
+}
+
+:443, xx.yy { #xx.yy更改为自己的域名。注意：逗号与域名之间有一个空格。
+#.........<省略>........
+    @host {
+        host xx.yy #限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
     }
 #.........<省略>........
 
-#cloudflare以dns api方式申请tls证书（以上参数修改如下）
+#以dns api方式申请tls证书（以上参数修改如下）：
+{
 #.........<省略>........
-*.xx.yy, xx.yy { #换成你的域名。*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。两者可以二选一配置。
-    tls {
-        ciphers TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
-        alpn http/1.1 h2
-        dns cloudflare e09062f1fd2545555fc8a15fceda2222 #换成你cloudflare的api，此api是你配置相关生成的，详细参考官方及cloudflare插件github。
+    acme_ca https://acme-v02.api.letsencrypt.org/directory #表示从Let's Encrypt申请证书及密钥 （或增加此条参数）
+    #acme_ca https://acme.zerossl.com/v2/DV909 #表示从ZeroSSL申请证书及密钥 （或增加此条参数）
+#上两条参数必须二选一（固定证书及密钥的绝对路径便于引用）。可删除其一或用#屏蔽之一来选择。
+    acme_dns cloudflare e09062f1fd2545555fc8a15fceda2222 #换成你cloudflare的api，此api是你配置相关生成的，详细参考官方及cloudflare插件github。
+}
+
+:443, *.xx.yy { #*.xx.yy更改为自己的域名。注意：逗号与域名之间有一个空格。*.xx.yy表示申请通配符证书。
+#.........<省略>........
+    @host {
+        host *.xx.yy #限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
     }
 #.........<省略>........
 #注意：
-#1、caddy采用dns api方式申请的通配符tls证书，不包括根域名证书。如要根域名证书，需加根域名申请，即如上两者都配置。
+#1、caddy采用dns api方式申请的通配符证书及密钥，不包括根域名，仅此根域名二级域名能用。
+#2、调整限定域名访问范围，不严格可直接更改为通配符域名。
 
 
-#原配置参数（回落及反代应用，无https应用。）：
+#二、无SNI分流的回落为主应用（caddy提供http应用）
+#原配置参数：
 {
 #.........<省略>........
     admin off
 #.........<省略>........
+    auto_https off
+#.........<省略>........
 }
+
+#.........<省略>........
+    @host {
+        host xx.yy #限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
+    }
 #.........<省略>........
 
-#cloudflare以dns api方式申请tls证书（以上参数修改如下）
+#以dns api方式申请tls证书（以上参数修改如下）：
 {
-    http_port 808
-    https_port 7443
+    https_port 7443 #更改https默认端口 （增加此条参数）
 #.........<省略>........
     admin off
     storage file_system {
-        root /home/tls #存放证书及密钥的基本路径
+        root /home/tls #存放证书及密钥的基本路径 （增加此部分参数）
     }
+#.........<省略>........
+    auto_https off
+    acme_ca https://acme-v02.api.letsencrypt.org/directory #表示从Let's Encrypt申请证书及密钥 （或增加此条参数）
+    #acme_ca https://acme.zerossl.com/v2/DV909 #表示从ZeroSSL申请证书及密钥 （或增加此条参数）
+#上两条参数必须二选一（固定证书及密钥的绝对路径便于引用）。可删除其一或用#屏蔽之一来选择。
+    acme_dns cloudflare e09062f1fd2545555fc8a15fceda2222 #换成你cloudflare的api，此api是你配置相关生成的，详细参考官方及cloudflare插件github。 （增加此条参数）
 #.........<省略>........
 }
+
 #.........<省略>........
-:7443, *.xx.yy, xx.yy { #换成你的域名。*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。两者可以二选一配置。
-    tls {
-        issuer acme { #必须acme与zerossl二选一（固定证书及密钥绝对路径便于引用）。acme表示从Let's Encrypt申请证书及密钥，zerossl表示从ZeroSSL申请证书及密钥。
-            dns cloudflare e09062f1fd2545555fc8a15fceda2222 #换成你cloudflare的api，此api是你配置相关生成的，详细参考官方及cloudflare插件github。
-        }
+    @host {
+        host *.xx.yy #限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
     }
+#.........<省略>........
+
+:7443, *.xx.yy { #*.xx.yy更改为自己的域名。注意：逗号与域名之间有一个空格。*.xx.yy表示申请通配符证书。（增加此部分参数）
 }
 #注意：
-#1、caddy采用dns api方式申请的通配符tls证书，不包括根域名证书。如要根域名证书，需加根域名申请，即如上两者都配置。
+#1、caddy采用dns api方式申请的通配符证书及密钥，不包括根域名，仅此根域名二级域名能用。
+#2、调整限定域名访问范围，不严格可直接更改为通配符域名。
 
 
-#原配置参数（回落及反代应用，且https应用。）：
+#三、SNI分流的综合应用（caddy提供http与https应用）
+#原配置参数：
 {
 #.........<省略>........
     admin off
 #.........<省略>........
-}
+    auto_https off
 #.........<省略>........
-:7443 { #本机https server端口监听，提供naiveproxy、h2c proxy等应用。
-    bind 127.0.0.1 #只监听本机，避免本机外的机器探测到上面端口。
-    tls /etc/ssl/tls/xx.yy.crt /etc/ssl/tls/xx.yy.key { #换成你的证书与密钥，绝对路径。
-        ciphers TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
-        alpn h2 http/1.1
+}
+
+#.........<省略>........
+    @host {
+        host zv.xx.yy zt.xx.yy #限定域名访问（禁止以ip方式访问网站），更改为自己的对应回落域名。
     }
 #.........<省略>........
 
-#cloudflare以dns api方式申请tls证书（以上参数修改如下）
+:7443 { #https server监听端口，为naiveproxy、h2c proxy等应用服务。或#启用进程绑定后此端口失效，仅做标记作用。
+#.........<省略>........
+    @host {
+        host zh.xx.yy #限定域名访问（禁止以ip方式访问网站），更改为自己的对应回落域名。
+    }
+#.........<省略>........
+
+#以dns api方式申请tls证书（以上参数修改如下）：
 {
-    http_port 808
-    https_port 7443
+    https_port 7443 #更改https默认端口。此条参数跟下面7443关联，端口监听需要添加，进程监听不需要添加。 （增加此条参数）
 #.........<省略>........
     admin off
     storage file_system {
-        root /home/tls #存放证书及密钥的基本路径
+        root /home/tls #存放证书及密钥的基本路径 （增加此部分参数）
     }
 #.........<省略>........
-}
+    auto_https off
+    acme_ca https://acme-v02.api.letsencrypt.org/directory #表示从Let's Encrypt申请证书及密钥 （或增加此条参数）
+    #acme_ca https://acme.zerossl.com/v2/DV909 #表示从ZeroSSL申请证书及密钥 （或增加此条参数）
+#上两条参数必须二选一（固定证书及密钥的绝对路径便于引用）。可删除其一或用#屏蔽之一来选择。
+    acme_dns cloudflare e09062f1fd2545555fc8a15fceda2222 #换成你cloudflare的api，此api是你配置相关生成的，详细参考官方及cloudflare插件github。 （增加此条参数）
 #.........<省略>........
-:7443, *.xx.yy, xx.yy { #换成你的域名。*.xx.yy表示申请通配符证书（不包括根域名证书），xx.yy表示申请普通证书（此处xx.yy是根域名）。若不要根域名部分，可以取消。
-    bind 127.0.0.1 #只监听本机，避免本机外的机器探测到上面端口。
-    tls {
-        ciphers TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
-        alpn http/1.1 h2
-        issuer acme { #必须acme与zerossl二选一（固定证书及密钥绝对路径便于引用）。acme表示从Let's Encrypt申请证书及密钥，zerossl表示从ZeroSSL申请证书及密钥。
-            dns cloudflare e09062f1fd2545555fc8a15fceda2222 #换成你cloudflare的api，此api是你配置相关生成的，详细参考官方及cloudflare插件github。
-        }
+}
+
+#.........<省略>........
+    @host {
+        host *.xx.yy #限定域名访问（禁止以ip方式访问网站），更改为自己的对应回落域名。
+    }
+#.........<省略>........
+
+:7443, *.xx.yy { #*.xx.yy更改为自己的域名。注意：逗号与域名之间有一个空格。*.xx.yy表示申请通配符证书。
+#.........<省略>........
+    @host {
+        host *.xx.yy #限定域名访问（禁止以ip方式访问网站），更改为自己的对应回落域名。
     }
 #.........<省略>........
 #注意：
-#1、caddy采用dns api方式申请的通配符tls证书，不包括根域名证书。如要根域名证书，需加根域名申请，即如上两者都配置。
-#2、不支持进程监听模式。
+#1、caddy采用dns api方式申请的通配符证书及密钥，不包括根域名，仅此根域名二级域名能用。
+#2、可能需要调整限定域名访问范围，不严格可直接更改为通配符域名。
