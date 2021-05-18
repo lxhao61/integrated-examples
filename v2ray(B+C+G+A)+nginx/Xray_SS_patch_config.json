@@ -1,4 +1,3 @@
-  
 //Xray从v1.2.3版开始支持Shadowsocks AEAD单端口多用户，配置方法与vmess、vless、trojan协议配置单端口多用户类似。AEAD就是aes-256-gcm、aes-128-gcm、chacha20-poly1305加密算法。
 //原来配置：
 //.........<省略>........
