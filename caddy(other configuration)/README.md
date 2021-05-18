@@ -18,13 +18,11 @@
 
 1、caddy 加 caddy-l4 插件定制编译的才可以实现 SNI 分流，目前仅支持使用 json 配置。
 
-2、采用改进的 caddy-l4 插件定制编译的才同时支持 PROXY protocol（发送），且可以对分流的进程或端口分别开启 PROXY protocol（发送）。
+2、1_SNI_caddy.json 分流采用 local loopback 应用（redirect），实现转发端口（域名）的分流，简称 caddy SNI 的端口分流。此端口分流效率稍低，可适用全部服务器。
 
-3、1_SNI_caddy.json 分流采用 local loopback 应用（redirect），实现转发端口（域名）的分流，简称 caddy SNI 的端口分流。此端口分流效率稍低，可适用全部服务器。
+3、2_SNI_caddy.json 分流采用 Unix Domain Socket 应用，实现转发进程（域名）的分流，简称 caddy SNI 的进程分流。此进程分流效率高，但在 Windows 10 Build 17036 前不可用。
 
-4、2_SNI_caddy.json 分流采用 Unix Domain Socket 应用，实现转发进程（域名）的分流，简称 caddy SNI 的进程分流。此进程分流效率高，但在 Windows 10 Build 17036 前不可用。
-
-5、本人 github 中的相关配置示例已配置 caddy SNI 分流共用端口 ，此配置方法仅备份及参考等。
+4、本人 github 中的相关配置示例已配置 caddy SNI 分流共用端口 ，此配置方法仅备份及参考等。
 
 三、caddy 以 DNS API 方式申请证书与私钥
 
