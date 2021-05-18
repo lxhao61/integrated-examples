@@ -37,8 +37,8 @@
           "certificates": [
             {
               "ocspStapling": 3600, //ocspStapling检查更新时间间隔。Xray v1.2.0版及以后支持（可选项参数，可以不配置。）。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
-              "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy/xx.yy.crt", //换成你的证书，绝对路径。
-              "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy/xx.yy.key" //换成你的密钥，绝对路径。
+              "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy/xx.yy.crt", //换成自己的证书，绝对路径。
+              "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy/xx.yy.key" //换成自己的密钥，绝对路径。
             }
           ]
         }
