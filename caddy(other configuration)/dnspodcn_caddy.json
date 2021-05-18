@@ -27,8 +27,8 @@
               "dns": {
                 "provider": {
                   "Language": "en",
-                  "name": "dnspodcn",
                   "BaseURL": "https://dnsapi.cn",
+                  "name": "dnspodcn",
                   "AppID": "1232456", //换成你dnspod.cn的DP_Id
                   "AppToken": "e09062f1fd2545555fc8a15fceda2222" //换成你dnspod.cn的DP_Key
                 }
@@ -81,8 +81,8 @@
               "dns": {
                 "provider": {
                   "Language": "en",
-                  "name": "dnspodcn",
                   "BaseURL": "https://dnsapi.cn",
+                  "name": "dnspodcn",
                   "AppID": "1232456", //换成你dnspod.cn的DP_Id
                   "AppToken": "e09062f1fd2545555fc8a15fceda2222" //换成你dnspod.cn的DP_Key
                 }
@@ -167,8 +167,8 @@
               "dns": {
                 "provider": {
                   "Language": "en",
-                  "name": "dnspodcn",
                   "BaseURL": "https://dnsapi.cn",
+                  "name": "dnspodcn",
                   "AppID": "1232456", //换成你dnspod.cn的DP_Id
                   "AppToken": "e09062f1fd2545555fc8a15fceda2222" //换成你dnspod.cn的DP_Key
                 }
