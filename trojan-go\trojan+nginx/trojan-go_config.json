@@ -3,7 +3,7 @@
   "local_addr": "0.0.0.0",
   "local_port": 443, //监听端口
   "remote_addr": "127.0.0.1",
-  "remote_port": 88, //h2与http/1.1回落共用此端口，回落到web服务器。需web服务器同一端口，同时支持h2c server与http/1.1 server应用。
+  "remote_port": 82, //h2回落端口
   "log_level": 1,
   "log_file": "/var/log/trojan-go/error.log", //更改为自己的日志路径。
   "password": [
@@ -22,8 +22,7 @@
     "prefer_server_cipher": true,
     "sni": "*.xx.yy", //更改为自己的域名（可设置成通配符域名）
     "alpn":[
-      "h2", //启用h2连接，web回落也需配置支持h2回落；否则不一致（裸奔），容易被墙探测出，从而被封。
-      "http/1.1" //启用http/1.1连接，web回落也需配置支持http/1.1回落；否则不一致（裸奔），容易被墙探测出，从而被封。
+      "h2" //仅启用h2连接
     ],
     "session_ticket": true,
     "reuse_session": true,
