@@ -21,13 +21,13 @@
 :88 { #启用进程绑定后此端口失效，仅做标记作用。
     bind unix//dev/shm/h1h2c.sock #启用进程绑定后执行进程监听，仅接收web回落。
     @host {
-        host zv.xx.yy zt.xx.yy #限定域名访问（禁止以ip方式访问网站），更改为自己的对应回落域名。
+        host zv.xx.yy zt.xx.yy #限定域名访问（禁止以ip方式访问网站），更改为自己的对应域名。
     }
     header @host {
         Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
     }
     file_server @host {
-        root /var/www/html #修改成自己存放的web文件路径
+        root /var/www/html #更改为自己存放的web文件路径
     }
 }
 
@@ -62,12 +62,12 @@
     }
 
     @host {
-        host zh.xx.yy #限定域名访问（禁止以ip方式访问网站），更改为自己的对应回落域名。
+        host zh.xx.yy #限定域名访问（禁止以ip方式访问网站），更改为自己的对应域名。
     }
     header @host {
         Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
     }
     file_server @host {
-        root /var/www/html #修改成自己存放的web文件路径
+        root /var/www/html #更改为自己存放的web文件路径
     }
 }
