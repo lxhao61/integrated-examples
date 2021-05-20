@@ -14,9 +14,6 @@
 #以dns api方式申请tls证书（以上参数修改如下）：
 {
 #.........<省略>........
-#.........<省略>........
-    auto_https off #禁用自动https
-    cert_issuer acme #必须acme与zerossl二选一（固定证书及密钥的绝对路径便于引用）。acme表示从Let's Encrypt申请证书及密钥，zerossl表示从ZeroSSL申请证书及密钥。注意：版本不小于v2.4.1才支持。
     acme_dns dnspodcn 1232456 e09062f1fd2545555fc8a15fceda2222 #换成你dnspod.cn的DP_Id与DP_Key
 }
 
