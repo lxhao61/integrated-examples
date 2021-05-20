@@ -14,9 +14,6 @@
 #以dns api方式申请tls证书（以上参数修改如下）：
 {
 #.........<省略>........
-    acme_ca https://acme-v02.api.letsencrypt.org/directory #表示从Let's Encrypt申请证书及密钥 （或增加此条参数）
-    #acme_ca https://acme.zerossl.com/v2/DV909 #表示从ZeroSSL申请证书及密钥 （或增加此条参数）
-#上两条参数必须二选一（固定证书及密钥的绝对路径便于引用）。可删除其一或用#屏蔽之一来选择。
     acme_dns cloudflare e09062f1fd2545555fc8a15fceda2222 #换成你cloudflare的api，此api是你配置相关生成的，详细参考官方及cloudflare插件github。
 }
 
@@ -49,17 +46,14 @@
 
 #以dns api方式申请tls证书（以上参数修改如下）：
 {
-    https_port 7443 #更改https默认端口 （增加此条参数）
 #.........<省略>........
     admin off
     storage file_system {
         root /home/tls #存放证书及密钥的基本路径 （增加此部分参数）
     }
 #.........<省略>........
-    auto_https off
-    acme_ca https://acme-v02.api.letsencrypt.org/directory #表示从Let's Encrypt申请证书及密钥 （或增加此条参数）
-    #acme_ca https://acme.zerossl.com/v2/DV909 #表示从ZeroSSL申请证书及密钥 （或增加此条参数）
-#上两条参数必须二选一（固定证书及密钥的绝对路径便于引用）。可删除其一或用#屏蔽之一来选择。
+    auto_https off #禁用自动https
+    cert_issuer acme #必须acme与zerossl二选一（固定证书及密钥的绝对路径便于引用）。acme表示从Let's Encrypt申请证书及密钥，zerossl表示从ZeroSSL申请证书及密钥。注意：版本不小于v2.4.1才支持。
     acme_dns cloudflare e09062f1fd2545555fc8a15fceda2222 #换成你cloudflare的api，此api是你配置相关生成的，详细参考官方及cloudflare插件github。 （增加此条参数）
 #.........<省略>........
 }
@@ -70,8 +64,7 @@
     }
 #.........<省略>........
 
-:7443, *.xx.yy { #*.xx.yy更改为自己的域名。注意：逗号与域名之间有一个空格。*.xx.yy表示申请通配符证书。（增加此部分参数）
-}
+:7443, *.xx.yy:7443 #*.xx.yy更改为自己的域名。注意：逗号与域名之间有一个空格。*.xx.yy表示申请通配符证书。（增加此部分参数）
 #注意：
 #1、caddy采用dns api方式申请的通配符证书及密钥，不包括根域名，仅此根域名二级域名能用。
 #2、调整限定域名访问范围，不严格可直接更改为通配符域名。
@@ -102,17 +95,14 @@
 
 #以dns api方式申请tls证书（以上参数修改如下）：
 {
-    https_port 7443 #更改https默认端口。此条参数跟下面7443关联，端口监听需要添加，进程监听不需要添加。 （增加此条参数）
 #.........<省略>........
     admin off
     storage file_system {
         root /home/tls #存放证书及密钥的基本路径 （增加此部分参数）
     }
 #.........<省略>........
-    auto_https off
-    acme_ca https://acme-v02.api.letsencrypt.org/directory #表示从Let's Encrypt申请证书及密钥 （或增加此条参数）
-    #acme_ca https://acme.zerossl.com/v2/DV909 #表示从ZeroSSL申请证书及密钥 （或增加此条参数）
-#上两条参数必须二选一（固定证书及密钥的绝对路径便于引用）。可删除其一或用#屏蔽之一来选择。
+    auto_https off #禁用自动https
+    cert_issuer acme #必须acme与zerossl二选一（固定证书及密钥的绝对路径便于引用）。acme表示从Let's Encrypt申请证书及密钥，zerossl表示从ZeroSSL申请证书及密钥。注意：版本不小于v2.4.1才支持。
     acme_dns cloudflare e09062f1fd2545555fc8a15fceda2222 #换成你cloudflare的api，此api是你配置相关生成的，详细参考官方及cloudflare插件github。 （增加此条参数）
 #.........<省略>........
 }
@@ -123,7 +113,7 @@
     }
 #.........<省略>........
 
-:7443, *.xx.yy { #*.xx.yy更改为自己的域名。注意：逗号与域名之间有一个空格。*.xx.yy表示申请通配符证书。
+:7443, *.xx.yy:7443 { #*.xx.yy更改为自己的域名。注意：逗号与域名之间有一个空格。*.xx.yy表示申请通配符证书。
 #.........<省略>........
     @host {
         host *.xx.yy #限定域名访问（禁止以ip方式访问网站），更改为自己的对应回落域名。
