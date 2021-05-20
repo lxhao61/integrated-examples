@@ -129,8 +129,8 @@
     "tls": {
       "certificates": {
         "load_files": [{
-          "certificate": "/etc/ssl/tls/zh.xx.yy.crt", //换成你的证书，绝对路径。
-          "key": "/etc/ssl/tls/zh.xx.yy.key", //换成你的密钥，绝对路径。
+          "certificate": "/etc/ssl/tls/zh.xx.yy.crt", //换成自己的证书，绝对路径。
+          "key": "/etc/ssl/tls/zh.xx.yy.key", //换成自己的密钥，绝对路径。
           "tags": ["tls01"]
         }]
       }
