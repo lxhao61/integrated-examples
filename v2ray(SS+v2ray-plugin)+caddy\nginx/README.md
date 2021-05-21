@@ -15,8 +15,8 @@
 
 2、v2ray_DS_config.json 采用 Unix Domain Socket 连接 shadowsocks 应用与 Xray-plugin（v2ray-plugin） 模块，模块效率高，但在 Windows 10 Build 17036 前不可用。v2ray_redirect_config.json 采用 local loopback 连接 shadowsocks 应用与 Xray-plugin（v2ray-plugin） 模块，效率稍低，但可适用全部服务器。
 
-3、此示例中若采用 caddy 反向代理，Caddyfile 配置与 caddy.json 配置二选一（效果一样）。支持自动 https，即自动申请与更新证书与私钥，自动 http 重定向到 https。
+3、此示例若采用 caddy 反向代理，Caddyfile 配置与 caddy.json 配置二选一（效果一样）。支持自动 https，即自动申请与更新证书与私钥，自动 http 重定向到 https。
 
-4、此示例中若采用 nginx 反向代理，如果系统版本过低，其对应发行版仓库自带 nginx 预编译程序包可能不支持 tls1.3；如需要支持 tls1.3，必须先升级 OpenSSl 版本大于 1.1.1，再进行 nginx 源代码编译和安装。
+4、此示例若采用 nginx 反向代理，如果系统版本过低，其对应发行版仓库自带 nginx 预编译程序包可能不支持 tls1.3；如需要支持 tls1.3，必须先升级 OpenSSl 版本大于 1.1.1，再进行 nginx 源代码编译和安装。
 
-5、此示例中若采用 nginx 反向代理，不能使用 ACME 客户端在当前服务器上申请与更新普通证书及密钥，因普通证书及密钥申请与更新需要占用或监听80端口（或443端口），从而与当前应用端口冲突。
+5、此示例若采用 nginx 反向代理，不要使用 ACME 客户端在当前服务器上申请与更新普通证书及密钥，因普通证书及密钥申请与更新需要占用或监听80端口（或443端口），从而与当前应用端口冲突。
