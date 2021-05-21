@@ -8,7 +8,7 @@
 7. 实现了caddy json配置SNI分流应用，且同时支持端口或进程分别PROXY protocol发送，灵活性等同haproxy SNI分流。
 8. 实现了Xray与caddy相关应用的证书及密钥申请与更新全自动化。
 9. 实现了CDN应用（caddy反向代理gRPC应用除外）与正常应用共存。
-10. 实现了caddy Caddyfile配置与caddy json配置几乎完全等同，效率基本一致。
+10. 实现了caddy Caddyfile配置与caddy json配置几乎完全等同，功效一致。
 * **备注：** 端口分流、端口回落\分流、端口转发是指基于local loopback实现的不同方式；进程分流、进程回落\分流、进程转发是指基于Unix Domain Socket实现的不同方式。
 
 ### 服务端单一应用配置示例
