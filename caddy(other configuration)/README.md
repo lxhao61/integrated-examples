@@ -24,11 +24,11 @@
 
 4、本人 github 中的相关配置示例已配置 caddy SNI 分流共用端口 ，此配置方法仅备份及参考等。
 
-三、caddy 以 DNS API 方式申请证书与私钥
+三、caddy 以 DNS API 方式申请证书及密钥
 
-1、以 DNS API 方式申请证书及密钥，可以申请普通证书，也可以申请通配符证书。
+1、以 DNS API 方式申请证书及密钥，普通证书与通配符证书都可以申请，不受限制。
 
-2、Xray\v2ray\trojan\trojan-go 可以直接使用 caddy 以 DNS API 方式申请的证书与私钥，配合Xray（版本必须不低于v1.3.0）自动重载证书及密钥（OCSP Stapling），可实现示例所需证书及密钥申请与更新完全自动化；否则 Xray\v2ray\trojan\trojan-go 服务端（Xray 版本低于 v1.3.0）不支持重载证书及密钥，caddy 证书及密钥到期更新后需手动重启 Xray\v2ray\trojan\trojan-go 来重新加载更新的证书及密钥。
+2、Xray\v2ray\trojan\trojan-go 可以直接使用 caddy 申请的证书及密钥，配合Xray（版本必须不低于v1.3.0）自动重载证书及密钥（OCSP Stapling），可实现示例所需证书及密钥申请与更新全自动化；否则 Xray\v2ray\trojan\trojan-go 服务端（Xray 版本低于 v1.3.0）不支持重载证书及密钥，caddy 证书及密钥到期更新后需手动重启 Xray\v2ray\trojan\trojan-go 来重新加载更新的证书及密钥。
 
 注意：
 
@@ -38,6 +38,6 @@
 
 3、acme 申请证书及密钥路径，通配符证书及密钥在 /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/wildcard_.xx.yy 目录中,普通证书及密钥在 /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy 目录中。zerossl 申请证书及密钥路径，与 acme 申请证书及密钥路径类似。
 
-4、推荐采用 json 配置，否则采用 Caddyfile 配置必须启用额外无用端口来联动实现自动申请及更新证书及密钥。另外采用 Caddyfile 配置 DNS API 方式申请证书及密钥仅支持端口监听模式。
+4、本示例中 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可。Caddyfile 配置仅“二、无SNI分流的回落为主应用（caddy提供http应用）”须启用额外无用端口来联动实现自动申请与更新证书及密钥。
 
-5、仅提供了 dnspod（dnspod.com插件，国际版。）、cloudflare、dnspodcn（dnspod.cn插件，中国版。）三种最常见插件配置示例，其它插件配置类似，参考cloudflare配置示例。
+5、仅提供了 dnspod（dnspod.com插件，国际版。）、cloudflare、dnspodcn（dnspod.cn插件，中国版。）三种最常见插件配置示例，其它插件配置类似，参考 dnspod 或 cloudflare 配置示例。
