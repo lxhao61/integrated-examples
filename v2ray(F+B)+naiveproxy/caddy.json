@@ -6,9 +6,7 @@
               "auth_pass_deprecated": "pass", //naiveproxy密码，更改为自己的。
               "hide_ip": true,
               "hide_via": true,
-              "probe_resistance": {
-                "domain": "unsplash.com:443"
-              }
+              "probe_resistance": {}
             }]
           },
           {
