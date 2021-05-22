@@ -1,9 +1,11 @@
 [Unit]
 Description=Caddy
 Documentation=https://caddyserver.com/docs/
-After=network.targett
+After=network.target network-online.target
+Requires=network-online.target
 
 [Service]
+Type=notify
 User=root
 Group=root
 ExecStart=/usr/local/bin/caddy/caddy run --environ --config /usr/local/etc/caddy/caddy.json //json配置调用。如是Caddyfile配置，直接修改caddy.json为Caddyfile即可。
