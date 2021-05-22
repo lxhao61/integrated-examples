@@ -26,7 +26,7 @@
 
 三、caddy 以 DNS API 方式申请证书及密钥
 
-1、以 DNS API 方式申请证书及密钥，普通证书与通配符证书都可以申请，不受限制。
+1、以 DNS API 方式申请证书及密钥，普通证书与通配符证书都可以申请，不受限制单一或混合申请。
 
 2、Xray\v2ray\trojan\trojan-go 可以直接使用 caddy 申请的证书及密钥，配合Xray（版本必须不低于v1.3.0）自动重载证书及密钥（OCSP Stapling），可实现示例所需证书及密钥申请与更新全自动化；否则 Xray\v2ray\trojan\trojan-go 服务端（Xray 版本低于 v1.3.0）不支持重载证书及密钥，caddy 证书及密钥到期更新后需手动重启 Xray\v2ray\trojan\trojan-go 来重新加载更新的证书及密钥。
 
