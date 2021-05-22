@@ -36,7 +36,7 @@
 
 2、caddy 以 DNS challenge 方式申请证书及密钥，必须带对应 DNS API 插件。dnspod 分 dnspod.com（国际版）与 dnspod.cn（中国版），故两者插件不通用，必须对应各自 dnspod 域名解析使用。
 
-3、cloudflare 已不支持 freenom 的免费域名以 DNS challenge 方式申请证书及密钥了；以 HTTP challenge 或 TLS-ALPN challenge 方式申请普通证书及密钥不受影响。
+3、cloudflare 已不支持 freenom 的免费域名以 DNS challenge 方式申请证书及密钥了，以 HTTP challenge 或 TLS-ALPN challenge 方式申请普通证书及密钥不受影响。
 
 4、acme 申请证书及密钥路径，通配符证书及密钥在 /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/wildcard_.xx.yy 目录中,普通证书及密钥在 /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy 目录中。zerossl 申请证书及密钥路径，与 acme 申请证书及密钥路径类似。
 
