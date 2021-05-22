@@ -24,20 +24,21 @@
 
 4、本人 github 中的相关配置示例已配置 caddy SNI 分流共用端口 ，此配置方法仅备份及参考等。
 
-三、caddy 以 DNS API 方式申请证书及密钥
+三、caddy 以 DNS challenge 方式申请证书及密钥
 
-1、以 DNS API 方式申请证书及密钥，普通证书与通配符证书都可以申请，不受限制单一或混合申请。
+1、以 DNS challenge 方式申请证书及密钥，普通证书与通配符证书都可以申请，不受限制。
 
 2、Xray\v2ray\trojan\trojan-go 可以直接使用 caddy 申请的证书及密钥，配合Xray（版本必须不低于v1.3.0）自动重载证书及密钥（OCSP Stapling），可实现示例所需证书及密钥申请与更新全自动化；否则 Xray\v2ray\trojan\trojan-go 服务端（Xray 版本低于 v1.3.0）不支持重载证书及密钥，caddy 证书及密钥到期更新后需手动重启 Xray\v2ray\trojan\trojan-go 来重新加载更新的证书及密钥。
 
 注意：
+1、示例为通配符证书及密钥申请，普通证书及密钥或混合申请类似。
 
-1、dnspod 分 dnspod.com（国际版）与 dnspod.cn（中国版），故两者插件不通用，必须对应各自 dnspod 域名解析使用。
+2、caddy 以 DNS challenge 方式申请证书及密钥，必须带对应 DNS API 插件。dnspod 分 dnspod.com（国际版）与 dnspod.cn（中国版），故两者插件不通用，必须对应各自 dnspod 域名解析使用。
 
-2、cloudflare 已不支持 freenom 的免费域名以 DNS API 方式申请证书及密钥了。
+3、cloudflare 已不支持 freenom 的免费域名以 DNS challenge 方式申请证书及密钥了；以 HTTP challenge 或 TLS-ALPN challenge 方式申请普通证书及密钥不受影响。
 
-3、acme 申请证书及密钥路径，通配符证书及密钥在 /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/wildcard_.xx.yy 目录中,普通证书及密钥在 /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy 目录中。zerossl 申请证书及密钥路径，与 acme 申请证书及密钥路径类似。
+4、acme 申请证书及密钥路径，通配符证书及密钥在 /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/wildcard_.xx.yy 目录中,普通证书及密钥在 /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy 目录中。zerossl 申请证书及密钥路径，与 acme 申请证书及密钥路径类似。
 
-4、本示例中 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可。Caddyfile 配置仅“二、无SNI分流的回落为主应用（caddy提供http应用）”须启用额外无用端口来联动实现自动申请与更新证书及密钥。
+5、caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可。Caddyfile 配置仅“二、无SNI分流的回落为主应用（caddy提供http应用）”须启用额外无用端口来联动实现自动申请与更新证书及密钥。
 
-5、仅提供了 dnspod（dnspod.com插件，国际版。）、cloudflare、dnspodcn（dnspod.cn插件，中国版。）三种最常见插件配置示例，其它插件配置类似，参考 dnspod 或 cloudflare 配置示例。
+6、提供了 dnspod（dnspod.com插件，国际版。）、cloudflare、dnspodcn（dnspod.cn插件，中国版。）三种最常见插件配置示例，其它插件配置类似，参考 dnspod 或 cloudflare 配置示例。
