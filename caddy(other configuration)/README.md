@@ -34,12 +34,12 @@
 
 1、示例为通配符证书及密钥申请，普通证书及密钥或混合申请类似。
 
-2、caddy 以 DNS challenge 方式申请证书及密钥，必须带对应 DNS API 插件。dnspod 分 dnspod.com（国际版）与 dnspod.cn（中国版），故两者插件不通用，必须对应各自 dnspod 域名解析使用。
+2、caddy 以 DNS challenge 方式申请证书及密钥，必须带对应 DNS API 插件。dnspod 分 dnspod.com（国际版）与 dnspod.cn（中国版），故两者插件不通用，必须对应各自 dnspod 解析使用。
 
-3、cloudflare 已不支持 freenom 的免费域名以 DNS challenge 方式申请证书及密钥了，以 HTTP challenge 或 TLS-ALPN challenge 方式申请普通证书及密钥不受影响。
+3、cloudflare 已不支持 freenom 的免费域名以 DNS challenge 方式申请证书及密钥了。
 
 4、acme 申请证书及密钥路径，通配符证书及密钥在 /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/wildcard_.xx.yy 目录中,普通证书及密钥在 /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy 目录中。zerossl 申请证书及密钥路径，与 acme 申请证书及密钥路径类似。
 
-5、caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可。Caddyfile 配置仅“二、无SNI分流的回落为主应用（caddy提供http应用）”须启用额外无用端口来联动实现自动申请与更新证书及密钥。
+5、caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可。Caddyfile 配置仅“二、无 SNI 分流的回落为主应用（caddy 提供 http 应用）”须启用额外无用端口来联动实现自动申请与更新证书及密钥。
 
 6、提供了 dnspod（dnspod.com插件，国际版。）、cloudflare、dnspodcn（dnspod.cn插件，中国版。）三种最常见插件配置示例，其它插件配置类似，参考 dnspod 或 cloudflare 配置示例。
