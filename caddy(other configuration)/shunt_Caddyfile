@@ -1,4 +1,10 @@
 #原回落配置的相关参数：
+{
+#.........<省略>........
+    auto_https off #禁用自动https
+#.........<省略>........
+}
+
 :88 { #监听端口，仅接收web回落。或#启用进程绑定后此端口失效，仅做标记作用。
 #.........<省略>........
     @host {
@@ -15,6 +21,12 @@
 
 #分别回落分流到不同网站
 #1、以上参数修改为如下：（示例仅配置了两个网站\域名的回落分流；如需要多个网站\域名，增加对应参数即可。）
+{
+#.........<省略>........
+    auto_https off #禁用自动https
+#.........<省略>........
+}
+
 :88 { #监听端口，仅接收web回落。或#启用进程绑定后此端口失效，仅做标记作用。
 #.........<省略>........
     header {
@@ -38,28 +50,26 @@
 #备注：配置简单，简单分流。
 
 #2、以上参数修改为如下：（示例仅配置了两个网站\域名的回落分流；如需要多个网站\域名，增加对应参数即可。）
-:88 { #监听端口，仅接收web回落。或#启用进程绑定后此端口失效，仅做标记作用。
+{
 #.........<省略>........
-    @host1 {
-        host za.xx.yy #更改为分流的域名
-    }
-    header @host1 {
+}
+
+http://za.xx.yy:88 { #za.xx.yy更改为分流的域名
+#.........<省略>........
+    header {
         Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
     }
-    file_server @host1 {
+    file_server {
         root /var/www/za #更改为域名对应存放的web文件路径
     }
 }
 
-:88 { #监听端口，仅接收web回落。或#启用进程绑定后此端口失效，仅做标记作用。
+http://zb.xx.yy:88 { #zb.xx.yy更改为分流的域名
 #.........<省略>........
-    @host2 {
-        host zb.xx.yy #更改为分流的域名
-    }
-    header @host2 {
+    header {
         Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
     }
-    file_server @host2 {
+    file_server {
         root /var/www/zb #更改为域名对应存放的web文件路径
     }
 }
