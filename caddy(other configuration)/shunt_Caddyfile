@@ -18,7 +18,7 @@
     header {
         Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
     }
-    handle {
+    route {
         @host1 {
             host za.xx.yy #更改为分流的域名
         }
