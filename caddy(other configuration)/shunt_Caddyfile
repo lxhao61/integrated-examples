@@ -41,7 +41,7 @@
     @host1 {
         host za.xx.yy #更改为分流的域名
     }
-    handle @host1 {
+    route @host1 {
         header {
             Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
         }
@@ -53,7 +53,7 @@
     @host2 {
         host zb.xx.yy #更改为分流的域名
     }
-    handle @host2 {
+    route @host2 {
         header {
             Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
         }
