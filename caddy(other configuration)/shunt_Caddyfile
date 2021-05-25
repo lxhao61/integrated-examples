@@ -62,4 +62,5 @@
         }
     }
 }
-#备注：配置复杂，各分流网站可灵活配置各自需要优化的参数。
+#注意：原配置中的全局选项中若有“order forward_proxy before header”或“order reverse_proxy before header”参数，必须修改为“order forward_proxy before route”或“order reverse_proxy before route”。
+#备注：配置稍微复杂，但各分流网站可灵活配置各自需要优化的参数。
