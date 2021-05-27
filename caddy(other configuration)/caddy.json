@@ -110,7 +110,7 @@
             },
             {
               "handler": "file_server",
-              "root": "/home/webdav", //更改为自己的文件服务器存放文件路径
+              "root": "/home/webdav", //更改为自己的文件服务器存放文件路径，与下webdav服务器存放文件路径一致。
               "browse": {} //启用文件列表
             }]
           },
@@ -173,7 +173,7 @@
             },
             {
               "handler": "file_server",
-              "root": "/home/webdav", //更改为自己的文件服务器存放文件路径
+              "root": "/home/webdav", //更改为自己的文件服务器存放文件路径，与下webdav服务器存放文件路径一致。
               "browse": {} //启用文件列表
             }]
           },
