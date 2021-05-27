@@ -1,0 +1,203 @@
+//一、开放式文件服务器配置
+//.........<省略>........
+          {
+            "match": [{
+              "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
+            }],
+            "handle": [{
+              "handler": "headers",
+              "response": {
+                "set": {
+                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
+                }
+              }
+            },
+            {
+              "handler": "file_server",
+              "root": "/home/webdav", //更改为自己的文件服务器存放文件路径
+              "browse": {} //启用文件列表
+            }]
+          },
+//.........<省略>........
+//备注：所有示例的回落或代理网站可参考上边调整为开放式文件服务器。
+
+
+//二、验证式文件服务器配置
+//.........<省略>........
+          {
+            "match": [{
+              "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
+            }],
+            "handle": [{
+              "handler": "headers",
+              "response": {
+                "set": {
+                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
+                }
+              }
+            },
+            {
+              "handler": "authentication",
+              "providers": {
+              	"http_basic": {
+                  "accounts": [{
+                    "username": "user", //身份验证用户
+                    "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //身份验证用户的哈希密码，以base64编码。示例为password的哈希密码。
+                  }],
+                  "hash_cache": {}
+              	}
+              }
+            },
+            {
+              "handler": "file_server",
+              "root": "/home/webdav", //更改为自己的文件服务器存放文件路径
+              "browse": {} //启用文件列表
+            }]
+          },
+//.........<省略>........
+//备注：所有示例的回落或代理网站不建议参考上边调整为验证式文件服务器。
+
+
+//三、验证式webdav服务器配置
+//.........<省略>........
+          {
+            "match": [{
+              "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
+              "not":[{
+              	"method":["GET"]
+              }]
+            }],
+            "handle": [{
+              "handler": "authentication",
+              "providers": {
+              	"http_basic": {
+                  "accounts": [{
+                    "username": "user", //身份验证用户
+                    "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //身份验证用户的哈希密码，以base64编码。示例为password的哈希密码。
+                  }],
+                  "hash_cache": {}
+              	}
+              }
+            },
+            {
+              "handler": "webdav",
+              "root": "/home/webdav"  //更改为自己的webdav服务器存放文件路径
+            }]
+          },
+//.........<省略>........
+//备注：修改/home/webdav的webdav权限为0777，以便客户端可以写入及删除文件权限。
+
+
+//四、开放式文件服务器配置+验证式webdav服务器配置
+//.........<省略>........
+          {
+            "match": [{
+              "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
+            }],
+            "handle": [{
+              "handler": "headers",
+              "response": {
+                "set": {
+                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
+                }
+              }
+            },
+            {
+              "handler": "file_server",
+              "root": "/home/webdav", //更改为自己的文件服务器存放文件路径
+              "browse": {} //启用文件列表
+            }]
+          },
+          {
+            "match": [{
+              "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
+              "not":[{
+              	"method":["GET"]
+              }]
+            }],
+            "handle": [{
+              "handler": "authentication",
+              "providers": {
+              	"http_basic": {
+                  "accounts": [{
+                    "username": "user", //身份验证用户
+                    "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //身份验证用户的哈希密码，以base64编码。示例为password的哈希密码。
+                  }],
+                  "hash_cache": {}
+              	}
+              }
+            },
+            {
+              "handler": "webdav",
+              "root": "/home/webdav"  //更改为自己的webdav服务器存放文件路径
+            }]
+          },
+//备注：
+//1、适合开放式共享文件，通过webda应用后台管理文件。
+//2、两部分中"host"与"root"参数值要对应保持一致。
+//3、修改/home/webdav的webdav权限为0777，以便客户端可以写入及删除文件权限。
+//4、所有示例的回落或代理网站可参考调整为开放式文件服务器+验证式webdav服务器的组合配置。
+
+
+//五、验证式文件服务器配置+验证式webdav服务器配置
+//.........<省略>........
+          {
+            "match": [{
+              "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
+            }],
+            "handle": [{
+              "handler": "headers",
+              "response": {
+                "set": {
+                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
+                }
+              }
+            },
+            {
+              "handler": "authentication",
+              "providers": {
+              	"http_basic": {
+                  "accounts": [{
+                    "username": "user", //身份验证用户
+                    "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //身份验证用户的哈希密码，以base64编码。示例为password的哈希密码。
+                  }],
+                  "hash_cache": {}
+              	}
+              }
+            },
+            {
+              "handler": "file_server",
+              "root": "/home/webdav", //更改为自己的文件服务器存放文件路径
+              "browse": {} //启用文件列表
+            }]
+          },
+          {
+            "match": [{
+              "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
+              "not":[{
+              	"method":["GET"]
+              }]
+            }],
+            "handle": [{
+              "handler": "authentication",
+              "providers": {
+              	"http_basic": {
+                  "accounts": [{
+                    "username": "user", //身份验证用户
+                    "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //身份验证用户的哈希密码，以base64编码。示例为password的哈希密码。
+                  }],
+                  "hash_cache": {}
+              	}
+              }
+            },
+            {
+              "handler": "webdav",
+              "root": "/home/webdav"  //更改为自己的webdav服务器存放文件路径
+            }]
+          },
+//.........<省略>........
+//备注：
+//1、适合打造专属验证文件服务器与webdav服务器。
+//2、两部分中"host"与"root"参数值要对应保持一致。
+//3、修改/home/webdav的webdav权限为0777，以便客户端可以写入及删除文件权限。
+//4、所有示例的回落或代理网站不建议参考上边调整为验证式文件服务器+验证式webdav服务器的组合配置。
