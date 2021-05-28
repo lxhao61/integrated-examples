@@ -43,3 +43,7 @@
 5、caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可。Caddyfile 配置仅“二、无 SNI 分流的回落为主应用（caddy 提供 http 应用）”须启用额外无用端口来联动实现自动申请与更新证书及密钥。
 
 6、提供了 dnspod（dnspod.com插件，国际版。）、cloudflare、dnspodcn（dnspod.cn插件，中国版。）三种最常见插件配置示例，其它插件配置类似，参考 dnspod 或 cloudflare 配置示例。
+
+四、caddy webdav 应用相关
+
+以文件服务与 webdav 应用打造融合的网盘应用。详见caddy.json配置。
