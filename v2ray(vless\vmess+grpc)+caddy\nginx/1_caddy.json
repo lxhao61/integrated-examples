@@ -20,7 +20,6 @@
           "listen": [":443"],
           "routes": [{
             "match": [{
-              "protocol": "grpc",
               "path": ["/cdngrpc/*"] //与vless+grpc或vmess+grpc应用中serviceName对应
             }],
             "handle": [{
