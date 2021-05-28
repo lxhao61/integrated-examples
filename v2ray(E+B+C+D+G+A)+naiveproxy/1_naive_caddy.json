@@ -57,7 +57,6 @@
           },
           {
             "match": [{
-              "protocol": "grpc",
               "path": ["/cdngrpc/*"] //与vless+grpc应用中serviceName对应
             }],
             "handle": [{
