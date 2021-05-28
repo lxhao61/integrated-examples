@@ -46,4 +46,4 @@
 
 四、caddy webdav 应用相关
 
-以文件服务与 webdav 应用打造融合的网盘应用。详见caddy.json配置。
+以文件服务与 webdav 应用打造融合的网盘应用。详见 caddy.json 或 Caddyfile 配置。
