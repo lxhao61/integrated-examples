@@ -14,7 +14,7 @@
     }
 
     @tgrpc { #匹配器标签。此标签仅区分，多个不同代理需要改成不同名称，但要与下边‘reverse_proxy’中匹配器标签对应。
-        path /cdngrpc/* #与trojan+grpc应用中serviceName对应
+        path /tdngrpc/* #与trojan+grpc应用中serviceName对应
     }
     reverse_proxy @tgrpc 127.0.0.1:2010 { #转发给本机trojan+grpc监听端口
         flush_interval -1
