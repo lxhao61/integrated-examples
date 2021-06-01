@@ -1,0 +1,62 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "error": "/var/log/v2ray/error.log", //若使用xray，此处目录名称v2ray改成xray。
+    "access": "/var/log/v2ray/access.log" //若使用xray，此处目录名称v2ray改成xray。
+  },
+  "inbounds": [
+    {
+      "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
+      "port": 2006, //trojan+h2c监听端口
+      "protocol": "trojan",
+      "settings": {
+        "clients": [
+          {
+            "password":"diy2006", //修改成自己密码
+            "email": "2006@gmail.com"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "h2",
+        "security": "none",
+        "httpSettings": {
+          "host": [
+            "xx.yy" //修改成自己的域名
+          ],
+          "path": "/teuW56Es" //修改成自己的path
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    },
+  ],
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "blocked"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
