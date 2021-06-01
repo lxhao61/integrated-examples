@@ -4,7 +4,7 @@
 
 原理：
 
-默认流程：web client <------- https（http/2）-----> caddy\nginx（web server）
+默认流程：web client <------- https（http/2）-----> caddy\nginx（web server）  
 匹配流程：Xray\v2ray client <------ gRPC+tls ------> caddy\nginx <-- gRPC --> Xray\v2ray server
 
 注意：
