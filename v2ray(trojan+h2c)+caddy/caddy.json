@@ -1,0 +1,66 @@
+{
+  "admin": {
+    "disabled": true
+  },
+  "logging": {
+    "logs": {
+      "default": {
+        "level": "ERROR",
+        "writer": {
+          "output": "file",
+          "filename": "/var/log/caddy/access.log"
+        }
+      }
+    }
+  },
+  "apps": {
+    "http": {
+      "servers": {
+        "https": {
+          "listen": [":443"],
+          "routes": [{
+            "match": [{
+              "path": ["/teuW56Es"] //与trojan+h2c应用中path对应
+            }],
+            "handle": [{
+              "handler": "reverse_proxy",
+              "transport": {
+                "protocol": "http",
+                "versions": ["h2c"]
+              },
+              "upstreams": [{
+                "dial": "127.0.0.1:2006" //转发给本机trojan+h2c监听端口
+              }]
+            }]
+          },
+          {
+            "match": [{
+              "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
+            }],
+            "handle": [{
+              "handler": "headers",
+              "response": {
+                "set": {
+                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
+                }
+              }
+            },
+            {
+              "handler": "file_server",
+              "root": "/var/www/html" //更改为自己存放的web文件路径
+            }]
+          }],
+          "tls_connection_policies": [{
+            "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"],
+            "alpn": ["h2","http/1.1"]
+          }]
+        }
+      }
+    },
+    "tls": {
+      "certificates": {
+        "automate": ["xx.yy"] //自动化管理域名证书（包括获取、更新证书及加载证书）。更改为自己的域名。
+      }
+    }
+  }
+}
