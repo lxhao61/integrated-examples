@@ -2,7 +2,7 @@
 
 1、此配置为 Xray\v2ray trojan 协议，以 WebSocket 方式传输，实现了兼容 rojan-go 的 WebSocket 应用（服务端），客户端直接使用 trojan-go 即可。
 
-2、通过 caddy 或 nginx 前置（监听443端口）实现 WebSocket（WS） 的反向代理，tls 由 caddy 或 nginx 提供及处理。
+2、通过 caddy 或 nginx 前置（监听443端口）实现 WebSocket（WS） 的反向代理，tls 由 caddy 或 nginx 提供及处理，trojan+ws+tls 应用。
 
 原理：
 
