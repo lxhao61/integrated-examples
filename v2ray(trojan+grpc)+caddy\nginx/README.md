@@ -1,6 +1,6 @@
 介绍：
 
-通过 caddy 或 nginx 前置（监听443端口）实现 gRPC 反向代理，tls 由 caddy 或 nginx 提供及处理；trojan+grpc+tls 应用。
+通过 caddy 或 nginx 前置（监听443端口）实现 gRPC 反向代理，tls 由 caddy 或 nginx 提供及处理，trojan+grpc+tls 应用。
 
 原理：
 
