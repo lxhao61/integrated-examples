@@ -1,6 +1,6 @@
 介绍：
 
-通过 caddy 前置（监听443端口）实现 h2c 反向代理，tls 由 caddy 提供及处理；包括 vless+h2c+tls 与 vmess+h2c+tls 两种应用。
+通过 caddy 前置（监听443端口）实现 h2c 反向代理，tls 由 caddy 提供及处理，包括 vless+h2c+tls 与 vmess+h2c+tls 两种应用。
 
 原理：
 
