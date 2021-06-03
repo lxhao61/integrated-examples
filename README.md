@@ -2,7 +2,7 @@
 1. 实现了SNI分流应用的端口分流到进程分流及启用PROXY protocol的从低到高（效率）应用支持。
 2. 实现了回落应用的端口回落/分流到进程回落/分流及启用PROXY protocol的从低到高（效率）应用支持。
 3. 实现了反代应用的端口转发到进程转发的从低到高（效率）应用支持。
-4. 实现了除v2ray(vless\vmess+kcp+seed)示例及应用外，其它示例及应用对外都使用443端口，互不影响。
+4. 实现了除v2ray(vless\vmess+kcp+seed)示例及应用外，其它示例及应用对外都使用或共用443端口，互不影响。
 5. 实现了除v2ray(vless\vmess+kcp+seed)示例及应用外，其它示例及应用都支持流量伪装与防探测，且提供流量伪装的回落或代理网站都支持http自动跳转到https，SSL/TLS安全评估报告为A+等，与访问/探测真实网站完全一致。
 6. 实现了nginx SNI分流（TCP转发）与定向UDP转发，以支持SNI分流后的naiveproxy http/3代理应用。
 7. 实现了caddy Caddyfile配置开启h2c server、PROXY protocol、naiveproxy等应用支持，让caddy配置简单化。
