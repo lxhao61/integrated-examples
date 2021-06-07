@@ -31,9 +31,6 @@
         "security": "tls",
         "network": "h2",
         "httpSettings": {
-          "host": [
-            "xx.yy" //改成服务端配置的对应域名
-          ],
           "path": "/teuW56Es" //改成服务端设置的path
         }
       }
