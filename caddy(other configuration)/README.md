@@ -38,7 +38,7 @@
 
 3、cloudflare 已不支持 freenom 的免费域名以 DNS challenge 方式申请证书及密钥了。
 
-4、acmeh 或 zerossl 申请成功后证书及密钥所在路径及目录  
+4、acmeh 或 zerossl 申请成功后证书及密钥所在路径及目录。  
 1）、acme 申请的普通证书及密钥在 “/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy” 目录中。/home/tls 为设置存放证书及密钥的基本路径。xx.yy 为域名，根据自己域名变化。  
 2）、acme 申请的通配符证书及密钥在 “/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/wildcard_.xx.yy” 目录中。/home/tls 为设置存放证书及密钥的基本路径。xx.yy 为域名，根据自己域名变化。  
 3）、zerossl 申请的普通证书及密钥在 “/home/tls/certificates/acme.zerossl.com-v2-dv90/xx.yy” 目录中。/home/tls 为设置存放证书及密钥的基本路径。xx.yy 为域名，根据自己域名变化。  
