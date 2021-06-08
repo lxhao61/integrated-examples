@@ -54,4 +54,4 @@
           ]
 //.........<省略>........
 //注意：
-//1、Xray\v2ray可用caddy申请的通配符证书及密钥，其路径详见“caddy(other configuration) （caddy的特殊应用配置方法。）”
+//1、Xray\v2ray可用caddy申请的通配符证书及密钥，其路径详见“caddy(other configuration) （caddy的特殊应用配置方法。）”。
