@@ -28,7 +28,7 @@
 //.........<省略>........
 //注意：
 //1、z1.xx.yy与z2.xx.yy表示两个不同域名（推荐采用根域名相同的两个二级域名即可）。
-//2、Xray\v2ray可用caddy申请的普通证书及密钥，其路径详见Xray_naive_caddy.json或Xray_naive_Caddyfile。
+//2、Xray\v2ray可用caddy申请的普通证书及密钥，其路径详见“Xray_naive_caddy.json”或“Xray_naive_Caddyfile”。
 
 
 //二、多个域名使用同一个通配符证书或SAN证书
@@ -54,4 +54,4 @@
           ]
 //.........<省略>........
 //注意：
-//1、Xray\v2ray可用caddy申请的通配符证书及密钥，其路径详见caddy(other configuration) （caddy的特殊应用配置方法。）
+//1、Xray\v2ray可用caddy申请的通配符证书及密钥，其路径详见“caddy(other configuration) （caddy的特殊应用配置方法。）”
