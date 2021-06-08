@@ -14,8 +14,8 @@
   "udp_timeout": 60,
   "ssl": {
     "verify_hostname": true,
-    "cert": "/etc/ssl/tls/xx.yy.crt", //换成自己的证书（此处示例是通配符证书），绝对路径。
-    "key": "/etc/ssl/tls/xx.yy.key", //换成自己的密钥（此处示例是通配符密钥），绝对路径。
+    "cert": "/home/tls/wildcard_.xx.yy/wildcard_.xx.yy.crt", //换成自己的通配符证书或SAN证书，绝对路径。
+    "key": "/home/tls/wildcard_.xx.yy/wildcard_.xx.yy.key", //换成自己的通配符密钥或SAN密钥，绝对路径。
     "key_password": "",
     "cipher": "",
     "curves": "",
