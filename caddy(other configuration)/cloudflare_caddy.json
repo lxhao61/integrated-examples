@@ -118,8 +118,8 @@
     "tls": {
       "certificates": {
         "load_files": [{
-          "certificate": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zh.xx.yy/zh.xx.yy.crt", //换成你的证书，绝对路径。
-          "key": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zh.xx.yy/zh.xx.yy.key", //换成你的密钥，绝对路径。
+          "certificate": "/home/tls/zh.xx.yy/zh.xx.yy.crt", //换成你的证书，绝对路径。
+          "key": "/home/tls/zh.xx.yy/zh.xx.yy.key", //换成你的密钥，绝对路径。
           "tags": ["tls01"]
         }]
       }
