@@ -32,6 +32,9 @@
     }
   }
 }
+//备注：
+//1、acme申请的普通证书及密钥在“/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy”目录中。xx.yy为域名，根据自己域名变化。
+//2、zerossl申请的普通证书及密钥在“/home/tls/certificates/acme.zerossl.com-v2-dv90/xx.yy”目录中。xx.yy为域名，根据自己域名变化。
 
 
 //二、多个域名申请普通证书配置（在上更改完成的基础上修改）
@@ -59,4 +62,4 @@
 
 
 //三、申请通配符证书配置
-//详见 caddy(other configuration) （caddy的特殊应用配置方法。）
+//详见“caddy(other configuration) （caddy的特殊应用配置方法。）”。
