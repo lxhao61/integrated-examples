@@ -5,8 +5,8 @@
           "certificates": [
             {
               "ocspStapling": 3600, //ocspStapling检查更新时间间隔。Xray v1.2.0版及以后支持（可选项参数，可以不配置。）。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
-              "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy/xx.yy.crt", //换成自己的证书，绝对路径。
-              "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy/xx.yy.key" //换成自己的密钥，绝对路径。
+              "certificateFile": "/home/tls/xx.yy/xx.yy.crt", //换成自己的证书，绝对路径。
+              "keyFile": "/home/tls/xx.yy/xx.yy.key" //换成自己的密钥，绝对路径。
             }
           ]
 //.........<省略>........
@@ -16,19 +16,19 @@
           "certificates": [
             {
               "ocspStapling": 3600, //ocspStapling检查更新时间间隔。Xray v1.2.0版及以后支持（可选项参数，可以不配置。）。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
-              "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/z1.xx.yy/z1.xx.yy.crt", //换成自己的证书，绝对路径。
-              "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/z1.xx.yy/z1.xx.yy.key" //换成自己的密钥，绝对路径。
+              "certificateFile": "/home/tls/z1.xx.yy/z1.xx.yy.crt", //换成自己的证书，绝对路径。
+              "keyFile": "/home/tls/z1.xx.yy/z1.xx.yy.key" //换成自己的密钥，绝对路径。
             },
             {
               "ocspStapling": 3600, //ocspStapling检查更新时间间隔。Xray v1.2.0版及以后支持（可选项参数，可以不配置。）。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
-              "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/z2.xx.yy/z2.xx.yy.crt", //换成自己的证书，绝对路径。
-              "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/z2.xx.yy/z2.xx.yy.key" //换成自己的密钥，绝对路径。
+              "certificateFile": "/home/tls/z2.xx.yy/z2.xx.yy.crt", //换成自己的证书，绝对路径。
+              "keyFile": "/home/tls/z2.xx.yy/z2.xx.yy.key" //换成自己的密钥，绝对路径。
             }
           ]
 //.........<省略>........
 //注意：
 //1、z1.xx.yy与z2.xx.yy表示两个不同域名（推荐采用根域名相同的两个二级域名即可）。
-//2、Xray\v2ray可用caddy申请的普通证书及密钥，其配置详见Xray_naive_caddy.json或Xray_naive_Caddyfile。
+//2、Xray\v2ray可用caddy申请的普通证书及密钥，其路径详见Xray_naive_caddy.json或Xray_naive_Caddyfile。
 
 
 //二、多个域名使用同一个通配符证书或SAN证书
@@ -37,8 +37,8 @@
           "certificates": [
             {
               "ocspStapling": 3600, //ocspStapling检查更新时间间隔。Xray v1.2.0版及以后支持（可选项参数，可以不配置。）。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
-              "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy/xx.yy.crt", //换成自己的证书，绝对路径。
-              "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy/xx.yy.key" //换成自己的密钥，绝对路径。
+              "certificateFile": "/home/tls/xx.yy/xx.yy.crt", //换成自己的证书，绝对路径。
+              "keyFile": "/home/tls/xx.yy/xx.yy.key" //换成自己的密钥，绝对路径。
             }
           ]
 //.........<省略>........
@@ -48,10 +48,10 @@
           "certificates": [
             {
               "ocspStapling": 3600, //ocspStapling检查更新时间间隔。Xray v1.2.0版及以后支持（可选项参数，可以不配置。）。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
-              "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/wildcard_.xx.yy/wildcard_.xx.yy.crt", //换成自己的通配符证书或SAN证书，绝对路径。
-              "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/wildcard_.xx.yy/wildcard_.xx.yy.key" //换成自己的通配符密钥或SAN密钥，绝对路径。
+              "certificateFile": "/home/tls/wildcard_.xx.yy/wildcard_.xx.yy.crt", //换成自己的通配符证书或SAN证书，绝对路径。
+              "keyFile": "/home/tls/wildcard_.xx.yy/wildcard_.xx.yy.key" //换成自己的通配符密钥或SAN密钥，绝对路径。
             }
           ]
 //.........<省略>........
 //注意：
-//1、Xray\v2ray可用caddy申请的通配符证书及密钥，其caddy配置详见 caddy(other configuration) （caddy的特殊应用配置方法。）
+//1、Xray\v2ray可用caddy申请的通配符证书及密钥，其路径详见 caddy(other configuration) （caddy的特殊应用配置方法。）
