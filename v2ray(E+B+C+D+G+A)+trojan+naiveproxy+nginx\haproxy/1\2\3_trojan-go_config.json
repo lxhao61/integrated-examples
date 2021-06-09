@@ -14,8 +14,8 @@
   "udp_timeout": 60,
   "ssl": {
     "verify_hostname": true,
-    "cert": "/home/tls/zt.xx.yy/zt.xx.yy.crt", //换成你的证书，绝对路径。
-    "key": "/home/tls/zt.xx.yy/zt.xx.yy.key", //换成你的密钥，绝对路径。
+    "cert": "/home/tls/zt.xx.yy/zt.xx.yy.crt", //换成自己的证书，绝对路径。
+    "key": "/home/tls/zt.xx.yy/zt.xx.yy.key", //换成自己的密钥，绝对路径。
     "key_password": "",
     "cipher": "",
     "curves": "",
