@@ -38,7 +38,7 @@
 
 :7443 { #https server监听端口，为naiveproxy、h2c proxy等应用服务。
     bind 127.0.0.1 #只监听本机，避免本机外的机器探测到上面端口。
-    tls /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zh.xx.yy/zh.xx.yy.crt /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zh.xx.yy/zh.xx.yy.key { #换成自己的证书与密钥，绝对路径。
+    tls /home/tls/zh.xx.yy/zh.xx.yy.crt /home/tls/zh.xx.yy/zh.xx.yy.key { #换成自己的证书与密钥，绝对路径。
         ciphers TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
         alpn h2 http/1.1
     }
