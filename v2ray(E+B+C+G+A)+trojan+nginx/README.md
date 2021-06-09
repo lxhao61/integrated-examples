@@ -22,14 +22,12 @@
 
 3、因 trojan-go\trojan 不支持 Unix Domain Socket，故 trojan-go\trojan 不启用此项应用，从而回落部分仅端口回落及端口监听。
 
-4、因 nginx SNI 中的 PROXY protocol（发送）是针对共用端口全部开启（全局模式），而 trojan-go\trojan 不支持 PROXY protocol（接收与发送），故所有配置不启用此项应用。
+4、nginx 支持 h2c server，但不支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用），故 Xray\v2ray（vless+tcp+tls） 与 trojan-go\trojan 应用中的 http/1.1 与 h2 回落端口或进程须分开，分别对应。
 
-5、nginx 支持 h2c server，但不支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用），故 Xray\v2ray（vless+tcp+tls） 与 trojan-go\trojan 应用中的 http/1.1 与 h2 回落端口或进程须分开，分别对应。
+5、nginx 预编译程序包一般不带支持 SNI 分流协议的模块。如要使用此项协议应用，需加 stream_ssl_preread_module 模块构建自定义模板，再进行源代码编译和安装。
 
-6、nginx 预编译程序包一般不带支持 SNI 分流协议的模块。如要使用此项协议应用，需加 stream_ssl_preread_module 模块构建自定义模板，再进行源代码编译和安装。
+6、此方法采用的是 SNI 方式实现共用443端口，支持 Xray\v2ray（vless+tcp+tls）、trojan-go\trojan、nginx（http/2 server） 完美共存，支持各自特色应用，但需多个域名来标记分流。
 
-7、此方法采用的是 SNI 方式实现共用443端口，支持 Xray\v2ray（vless+tcp+tls）、trojan-go\trojan、nginx（http/2 server） 完美共存，支持各自特色应用，但需多个域名来标记分流。
+7、不要使用 ACME 客户端在当前服务器上申请与更新普通证书及密钥，因普通证书及密钥申请与更新需要占用或监听80端口（或443端口），从而与当前应用端口冲突。
 
-8、不要使用 ACME 客户端在当前服务器上申请与更新普通证书及密钥，因普通证书及密钥申请与更新需要占用或监听80端口（或443端口），从而与当前应用端口冲突。
-
-9、配置1：采用端口分流、端口回落\分流、端口转发。配置2：采用进程分流（对应trojan-go\trojan采用端口分流）、端口回落\分流（分流vless+WS采用进程分流）、进程转发。
+8、配置1：采用端口分流、端口回落\分流、端口转发。配置2：采用进程分流（对应trojan-go\trojan采用端口分流）、端口回落\分流（分流vless+WS采用进程分流）、进程转发。
