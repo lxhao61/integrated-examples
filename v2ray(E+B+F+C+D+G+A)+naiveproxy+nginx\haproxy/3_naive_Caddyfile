@@ -42,7 +42,7 @@
 
 :7443 { #启用进程绑定后此端口失效，仅做标记作用。
     bind unix//dev/shm/https.sock #启用进程绑定后执行https server进程监听,为naiveproxy、h2c proxy等应用服务。
-    tls /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zh.xx.yy/zh.xx.yy.crt /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zh.xx.yy/zh.xx.yy.key { #换成自己的证书与密钥，绝对路径。
+    tls /home/tls/zh.xx.yy/zh.xx.yy.crt /home/tls/zh.xx.yy/zh.xx.yy.key { #换成自己的证书与密钥，绝对路径。
         ciphers TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
         alpn h2 http/1.1
     }
