@@ -12,7 +12,7 @@
 
 :7443 { #https server监听端口，为naiveproxy、h2c proxy等应用服务。或#启用进程绑定后此端口失效，仅做标记作用。
 #.........<省略>........
-    tls /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zh.xx.yy/zh.xx.yy.crt /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zh.xx.yy/zh.xx.yy.key { #换成自己的证书与密钥，绝对路径。
+    tls /home/tls/zh.xx.yy/zh.xx.yy.crt /home/tls/zh.xx.yy/zh.xx.yy.key { #换成自己的证书与密钥，绝对路径。
 #.........<省略>........
 
 #以上参数修改如下：
