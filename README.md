@@ -73,7 +73,7 @@
 3. Xray或v2ray单一核心应用简记：A=vless+kcp+seed、B=vless+ws+tls、C=SS+v2ray-plugin+tls、D=vless+h2c+tls、E=vless+tcp+tls、F=trojan+tcp+tls、G=vless+grpc+tls。
 4. WebSocket（WS）类应用与gRPC应用都支持CDN应用。
 5. 附加相关插件的caddy程序文件已编译好，去Releases中下载即可。
-6. 目前caddy的https服务进程监听采用Unix Domain Socket应用不支持http/3；若开启http/3，caddy无法启动。
+6. 目前caddy的https服务进程监听采用Unix Domain Socket进程不支持http/3；若开启http/3，caddy无法启动。
 7. 受限应用条件及场景，naiveproxy的quic应用（即caddy的http/3代理应用）不是所有相关naiveproxy示例都支持。
 
 ### 服务端特殊应用配置示例
