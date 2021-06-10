@@ -74,7 +74,7 @@
 4. WebSocket（WS）类应用与gRPC应用都支持CDN应用。
 5. 附加相关插件的caddy程序文件已编译好，去Releases中下载即可。
 6. 目前caddy的https服务进程监听采用Unix Domain Socket应用不支持http/3；若开启http/3，caddy无法启动。
-7. naiveproxy的http/3代理应用（即naiveproxy的quic应用）不是所有示例都支持。
+7. 受限应用条件及场景，naiveproxy的http/3代理应用（即naiveproxy的quic应用）不是所有相关naiveproxy示例都支持。
 
 ### 服务端特殊应用配置示例
 1. [v2ray(other configuration)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(other%20configuration)) （Xray或v2ray的特殊应用配置方法。）
