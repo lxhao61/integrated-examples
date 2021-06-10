@@ -72,9 +72,9 @@
 2. v2ray从v4.33.0版开始删除了xtls应用，故若还想用xtls应用，请选Xray。Xray是v2ray的超集（更好的整体性能和xtls等一系列增强，且完全兼容。），也是因为这个应用分家独自发展。
 3. Xray或v2ray单一核心应用简记：A=vless+kcp+seed、B=vless+ws+tls、C=SS+v2ray-plugin+tls、D=vless+h2c+tls、E=vless+tcp+tls、F=trojan+tcp+tls、G=vless+grpc+tls。
 4. WebSocket（WS）类应用与gRPC应用都支持CDN应用。
-5. 附加相关插件的caddy程序文件已编译好，去Releases中下载即可。
-6. 目前caddy的https服务进程监听采用Unix Domain Socket进程不支持http/3；若开启http/3，caddy无法启动。
-7. 受限应用条件及场景，naiveproxy的quic应用（即caddy的http/3代理应用）不是所有相关naiveproxy示例都支持。
+5. 目前caddy的https服务进程监听采用Unix Domain Socket进程不支持http/3；若开启http/3，caddy无法启动。
+6. 受限应用条件及场景，naiveproxy的quic应用（即caddy的http/3代理应用）不是所有相关naiveproxy示例都支持。
+7. 附加相关插件的caddy程序文件已编译好，去Releases中下载即可。
 
 ### 服务端特殊应用配置示例
 1. [v2ray(other configuration)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(other%20configuration)) （Xray或v2ray的特殊应用配置方法。）
