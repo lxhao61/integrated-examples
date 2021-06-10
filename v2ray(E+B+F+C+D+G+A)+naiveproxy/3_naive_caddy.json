@@ -179,8 +179,7 @@
           }],
           "automatic_https": {
             "disable": true //禁用自动https
-          },
-          "experimental_http3": false //关闭http3 server支持。目前采用caddy SNI分流，不支持UDP；而且目前采用进程监听（server进程）也无法启动。
+          }
         }
       }
     },
