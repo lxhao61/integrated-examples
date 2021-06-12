@@ -16,7 +16,7 @@ Xray\v2ray 前置（监听443端口），vless+tcp+tls 以 h2 或 http/1.1 自�
 
 1、v2ray v4.31.0 版本及以后才支持 trojan 协议。
 
-2、caddy 等于或大于 v2.3.0 版才支持 Caddyfile 配置开启 h2c server。
+2、caddy 不小于 v2.3.0 版才支持 Caddyfile 配置开启 h2c server。
 
 3、caddy 支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用）。
 
