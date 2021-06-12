@@ -10,7 +10,7 @@ Xray\v2ray 前置（监听443端口），利用 vless+tcp+tls 强大的回落/�
 
 4、D=vless+h2c+tls（tls由vless+tcp+tls提供及处理，不需配置；另可改成或添加其它h2c类应用，参考对应服务端单一应用配置示例。）
 
-5、G=vless+grpc+tls（tls由vless+tcp+tls提供及处理，不需配置；另可改成或添加其它grpc类应用，参考对应服务端单一应用配置示例。）
+5、G=vless+grpc+tls（tls由vless+tcp+tls提供及处理，不需配置；另可改成或添加其它gRPC类应用，参考对应服务端单一应用配置示例。）
 
 6、A=vless+kcp+seed（可改成vmess+kcp+seed，或添加它。）
 
