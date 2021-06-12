@@ -10,7 +10,7 @@ Xray\v2ray 前置（监听443端口），利用 vless+tcp+tls 强大的回落/�
 
 注意：
 
-1、caddy 等于或大于 v2.3.0 版才支持 Caddyfile 配置开启 h2c server。
+1、caddy 不小于 v2.3.0 版才支持 Caddyfile 配置开启 h2c server。
 
 2、caddy 支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用）。
 
