@@ -37,10 +37,7 @@
         }
     }
 
-    @vgrpc { #匹配器标签。此标签仅区分，多个不同代理需要改成不同名称，但要与下边‘reverse_proxy’中匹配器标签对应。
-        path /cdngrpc/* #与vless+grpc应用中serviceName对应
-    }
-    reverse_proxy @vgrpc 127.0.0.1:2009 { #转发给本机vless+grpc监听端口
+    reverse_proxy /cdngrpc/* 127.0.0.1:2009 { #与vless+grpc应用中serviceName对应，转发给本机vless+grpc监听端口。
         flush_interval -1
         transport http {
             versions h2c
