@@ -50,4 +50,4 @@
 
 四、caddy webdav 应用配置
 
-以 webdav 服务及文件服务打造不同的网盘应用。详见 webdav_caddy.json 或 webdav_Caddyfile 配置。
+以 webdav 应用及文件服务打造不同的网盘应用。详见 webdav_caddy.json 或 webdav_Caddyfile 配置。
