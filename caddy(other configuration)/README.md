@@ -1,4 +1,4 @@
-一、caddy 接受回落后分流到不同网站的配置方法
+一、回落caddy后由caddy分流到不同网站的配置方法
 
 此方法解决 Xray\v2ray 前置监听443后，不影响原来 caddy 前置时，不同域名访问不同网站问题。见 shunt_caddy.json 或 shunt_Caddyfile 配置。
 
@@ -48,6 +48,6 @@
 
 6、提供了 dnspod（dnspod.com插件，国际版。）、cloudflare、dnspodcn（dnspod.cn插件，中国版。）三种最常见插件配置示例，其它插件配置类似，参考 dnspod 或 cloudflare 配置示例。
 
-四、caddy webdav 应用相关
+四、caddy 文件服务器与 webdav 服务器应用配置
 
-以文件服务与 webdav 应用打造融合的网盘应用。详见 caddy.json 或 Caddyfile 配置。
+以文件服务器与 webdav 服务器应用打造融合的网盘应用。详见 caddy.json 或 Caddyfile 配置。
