@@ -20,7 +20,7 @@
     }
 
     forward_proxy {
-        basic_auth user pass #naiveproxy账号与密码，更改为自己的。
+        basic_auth user pass #naiveproxy用户与密码，更改为自己的。
         hide_ip
         hide_via
         probe_resistance
