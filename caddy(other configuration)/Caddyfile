@@ -95,7 +95,7 @@
 #1、修改/home/webdav的webdav权限为0777，以便客户端具有写入及删除文件权限。
 #2、同一个域名下，文件服务器与回落或代理网站可以共存，原回落或代理网站配置使用route合并核心配置（参考上面配置），再增加上面配置，两配置并行。另外同步调整域名或证书及密钥。
 #3、用caddy hash-password --plaintext <password>命令把普通密码转化为哈希密码并输出base64。例如：/usr/bin/caddy hash-password --plaintext password
-#3、仅支持webdav客户端（有验证）浏览文件，可以删除、上传、修改文件等操作。
+#4、仅支持webdav客户端（有验证）浏览文件，可以删除、上传、修改文件等操作。
 
 
 #四、开放式文件服务器+验证式webdav服务器融合应用配置
