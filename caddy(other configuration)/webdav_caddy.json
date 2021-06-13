@@ -35,7 +35,7 @@
 //.........<省略>........
           {
             "match": [{
-              "host": ["zz.xx.yy"] //限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
+              "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
             }],
             "handle": [{
               "handler": "headers",
@@ -159,8 +159,9 @@
 //备注：
 //1、此配置适合为特定人群提供文件分享及专业的文件管理服务。支持特定人群web登录（有验证）浏览文件，可下载操作；支持webdav客户端（有验证）浏览文件，可以删除、上传、修改等操作（专业文件管理）。
 //2、修改/home/webdav的webdav权限为0777，以便客户端具有写入及删除文件权限。
-//3、本人所有示例的回落或代理网站不建议调整为上边应用配置，因为网站无法达到流量伪装与防探测了。建议增加域名来对应融合应用，实现与原示例的回落或代理网站应用共存；另外同步调整对应域名相关配置。
+//3、本人所有示例的回落或代理网站不建议调整为上边应用配置，因为网站无法达到流量伪装与防探测了。建议增加域名来对此配置，实现与原示例的回落或代理网站应用共存；另外同步调整对应域名相关配置。
 //4、用caddy hash-password --plaintext <password>命令把普通密码转化为哈希密码并输出base64。例如：/usr/bin/caddy hash-password --plaintext password
+
 
 //网盘应用4
 //.........<省略>........
@@ -181,8 +182,8 @@
               "providers": {
                 "http_basic": {
                   "accounts": [{ //可以设置多组用户及密码
-                    "username": "user", //webdav与web登录用户，更改为自己的。
-                    "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //webdav与web登录用户的哈希密码（示例为password的哈希密码），更改为自己的。
+                    "username": "user", //webdav/web登录用户，更改为自己的。
+                    "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //webdav/web登录用户的哈希密码（示例为password的哈希密码），更改为自己的。
                   }],
                   "hash_cache": {}
                 }
@@ -219,5 +220,5 @@
 //备注：
 //1、此配置适合为个人或特定人群提供专业的文件服务及共享。支持web登录（有验证）浏览文件，可下载操作；支持webdav客户端（有验证）浏览文件，可以删除、上传、修改等操作。
 //2、修改/home/webdav的webdav权限为0777，以便客户端具有写入及删除文件权限。
-//3、本人所有示例的回落或代理网站不建议调整为上边应用配置，因为网站无法达到流量伪装与防探测了。建议增加域名来对应融合应用，实现与原示例的回落或代理网站应用共存；另外同步调整对应域名相关配置。
+//3、本人所有示例的回落或代理网站不建议调整为上边应用配置，因为网站无法达到流量伪装与防探测了。建议增加域名来对应此配置，实现与原示例的回落或代理网站应用共存；另外同步调整对应域名相关配置。
 //4、用caddy hash-password --plaintext <password>命令把普通密码转化为哈希密码并输出base64。例如：/usr/bin/caddy hash-password --plaintext password
