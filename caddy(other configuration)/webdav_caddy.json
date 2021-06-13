@@ -10,9 +10,9 @@
               "handler": "authentication",
               "providers": {
                 "http_basic": {
-                  "accounts": [{ //可以配置多组验证用户及密码
-                    "username": "user", //webdav用户
-                    "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //webdav用户的哈希密码，以base64编码。示例为password的哈希密码。
+                  "accounts": [{ //可以配置多组用户及密码
+                    "username": "user", //webdav用户，更改为自己的。
+                    "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //webdav用户的哈希密码（示例为password的哈希密码），更改为自己的。
                   }],
                   "hash_cache": {}
                 }
@@ -27,7 +27,7 @@
 //备注：
 //1、此配置适合为个人或特定人群提供初级的文件服务及共享。仅支持webdav客户端（有验证）浏览文件，可以删除、上传、修改等操作。
 //2、修改/home/webdav的webdav权限为0777，以便客户端具有写入及删除文件权限。
-//3、同一个域名下webdav服务器与回落或代理网站可以共存，故上边配置直接插入示例的回落或代理网站配置前后都可。
+//3、同一个域名下webdav服务器与回落或代理网站可以共存，故上边配置直接插入示例的回落或代理网站配置之前即可。
 //4、用caddy hash-password --plaintext <password>命令把普通密码转化为哈希密码并输出base64。例如：/usr/bin/caddy hash-password --plaintext password
 
 
@@ -63,9 +63,9 @@
                   "handler": "authentication",
                   "providers": {
                     "http_basic": {
-                      "accounts": [{ //可以设置多组验证用户及密码
-                        "username": "user", //webdav验证用户
-                        "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //webdav验证用户的哈希密码，以base64编码。示例为password的哈希密码。
+                      "accounts": [{ //可以设置多组用户及密码
+                        "username": "user", //webdav用户，更改为自己的。
+                        "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //webdav用户的哈希密码（示例为password的哈希密码），更改为自己的。
                       }],
                       "hash_cache": {}
                     }
@@ -87,7 +87,7 @@
 //备注：
 //1、此配置适合为大众人群提供文件分享及专业的文件管理服务。支持大众人群web登录（无验证）浏览文件，可下载操作；支持webdav客户端（有验证）浏览文件，可以删除、上传、修改等操作（专业文件管理）。
 //2、修改/home/webdav的webdav权限为0777，以便客户端具有写入及删除文件权限。
-//3、本人所有示例的回落或代理网站可调整为上边应用配置。
+//3、本人所有示例的回落或代理网站可调整为上边应用配置，静态网站改为文件服务器网站。
 //4、用caddy hash-password --plaintext <password>命令把普通密码转化为哈希密码并输出base64。例如：/usr/bin/caddy hash-password --plaintext password
 
 
@@ -123,9 +123,9 @@
                   "handler": "authentication",
                   "providers": {
                     "http_basic": {
-                      "accounts": [{ //可以设置多组验证用户及密码
-                        "username": "user", //webdav验证用户
-                        "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //webdav验证用户的哈希密码，以base64编码。示例为password的哈希密码。
+                      "accounts": [{ //可以设置多组用户及密码
+                        "username": "user", //webdav用户，更改为自己的。
+                        "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //webdav用户的哈希密码（示例为password的哈希密码），更改为自己的。
                       }],
                       "hash_cache": {}
                     }
@@ -140,9 +140,9 @@
                   "handler": "authentication",
                   "providers": {
                     "http_basic": {
-                      "accounts": [{ //可以设置多组验证用户及密码
-                        "username": "user", //web登录验证用户
-                        "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //web登录验证用户的哈希密码，以base64编码。示例为password的哈希密码。
+                      "accounts": [{ //可以设置多组用户及密码
+                        "username": "user", //web登录用户，更改为自己的。
+                        "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //web登录用户的哈希密码（示例为password的哈希密码），更改为自己的。
                       }],
                       "hash_cache": {}
                     }
@@ -180,9 +180,9 @@
               "handler": "authentication",
               "providers": {
                 "http_basic": {
-                  "accounts": [{ //可以设置多组验证用户及密码
-                    "username": "user", //验证用户
-                    "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //验证用户的哈希密码，以base64编码。示例为password的哈希密码。
+                  "accounts": [{ //可以设置多组用户及密码
+                    "username": "user", //webdav与web登录用户，更改为自己的。
+                    "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //webdav与web登录用户的哈希密码（示例为password的哈希密码），更改为自己的。
                   }],
                   "hash_cache": {}
                 }
