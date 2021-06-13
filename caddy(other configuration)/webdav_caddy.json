@@ -124,7 +124,7 @@
                   "providers": {
                     "http_basic": {
                       "accounts": [{ //可以设置多组用户及密码
-                        "username": "user", //webdav用户，更改为自己的。
+                        "username": "user1", //webdav用户，更改为自己的。
                         "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //webdav用户的哈希密码（示例为password的哈希密码），更改为自己的。
                       }],
                       "hash_cache": {}
@@ -141,7 +141,7 @@
                   "providers": {
                     "http_basic": {
                       "accounts": [{ //可以设置多组用户及密码
-                        "username": "user", //web登录用户，更改为自己的。
+                        "username": "user2", //web登录用户，更改为自己的。
                         "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //web登录用户的哈希密码（示例为password的哈希密码），更改为自己的。
                       }],
                       "hash_cache": {}
