@@ -111,7 +111,7 @@
           "routes": [{
             "handle": [{
               "handler": "forward_proxy",
-              "auth_user_deprecated": "user", //naiveproxy账号，更改为自己的。
+              "auth_user_deprecated": "user", //naiveproxy用户，更改为自己的。
               "auth_pass_deprecated": "pass", //naiveproxy密码，更改为自己的。
               "hide_ip": true,
               "hide_via": true,
