@@ -21,7 +21,7 @@
     bind unix//dev/shm/h1h2c.sock #启用进程绑定后执行进程监听，仅接收web回落。
 
     forward_proxy {
-        basic_auth user pass #naiveproxy账号与密码，更改为自己的。
+        basic_auth user pass #naiveproxy用户与密码，更改为自己的。
         hide_ip
         hide_via
         probe_resistance
