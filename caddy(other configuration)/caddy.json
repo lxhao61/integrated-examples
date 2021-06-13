@@ -151,14 +151,87 @@
             "terminal": true
           }, //此部分参数放在应用结尾，‘},’调整为‘}],’。
 //备注：
-//1、此组合应用适合为大众提供文件分享及专业的后台管理服务。
+//1、此组合应用适合为大众人群提供文件分享及专业的文件管理服务。
 //2、修改/home/webdav的webdav权限为0777，以便客户端具有写入及删除文件权限。
 //3、所有示例的回落或代理网站可调整为上边开放式文件服务器+验证式webdav服务器融合应用配置。
 //4、用caddy hash-password --plaintext <password>命令把普通密码转化为哈希密码并输出base64。例如：/usr/bin/caddy hash-password --plaintext password
-//5、支持web方式（无验证）浏览文件，可下载操作；支持webdav客户端（有验证）浏览文件，可以删除、上传、修改等操作。
+//5、支持大众人群web方式（无验证）浏览文件，可下载操作；支持webdav客户端（有验证）浏览文件，可以删除、上传、修改等操作（专业文件管理）。
 
 
 //五、验证式文件服务器+验证式webdav服务器融合应用配置
+//1、验证账号及密码分开
+//.........<省略>........
+          {
+            "match": [{
+              "host": ["zz.xx.yy"] //限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
+            }],
+            "handle": [{
+              "handler": "headers",
+              "response": {
+                "set": {
+                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
+                }
+              }
+            },
+            {
+              "handler": "subroute",
+              "routes": [{
+                "handle": [{
+                  "handler": "vars",
+                  "root": "/home/webdav" //更改为自己的服务器存放文件路径
+                }]
+              },
+              {
+                "match": [{
+                  "not": [{
+                    "method": ["GET"]
+                  }]
+                }],
+                "handle": [{
+                  "handler": "authentication",
+                  "providers": {
+                    "http_basic": {
+                      "accounts": [{ //可以设置多组验证用户及密码
+                        "username": "user", //验证用户
+                        "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //验证用户的哈希密码，以base64编码。示例为password的哈希密码。
+                      }],
+                      "hash_cache": {}
+                    }
+                  }
+                },
+                {
+                  "handler": "webdav"
+                }]
+              },
+              {
+                "handle": [{
+                  "handler": "authentication",
+                  "providers": {
+                    "http_basic": {
+                      "accounts": [{ //可以设置多组验证用户及密码
+                        "username": "user", //验证用户
+                        "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //验证用户的哈希密码，以base64编码。示例为password的哈希密码。
+                      }],
+                      "hash_cache": {}
+                    }
+                  }
+                },
+                {
+                  "handler": "file_server",
+                  "browse": {}
+                }]
+              }]
+            }],
+            "terminal": true
+          }, //此部分参数放在应用结尾，‘},’调整为‘}],’。
+//备注：
+//1、此组合应用适合为特定人群提供文件分享及专业的文件管理服务。
+//2、修改/home/webdav的webdav权限为0777，以便客户端具有写入及删除文件权限。
+//3、所有示例的回落或代理网站不建议调整为上边验证式文件服务器+验证式webdav服务器融合应用配置，因为网站无法达到流量伪装与防探测了。建议增加域名来对应融合应用，实现与原示例的回落或代理网站应用共存（原回落或代理网站配置使用route合并核心配置，再增加上面配置，两配置并行。）；另外同步调整域名或证书及密钥。
+//4、用caddy hash-password --plaintext <password>命令把普通密码转化为哈希密码并输出base64。例如：/usr/bin/caddy hash-password --plaintext password
+//5、支持特定人群web方式（有验证）浏览文件，可下载操作；支持webdav客户端（有验证）浏览文件，可以删除、上传、修改等操作（专业文件管理）。
+
+//2、验证账号及密码共用
 //.........<省略>........
           {
             "match": [{
@@ -213,8 +286,8 @@
           }, //此部分参数放在应用结尾，‘},’调整为‘}],’。
 //.........<省略>........
 //备注：
-//1、此组合应用适合为个人或特定人群提供专业文件管理服务。
+//1、此组合应用适合为个人或特定人群提供专业的网盘服务。
 //2、修改/home/webdav的webdav权限为0777，以便客户端具有写入及删除文件权限。
 //3、所有示例的回落或代理网站不建议调整为上边验证式文件服务器+验证式webdav服务器融合应用配置，因为网站无法达到流量伪装与防探测了。建议增加域名来对应融合应用，实现与原示例的回落或代理网站应用共存（原回落或代理网站配置使用route合并核心配置，再增加上面配置，两配置并行。）；另外同步调整域名或证书及密钥。
 //4、用caddy hash-password --plaintext <password>命令把普通密码转化为哈希密码并输出base64。例如：/usr/bin/caddy hash-password --plaintext password
-//5、支持web方式（有验证）浏览文件，可下载操作；支持webdav客户端（有验证）浏览文件，可以删除、上传、修改等操作。
+//5、支持web方式（有验证）浏览文件，可下载操作；支持webdav客户端（有验证）浏览文件，可以删除、上传、修改等操作。（网盘应用）
