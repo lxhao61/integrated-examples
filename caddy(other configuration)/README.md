@@ -50,4 +50,4 @@
 
 四、caddy 文件服务器与 webdav 服务器应用配置
 
-以文件服务器与 webdav 服务器应用打造融合的网盘应用。详见 caddy.json 或 Caddyfile 配置。
+以文件服务器与 webdav 服务器打造融合的网盘应用。详见 caddy.json 或 Caddyfile 配置。
