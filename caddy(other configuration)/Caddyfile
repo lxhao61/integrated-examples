@@ -120,7 +120,7 @@
 #备注：
 #1、此组合应用适合为大众提供文件分享及专业的后台管理服务。
 #2、修改/home/webdav的webdav权限为0777，以便客户端具有写入及删除文件权限。
-#3、所有示例的回落或代理网站可调整为开放式文件服务器+验证式webdav服务器融合应用配置。
+#3、所有示例的回落或代理网站可调整为上边开放式文件服务器+验证式webdav服务器融合应用配置。
 #4、用caddy hash-password --plaintext <password>命令把普通密码转化为哈希密码并输出base64。例如：/usr/bin/caddy hash-password --plaintext password
 
 
@@ -147,6 +147,6 @@
 #备注：
 #1、此组合应用适合为个人或特定人群提供专业文件管理服务。
 #2、修改/home/webdav的webdav权限为0777，以便客户端具有写入及删除文件权限。
-#3、所有示例的回落或代理网站不建议调整为验证式文件服务器+验证式webdav服务器融合应用配置。
-#4、建议增加域名来对应融合应用，实现与原示例的回落或代理网站应用共存（原回落或代理网站配置使用route合并核心配置，再增加上面配置，两配置并行。）。另外同步调整域名或证书及密钥。
-#5、用caddy hash-password --plaintext <password>命令把普通密码转化为哈希密码并输出base64。例如：/usr/bin/caddy hash-password --plaintext password
+#3、所有示例的回落或代理网站不建议调整为上边验证式文件服务器+验证式webdav服务器融合应用配置。
+#3、所有示例的回落或代理网站不建议调整为上边验证式文件服务器+验证式webdav服务器融合应用配置，因为网站无法达到流量伪装与防探测了。建议增加域名来对应融合应用，实现与原示例的回落或代理网站应用共存（原回落或代理网站配置使用route合并核心配置，再增加上面配置，两配置并行。）；另外同步调整域名或证书及密钥。
+#4、用caddy hash-password --plaintext <password>命令把普通密码转化为哈希密码并输出base64。例如：/usr/bin/caddy hash-password --plaintext password
