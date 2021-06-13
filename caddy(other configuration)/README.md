@@ -48,6 +48,6 @@
 
 6、提供了 dnspod（dnspod.com插件，国际版。）、cloudflare、dnspodcn（dnspod.cn插件，中国版。）三种最常见插件配置示例，其它插件配置类似，参考 dnspod 或 cloudflare 配置示例。
 
-四、caddy 文件服务器与 webdav 服务器应用配置
+四、caddy webdav 应用配置
 
-以文件服务器与 webdav 服务器打造融合的网盘应用。详见 caddy.json 或 Caddyfile 配置。
+以 webdav 服务及文件服务打造不同的网盘应用。详见 webdav_caddy.json 或 webdav_Caddyfile 配置。
