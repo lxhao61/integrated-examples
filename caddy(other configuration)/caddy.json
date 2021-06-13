@@ -95,7 +95,7 @@
 //备注：
 //1、仅支持webdav客户端（有验证）浏览文件，可以删除、上传、修改等操作。
 //2、修改/home/webdav的webdav权限为0777，以便客户端具有写入及删除文件权限。
-//3、同一个域名下，文件服务器与回落或代理网站可以共存，上边文件服务器配置直接插入示例的回落或代理网站配置前后都可。
+//3、同一个域名下，webdav服务器与回落或代理网站可以共存，上边webdav服务器配置直接插入示例的回落或代理网站配置前后都可。
 //4、用caddy hash-password --plaintext <password>命令把普通密码转化为哈希密码并输出base64。例如：/usr/bin/caddy hash-password --plaintext password
 
 
