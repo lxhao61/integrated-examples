@@ -21,7 +21,7 @@
     bind 127.0.0.1 #只监听本机，避免本机外的机器探测到上面端口。
 
     forward_proxy {
-        basic_auth user pass #naiveproxy账号与密码，修改为自己的。
+        basic_auth user pass #naiveproxy用户与密码，修改为自己的。
         hide_ip
         hide_via
         probe_resistance
