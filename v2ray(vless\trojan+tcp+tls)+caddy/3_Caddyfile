@@ -24,10 +24,12 @@
     @host {
         host xx.yy #限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
     }
-    header @host {
-        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
-    }
-    file_server @host {
-        root /var/www/html #更改为自己存放的web文件路径
+    route @host {
+        header {
+            Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
+        }
+        file_server {
+            root /var/www/html #更改为自己存放的web文件路径
+        }
     }
 }
