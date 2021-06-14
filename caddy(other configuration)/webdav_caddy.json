@@ -91,7 +91,7 @@
 //4、authentication中密码必须使用哈希密码，可用caddy hash-password --plaintext <password>命令把普通密码转化为哈希密码并输出base64。例如：/usr/bin/caddy hash-password --plaintext password
 
 
-//网盘应用3
+//三、网盘应用3
 //.........<省略>........
           {
             "match": [{
@@ -152,7 +152,7 @@
 //4、authentication中密码必须使用哈希密码，可用caddy hash-password --plaintext <password>命令把普通密码转化为哈希密码并输出base64。例如：/usr/bin/caddy hash-password --plaintext password
 
 
-//网盘应用4
+//四、网盘应用4
 //.........<省略>........
           {
             "match": [{
