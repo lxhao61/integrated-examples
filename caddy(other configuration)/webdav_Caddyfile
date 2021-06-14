@@ -48,7 +48,35 @@
 #4、basicauth中密码必须使用哈希密码，可用caddy hash-password --plaintext <password>命令把普通密码转化为哈希密码并输出base64。例如：/usr/bin/caddy hash-password --plaintext password
 
 
+
 #三、网盘应用3
+#.........<省略>........
+    @host2 {
+        host zz.xx.yy #限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
+    }
+    route @host2 {
+        header {
+            Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
+        }
+        basicauth { #可以设置多组用户及密码
+            user JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl #webdav/web登录用户与webdav/web登录用户的哈希密码（示例为password的哈希密码），更改为自己的。
+        }
+        root * /home/webdav #更改为自己的服务器存放文件路径
+        @webdav {
+            not method GET
+        }
+        webdav @webdav
+        file_server browse
+    }
+#.........<省略>........
+#备注：
+#1、本配置适合为个人或特定人群提供专业的文件服务及共享。支持web登录（有验证）浏览文件，可下载操作；支持webdav客户端（有验证）浏览文件，可以删除、上传、修改等操作。
+#2、本人所有示例的回落或代理网站配置不建议直接替换为上边配置，因为验证的文件服务器网站做流量伪装网站有点特殊。建议增加域名方法来增加此配置，实现与原示例的回落或代理网站共存。
+#3、修改/home/webdav的webdav权限为0777，以便客户端具有写入及删除文件权限。
+#4、basicauth中密码必须使用哈希密码，可用caddy hash-password --plaintext <password>命令把普通密码转化为哈希密码并输出base64。例如：/usr/bin/caddy hash-password --plaintext password
+
+
+#四、网盘应用4
 #.........<省略>........
     @host2 {
         host zz.xx.yy #限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
@@ -77,33 +105,6 @@
 #.........<省略>........
 #备注：
 #1、本配置适合为特定人群提供文件分享及专业的文件管理服务。支持特定人群web登录（有验证）浏览文件，可下载操作；支持webdav客户端（有验证）浏览文件，可以删除、上传、修改等操作（专业文件管理）。
-#2、本人所有示例的回落或代理网站配置不建议直接替换为上边配置，因为验证的文件服务器网站做流量伪装网站有点特殊。建议增加域名方法来增加此配置，实现与原示例的回落或代理网站共存。
-#3、修改/home/webdav的webdav权限为0777，以便客户端具有写入及删除文件权限。
-#4、basicauth中密码必须使用哈希密码，可用caddy hash-password --plaintext <password>命令把普通密码转化为哈希密码并输出base64。例如：/usr/bin/caddy hash-password --plaintext password
-
-
-#网盘应用4
-#.........<省略>........
-    @host2 {
-        host zz.xx.yy #限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
-    }
-    route @host2 {
-        header {
-            Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
-        }
-        basicauth { #可以设置多组用户及密码
-            user JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl #webdav/web登录用户与webdav/web登录用户的哈希密码（示例为password的哈希密码），更改为自己的。
-        }
-        root * /home/webdav #更改为自己的服务器存放文件路径
-        @webdav {
-            not method GET
-        }
-        webdav @webdav
-        file_server browse
-    }
-#.........<省略>........
-#备注：
-#1、本配置适合为个人或特定人群提供专业的文件服务及共享。支持web登录（有验证）浏览文件，可下载操作；支持webdav客户端（有验证）浏览文件，可以删除、上传、修改等操作。
 #2、本人所有示例的回落或代理网站配置不建议直接替换为上边配置，因为验证的文件服务器网站做流量伪装网站有点特殊。建议增加域名方法来增加此配置，实现与原示例的回落或代理网站共存。
 #3、修改/home/webdav的webdav权限为0777，以便客户端具有写入及删除文件权限。
 #4、basicauth中密码必须使用哈希密码，可用caddy hash-password --plaintext <password>命令把普通密码转化为哈希密码并输出base64。例如：/usr/bin/caddy hash-password --plaintext password
