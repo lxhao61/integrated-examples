@@ -1,5 +1,5 @@
 {
-    order reverse_proxy before header
+    order reverse_proxy before route
     order forward_proxy before reverse_proxy
     admin off
     log { #注意：版本不小于v2.4.0才支持日志全局配置，否则各自配置。
@@ -28,11 +28,13 @@
     @host {
         host zv.xx.yy zt.xx.yy #限定域名访问（禁止以ip方式访问网站），更改为自己的对应域名。
     }
-    header @host {
-        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
-    }
-    file_server @host {
-        root /var/www/html #更改为自己存放的web文件路径
+    route @host {
+        header {
+            Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
+        }
+        file_server {
+            root /var/www/html #更改为自己存放的web文件路径
+        }
     }
 }
 
@@ -66,10 +68,12 @@
     @host {
         host zh.xx.yy #限定域名访问（禁止以ip方式访问网站），更改为自己的对应域名。
     }
-    header @host {
-        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
-    }
-    file_server @host {
-        root /var/www/html #更改为自己存放的web文件路径
+    route @host {
+        header {
+            Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
+        }
+        file_server {
+            root /var/www/html #更改为自己存放的web文件路径
+        }
     }
 }
