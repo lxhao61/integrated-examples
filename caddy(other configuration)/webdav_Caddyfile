@@ -25,10 +25,10 @@
         host xx.yy #限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
     }
     route @host2 {
+        root * /home/webdav #更改为自己的服务器存放文件路径
         header {
             Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
         }
-        root * /home/webdav #更改为自己的服务器存放文件路径
         @webdav {
             not method GET
         }
@@ -54,13 +54,13 @@
         host zz.xx.yy #限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
     }
     route @host2 {
+        root * /home/webdav #更改为自己的服务器存放文件路径
         header {
             Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
         }
         basicauth { #可以设置多组用户及密码
             user JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl #webdav/web登录用户与webdav/web登录用户的哈希密码（示例为password的哈希密码），更改为自己的。
         }
-        root * /home/webdav #更改为自己的服务器存放文件路径
         @webdav {
             not method GET
         }
@@ -81,10 +81,10 @@
         host zz.xx.yy #限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
     }
     route @host2 {
+        root * /home/webdav #更改为自己的服务器存放文件路径
         header {
             Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
         }
-        root * /home/webdav #更改为自己的服务器存放文件路径
         @webdav {
             not method GET
         }
