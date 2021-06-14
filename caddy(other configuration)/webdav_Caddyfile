@@ -48,7 +48,6 @@
 #4、basicauth中密码必须使用哈希密码，可用caddy hash-password --plaintext <password>命令把普通密码转化为哈希密码并输出base64。例如：/usr/bin/caddy hash-password --plaintext password
 
 
-
 #三、网盘应用3
 #.........<省略>........
     @host2 {
