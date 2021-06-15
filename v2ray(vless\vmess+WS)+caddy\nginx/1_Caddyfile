@@ -1,5 +1,5 @@
 {
-    order reverse_proxy before route
+    order reverse_proxy before map
     admin off
     log { #注意：版本不小于v2.4.0才支持日志全局配置，否则各自配置。
         output file /var/log/caddy/access.log
