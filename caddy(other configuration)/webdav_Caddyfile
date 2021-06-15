@@ -59,7 +59,7 @@
     }
     route @notget {
         basicauth { #可以设置多组用户及密码
-            user2 JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl #webdav用户与webdav密码（示例为password的哈希密码），更改为自己的。
+            user JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl #webdav用户与webdav密码（示例为password的哈希密码），更改为自己的。
         }
         webdav
     }
