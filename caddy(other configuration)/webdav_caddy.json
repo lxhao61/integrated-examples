@@ -85,8 +85,8 @@
             "terminal": true
           }],
 //备注：
-//1、本配置适合为大众人群提供文件分享及专业的文件管理服务。支持大众人群web登录（无验证）浏览文件，可下载操作；支持webdav客户端（有验证）浏览文件，可以删除、上传、修改等操作（专业文件管理）。
-//2、本人所有示例的回落或代理网站都可直接替换为上边配置，静态网站改为文件服务器网站。
+//1、本配置适合为大众人群提供文件分享及专业的文件管理服务。支持大众人群web登录（无验证）浏览文件，可下载操作；支持webdav客户端（有验证）浏览文件，可以删除、上传、修改等操作。
+//2、本人所有示例的回落或代理网站都可直接替换为上边配置，静态网站改为文件服务器网站。web登录方法：域名，如“xx.yy”。
 //3、修改/home/webdav的webdav权限为0777，以便客户端具有写入及删除文件权限。
 //4、authentication中密码必须使用哈希密码，可用caddy hash-password --plaintext <password>命令把普通密码转化为哈希密码并输出base64。例如：/usr/bin/caddy hash-password --plaintext password
 
@@ -94,65 +94,118 @@
 //三、网盘应用3
 //.........<省略>........
           {
+            "handle": [{
+              "handler": "vars",
+              "root": "/home/webdav" //更改为自己的服务器存放文件路径
+            }]
+          },
+          {
             "match": [{
-              "host": ["zz.xx.yy"] //限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
+              "path": ["/dav*"] //web登录匹配路径，更改为自己的。
             }],
             "handle": [{
-              "handler": "headers",
-              "response": {
-                "set": {
-                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
-                }
-              }
+              "handler": "rewrite",
+              "strip_path_prefix": "/dav" //与上一致，无*。
             },
             {
+              "handler": "file_server",
+              "browse": {}
+            }]
+          },
+          {
+            "match": [{
+              "not": [{
+                "method": ["GET"]
+              }]
+            }],
+            "handle": [{
               "handler": "authentication",
               "providers": {
                 "http_basic": {
                   "accounts": [{ //可以设置多组用户及密码
-                    "username": "user", //webdav/web登录用户，更改为自己的。
-                    "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //webdav/web登录用户的哈希密码（示例为password的哈希密码），更改为自己的。
+                    "username": "user", //webdav用户，更改为自己的。
+                    "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //webdav用户的哈希密码（示例为password的哈希密码），更改为自己的。
                   }],
                   "hash_cache": {}
                 }
               }
             }, 
             {
-              "handler": "subroute",
-              "routes": [{
-                "handle": [{
-                  "handler": "vars",
-                  "root": "/home/webdav" //更改为自己的服务器存放文件路径
-                }]
-              },
-              {
-                "match": [{
-                  "not": [{
-                    "method": ["GET"]
-                  }]
-                }],
-                "handle": [{
-                  "handler": "webdav"
-                }]
-              },
-              {
-                "handle": [{
-                  "handler": "file_server",
-                  "browse": {}
-                }]
-              }]
-            }],
-            "terminal": true
-          }, //若此部分参数放在原示例的回落或代理网站之后，‘},’调整为‘}],’。
+              "handler": "webdav"
+            }]
+          },
 //.........<省略>........
 //备注：
-//1、本配置适合为个人或特定人群提供专业的文件服务及共享。支持web登录（有验证）浏览文件，可下载操作；支持webdav客户端（有验证）浏览文件，可以删除、上传、修改等操作。
-//2、本人所有示例的回落或代理网站配置不建议直接替换为上边配置，因为验证的文件服务器网站做流量伪装网站有点特殊。建议增加域名方法来增加此配置，实现与原示例的回落或代理网站共存，可参考shunt_caddy.json。
+//1、本配置适合为大众人群提供文件分享及专业的文件管理服务。支持大众人群web登录（无验证）浏览文件，可下载操作；支持webdav客户端（有验证）浏览文件，可以删除、上传、修改等操作。
+//2、在本人所有示例的回落或代理网站配置之前插入上边配置，就可实现文件服务器网站与回落或代理网站共存。web登录方法：域名/路径，如“xx.yy/dav”。
 //3、修改/home/webdav的webdav权限为0777，以便客户端具有写入及删除文件权限。
 //4、authentication中密码必须使用哈希密码，可用caddy hash-password --plaintext <password>命令把普通密码转化为哈希密码并输出base64。例如：/usr/bin/caddy hash-password --plaintext password
 
 
 //四、网盘应用4
+//.........<省略>........
+          {
+            "handle": [{
+              "handler": "vars",
+              "root": "/home/webdav" //更改为自己的服务器存放文件路径
+            }]
+          },
+          {
+            "match": [{
+              "path": ["/dav*"] //web登录匹配路径，更改为自己的。
+            }],
+            "handle": [{
+              "handler": "rewrite",
+              "strip_path_prefix": "/dav" //与上一致，无*。
+            },
+            {
+              "handler": "authentication",
+              "providers": {
+                "http_basic": {
+                  "accounts": [{ //可以设置多组用户及密码
+                    "username": "user1", //web登录用户，更改为自己的。
+                    "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //web登录用户的哈希密码（示例为password的哈希密码），更改为自己的。
+                  }],
+                  "hash_cache": {}
+                }
+              }
+            },
+            {
+              "handler": "file_server",
+              "browse": {}
+            }]
+          },
+          {
+            "match": [{
+              "not": [{
+                "method": ["GET"]
+              }]
+            }],
+            "handle": [{
+              "handler": "authentication",
+              "providers": {
+                "http_basic": {
+                  "accounts": [{ //可以设置多组用户及密码
+                    "username": "user2", //webdav用户，更改为自己的。
+                    "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //webdav用户的哈希密码（示例为password的哈希密码），更改为自己的。
+                  }],
+                  "hash_cache": {}
+                }
+              }
+            }, 
+            {
+              "handler": "webdav"
+            }]
+          },
+//.........<省略>........
+//备注：
+//1、本配置适合为个人或特定人群提供专业的文件服务及共享。支持web登录（有验证）浏览文件，可下载操作；支持webdav客户端（有验证）浏览文件，可以删除、上传、修改等操作。用户及密码各自独立。
+//2、在本人所有示例的回落或代理网站配置之前插入上边配置，就可实现文件服务器网站与回落或代理网站共存。web登录方法：域名/路径，如“xx.yy/dav”。
+//3、修改/home/webdav的webdav权限为0777，以便客户端具有写入及删除文件权限。
+//4、authentication中密码必须使用哈希密码，可用caddy hash-password --plaintext <password>命令把普通密码转化为哈希密码并输出base64。例如：/usr/bin/caddy hash-password --plaintext password
+
+
+//五、网盘应用5
 //.........<省略>........
           {
             "match": [{
@@ -218,7 +271,72 @@
             "terminal": true
           }, //若此部分参数放在原示例的回落或代理网站之后，‘},’调整为‘}],’。
 //备注：
-//1、本配置适合为个人或特定人群提供专业的文件服务及共享。支持web登录（有验证）浏览文件，可下载操作；支持webdav客户端（有验证）浏览文件，可以删除、上传、修改等操作。
-//2、本人所有示例的回落或代理网站配置不建议直接替换为上边配置，因为验证的文件服务器网站做流量伪装网站有点特殊。建议增加域名方法来增加此配置，实现与原示例的回落或代理网站共存，可参考shunt_caddy.json。
+//1、本配置适合为个人或特定人群提供专业的文件服务及共享。支持web登录（有验证）浏览文件，可下载操作；支持webdav客户端（有验证）浏览文件，可以删除、上传、修改等操作。用户及密码各自独立。
+//2、本人所有示例的回落或代理网站配置不建议直接替换为上边配置，因为验证的文件服务器做流量伪装与防探测网站有点奇怪。
+//1）、建议增加域名方法来增加此配置，实现与原示例的回落或代理网站共存，可参考shunt_caddy.json，实现逻辑一样。
+//2）、web登录方法：域名，如“zz.xx.yy”。
+//3、修改/home/webdav的webdav权限为0777，以便客户端具有写入及删除文件权限。
+//4、authentication中密码必须使用哈希密码，可用caddy hash-password --plaintext <password>命令把普通密码转化为哈希密码并输出base64。例如：/usr/bin/caddy hash-password --plaintext password
+
+
+//六、网盘应用6
+//.........<省略>........
+          {
+            "match": [{
+              "host": ["zz.xx.yy"] //限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
+            }],
+            "handle": [{
+              "handler": "headers",
+              "response": {
+                "set": {
+                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
+                }
+              }
+            },
+            {
+              "handler": "authentication",
+              "providers": {
+                "http_basic": {
+                  "accounts": [{ //可以设置多组用户及密码
+                    "username": "user", //用户，更改为自己的。
+                    "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //用户的哈希密码（示例为password的哈希密码），更改为自己的。
+                  }],
+                  "hash_cache": {}
+                }
+              }
+            }, 
+            {
+              "handler": "subroute",
+              "routes": [{
+                "handle": [{
+                  "handler": "vars",
+                  "root": "/home/webdav" //更改为自己的服务器存放文件路径
+                }]
+              },
+              {
+                "match": [{
+                  "not": [{
+                    "method": ["GET"]
+                  }]
+                }],
+                "handle": [{
+                  "handler": "webdav"
+                }]
+              },
+              {
+                "handle": [{
+                  "handler": "file_server",
+                  "browse": {}
+                }]
+              }]
+            }],
+            "terminal": true
+          }, //若此部分参数放在原示例的回落或代理网站之后，‘},’调整为‘}],’。
+//.........<省略>........
+//备注：
+//1、本配置适合为个人或特定人群提供专业的文件服务及共享。支持web登录（有验证）浏览文件，可下载操作；支持webdav客户端（有验证）浏览文件，可以删除、上传、修改等操作。用户及密码通用。
+//2、本人所有示例的回落或代理网站配置不建议直接替换为上边配置，因为验证的文件服务器做流量伪装与防探测网站有点奇怪。
+//1）、建议增加域名方法来增加此配置，实现与原示例的回落或代理网站共存，可参考shunt_caddy.json，实现逻辑一样。
+//2）、web登录方法：域名，如“zz.xx.yy”。
 //3、修改/home/webdav的webdav权限为0777，以便客户端具有写入及删除文件权限。
 //4、authentication中密码必须使用哈希密码，可用caddy hash-password --plaintext <password>命令把普通密码转化为哈希密码并输出base64。例如：/usr/bin/caddy hash-password --plaintext password
