@@ -7,8 +7,8 @@
 6. 实现了caddy json配置SNI分流应用，且同时支持针对端口或进程独自PROXY protocol发送，灵活性等同haproxy SNI分流。
 7. 实现了Xray与caddy相关应用的证书及密钥申请与更新全自动化。
 8. 实现了CDN应用（WebSocket类应用与gRPC应用的CDN应用）与正常应用同时使用。
-9. 实现了除v2ray(vless\vmess+kcp+seed)示例及应用外，其它示例及应用对外都使用或共用443端口，互不影响。
-10. 实现了除v2ray(vless\vmess+kcp+seed)示例及应用外，其它示例及应用都支持流量伪装与防探测，且提供流量伪装的回落或代理网站都支持http自动跳转到https，SSL/TLS安全评估报告为A+等，与访问/探测真实网站完全一致。
+9. 实现了除v2ray(vless\vmess+kcp+seed)示例或应用外，其它应用对外都使用443端口，各应用互不影响。
+10. 实现了除v2ray(vless\vmess+kcp+seed)示例或应用外，其它应用都支持流量伪装与防探测，且提供流量伪装的回落或代理网站都支持http自动跳转到https，SSL/TLS安全评估报告为A+等，与访问/探测真实网站完全一致。
 * **备注：** 端口分流、端口回落/分流、端口转发是指基于local loopback实现的不同方式；进程分流、进程回落/分流、进程转发是指基于Unix Domain Socket实现的不同方式。
 
 ### 服务端单一应用配置示例
