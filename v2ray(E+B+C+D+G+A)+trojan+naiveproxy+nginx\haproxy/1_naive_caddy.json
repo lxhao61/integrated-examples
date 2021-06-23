@@ -122,7 +122,7 @@
           "automatic_https": {
             "disable": true //禁用自动https
           },
-          "experimental_http3": true //开启http3 server支持。若采用haproxy SNI分流，不支持UDP，此项可关闭。
+          "experimental_http3": true //开启http3 server支持。若采用haproxy SNI分流，不支持UDP，此项可关闭或删除。
         }
       }
     },
