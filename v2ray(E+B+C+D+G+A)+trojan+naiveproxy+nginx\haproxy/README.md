@@ -32,15 +32,15 @@
 
 6、使用本人 github 中编译好的 caddy 文件，才可同时支持 naiveproxy、h2c server、h2c proxy 及 PROXY protocol 等应用。
 
-7、nginx 预编译程序包一般不带支持 SNI 分流协议的模块。如要使用此项协议应用，需加 stream_ssl_preread_module 模块构建自定义模板，再进行源代码编译和安装。
+7、本示例中 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可。
 
 8、因 trojan-go\trojan 仅支持端口监听与端口回落，故共用 web 回落服务的 Xray\v2ray（vless+tcp+tls）回落也仅支持端口回落，即回落部分仅支持端口回落。
 
 9、因 trojan-go\trojan 不支持 PROXY protocol，故共用 web 回落服务的 Xray\v2ray（vless+tcp+tls）回落也不能启用 PROXY protocol，即回落部分不能启用 PROXY protocol。
 
-10、此方法采用的是 SNI 方式实现共用443端口，支持 Xray\v2ray（vless+tcp+tls）、naiveproxy（caddy）、trojan-go\trojan 完美共存，支持各自特色应用，但需多个域名（多个证书或通配符证书）来标记分流。
+10、nginx 预编译程序包一般不带支持 SNI 分流协议的模块。如要使用此项协议应用，需加 stream_ssl_preread_module 模块构建自定义模板，再进行源代码编译和安装。
 
-11、本示例中 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可。
+11、此方法采用的是 SNI 方式实现共用443端口，支持 Xray\v2ray（vless+tcp+tls）、naiveproxy（caddy）、trojan-go\trojan 完美共存，支持各自特色应用，但需多个域名（多个证书或通配符证书）来标记分流。
 
 12、不要使用非 caddy（自带 ACME 客户端） 的 ACME 客户端在当前服务器上申请与更新普通证书及密钥，因普通证书及密钥申请与更新需占用或监听80端口（或443端口），从而与当前应用端口冲突。
 
