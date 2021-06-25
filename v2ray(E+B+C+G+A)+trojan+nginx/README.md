@@ -16,15 +16,15 @@
 
 注意：
 
-1、因 trojan-go\trojan 仅支持端口监听与端口回落，故共用 web 回落服务的 Xray\v2ray（vless+tcp+tls）回落也仅支持端口回落，即回落部分仅支持端口回落。
+1、Xray 版本不小于 1.4.0 或 v2ray 版本不小于v4.36.2，才完美支持 gRPC 应用。
 
-2、因 trojan-go\trojan 不支持 PROXY protocol，故共用 web 回落服务的 Xray\v2ray（vless+tcp+tls）回落也不能启用 PROXY protocol，即回落部分不能启用 PROXY protocol。
+2、采用 nginx 反向代理 gRPC，配置 nginx 时需要启用 http/2，因为 gRPC 必须使用 http/2 传输数据。使用源码编译和安装，编译时需要加入 http_ssl 和 http_v2 模块。
 
-3、Xray 版本不小于 1.4.0 或 v2ray 版本不小于v4.36.2，才完美支持 gRPC 应用。
+3、nginx 支持 h2c server，但不支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用），故 Xray\v2ray（vless+tcp+tls） 与 trojan-go\trojan 应用中的 http/1.1 与 h2 回落端口或进程须分开，分别对应。
 
-4、采用 nginx 反向代理 gRPC，配置 nginx 时需要启用 http/2，因为 gRPC 必须使用 http/2 传输数据。使用源码编译和安装，编译时需要加入 http_ssl 和 http_v2 模块。
+4、因 trojan-go\trojan 仅支持端口监听与端口回落，故共用 web 回落服务的 Xray\v2ray（vless+tcp+tls）回落也仅支持端口回落，即回落部分仅支持端口回落。
 
-5、nginx 支持 h2c server，但不支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用），故 Xray\v2ray（vless+tcp+tls） 与 trojan-go\trojan 应用中的 http/1.1 与 h2 回落端口或进程须分开，分别对应。
+5、因 trojan-go\trojan 不支持 PROXY protocol，故共用 web 回落服务的 Xray\v2ray（vless+tcp+tls）回落也不能启用 PROXY protocol，即回落部分不能启用 PROXY protocol。
 
 6、nginx 预编译程序包一般不带支持 SNI 分流协议的模块。如要使用此项协议应用，需加 stream_ssl_preread_module 模块构建自定义模板，再进行源代码编译和安装。
 
