@@ -3,7 +3,7 @@
     "local_addr": "0.0.0.0",
     "local_port": 443, //监听端口
     "remote_addr": "127.0.0.1",
-    "remote_port": 88, //h2与http/1.1回落共用此端口，回落到web服务器。需web服务器同一端口、同时支持h2c server与http/1.1 server应用。
+    "remote_port": 88, //h2与http/1.1回落共用此端口，回落到web服务器。
     "log_level": 2,
     "log_file": "/var/log/trojan-go/access.log", //更改为自己的日志路径
     "password": [
