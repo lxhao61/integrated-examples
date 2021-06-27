@@ -1,6 +1,6 @@
 介绍：
 
-本配置是 trojan-go 或 trojan 应用，trojan-go 以 h2 协商连接，trojan 以 h2 或 http/1.1 自适应协商连接；非 trojan-go\trojan 的 https 连接回落给 nginx（即解除 tls 后的 web 连接转给 nginx 处理），tls 由 trojan-go\trojan 提供及处理。
+本配置是 trojan-go 或 trojan 应用，trojan-go 以 http/1.1 协商连接，trojan 以 h2 或 http/1.1 自适应协商连接；非 trojan-go\trojan 的 https 连接回落给 nginx（即解除 tls 后的 web 连接转给 nginx 处理），tls 由 trojan-go\trojan 提供及处理。
 
 原理：
 
@@ -9,7 +9,7 @@
 
 注意：
 
-1、nginx 支持 h2c server，但不支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用）。而 trojan-go 目前不支持 http/1.1 与 h2 的回落端口或进程分离 ，故 trojan-go 回落只能二选一。本示例采用 h2 连接及回落，毕竟 h2 连接自带链路复用，且延迟小一点。
+1、nginx 支持 h2c server，但不支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用）。而 trojan-go 目前不支持 http/1.1 与 h2 的回落端口或进程分离 ，故 trojan-go 回落只能二选一。本示例采用 http/1.1 连接及回落，同时支持 WebSocket 传输应用。
 
 2、因 trojan-go\trojan 不支持 Unix Domain Socket，故不能采用进程回落。
 
