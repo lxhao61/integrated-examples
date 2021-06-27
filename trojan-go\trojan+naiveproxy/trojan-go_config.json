@@ -45,13 +45,5 @@
     "enabled": false,
     "method": "AES-128-GCM",
     "password": ""
-  },
-  "transport_plugin": {
-    "enabled": false,
-    "type": "plaintext",
-    "command": "",
-    "option": "",
-    "arg": [],
-    "env": []
   }
 }
