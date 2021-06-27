@@ -1,49 +1,33 @@
 {
-  "run_type": "server",
-  "local_addr": "0.0.0.0",
-  "local_port": 443, //监听端口
-  "remote_addr": "127.0.0.1",
-  "remote_port": 88, //h2与http/1.1回落共用此端口，回落到web服务器。需web服务器同一端口，同时支持h2c server与http/1.1 server应用。
-  "log_level": 1,
-  "log_file": "/var/log/trojan-go/error.log", //更改为自己的日志路径。
-  "password": [
-    "diy1155", //更改为自己的密码
-    "diy9125" //密码可以多个，用逗号隔开。也可删除仅保留一个。
-  ],
-  "disable_http_check": false,
-  "udp_timeout": 60,
-  "ssl": {
-    "verify_hostname": true,
-    "cert": "/home/tls/xx.yy/xx.yy.crt", //换成自己的证书，绝对路径。
-    "key": "/home/tls/xx.yy/xx.yy.key", //换成自己的密钥，绝对路径。
-    "key_password": "",
-    "cipher": "",
-    "curves": "",
-    "prefer_server_cipher": true,
-    "sni": "*.xx.yy", //更改为自己的域名（可设置成通配符域名）
-    "alpn":[
-      "h2", //启用h2连接，web回落也需配置支持h2回落；否则不一致（裸奔），容易被墙探测出，从而被封。
-      "http/1.1" //启用http/1.1连接，web回落也需配置支持http/1.1回落；否则不一致（裸奔），容易被墙探测出，从而被封。
+    "run_type": "server",
+    "local_addr": "0.0.0.0",
+    "local_port": 443, //监听端口
+    "remote_addr": "127.0.0.1",
+    "remote_port": 88, //h2与http/1.1回落共用此端口，回落到web服务器。需web服务器同一端口、同时支持h2c server与http/1.1 server应用。
+    "log_level": 2,
+    "log_file": "/var/log/trojan-go/access.log", //更改为自己的日志路径。
+    "password": [
+        "diy443" //更改为自己的密码。密码可以多组（"password"），用逗号隔开。
     ],
-    "session_ticket": true,
-    "reuse_session": true,
-    "plain_http_response": "",
-    "fallback_addr": "",
-    "fallback_port": 0
-  },
-  "tcp": {
-    "no_delay": true,
-    "keep_alive": true,
-    "prefer_ipv4": false
-  },
-  "websocket": {
-    "enabled": false, //默认关闭
-    "path": "/TrojanGo", //更改为自己的path
-    "host": "zt.xx.yy" //更改为自己的域名
-  },
-  "shadowsocks": {
-    "enabled": false,
-    "method": "AES-128-GCM",
-    "password": ""
-  }
+    "ssl": {
+        "cert": "/home/tls/xx.yy/xx.yy.crt", //换成自己的证书，绝对路径。
+        "key": "/home/tls/xx.yy/xx.yy.key", //换成自己的密钥，绝对路径。
+        "cipher": "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256",
+        "prefer_server_cipher": true,
+        "sni": "",
+        "alpn":[
+            "h2", //启用h2连接，web回落也需配置支持h2回落；否则不一致（裸奔），容易被墙探测出，从而被封。
+            "http/1.1" //启用http/1.1连接，web回落也需配置支持http/1.1回落；否则不一致（裸奔），容易被墙探测出，从而被封。
+        ]
+    },
+    "websocket": {
+        "enabled": true, //开启websocket支持，可进行CDN应用。
+        "path": "/TrojanGo", //更改为自己的path
+        "host": "xx.yy" //更改为自己的域名。若进行CDN应用需配置域名，否则可留空。
+    },
+    "shadowsocks": { //shadowsocks AEAD加密选项
+        "enabled": false, //一般关闭。若使用了Websocket，经过不可信的CDN进行中转（如国内CDN）或连接遭到了GFW针对TLS的中间人攻击等，可以开启。
+        "method": "AES-128-GCM",
+        "password": "" //若shadowsocks AEAD加密开启，配置AEAD加密密码。
+    }
 }
