@@ -3,10 +3,9 @@
     "local_addr": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
     "local_port": 6443, //监听端口
     "remote_addr": "127.0.0.1",
-    "remote_port": 88, //h2与http/1.1回落共用此端口，回落到web服务器。需web服务器同一端口，同时支持h2c server与http/1.1 server应用。
+    "remote_port": 88, //h2与http/1.1回落共用此端口，回落到web服务器。
     "password": [
-        "diy1155", //修改成自己配置的密码
-        "diy9125" //密码可以多个，用‘，’隔开。也可删除仅保留一个。
+        "diy443" //更改为自己的密码。密码可多组（"password"），用逗号隔开。
     ],
     "log_level": 1,
     "ssl": {
