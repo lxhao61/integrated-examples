@@ -5,15 +5,14 @@
     "remote_addr": "127.0.0.1",
     "remote_port": 88, //h2与http/1.1回落共用此端口，回落到web服务器。需web服务器同一端口，同时支持h2c server与http/1.1 server应用。
     "password": [
-        "diy1155", //更改为自己的密码
-        "diy9125" //密码可以多个，用逗号隔开。也可删除仅保留一个。
+        "diy443" //更改为自己的密码。密码可多组（"password"），用逗号隔开。
     ],
     "log_level": 1,
     "ssl": {
         "cert": "/home/tls/xx.yy/xx.yy.crt", //换成自己的证书，绝对路径。
         "key": "/home/tls/xx.yy/xx.yy.key", //换成自己的密钥，绝对路径。
         "key_password": "",
-        "cipher": "ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384",
+        "cipher": "ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305",
         "cipher_tls13": "TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384",
         "prefer_server_cipher": true,
         "alpn": [
