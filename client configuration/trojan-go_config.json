@@ -11,7 +11,7 @@
         "sni": "xx.yy" //改成服务端配置的对应域名（通配域名）
     },
     "router": {
-        "enabled": true, //路由策略开启。建议开启。
+        "enabled": true, //路由策略开启，建议开启。
         "bypass": [
             "geoip:cn",
             "geoip:private",
@@ -29,7 +29,7 @@
         "geosite": "/trojan-go/geosite.dat" //修改成geosite.dat路径
     },
     "websocket": {
-        "enabled": true, //websocket开启,默认可以关闭。
+        "enabled": false, //默认关闭
         "path": "/9ALdGZ9k", //修改成自己配置的路径
         "host": "xx.yy" //修改成自己域名
   }
