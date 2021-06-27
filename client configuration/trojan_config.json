@@ -5,14 +5,14 @@
     "remote_addr": "xx.yy", //改成服务端配置的对应域名
     "remote_port": 443, //改成服务端配置的对应端口（如没有SNI分流共用端口，就是服务端配置的监听端口。）
     "password": [
-        "password" //改成服务端设置的对应密码
+        "diy443" //改成服务端设置的对应密码
     ],
-    "log_level": 1,
+    "log_level": 2,
     "ssl": {
         "verify": true,
         "verify_hostname": true,
         "cert": "",
-        "cipher": "ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES128-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA:AES128-SHA:AES256-SHA:DES-CBC3-SHA",
+        "cipher": "ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-CHACHA20-POLY1305",
         "cipher_tls13": "TLS_AES_256_GCM_SHA384:TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256",
         "sni": "",
         "alpn": [
