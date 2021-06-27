@@ -45,7 +45,7 @@
     "geosite": "/usr/local/bin/trojan-go/geosite.dat" //修改成geosite.dat路径
   },
   "websocket": {
-    "enabled": false, //默认关闭websocket支持
+    "enabled": false, //默认关闭
     "path": "/TrojanGo", //修改成自己配置的路径
     "host": "zt.xx.yy" //修改成自己域名
   },
@@ -53,13 +53,5 @@
     "enabled": false,
     "method": "AES-128-GCM",
     "password": ""
-  },
-  "transport_plugin": {
-    "enabled": false,
-    "type": "plaintext",
-    "command": "",
-    "option": "",
-    "arg": [],
-    "env": []
   }
 }
