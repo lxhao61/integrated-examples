@@ -5,10 +5,10 @@
     "remote_addr": "xx.yy", //改成服务端配置的对应域名
     "remote_port": 443, //改成服务端配置的对应端口（如没有SNI分流共用端口，就是服务端配置的监听端口。）
     "password": [
-        "password" //改成服务端设置的对应密码
+        "diy443" //改成服务端设置的对应密码
     ],
     "ssl": {
-        "sni": "xx.yy" //改成服务端配置的对应域名（通配域名）
+        "sni": ""
     },
     "router": {
         "enabled": true, //路由策略开启，建议开启。
@@ -16,7 +16,7 @@
             "geoip:cn",
             "geoip:private",
             "geosite:cn",
-            "geosite:geolocation-cn"
+            "geosite:private"
         ],
         "block": [
             "geosite:category-ads"
@@ -28,9 +28,19 @@
         "geoip": "/trojan-go/geoip.dat", //修改成geoip.dat路径
         "geosite": "/trojan-go/geosite.dat" //修改成geosite.dat路径
     },
-    "websocket": {
+    "websocket": { //websocket支持，可进行CDN应用。
         "enabled": false, //默认关闭
-        "path": "/9ALdGZ9k", //修改成自己配置的路径
-        "host": "xx.yy" //修改成自己域名
-  }
+        "path": "/TrojanGo", //更改为自己的path
+        "host": "xx.yy" //更改为自己的域名。若进行CDN应用需配置域名，否则可留空。
+    },
+    "shadowsocks": { //shadowsocks AEAD加密选项
+        "enabled": false, //一般关闭。若使用了Websocket，经过不可信的CDN进行中转（如国内CDN）或连接遭到了GFW针对TLS的中间人攻击等，可以开启。
+        "method": "AES-128-GCM",
+        "password": "" //若shadowsocks AEAD加密开启，配置AEAD加密密码。
+    },
+    "mux": {
+        "enabled": false, //默认关闭
+        "concurrency": 4,
+        "idle_timeout": 60
+    }
 }
