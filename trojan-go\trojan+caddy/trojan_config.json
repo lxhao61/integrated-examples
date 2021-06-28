@@ -7,12 +7,12 @@
     "password": [
         "diy443" //更改为自己的密码。密码可多组（"password"），用逗号隔开。
     ],
-    "log_level": 1,
+    "log_level": 2,
     "ssl": {
         "cert": "/home/tls/xx.yy/xx.yy.crt", //换成自己的证书，绝对路径。
         "key": "/home/tls/xx.yy/xx.yy.key", //换成自己的密钥，绝对路径。
         "key_password": "",
-        "cipher": "ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305",
+        "cipher": "ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-CHACHA20-POLY1305",
         "cipher_tls13": "TLS_AES_256_GCM_SHA384:TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256",
         "prefer_server_cipher": true,
         "alpn": [
@@ -33,16 +33,5 @@
         "reuse_port": false,
         "fast_open": false,
         "fast_open_qlen": 20
-    },
-    "mysql": {
-        "enabled": false,
-        "server_addr": "127.0.0.1",
-        "server_port": 3306,
-        "database": "trojan",
-        "username": "trojan",
-        "password": "",
-        "key": "",
-        "cert": "",
-        "ca": ""
     }
 }
