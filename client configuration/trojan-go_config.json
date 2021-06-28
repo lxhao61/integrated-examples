@@ -28,18 +28,18 @@
         "geoip": "/trojan-go/geoip.dat", //修改成geoip.dat路径
         "geosite": "/trojan-go/geosite.dat" //修改成geosite.dat路径
     },
-    "websocket": { //websocket支持，可进行CDN应用。
-        "enabled": false, //默认关闭
+    "websocket": { //websocket应用
+        "enabled": false, //websocket应用支持，默认关闭。
         "path": "/TrojanGo", //更改为自己的path
-        "host": "xx.yy" //更改为自己的域名。若进行CDN应用需配置域名，否则可留空。
+        "host": "" //若进行CDN流量中转需设置域名，否则可留空。
     },
-    "shadowsocks": { //shadowsocks AEAD加密选项
-        "enabled": false, //一般关闭。若使用了Websocket，经过不可信的CDN进行中转（如国内CDN）或连接遭到了GFW针对TLS的中间人攻击等，可以开启。
+    "shadowsocks": { //shadowsocks AEAD加密设置必须与服务端保持一致。
+        "enabled": false, //shadowsocks AEAD加密支持，默认关闭。
         "method": "AES-128-GCM",
-        "password": "" //若shadowsocks AEAD加密开启，配置AEAD加密密码。
+        "password": "" //若shadowsocks AEAD加密开启，设置AEAD加密密码。
     },
-    "mux": {
-        "enabled": false, //默认关闭
+    "mux": { //多路复用
+        "enabled": false, //若服务端设置http/1.1连接，多路复用可启用，否则关闭。
         "concurrency": 4,
         "idle_timeout": 60
     }
