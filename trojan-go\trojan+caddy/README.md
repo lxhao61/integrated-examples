@@ -23,4 +23,4 @@
 
 7、trojan-go 使用 go 实现了完全兼容 trojan，实例还有自己的特色：1、支持 CDN 流量中转(基于 WebSocket over TLS/SSL )。2、支持使用 AEAD 对 trojan 流量二次加密(基于 Shadowsocks AEAD )。
 
-8、trojan-go 的 CDN 流量中转（WebSocket 应用的 CDN 流量中转）与一般 Trojan 流量同时使用，仅支持使用通配符证书或 SAN 证书的不同域名实现，因为 trojan-go 不支持设置多组证书及密钥。
+8、trojan-go 的 CDN 流量中转（WebSocket 应用的 CDN 流量中转）与一般 trojan 流量同时使用，仅支持使用通配符证书或 SAN 证书的不同域名实现，因为 trojan-go 不支持设置多组证书及密钥。
