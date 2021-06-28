@@ -3,7 +3,7 @@
     "local_addr": "0.0.0.0",
     "local_port": 443, //监听端口
     "remote_addr": "127.0.0.1",
-    "remote_port": 88, //h2与http/1.1回落共用此端口，回落到web服务器。需web服务器同一端口、同时支持h2c server与http/1.1 server应用。
+    "remote_port": 88, //h2与http/1.1回落共用此端口，回落到web服务器。
     "password": [
         "diy443" //更改为自己的密码。密码可多组（"password"），用逗号隔开。
     ],
