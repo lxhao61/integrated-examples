@@ -10,8 +10,8 @@
         "diy443" //更改为自己的密码。密码可多组（"password"），用逗号隔开。
     ],
     "ssl": {
-        "cert": "/home/tls/zt.xx.yy/zt.xx.yy.crt", //换成自己的证书，绝对路径。
-        "key": "/home/tls/zt.xx.yy/zt.xx.yy.key", //换成自己的密钥，绝对路径。
+        "cert": "/home/tls/xx.yy/xx.yy.crt", //换成自己的证书，绝对路径。
+        "key": "/home/tls/xx.yy/xx.yy.key", //换成自己的密钥，绝对路径。
         "key_password": "",
         "cipher": "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256",
         "prefer_server_cipher": true,
@@ -19,16 +19,26 @@
         "alpn":[
             "h2", //启用h2连接，web回落也需配置支持h2回落；否则不一致（裸奔），容易被墙探测出，从而被封。
             "http/1.1" //启用http/1.1连接，web回落也需配置支持http/1.1回落；否则不一致（裸奔），容易被墙探测出，从而被封。
-        ]
+        ],
+        "reuse_session": true,
+        "session_ticket": false,
+        "plain_http_response": "",
+        "fallback_addr": "",
+        "fallback_port": 0
+    },
+    "tcp": {
+        "no_delay": true,
+        "keep_alive": true,
+        "prefer_ipv4": false
     },
     "websocket": {
-        "enabled": true, //开启websocket支持，可进行CDN应用。
+        "enabled": true, //开启websocket应用，可进行CDN应用。
         "path": "/TrojanGo", //更改为自己的path
-        "host": "zt.xx.yy" //更改为自己的域名。若进行CDN应用需配置域名，否则可留空。
+        "host": "" //若进行CDN应用需设置域名，否则可留空。
     },
-    "shadowsocks": { //shadowsocks AEAD加密选项
-        "enabled": false, //一般关闭。若使用了Websocket，经过不可信的CDN进行中转（如国内CDN）或连接遭到了GFW针对TLS的中间人攻击等，可以开启。
+    "shadowsocks": {
+        "enabled": false, //一般关闭shadowsocks AEAD加密。若使用了Websocket，经过不可信的CDN进行中转（如国内CDN）或连接遭到了GFW针对TLS的中间人攻击等可开启。
         "method": "AES-128-GCM",
-        "password": "" //若shadowsocks AEAD加密开启，配置AEAD加密密码。
+        "password": "" //若shadowsocks AEAD加密开启，设置AEAD加密密码。
     }
 }
