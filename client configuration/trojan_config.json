@@ -9,19 +9,10 @@
     ],
     "log_level": 2,
     "ssl": {
-        "verify": true,
         "verify_hostname": true,
-        "cert": "",
-        "cipher": "ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-CHACHA20-POLY1305",
-        "cipher_tls13": "TLS_AES_256_GCM_SHA384:TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256",
         "sni": "",
-        "alpn": [
-            "h2",
-            "http/1.1"
-        ],
         "reuse_session": true,
-        "session_ticket": false,
-        "curves": ""
+        "session_ticket": false
     },
     "tcp": {
         "no_delay": true,
