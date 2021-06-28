@@ -9,12 +9,14 @@
 
 注意：
 
-1、nginx 支持 h2c server，但不支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用）。而 trojan-go 目前不支持 http/1.1 与 h2 的回落端口或进程分离 ，故 trojan-go 回落只能二选一。本示例采用 http/1.1 连接及回落，同时支持 WebSocket 传输应用。
+1、nginx 支持 h2c server，但不支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用）。而 trojan-go 目前不支持 http/1.1 与 h2 的回落端口或进程分离 ，故 trojan-go 回落只能二选一。
 
 2、因 trojan-go\trojan 不支持 Unix Domain Socket，故不能采用进程回落。
 
 3、因 trojan-go\trojan 不支持 PROXY protocol（发送），故不启用此项应用。
 
-4、trojan-go 使用 go 实现了完全兼容 trojan，还有自己的特色：trojan-go 支持使用多路复用提升并发性能，使用路由模块实现国内直连；支持 CDN 流量中转(基于 WebSocket over TLS/SSL )；支持使用 AEAD 对 trojan 流量二次加密(基于 Shadowsocks AEAD )；支持可插拔的传输层插件，允许替换 TLS，使用其他加密隧道传输 trojan 协议流量。
+4、trojan-go 使用 go 实现了完全兼容 trojan，实例还有自己的特色：1、支持 CDN 流量中转(基于 WebSocket over TLS/SSL )。2、支持使用 AEAD 对 trojan 流量二次加密(基于 Shadowsocks AEAD )。
 
-5、不要使用 ACME 客户端在当前服务器上申请与更新普通证书及密钥，因普通证书及密钥申请与更新需要占用或监听80端口（或443端口），从而与当前应用端口冲突。
+5、trojan-go CDN 应用（WebSocket类应用）与正常应用同时使用，仅支持使用通配符证书或 SAN 证书的不同域名实现，因为 trojan-go 不支持设置多组证书域名及密钥。
+
+6、不要使用 ACME 客户端在当前服务器上申请与更新普通证书及密钥，因普通证书及密钥申请与更新需要占用或监听80端口（或443端口），从而与当前应用端口冲突。
