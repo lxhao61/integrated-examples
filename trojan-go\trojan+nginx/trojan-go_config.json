@@ -3,7 +3,7 @@
     "local_addr": "0.0.0.0",
     "local_port": 443, //监听端口
     "remote_addr": "127.0.0.1",
-    "remote_port": 81, //http/1.1回落端口，回落到web服务器。若不启用websocket应用或进行CDN应用（WebSocket类应用），可改为h2回落端口。
+    "remote_port": 81, //http/1.1回落端口。若不启用websocket应用或进行CDN应用（WebSocket类应用），可改为h2回落端口。
     "log_level": 2,
     "log_file": "/var/log/trojan-go/access.log", //更改为自己的日志路径
     "password": [
