@@ -32,9 +32,9 @@
         "prefer_ipv4": false
     },
     "websocket": {
-        "enabled": true, //开启websocket应用，可进行CDN应用。
+        "enabled": true, //开启websocket应用，可进行CDN流量中转。
         "path": "/TrojanGo", //更改为自己的path
-        "host": "" //若进行CDN应用需设置域名，否则可留空。
+        "host": "" //若进行CDN流量中转需设置域名，否则可留空。
     },
     "shadowsocks": {
         "enabled": false, //一般关闭shadowsocks AEAD加密。若使用了Websocket，经过不可信的CDN进行中转（如国内CDN）或连接遭到了GFW针对TLS的中间人攻击等可开启。
