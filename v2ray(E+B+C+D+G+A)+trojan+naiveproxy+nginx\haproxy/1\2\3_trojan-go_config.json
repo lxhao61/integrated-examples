@@ -15,7 +15,6 @@
         "key_password": "",
         "cipher": "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256",
         "prefer_server_cipher": true,
-        "sni": "",
         "alpn":[
             "h2", //启用h2连接，web回落也需配置支持h2回落；否则不一致（裸奔），容易被墙探测出，从而被封。
             "http/1.1" //启用http/1.1连接，web回落也需配置支持http/1.1回落；否则不一致（裸奔），容易被墙探测出，从而被封。
@@ -32,9 +31,9 @@
         "prefer_ipv4": false
     },
     "websocket": {
-        "enabled": true, //开启websocket应用，可进行CDN流量中转。
+        "enabled": true, //开启Websocket支持后，可同时支持Websocket（可进行CDN流量中转）和一般Trojan流量。
         "path": "/TrojanGo", //更改为自己的path
-        "host": "" //若进行CDN流量中转需设置域名，否则可留空。
+        "host": ""
     },
     "shadowsocks": {
         "enabled": false, //一般关闭shadowsocks AEAD加密。若使用了Websocket，经过不可信的CDN进行中转（如国内CDN）或连接遭到了GFW针对TLS的中间人攻击等可开启。
