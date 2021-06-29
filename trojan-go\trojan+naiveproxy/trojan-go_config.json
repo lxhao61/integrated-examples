@@ -31,7 +31,7 @@
         "prefer_ipv4": false
     },
     "websocket": {
-        "enabled": true, //开启Websocket支持后
+        "enabled": true, //开启Websocket支持
         "path": "/TrojanGo", //更改为自己的path
         "host": ""
     },
