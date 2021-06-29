@@ -11,9 +11,9 @@
 
 1、nginx 支持 h2c server，但不支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用）。而 trojan-go 目前不支持 http/1.1 与 h2 的回落端口或进程分离 ，故 trojan-go 回落只能二选一。
 
-2、因 trojan-go\trojan 不支持 Unix Domain Socket，故不能采用进程回落。
+2、因 trojan-go\trojan 不支持 Unix Domain Socket，故回落仅端口回落。
 
-3、因 trojan-go\trojan 不支持 PROXY protocol，故不启用此项应用。
+3、因 trojan-go\trojan 不支持 PROXY protocol，故回落不支持此项应用。
 
 4、trojan-go 完全兼容 trojan，还有自己的特色：支持 Websocket，可与一般 Trojan 流量共存；支持 CDN 流量中转(基于 WebSocket over TLS)；支持使用 AEAD 对 trojan 流量二次加密(基于 Shadowsocks AEAD )。
 
