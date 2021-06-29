@@ -20,8 +20,8 @@
 
 6、本示例中 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。
 
-7、不要使用非 caddy（自带 ACME 客户端） 的 ACME 客户端在当前服务器上申请与更新普通证书及密钥，因普通证书及密钥申请与更新需占用或监听80端口（或443端口），从而与当前应用端口冲突。
+6、trojan-go 完全兼容 trojan，还有自己的特色：支持 Websocket，可与一般 Trojan 流量共存；支持 CDN 流量中转(基于 WebSocket over TLS)；支持使用 AEAD 对 trojan 流量二次加密(基于 Shadowsocks AEAD )。
 
-7、trojan-go 使用 go 实现了完全兼容 trojan，实例还有自己的特色：1、支持 CDN 流量中转(基于 WebSocket over TLS/SSL )。2、支持使用 AEAD 对 trojan 流量二次加密(基于 Shadowsocks AEAD )。
+7、trojan-go 的 CDN 流量中转（基于 WebSocket over TLS）与一般 trojan 流量同时使用，仅支持使用通配符证书或 SAN 证书的不同域名实现，因为 trojan-go 不支持设置多组证书及密钥。
 
-8、trojan-go 的 CDN 流量中转（WebSocket 应用的 CDN 流量中转）与一般 trojan 流量同时使用，仅支持使用通配符证书或 SAN 证书的不同域名实现，因为 trojan-go 不支持设置多组证书及密钥。
+8、不要使用非 caddy（自带 ACME 客户端） 的 ACME 客户端在当前服务器上申请与更新普通证书及密钥，因普通证书及密钥申请与更新需占用或监听80端口（或443端口），从而与当前应用端口冲突。
