@@ -4,11 +4,11 @@
     "local_port": 443, //监听端口
     "remote_addr": "127.0.0.1",
     "remote_port": 88, //h2与http/1.1回落共用此端口，回落到web服务器。
-    "log_level": 2,
-    "log_file": "/var/log/trojan-go/access.log", //更改为自己的日志路径
     "password": [
         "diy443" //更改为自己的密码。密码可多组（"password"），用逗号隔开。
     ],
+    "log_level": 2,
+    "log_file": "/var/log/trojan-go/access.log", //更改为自己的日志路径
     "ssl": {
         "cert": "/home/tls/xx.yy/xx.yy.crt", //换成自己的证书，绝对路径。
         "key": "/home/tls/xx.yy/xx.yy.key", //换成自己的密钥，绝对路径。
