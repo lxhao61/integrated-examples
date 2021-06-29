@@ -7,7 +7,7 @@
     "password": [
         "diy443" //改成服务端设置的对应密码
     ],
-    "log_level": 2,
+    "log_level": 1,
     "ssl": {
         "verify_hostname": true,
         "sni": "",
