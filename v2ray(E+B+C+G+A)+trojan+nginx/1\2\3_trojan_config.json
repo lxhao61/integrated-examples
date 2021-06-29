@@ -25,9 +25,7 @@
         "reuse_session": true,
         "session_ticket": false,
         "session_timeout": 600,
-        "plain_http_response": "",
-        "curves": "",
-        "dhparam": ""
+        "plain_http_response": ""
     },
     "tcp": {
         "prefer_ipv4": false,
