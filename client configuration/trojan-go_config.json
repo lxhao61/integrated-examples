@@ -7,6 +7,7 @@
     "password": [
         "diy443" //改成服务端设置的对应密码
     ],
+    "log_level": 1,
     "ssl": {
         "verify_hostname": true,
         "sni": "",
@@ -17,6 +18,21 @@
     "tcp": {
         "no_delay": true,
         "keep_alive": true
+    },
+    "websocket": { //websocket应用
+        "enabled": false, //websocket应用支持，默认关闭。
+        "path": "/TrojanGo", //更改为自己的path
+        "host": "" //若进行CDN流量中转需设置域名，否则可留空。
+    },
+    "shadowsocks": { //shadowsocks AEAD加密设置必须与服务端保持一致。
+        "enabled": false, //shadowsocks AEAD加密支持，默认关闭。
+        "method": "AES-128-GCM",
+        "password": "" //若shadowsocks AEAD加密开启，设置AEAD加密密码。
+    },
+    "mux": { //多路复用
+        "enabled": false, //若服务端设置http/1.1连接，多路复用可启用，否则关闭。
+        "concurrency": 4,
+        "idle_timeout": 60
     },
     "router": { //路由策略
         "enabled": true, //建议开启
@@ -33,22 +49,7 @@
             "geosite:geolocation-!cn"
         ],
         "default_policy": "proxy",
-        "geoip": "/trojan-go/geoip.dat", //修改成geoip.dat路径
-        "geosite": "/trojan-go/geosite.dat" //修改成geosite.dat路径
-    },
-    "websocket": { //websocket应用
-        "enabled": false, //websocket应用支持，默认关闭。
-        "path": "/TrojanGo", //更改为自己的path
-        "host": "" //若进行CDN流量中转需设置域名，否则可留空。
-    },
-    "shadowsocks": { //shadowsocks AEAD加密设置必须与服务端保持一致。
-        "enabled": false, //shadowsocks AEAD加密支持，默认关闭。
-        "method": "AES-128-GCM",
-        "password": "" //若shadowsocks AEAD加密开启，设置AEAD加密密码。
-    },
-    "mux": { //多路复用
-        "enabled": false, //若服务端设置http/1.1连接，多路复用可启用，否则关闭。
-        "concurrency": 4,
-        "idle_timeout": 60
+        "geoip": "/trojan-go/geoip.dat", //更改为自己的geoip.dat所在路径
+        "geosite": "/trojan-go/geosite.dat" //更改为自己的geosite.dat所在路径
     }
 }
