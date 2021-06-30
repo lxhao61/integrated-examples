@@ -48,7 +48,7 @@
 
 14、Xray 所需证书及密钥推荐使用 caddy 申请，配合 Xray（版本必须不低于v1.3.0）自动重载证书及密钥（OCSP Stapling），可实现证书及密钥申请与更新全自动化。
 
-15、配置1：采用端口分流、端口回落\分流、端口转发。配置2：采用进程分流（对应trojan-go\trojan采用端口分流）、端口回落\分流（分流vless+WS采用进程分流）、端口转发。配置3：采用进程分流（对应trojan-go\trojan采用端口分流）、端口回落\分流（分流vless+WS采用进程分流）、端口转发，且启用了 PROXY protocol（回落部分除外）。
+15、配置1：采用端口分流、端口回落\分流、端口转发。配置2：采用进程分流（对应trojan-go\trojan采用端口分流）、端口回落\分流（对应vless+ws采用进程分流）、端口转发。配置3：采用进程分流（对应trojan-go\trojan采用端口分流）、端口回落\分流（对应vless+ws采用进程分流）、端口转发，且启用了 PROXY protocol（回落部分除外）。
 
 16、若采用配置2/配置3、且使用 nginx SNI 来分流的，想 naiveproxy 开启 http/3 代理支持，可参考配置1。方法：nginx 中添加对应 https server 的定向 UDP 转发配置，对应 https server 的进程转发改为端口转发；caddy 中对应 https server 的进程监听改为端口监听，https server 开启 http/3 支持。
 
