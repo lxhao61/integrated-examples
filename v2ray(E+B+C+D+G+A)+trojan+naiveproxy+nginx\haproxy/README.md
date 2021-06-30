@@ -36,19 +36,19 @@
 
 8、nginx 预编译程序包可能不带支持 PROXY protocol 协议的模块。如要使用此项协议应用，需加 http_realip_module 与 stream_realip_module 两模块构建自定义模板，再进行源代码编译和安装。另编译时选取源代码版本建议不要低于1.13.11。
 
-9、因 trojan-go\trojan 仅支持端口监听与端口回落，故共用 web 回落服务的 Xray\v2ray（vless+tcp+tls）回落也仅支持端口回落，即回落部分仅支持端口回落。
+9、因 trojan-go\trojan 仅支持端口监听与端口回落，故共用 web 回落服务的 Xray\v2ray（vless+tcp+tls）回落也仅支持端口回落，即全部回落仅支持端口回落。
 
-10、因 trojan-go\trojan 不支持 PROXY protocol，故共用 web 回落服务的 Xray\v2ray（vless+tcp+tls）回落也不能启用 PROXY protocol，即回落部分不能启用 PROXY protocol。
+10、因 trojan-go\trojan 不支持 PROXY protocol，故共用 web 回落服务的 Xray\v2ray（vless+tcp+tls）回落也不能启用此项应用，即全部回落不能启用此项应用。
 
 11、nginx 预编译程序包一般不带支持 SNI 分流协议的模块。如要使用此项协议应用，需加 stream_ssl_preread_module 模块构建自定义模板，再进行源代码编译和安装。
 
-12、此方法采用的是 SNI 方式实现共用443端口，支持 Xray\v2ray（vless+tcp+tls）、naiveproxy（caddy）、trojan-go\trojan 完美共存，支持各自特色应用，但需多个域名（多个证书或通配符证书）来标记分流。
+12、本示例采用的是 SNI 方式实现共用443端口，支持 Xray\v2ray（vless+tcp+tls）、naiveproxy（caddy）、trojan-go\trojan 完美共存，支持各自特色应用，但需多个域名来标记分流。
 
 13、不要使用非 caddy（自带 ACME 客户端） 的 ACME 客户端在当前服务器上申请与更新普通证书及密钥，因普通证书及密钥申请与更新需占用或监听80端口（或443端口），从而与当前应用端口冲突。
 
 14、Xray 所需证书及密钥推荐使用 caddy 申请，配合 Xray（版本必须不低于v1.3.0）自动重载证书及密钥（OCSP Stapling），可实现证书及密钥申请与更新全自动化。
 
-15、配置1：采用端口分流、端口回落\分流、端口转发。配置2：采用进程分流（对应trojan-go\trojan采用端口分流）、端口回落\分流（对应vless+ws采用进程分流）、端口转发。配置3：采用进程分流（对应trojan-go\trojan采用端口分流）、端口回落\分流（对应vless+ws采用进程分流）、端口转发，且启用了 PROXY protocol（回落部分除外）。
+15、配置1：采用端口分流、端口回落\分流、端口转发。配置2：采用进程分流（对应trojan-go\trojan除外）、端口回落\分流（对应vless+ws除外）、端口转发。配置3：采用进程分流（对应trojan-go\trojan除外）、端口回落\分流（对应vless+ws除外）、端口转发，且启用了 PROXY protocol（全部回落除外）。
 
 16、若采用配置2/配置3、且使用 nginx SNI 来分流的，想 naiveproxy 开启 http/3 代理支持，可参考配置1。方法：nginx 中添加对应 https server 的定向 UDP 转发配置，对应 https server 的进程转发改为端口转发；caddy 中对应 https server 的进程监听改为端口监听，https server 开启 http/3 支持。
 
