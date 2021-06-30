@@ -8,7 +8,7 @@ Xray\v2ray 前置（监听443端口），利用 vless+tcp+tls 强大的回落/�
 
 注意：
 
-1、nginx 支持 h2c server，但不支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用）；故此 vless+tcp+tls 应用中的 http/1.1 与 h2 回落端口或进程须分开，分别对应。
+1、nginx 支持 h2c server，但不支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用）；故只要 vless+tcp+tls 以 h2 或 http/1.1 自适应协商连接，回落就必须按照 http/1.1 回落与 h2 回落分开，分别对应 nginx 的 http/1.1 server 与 h2c server。
 
 2、nginx 预编译程序包可能不带支持 PROXY protocol 协议的模块。如要使用此项协议应用，需加 http_realip_module（必须加） 及 stream_realip_module（可选加） 两模块构建自定义模板，再进行源代码编译和安装。另编译时选取源代码版本建议不要低于1.13.11。
 
