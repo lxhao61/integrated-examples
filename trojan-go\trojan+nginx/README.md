@@ -9,7 +9,7 @@
 
 注意：
 
-1、nginx 支持 h2c server，但不支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用）；故回落配置就必须分成 http/1.1 回落与 h2 回落两部分，以便分别对应 nginx 的 http/1.1 server 与 h2c server。又因 trojan-go 开启 Websocket 支持，且目前不支持 http/1.1 回落与 h2 回落分开，故最终选 http/1.1 协商连接及 http/1.1回落。
+1、nginx 支持 h2c server，但不支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用）；故回落配置就必须分成 http/1.1 回落与 h2 回落两部分，以便分别对应 nginx 的 http/1.1 server 与 h2c server。又因 trojan-go 开启 Websocket 支持，且目前不支持 http/1.1 回落与 h2 回落分开，故 trojan-go 最终选 http/1.1 协商连接及 http/1.1回落。
 
 2、因 trojan-go\trojan 不支持 Unix Domain Socket，故回落仅端口回落。
 
