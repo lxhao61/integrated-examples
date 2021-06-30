@@ -35,7 +35,7 @@
         "host": ""
     },
     "shadowsocks": {
-        "enabled": false, //一般关闭。若使用了Websocket，经过不可信的CDN进行中转（如国内CDN）；或连接遭到了GFW针对TLS的中间人攻击，可开启。
+        "enabled": false, //一般关闭。若使用了Websocket，经过不可信的CDN进行中转（如国内CDN）；或连接遭到了GFW针对TLS的中间人攻击等，可开启。
         "method": "AES-128-GCM",
         "password": "" //若shadowsocks AEAD加密开启，设置AEAD加密密码。
     }
