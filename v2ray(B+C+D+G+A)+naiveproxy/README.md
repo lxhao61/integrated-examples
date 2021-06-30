@@ -20,7 +20,7 @@
 
 2、caddy 不小于 v2.2.0-rc.1 版才支持 h2c proxy，即支持 Xray\v2ray 的 h2c（gRPC） 反向代理。
 
-3、使用本人 github 中编译好的 caddy 文件，才可同时支持 naiveproxy、h2c proxy 等应用。
+3、使用本人 Releases 中编译好的 caddy 文件，才可同时支持 naiveproxy、h2c proxy 等应用。
 
 4、caddy 的 Caddyfile 配置与 caddy.json 配置二选一（效果一样）。支持自动 https，即自动申请与更新证书与私钥，自动 http 重定向到 https。
 
