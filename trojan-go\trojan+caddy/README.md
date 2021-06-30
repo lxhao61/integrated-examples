@@ -13,11 +13,11 @@
 
 2、caddy 支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用）。
 
-3、因 trojan-go\trojan 不支持 Unix Domain Socket，故回落仅端口回落。
+3、本示例中 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。
 
-4、因 trojan-go\trojan 不支持 PROXY protocol（发送），故回落不能启用此项应用。
+4、因 trojan-go\trojan 不支持 Unix Domain Socket，故回落仅端口回落。
 
-5、本示例中 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。
+5、因 trojan-go\trojan 不支持 PROXY protocol（发送），故回落不能启用此项应用。
 
 6、trojan-go 完全兼容 trojan，还有自己的特色：支持 Websocket，可与一般 Trojan 流量共存；支持 CDN 流量中转(基于 WebSocket over TLS)；支持使用 AEAD 对 trojan 流量二次加密(基于 Shadowsocks AEAD )。
 
