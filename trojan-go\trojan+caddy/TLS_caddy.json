@@ -35,7 +35,7 @@
 //备注：
 //1、acme申请的普通证书及密钥在“/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy”目录中。xx.yy为域名，根据自己域名变化。
 //2、zerossl申请的普通证书及密钥在“/home/tls/certificates/acme.zerossl.com-v2-dv90/xx.yy”目录中。xx.yy为域名，根据自己域名变化。
-//3、trojan-go\trojan不支持自动重载证书及密钥，证书及密钥到期更新后需手动重启trojan-go\trojan来重新加载更新后的证书及密钥。
+//3、trojan-go\trojan不支持自动重载证书及密钥，证书及密钥到期更新（90天/周期）后需手动重启trojan-go\trojan来重新加载更新后的证书及密钥。
 
 
 //二、申请通配符证书配置
