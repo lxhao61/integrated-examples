@@ -1,0 +1,50 @@
+  "apps": {           //此caddy.json片段适用于本地服务器没有建站的情况。naiveproxy流量本地处理，非naiveproxy流量转到外部网站。
+    "http": {
+      "servers": {
+        "naive": {
+          "listen": [":443"],
+          "routes": [{
+            "handle": [{
+              "handler": "forward_proxy",
+              "auth_user_deprecated": "user",   //填写naiveproxy用户
+              "auth_pass_deprecated": "password", //填写naiveproxy密码
+              "hide_ip": true,
+              "hide_via": true,
+              "probe_resistance": {}
+          {
+            "match": [{
+              "host": ["caddy.abc.com"]  //填写自己dns设置的域名解析地址
+            }],
+                "terminal": true,
+            "handle": [{
+              "handler": "reverse_proxy",
+                "upstreams": [{ "dial" : "www.outside.com:443" }],    //设置外部网站（带端口号）
+              "headers": {
+                "request": {
+                        "set": {
+                                "Host": ["{http.reverse_proxy.upstream.host}"]
+                                }
+                        }
+                },
+                 "transport": {
+                    "protocol": "http",
+                    "tls": {}
+                  }
+
+            }]
+          }],
+          "tls_connection_policies": [{
+            "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"],
+            "alpn": ["h2","http/1.1"]
+          }],
+          "experimental_http3": true
+        }
+      }
+    },
+    "tls": {
+      "certificates": {
+        "automate": ["caddy.abc.com"]    //填写自己dns设置的域名解析地址
+      }
+    }
+  }
+}
