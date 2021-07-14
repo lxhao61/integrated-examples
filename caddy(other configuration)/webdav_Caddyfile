@@ -115,7 +115,7 @@
 			Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
 		}
 		@webdav {
-            not method GET
+			not method GET
 		}
 		route @webdav {
 			basicauth { #可以设置多组验证用户及密码
