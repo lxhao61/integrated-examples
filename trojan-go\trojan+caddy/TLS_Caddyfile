@@ -2,22 +2,22 @@
 #单一域名申请普通证书配置
 #原配置参数：
 {
-    admin off
+	admin off
 #.........<省略>........
-    auto_https off #禁用自动https
+	auto_https off #禁用自动https
 #.........<省略>........
 }
 #.........<省略>........
 
 #以上参数修改如下：
 {
-    admin off
-    storage file_system {
-        root /home/tls #存放证书及密钥的基本路径 （增加此部分参数）
-    }
+	admin off
+	storage file_system {
+		root /home/tls #存放证书及密钥的基本路径 （增加此部分参数）
+	}
 #.........<省略>........
-    auto_https off #禁用自动https
-    cert_issuer acme #必须acme与zerossl二选一（固定证书及密钥的绝对路径便于引用）。acme表示从Let's Encrypt申请证书及密钥，zerossl表示从ZeroSSL申请证书及密钥。注意：版本不小于v2.4.1才支持。
+	auto_https off #禁用自动https
+	cert_issuer acme #必须acme与zerossl二选一（固定证书及密钥的绝对路径便于引用）。acme表示从Let's Encrypt申请证书及密钥，zerossl表示从ZeroSSL申请证书及密钥。注意：版本不小于v2.4.1才支持。
 #.........<省略>........
 }
 #.........<省略>........
