@@ -21,8 +21,8 @@
 	redir https://{host}{uri} permanent #http自动跳转https,让网站看起来更真实。
 }
 
-:88 { #启用进程绑定后此端口失效，仅做标记作用。
-	bind unix//dev/shm/h1h2c.sock #启用进程绑定后执行进程监听，仅接收web回落。
+:88 { #绑定进程后此端口失效，仅做标记作用。
+	bind unix//dev/shm/h1h2c.sock #绑定h1h2c.sock监听进程，仅接收web回落。
 
 	forward_proxy {
 		basic_auth user pass #naiveproxy用户与密码，更改为自己的。
