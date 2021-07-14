@@ -1,12 +1,12 @@
 #若不需要naiveproxy应用，删除各自naive_Caddyfile配置文件中如下参数即可。
 #.........<省略>........
-    order forward_proxy before reverse_proxy
+	order forward_proxy before reverse_proxy
 #.........<省略>........
 
-    forward_proxy {
-        basic_auth user pass #naiveproxy用户与密码，修改为自己的。
-        hide_ip
-        hide_via
-        probe_resistance
-    }
+	forward_proxy {
+		basic_auth user pass #naiveproxy用户与密码，更改为自己的。
+		hide_ip
+		hide_via
+		probe_resistance
+	}
 #.........<省略>........
