@@ -7,9 +7,9 @@
 		level ERROR
 	}
 	auto_https off #禁用自动https
-	servers unix//dev/shm/h1h2c.sock { #与下边进程监听对应	
-		listener_wrappers {	
-			proxy_protocol #开启PROXY protocol接收	
+	servers unix//dev/shm/h1h2c.sock { #与下边进程监听对应
+		listener_wrappers {
+			proxy_protocol #开启PROXY protocol接收
 		}
 		protocol {
 			allow_h2c #开启h2c server支持
