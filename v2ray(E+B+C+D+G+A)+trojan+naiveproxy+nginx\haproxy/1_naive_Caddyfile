@@ -7,7 +7,7 @@
 		level ERROR
 	}
 	auto_https off #禁用自动https
-	servers 127.0.0.1:88 { #与下边端口监听对应
+	servers 127.0.0.1:88 { #与下边监听端口对应
 		protocol {
 			allow_h2c #开启h2c server支持
 		}
