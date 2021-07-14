@@ -1,23 +1,23 @@
 #caddy自动申请与更新证书配置（供Xray\v2ray使用）
-#单一域名申请普通证书配置
+#一、单一域名申请普通证书配置
 #原配置参数：
 {
-    admin off
+	admin off
 #.........<省略>........
-    auto_https off #禁用自动https
+	auto_https off #禁用自动https
 #.........<省略>........
 }
 #.........<省略>........
 
 #以上参数修改如下：
 {
-    admin off
-    storage file_system {
-        root /home/tls #存放证书及密钥的基本路径 （增加此部分参数）
-    }
+	admin off
+	storage file_system {
+		root /home/tls #存放证书及密钥的基本路径 （增加此部分参数）
+	}
 #.........<省略>........
-    auto_https off #禁用自动https
-    cert_issuer acme #必须acme与zerossl二选一（固定证书及密钥的绝对路径便于引用）。acme表示从Let's Encrypt申请证书及密钥，zerossl表示从ZeroSSL申请证书及密钥。注意：版本不小于v2.4.1才支持。
+	auto_https off #禁用自动https
+	cert_issuer acme #必须acme与zerossl二选一（固定证书及密钥的绝对路径便于引用）。acme表示从Let's Encrypt申请证书及密钥，zerossl表示从ZeroSSL申请证书及密钥。注意：版本不小于v2.4.1才支持。
 #.........<省略>........
 }
 #.........<省略>........
@@ -30,5 +30,5 @@
 #4、v2ray不支持自动重载证书及密钥，证书及密钥到期更新（证书有效期90天，默认60天后开始更新。）后需手动重启v2ray来重新加载更新后的证书及密钥。
 
 
-#二、申请通配符证书配置
+#三、申请通配符证书配置
 #详见“caddy(other configuration) （caddy的特殊应用配置方法。）”。
