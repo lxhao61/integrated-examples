@@ -28,15 +28,13 @@
 
 4、caddy 加 caddy-l4 插件定制编译的才可以实现 SNI 分流，目前仅支持使用 json 配置。
 
-5、caddy 发行版不支持 PROXY protocol（接收）。如要支持 PROXY protocol 需选 caddy2-proxyprotocol 插件定制编译，或下载本人 Releases 中编译好的 caddy 来使用即可。
-
 6、使用本人 Releases 中编译好的 caddy 文件，才可同时支持 SNI 分流、naiveproxy、h2c server、h2c proxy 及 PROXY protocol 等应用。
 
 7、因 trojan-go\trojan 仅支持端口监听与端口回落，故共用 web 回落服务的 Xray\v2ray（vless+tcp+tls）回落也仅支持端口回落，即全部回落仅支持端口回落。
 
 8、因 trojan-go\trojan 不支持 PROXY protocol，故共用 web 回落服务的 Xray\v2ray（vless+tcp+tls）回落也不能启用此项应用，即全部回落不能启用此项应用。
 
-9、本示例采用的是 SNI 方式实现共用443端口，支持 Xray\v2ray（vless+tcp+tls）、naiveproxy（caddy）、trojan-go\trojan 完美共存，支持各自特色应用，但需多个域名来标记分流。
+9、本示例采用的是 SNI 方式实现共用443端口，支持 Xray\v2ray（vless+tcp+tls）、caddy（naiveproxy）、trojan-go\trojan 完美共存，支持各自特色应用，但需多个域名来标记分流。
 
 10、不要使用非 caddy（自带 ACME 客户端） 的 ACME 客户端在当前服务器上申请与更新普通证书及密钥，因普通证书及密钥申请与更新需占用或监听80端口（或443端口），从而与当前应用端口冲突。
 
