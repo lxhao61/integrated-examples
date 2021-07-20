@@ -32,7 +32,7 @@
 
 6、使用本人 Releases 中编译好的 caddy 文件，才可同时支持 naiveproxy、h2c server、h2c proxy、SNI 分流及 PROXY protocol 等应用。
 
-7、本示例采用的是 SNI 方式实现共用443端口，支持 Xray\v2ray（vless+tcp+tls）、Xray\v2ray（trojan+tcp+tls）、naiveproxy（caddy）完美共存，支持各自特色应用，但需多个域名来标记分流。
+7、本示例采用的是 SNI 方式实现共用443端口，支持 Xray\v2ray（vless+tcp+tls）、Xray\v2ray（trojan+tcp+tls）、caddy（naiveproxy）完美共存，支持各自特色应用，但需多个域名来标记分流。
 
 8、不要使用非 caddy（自带 ACME 客户端） 的 ACME 客户端在当前服务器上申请与更新普通证书及密钥，因普通证书及密钥申请与更新需占用或监听80端口（或443端口），从而与当前应用端口冲突。
 
