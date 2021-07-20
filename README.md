@@ -14,6 +14,7 @@
 ### 服务端单一应用配置示例
 1. [trojan-go\trojan+caddy](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bcaddy) （trojan-go与trojan应用，web回落给caddy。）
 2. [trojan-go\trojan+nginx](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bnginx) （trojan-go与trojan应用，web回落给nginx。）
+3. [trojan-go(caddy+caddy-trojan)](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go(caddy%2Bcaddy-trojan)) （基于caddy-trojan插件的trojan-go应用。）
 ---
 1. [naiveproxy(caddy+forwardproxy)](https://github.com/lxhao61/integrated-examples/tree/main/naiveproxy(caddy%2Bforwardproxy)) （基于caddy的http/2或http/3代理应用。）
 ---
@@ -36,6 +37,7 @@
 ### 服务端综合应用配置示例
 #### &emsp;以trojan-go或trojan为主、caddy(naiveproxy)为辅的综合应用。
 1. [trojan-go\trojan+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bnaiveproxy) （trojan-go或trojan加naiveproxy的应用。）
+2. [caddy(naiveproxy+trojan-go)](https://github.com/lxhao61/integrated-examples/tree/main/caddy(naiveproxy%2Btrojan-go)) （基于caddy插件的naiveproxy与trojian-go应用。）
 #### &emsp;以Xray或v2ray为主、nginx为辅的综合应用。
 1. [v2ray(B+C+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(B%2BC%2BA)%2Bnginx) （反向代理WebSocket的综合应用。）
 2. [v2ray(B+C+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(B%2BC%2BG%2BA)%2Bnginx) （以nginx SNI兼顾反向代理WebSocket与gRPC的综合应用。）
