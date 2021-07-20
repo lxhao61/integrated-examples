@@ -35,7 +35,7 @@
 2. [v2ray(trojan+grpc)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(trojan%2Bgrpc)%2Bcaddy%5Cnginx)（trojan+grpc+tls反代应用。）
 
 ### 服务端综合应用配置示例
-#### &emsp;以trojan-go或trojan为主、caddy(naiveproxy)为辅的综合应用。
+#### &emsp;trojan-go或trojan与naiveproxy的综合应用。
 1. [trojan-go\trojan+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bnaiveproxy) （trojan-go或trojan加naiveproxy的应用。）
 2. [caddy(naiveproxy+trojan-go)](https://github.com/lxhao61/integrated-examples/tree/main/caddy(naiveproxy%2Btrojan-go)) （基于caddy插件的naiveproxy与trojian-go应用。）
 #### &emsp;以Xray或v2ray为主、nginx为辅的综合应用。
