@@ -22,6 +22,6 @@
 
 3、使用本人 Releases 中编译好的 caddy 文件，才可同时支持 naiveproxy、h2c proxy 等应用。
 
-4、caddy 的 Caddyfile 配置与 caddy.json 配置二选一（效果一样）。支持自动 https，即自动申请与更新证书与私钥，自动 http 重定向到 https。
+4、本示例中 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。支持自动 https，即自动申请与更新证书与私钥，自动 http 重定向到 https。
 
 5、配置1：采用端口转发。配置2：vless+ws+tls 采用进程转发，其它应用采用端口转发。
