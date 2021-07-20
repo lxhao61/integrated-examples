@@ -1,0 +1,13 @@
+介绍：
+
+此 trojan-go 服务端是以 caddy 源码加 caddy-trojan 插件编译而成，仅一个软件就实现了 trojan-go 应用（科学上网）。
+
+注意：
+
+1、caddy 不小于 v2.3.0 版才支持 Caddyfile 配置开启 h2c server。
+
+2、Caddyfile 配置与 caddy.json 配置二选一（效果一样）。支持自动 https，即自动申请与更新证书与私钥，自动 http 重定向到 https。
+
+3、此 trojan-go 应用完全兼容 trojan，还有自己的特色：支持 Websocket，可与一般 Trojan 流量共存；支持 CDN 流量中转(基于 WebSocket over TLS)。
+
+4、此 trojan-go 应用的 CDN 流量中转（基于 WebSocket over TLS）与一般 trojan 流量同时使用，建议采用通配符证书。通配符证书申请配置详见“caddy(other configuration) （caddy的特殊应用配置方法。）”。
