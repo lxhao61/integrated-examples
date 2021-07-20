@@ -9,5 +9,3 @@
 2、Caddyfile 配置与 caddy.json 配置二选一（效果一样）。支持自动 https，即自动申请与更新证书与私钥，自动 http 重定向到 https。
 
 3、此 trojan-go 应用完全兼容 trojan，还有自己的特色：支持 Websocket，可与一般 Trojan 流量共存；支持 CDN 流量中转(基于 WebSocket over TLS)。
-
-4、此 trojan-go 应用的 CDN 流量中转（基于 WebSocket over TLS）与一般 trojan 流量同时使用，建议采用通配符证书。通配符证书申请配置详见“caddy(other configuration) （caddy的特殊应用配置方法。）”。
