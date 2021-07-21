@@ -6,7 +6,7 @@
 		level ERROR
 	}
 	auto_https off #禁用自动https
-	servers 127.0.0.1:88 { #与下边端口监听对应
+	servers 127.0.0.1:88 { #与下边本地监听端口对应
 		protocol {
 			allow_h2c #开启h2c server支持
 		}
@@ -17,8 +17,8 @@
 	redir https://{host}{uri} permanent #http自动跳转https,让网站看起来更真实。
 }
 
-:88 { #监听端口，仅接收web回落。
-	bind 127.0.0.1 #只监听本机，避免本机外的机器探测到上面端口。
+:88 { #http/1.1与h2c server监听端口
+	bind 127.0.0.1 #绑定本地主机，避免本机外的机器探测到上面端口。
 
 	forward_proxy {
 		basic_auth user pass #naiveproxy用户与密码，更改为自己的。
