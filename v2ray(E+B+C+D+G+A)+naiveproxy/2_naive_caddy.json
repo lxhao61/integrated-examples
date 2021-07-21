@@ -29,7 +29,7 @@
           }]
         },
         "h1&h2c": {
-          "listen": ["unix//dev/shm/h1h2c.sock"], //h2c与http/1.1 server进程监听，仅接收web回落。
+          "listen": ["unix//dev/shm/h1h2c.sock"], //http/1.1与h2c server监听进程
           "routes": [{
             "handle": [{
               "handler": "forward_proxy",
