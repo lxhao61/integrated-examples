@@ -10,9 +10,9 @@
 
 4、A=vless+kcp+seed（可改成vmess+kcp+seed，或添加它。）
 
-5、naiveproxy（基于forwardproxy插件实现，tls由caddy提供及处理，不需配置。）
+5、naiveproxy（基于forwardproxy插件实现，tls由caddy提供及处理。）
 
-6、trojan-go（基于caddy-trojan插件实现，tls由caddy提供及处理，不需配置。）
+6、trojan-go（基于caddy-trojan插件实现，tls由caddy提供及处理。）
 
 注意：
 
