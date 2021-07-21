@@ -29,7 +29,7 @@
           }]
         },
         "h1h2c": {
-          "listen": ["127.0.0.1:88"], //本机端口监听，避免除本机外的机器探测及非安全web访问，仅接收web回落。
+          "listen": ["127.0.0.1:88"], //http/1.1与h2c server本地监听端口
           "routes": [{
             "match": [{
               "host": ["zv.xx.yy","zt.xx.yy"] //限定域名访问（禁止以ip方式访问网站），更改为自己的对应域名。
@@ -53,7 +53,7 @@
           "allow_h2c": true //开启h2c server支持
         },
         "https": {
-          "listen": ["unix//dev/shm/https.sock"], //https server进程监听,为naiveproxy、h2c proxy等应用服务。
+          "listen": ["unix//dev/shm/https.sock"], //https server监听进程
           "listener_wrappers": [{
             "wrapper": "proxy_protocol" //开启PROXY protocol接收
           }, 
