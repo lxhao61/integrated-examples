@@ -34,9 +34,9 @@
 
 7、本示例中 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可。
 
-8、因 trojan-go\trojan 仅支持端口监听与端口回落，故共用 web 服务的 Xray\v2ray（vless+tcp+tls）回落也仅支持端口回落，即全部回落仅支持端口回落。
+8、因 trojan-go\trojan 仅支持端口监听与端口回落，故共用回落 web 服务的 Xray\v2ray（vless+tcp+tls）回落也仅支持端口回落，即全部回落仅支持端口回落。
 
-9、因 trojan-go\trojan 不支持 PROXY protocol，故共用 web 服务的 Xray\v2ray（vless+tcp+tls）回落也不能启用此项应用，即全部回落不能启用此项应用。
+9、因 trojan-go\trojan 不支持 PROXY protocol，故共用回落 web 服务的 Xray\v2ray（vless+tcp+tls）回落也不能启用此项应用，即全部回落不能启用此项应用。
 
 10、nginx 预编译程序包可能不带支持 PROXY protocol 协议的模块。如要使用此项协议应用，需加 http_realip_module 与 stream_realip_module 两模块构建自定义模板，再进行源代码编译和安装。另编译时选取源代码版本建议不要低于1.13.11。
 
