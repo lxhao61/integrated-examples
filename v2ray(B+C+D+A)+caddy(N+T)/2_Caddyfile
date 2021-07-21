@@ -31,6 +31,12 @@
 		probe_resistance
 	}
 
+	trojan {
+		user diy443 #更改为自己的密码。密码可多组，用空格隔开。
+		connect_method
+		websocket #开启Websocket支持
+	}
+
 	@vws { #匹配器标签。此标签仅区分，多个不同代理需要改成不同名称，但要与下边‘reverse_proxy’中匹配器标签对应。
 		path /HALdGZ9k #与vless+ws应用中path对应
 		header Connection *Upgrade*
