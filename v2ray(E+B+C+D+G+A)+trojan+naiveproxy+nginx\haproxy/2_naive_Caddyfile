@@ -7,7 +7,7 @@
 		level ERROR
 	}
 	auto_https off #禁用自动https
-	servers 127.0.0.1:88 { #与下边监听端口对应
+	servers 127.0.0.1:88 { #与下边本地监听端口对应
 		protocol {
 			allow_h2c #开启h2c server支持
 		}
@@ -18,8 +18,8 @@
 	redir https://{host}{uri} permanent #http自动跳转https,让网站看起来更真实。
 }
 
-:88 { #监听端口，仅接收web回落。
-	bind 127.0.0.1 #只监听本机，避免本机外的机器探测到上面端口。
+:88 { #http/1.1与h2c server监听端口
+	bind 127.0.0.1 #绑定本地主机，避免本机外的机器探测到上面端口。
 
 	@host {
 		host zv.xx.yy zt.xx.yy #限定域名访问（禁止以ip方式访问网站），更改为自己的对应域名。
@@ -35,7 +35,7 @@
 }
 
 :7443 { #绑定进程后此端口失效，仅做标记作用。
-	bind unix//dev/shm/https.sock #绑定https.sock监听进程,为naiveproxy、h2c proxy等应用服务。
+	bind unix//dev/shm/https.sock #https server监听进程
 
 	tls /home/tls/zh.xx.yy/zh.xx.yy.crt /home/tls/zh.xx.yy/zh.xx.yy.key { #换成自己的证书与密钥，绝对路径。
 		ciphers TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
