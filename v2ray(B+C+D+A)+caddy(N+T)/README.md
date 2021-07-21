@@ -1,6 +1,6 @@
 介绍：
 
-除 Xray\v2ray kcp 外，所用应用共用443端口。此端口由 caddy 监听（即 caddy 前置），反向代理 Xray\v2ray 的 WebSocket（WS） 及 h2c，正向代理 caddy 的 naiveproxy 及 trojan-go。包括应用如下：
+除 Xray\v2ray kcp 外，所用应用共用443端口。此端口由 caddy 监听（即 caddy 前置），正向代理 naiveproxy 及 trojan-go，反向代理 Xray\v2ray 的 WebSocket（WS） 及 h2c。包括应用如下：
 
 1、B=vless+ws+tls（tls由caddy提供及处理，不需配置；另可改成或添加其它WS类应用，参考对应的服务端单一应用配置示例。）
 
