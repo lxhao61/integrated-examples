@@ -30,9 +30,9 @@
 
 5、使用本人 Releases 中编译好的 caddy 文件，才可同时支持 SNI 分流、naiveproxy、h2c server、h2c proxy 及 PROXY protocol 等应用。
 
-6、因 trojan-go\trojan 仅支持端口监听与端口回落，故共用 web 回落服务的 Xray\v2ray（vless+tcp+tls）回落也仅支持端口回落，即全部回落仅支持端口回落。
+6、因 trojan-go\trojan 仅支持端口监听与端口回落，故共用回落 web 服务的 Xray\v2ray（vless+tcp+tls）回落也仅支持端口回落，即全部回落仅支持端口回落。
 
-7、因 trojan-go\trojan 不支持 PROXY protocol，故共用 web 回落服务的 Xray\v2ray（vless+tcp+tls）回落也不能启用此项应用，即全部回落不能启用此项应用。
+7、因 trojan-go\trojan 不支持 PROXY protocol，故共用回落 web 回落服务的 Xray\v2ray（vless+tcp+tls）回落也不能启用此项应用，即全部回落不能启用此项应用。
 
 8、本示例采用的是 SNI 方式实现共用443端口，支持 Xray\v2ray（vless+tcp+tls）、caddy（naiveproxy）、trojan-go\trojan 完美共存，支持各自特色应用，但需多个域名来标记分流。
 
