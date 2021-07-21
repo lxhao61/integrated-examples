@@ -7,7 +7,7 @@
 		level ERROR
 	}
 	auto_https off #禁用自动https
-	servers unix//dev/shm/h1h2c.sock { #与下边进程监听对应
+	servers unix//dev/shm/h1h2c.sock { #与下边监听进程对应
 		protocol {
 			allow_h2c #开启h2c server支持
 		}
@@ -19,7 +19,7 @@
 }
 
 :88 { #绑定进程后此端口失效，仅做标记作用。
-	bind unix//dev/shm/h1h2c.sock #绑定h1h2c.sock监听进程，仅接收web回落。
+	bind unix//dev/shm/h1h2c.sock #http/1.1与h2c server监听进程
 
 	forward_proxy {
 		basic_auth user pass #naiveproxy用户与密码，更改为自己的。
