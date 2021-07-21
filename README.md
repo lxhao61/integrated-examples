@@ -76,7 +76,8 @@
 4. 目前caddy的https服务进程监听采用Unix Domain Socket进程不支持http/3；若开启http/3，caddy无法启动。
 5. 受限应用条件及场景，naiveproxy的quic应用（即caddy的http/3代理应用）不是所有相关naiveproxy示例都支持。
 6. 附加相关插件的caddy程序文件已编译好，去本人Releases中下载即可。
-7. trojan-go安卓客户端可以去本人Releases中下载。
+7. caddy插件单一应用简记：N=naiveproxy(caddy+forwardproxy)、T=trojan-go(caddy+caddy-trojan)。
+8. trojan-go安卓客户端可以去本人Releases中下载。
 
 ### 服务端特殊应用配置示例
 1. [v2ray(other configuration)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(other%20configuration)) （Xray或v2ray的特殊应用配置方法。）
