@@ -13,7 +13,7 @@
 
 1、v2ray v4.31.0 版本及以后才支持 trojan 协议。
 
-2、此应用使用 trojan-go 客户端及 Xray\v2ray 官方客户端连接无问题，使用第三方的 Xray\v2ray 客户端目前基本不行。另 trojan-go 安卓手机客户端可本人 github 中下载。
+2、此应用使用 trojan-go 客户端及 Xray\v2ray 官方客户端连接无问题，使用第三方的 Xray\v2ray 客户端目前基本不行。另 trojan-go 安卓手机客户端可去本人 Releases 中下载。
 
 3、若采用 caddy 反向代理，本示例中 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。支持自动 https，即自动申请与更新证书与私钥，自动 http 重定向到 https。
 
