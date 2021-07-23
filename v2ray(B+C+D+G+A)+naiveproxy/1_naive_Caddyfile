@@ -1,6 +1,6 @@
 {
-	order reverse_proxy before map
-	order forward_proxy before reverse_proxy
+	order forward_proxy before map
+	order reverse_proxy before forward_proxy
 	admin off
 	log { #注意：版本不小于v2.4.0才支持日志全局配置，否则各自配置。
 		output file /var/log/caddy/access.log
@@ -17,13 +17,6 @@
 	tls {
 		ciphers TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
 		alpn h2 http/1.1
-	}
-
-	forward_proxy {
-		basic_auth user pass #naiveproxy用户与密码，更改为自己的。
-		hide_ip
-		hide_via
-		probe_resistance
 	}
 
 	@vws { #匹配器标签。此标签仅区分，多个不同代理需要改成不同名称，但要与下边‘reverse_proxy’中匹配器标签对应。
@@ -51,6 +44,13 @@
 		transport http {
 			versions h2c
 		}
+	}
+
+	forward_proxy {
+		basic_auth user pass #naiveproxy用户与密码，更改为自己的。
+		hide_ip
+		hide_via
+		probe_resistance
 	}
 
 	@host {
