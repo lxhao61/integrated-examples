@@ -55,16 +55,6 @@
         "https": {
           "listen": ["127.0.0.1:7443"], //https server本地监听端口
           "routes": [{
-            "handle": [{
-              "handler": "forward_proxy",
-              "auth_user_deprecated": "user", //naiveproxy用户，更改为自己的。
-              "auth_pass_deprecated": "pass", //naiveproxy密码，更改为自己的。
-              "hide_ip": true,
-              "hide_via": true,
-              "probe_resistance": {}
-            }]
-          },
-          {
             "match": [{
               "path": ["/SeuW56Es"] //与vless+h2c应用中path对应
             }],
@@ -93,6 +83,16 @@
                 "dial": "127.0.0.1:2009" //转发给本机vless+grpc监听端口
               }],
               "flush_interval": -1
+            }]
+          },
+          {
+            "handle": [{
+              "handler": "forward_proxy",
+              "auth_user_deprecated": "user", //naiveproxy用户，更改为自己的。
+              "auth_pass_deprecated": "pass", //naiveproxy密码，更改为自己的。
+              "hide_ip": true,
+              "hide_via": true,
+              "probe_resistance": {}
             }]
           },
           {
