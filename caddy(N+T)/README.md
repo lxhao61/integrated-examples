@@ -1,6 +1,6 @@
 介绍：
 
-本示例包括 naiveproxy、trojan-go 应用。两应用服务端以 caddy 源码加 forwardproxy 插件、caddy-trojan 插件编译而成，基于各自插件代理实现科学上网。其应用如下：
+本示例包括 naiveproxy、trojan-go 应用。服务端以 caddy 源码加 forwardproxy 插件、caddy-trojan 插件编译而成，基于各自插件代理实现科学上网。其应用如下：
 
 1、naiveproxy（基于forwardproxy插件实现，tls由caddy提供及处理。）
 
