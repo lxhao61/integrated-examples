@@ -2,7 +2,7 @@
 
 利用 caddy 支持 SNI 分流特性，对 Xray\v2ray（vless+tcp+tls）、caddy（https server）、trojan-go\trojan 进行 SNI 分流（四层转发），实现除 Xray\v2ray kcp 外共用443端口。另外 caddy 同时为 Xray\v2ray（vless+tcp+tls）与 trojan-go\trojan 提供 web 回落服务，为 Xray\v2ray 的 h2c 与 gRPC 进行反向代理，为 naiveproxy 提供正向代理。包括应用如下：
 
-1、E=vless+tcp+tls（回落/分流配置，tls由自己提供。）
+1、E=vless+tcp+tls（回落/分流配置，tls由自己提供及处理。）
 
 2、B=vless+ws+tls（tls由vless+tcp+tls提供及处理，不需配置；另可改成或添加其它WS类应用，参考对应的服务端单一应用配置示例。）
 
@@ -14,9 +14,9 @@
 
 6、A=vless+kcp+seed（可改成vmess+kcp+seed，或添加它。）
 
-7、naiveproxy（tls由caddy提供。）
+7、naiveproxy（带有forwardproxy插件的caddy才支持naiveproxy应用，否则仅上边应用。tls由caddy提供及处理。）
 
-8、trojan-go或trojan（tls由自己提供。）
+8、trojan-go或trojan（tls由自己提供及处理。）
 
 注意：
 
@@ -42,4 +42,4 @@
 
 11、配置1：采用端口分流、端口回落\分流、端口转发。配置2：采用进程分流（对应trojan-go\trojan除外）、端口回落\分流（对应vless+ws除外）、端口转发。配置3：采用进程分流（对应trojan-go\trojan除外）、端口回落\分流（对应vless+ws除外）、端口转发，且启用了 PROXY protocol（全部回落除外）。
 
-12、若有实际网站服务推荐采用 [v2ray(E+B+C+D+G+A)+trojan+naiveproxy+nginx\haproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BD%2BG%2BA)%2Btrojan%2Bnaiveproxy%2Bnginx%5Chaproxy) 示例，否则 caddy（naiveproxy）的压力可能过大。
+12、若有实际网站服务推荐采用 [v2ray(E+B+C+D+G+A)+trojan+naiveproxy+nginx\haproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BD%2BG%2BA)%2Btrojan%2Bnaiveproxy%2Bnginx%5Chaproxy) 示例，否则 caddy 的压力可能过大。
