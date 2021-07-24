@@ -6,7 +6,7 @@
 
 2、B=vless+ws+tls（tls由vless+tcp+tls提供及处理，不需配置；另可改成或添加其它WS类应用，参考对应的服务端单一应用配置示例。）
 
-3、F=trojan+tcp+tls（回落/分流配置，tls由自己提供。）
+3、F=trojan+tcp+tls（回落/分流配置，tls由自己提供及处理。）
 
 4、C=SS+v2ray-plugin+tls（tls由trojan+tcp+tls提供及处理，不需配置；另可添加其它WS类应用，参考对应的服务端单一应用配置示例。）
 
