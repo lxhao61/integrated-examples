@@ -52,11 +52,11 @@
 2. [v2ray(E+B+F+C+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BF%2BC%2BG%2BA)%2Bnginx) （以nginx SNI兼顾vless\trojan+tcp+tls的综合应用）
 #### &emsp;以Xray或v2ray为主、caddy(naiveproxy)为辅的综合应用。
 1. [v2ray(B+C+D+G+A)+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(B%2BC%2BD%2BG%2BA)%2Bnaiveproxy) （反向代理WebSocket、h2c、gRPC加naiveproxy的综合应用。）
-2. [v2ray(B+C+D+A)+caddy(N+T)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(B%2BC%2BD%2BA)%2Bcaddy(N%2BT)) （反向代理WebSocket、h2c加naiveproxy与trojian-go的综合应用。）
+2. [v2ray(B+C+D+G+A)+caddy(N+T)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(B%2BC%2BD%2BG%2BA)%2Bcaddy(N%2BT)) （反向代理WebSocket、h2c、gRPC加naiveproxy与trojian-go的综合应用。）
 ---
 1. [v2ray(E+B)+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB)%2Bnaiveproxy)（vless+tcp+tls回落/分流简单应用加naiveproxy应用。）
 2. [v2ray(E+B+C+D+G+A)+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BD%2BG%2BA)%2Bnaiveproxy) （以vless+tcp+tls为主加naiveproxy的综合应用。）
-3. [v2ray(E+B+C+D+A)+caddy(N+T)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BD%2BA)%2Bcaddy(N%2BT)) （以vless+tcp+tls为主加naiveproxy与trojian-go的综合应用。）
+3. [v2ray(E+B+C+D+G+A)+caddy(N+T)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BD%2BG%2BA)%2Bcaddy(N%2BT)) （以vless+tcp+tls为主加naiveproxy与trojian-go的综合应用。）
 ---
 1. [v2ray(F+B)+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(F%2BB)%2Bnaiveproxy)（trojan+tcp+tls回落/分流简单应用加naiveproxy应用。）
 2. [v2ray(F+B+C+D+G+A)+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(F%2BB%2BC%2BD%2BG%2BA)%2Bnaiveproxy) （以trojan+tcp+tls为主加naiveproxy的综合应用。）
