@@ -49,6 +49,22 @@
             }]
           },
           {
+            "match": [{
+              "path": ["/cdngrpc/*"] //与vless+grpc应用中serviceName对应
+            }],
+            "handle": [{
+              "handler": "reverse_proxy",
+              "transport": {
+                "protocol": "http",
+                "versions": ["h2c"]
+              },
+              "upstreams": [{
+                "dial": "127.0.0.1:2009" //转发给本机vless+grpc监听端口
+              }],
+              "flush_interval": -1
+            }]
+          },
+          {
             "handle": [{
               "handler": "forward_proxy",
               "auth_user_deprecated": "user", //naiveproxy用户，更改为自己的。
