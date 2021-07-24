@@ -1,4 +1,4 @@
-#若不需要naiveproxy应用，修改naive_Caddyfile配置文件中如下参数。
+#若不需要naiveproxy应用，修改配置文件中如下参数。
 原配置相关参数：
 {
 	order forward_proxy before map
