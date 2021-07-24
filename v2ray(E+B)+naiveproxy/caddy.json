@@ -1,5 +1,6 @@
-//若不需要naiveproxy应用，删除各自naive_caddy.json配置文件中如下参数即可。
+//若不需要naiveproxy应用，删除naive_caddy.json配置文件中如下参数即可。
 //.........<省略>........
+          {
             "handle": [{
               "handler": "forward_proxy",
               "auth_user_deprecated": "user", //naiveproxy用户，更改为自己的。
@@ -9,5 +10,4 @@
               "probe_resistance": {}
             }]
           },
-          {
 //.........<省略>........
