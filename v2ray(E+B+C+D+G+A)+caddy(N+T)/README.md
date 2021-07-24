@@ -14,9 +14,9 @@ Xray\v2ray 前置（监听443端口），利用 vless+tcp+tls 强大的回落/�
 
 6、A=vless+kcp+seed（可改成vmess+kcp+seed，或添加它。）
 
-7、naiveproxy（基于caddy的forwardproxy插件实现，tls由vless+tcp+tls提供及处理。）
+7、naiveproxy（基于caddy的forwardproxy插件实现，tls由vless+tcp+tls提供及处理，不需配置。）
 
-8、trojan-go（基于caddy的caddy-trojan插件实现，tls由vless+tcp+tls提供及处理。）
+8、trojan-go（基于caddy的caddy-trojan插件实现，tls由vless+tcp+tls提供及处理，不需配置。）
 
 注意：
 
