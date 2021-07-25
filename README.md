@@ -36,7 +36,7 @@
 
 ### 服务端综合应用配置示例
 #### &emsp;trojan-go或trojan与naiveproxy的综合应用。
-1. [trojan-go\trojan+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bnaiveproxy) （trojan-go/trojan加naiveproxy的应用。）
+1. [trojan-go\trojan+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bnaiveproxy) （trojan-go/trojan加naiveproxy应用。）
 ---
 1. [caddy(N+T)](https://github.com/lxhao61/integrated-examples/tree/main/caddy(N%2BT)) （基于caddy插件的naiveproxy与trojian-go应用。）
 #### &emsp;以Xray或v2ray为主、nginx为辅的综合应用。
