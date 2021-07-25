@@ -110,7 +110,7 @@
             "wrapper": "proxy_protocol" //开启PROXY protocol接收
           },
           {
-            "wrapper": "tls" //标记TLS，https状态中开启PROXY protocol接收必须配置。
+            "wrapper": "tls" //标记TLS，https server开启PROXY protocol接收必须配置。
           }],
           "routes": [{
             "match": [{
