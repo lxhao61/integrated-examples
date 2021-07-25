@@ -67,7 +67,7 @@
 #### &emsp;Xray或v2ray与trojan-go或trojan的综合应用。
 1. [v2ray(E+B+C+G+A)+trojan+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BG%2BA)%2Btrojan%2Bnginx) （以nginx SNI兼顾Xray/v2ray加trojan-go/trojan的综合应用。）
 ---
-1. [v2ray(E+B+C+D+G+A)+trojan+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BD%2BG%2BA)%2Btrojan%2Bnaiveproxy) （以caddy SNI兼顾Xray/v2ray加trojan-go/trojan加naiveproxy的综合应用。）
+1. [v2ray(E+B+C+D+G+A)+trojan+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BD%2BG%2BA)%2Btrojan%2Bnaiveproxy) （以caddy SNI兼顾Xray/v2ray加trojan-go加naiveproxy的综合应用。）
 #### &emsp;兼顾各自优势的综合应用。
 1. [v2ray(E+B+C+D+G+A)+trojan+naiveproxy+nginx\haproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BD%2BG%2BA)%2Btrojan%2Bnaiveproxy%2Bnginx%5Chaproxy) （用nginx/haproxy SNI分流，兼顾平衡的综合应用。）
 ---
