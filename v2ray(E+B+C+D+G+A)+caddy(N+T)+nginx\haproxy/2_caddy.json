@@ -131,7 +131,7 @@
           "automatic_https": {
             "disable": true //禁用自动https
           },
-          "allow_h2c": true, //caddy-trojan插件应用必须启用
+          "allow_h2c": true //caddy-trojan插件应用必须启用
         }
       }
     },
