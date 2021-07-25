@@ -20,7 +20,7 @@
             },
             {
               "handler": "webdav",
-              "root": "/home/webdav"  //更改为自己的webdav服务器存放文件路径
+              "root": "/home/webdav" //更改为自己的webdav服务器存放文件路径
             }]
           },
 //.........<省略>........
@@ -131,7 +131,7 @@
                   "hash_cache": {}
                 }
               }
-            }, 
+            },
             {
               "handler": "webdav"
             }]
@@ -196,7 +196,7 @@
                   "hash_cache": {}
                 }
               }
-            }, 
+            },
             {
               "handler": "webdav"
             }]
@@ -314,7 +314,7 @@
                   "hash_cache": {}
                 }
               }
-            }, 
+            },
             {
               "handler": "subroute",
               "routes": [{
