@@ -19,7 +19,7 @@
 	servers unix//dev/shm/https.sock { #与下边监听进程对应
 		listener_wrappers {
 			proxy_protocol #开启PROXY protocol接收
-			tls
+			tls #https server开启PROXY protocol接收必须配置
 			trojan #caddy-trojan插件应用必须配置
 		}
 		protocol {
