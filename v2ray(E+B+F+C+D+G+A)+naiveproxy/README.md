@@ -28,7 +28,7 @@
 
 4、caddy 加 caddy-l4 插件定制编译的才可以实现 SNI 分流，目前仅支持使用 json 配置。
 
-5、使用本人 Releases 中编译好的 caddy 文件，可同时支持 naiveproxy、h2c server、h2c proxy、SNI 分流及 PROXY protocol 等应用。
+5、使用本人 Releases 中编译好的 caddy 文件，可同时支持SNI 分流、naiveproxy、h2c server、h2c proxy 及 PROXY protocol 等应用。
 
 6、本示例采用的是 SNI 方式实现共用443端口，支持 Xray\v2ray（vless+tcp+tls）、Xray\v2ray（trojan+tcp+tls）、caddy（https server） 完美共存，支持各自特色应用，但需多个域名来标记分流。
 
