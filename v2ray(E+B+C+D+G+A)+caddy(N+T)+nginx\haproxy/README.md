@@ -28,7 +28,7 @@
 
 4、caddy 支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用）。
 
-5、使用本人 Releases 中编译好的 caddy 文件，才可同时支持 naiveproxy、trojan-go、h2c server、h2c proxy 及 PROXY protocol 等应用。
+5、使用本人 Releases 中编译好的 caddy 文件，可同时支持 naiveproxy、trojan-go、h2c server、h2c proxy 及 PROXY protocol 等应用。
 
 6、本示例的 trojan-go 应用完全兼容 trojan，还有自己的特色：支持 Websocket，可与一般 Trojan 流量共存；支持 CDN 流量中转(基于 WebSocket over TLS)。
 
