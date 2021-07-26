@@ -12,7 +12,7 @@
 
 2、caddy 支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用）。
 
-3、使用本人 Releases 中编译好的 caddy 文件，可支持 naiveproxy 等应用。
+3、使用本人 Releases 中编译好的 caddy 文件，可支持 naiveproxy、h2c server 等应用。
 
 4、本示例中 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。
 
