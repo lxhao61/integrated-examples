@@ -44,16 +44,14 @@
 
 12、因 trojan-go\trojan 不支持 PROXY protocol，故共用回落 web 服务的 Xray\v2ray（vless+tcp+tls）回落也不能启用此项应用，即全部回落不能启用此项应用。
 
-13、trojan-go 完全兼容原版 trojan，trojan-go 应用（服务端）还有自己的特色：支持同时提供原版 trojan 应用与自己的 Websocket 应用；支持 CDN 流量中转(基于 WebSocket over TLS)；支持使用 AEAD 对 trojan 流量二次加密(基于 Shadowsocks AEAD )。
+13、trojan-go 完全兼容原版 trojan，trojan-go 应用（服务端）还有自己的特色：支持同时提供原版 trojan 应用与自己的 Websocket 应用；支持 CDN 流量中转(基于 WebSocket over TLS)；支持使用 AEAD 对 trojan 协议流量进行二次加密(基于 Shadowsocks AEAD)。
 
-14、trojan-go 的 CDN 流量中转（基于 WebSocket over TLS）与 trojan 流量同时使用，仅支持使用通配符证书或 SAN 证书的不同域名实现，因为 trojan-go 不支持设置多组证书及密钥。
+14、本示例配置不要使用非 caddy（自带 ACME 客户端）的 ACME 客户端在当前服务器上申请与更新普通证书及密钥，因普通证书及密钥申请与更新需占用或监听80端口（或443端口），从而与当前应用端口冲突。
 
-15、本示例配置不要使用非 caddy（自带 ACME 客户端） 的 ACME 客户端在当前服务器上申请与更新普通证书及密钥，因普通证书及密钥申请与更新需占用或监听80端口（或443端口），从而与当前应用端口冲突。
+15、Xray 所需证书及密钥推荐使用 caddy 申请，配合 Xray（版本必须不低于v1.3.0）自动重载证书及密钥（OCSP Stapling），可实现证书及密钥申请与更新全自动化。
 
-16、Xray 所需证书及密钥推荐使用 caddy 申请，配合 Xray（版本必须不低于v1.3.0）自动重载证书及密钥（OCSP Stapling），可实现证书及密钥申请与更新全自动化。
+16、配置1：采用端口分流、端口回落\分流、端口转发。配置2：采用进程分流（对应trojan-go\trojan除外）、端口回落\分流（对应vless+ws除外）、端口转发。配置3：采用进程分流（对应trojan-go\trojan除外）、端口回落\分流（对应vless+ws除外）、端口转发，且启用了 PROXY protocol（全部回落除外）。
 
-17、配置1：采用端口分流、端口回落\分流、端口转发。配置2：采用进程分流（对应trojan-go\trojan除外）、端口回落\分流（对应vless+ws除外）、端口转发。配置3：采用进程分流（对应trojan-go\trojan除外）、端口回落\分流（对应vless+ws除外）、端口转发，且启用了 PROXY protocol（全部回落除外）。
+17、若采用配置2/配置3、且使用 nginx SNI 来分流的，想 naiveproxy 开启 http/3 代理支持，可参考配置1。方法：nginx 中添加对应 https server 的定向 UDP 转发配置，对应 https server 的进程转发改为端口转发；caddy 中对应 https server 的进程监听改为端口监听，https server 开启 http/3 支持。
 
-18、若采用配置2/配置3、且使用 nginx SNI 来分流的，想 naiveproxy 开启 http/3 代理支持，可参考配置1。方法：nginx 中添加对应 https server 的定向 UDP 转发配置，对应 https server 的进程转发改为端口转发；caddy 中对应 https server 的进程监听改为端口监听，https server 开启 http/3 支持。
-
-19、若除了实现最多应用的科学上网、还需提供实际网站服务，推荐本示例、实际网站服务可由 nginx 或 caddy 提供服务；否则推荐采用 [v2ray(E+B+C+D+G+A)+trojan+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BD%2BG%2BA)%2Btrojan%2Bnaiveproxy) 示例。
+18、若除了实现最多应用的科学上网、还需提供实际网站服务，推荐本示例、实际网站服务可由 nginx 或 caddy 提供服务；否则推荐采用 [v2ray(E+B+C+D+G+A)+trojan+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BD%2BG%2BA)%2Btrojan%2Bnaiveproxy) 示例。
