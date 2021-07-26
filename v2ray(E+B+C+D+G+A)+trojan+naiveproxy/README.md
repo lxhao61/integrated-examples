@@ -28,7 +28,7 @@
 
 4、caddy 加 caddy-l4 插件定制编译的才可以实现 SNI 分流，目前仅支持使用 json 配置。
 
-5、使用本人 Releases 中编译好的 caddy 文件，才可同时支持 SNI 分流、naiveproxy、h2c server、h2c proxy 及 PROXY protocol 等应用。
+5、使用本人 Releases 中编译好的 caddy 文件，可同时支持 SNI 分流、naiveproxy、h2c server、h2c proxy 及 PROXY protocol 等应用。
 
 6、因 trojan-go\trojan 仅支持端口监听与端口回落，故共用回落 web 服务的 Xray\v2ray（vless+tcp+tls）回落也仅支持端口回落，即全部回落仅支持端口回落。
 
