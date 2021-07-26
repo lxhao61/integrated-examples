@@ -19,7 +19,7 @@
 
 5、因 trojan-go\trojan 不支持 PROXY protocol（发送），故回落不能启用此项应用。
 
-6、trojan-go 完全兼容 trojan，还有自己的特色：支持 Websocket，可与一般 Trojan 流量共存；支持 CDN 流量中转(基于 WebSocket over TLS)；支持使用 AEAD 对 trojan 流量二次加密(基于 Shadowsocks AEAD )。
+6、trojan-go 完全兼容原版 trojan，本示例的 trojan-go 应用（服务端）还有自己的特色：同时提供原版 trojan 应用与自己的 Websocket 应用；支持 CDN 流量中转(基于 WebSocket over TLS)；支持使用 AEAD 对 trojan 流量二次加密(基于 Shadowsocks AEAD )。
 
 7、trojan-go 的 CDN 流量中转（基于 WebSocket over TLS）与一般 trojan 流量同时使用，仅支持使用通配符证书或 SAN 证书的不同域名实现，因为 trojan-go 不支持设置多组证书及密钥。
 
