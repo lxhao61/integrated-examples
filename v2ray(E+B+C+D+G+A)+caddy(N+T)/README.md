@@ -30,7 +30,7 @@ Xray\v2ray 前置（监听443端口），利用 vless+tcp+tls 强大的回落/�
 
 5、使用本人 Releases 中编译好的 caddy 文件，可同时支持 naiveproxy、trojan-go、h2c server、h2c proxy 及 PROXY protocol 等应用。
 
-6、本示例的 trojan-go 应用（服务端）完全兼容原版 trojan，还有自己的特色：支持同时提供原版 trojan 应用与原版 trojan-go 的 Websocket 应用；支持 CDN 流量中转(基于 WebSocket over TLS)。
+6、本示例的 trojan-go 应用（服务端）兼容原版 trojan-go，具有其核心特色：支持原版 trojan 应用与原版 trojan-go 的 Websocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)。
 
 7、本示例中 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可。若使用 caddy 申请证书及密钥，推荐使用 json 格式配置，优化更好。
 
