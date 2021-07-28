@@ -20,22 +20,22 @@
         "keep_alive": true
     },
     "websocket": {
-        "enabled": false, //websocket启用开关。默认关闭，即trojan模式，等同原版trojan使用。
+        "enabled": false, //websocket启用开关，默认关闭（即trojan模式，此情况等同原版trojan使用。）。
         "path": "", //取决服务端是否设置路径，否则默认（为空）即可。
         "host": "" //若进行CDN流量中转需设置域名，否则默认（为空）即可。
     },
     "shadowsocks": {
-        "enabled": false, //shadowsocks AEAD加密启用开关。是否启用取决服务端是否启用（必须与服务器一致），否则无法连接，默认关闭。
+        "enabled": false, //shadowsocks AEAD加密启用开关，默认关闭。是否启用取决服务端设置（必须与服务器设置一致）。
         "method": "AES-128-GCM",
-        "password": "" //若shadowsocks AEAD加密启用，设置密码（必须与服务器一致）。
+        "password": "" //若shadowsocks AEAD加密启用，设置加密密码（必须与服务器设置一致）。
     },
     "mux": {
-        "enabled": false, //多路复用启用开关。若服务端设置http/1.1连接可启用，否则关闭。
+        "enabled": false, //多路复用启用开关，默认关闭。仅与原版服务器连接可开启，否则可能不兼容。若设置http/1.1协商连接或websocket启用，可启用多路复用，否则建议关闭。
         "concurrency": 4,
         "idle_timeout": 60
     },
     "router": {
-        "enabled": true, //路由策略建议开启。
+        "enabled": true, //路由策略，建议开启。
         "bypass": [
             "geoip:cn",
             "geoip:private",
