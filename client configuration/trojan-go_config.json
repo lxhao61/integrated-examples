@@ -27,7 +27,7 @@
     "shadowsocks": {
         "enabled": false, //shadowsocks AEAD加密启用开关。是否启用取决服务端是否启用（必须与服务器一致），否则无法连接，默认关闭。
         "method": "AES-128-GCM",
-        "password": "" //设置密码，必须与服务端一致。
+        "password": "" //若shadowsocks AEAD加密启用，设置密码（必须与服务器一致）。
     },
     "mux": {
         "enabled": false, //多路复用启用开关。若服务端设置http/1.1连接可启用，否则关闭。
