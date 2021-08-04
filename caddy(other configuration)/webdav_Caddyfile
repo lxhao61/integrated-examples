@@ -29,13 +29,13 @@
 		header {
 			Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
 		}
-		@webdav {
+		@notget {
 			not method GET
 		}
-		route @webdav {
+		route @notget {
 			basicauth { #可以设置多组用户及密码
 				user JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl #webdav用户与webdav密码（示例为password的哈希密码），更改为自己的。
-            }
+			}
 			webdav
 		}
 		file_server browse
@@ -114,10 +114,10 @@
 		header {
 			Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
 		}
-		@webdav {
+		@notget {
 			not method GET
 		}
-		route @webdav {
+		route @notget {
 			basicauth { #可以设置多组验证用户及密码
 				user1 JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl #webdav用户与webdav密码（示例为password的哈希密码），更改为自己的。
 			}
@@ -156,10 +156,10 @@
 		basicauth { #可以设置多组用户及密码
 			user JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl #用户与密码（示例为password的哈希密码），更改为自己的。
 		}
-		@webdav {
+		@notget {
 			not method GET
 		}
-		webdav @webdav
+		webdav @notget
 		file_server browse
 	}
 #.........<省略>........
