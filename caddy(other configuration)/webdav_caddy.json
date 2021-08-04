@@ -38,19 +38,21 @@
               "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
             }],
             "handle": [{
-              "handler": "headers",
-              "response": {
-                "set": {
-                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
-                }
-              }
-            },
-            {
               "handler": "subroute",
               "routes": [{
                 "handle": [{
                   "handler": "vars",
                   "root": "/home/webdav" //更改为自己的服务器存放文件路径
+                }]
+              },
+              {
+                "handle": [{
+                  "handler": "headers",
+                  "response": {
+                    "set": {
+                      "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
+                    }
+                  }
                 }]
               },
               {
@@ -219,19 +221,21 @@
               "host": ["zz.xx.yy"] //网盘应用的域名匹配，更改为自己的域名。
             }],
             "handle": [{
-              "handler": "headers",
-              "response": {
-                "set": {
-                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
-                }
-              }
-            },
-            {
               "handler": "subroute",
               "routes": [{
                 "handle": [{
                   "handler": "vars",
                   "root": "/home/webdav" //更改为自己的服务器存放文件路径
+                }]
+              },
+              {
+                "handle": [{
+                  "handler": "headers",
+                  "response": {
+                    "set": {
+                      "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
+                    }
+                  }
                 }]
               },
               {
@@ -296,31 +300,35 @@
               "host": ["zz.xx.yy"] //网盘应用的域名匹配，更改为自己的域名。
             }],
             "handle": [{
-              "handler": "headers",
-              "response": {
-                "set": {
-                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
-                }
-              }
-            },
-            {
-              "handler": "authentication",
-              "providers": {
-                "http_basic": {
-                  "accounts": [{ //可以设置多组用户及密码
-                    "username": "user", //用户，更改为自己的。
-                    "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //密码（示例为password的哈希密码），更改为自己的。
-                  }],
-                  "hash_cache": {}
-                }
-              }
-            },
-            {
               "handler": "subroute",
               "routes": [{
                 "handle": [{
                   "handler": "vars",
                   "root": "/home/webdav" //更改为自己的服务器存放文件路径
+                }]
+              },
+              {
+                "handle": [{
+                  "handler": "headers",
+                  "response": {
+                    "set": {
+                      "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
+                    }
+                  }
+                }]
+              },
+              {
+                "handle": [{
+                  "handler": "authentication",
+                  "providers": {
+                    "http_basic": {
+                      "accounts": [{ //可以设置多组用户及密码
+                        "username": "user", //用户，更改为自己的。
+                        "password": "JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl" //密码（示例为password的哈希密码），更改为自己的。
+                      }],
+                      "hash_cache": {}
+                    }
+                  }
                 }]
               },
               {
