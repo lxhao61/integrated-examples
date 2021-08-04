@@ -43,7 +43,7 @@
               "handler": "proxy",
               "proxy_protocol": "v2", //v1或v2表示PROXY protocol版本，启用PROXY protocol发送；""中为空或无（删除）此条参数，表示不启用PROXY protocol发送。
               "upstreams": [{
-                "dial": ["127.0.0.1:2083"] //与应用的端口对应
+                "dial": ["127.0.0.1:6443"] //与应用的端口对应
               }]
             }]
           }]
