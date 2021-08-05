@@ -6,9 +6,9 @@ nginx SNI 分流的配置方法
 
 1、此配置示例的省略部分各自参考启用 nginx SNI 分流的配置示例。
 
-2、1_SNI_nginx.conf 采用 local loopback 应用，实现 nginx SNI 的端口分流。此端口分流效率稍低，可适用全部服务器。
+2、1_SNI_nginx.conf 采用 local loopback 连接，实现 nginx SNI 的端口分流。此端口分流效率稍低，可适用全部服务器。
 
-3、2_SNI_nginx.conf 采用 Unix Domain Socket 应用，实现 nginx SNI 的进程分流。此进程分流效率高，但在 Windows 10 Build 17036 前不可用。
+3、2_SNI_nginx.conf 采用 Unix Domain Socket 连接，实现 nginx SNI 的进程分流。此进程分流效率高，但在 Windows 10 Build 17036 前不可用。
 
 4、nginx 预编译程序包一般不带支持 SNI 分流协议的模块。如要使用此项协议应用，需加 stream_ssl_preread_module 模块构建自定义模板，再进行源代码编译和安装。
 
