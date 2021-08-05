@@ -1,4 +1,3 @@
-
 {
   "admin": {
     "disabled": true
@@ -44,7 +43,7 @@
               "handler": "proxy",
               "proxy_protocol": "v2", //v1或v2表示PROXY protocol版本，启用PROXY protocol发送；""中为空或无（删除）此条参数，表示不启用PROXY protocol发送。
               "upstreams": [{
-                "dial": ["unix//dev/shm/trojan.sock"] //与应用的进程对应
+                "dial": ["unix//dev/shm/https.sock"] //与应用的进程对应
               }]
             }]
           }]
