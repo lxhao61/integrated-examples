@@ -1,0 +1,14 @@
+{
+  "listen": ":2083", //监听端口
+  "cert": "/home/tls/xx.yy/xx.yy.crt",
+  "key": "/home/tls/xx.yy/xx.yy.key",
+  "obfs": "obfs2083", //更改为自己的混淆密码
+  "auth": {
+    "mode": "password", //认证类型
+    "config": {
+      "password": "diy2083" //更改为自己的认证密码
+    }
+  },
+  "up_mbps": 100,
+  "down_mbps": 100
+}
