@@ -1,7 +1,7 @@
 {
   "listen": ":2083", //监听端口
-  "cert": "/home/tls/xx.yy/xx.yy.crt",
-  "key": "/home/tls/xx.yy/xx.yy.key",
+  "cert": "/home/tls/xx.yy/xx.yy.crt", //换成自己的证书，绝对路径。
+  "key": "/home/tls/xx.yy/xx.yy.key", //换成自己的密钥，绝对路径。
   "obfs": "obfs2083", //更改为自己的混淆密码
   "auth": {
     "mode": "password", //认证类型
