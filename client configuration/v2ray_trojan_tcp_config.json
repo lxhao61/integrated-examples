@@ -29,7 +29,7 @@
         ]
       },
       "streamSettings": {
-        "security": "xtls", //如启用xtls，tls必须改成xtls。
+        "security": "xtls", //如启用xtls应用，tls必须改成xtls。
         "network": "tcp",
         "tcpSettings": {}
       }
