@@ -13,7 +13,7 @@
 
 1、本配置 shadowsocks+v2ray-plugin 插件的 WebSocket 应用不等于 Xray\v2ray 的 shadowsocks+WebSocket 应用，两者不兼容。它仅兼容 shadowsocks 客户端的 WebSocket 应用，即 shadowsocks 客户端须配合 Xray-plugin\v2ray-plugin 插件使用。
 
-2、v2ray_DS_config.json 采用 Unix Domain Socket 连接 shadowsocks 应用与 Xray-plugin\v2ray-plugin 模块，模块效率高，但在 Windows 10 Build 17036 前不可用。v2ray_redirect_config.json 采用 local loopback 连接 shadowsocks 应用与 Xray-plugin\v2ray-plugin 模块，效率稍低，但可适用全部服务器。
+2、v2ray_DS_config.json 采用 Unix Domain Socket 连接 shadowsocks 应用与 Xray-plugin\v2ray-plugin 模块，效率高，但在 Windows 10 Build 17036 之前版本不可用。v2ray_redirect_config.json 采用 local loopback 连接 shadowsocks 应用与 Xray-plugin\v2ray-plugin 模块，效率稍低，但可适用任意系统服务器。
 
 3、若采用 caddy 反向代理，本示例中 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。支持自动 https，即自动申请与更新证书与私钥，自动 http 重定向到 https。
 
