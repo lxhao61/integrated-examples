@@ -7,8 +7,8 @@
 6. 实现了caddy json配置SNI分流应用，且同时支持针对端口或进程独自PROXY protocol发送，灵活性等同haproxy SNI分流。
 7. 实现了Xray与caddy相关应用的证书及密钥申请与更新全自动化。
 8. 实现了CDN流量中转（基于WebSocket over TLS或基于gRPC over TLS）与正常应用同时使用。
-9. 实现了除v2ray(vless\vmess+kcp+seed)示例或应用外，其它应用对外都使用443端口，各应用互不影响。
-10. 实现了除v2ray(vless\vmess+kcp+seed)示例或应用外，其它应用都支持流量伪装与防探测，且提供流量伪装的回落或代理网站都支持http自动跳转到https，SSL/TLS安全评估报告为A+等，与访问/探测真实网站完全一致。
+9. 实现了除v2ray(vless\vmess+kcp+seed)与hysteria示例或应用外，其它应用对外都使用443端口，各应用互不影响。
+10. 实现了除v2ray(vless\vmess+kcp+seed)与hysteria示例或应用外，其它应用都支持流量伪装与防探测，且提供流量伪装的回落或代理网站都支持http自动跳转到https，SSL/TLS安全评估报告为A+等，与访问/探测真实网站完全一致。
 * **备注：** 端口分流、端口回落/分流、端口转发是指基于local loopback连接的不同功能应用分类；进程分流、进程回落/分流、进程转发是指基于Unix Domain Socket连接的不同功能应用分类。
 
 ### 服务端单一应用配置示例
@@ -19,7 +19,7 @@
 2. [trojan-go(caddy+caddy-trojan)](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go(caddy%2Bcaddy-trojan)) （基于caddy-trojan插件的trojan-go应用。标记为T。）
 ---
 1. [v2ray(vless\vmess+kcp+seed)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(vless%5Cvmess%2Bkcp%2Bseed)) （vless+kcp+seed与vmess+kcp+seed应用。vless+kcp+seed标记为A。）
-2. [hysteria](https://github.com/lxhao61/integrated-examples/tree/main/hysteria) （基于QUIC协议修改版的代理应用，优于Xray\v2ray的kcp应用，加速明显。）
+2. [hysteria](https://github.com/lxhao61/integrated-examples/tree/main/hysteria) （基于QUIC协议修改版的代理应用。）
 ---
 1. [v2ray(vless\vmess+WS)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(vless%5Cvmess%2BWS)%2Bcaddy%5Cnginx) （vless+ws+tls与vmess+ws+tls反代应用。vless+ws+tls标记为B。）
 2. [v2ray(socks\SS+WS)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(socks%5CSS%2BWS)%2Bcaddy%5Cnginx) （socks+ws+tls与shadowsocks+ws+tls反代应用。）
