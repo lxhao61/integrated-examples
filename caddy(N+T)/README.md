@@ -12,7 +12,7 @@
 
 2、使用本人 Releases 中编译好的 caddy 文件，可同时支持 naiveproxy、trojan-go、h2c server 等应用。
 
-3、本示例的 naiveproxy 支持 http/3 应用，即 quic 协议传输。
+3、本示例的 naiveproxy 支持 http/3 应用，即 QUIC 协议传输。
 
 4、本示例的 trojan-go 应用（服务端）兼容原版 trojan-go，继承了其服务端核心特色：支持原版 trojan 应用与原版 trojan-go 的 Websocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)。
 
