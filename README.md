@@ -19,7 +19,7 @@
 2. [trojan-go(caddy+caddy-trojan)](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go(caddy%2Bcaddy-trojan)) （基于caddy-trojan插件的trojan-go应用。标记为T。）
 ---
 1. [v2ray(vless\vmess+kcp+seed)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(vless%5Cvmess%2Bkcp%2Bseed)) （vless+kcp+seed与vmess+kcp+seed应用。vless+kcp+seed标记为A。）
-2. [hysteria](https://github.com/lxhao61/integrated-examples/tree/main/hysteria) （基于QUIC协议修改版的代理应用。）
+2. [hysteria](https://github.com/lxhao61/integrated-examples/tree/main/hysteria) （基于QUIC协议修改版的双边加速代理应用。）
 ---
 1. [v2ray(vless\vmess+WS)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(vless%5Cvmess%2BWS)%2Bcaddy%5Cnginx) （vless+ws+tls与vmess+ws+tls反代应用。vless+ws+tls标记为B。）
 2. [v2ray(socks\SS+WS)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(socks%5CSS%2BWS)%2Bcaddy%5Cnginx) （socks+ws+tls与shadowsocks+ws+tls反代应用。）
