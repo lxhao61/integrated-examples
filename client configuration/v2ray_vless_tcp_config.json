@@ -26,7 +26,7 @@
             "users": [
               {
                 "id": "7326a426-d601-11ea-b574-560002e9f264", //改成服务端配置的对应UUID
-                "flow": "xtls-rprx-direct", //启用xtls必须增加此条参数，参数值可自己调整且对应；否则删除此条参数。另支持xtls必须v2ray版本不小于v4.31.0，且服务端已配置支持。
+                "flow": "xtls-rprx-direct", //仅linux系统才可启用xtls应用（参数值可自己调整），否则删除此条参数。另使用xtls应用请选Xray，且服务端已配置支持。
                 "encryption": "none"
               }
             ]
@@ -34,7 +34,7 @@
         ]
       },
       "streamSettings": {
-        "security": "xtls", //如启用xtls，tls必须改成xtls。
+        "security": "xtls", //如启用xtls应用，tls必须改成xtls。
         "network": "tcp",
         "tcpSettings": {}
       }
