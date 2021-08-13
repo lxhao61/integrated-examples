@@ -1,0 +1,18 @@
+{
+  "listen": ":2083", //监听端口
+  "acme": {
+    "domains": [
+      "xx.yy" //换成自己的域名
+    ],
+    "email": "2083@gmail.com" //换成自己的邮箱（选配）
+  },
+  "obfs": "obfs2083", //更改为自己的混淆密码
+  "auth": {
+    "mode": "password", //认证类型
+    "config": {
+      "password": "diy2083" //更改为自己的认证密码
+    }
+  },
+  "up_mbps": 100,
+  "down_mbps": 100
+}
