@@ -1,6 +1,6 @@
 介绍：
 
-除 Xray\v2ray kcp 外，所用应用共用443端口。此端口由 nginx 监听（即 nginx 前置），反向代理 WebSocket（WS）。包括应用如下：
+除 Xray\v2ray 的 kcp 应用外，所用应用共用443端口。此端口由 nginx 监听（即 nginx 前置），反向代理 WebSocket（WS）。包括应用如下：
 
 1、B=vless+ws+tls（tls由nginx提供及处理，不需配置；另可改成或添加其它WS类应用，参考对应的服务端单一应用配置示例。）
 
