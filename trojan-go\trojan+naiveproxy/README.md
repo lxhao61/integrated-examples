@@ -14,12 +14,14 @@
 
 3、使用本人 Releases 中编译好的 caddy 文件，可支持 naiveproxy、h2c server 等应用。
 
-4、本示例中 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。
+4、本示例的 naiveproxy 仅支持 http/2 代理应用，即 HTTPS 协议传输。
 
-5、因 trojan-go\trojan 不支持 Unix Domain Socket，故回落仅端口回落。
+5、本示例中 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。
 
-6、因 trojan-go\trojan 不支持 PROXY protocol（发送），故回落不能启用此项应用。
+6、因 trojan-go\trojan 不支持 Unix Domain Socket，故回落仅端口回落。
 
-7、trojan-go 完全兼容原版 trojan，服务端还有自己的特色：支持原版 trojan 应用与自己的 Websocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)；支持使用 AEAD 对 trojan 协议流量进行二次加密(基于 Shadowsocks AEAD)。
+7、因 trojan-go\trojan 不支持 PROXY protocol（发送），故回落不能启用此项应用。
 
-8、本示例配置不要使用非 caddy（自带 ACME 客户端）的 ACME 客户端在当前服务器上申请与更新普通证书及密钥，因普通证书及密钥申请与更新需占用或监听80端口（或443端口），从而与当前应用端口冲突。
+8、trojan-go 完全兼容原版 trojan，服务端还有自己的特色：支持原版 trojan 应用与自己的 Websocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)；支持使用 AEAD 对 trojan 协议流量进行二次加密(基于 Shadowsocks AEAD)。
+
+9、本示例配置不要使用非 caddy（自带 ACME 客户端）的 ACME 客户端在当前服务器上申请与更新普通证书及密钥，因普通证书及密钥申请与更新需占用或监听80端口（或443端口），从而与当前应用端口冲突。
