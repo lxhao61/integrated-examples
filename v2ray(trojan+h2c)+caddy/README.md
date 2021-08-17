@@ -1,8 +1,6 @@
 介绍：
 
-1、此配置为 Xray\v2ray trojan 协议，以 h2c 方式传输。
-
-2、通过 caddy 前置（监听443端口）实现 h2c 的反向代理，tls 由 caddy 提供及处理，trojan+h2c+tls 应用。
+利用 caddy 支持 h2c 反向代理，实现 trojan+h2c+tls 反向代理应用，tls 由 caddy 提供及处理。
 
 原理：
 
