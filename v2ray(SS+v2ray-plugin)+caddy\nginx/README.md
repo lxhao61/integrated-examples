@@ -2,7 +2,7 @@
 
 1、本配置采用 Xray\v2ray 自带 shadowsocks（SS） 应用加自身 Xray\v2ray ‘分离’ 出的 Xray-plugin\v2ray-plugin 模块，直接实现 shadowsocks 加 Xray-plugin\v2ray-plugin 的 WebSocket 应用（服务端），客户端使用 shadowsocks 加 Xray-plugin\v2ray-plugin 插件即可。
 
-2、利用 caddy 或 nginx 支持 WebSocket（WS）反向代理，实现其 WebSocket（WS） 反向代理应用，tls 由 caddy 或 nginx 提供及处理。
+2、利用 caddy 或 nginx 支持 WebSocket（WS）反向代理，实现 SS+v2ray-plugin+tls 反向代理应用，tls 由 caddy 或 nginx 提供及处理。
 
 原理：
 
