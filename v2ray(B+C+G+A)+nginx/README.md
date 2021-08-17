@@ -1,6 +1,6 @@
 介绍：
 
-利用 nginx 支持 SNI 分流特性，对 http/1.1 server 与 http/2 server 进行 SNI 分流（四层转发），实现 http/1.1 server 与 http/2 server 各自反向代理 WebSocket（http/1.1） 与 gRPC（http/2） 后共用443端口。包括应用如下：
+利用 nginx 支持 SNI 分流特性，对 http/1.1 server 与 http/2 server 进行 SNI 分流（四层转发），以便 http/1.1 server 与 http/2 server 各自反向代理 WebSocket（http/1.1） 与 gRPC（http/2）类应用，实现除 Xray\v2ray 的 kcp 应用外，WebSocket（http/1.1） 与 gRPC（http/2）类应用共用443端口。包括应用如下：
 
 1、B=vless+ws+tls（tls由nginx提供及处理，不需配置；另可改成或添加其它WS类应用，参考对应的服务端单一应用配置示例。）
 
