@@ -1,6 +1,6 @@
 介绍：
 
-利用 caddy 支持 WebSocket（WS）、h2c、gRPC 反向代理及naiveproxy正向代理（带forwardproxy插件才行），实现除 Xray\v2ray 的 kcp 应用外，WebSocket（WS）、h2c、gRPC 类应用及 naiveproxy 应用共用443端口。包括应用如下：
+利用 caddy 支持 WebSocket（WS）、h2c、gRPC 反向代理及 naiveproxy 正向代理，实现除 Xray\v2ray 的 kcp 应用外，WebSocket（WS）、h2c、gRPC 类应用及 naiveproxy 应用共用443端口。包括应用如下：
 
 1、B=vless+ws+tls（tls由caddy提供及处理，不需配置；另可改成或添加其它WS类应用，参考对应的服务端单一应用配置示例。）
 
