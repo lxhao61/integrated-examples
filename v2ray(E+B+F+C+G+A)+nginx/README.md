@@ -1,6 +1,6 @@
 介绍：
 
-利用 nginx 支持 SNI 分流特性，对 Xray\v2ray（vless+tcp+tls）、Xray\v2ray（trojan+tcp+tls）、nginx（http/2 server） 进行 SNI 分流（四层转发），实现除 Xray\v2ray kcp 外共用443端口。nginx 同时为 Xray\v2ray（vless+tcp+tls）与 Xray\v2ray（trojan+tcp+tls） 提供回落服务，为 Xray\v2ray 的 gRPC 进行反向代理。包括应用如下：
+利用 nginx 支持 SNI 分流特性，对 Xray\v2ray（vless+tcp+tls）、Xray\v2ray（trojan+tcp+tls）、nginx（http/2 server） 进行 SNI 分流（四层转发），实现除 Xray\v2ray 的 kcp 应用外共用443端口。nginx 同时为 Xray\v2ray（vless+tcp+tls）与 Xray\v2ray（trojan+tcp+tls） 提供回落服务，为 Xray\v2ray 的 gRPC 进行反向代理。包括应用如下：
 
 1、E=vless+tcp+tls（回落/分流配置，tls由自己提供及处理。）
 
