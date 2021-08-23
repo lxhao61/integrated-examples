@@ -3,7 +3,7 @@
   "cert": "/home/tls/xx.yy/xx.yy.crt", //换成自己的证书，绝对路径。
   "key": "/home/tls/xx.yy/xx.yy.key", //换成自己的密钥，绝对路径。
   "obfs": "obfs2083", //更改为自己的混淆密码
-  "auth": {
+  "auth": { //认证（选配）
     "mode": "password", //认证类型
     "config": {
       "password": "diy2083" //更改为自己的认证密码
