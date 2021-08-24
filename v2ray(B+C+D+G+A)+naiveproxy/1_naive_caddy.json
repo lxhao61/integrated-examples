@@ -35,7 +35,7 @@
           },
           {
             "match": [{
-              "path": ["/ss1v2ray"], //与Xray-plugin或v2ray-plugin模块中path对应
+              "path": ["/SS1v2ray"], //与Xray-plugin或v2ray-plugin模块中path对应
               "header": {
                 "Connection": ["*Upgrade*"],
                 "Upgrade": ["websocket"]
