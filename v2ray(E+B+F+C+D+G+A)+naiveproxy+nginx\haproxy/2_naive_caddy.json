@@ -31,9 +31,6 @@
         "h1h2c": {
           "listen": ["unix//dev/shm/h1h2c.sock"], //http/1.1与h2c server监听进程
           "routes": [{
-            "match": [{
-              "host": ["zv.xx.yy","zt.xx.yy"] //限定域名访问，更改为自己的对应域名。
-            }],
             "handle": [{
               "handler": "headers",
               "response": {
@@ -47,9 +44,6 @@
               "root": "/var/www/html" //更改为自己存放的web文件路径
             }]
           }],
-          "automatic_https": {
-            "disable": true //禁用自动https
-          },
           "allow_h2c": true //开启h2c server支持
         },
         "https": {
@@ -96,9 +90,6 @@
             }]
           },
           {
-            "match": [{
-              "host": ["zh.xx.yy"] //限定域名访问，更改为自己的对应域名。
-            }],
             "handle": [{
               "handler": "headers",
               "response": {
@@ -119,9 +110,7 @@
             "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"],
             "alpn": ["h2","http/1.1"]
           }],
-          "automatic_https": {
-            "disable": true //禁用自动https
-          }
+          "experimental_http3": false //关闭http3 server支持。https server采用进程监听，必须关闭http3 server支持或删除此条参数（默认不启用）。
         }
       }
     },
