@@ -36,7 +36,7 @@
 	bind unix//dev/shm/h1h2c.sock #http/1.1与h2c server监听进程
 
 	@host {
-		host zv.xx.yy zt.xx.yy #限定域名访问（禁止以ip方式访问网站），更改为自己的对应域名。
+		host zv.xx.yy zt.xx.yy #限定域名访问，更改为自己的对应域名。
 	}
 	route @host {
 		header {
@@ -83,7 +83,7 @@
 	}
 
 	@host {
-		host zh.xx.yy #限定域名访问（禁止以ip方式访问网站），更改为自己的对应域名。
+		host zh.xx.yy #限定域名访问，更改为自己的对应域名。
 	}
 	route @host {
 		header {
