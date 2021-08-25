@@ -7,7 +7,6 @@
 		output file /var/log/caddy/access.log
 		level ERROR
 	}
-	auto_https off #禁用自动https
 	servers unix//dev/shm/h1h2c.sock { #与下边监听进程对应
 		listener_wrappers {
 			proxy_protocol #开启PROXY protocol接收
@@ -35,10 +34,7 @@
 :88 { #绑定进程后此端口失效，仅做标记作用。
 	bind unix//dev/shm/h1h2c.sock #http/1.1与h2c server监听进程
 
-	@host {
-		host zv.xx.yy zt.xx.yy #限定域名访问，更改为自己的对应域名。
-	}
-	route @host {
+	route {
 		header {
 			Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
 		}
@@ -82,10 +78,7 @@
 		websocket #开启Websocket支持
 	}
 
-	@host {
-		host zh.xx.yy #限定域名访问，更改为自己的对应域名。
-	}
-	route @host {
+	route {
 		header {
 			Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
 		}
