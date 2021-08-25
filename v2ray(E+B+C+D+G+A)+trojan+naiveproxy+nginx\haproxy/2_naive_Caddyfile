@@ -22,7 +22,7 @@
 	bind 127.0.0.1 #绑定本地主机，避免本机外的机器探测到上面端口。
 
 	@host {
-		host zv.xx.yy zt.xx.yy #限定域名访问（禁止以ip方式访问网站），更改为自己的对应域名。
+		host zv.xx.yy zt.xx.yy #限定域名访问，更改为自己的对应域名。
 	}
 	route @host {
 		header {
@@ -63,7 +63,7 @@
 	}
 
 	@host {
-		host zh.xx.yy #限定域名访问（禁止以ip方式访问网站），更改为自己的对应域名。
+		host zh.xx.yy #限定域名访问，更改为自己的对应域名。
 	}
 	route @host {
 		header {
