@@ -83,9 +83,6 @@
             "wrapper": "proxy_protocol" //开启PROXY protocol接收
           }],
           "routes": [{
-            "match": [{
-              "host": ["zv.xx.yy","zt.xx.yy"] //限定域名访问，更改为自己的对应域名。
-            }],
             "handle": [{
               "handler": "headers",
               "response": {
@@ -154,9 +151,6 @@
             }]
           },
           {
-            "match": [{
-              "host": ["zh.xx.yy"] //限定域名访问，更改为自己的对应域名。
-            }],
             "handle": [{
               "handler": "headers",
               "response": {
