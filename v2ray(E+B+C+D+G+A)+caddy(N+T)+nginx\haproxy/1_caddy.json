@@ -32,7 +32,7 @@
           "listen": ["127.0.0.1:88"], //http/1.1与h2c server本地监听端口
           "routes": [{
             "match": [{
-              "host": ["zv.xx.yy","zt.xx.yy"] //限定域名访问（禁止以ip方式访问网站），更改为自己的对应域名。
+              "host": ["zv.xx.yy","zt.xx.yy"] //限定域名访问，更改为自己的对应域名。
             }],
             "handle": [{
               "handler": "headers",
@@ -106,7 +106,7 @@
           },
           {
             "match": [{
-              "host": ["zh.xx.yy"] //限定域名访问（禁止以ip方式访问网站），更改为自己的对应域名。
+              "host": ["zh.xx.yy"] //限定域名访问，更改为自己的对应域名。
             }],
             "handle": [{
               "handler": "headers",
