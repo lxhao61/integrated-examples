@@ -102,7 +102,7 @@
             },
             "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"],
             "alpn": ["h2","http/1.1"]
-          }], //注意：可能去除“,”取决下边<省略>，即实际上是否有参数。
+          }], //注意：若下边<省略>为空（即原配置此处无参数），则必须删除“,”。
 //.........<省略>........
         }
       }
@@ -124,7 +124,7 @@
           "tls_connection_policies": [{
             "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"],
             "alpn": ["h2","http/1.1"]
-          }], //注意：可能去除“,”取决下边<省略>，即实际上是否有参数。
+          }], //注意：若下边<省略>为空（即原配置此处无参数），则必须删除“,”。
 //.........<省略>........
         }
       }
