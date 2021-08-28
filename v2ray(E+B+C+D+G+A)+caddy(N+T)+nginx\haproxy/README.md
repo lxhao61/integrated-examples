@@ -30,9 +30,9 @@
 
 5、使用本人 Releases 中编译好的 caddy 文件，可同时支持 naiveproxy、trojan-go、h2c server、h2c proxy 及 PROXY protocol 等应用。
 
-6、本示例的 trojan-go 应用（服务端）兼容原版 trojan-go，继承了其服务端核心特色：支持原版 trojan 应用与原版 trojan-go 的 Websocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)。
+6、本示例中 trojan-go 兼容原版 trojan-go，继承了其服务端核心特色：支持原版 trojan 应用与原版 trojan-go 的 Websocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)。
 
-7、本示例中 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可。
+7、本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可。
 
 8、nginx 预编译程序包可能不带支持 PROXY protocol 协议的模块。如要使用此项协议应用，需加 http_realip_module 与 stream_realip_module 两模块构建自定义模板，再进行源代码编译和安装。另编译时选取源代码版本建议不要低于1.13.11。
 
