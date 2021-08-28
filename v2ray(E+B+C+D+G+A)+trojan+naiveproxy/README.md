@@ -30,7 +30,7 @@
 
 5、使用本人 Releases 中编译好的 caddy 文件，可同时支持 SNI 分流、naiveproxy、h2c server、h2c proxy 及 PROXY protocol 等应用。
 
-6、本示例的 naiveproxy 仅支持 http/2 代理应用，即 HTTPS 协议传输。
+6、本示例中 naiveproxy 仅支持 http/2 代理应用，即 HTTPS 协议传输。
 
 7、本示例采用的是 SNI 方式实现共用443端口，支持 Xray\v2ray（vless+tcp+tls）、caddy（https server）、trojan-go\trojan 完美共存，支持各自特色应用，但需多个域名来标记分流。
 
