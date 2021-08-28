@@ -22,8 +22,8 @@
 
 3、使用本人 Releases 中编译好的 caddy 文件，可同时支持 naiveproxy、h2c proxy 等应用。
 
-4、本示例的 naiveproxy 除了支持 http/2 代理应用，还同时支持 http/3 代理应用，即 QUIC 协议传输。
+4、本示例中 naiveproxy 除了支持 http/2 代理应用，还同时支持 http/3 代理应用，即 QUIC 协议传输。
 
-5、本示例中 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。支持自动 https，即自动申请与更新证书与私钥，自动 http 重定向到 https。
+5、本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。支持自动 https，即自动申请与更新证书与私钥，自动 http 重定向到 https。
 
 6、配置1：采用端口转发。配置2：vless+ws+tls 采用进程转发，其它应用采用端口转发。
