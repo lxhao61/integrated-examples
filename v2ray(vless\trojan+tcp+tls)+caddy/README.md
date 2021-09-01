@@ -7,7 +7,7 @@ vless+tcp+tls 与 trojan+tcp+tls 两种基础回落应用：Xray\v2ray 前置（
 默认流程：Xray\v2ray client <------ tcp+tls ------> Xray\v2ray server  
 匹配流程：web client <----------- https ----------> Xray\v2ray server <-- 回落 --> caddy（web server）
 
-其中 trojan+tcp+tls 还实现了兼容 trojan，即可使用 trojan 客户端连接。  
+其中 trojan+tcp+tls 还实现了兼容原版 trojan，即可使用原版 trojan 客户端连接。  
 
 注意：
 
