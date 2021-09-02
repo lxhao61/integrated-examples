@@ -1,6 +1,6 @@
 介绍：
 
-Xray\v2ray 前置（监听443端口），以 h2 或 http/1.1 自适应协商连接，非 Xray\v2ray 的 web 连接回落给 caddy（即解除 tls 后的 web 连接转给 caddy 处理）），tls 由 vless+tcp+tls 或 trojan+tcp+tls 提供及处理。
+Xray\v2ray 前置（监听443端口），以 h2 或 http/1.1 自适应协商连接，非 Xray\v2ray 的 web 连接回落给 caddy（即解除 tls 后的 web 连接转给 caddy 处理），tls 由 vless+tcp+tls 或 trojan+tcp+tls 提供及处理。
 
 原理：
 
