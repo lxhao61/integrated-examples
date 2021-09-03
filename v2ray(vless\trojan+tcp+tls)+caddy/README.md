@@ -4,7 +4,7 @@
 
 原理：
 
-默认流程：Xray\v2ray client <------ HTTPS（tcp+tls） ------> Xray\v2ray server
+默认流程：Xray\v2ray client <------ HTTPS（tcp+tls） ------> Xray\v2ray server  
 回落流程：web client <---------------- HTTPS ----------------> Xray\v2ray server <-- 回落 --> caddy（web server）
 
 其中 trojan+tcp+tls 还实现了兼容原版 trojan，即可使用原版 trojan 客户端连接。  
