@@ -1,11 +1,11 @@
 介绍：
 
-本配置为 trojan-go 或 trojan 应用，trojan-go\trojan 以 h2 或 http/1.1 自适应协商连接，非 trojan-go\trojan 的 https 连接回落给 caddy（即解除 tls 后的 web 连接转给 caddy 处理），tls 由 trojan-go\trojan 提供及处理。
+本示例配为 trojan-go 或 trojan 应用。trojan-go 或 trojan 服务端处理来自墙内的 HTTPS 请求，如果是合法的 trojan-go 或 trojan 客户端请求，那么为该请求提供服务（科学上网代理）；否则将该解开 tls 的流量回落（转发）给 WEB 服务器 caddy，由 caddy 为其提供服务。
 
 原理：
 
-默认流程：trojan-go\trojan client <------ https ------> trojan-go\trojan server  
-匹配流程：web client <------------- https ------------> trojan-go\trojan server <-- 回落 --> caddy（web server）
+默认流程：trojan-go\trojan client <------ HTTPS ------> trojan-go\trojan server  
+匹配流程：web client <------------- HTTPS ------------> trojan-go\trojan server <-- 回落 --> caddy（web server）
 
 注意：
 
