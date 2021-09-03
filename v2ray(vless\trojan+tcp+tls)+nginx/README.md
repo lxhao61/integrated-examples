@@ -1,6 +1,6 @@
 介绍：
 
-本示例配为 vless+tcp+tls 或 trojan+tcp+tls 应用。Xray\v2ray 服务端前置（监听443端口）处理来自墙内的 HTTPS 请求，如果是合法的 Xray\v2ray 客户端请求，那么为该请求提供服务（科学上网）；否则将该解开 TLS 的流量回落（转发）给 WEB 服务器 nginx，由 nginx 为其提供服务。
+本示例配为 vless+tcp+tls 或 trojan+tcp+tls 应用。Xray\v2ray 服务端前置（监听443端口）处理来自墙内的 HTTPS 请求，如果是合法的 Xray\v2ray 客户端请求，那么为该请求提供服务（科学上网）；否则将该已解除 TLS 的流量回落（转发）给 WEB 服务器 nginx，由 nginx 为其提供服务。
 
 原理：
 
