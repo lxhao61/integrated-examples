@@ -1,6 +1,6 @@
 介绍：
 
-本示例配为 trojan-go 或 trojan 应用。trojan-go 或 trojan 服务端处理来自墙内的 HTTPS 请求，如果是合法的 trojan-go 或 trojan 客户端请求，那么为该请求提供服务（科学上网代理）；否则将该解开 tls 的流量回落（转发）给 WEB 服务器 nginx，由 nginx 为其提供服务。
+本示例配为 trojan-go 或 trojan 应用。trojan-go 或 trojan 服务端处理来自墙内的 HTTPS 请求，如果是合法的 trojan-go 或 trojan 客户端请求，那么为该请求提供服务（科学上网代理）；否则将该解开 TLS 的流量回落（转发）给 WEB 服务器 nginx，由 nginx 为其提供服务。
 
 原理：
 
