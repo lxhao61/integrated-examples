@@ -1,11 +1,15 @@
 介绍：
 
-Xray\v2ray 前置（监听443端口），以 h2 或 http/1.1 自适应协商连接，非 Xray\v2ray 的 web 连接回落给 nginx（即解除 tls 后的 web 连接转给 nginx 处理），tls 由 vless+tcp+tls 或 trojan+tcp+tls 提供及处理。
+Xray\v2ray 前置（监听443端口）， Xray\v2ray 客户端连接 Xray\v2ray 服务端建立代理，web 客户端连接回落给 nginx（即解除 tls 后的 web 连接转给 nginx 处理），tls 由 vless+tcp+tls 或 trojan+tcp+tls 提供及处理。
+Trojan 工作在 443 端口，并且处理来自外界的 HTTPS 请求，如果是合法的 Trojan 请求，那么为该请求提供服务，否则将该流量转交给 WEB 服务器 Nginx，由 Nginx 为其提供服务。
+Trojan监听443端口，把合法的trojan代理数据伪装成正常的 HTTPS 通信，并完全真正的 TLS 握手。对于其他访问数据则直接转发到80端口，通过caddy、Nginx等web服务器提供网页访问服务，这样vps更像一个正常的web服务器。
+
+本示例配为 vless+tcp+tls 或 trojan+tcp+tls 应用。Xray\v2ray 服务端前置（监听443端口）处理来自墙内的 HTTPS 请求，如果是合法的 Xray\v2ray 客户端请求，那么为该请求提供服务（科学上网代理）；否则将该解开 TLS 的流量回落（转发）给 WEB 服务器 nginx，由 nginx 为其提供服务。
 
 原理：
 
-默认流程：Xray\v2ray client <------ tcp+tls ------> Xray\v2ray server  
-匹配流程：web client <----------- https ----------> Xray\v2ray server <-- 回落 --> nginx（web server）
+默认流程：Xray\v2ray client <------ HTTPS（tcp+tls） ------> Xray\v2ray server  
+回落流程：web client <--------------- HTTPS ---------------> Xray\v2ray server <-- 回落 --> nginx（web server）
 
 其中 trojan+tcp+tls 还实现了兼容原版 trojan，即可使用原版 trojan 客户端连接。
 
