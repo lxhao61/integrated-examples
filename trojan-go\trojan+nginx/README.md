@@ -5,7 +5,7 @@
 原理：
 
 默认流程：trojan-go\trojan client <------ HTTPS ------> trojan-go\trojan server  
-匹配流程：WEB client <------------- HTTPS ------------> trojan-go\trojan server <-- 回落 --> nginx（WEB server）
+回落流程：WEB client <------------- HTTPS ------------> trojan-go\trojan server <-- 回落 --> nginx（WEB server）
 
 注意：
 
