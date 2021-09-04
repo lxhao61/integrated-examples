@@ -1,5 +1,5 @@
 //一、无SNI分流的反代为主应用（caddy提供https应用）
-//原配置参数：
+//原配置：
 //.........<省略>........
             "match": [{
               "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
@@ -10,7 +10,7 @@
       }
 //.........<省略>........
 
-//以dns api方式申请tls证书（以上参数修改如下）：
+//以dns api方式申请tls证书（以上配置修改如下）：
 //.........<省略>........
             "match": [{
               "host": ["*.xx.yy"] //限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
@@ -46,7 +46,7 @@
 
 
 //二、无SNI分流的回落为主应用（caddy提供http应用）
-//原配置参数：
+//原配置：
 //.........<省略>........
             "match": [{
               "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改成自己的域名。
@@ -55,7 +55,7 @@
           "allow_h2c": true //开启h2c server支持
 //.........<省略>........
 
-//以dns api方式申请tls证书（以上参数修改如下）：
+//以dns api方式申请tls证书（以上配置修改如下）：
 //.........<省略>........
             "match": [{
               "host": ["*.xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改成自己的域名。
@@ -100,7 +100,7 @@
 
 
 //三、SNI分流的综合应用（caddy提供http与https应用）
-//原配置参数：
+//原配置：
 //.........<省略>........
           "tls_connection_policies": [{
             "certificate_selection": {
@@ -125,7 +125,7 @@
   }
 }
 
-//以dns api方式申请tls证书（以上参数修改如下）：
+//以dns api方式申请tls证书（以上配置修改如下）：
 //.........<省略>........
           "tls_connection_policies": [{
             "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"],
