@@ -1,5 +1,5 @@
 #若不需要naiveproxy应用，修改配置文件中如下参数。
-原配置相关参数：
+#原配置：
 #.........<省略>........
 	order forward_proxy before map
 	order reverse_proxy before forward_proxy
@@ -12,7 +12,7 @@
 	}
 #.........<省略>........
 
-以上参数改为如下：
+#以上配置修改为如下：
 #.........<省略>........
 	order reverse_proxy before map
 #.........<省略>........
