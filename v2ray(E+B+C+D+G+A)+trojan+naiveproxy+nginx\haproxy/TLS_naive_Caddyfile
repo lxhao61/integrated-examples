@@ -13,7 +13,7 @@
 	tls /home/tls/zh.xx.yy/zh.xx.yy.crt /home/tls/zh.xx.yy/zh.xx.yy.key { #换成自己的证书与密钥，绝对路径。
 #.........<省略>........
 
-#以上配置修改如下：
+#以上配置修改为如下：
 {
 #.........<省略>........
 	admin off
