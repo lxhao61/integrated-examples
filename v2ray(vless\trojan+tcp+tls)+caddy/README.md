@@ -4,7 +4,7 @@
 
 原理：
 
-默认流程：Xray\v2ray client <------ tcp+tls（HTTPS） ------> Xray\v2ray server  
+默认流程：Xray\v2ray client <------ TCP+TLS（HTTPS） ------> Xray\v2ray server  
 回落流程：WEB client <---------------- HTTPS ----------------> Xray\v2ray server <-- 回落 --> caddy（WEB server）
 
 其中 trojan+tcp+tls 还实现了兼容原版 trojan，即可使用原版 trojan 客户端连接。  
@@ -15,7 +15,7 @@
 
 2、caddy 不小于 v2.3.0 版才支持 Caddyfile 配置开启 h2c server。
 
-3、caddy 支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用）。
+3、caddy 支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）。
 
 4、caddy 发行版不支持 PROXY protocol（接收）。如要支持 PROXY protocol 需选 caddy2-proxyprotocol 插件定制编译，或下载本人 Releases 中编译好的 caddy 来使用即可。
 
