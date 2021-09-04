@@ -1,21 +1,21 @@
 介绍：
 
-利用 caddy 或 nginx 支持 gRPC 反向代理，实现 vless+grpc+tls 与 vmess+grpc+tls 两种反向代理应用，tls 由 caddy 或 nginx 提供及处理。
+利用 caddy 或 nginx 支持 gRPC 反向代理，实现 vless+grpc+tls 与 vmess+grpc+tls 两种反向代理应用，TLS 由 caddy 或 nginx 提供及处理。
 
 原理：
 
-默认流程：web client <------- https（http/2）-----> caddy\nginx（web server）  
-匹配流程：Xray\v2ray client <------ gRPC+tls ------> caddy\nginx <-- gRPC --> Xray\v2ray server
+默认流程：WEB client <------- HTTPS（HTTP/2）-----> caddy\nginx（WEB server）  
+匹配流程：Xray\v2ray client <------ gRPC+TLS ------> caddy\nginx <-- gRPC --> Xray\v2ray server
 
 注意：
 
 1、Xray 版本不小于 1.4.0 或 v2ray 版本不小于v4.36.2，才完美支持 gRPC 应用。
 
-2、caddy 不小于 v2.2.0-rc.1 版才支持 h2c proxy，即支持 Xray\v2ray 的 h2c（gRPC）反向代理。
+2、caddy 不小于 v2.2.0-rc.1 版才支持 H2C proxy，即支持 Xray\v2ray 的 H2C（gRPC）反向代理。
 
-3、因 caddy 实现 h2c 反向代理仅支持端口转发，故通过 caddy 实现 gRPC 反向代理也仅支持端口转发，不支持进程转发。
+3、因 caddy 实现 H2C 反向代理仅支持端口转发，故通过 caddy 实现 gRPC 反向代理也仅支持端口转发，不支持进程转发。
 
-4、本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。支持自动 https，即自动申请与更新证书与私钥，自动 http 重定向到 https。
+4、若采用 caddy 反向代理，本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。支持自动 HTTPS，即自动申请与更新证书与私钥，自动 HTTP 重定向到 HTTPS。
 
 5、若采用 nginx 反向代理 gRPC，配置 nginx 时需要启用 http/2，因为 gRPC 必须使用 http/2 传输数据。使用源码编译和安装，编译时需要加入 http_ssl 和 http_v2 模块。
 
