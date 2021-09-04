@@ -2,9 +2,9 @@
 
 本示例服务端以 caddy 源码加 forwardproxy 插件、caddy-trojan 插件编译而成，实现 naiveproxy、trojan-go 服务端应用。其应用如下：
 
-1、naiveproxy（基于forwardproxy插件实现，tls由caddy提供及处理。）
+1、naiveproxy（基于forwardproxy插件实现，TLS由caddy提供及处理。）
 
-2、trojan-go（基于caddy-trojan插件实现，tls由caddy提供及处理。）
+2、trojan-go（基于caddy-trojan插件实现，TLS由caddy提供及处理。）
 
 注意：
 
