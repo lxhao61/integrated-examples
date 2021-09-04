@@ -2,13 +2,13 @@
 
 Xray\v2ray 前置（监听443端口），vless+tcp+tls 以 h2 或 http/1.1 自适应协商连接，分流 WebSocket（WS） 连接，回落给 trojan+tcp，trojan+tcp 处理后再回落给 caddy。其应用如下：
 
-1、E=vless+tcp+tls（回落/分流配置，tls由自己提供及处理。）
+1、E=vless+tcp+tls（回落/分流配置，TLS由自己提供及处理。）
 
-2、B=vless+ws+tls（tls由vless+tcp+tls提供及处理，不需配置；另可改成或添加其它WS类应用，参考对应的服务端单一应用配置示例。）
+2、B=vless+ws+tls（TLS由vless+tcp+tls提供及处理，不需配置；另可改成或添加其它WS类应用，参考对应的服务端单一应用配置示例。）
 
-3、C=SS+v2ray-plugin+tls（tls由vless+tcp+tls提供及处理，不需配置。）
+3、C=SS+v2ray-plugin+tls（TLS由vless+tcp+tls提供及处理，不需配置。）
 
-4、F=trojan+tcp+tls（tls由vless+tcp+tls提供及处理，不需配置。）
+4、F=trojan+tcp+tls（TLS由vless+tcp+tls提供及处理，不需配置。）
 
 5、A=vless+kcp+seed（可改成vmess+kcp+seed，或添加它。）
 
@@ -16,9 +16,9 @@ Xray\v2ray 前置（监听443端口），vless+tcp+tls 以 h2 或 http/1.1 自�
 
 1、v2ray v4.31.0 版本及以后才支持 trojan 协议。
 
-2、caddy 不小于 v2.3.0 版才支持 Caddyfile 配置开启 h2c server。
+2、caddy 不小于 v2.3.0 版才支持 Caddyfile 配置开启 H2C server。
 
-3、caddy 支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用）。
+3、caddy 支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）。
 
 4、caddy 发行版不支持 PROXY protocol（接收）。如要支持 PROXY protocol 需选 caddy2-proxyprotocol 插件定制编译，或下载本人 Releases 中编译好的 caddy 来使用即可。
 
