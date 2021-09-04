@@ -1,17 +1,17 @@
 介绍：
 
-利用 caddy 或 nginx 支持 WebSocket（WS）反向代理，实现 socks+ws+tls 与 shadowsocks+ws+tls 两种反向代理应用，tls 由 caddy 或 nginx 提供及处理。
+利用 caddy 或 nginx 支持 WebSocket（WS）反向代理，实现 socks+ws+tls 与 shadowsocks+ws+tls 两种反向代理应用，TLS 由 caddy 或 nginx 提供及处理。
 
 原理：
 
-默认流程：web client <------ https（http/1.1+tls） ------> caddy\nginx（web server）  
+默认流程：WEB client <-------- HTTPS（HTTP/1.1+tls） -------> caddy\nginx（WEB server）  
 匹配流程：Xray\v2ray client <------ WebSocket+tls ------> caddy\nginx <-- WebSocket --> Xray\v2ray server
 
 注意：
 
 1、SS为shadowsocks简写。
 
-2、若采用 caddy 反向代理，本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。支持自动 https，即自动申请与更新证书与私钥，自动 http 重定向到 https。
+2、若采用 caddy 反向代理，本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。支持自动 HTTPS，即自动申请与更新证书与私钥，自动 HTTP 重定向到 HTTPS。
 
 3、若采用 nginx 反向代理，如果系统版本过低，其对应发行版仓库自带 nginx 预编译程序包可能不支持 tls1.3；如需要支持 tls1.3，必须先升级 OpenSSl 版本大于 1.1.1，再进行 nginx 源代码编译和安装。
 
