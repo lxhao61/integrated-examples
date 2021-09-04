@@ -16,7 +16,7 @@
 
 2、若不同域名没有使用通配符证书，那么还需要在 Xray 中并列配置多个域名对应的证书及私钥。
 
-3、此 fallbacks SNI 回落是解除 tls 后 Xray 进行的 name（域名）分流。
+3、此 fallbacks SNI 回落是解除 TLS 后 Xray 进行的 name（域名）分流。
 
 4、也可以用 nginx SNI、haproxy SNI 及 caddy（SNI及host分流）等分流来解决问题（不同方法，达到相同效果。）。相关 SNI 分流见各自相关示例。
 
