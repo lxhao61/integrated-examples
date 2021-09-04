@@ -1,34 +1,34 @@
 介绍：
 
-Xray\v2ray 前置（监听443端口），利用 trojan+tcp+tls 强大的回落/分流特性，实现除 Xray\v2ray 的 kcp 应用外共用443端口。trojan+tcp+tls 以 h2 或 http/1.1 自适应协商连接，分流 WebSocket（WS）连接，其它连接回落给 caddy；caddy 再处理：对 h2c 与 gRPC 进行反向代理，若有 naiveproxy 就进行正向代理。包括应用如下：
+Xray\v2ray 前置（监听443端口），利用 trojan+tcp+tls 强大的回落/分流特性，实现除 Xray\v2ray 的 KCP 应用外共用443端口。trojan+tcp+tls 以 h2 或 http/1.1 自适应协商连接，分流 WebSocket（WS）连接，其它连接回落给 caddy；caddy 再处理：对 H2C 与 gRPC 进行反向代理，若有 naiveproxy 就进行正向代理。包括应用如下：
 
-1、F=trojan+tcp+tls（回落/分流配置，tls由自己提供及处理。）
+1、F=trojan+tcp+tls（回落/分流配置，TLS由自己提供及处理。）
 
-2、B=vless+ws+tls（tls由trojan+tcp+tls提供及处理，不需配置；另可改成或添加其它WS类应用，参考对应的服务端单一应用配置示例。）
+2、B=vless+ws+tls（TLS由trojan+tcp+tls提供及处理，不需配置；另可改成或添加其它WS类应用，参考对应的服务端单一应用配置示例。）
 
-3、C=SS+v2ray-plugin+tls（tls由trojan+tcp+tls提供及处理，不需配置。）
+3、C=SS+v2ray-plugin+tls（TLS由trojan+tcp+tls提供及处理，不需配置。）
 
-4、D=vless+h2c+tls（tls由trojan+tcp+tls提供及处理，不需配置；另可改成或添加其它h2c类应用，参考对应的服务端单一应用配置示例。）
+4、D=vless+h2c+tls（TLS由trojan+tcp+tls提供及处理，不需配置；另可改成或添加其它H2C类应用，参考对应的服务端单一应用配置示例。）
 
-5、G=vless+grpc+tls（tls由trojan+tcp+tls提供及处理，不需配置；另可改成或添加其它gRPC类应用，参考对应的服务端单一应用配置示例。）
+5、G=vless+grpc+tls（TLS由trojan+tcp+tls提供及处理，不需配置；另可改成或添加其它gRPC类应用，参考对应的服务端单一应用配置示例。）
 
 6、A=vless+kcp+seed（可改成vmess+kcp+seed，或添加它。）
 
-7、naiveproxy（带有forwardproxy插件的caddy才支持naiveproxy应用，否则仅上边应用。tls由trojan+tcp+tls提供及处理，不需配置。）
+7、naiveproxy（带有forwardproxy插件的caddy才支持naiveproxy应用，否则仅上边应用。TLS由trojan+tcp+tls提供及处理，不需配置。）
 
 注意：
 
 1、Xray 版本不小于 1.4.0 或 v2ray 版本不小于v4.36.2，才完美支持 gRPC 应用。
 
-2、caddy 不小于 v2.2.0-rc.1 版才支持 h2c proxy，即支持 Xray\v2ray 的 h2c（gRPC） 反向代理。
+2、caddy 不小于 v2.2.0-rc.1 版才支持 H2C proxy，即支持 Xray\v2ray 的 H2C（gRPC） 反向代理。
 
-3、caddy 不小于 v2.3.0 版才支持 Caddyfile 配置开启 h2c server。
+3、caddy 不小于 v2.3.0 版才支持 Caddyfile 配置开启 H2C server。
 
-4、caddy 支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用）。
+4、caddy 支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）。
 
-5、使用本人 Releases 中编译好的 caddy 文件，可同时支持 naiveproxy、h2c server、h2c proxy 及 PROXY protocol 等应用。
+5、使用本人 Releases 中编译好的 caddy 文件，可同时支持 naiveproxy、H2C server、H2C proxy 及 PROXY protocol 等应用。
 
-6、本示例中 naiveproxy 仅支持 http/2 代理应用，即 HTTPS 协议传输。
+6、本示例中 naiveproxy 仅支持 HTTP/2 代理应用，即 HTTPS 协议传输。
 
 7、本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可。若使用 caddy 申请证书及密钥，推荐使用 json 格式配置，优化更好。
 
