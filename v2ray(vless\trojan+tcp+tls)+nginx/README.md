@@ -4,7 +4,7 @@
 
 原理：
 
-默认流程：Xray\v2ray client <------ tcp+tls（HTTPS） ------> Xray\v2ray server  
+默认流程：Xray\v2ray client <------ TCP+TLS（HTTPS） ------> Xray\v2ray server  
 回落流程：WEB client <---------------- HTTPS ----------------> Xray\v2ray server <-- 回落 --> nginx（WEB server）
 
 其中 trojan+tcp+tls 还实现了兼容原版 trojan，即可使用原版 trojan 客户端连接。
@@ -13,7 +13,7 @@
 
 1、v2ray v4.31.0 版本及以后才支持 trojan 协议。
 
-2、nginx 支持 h2c server，但不支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用）；故回落配置就必须分成 http/1.1 回落与 h2 回落两部分，以便分别对应 nginx 的 http/1.1 server 与 h2c server。
+2、nginx 支持 H2C server，但不支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）；故回落配置就必须分成 http/1.1 回落与 h2 回落两部分，以便分别对应 nginx 的 HTTP/1.1 server 与 H2C server。
 
 3、nginx 预编译程序包可能不带支持 PROXY protocol 协议的模块。如要使用此项协议应用，需加 http_realip_module（必须加） 及 stream_realip_module（可选加） 两模块构建自定义模板，再进行源代码编译和安装。另编译时选取源代码版本建议不要低于1.13.11。
 
