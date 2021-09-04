@@ -8,6 +8,6 @@
 
 2、使用本人 Releases 中编译好的 caddy 文件，可支持 trojan-go、H2C server 等应用。
 
-3、本示例中 trojan-go 兼容原版 trojan-go，继承了其服务端核心特色：支持原版 trojan 应用与原版 trojan-go 的 Websocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)。
+3、本示例中 trojan-go 服务端兼容原版 trojan-go，继承了其服务端核心特色：支持原版 trojan 应用与原版 trojan-go 的 Websocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)。
 
 4、本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。支持自动 HTTPS，即自动申请与更新证书与私钥，自动 HTTP 重定向到 HTTPS。
