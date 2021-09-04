@@ -4,7 +4,7 @@
 
 原理：
 
-默认流程：WEB client <------------ HTTPS（HTTP/1.1+tls） -----------> caddy\nginx（WEB server）  
+默认流程：WEB client <------------ HTTPS（HTTP/1.1+TLS） -----------> caddy\nginx（WEB server）  
 匹配流程：trojan-go\Xray\v2ray client <------- WebSocket+tls -------> caddy\nginx <-- WebSocket --> Xray\v2ray server
 
 注意：
