@@ -36,7 +36,7 @@
 
 1、示例为通配符证书及密钥申请，普通证书及密钥或混合申请类似。
 
-2、caddy 以 DNS challenge 方式申请证书及密钥，必须带对应 DNS API 插件。dnspod 分 dnspod.com（国际版）与 dnspod.cn（中国版），故两者插件不通用，必须对应各自 dnspod 解析使用。
+2、caddy 以 DNS challenge 方式申请证书及密钥，必须带对应 DNS API 插件。dnspod 解析分 dnspod.com（国际版）与 dnspod.cn（中国版），故两者插件不通用，必须对应各自 dnspod 解析使用。
 
 3、cloudflare 已不支持 freenom 的免费域名以 DNS challenge 方式申请证书及密钥了。
 
