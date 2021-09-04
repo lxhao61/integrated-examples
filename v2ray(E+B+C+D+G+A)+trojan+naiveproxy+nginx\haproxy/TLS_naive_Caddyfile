@@ -1,6 +1,6 @@
 #caddy自动申请与更新证书配置（供Xray\v2ray、trojan-go\trojan及自己使用）
 #一、多个域名申请普通证书配置
-#原配置参数：
+#原配置：
 {
 #.........<省略>........
 	admin off
@@ -13,7 +13,7 @@
 	tls /home/tls/zh.xx.yy/zh.xx.yy.crt /home/tls/zh.xx.yy/zh.xx.yy.key { #换成自己的证书与密钥，绝对路径。
 #.........<省略>........
 
-#以上参数修改如下：
+#以上配置修改如下：
 {
 #.........<省略>........
 	admin off
