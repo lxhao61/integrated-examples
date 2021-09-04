@@ -1,36 +1,36 @@
 介绍：
 
-利用 nginx 或 haproxy 支持 SNI 分流特性，对 Xray\v2ray（vless+tcp+tls）、caddy（https server）、trojan-go\trojan 进行 SNI 分流（四层转发），实现除 Xray\v2ray 的 kcp 应用外共用443端口。另外 caddy 为 Xray\v2ray（vless+tcp+tls）与 trojan-go\trojan 提供 web 回落服务，为 Xray\v2ray 的 h2c 与 gRPC 进行反向代理，为 naiveproxy 提供正向代理。包括应用如下：
+利用 nginx 或 haproxy 支持 SNI 分流特性，对 Xray\v2ray（vless+tcp+tls）、caddy（https server）、trojan-go\trojan 进行 SNI 分流（四层转发），实现除 Xray\v2ray 的 KCP 应用外共用443端口。另外 caddy 为 Xray\v2ray（vless+tcp+tls）与 trojan-go\trojan 提供 WEB 回落服务，为 Xray\v2ray 的 H2C 与 gRPC 进行反向代理，为 naiveproxy 提供正向代理。包括应用如下：
 
-1、E=vless+tcp+tls（回落/分流配置，tls由自己提供及处理。）
+1、E=vless+tcp+tls（回落/分流配置，TLS由自己提供及处理。）
 
-2、B=vless+ws+tls（tls由vless+tcp+tls提供及处理，不需配置；另可改成或添加其它WS类应用，参考对应的服务端单一应用配置示例。）
+2、B=vless+ws+tls（TLS由vless+tcp+tls提供及处理，不需配置；另可改成或添加其它WS类应用，参考对应的服务端单一应用配置示例。）
 
-3、C=SS+v2ray-plugin+tls（tls由vless+tcp+tls提供及处理，不需配置。）
+3、C=SS+v2ray-plugin+tls（TLS由vless+tcp+tls提供及处理，不需配置。）
 
-4、D=vless+h2c+tls（tls由caddy提供及处理，不需配置；另可改成或添加其它h2c类应用，参考对应的服务端单一应用配置示例。）
+4、D=vless+h2c+tls（TLS由caddy提供及处理，不需配置；另可改成或添加其它H2C类应用，参考对应的服务端单一应用配置示例。）
 
-5、G=vless+grpc+tls（tls由caddy提供及处理，不需配置；另可改成或添加其它gRPC类应用，参考对应的服务端单一应用配置示例。）
+5、G=vless+grpc+tls（TLS由caddy提供及处理，不需配置；另可改成或添加其它gRPC类应用，参考对应的服务端单一应用配置示例。）
 
 6、A=vless+kcp+seed（可改成vmess+kcp+seed，或添加它。）
 
-7、naiveproxy（带有forwardproxy插件的caddy才支持naiveproxy应用，否则仅上边应用。tls由caddy提供及处理。）
+7、naiveproxy（带有forwardproxy插件的caddy才支持naiveproxy应用，否则仅上边应用。TLS由caddy提供及处理。）
 
-8、trojan-go或trojan（tls由自己提供及处理。）
+8、trojan-go或trojan（TLS由自己提供及处理。）
 
 注意：
 
 1、Xray 版本不小于 1.4.0 或 v2ray 版本不小于v4.36.2，才完美支持 gRPC 应用。
 
-2、caddy 不小于 v2.2.0-rc.1 版才支持 h2c proxy，即支持 Xray\v2ray 的 h2c（gRPC） 反向代理。
+2、caddy 不小于 v2.2.0-rc.1 版才支持 H2C proxy，即支持 Xray\v2ray 的 H2C（gRPC） 反向代理。
 
-3、caddy 不小于 v2.3.0 版才支持 Caddyfile 配置开启 h2c server。
+3、caddy 不小于 v2.3.0 版才支持 Caddyfile 配置开启 H2C server。
 
-4、caddy 支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用）。
+4、caddy 支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）。
 
 5、caddy 发行版不支持 PROXY protocol（接收）。如要支持 PROXY protocol 需选 caddy2-proxyprotocol 插件定制编译，或下载本人 Releases 中编译好的 caddy 来使用即可。
 
-6、使用本人 Releases 中编译好的 caddy 文件，可同时支持 naiveproxy、h2c server、h2c proxy 及 PROXY protocol 等应用。
+6、使用本人 Releases 中编译好的 caddy 文件，可同时支持 naiveproxy、H2C server、H2C proxy 及 PROXY protocol 等应用。
 
 7、本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可。
 
@@ -38,11 +38,11 @@
 
 9、nginx 预编译程序包一般不带支持 SNI 分流协议的模块。如要使用此项协议应用，需加 stream_ssl_preread_module 模块构建自定义模板，再进行源代码编译和安装。
 
-10、本示例采用的是 SNI 方式实现共用443端口，支持 Xray\v2ray（vless+tcp+tls）、caddy（https server）、trojan-go\trojan 完美共存，支持各自特色应用，但需多个域名来标记分流。
+10、本示例采用的是 SNI 方式实现共用443端口，支持 Xray\v2ray（vless+tcp+tls）、caddy（HTTPS server）、trojan-go\trojan 完美共存，支持各自特色应用，但需多个域名来标记分流。
 
-11、因 trojan-go\trojan 仅支持端口监听与端口回落，故共用回落 web 服务的 Xray\v2ray（vless+tcp+tls）回落也仅支持端口回落，即全部回落仅支持端口回落。
+11、因 trojan-go\trojan 仅支持端口监听与端口回落，故共用回落 WEB 服务的 Xray\v2ray（vless+tcp+tls）回落也仅支持端口回落，即全部回落仅支持端口回落。
 
-12、因 trojan-go\trojan 不支持 PROXY protocol，故共用回落 web 服务的 Xray\v2ray（vless+tcp+tls）回落也不能启用此项应用，即全部回落不能启用此项应用。
+12、因 trojan-go\trojan 不支持 PROXY protocol，故共用回落 WEB 服务的 Xray\v2ray（vless+tcp+tls）回落也不能启用此项应用，即全部回落不能启用此项应用。
 
 13、trojan-go 完全兼容原版 trojan，服务端还有自己的特色：支持原版 trojan 应用与自己的 Websocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)；支持使用 AEAD 对 trojan 协议流量进行二次加密(基于 Shadowsocks AEAD)。
 
@@ -52,6 +52,6 @@
 
 16、配置1：采用端口分流、端口回落\分流、端口转发。配置2：采用进程分流（对应trojan-go\trojan除外）、端口回落\分流（对应vless+ws除外）、端口转发。配置3：采用进程分流（对应trojan-go\trojan除外）、端口回落\分流（对应vless+ws除外）、端口转发，且启用了 PROXY protocol（全部回落除外）。
 
-17、若采用配置2/配置3、且使用 nginx SNI 来分流的，想 naiveproxy 同时开启 http/3 代理支持，可参考配置1。方法：nginx 中添加对应 https server 的定向 UDP 转发配置，对应 https server 的进程转发改为端口转发；caddy 中对应 https server 的进程监听改为端口监听，https server 开启 http/3 支持。
+17、若采用配置2/配置3、且使用 nginx SNI 来分流的，想 naiveproxy 同时开启 HTTP/3 代理支持，可参考配置1。方法：nginx 中添加对应 HTTPS server 的定向 UDP 转发配置，对应 HTTPS server 的进程转发改为端口转发；caddy 中对应 HTTPS server 的进程监听改为端口监听，HTTPS server 开启 HTTP/3 支持。
 
 18、若除了实现最多应用的科学上网、还需提供实际网站服务，推荐本示例、实际网站服务可由 nginx 或 caddy 提供服务；否则推荐采用 [v2ray(E+B+C+D+G+A)+trojan+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BD%2BG%2BA)%2Btrojan%2Bnaiveproxy) 示例。
