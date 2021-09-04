@@ -9,9 +9,9 @@
 
 注意：
 
-1、caddy 不小于 v2.3.0 版才支持 Caddyfile 配置开启 h2c server。
+1、caddy 不小于 v2.3.0 版才支持 Caddyfile 配置开启 H2C server。
 
-2、caddy 支持 http/1.1 server 与 h2c server 共用一个端口或一个进程（Unix Domain Socket 应用）。
+2、caddy 支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）。
 
 3、本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。
 
