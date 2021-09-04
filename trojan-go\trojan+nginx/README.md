@@ -9,7 +9,7 @@
 
 注意：
 
-1、因 trojan-go 目前不支持 http/1.1 回落与 h2 回落分开，故 trojan-go 开启 Websocket 支持后只能选 http/1.1 协商连接及 http/1.1 回落。
+1、因 trojan-go 目前不支持 http/1.1 回落与 h2 回落分开，故 trojan-go 开启 Websocket 支持后只能选 http/1.1 连接及 http/1.1 回落。
 
 2、因 trojan-go\trojan 不支持 Unix Domain Socket，故回落仅端口回落。
 
