@@ -11,7 +11,7 @@
 	}
 #.........<省略>........
 
-#以dns api方式申请tls证书（以上配置修改为如下）：
+#以dns api方式申请tls证书（以上配置修改成如下）：
 {
 #.........<省略>........
 	cert_issuer acme #可以改为zerossl，采用zerossl申请证书及密钥。acme表示从Let's Encrypt申请证书及密钥，zerossl表示从ZeroSSL申请证书及密钥。注意：版本不小于v2.4.1才支持。
@@ -45,7 +45,7 @@
 	}
 #.........<省略>........
 
-#以dns api方式申请tls证书（以上配置修改为如下）：
+#以dns api方式申请tls证书（以上配置修改成如下）：
 {
 #.........<省略>........
 	admin off
@@ -84,7 +84,7 @@
 	tls /home/tls/zh.xx.yy/zh.xx.yy.crt /home/tls/zh.xx.yy/zh.xx.yy.key { #换成自己的证书与密钥，绝对路径。
 #.........<省略>........
 
-#以dns api方式申请tls证书（以上配置修改为如下）：
+#以dns api方式申请tls证书（以上配置修改成如下）：
 {
 #.........<省略>........
 	admin off
