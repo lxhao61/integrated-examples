@@ -4,7 +4,7 @@
 
 注意：
 
-1、caddy 不小于 v2.3.0 版才支持 Caddyfile 配置开启 H2C server。
+1、caddy 版本不小于 v2.3.0 版才支持 Caddyfile 配置开启 H2C server。
 
 2、使用本人 Releases 中编译好的 caddy 文件，可支持 trojan-go、H2C server 等应用。
 
