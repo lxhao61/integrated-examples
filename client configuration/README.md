@@ -8,7 +8,7 @@
 
 2、文件名称仅便于区分，使用时删除前边多余部分保留 config.json 即可。
 
-3、SS为 shadowsocks 简写。
+3、SS 为 shadowsocks 简写。
 
 4、除 Xray 或 v2ray 的 kcp 应用外，其它都 TLS 加密传输。
 
