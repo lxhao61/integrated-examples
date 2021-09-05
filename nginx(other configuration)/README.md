@@ -10,7 +10,7 @@ nginx SNI 分流的配置方法
 
 3、若系统版本过低，其对应发行版仓库自带 nginx 预编译程序包可能不支持 tls1.3；如需要支持 tls1.3，必须先升级 OpenSSl 版本大于 1.1.1，再进行 nginx 源代码编译和安装。
 
-4、1_SNI_nginx.conf 采用 local loopback 连接，实现 nginx SNI 的端口分流。端口分流配置虽然效率稍低，但可适用任意系统服务器。
+4、1_SNI_nginx.conf 采用 Local Loopback 连接，实现 nginx SNI 的端口分流。端口分流配置虽然效率稍低，但可适用任意系统服务器。
 
 5、2_SNI_nginx.conf 采用 Unix Domain Socket 连接，实现 nginx SNI 的进程分流。进程分流配置效率高，但在 Windows 10 Build 17036 之前版本不可用。
 
