@@ -38,7 +38,7 @@
 
 9、因 trojan-go\trojan 不支持 PROXY protocol，故共用回落 WEB 服务的 Xray\v2ray（vless+tcp+tls）回落也不能启用此项应用，即全部回落不能启用此项应用。
 
-10、trojan-go 完全兼容原版 trojan，服务端还有自己的特色：支持原版 trojan 应用与自己的 Websocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)；支持使用 AEAD 对 trojan 协议流量进行二次加密(基于 Shadowsocks AEAD)。
+10、trojan-go 完全兼容 trojan，服务端还有自己的特色：支持 trojan 应用与自己的 Websocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)；支持使用 AEAD 对 trojan 协议流量进行二次加密(基于 Shadowsocks AEAD)。
 
 11、本示例配置不要使用非 caddy（自带 ACME 客户端）的 ACME 客户端在当前服务器上申请与更新普通证书及密钥，因普通证书及密钥申请与更新需占用或监听80端口（或443端口），从而与当前应用端口冲突。
 
