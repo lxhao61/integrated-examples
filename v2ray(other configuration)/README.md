@@ -28,7 +28,7 @@
 
 1、Xray\v2ray SNI 分流不支持 PROXY protocol（发送）。
 
-2、1_SNI_config.json 分流采用 local loopback 连接，实现转发端口（域名）的分流，简称 v2ray SNI 的端口分流。端口分流配置虽然效率稍低，但可适用任意系统服务器。
+2、1_SNI_config.json 分流采用 Local Loopback 连接，实现转发端口（域名）的分流，简称 v2ray SNI 的端口分流。端口分流配置虽然效率稍低，但可适用任意系统服务器。
 
 3、2_SNI_config.json 分流采用 Unix Domain Socket 连接，实现转发进程（域名）的分流，简称 v2ray SNI 的进程分流。进程分流配置效率高，但在 Windows 10 Build 17036 之前版本不可用。
 
@@ -44,7 +44,7 @@
 
 1）、入站的统计（不推荐，一般建议关闭。），根据 tag 来统计入站流量。
 
-2）、用户的统计（推荐），依据 email 区分及统计用户流量。socks、http 等其他协议内的用户不支持被统计。
+2）、用户的统计（推荐），依据 email 区分及统计用户流量。SOCKS、HTTP 等其他协议内的用户不支持被统计。
 
 3、流量信息的处理
 
