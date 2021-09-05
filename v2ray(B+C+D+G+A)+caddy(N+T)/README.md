@@ -22,7 +22,7 @@
 
 2、caddy 版本不小于 v2.2.0-rc.1 才支持 H2C proxy，即支持 Xray\v2ray 的 H2C（gRPC） 反向代理。
 
-3、caddy 不小于 v2.3.0 版才支持 Caddyfile 配置开启 H2C server。
+3、caddy 版本不小于 v2.3.0 才支持 Caddyfile 配置开启 H2C server。
 
 4、使用本人 Releases 中编译好的 caddy 文件，可同时支持 naiveproxy、trojan-go、H2C proxy、H2C server 等应用。
 
