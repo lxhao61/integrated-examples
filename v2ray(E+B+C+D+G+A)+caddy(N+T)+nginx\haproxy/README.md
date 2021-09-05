@@ -30,7 +30,7 @@
 
 5、使用本人 Releases 中编译好的 caddy 文件，可同时支持 naiveproxy、trojan-go、H2C server、H2C proxy 及 PROXY protocol 等应用。
 
-6、本示例中 trojan-go 兼容原版 trojan-go，继承了其服务端核心特色：支持原版 trojan 应用与原版 trojan-go 的 Websocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)。
+6、本示例中 trojan-go 兼容原版 trojan-go，继承了其服务端核心特色：支持 trojan 应用与原版 trojan-go 的 Websocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)。
 
 7、本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可。
 
