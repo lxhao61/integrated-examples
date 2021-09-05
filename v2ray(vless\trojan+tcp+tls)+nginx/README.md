@@ -11,7 +11,7 @@
 
 注意：
 
-1、v2ray v4.31.0 版本及以后才支持 trojan 协议。
+1、v2ray 版本不小于 v4.31.0 才支持 trojan 协议。
 
 2、nginx 支持 H2C server，但不支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）；故回落配置就必须分成 http/1.1 回落与 h2 回落两部分，以便分别对应 nginx 的 HTTP/1.1 server 与 H2C server。
 
