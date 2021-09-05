@@ -7,7 +7,7 @@
 默认流程：Xray\v2ray client <------ TCP+TLS（HTTPS） ------> Xray\v2ray server  
 回落流程：WEB client <----------------- HTTPS ----------------> Xray\v2ray server <-- 回落 --> nginx（WEB server）
 
-其中 trojan+tcp+tls 还实现了兼容原版 trojan，即可使用原版 trojan 客户端连接。
+其中 trojan+tcp+tls 应用还实现了兼容原版 trojan 服务端，即可使用原版 trojan 客户端连接。
 
 注意：
 
