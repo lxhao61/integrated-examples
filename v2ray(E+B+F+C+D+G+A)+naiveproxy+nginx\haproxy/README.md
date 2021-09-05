@@ -22,7 +22,7 @@
 
 1、v2ray 版本不小于 v4.31.0 才支持 trojan 协议。
 
-2、Xray 版本不小于 v1.4.0 或 v2ray 版本不小于v4.36.2，才完美支持 gRPC 应用。
+2、Xray 版本不小于 v1.4.0 或 v2ray 版本不小于v4.36.2，才支持 gRPC 传输方式。
 
 3、caddy 版本不小于 v2.2.0-rc.1 才支持 H2C proxy，即支持 Xray\v2ray 的 H2C（gRPC） 反向代理。
 
