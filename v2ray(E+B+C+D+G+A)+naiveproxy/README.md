@@ -20,9 +20,9 @@ Xray\v2ray 前置（监听443端口），利用 vless+tcp+tls 强大的回落/�
 
 1、Xray 版本不小于 1.4.0 或 v2ray 版本不小于v4.36.2，才完美支持 gRPC 应用。
 
-2、caddy 不小于 v2.2.0-rc.1 版才支持 H2C proxy，即支持 Xray\v2ray 的 H2C（gRPC） 反向代理。
+2、caddy 版本不小于 v2.2.0-rc.1 才支持 H2C proxy，即支持 Xray\v2ray 的 H2C（gRPC） 反向代理。
 
-3、caddy 不小于 v2.3.0 版才支持 Caddyfile 配置开启 H2C server。
+3、caddy 版本不小于 v2.3.0 才支持 Caddyfile 配置开启 H2C server。
 
 4、caddy 支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）。
 
