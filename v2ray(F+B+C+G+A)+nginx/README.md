@@ -14,9 +14,9 @@ Xray\v2ray 前置（监听443端口），利用 trojan+tcp+tls 强大的回落/�
 
 注意：
 
-1、v2ray v4.31.0 版本及以后才支持 trojan 协议。
+1、v2ray 版本不小于 v4.31.0 才支持 trojan 协议。
 
-2、Xray 版本不小于 1.4.0 或 v2ray 版本不小于v4.36.2，才完美支持 gRPC 应用。
+2、Xray 版本不小于 v1.4.0 或 v2ray 版本不小于v4.36.2，才完美支持 gRPC 应用。
 
 3、nginx 支持 H2C server，但不支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）；故回落配置就必须分成 http/1.1 回落与 h2 回落两部分，以便分别对应 nginx 的 HTTP/1.1 server 与 H2C server。
 
