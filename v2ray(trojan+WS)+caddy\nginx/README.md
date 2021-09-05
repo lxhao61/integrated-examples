@@ -9,7 +9,7 @@
 
 注意：
 
-1、v2ray v4.31.0 版本及以后才支持 trojan 协议。
+1、v2ray 版本不小于 v4.31.0 才支持 trojan 协议。
 
 2、此应用使用 trojan-go 客户端及 Xray\v2ray 官方客户端连接无问题，使用第三方的 Xray\v2ray 客户端目前基本不行。另 trojan-go 安卓手机客户端可去本人 Releases 中下载。
 
