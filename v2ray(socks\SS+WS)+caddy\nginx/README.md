@@ -9,7 +9,7 @@
 
 注意：
 
-1、SS 为shadowsocks 简写。
+1、SS 为 shadowsocks 简写。
 
 2、若采用 caddy 反向代理，本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。支持自动 HTTPS，即自动申请与更新证书与私钥，自动 HTTP 重定向到 HTTPS。
 
