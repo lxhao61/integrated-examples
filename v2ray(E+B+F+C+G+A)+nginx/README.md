@@ -18,7 +18,7 @@
 
 1、v2ray 版本不小于 v4.31.0 才支持 trojan 协议。
 
-2、Xray 版本不小于 v1.4.0 或 v2ray 版本不小于v4.36.2，才完美支持 gRPC 应用。
+2、Xray 版本不小于 v1.4.0 或 v2ray 版本不小于v4.36.2，才支持 gRPC 传输方式。
 
 3、采用 nginx 反向代理 gRPC，配置 nginx 时需要启用 HTTP/2，因为 gRPC 必须使用 HTTP/2 传输数据。使用源码编译和安装，编译时需要加入 http_ssl 和 http_v2 模块。
 
