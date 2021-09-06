@@ -6,7 +6,7 @@
 
 1、caddy 版本不小于 v2.3.0 才支持 Caddyfile 配置开启 H2C server。
 
-2、使用本人 Releases 中编译好的 caddy 文件，可支持 trojan-go、H2C server 等应用。
+2、使用本人 Releases 中编译好的 caddy 文件，可支持 H2C server、trojan-go 等应用。
 
 3、本示例中 trojan-go 兼容原版 trojan-go，继承了其服务端核心特色：支持 trojan 应用与原版 trojan-go 的 Websocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)。
 
