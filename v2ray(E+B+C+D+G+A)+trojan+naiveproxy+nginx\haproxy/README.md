@@ -30,7 +30,7 @@
 
 5、caddy 发行版不支持 PROXY protocol（接收）。如要支持 PROXY protocol 需选 caddy2-proxyprotocol 插件定制编译，或下载本人 Releases 中编译好的 caddy 来使用即可。
 
-6、使用本人 Releases 中编译好的 caddy 文件，可同时支持 naiveproxy、H2C server、H2C proxy 及 PROXY protocol 等应用。
+6、使用本人 Releases 中编译好的 caddy 文件，可同时支持 H2C server、H2C proxy、naiveproxy 及 PROXY protocol 等应用。
 
 7、本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可。
 
