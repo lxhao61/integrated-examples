@@ -10,7 +10,7 @@
 
 1、caddy 不小于 v2.3.0 版才支持 Caddyfile 配置开启 H2C server。
 
-2、使用本人 Releases 中编译好的 caddy 文件，可同时支持 naiveproxy、trojan-go、H2C server 等应用。
+2、使用本人 Releases 中编译好的 caddy 文件，可同时支持 H2C server、trojan-go、naiveproxy 等应用。
 
 3、本示例中 naiveproxy 除了支持 HTTP/2 代理应用，还同时支持 HTTP/3 代理应用，即 QUIC 协议传输。
 
