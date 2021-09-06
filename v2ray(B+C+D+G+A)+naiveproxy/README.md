@@ -20,7 +20,7 @@
 
 2、caddy 版本不小于 v2.2.0-rc.1 才支持 H2C proxy，即支持 Xray\v2ray 的 H2C（gRPC） 反向代理。
 
-3、使用本人 Releases 中编译好的 caddy 文件，可同时支持 naiveproxy、H2C proxy 等应用。
+3、使用本人 Releases 中编译好的 caddy 文件，可同时支持 H2C proxy、naiveproxy 等应用。
 
 4、本示例中 naiveproxy 除了支持 HTTP/2 代理应用，还同时支持 HTTP/3 代理应用，即 QUIC 协议传输。
 
