@@ -3,8 +3,8 @@
 2. 实现了回落应用的端口回落/分流到进程回落/分流及启用PROXY protocol的从低到高（效率）应用支持。
 3. 实现了反代应用的端口转发到进程转发的从低到高（效率）应用支持。
 4. 实现了nginx SNI分流（TCP转发）与定向UDP转发，以支持SNI分流后的naiveproxy HTTP/3代理应用。
-5. 实现了caddy Caddyfile配置开启H2C server、PROXY protocol、naiveproxy等应用支持，让caddy配置简单化。
-6. 实现了caddy json配置SNI分流应用，且同时支持针对端口或进程独自PROXY protocol发送，灵活性等同haproxy SNI分流。
+5. 实现了caddy Caddyfile配置开启H2C server、naiveproxy及PROXY protocol接收等应用支持，让caddy配置简单化。
+6. 实现了caddy json配置SNI分流应用，且支持针对端口或进程开启或关闭PROXY protocol发送，灵活性等同haproxy SNI分流。
 7. 实现了Xray与caddy相关应用的证书及密钥申请与更新全自动化。
 8. 实现了CDN流量中转（基于WebSocket over TLS或基于gRPC over TLS）与正常应用同时使用。
 9. 实现了除v2ray(vless\vmess+kcp+seed)与hysteria示例或应用外，其它应用对外都使用443端口，各应用互不影响。
