@@ -22,7 +22,7 @@
 
 3、nginx 支持 H2C server 及 gRPC proxy，需要 nginx 包含 http_v2_module 模块。
 
-4、nginx 支持 TLSv1.3，需要 nginx 使用 OpenSSl 版本大于 1.1.1 构建。
+4、nginx 支持 TLSv1.3，需要 nginx 包含 http_ssl_module 模块和版本大于 1.1.1 的 OpenSSl 库。
 
 5、nginx 支持 PROXY protocol 接收，需要 nginx 包含 http_realip_module 及 stream_realip_module（可选）模块。
 
