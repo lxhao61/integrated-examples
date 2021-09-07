@@ -16,9 +16,9 @@ Xray\v2ray 前置（监听443端口），vless+tcp+tls 以 h2 或 http/1.1 自�
 
 1、v2ray 版本不小于 v4.31.0 才支持 trojan 协议。
 
-2、nginx 支持 H2C server，需要 nginx 构建了 http_v2_module 模块。
+2、nginx 支持 H2C server，需要 nginx 包含 http_v2_module 模块。
 
-3、nginx 支持 PROXY protocol 接收，需要 nginx 构建了 http_realip_module 及 stream_realip_module（可选）模块。另 nginx 编译时选取源代码版本不要低于 1.13.11。
+3、nginx 支持 PROXY protocol 接收，需要 nginx 包含 http_realip_module 及 stream_realip_module（可选）模块。
 
 4、nginx 支持 H2C server，但不支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）；故回落配置就必须分成 http/1.1 回落与 h2 回落两部分，以便分别对应 nginx 的 HTTP/1.1 server 与 H2C server。
 
