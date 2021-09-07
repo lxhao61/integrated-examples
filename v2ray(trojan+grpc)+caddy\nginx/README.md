@@ -19,7 +19,7 @@
 
 5、nginx 支持 gRPC 反向代理，需 nginx 加入了 http_ssl_module 和 http_v2_module 模块编译。因为 gRPC 必须使用 HTTP/2 传输数据，故配置 nginx 时需要启用 HTTP/2。
 
-6、nginx 支持 TLSv1.3，需使用 OpenSSl 版本大于 1.1.1 编译。
+6、nginx 支持 TLSv1.3，需要 nginx 使用 OpenSSl 版本大于 1.1.1 构建。
 
 7、若采用 nginx 反向代理，本示例配置不要使用 ACME 客户端在当前服务器上申请与更新普通证书及密钥，因普通证书及密钥申请与更新需要占用或监听80端口（或443端口），从而与当前应用端口冲突。
 
