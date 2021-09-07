@@ -18,7 +18,7 @@ Xray\v2ray 前置（监听443端口），利用 vless+tcp+tls 强大的回落/�
 
 2、nginx 支持 H2C server，但不支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）；故回落配置就必须分成 http/1.1 回落与 h2 回落两部分，以便分别对应 nginx 的 HTTP/1.1 server 与 H2C server。
 
-3、nginx 支持 H2C server，需 nginx 加入了 http_v2_module 模块编译。
+3、nginx 支持 H2C server 及 gRPC proxy，需 nginx 加入了 http_v2_module 模块编译。
 
 4、nginx 支持 PROXY protocol 接收，需 nginx 加入了 http_realip_module 及 stream_realip_module（可选）模块编译。另 nginx 编译时选取源代码版本不要低于 1.13.11。
 
