@@ -17,7 +17,7 @@
 
 4、若采用 caddy 反向代理，本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。支持自动 HTTPS，即自动申请与更新证书与私钥，自动 HTTP 重定向到 HTTPS。
 
-5、nginx 支持 HTTP/2 及 gRPC proxy，需要 nginx 包含 http_ssl_module 和 http_v2_module 模块。
+5、nginx 支持 HTTP/2 server 及 gRPC proxy，需要 nginx 包含 http_ssl_module 和 http_v2_module 模块。
 
 6、nginx 支持 TLSv1.3，需要 nginx 包含 http_ssl_module 模块和版本大于 1.1.1 的 OpenSSl 库。
 
