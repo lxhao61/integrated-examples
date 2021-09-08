@@ -16,8 +16,6 @@ nginx SNI 分流的配置方法
 
 6、2_SNI_nginx.conf 采用 Unix Domain Socket 连接，实现 nginx SNI 的进程分流。进程分流配置效率高，但在 Windows 10 Build 17036 之前版本不可用。
 
-7、本示例的省略部分各自参考启用 nginx SNI 分流的配置示例。
+7、本示例的省略部分参考启用 nginx SNI 分流的配置示例。
 
-8、相关示例已配置 nginx SNI 分流共用端口，此配置仅备份及参考等。
-
-9、也可以用 haproxy SNI、caddy SNI 等分流来解决问题（相同方法）。但若已采用 nginx 来做回落 WEB 服务器，不推荐另外增加 haproxy SNI 等分流来解决；若采用非 nginx 来做回落 WEB 服务器，推荐使用 nginx SNI、haproxy SNI、caddy SNI 等分流解决。haproxy SNI 配置示例参考示例中用 haproxy SNI 分流的 haproxy 配置，caddy SNI 配置示例参考‘caddy(other configuration)’中 caddy SNI 分流的配置方法。
+8、也可以用 haproxy SNI、caddy SNI 等分流来解决问题（相同方法）。但若已采用 nginx 来做回落 WEB 服务器，不推荐另外增加 haproxy SNI 等分流来解决；若采用非 nginx 来做回落 WEB 服务器，推荐使用 nginx SNI、haproxy SNI、caddy SNI 等分流解决。haproxy SNI 配置示例参考示例中用 haproxy SNI 分流的 haproxy 配置，caddy SNI 配置示例参考‘caddy(other configuration)’中 caddy SNI 分流的配置方法。
