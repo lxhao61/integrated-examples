@@ -34,7 +34,7 @@
 
 7、本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可。
 
-8、nginx 支持 SNI 分流，需要 nginx 包含 stream_core_module 及 stream_ssl_preread_module 模块。
+8、nginx 支持 SNI 分流，需要 nginx 包含 stream_core_module 和 stream_ssl_preread_module 模块。
 
 9、本示例采用的是 SNI 方式实现共用443端口，支持 Xray\v2ray（vless+tcp+tls）、caddy（HTTPS server） 完美共存，支持各自特色应用，但需多个域名来标记分流。
 
