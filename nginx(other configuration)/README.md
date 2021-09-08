@@ -6,9 +6,9 @@ nginx SNI 分流的配置方法
 
 1、nginx 支持 SNI 分流，需要 nginx 包含 stream_core_module 和 stream_ssl_preread_module 模块。
 
-2、nginx 支持 HTTP/2，需要 nginx 包含 http_ssl_module 和 http_v2_module 模块。
+2、nginx 支持 HTTP/2，需要 nginx 包含 http_v2_module 和 http_ssl_module 模块。
 
-3、nginx 支持 TLSv1.3，需要 nginx 包含 http_ssl_module 模块和版本大于 1.1.1 的 OpenSSl 库。
+3、nginx 支持 TLSv1.3，需要 nginx 包含版本大于 1.1.1 的 OpenSSl 库和 http_ssl_module 模块。
 
 4、nginx 支持 PROXY protocol 接收，需要 nginx 包含 http_realip_module 及 stream_realip_module（可选）模块。
 
