@@ -14,7 +14,7 @@
 
 1、Xray 版本不小于 v1.4.0 或 v2ray 版本不小于v4.36.2，才支持 gRPC 传输方式。
 
-2、nginx 支持 HTTP/2 及 gRPC proxy，需要 nginx 包含 http_ssl_module 和 http_v2_module 模块。
+2、nginx 支持 HTTP/2 server 及 gRPC proxy，需要 nginx 包含 http_ssl_module 和 http_v2_module 模块。
 
 3、nginx 支持 TLSv1.3，需要 nginx 包含 http_ssl_module 模块和版本大于 1.1.1 的 OpenSSl 库。
 
