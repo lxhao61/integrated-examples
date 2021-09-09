@@ -8,7 +8,7 @@
 
 2、此回落到不同网站是 Xray\v2ray 解除 TLS 后 caddy 进行的 host（域名）分流。
 
-3、也可以用 caddy SNI 或 haproxy SNI 等分流来解决问题（不同方法，达到相同效果。）。caddy SNI 配置示例见如下介绍。haproxy SNI 配置示例参考示例中用 haproxy SNI 分流的 haproxy 配置。
+3、也可以用 caddy SNI 或 haproxy SNI 等分流来解决问题（不同方法，达到相同效果。）。caddy SNI 配置示例见如下介绍。haproxy SNI 配置示例参考用 haproxy SNI 分流的 haproxy 配置示例。
 
 二、caddy SNI 分流的配置方法
 
