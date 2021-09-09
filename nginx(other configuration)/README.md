@@ -18,4 +18,4 @@ nginx SNI 分流的配置方法
 
 7、本示例的省略部分参考启用 nginx SNI 分流的配置示例。
 
-8、也可以用 haproxy SNI、caddy SNI 等分流来解决问题（相同方法）。但若已采用 nginx 来做回落 WEB 服务器，不推荐另外增加 haproxy SNI 等分流来解决；若采用非 nginx 来做回落 WEB 服务器，推荐使用 nginx SNI、haproxy SNI、caddy SNI 等分流解决。haproxy SNI 配置示例参考示例中用 haproxy SNI 分流的 haproxy 配置，caddy SNI 配置示例参考‘caddy(other configuration)’中 caddy SNI 分流的配置方法。
+8、也可以用 haproxy SNI、caddy SNI 等分流来解决问题（相同方法）。但若已采用 nginx 来做回落 WEB 服务器，不推荐另外增加 haproxy SNI 等分流来解决；若采用非 nginx 来做回落 WEB 服务器，推荐使用 nginx SNI、haproxy SNI、caddy SNI 等分流解决。haproxy SNI 配置示例参考用 haproxy SNI 分流的 haproxy 配置示例，caddy SNI 配置示例参考‘caddy(other configuration)’中 caddy SNI 分流的配置方法。
