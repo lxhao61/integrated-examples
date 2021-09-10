@@ -12,7 +12,7 @@
 
 注意：
 
-1、Xray v1.2.2 版本及以后才支持 VLESS fallbacks SNI shunt。Xray v1.2.3 版本及以后才支持 Trojan fallbacks SNI shunt。
+1、Xray 版本不小于 v1.2.2 才支持 VLESS fallbacks SNI shunt。Xray 版本不小于 v1.2.3 才支持 Trojan fallbacks SNI shunt。
 
 2、若不同域名没有使用通配符证书，那么还需要在 Xray 中并列配置多个域名对应的证书及私钥。
 
