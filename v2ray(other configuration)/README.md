@@ -18,7 +18,7 @@
 
 3、此 fallbacks SNI 回落是解除 TLS 后 Xray 进行的 name（域名）分流。
 
-4、也可以用 nginx SNI、haproxy SNI 及 caddy 分流（SNI及host分流）来解决问题（不同方法，达到相同效果。）。相关分流见各自示例。
+4、也可以用 nginx SNI、haproxy SNI、caddy 分流（SNI或host分流） 等分流来解决问题（不同方法，达到相同效果。），相关分流见各自示例。
 
 三、Xray\v2ray SNI 分流的配置方法
 
@@ -26,7 +26,7 @@
 
 注意：
 
-1、Xray\v2ray SNI 分流不支持 PROXY protocol（发送）。
+1、Xray\v2ray SNI 分流不支持 PROXY protocol 发送。
 
 2、1_SNI_config.json 分流采用 Local Loopback 连接，实现转发端口（域名）的分流，简称 v2ray SNI 的端口分流。端口分流配置虽然效率稍低，但可适用任意系统服务器。
 
