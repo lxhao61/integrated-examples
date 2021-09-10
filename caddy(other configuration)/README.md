@@ -22,9 +22,7 @@
 
 3、2_SNI_caddy.json 采用 Unix Domain Socket 连接，实现转发进程（域名）的分流，简称 caddy SNI 的进程分流。进程分流配置效率高，但在 Windows 10 Build 17036 之前版本不可用。
 
-4、本示例的省略部分参考启用 caddy SNI 分流的配置示例。
-
-5、相关示例已配置 caddy SNI 分流共用端口，此配置仅备份及参考等。
+4、相关示例已配置 caddy SNI 分流共用端口，此配置仅备份及参考等。
 
 三、caddy 以 DNS challenge 方式申请证书及密钥
 
