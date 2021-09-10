@@ -18,7 +18,7 @@
 
 3、此 fallbacks SNI 回落是解除 TLS 后 Xray 进行的 name（域名）分流。
 
-4、也可以用 nginx SNI、haproxy SNI、caddy 分流（SNI或host分流） 等分流来解决问题（不同方法，达到相同效果。），相关分流见各自示例。
+4、也可以用 nginx SNI、haproxy SNI、caddy 分流（SNI或host分流） 等分流来解决问题（不同方法，达到相同效果。），相关分流见各自配置示例。
 
 三、Xray\v2ray SNI 分流的配置方法
 
