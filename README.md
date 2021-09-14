@@ -12,8 +12,8 @@
 * **备注：** 端口分流、端口回落/分流、端口转发是指基于Local Loopback连接的不同功能应用分类；进程分流、进程回落/分流、进程转发是指基于Unix Domain Socket连接的不同功能应用分类。
 
 ### 服务端单一应用配置示例
-1. [trojan-go\trojan+caddy](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bcaddy) （trojan-go/trojan应用，WEB回落给caddy。）
-2. [trojan-go\trojan+nginx](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bnginx) （trojan-go/trojan应用，WEB回落给nginx。）
+1. [trojan-go\trojan+caddy](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bcaddy) （trojan-go/trojan应用，回落给caddy。）
+2. [trojan-go\trojan+nginx](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bnginx) （trojan-go/trojan应用，回落给nginx。）
 ---
 1. [naiveproxy(caddy+forwardproxy)](https://github.com/lxhao61/integrated-examples/tree/main/naiveproxy(caddy%2Bforwardproxy)) （基于caddy的HTTP/2或HTTP/3代理应用。标记为N。）
 2. [trojan-go(caddy+caddy-trojan)](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go(caddy%2Bcaddy-trojan)) （基于caddy-trojan插件的trojan-go应用。标记为T。）
@@ -29,8 +29,8 @@
 1. [v2ray(vless\vmess+h2c)+caddy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(vless%5Cvmess%2Bh2c)%2Bcaddy) （vless+h2c+tls与vmess+h2c+tls反代应用。vless+h2c+tls标记为D。）
 2. [v2ray(trojan+h2c)+caddy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(trojan%2Bh2c)%2Bcaddy) （trojan+h2c+tls反代应用。）
 ---
-1. [v2ray(vless\trojan+tcp+tls)+caddy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(vless%5Ctrojan%2Btcp%2Btls)%2Bcaddy) （vless+tcp+tls与trojan+tcp+tls应用，WEB回落给caddy。分别标记为E与F。）
-2. [v2ray(vless\trojan+tcp+tls)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(vless%5Ctrojan%2Btcp%2Btls)%2Bnginx) （vless+tcp+tls与trojan+tcp+tls应用，WEB回落给nginx。分别标记为E与F。）
+1. [v2ray(vless\trojan+tcp+tls)+caddy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(vless%5Ctrojan%2Btcp%2Btls)%2Bcaddy) （vless+tcp+tls/xtls与trojan+tcp+tls/xtls应用，回落给caddy。分别标记为E与F。）
+2. [v2ray(vless\trojan+tcp+tls)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(vless%5Ctrojan%2Btcp%2Btls)%2Bnginx) （vless+tcp+tls/xtls与trojan+tcp+tls/xtls应用，回落给nginx。分别标记为E与F。）
 ---
 1. [v2ray(vless\vmess+grpc)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(vless%5Cvmess%2Bgrpc)%2Bcaddy%5Cnginx)（vless+grpc+tls与vmess+grpc+tls反代应用。vless+grpc+tls标记为G。）
 2. [v2ray(trojan+grpc)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(trojan%2Bgrpc)%2Bcaddy%5Cnginx)（trojan+grpc+tls反代应用。）
@@ -77,7 +77,7 @@
 #### &emsp;注意（以上所有实例）:
 1. 所有Xray或v2ray配置文件都配置了禁用BT。如不需要，可以删除相关配置，参考v2ray(other configuration)中BT_config.json文件。
 2. v2ray从v4.33.0版开始删除了XTLS应用，故若还想用XTLS应用，请选Xray。Xray是v2ray的超集（更好的整体性能和XTLS等一系列增强，且完全兼容。），也是因为这个应用分家独自发展。
-3. Xray或v2ray单一核心应用简记：A=vless+kcp+seed、B=vless+ws+tls、C=SS+v2ray-plugin+tls、D=vless+h2c+tls、E=vless+tcp+tls、F=trojan+tcp+tls、G=vless+grpc+tls。
+3. Xray或v2ray单一核心应用简记：A=vless+kcp+seed、B=vless+ws+tls、C=SS+v2ray-plugin+tls、D=vless+h2c+tls、E=vless+tcp+tls/xtls、F=trojan+tcp+tls/xtls、G=vless+grpc+tls。
 4. 目前caddy的HTTPS服务进程监听采用Unix Domain Socket进程不支持HTTP/3；若开启HTTP/3，caddy无法启动。
 5. 受限应用条件及场景，naiveproxy的QUIC应用（即caddy的HTTP/3代理应用）不是所有相关naiveproxy示例都支持。
 6. 附加相关插件的caddy程序文件已编译好，去本人Releases中下载即可。
