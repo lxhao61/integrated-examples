@@ -1,6 +1,6 @@
 介绍：
 
-Xray\v2ray 前置（监听443端口），利用 vless+tcp+xtls/tls 强大的回落/分流特性，实现与 WebSocket（WS）类应用共用443端口。合法的 Xray\v2ray 客户端 TCP 连接直连，WebSocket（WS）连接基于路径匹配分流，非 Xray\v2ray 的客户端连接回落给 nginx。其应用如下：
+Xray\v2ray 前置（监听443端口），利用 vless+tcp+xtls/tls 强大的回落/分流特性，实现与 WebSocket（WS）类应用共用443端口。合法的 Xray\v2ray 客户端 TCP 连接直连，WebSocket（WS）连接基于路径匹配分流，非 Xray\v2ray 的客户端连接回落给 nginx 处理。其应用如下：
 
 1、E=vless+tcp+xtls/tls（回落/分流配置，TLS由自己提供及处理。）
 
