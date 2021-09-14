@@ -36,4 +36,4 @@
 
 10、配置1：采用端口分流、端口回落\分流、端口转发。配置2：采用进程分流、进程回落\分流、进程转发。配置3：采用进程分流、进程回落\分流、进程转发，且启用了 PROXY protocol。
 
-7、因 v2ray 的 bug，trojan+tcp+tls 应用无法支持 h2 回落，故若使用 v2ray 的 trojan+tcp+tls 应用需删除所有 h2 连接及回落，保留 http/1.1 连接及回落即可。
+11、因 v2ray 的 bug，trojan+tcp+tls 应用无法支持 h2 回落，故若使用 v2ray 的 trojan+tcp+tls 应用需删除所有 h2 连接及回落，保留 http/1.1 连接及回落即可。
