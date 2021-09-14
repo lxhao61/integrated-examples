@@ -1,13 +1,13 @@
 介绍：
 
-本示例配置为 vless+tcp+tls 或 trojan+tcp+tls 应用。Xray\v2ray 服务端前置（监听443端口）处理来自墙内的 HTTPS 请求，如果是合法的 Xray\v2ray 客户端请求，那么为该请求提供服务（科学上网）；否则将已解除 TLS 的流量请求回落（转发）给 WEB 服务器 nginx，由 nginx 为其提供服务。
+本示例配置为 vless+tcp+xtls/tls 或 trojan+tcp+xtls/tls 应用。Xray\v2ray 服务端前置（监听443端口）处理来自墙内的 HTTPS 请求，如果是合法的 Xray\v2ray 客户端请求，那么为该请求提供服务（科学上网）；否则将已解除 TLS 的流量请求回落（转发）给 WEB 服务器 nginx，由 nginx 为其提供服务。
 
 原理：
 
 默认流程：Xray\v2ray client <------ TCP+TLS（HTTPS） ------> Xray\v2ray server  
 回落流程：WEB client <----------------- HTTPS ----------------> Xray\v2ray server <-- 回落 --> nginx（WEB server）
 
-其中 trojan+tcp+tls 应用还实现了兼容原版 trojan，即可使用原版 trojan 客户端连接。
+其中 trojan+tcp+xtls/tls 应用还实现了兼容原版 trojan，即可使用原版 trojan 客户端连接。
 
 注意：
 
@@ -23,4 +23,4 @@
 
 6、配置1：采用端口回落。配置2：采用进程回落。配置3：采用进程回落，且启用了 PROXY protocol。
 
-7、因 v2ray 的 bug，v2ray 的 trojan+tcp+tls 应用无法支持 http/1.1 回落与 h2 回落分开；故若使用 v2ray（或 Xray 的 trojan+tcp+tls 应用的 TLS 模式） 与 nginx，本示例需删除 http/1.1 连接及回落或 h2 连接及回落（二选一）。
+7、因 v2ray 的 bug，trojan+tcp+tls 应用不支持 http/1.1 回落与 h2 回落分开；故若使用 trojan+tcp+tls 回落 nginx 应用，本示例需删除 http/1.1 连接及回落或 h2 连接及回落（二选一）。
