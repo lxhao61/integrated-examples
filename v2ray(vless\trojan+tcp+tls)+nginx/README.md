@@ -23,4 +23,4 @@
 
 6、配置1：采用端口回落。配置2：采用进程回落。配置3：采用进程回落，且启用了 PROXY protocol。
 
-7、因 v2ray 的 bug，trojan+tcp+tls 应用无法支持 http/1.1 回落与 h2 回落分开；故若使用 v2ray 与 nginx，本示例需删除 http/1.1 连接及回落或 h2 连接及回落（二选一）。
+7、因 v2ray 的 bug，v2ray 的 trojan+tcp+tls 应用无法支持 http/1.1 回落与 h2 回落分开；故若使用 v2ray（或 Xray 的 trojan+tcp+tls 应用的 TLS 模式） 与 nginx，本示例需删除 http/1.1 连接及回落或 h2 连接及回落（二选一）。
