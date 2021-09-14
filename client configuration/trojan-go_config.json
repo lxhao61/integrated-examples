@@ -20,7 +20,7 @@
         "keep_alive": true
     },
     "websocket": {
-        "enabled": false, //websocket启用开关，默认关闭（即trojan模式，此情况等同原版trojan使用。）。
+        "enabled": false, //启用websocket开关，默认关闭（即trojan模式，此情况等同原版trojan使用。）。
         "path": "", //取决服务端是否设置路径，否则默认（为空）即可。
         "host": "" //若进行CDN流量中转需设置域名，否则默认（为空）即可。
     },
@@ -29,8 +29,8 @@
         "method": "AES-128-GCM",
         "password": "" //若shadowsocks AEAD加密启用，设置加密密码（必须与服务器设置一致）。
     },
-    "mux": {
-        "enabled": false, //多路复用启用开关。此仅与原版服务端连接可开启，否则不兼容；若设置http/1.1协商连接或传输方式为WebSocket可启用多路复用，否则建议关闭。
+    "mux": { //因兼容性，多路复用仅与原版服务端连接才可启用，否则必须关闭（或删除此部分参数）。
+        "enabled": true, //开启多路复用。若设置http/1.1协商连接或传输方式为WebSocket，建议启用多路复用，否则关闭。
         "concurrency": 4,
         "idle_timeout": 60
     },
