@@ -1,6 +1,6 @@
 介绍：
 
-Xray\v2ray 前置（监听443端口），利用 trojan+tcp+tls/xtls 强大的回落/分流特性及再套娃 trojan+tcp 后回落，实现除 Xray\v2ray 的 KCP 应用外共用443端口。其应用如下：
+Xray\v2ray 前置（监听443端口），利用 vless+tcp+tls/xtls 强大的回落/分流特性及再套娃 trojan+tcp 后回落，实现除 Xray\v2ray 的 KCP 应用外共用443端口。其应用如下：
 
 1、E=vless+tcp+tls/xtls（回落/分流配置，TLS由自己提供及处理。）
 
