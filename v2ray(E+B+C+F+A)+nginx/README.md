@@ -1,14 +1,14 @@
 介绍：
 
-Xray\v2ray 前置（监听443端口），vless+tcp+tls 以 h2 或 http/1.1 自适应协商连接，分流 WebSocket（WS） 连接，其它连接回落给 trojan+tcp，trojan+tcp 处理后再回落给 nginx。其应用如下：
+Xray\v2ray 前置（监听443端口），利用 trojan+tcp+tls/xtls 强大的回落/分流特性及再套娃 trojan+tcp 后回落，实现除 Xray\v2ray 的 KCP 应用外共用443端口。其应用如下：
 
-1、E=vless+tcp+tls（回落/分流配置，TLS由自己提供及处理。）
+1、E=vless+tcp+tls/xtls（回落/分流配置，TLS由自己提供及处理。）
 
-2、B=vless+ws+tls（TLS由vless+tcp+tls提供及处理，不需配置；另可改成或添加其它WS类应用，参考对应的服务端单一应用配置示例。）
+2、B=vless+ws+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置；另可改成或添加其它WS类应用，参考对应的服务端单一应用配置示例。）
 
-3、C=SS+v2ray-plugin+tls（TLS由vless+tcp+tls提供及处理，不需配置。）
+3、C=SS+v2ray-plugin+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置。）
 
-4、F=trojan+tcp+tls（TLS由vless+tcp+tls提供及处理，不需配置。）
+4、F=trojan+tcp+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置。）
 
 5、A=vless+kcp+seed（可改成vmess+kcp+seed，或添加它。）
 
@@ -28,4 +28,4 @@ Xray\v2ray 前置（监听443端口），vless+tcp+tls 以 h2 或 http/1.1 自�
 
 7、配置1：采用端口回落\分流、端口转发。配置2：采用进程回落\分流、端口转发。配置3：采用进程回落\分流、端口转发，且启用了 PROXY protocol。
 
-8、因 v2ray 的 bug，v2ray 的 trojan+tcp+tls 应用无法支持 http/1.1 回落与 h2 回落分开；故若使用 v2ray（或 Xray 的 trojan+tcp+tls 应用的 TLS 模式） 与 nginx，本示例必须删除所有 h2 连接及回落，保留 http/1.1 连接及回落即可（与WS类应用一致）。
+8、因 v2ray 的 bug，trojan+tcp+tls 应用不支持 http/1.1 回落与 h2 回落分开；故若使用 Xray\v2ray（trojan+tcp+tls） 回落 nginx 应用，必须删除本示例中所有 h2 连接及回落配置，保留 http/1.1 连接及回落配置即可（与WS类应用一致）。
