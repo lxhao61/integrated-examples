@@ -1,22 +1,22 @@
 介绍：
 
-Xray\v2ray 前置（监听443端口），利用 vless+tcp+tls 强大的回落/分流特性，实现除 Xray\v2ray 的 KCP 应用外共用443端口。vless+tcp+tls 以 h2 或 http/1.1 自适应协商连接，分流 WebSocket（WS） 连接，其它连接回落给 caddy；caddy 再处理：反向代理 Xray\v2ray 的 WebSocket（WS）、 H2C 及 gRPC，正向代理 naiveproxy 及 trojan-go。包括应用如下：
+Xray\v2ray 前置（监听443端口），利用 vless+tcp+tls/xtls 强大的回落/分流特性及 caddy 为 H2C 与 gRPC 提供反向代理、为 naiveproxy 及 trojan-go 提供正向代理，实现除 Xray\v2ray 的 KCP 应用外共用443端口。其应用如下：
 
-1、E=vless+tcp+tls（回落/分流配置，TLS由自己提供及处理。）
+1、E=vless+tcp+tls/xtls（回落/分流配置，TLS由自己提供及处理。）
 
-2、B=vless+ws+tls（TLS由vless+tcp+tls提供及处理，不需配置；另可改成或添加其它WS类应用，参考对应的服务端单一应用配置示例。）
+2、B=vless+ws+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置；另可改成或添加其它WS类应用，参考对应的服务端单一应用配置示例。）
 
-3、C=SS+v2ray-plugin+tls（TLS由vless+tcp+tls提供及处理，不需配置。）
+3、C=SS+v2ray-plugin+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置。）
 
-4、D=vless+h2c+tls（TLS由vless+tcp+tls提供及处理，不需配置；另可改成或添加其它H2C类应用，参考对应的服务端单一应用配置示例。）
+4、D=vless+h2c+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置；另可改成或添加其它H2C类应用，参考对应的服务端单一应用配置示例。）
 
-5、G=vless+grpc+tls（TLS由vless+tcp+tls提供及处理，不需配置；另可改成或添加其它gRPC类应用，参考对应的服务端单一应用配置示例。）
+5、G=vless+grpc+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置；另可改成或添加其它gRPC类应用，参考对应的服务端单一应用配置示例。）
 
 6、A=vless+kcp+seed（可改成vmess+kcp+seed，或添加它。）
 
-7、naiveproxy（基于caddy的forwardproxy插件实现，TLS由vless+tcp+tls提供及处理，不需配置。）
+7、naiveproxy（基于caddy的forwardproxy插件实现，TLS由vless+tcp+tls/xtls提供及处理，不需配置。）
 
-8、trojan-go（基于caddy的caddy-trojan插件实现，TLS由vless+tcp+tls提供及处理，不需配置。）
+8、trojan-go（基于caddy的caddy-trojan插件实现，TLS由vless+tcp+tls/xtls提供及处理，不需配置。）
 
 注意：
 
