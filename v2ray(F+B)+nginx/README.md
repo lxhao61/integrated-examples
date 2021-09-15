@@ -1,10 +1,10 @@
 介绍：
 
-Xray\v2ray 前置（监听443端口），利用 trojan+tcp+tls 强大的回落/分流特性，实现与 WebSocket（WS）类应用共用443端口。trojan+tcp+tls 以 h2 或 http/1.1 自适应协商连接，分流 WebSocket（WS） 连接，非 Xray\v2ray 的连接回落给 nginx。其应用如下：
+Xray\v2ray 前置（监听443端口），利用 trojan+tcp+tls/xtls 强大的回落/分流特性，实现与 WebSocket（WS）类应用共用443端口。其应用如下：
 
-1、F=trojan+tcp+tls（回落/分流配置，TLS由自己提供及处理。）
+1、F=trojan+tcp+tls/xtls（回落/分流配置，TLS由自己提供及处理。）
 
-2、B=vless+ws+tls（TLS由trojan+tcp+tls提供及处理，不需配置；另可改成或添加其它WS类应用，参考对应的服务端单一应用配置示例。）
+2、B=vless+ws+tls（TLS由trojan+tcp+tls/xtls提供及处理，不需配置；另可改成或添加其它WS类应用，参考对应的服务端单一应用配置示例。）
 
 注意：
 
@@ -20,4 +20,4 @@ Xray\v2ray 前置（监听443端口），利用 trojan+tcp+tls 强大的回落/�
 
 6、配置1：采用端口回落\分流。配置2：采用进程回落\分流。配置3：采用进程回落\分流，且启用了 PROXY protocol。
 
-7、因 v2ray 的 bug，v2ray 的 trojan+tcp+tls 应用无法支持 http/1.1 回落与 h2 回落分开；故若使用 v2ray（或 Xray 的 trojan+tcp+tls 应用的 TLS 模式） 与 nginx，本示例必须删除 h2 连接及回落，保留 http/1.1 连接及回落即可（与WS类应用一致）。
+7、因 v2ray 的 bug，trojan+tcp+tls 应用不支持 http/1.1 回落与 h2 回落分开；故若使用 trojan+tcp+tls 回落 nginx 应用，必须删除本示例中 h2 连接及回落配置，保留 http/1.1 连接及回落配置即可（与WS类应用一致）。
