@@ -1,14 +1,14 @@
 介绍：
 
-利用 nginx 支持 SNI 分流特性，对 Xray\v2ray（vless+tcp+tls）、Xray\v2ray（trojan+tcp+tls）、nginx（HTTP/2 server） 进行 SNI 分流（四层转发），实现除 Xray\v2ray 的 KCP 应用外共用443端口。nginx 同时为 Xray\v2ray（vless+tcp+tls）与 Xray\v2ray（trojan+tcp+tls） 提供回落服务，为 Xray\v2ray 的 gRPC 进行反向代理。包括应用如下：
+利用 nginx 支持 SNI 分流特性，对 Xray\v2ray（vless+tcp+tls） 或 Xray（vless+tcp+xtls）、Xray\v2ray（trojan+tcp+tls） 或 Xray（trojan+tcp+xtls）、nginx（HTTP/2 server） 进行 SNI 分流（四层转发），实现除 Xray\v2ray 的 KCP 应用外共用443端口。nginx 同时为 Xray\v2ray（vless+tcp+tls） 或 Xray（vless+tcp+xtls） 与 Xray\v2ray（trojan+tcp+tls） 或 Xray（trojan+tcp+xtls） 提供回落服务，为 Xray\v2ray 的 gRPC 提供反向代理。包括应用如下：
 
-1、E=vless+tcp+tls（回落/分流配置，TLS由自己提供及处理。）
+1、E=vless+tcp+tls/xtls（回落/分流配置，TLS由自己提供及处理。）
 
-2、B=vless+ws+tls（TLS由vless+tcp+tls提供及处理，不需配置；另可改成或添加其它WS类应用，参考对应的服务端单一应用配置示例。）
+2、B=vless+ws+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置；另可改成或添加其它WS类应用，参考对应的服务端单一应用配置示例。）
 
-3、F=trojan+tcp+tls（回落/分流配置，TLS由自己提供及处理。）
+3、F=trojan+tcp+tls/xtls（回落/分流配置，TLS由自己提供及处理。）
 
-4、C=SS+v2ray-plugin+tls（TLS由trojan+tcp+tls提供及处理，不需配置；另可添加其它WS类应用，参考对应的服务端单一应用配置示例。）
+4、C=SS+v2ray-plugin+tls（TLS由trojan+tcp+tls/xtls提供及处理，不需配置；另可添加其它WS类应用，参考对应的服务端单一应用配置示例。）
 
 5、G=vless+grpc+tls（TLS由nginx提供及处理，不需配置；另可改成或添加其它gRPC类应用，参考对应的服务端单一应用配置示例。）
 
@@ -36,4 +36,4 @@
 
 10、配置1：采用端口分流、端口回落\分流、端口转发。配置2：采用进程分流、进程回落\分流、进程转发。配置3：采用进程分流、进程回落\分流、进程转发，且启用了 PROXY protocol。
 
-11、因 v2ray 的 bug，v2ray 的 trojan+tcp+tls 应用无法支持 http/1.1 回落与 h2 回落分开；故若使用 v2ray（或 Xray 的 trojan+tcp+tls 应用的 TLS 模式） 与 nginx，本示例必须删除对应 h2 连接及回落，保留 http/1.1 连接及回落即可（与WS类应用一致）。
+11、因 v2ray 的 bug，trojan+tcp+tls 应用不支持 http/1.1 回落与 h2 回落分开；故若使用 Xray\v2ray（trojan+tcp+tls） 回落 nginx 应用，必须删除本示例中对应 h2 连接及回落配置，保留 http/1.1 连接及回落配置即可（与WS类应用一致）。
