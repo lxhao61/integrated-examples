@@ -1,12 +1,12 @@
 介绍：
 
-Xray\v2ray 前置（监听443端口），利用 trojan+tcp+tls 强大的回落/分流特性，实现与 WebSocket（WS）类应用及 naiveproxy 应用共用443端口。trojan+tcp+tls 以 h2 或 http/1.1 自适应协商连接，分流 WebSocket（WS） 连接，非 Xray\v2ray 的连接回落给 caddy；若有 naiveproxy 就进行正向代理。其应用如下：
+Xray\v2ray 前置（监听443端口），利用 trojan+tcp+tls/xtls 强大的回落/分流特性，实现与 WebSocket（WS）类应用及 naiveproxy 应用共用443端口。其应用如下：
 
-1、F=trojan+tcp+tls（回落/分流配置，TLS由自己提供及处理。）
+1、F=trojan+tcp+tls/xtls（回落/分流配置，TLS由自己提供及处理。）
 
-2、B=vless+ws+tls（TLS由trojan+tcp+tls提供及处理，不需配置；另可改成或添加其它WS类应用，参考对应的服务端单一应用配置示例。）
+2、B=vless+ws+tls（TLS由trojan+tcp+tls/xtls提供及处理，不需配置；另可改成或添加其它WS类应用，参考对应的服务端单一应用配置示例。）
 
-3、naiveproxy（带有forwardproxy插件的caddy才支持naiveproxy应用，否则仅上边应用。TLS由trojan+tcp+tls提供及处理，不需配置。）
+3、naiveproxy（带有forwardproxy插件的caddy才支持naiveproxy应用，否则仅上边应用。TLS由trojan+tcp+tls/xtls提供及处理，不需配置。）
 
 注意：
 
