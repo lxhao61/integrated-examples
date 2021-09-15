@@ -1,8 +1,8 @@
 {
   "log": {
     "loglevel": "warning",
-    "error": "/var/log/xray/error.log",
-    "access": "/var/log/xray/access.log"
+    "error": "/var/log/xray/error.log", //若使用v2ray，此处目录名称xray改成v2ray。
+    "access": "/var/log/xray/access.log" //若使用v2ray，此处目录名称xray改成v2ray。
   },
   "inbounds": [
     {
@@ -12,7 +12,7 @@
         "clients": [
           {
             "id": "048e0bf2-dd56-11e9-aa37-5600024c1d6a", //修改成自己的UUID
-            "flow": "xtls-rprx-direct", //启用xtls，必须增加此条参数。
+            "flow": "xtls-rprx-direct", //启用xtls，必须增加此条参数；否则删除。v2ray从v4.33.0版开始删除了xtls应用，如要使用此应用，建议选用xray。
             "email": "443@gmail.com"
           }
         ],
@@ -41,8 +41,8 @@
       },
       "streamSettings": {
         "network": "tcp",
-        "security": "xtls",
-        "xtlsSettings": {
+        "security": "xtls", //如启用xtls，tls必须改成xtls；否则恢复tls。
+        "xtlsSettings": { //如启用xtls，tlsSettings必须改成xtlsSettings；否则恢复tlsSettings。
           "alpn":[
             "h2", //启用h2连接，web回落也需配置支持h2回落；否则不一致（裸奔），容易被墙探测出，从而被封。
             "http/1.1" //启用http/1.1连接，web回落也需配置支持http/1.1回落；否则不一致（裸奔），容易被墙探测出，从而被封。
