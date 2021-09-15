@@ -28,4 +28,4 @@ Xray\v2ray 前置（监听443端口），利用 trojan+tcp+tls/xtls 强大的回
 
 7、配置1：采用端口回落\分流、端口转发。配置2：采用进程回落\分流、端口转发。配置3：采用进程回落\分流、端口转发，且启用了 PROXY protocol。
 
-8、因 v2ray 的 bug，trojan+tcp+tls 应用不支持 http/1.1 回落与 h2 回落分开；故若使用 Xray\v2ray（trojan+tcp+tls） 回落 nginx 应用，必须删除本示例中所有 h2 连接及回落配置，保留 http/1.1 连接及回落配置即可（与WS类应用一致）。
+8、因 v2ray 的 bug，trojan+tcp+tls 应用不支持 http/1.1 回落与 h2 回落分开；故若使用 Xray\v2ray（trojan+tcp+tls） 回落 nginx 应用，本示例中仅 http/1.1 连接及回落配置（与WS类应用一致）。
