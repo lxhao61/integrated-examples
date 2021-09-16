@@ -36,4 +36,4 @@
 
 10、配置1：采用端口分流、端口回落/分流、端口转发。配置2：采用进程分流、进程回落/分流、进程转发。配置3：采用进程分流、进程回落/分流、进程转发，且启用了 PROXY protocol。
 
-11、因 v2ray 带来的 bug，无论 v2ray 还是 Xray 的 trojan+tcp+tls 应用都不支持 http/1.1 回落与 h2 回落分开；故若使用 trojan+tcp+tls 回落 nginx 应用，必须删除本示例中对应 h2 连接及回落配置，保留 http/1.1 连接及回落配置即可。（与 WS 类应用 http/1.1 连接保存一致）
+11、因 v2ray 带来的 bug，无论 v2ray 还是 Xray 的 trojan+tcp+tls 应用都不支持 http/1.1 回落与 h2 回落分开；故若使用 trojan+tcp+tls 回落 nginx，且分流 WebSocket（WS），必须删除本示例中 h2 连接及回落配置，保留 http/1.1 连接及回落配置即可。
