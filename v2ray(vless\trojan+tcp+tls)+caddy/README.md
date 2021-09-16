@@ -1,13 +1,13 @@
 介绍：
 
-本示例配置包含 Xray\v2ray（vless+tcp+tls） 或 Xray（vless+tcp+xtls） 与 Xray\v2ray（trojan+tcp+tls） 或 Xray（trojan+tcp+xtls） 应用。Xray\v2ray 服务端前置（监听443端口）处理来自墙内的 HTTPS 请求，如果是合法的 Xray\v2ray 客户端请求，那么为该请求提供服务（科学上网）；否则将已解除 TLS 的流量请求回落（转发）给 WEB 服务器 caddy，由 caddy 为其提供服务。
+本示例配置包含 Xray（vless+tcp+xtls） 或 Xray\v2ray（vless+tcp+tls） 与 Xray（trojan+tcp+xtls） 或 Xray\v2ray（trojan+tcp+tls） 应用。Xray\v2ray 服务端前置（监听443端口）处理来自墙内的 HTTPS 请求，如果是合法的 Xray\v2ray 客户端请求，那么为该请求提供服务（科学上网）；否则将已解除 TLS 的流量请求回落（转发）给 WEB 服务器 caddy，由 caddy 为其提供服务。
 
 原理：
 
 默认流程：Xray\v2ray client <------ TCP+TLS（HTTPS） ------> Xray\v2ray server  
 回落流程：WEB client <----------------- HTTPS ----------------> Xray\v2ray server <-- 回落 --> caddy（WEB server）
 
-其中 Xray\v2ray（trojan+tcp+tls） 或 Xray（trojan+tcp+xtls） 应用还实现了兼容原版 trojan，即可使用原版 trojan 客户端连接。 
+其中 Xray（trojan+tcp+xtls） 或 Xray\v2ray（trojan+tcp+tls） 应用还实现了兼容原版 trojan，即可使用原版 trojan 客户端连接。
 
 注意：
 
