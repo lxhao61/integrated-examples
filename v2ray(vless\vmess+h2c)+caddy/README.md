@@ -5,7 +5,7 @@
 原理：
 
 默认流程：WEB client <----------- HTTPS（HTTP/2） ----------> caddy（WEB server）  
-匹配流程：Xray\v2ray client <----- H2C+TLS（HTTP/2） ------> caddy <-- H2C --> Xray\v2ray server
+匹配流程：Xray/\v2ray client <----- H2C+TLS（HTTP/2） ------> caddy <-- H2C --> Xray/v2ray server
 
 注意：
 
@@ -13,4 +13,4 @@
 
 2、本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。支持自动 HTTPS，即自动申请与更新证书与私钥，自动 HTTP 重定向到 HTTPS。
 
-3、nginx 不支持 H2C proxy，故不能用 nginx 来实现 Xray\v2ray 的 H2C 反向代理。
+3、nginx 不支持 H2C proxy，故不能用 nginx 来实现 Xray 或 v2ray 的 H2C 反向代理。
