@@ -1,6 +1,6 @@
 介绍：
 
-本示例配置为 trojan-go 或 trojan 应用。trojan-go 或 trojan 服务端前置（监听443端口）处理来自墙内的 HTTPS 请求，如果是合法的 trojan-go 或 trojan 客户端请求，那么为该请求提供服务（科学上网）；否则将已解除 TLS 的流量请求回落（转发）给 WEB 服务器 caddy，由 caddy 为其提供服务。
+本示例配置为 trojan-go 或 trojan 应用。trojan-go 或 trojan 服务端前置（监听 443 端口）处理来自墙内的 HTTPS 请求，如果是合法的 trojan-go 或 trojan 客户端请求，那么为该请求提供服务（科学上网）；否则将已解除 TLS 的流量请求回落（转发）给 WEB 服务器 caddy，由 caddy 为其提供服务。
 
 原理：
 
