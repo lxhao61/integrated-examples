@@ -26,4 +26,4 @@ Xray 前置（监听 443 端口），利用 trojan+tcp+xtls 强大的回落/分�
 
 6、配置1：采用端口回落\分流、端口转发。配置2：采用进程回落\分流、进程转发。配置3：采用进程回落\分流、进程转发，且启用了 PROXY protocol。
 
-7、因 v2ray 带来的 bug，无论 v2ray 还是 Xray 的 trojan+tcp+tls 应用都不支持 http/1.1 回落与 h2 回落分开；故若使用 trojan+tcp+tls 回落 nginx 应用，无法兼顾 http/1.1 回落与 h2 回落两部分，而 本示例同时存在 WS 类应用与 gRPC 类应用，故只能使用 Xray 的 trojan+tcp+xtls 回落 nginx 应用。另外本示例若删除 WS 类应用或 gRPC 类应用（不同时存在），可使用 trojan+tcp+tls 回落 nginx 应用。
+7、因 v2ray 带来的 bug，无论 v2ray 还是 Xray 的 trojan+tcp+tls 应用都不支持 http/1.1 回落与 h2 回落分开；故若使用 trojan+tcp+tls 回落 nginx 应用，回落无法同时支持 http/1.1 回落与 h2 回落，即无法同时支持 WS 类应用与 gRPC 类应用，故本示例只能使用 Xray 的 trojan+tcp+xtls 回落 nginx 应用。另外本示例若删除 WS 类应用或 gRPC 类应用（不同时存在），可使用 trojan+tcp+tls 回落 nginx 应用。
