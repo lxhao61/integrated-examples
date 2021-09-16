@@ -1,6 +1,6 @@
 介绍：
 
-利用 caddy 支持 SNI 分流特性，对 vless+tcp+xtls 或 vless+tcp+tls、trojan+tcp+xtls 或 trojan+tcp+tls、HTTPS server 进行 SNI 分流（四层转发），实现除 Xray 或 v2ray 的 KCP 应用外共用 443 端口。另外 caddy 同时为 vless+tcp+xtls 或 vless+tcp+tls 与 trojan+tcp+xtls 或 trojan+tcp+tls 提供回落服务，为 Xray\v2ray 的 H2C 与 gRPC 进行反向代理，为 naiveproxy 提供正向代理。包括应用如下：
+利用 caddy 支持 SNI 分流特性，对 vless+tcp+xtls 或 vless+tcp+tls、trojan+tcp+xtls 或 trojan+tcp+tls、HTTPS server 进行 SNI 分流（四层转发），实现除 Xray 或 v2ray 的 KCP 应用外共用 443 端口。另外 caddy 同时为 vless+tcp+xtls 或 vless+tcp+tls 与 trojan+tcp+xtls 或 trojan+tcp+tls 提供回落服务，为 Xray 或 v2ray 的 H2C 与 gRPC 进行反向代理，为 naiveproxy 提供正向代理。包括应用如下：
 
 1、E=vless+tcp+xtls/tls（回落/分流配置，TLS由自己提供及处理。）
 
