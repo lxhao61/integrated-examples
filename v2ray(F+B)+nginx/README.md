@@ -1,10 +1,10 @@
 介绍：
 
-Xray\v2ray 前置（监听443端口），利用 trojan+tcp+tls/xtls 强大的回落/分流特性，实现与 WebSocket（WS）类应用共用443端口。其应用如下：
+Xray 或 v2ray 前置（监听 443 端口），利用 trojan+tcp+xtls 或 trojan+tcp+tls 强大的回落/分流特性，实现与 WebSocket（WS）类应用共用 443 端口。其应用如下：
 
-1、F=trojan+tcp+tls/xtls（回落/分流配置，TLS由自己提供及处理。）
+1、F=trojan+tcp+xtls/tls（回落/分流配置，TLS由自己提供及处理。）
 
-2、B=vless+ws+tls（TLS由trojan+tcp+tls/xtls提供及处理，不需配置；另可改成或添加其它WS类应用，参考对应的服务端单一应用配置示例。）
+2、B=vless+ws+tls（TLS由trojan+tcp+xtls/tls提供及处理，不需配置。另可改、可增其它WS类应用，参考对应的服务端单一应用配置示例。）
 
 注意：
 
@@ -16,8 +16,8 @@ Xray\v2ray 前置（监听443端口），利用 trojan+tcp+tls/xtls 强大的回
 
 4、nginx 支持 H2C server，但不支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）；故回落配置就必须分成 http/1.1 回落与 h2 回落两部分，以便分别对应 nginx 的 HTTP/1.1 server 与 H2C server。
 
-5、不要使用 ACME 客户端在当前服务器上申请与更新普通证书及密钥，因普通证书及密钥申请与更新需要占用或监听80端口（或443端口），从而与当前应用端口冲突。
+5、不要使用 ACME 客户端在当前服务器上申请与更新普通证书及密钥，因普通证书及密钥申请与更新需要监听 80 端口（或 443 端口），从而与当前应用端口冲突。
 
-6、配置1：采用端口回落\分流。配置2：采用进程回落\分流。配置3：采用进程回落\分流，且启用了 PROXY protocol。
+6、配置1：采用端口回落/分流。配置2：采用进程回落/分流。配置3：采用进程回落/分流，且启用了 PROXY protocol。
 
-7、因 v2ray 的 bug，trojan+tcp+tls 应用不支持 http/1.1 回落与 h2 回落分开；故若使用 Xray\v2ray（trojan+tcp+tls） 回落 nginx 应用，必须删除本示例中 h2 连接及回落配置，保留 http/1.1 连接及回落配置即可（与WS类应用一致）。
+7、因 v2ray 带来的 bug，无论 v2ray 还是 Xray 的 trojan+tcp+tls 应用都不支持 http/1.1 回落与 h2 回落分开；故若使用 trojan+tcp+tls 回落 nginx 应用，必须删除本示例中 h2 连接及回落配置，保留 http/1.1 连接及回落配置即可。（与WS类应用保存一致）
