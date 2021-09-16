@@ -1,4 +1,4 @@
-一、回落后由caddy分流到不同网站的配置方法
+一、回落后由 caddy 分流到不同网站的配置方法
 
 此方法解决 Xray 或 v2ray 前置监听443后，不影响原来 caddy 前置时不同域名访问不同网站问题。见 shunt_caddy.json 或 shunt_Caddyfile 配置。
 
@@ -28,7 +28,7 @@
 
 1、以 DNS challenge 方式申请证书及密钥，普通证书与通配符证书都可以申请，不受限制。
 
-2、Xray/v2ray/trojan-go/trojan 可以直接使用 caddy 申请的证书及密钥，配合Xray（版本必须不低于v1.3.0）自动重载证书及密钥（OCSP Stapling），可实现示例所需证书及密钥申请与更新全自动化；否则 Xray/v2ray/trojan-go/trojan 服务端（Xray 版本低于 v1.3.0）不支持重载证书及密钥，caddy 证书及密钥到期更新后需手动重启 Xray/v2ray/trojan-go/trojan 来重新加载更新的证书及密钥。
+2、Xray、v2ray、trojan-go、trojan 可以直接使用 caddy 申请的证书及密钥，配合Xray（版本必须不低于v1.3.0）自动重载证书及密钥（OCSP Stapling），可实现示例所需证书及密钥申请与更新全自动化；否则 Xray、v2ray、trojan-go、trojan 服务端（Xray 版本低于 v1.3.0）不支持重载证书及密钥，caddy 证书及密钥到期更新后需手动重启 Xray、v2ray、trojan-go、trojan 来重新加载更新的证书及密钥。
 
 注意：
 
