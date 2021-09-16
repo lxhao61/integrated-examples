@@ -22,7 +22,7 @@ Xray 或 v2ray 前置（监听 443 端口），利用 vless+tcp+xtls 或 vless+t
 
 4、nginx 支持 H2C server，但不支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）；故回落配置就必须分成 http/1.1 回落与 h2 回落两部分，以便分别对应 nginx 的 HTTP/1.1 server 与 H2C server。
 
-5、此方法采用的是套娃方式实现共用 443 端口，支持 vless+tcp+tls 与 trojan+tcp+tls 完美共存，且仅需要一个域名及普通证书即可搞定，但 trojan+tcp+tls 不支持 xtls 应用。
+5、采用套娃方式实现共用 443 端口，仅需要一个域名及普通证书即可搞定，但套娃 trojan+tcp 不支持 xtls 应用。
 
 6、不要使用 ACME 客户端在当前服务器上申请与更新普通证书及密钥，因普通证书及密钥申请与更新需要监听 80 端口（或 443 端口），从而与当前应用端口冲突。
 
