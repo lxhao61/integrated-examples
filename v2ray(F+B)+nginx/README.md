@@ -1,6 +1,6 @@
 介绍：
 
-Xray 或 v2ray 前置（监听 443 端口），利用 trojan+tcp+xtls 或 trojan+tcp+tls 强大的回落/分流特性，实现与 WebSocket（WS）类应用共用 443 端口。其应用如下：
+Xray 或 v2ray 前置（监听 443 端口），利用 trojan+tcp+xtls 或 trojan+tcp+tls 强大的回落/分流 WebSocket（WS） 特性，实现与 WebSocket（WS） 类应用共用 443 端口。其应用如下：
 
 1、F=trojan+tcp+xtls/tls（回落/分流配置，TLS由自己提供及处理。）
 
