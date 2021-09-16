@@ -1,4 +1,4 @@
-一、Xray\v2ray 禁用 BT 的配置方法
+一、Xray 或 v2ray 禁用 BT 的配置方法
 
 注意：
 
@@ -20,19 +20,19 @@
 
 4、也可以用 nginx SNI、haproxy SNI、caddy 分流（SNI或host分流） 等分流来解决问题（不同方法，达到相同效果。），相关分流见各自配置示例。
 
-三、Xray\v2ray SNI 分流的配置方法
+三、Xray 或 v2ray SNI 分流的配置方法
 
-此方法也可以解决 Xray\v2ray 应用与网站应用（原网站不想做回落网站，或 nginx\caddy 等有多个网站应用。）共用443端口问题。
+此方法也可以解决 Xray 或 v2ray 应用与网站应用（原网站不想做回落网站，或 nginx、caddy 等有多个网站应用。）共用 443 端口问题。
 
 注意：
 
-1、Xray\v2ray SNI 分流不支持 PROXY protocol 发送。
+1、Xray 或 v2ray SNI 分流不支持 PROXY protocol 发送。
 
 2、1_SNI_config.json 分流采用 Local Loopback 连接，实现转发端口（域名）的分流，简称 v2ray SNI 的端口分流。端口分流配置虽然效率稍低，但可适用任意系统服务器。
 
 3、2_SNI_config.json 分流采用 Unix Domain Socket 连接，实现转发进程（域名）的分流，简称 v2ray SNI 的进程分流。进程分流配置效率高，但在 Windows 10 Build 17036 之前版本不可用。
 
-4、原 Xray\v2ray SNI 分流示例已被其它 SNI 分流示例优势替代，此配置仅备份及参考等。
+4、原 Xray 或 v2ray SNI 分流示例已被其它 SNI 分流示例优势替代，此配置仅备份及参考等。
 
 四、v2ray 流量统计的配置方法
 
