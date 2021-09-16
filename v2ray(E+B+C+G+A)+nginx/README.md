@@ -1,14 +1,14 @@
 介绍：
 
-Xray\v2ray 前置（监听443端口），利用 vless+tcp+tls/xtls 强大的回落/分流特性及 nginx 为 gRPC 提供反向代理，实现除 Xray\v2ray 的 KCP 应用外共用443端口。其应用如下：
+Xray 或 v2ray 前置（监听 443 端口），利用 vless+tcp+xtls 或 vless+tcp+tls 强大的回落/分流 WebSocket（WS）特性与 nginx 为 gRPC 提供反向代理，实现除 Xray 或 v2ray 的 KCP 应用外共用 443 端口。其应用如下：
 
-1、E=vless+tcp+tls/xtls（回落/分流配置，TLS由自己提供及处理。）
+1、E=vless+tcp+xtls/tls（回落/分流配置，TLS由自己提供及处理。）
 
-2、B=vless+ws+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置；另可改成或添加其它WS类应用，参考对应的服务端单一应用配置示例。）
+2、B=vless+ws+tls（TLS由vless+tcp+xtls/tls提供及处理，不需配置。另可改、可增其它WS类应用，参考对应的服务端单一应用配置示例。）
 
-3、C=SS+v2ray-plugin+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置。）
+3、C=SS+v2ray-plugin+tls（TLS由vless+tcp+xtls/tls提供及处理，不需配置。）
 
-4、G=vless+grpc+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置；另可改成或添加其它gRPC类应用，参考对应的服务端单一应用配置示例。）
+4、G=vless+grpc+tls（TLS由vless+tcp+xtls/tls提供及处理，不需配置。另可改、可增其它gRPC类应用，参考对应的服务端单一应用配置示例。）
 
 5、A=vless+kcp+seed（可改成vmess+kcp+seed，或添加它。）
 
@@ -24,4 +24,4 @@ Xray\v2ray 前置（监听443端口），利用 vless+tcp+tls/xtls 强大的回�
 
 5、不要使用 ACME 客户端在当前服务器上申请与更新普通证书及密钥，因普通证书及密钥申请与更新需要占用或监听80端口（或443端口），从而与当前应用端口冲突。
 
-6、配置1：采用端口回落\分流、端口转发。配置2：采用进程回落\分流、进程转发。配置3：采用进程回落\分流、进程转发，且启用了 PROXY protocol。
+6、配置1：采用端口回落/分流、端口转发。配置2：采用进程回落/分流、进程转发。配置3：采用进程回落/分流、进程转发，且启用了 PROXY protocol。
