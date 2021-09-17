@@ -1,6 +1,6 @@
 介绍：
 
-利用 caddy 支持 SNI 分流特性，对 vless+tcp+xtls 或 vless+tcp+tls、trojan+tcp+xtls 或 trojan+tcp+tls、HTTPS server 进行 SNI 分流（四层转发），实现除 Xray 或 v2ray 的 KCP 应用外共用 443 端口。另外 caddy 同时为 vless+tcp+xtls 或 vless+tcp+tls 与 trojan+tcp+xtls 或 trojan+tcp+tls 提供回落服务，为 Xray 或 v2ray 的 H2C 与 gRPC 进行反向代理，为 naiveproxy 提供正向代理。包括应用如下：
+利用 caddy 支持 SNI 分流特性，对 vless+tcp+xtls 或 vless+tcp+tls、trojan+tcp+xtls 或 trojan+tcp+tls、HTTPS server 进行 SNI 分流（四层转发），实现除 Xray 或 v2ray 的 KCP 应用外共用 443 端口。其中 vless+tcp+xtls 或 vless+tcp+tls、trojan+tcp+xtls 或 trojan+tcp+tls 为 WebSocket（WS） 提供分流转发；caddy 同时为 vless+tcp+xtls 或 vless+tcp+tls 与 trojan+tcp+xtls 或 trojan+tcp+tls 提供回落服务，为 Xray 或 v2ray 的 H2C 与 gRPC 进行反向代理，为 naiveproxy 提供正向代理。包括应用如下：
 
 1、E=vless+tcp+xtls/tls（回落/分流配置，TLS由自己提供及处理。）
 
@@ -30,7 +30,7 @@
 
 5、caddy 加 caddy-l4 插件定制编译的才可以实现 SNI 分流，目前仅支持使用 json 配置。
 
-6、使用本人 Releases 中编译好的 caddy 文件，可同时支持SNI 分流、H2C server、H2C proxy、naiveproxy 及 PROXY protocol 接收等应用。
+6、使用本人 Releases 中编译好的 caddy 文件，可同时支持SNI 分流、H2C server、H2C proxy、naiveproxy 及接收 PROXY protocol 等应用。
 
 7、本示例中 naiveproxy 仅支持 HTTP/2 代理应用，即 HTTPS 协议传输。
 
