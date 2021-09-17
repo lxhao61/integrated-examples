@@ -1,6 +1,6 @@
 介绍：
 
-利用 nginx 支持 SNI 分流特性，对 vless+tcp+xtls 或 vless+tcp+tls、trojan-go 或 trojan、HTTP/2 server 进行 SNI 分流（四层转发），实现除 Xray 或 v2ray 的 KCP 应用外共用 443 端口。另外 nginx 同时为 vless+tcp+xtls 或 vless+tcp+tls 与 trojan-go 或 trojan 提供回落服务，为 Xray 或 v2ray 的 gRPC 提供反向代理。包括应用如下：
+利用 nginx 支持 SNI 分流特性，对 vless+tcp+xtls 或 vless+tcp+tls、trojan-go 或 trojan、HTTP/2 server 进行 SNI 分流（四层转发），实现除 Xray 或 v2ray 的 KCP 应用外共用 443 端口。其中 vless+tcp+xtls 或 vless+tcp+tls 为 WebSocket（WS） 提供分流转发；nginx 同时为 vless+tcp+xtls 或 vless+tcp+tls 与 trojan-go 或 trojan 提供回落服务，为 Xray 或 v2ray 的 gRPC 提供反向代理。包括应用如下：
 
 1、E=vless+tcp+xtls/tls（回落/分流配置，TLS由自己提供及处理。）
 
@@ -24,7 +24,7 @@
 
 4、nginx 支持 TLSv1.3，需要 nginx 包含版本大于 1.1.1 的 OpenSSl 库和 http_ssl_module 模块。
 
-5、nginx 支持 PROXY protocol 接收，需要 nginx 包含 http_realip_module 及 stream_realip_module（可选）模块。
+5、nginx 支持 HTTP 功能接收 PROXY protocol，需要 nginx 包含 http_realip_module 模块。
 
 6、nginx 支持 H2C server，但不支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）；故回落配置就必须分成 http/1.1 回落与 h2 回落两部分，以便分别对应 nginx 的 HTTP/1.1 server 与 H2C server。
 
