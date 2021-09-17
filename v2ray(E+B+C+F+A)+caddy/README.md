@@ -20,7 +20,7 @@ Xray 或 v2ray 前置（监听 443 端口），利用 vless+tcp+xtls 或 vless+t
 
 3、caddy 支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）。
 
-4、caddy 发行版不支持 PROXY protocol 接收。如要支持 PROXY protocol 接收需选 caddy2-proxyprotocol 插件定制编译，或下载本人 Releases 中编译好的 caddy 来使用即可。
+4、caddy 发行版不支持接收 PROXY protocol。如要支持接收 PROXY protocol 需选 caddy2-proxyprotocol 插件定制编译，或下载本人 Releases 中编译好的 caddy 来使用即可。
 
 5、采用套娃方式实现共用 443 端口，仅需要一个域名及普通证书即可搞定，但套娃 trojan+tcp 不支持 XTLS 应用。
 
