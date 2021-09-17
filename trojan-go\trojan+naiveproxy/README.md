@@ -4,7 +4,7 @@
 
 1、trojan-go/trojan（回落配置，TLS由自己提供及处理。）
 
-2、naiveproxy（带有forwardproxy插件的caddy才支持naiveproxy应用。TLS由trojan-go\trojan提供及处理，不需配置。）
+2、naiveproxy（带有forwardproxy插件的caddy才支持naiveproxy应用。TLS由trojan-go/trojan提供及处理，不需配置。）
 
 注意：
 
