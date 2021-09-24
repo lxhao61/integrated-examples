@@ -28,4 +28,4 @@ Xray 或 v2ray 前置（监听 443 端口），利用 vless+tcp+xtls 或 vless+t
 
 7、配置1：采用端口回落/分流、端口转发。配置2：采用进程回落/分流、端口转发。配置3：采用进程回落/分流、端口转发，且启用了 PROXY protocol。
 
-8、因 v2ray 带来的 bug，无论 v2ray 还是 Xray 的 trojan+tcp+tls 应用都不支持 http/1.1 回落与 h2 回落分开；故若使用套娃 trojan+tcp 回落 nginx，且分流 WebSocket（WS），必须删除本示例中 h2 连接及回落配置，保留 http/1.1 连接及回落配置即可。
+8、套娃不支持 http/1.1 回落与 h2 回落分开（即 fallbacks 中 "alpn" 无效）；故使用套娃 trojan+tcp 回落 nginx，仅使用 h2 连接及回落配置。
