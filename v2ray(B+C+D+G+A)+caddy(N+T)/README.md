@@ -4,7 +4,7 @@
 
 1、B=vless+ws+tls（TLS由caddy提供及处理，不需配置。另可改、可增其它WS类应用，参考对应的服务端单一应用配置示例。）
 
-2、C=SS+v2ray-plugin+tls（TLS由caddy提供及处理，不需配置。）
+2、C=shadowsocks+xray-plugin/v2ray-plugin+tls（TLS由caddy提供及处理，不需配置。）
 
 3、D=vless+h2c+tls（TLS由caddy提供及处理，不需配置。另可改、可增其它H2C类应用，参考对应的服务端单一应用配置示例。）
 
