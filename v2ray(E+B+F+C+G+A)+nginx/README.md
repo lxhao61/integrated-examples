@@ -8,7 +8,7 @@
 
 3、F=trojan+tcp+xtls/tls（回落/分流配置，TLS由自己提供及处理。）
 
-4、C=SS+v2ray-plugin+tls（TLS由trojan+tcp+xtls/tls提供及处理，不需配置。另可改、可增其它WS类应用，参考对应的服务端单一应用配置示例。）
+4、C=shadowsocks+xray-plugin/v2ray-plugin+tls（TLS由trojan+tcp+xtls/tls提供及处理，不需配置。另可改、可增其它WS类应用，参考对应的服务端单一应用配置示例。）
 
 5、G=vless+grpc+tls（TLS由nginx提供及处理，不需配置。另可改、可增其它gRPC类应用，参考对应的服务端单一应用配置示例。）
 
