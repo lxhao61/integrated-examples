@@ -16,9 +16,9 @@
 
 注意：
 
-1、v2ray 版本不小于 v4.31.0 才支持 trojan 协议。
+1、Xray 版本不小于 v1.4.0 才支持 gRPC 传输方式。
 
-2、Xray 版本不小于 v1.4.0 或 v2ray 版本不小于v4.36.2，才支持 gRPC 传输方式。
+2、v2ray 版本不小于 v4.42.3 才完美支持 trojan 协议（修复了 fallback alpn 无效问题）。
 
 3、nginx 支持 SNI 分流，需要 nginx 包含 stream_core_module 和 stream_ssl_preread_module 模块。
 
@@ -35,5 +35,3 @@
 9、不要使用 ACME 客户端在当前服务器上申请与更新普通证书及密钥，因普通证书及密钥申请与更新需监听 80 端口（或 443 端口），从而与当前应用端口冲突。
 
 10、配置1：采用端口分流、端口回落/分流、端口转发。配置2：采用进程分流、进程回落/分流、进程转发。配置3：采用进程分流、进程回落/分流、进程转发，且启用了 PROXY protocol。
-
-11、因 v2ray 带来的 bug，无论 v2ray 还是 Xray 的 trojan+tcp+tls 应用都不支持 http/1.1 回落与 h2 回落分开；故若使用 trojan+tcp+tls 回落 nginx，且分流 WebSocket（WS），必须删除本示例中 h2 连接及回落配置，保留 http/1.1 连接及回落配置即可。
