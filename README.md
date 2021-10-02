@@ -84,7 +84,7 @@
 7. caddy插件单一应用简记：N=naiveproxy(caddy+forwardproxy)、T=trojan-go(caddy+caddy-trojan)。
 8. trojan-go安卓客户端可以去本人Releases中下载。
 9. v2ray v4.42.3 版（[修复了trojan fallback，alpn 无效问题。](https://github.com/v2fly/v2ray-core/pull/1286)）还没有发行，若目前需要可去v2ray源码下载[测试版](https://github.com/v2fly/v2ray-core/actions/workflows/build-v2ray-core.yml)。
-10. [因 Xray 没有修复继承于 v2ray 的 trojan fallback，alpn 无效问题](https://github.com/XTLS/Xray-core/pull/742)；故若使用 trojan 回落类似 nginx 的 WEB 服务器，不要使用TLS 模式（即 trojan+tcp+tls 回落应用），仅使用 XTLS 模式（即 trojan+tcp+Xtls 回落应用）即可；否则无法正常回落。
+10. [因 Xray 没有修复继承于 v2ray 的 trojan fallback，alpn 无效问题](https://github.com/XTLS/Xray-core/pull/742)；故若使用 trojan 回落类似 nginx 的 WEB 服务器，不要使用TLS 模式（即 trojan+tcp+tls 回落应用），仅使用 XTLS 模式（即 trojan+tcp+xtls 回落应用）即可；否则无法正常回落。
 
 ### 服务端特殊应用配置示例
 1. [v2ray(other configuration)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(other%20configuration)) （Xray或v2ray的特殊应用配置方法。）
