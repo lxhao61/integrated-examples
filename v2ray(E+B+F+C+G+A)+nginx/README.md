@@ -18,7 +18,7 @@
 
 1、Xray 版本不小于 v1.4.0 才支持 gRPC 传输方式。
 
-2、v2ray 版本不小于 v4.42.3 才完美支持 trojan 协议（修复了 trojan fallback，alpn 无效问题。）。
+2、v2ray 版本不小于 v4.42.3 才完美支持 trojan 协议。
 
 3、nginx 支持 SNI 分流，需要 nginx 包含 stream_core_module 和 stream_ssl_preread_module 模块。
 
