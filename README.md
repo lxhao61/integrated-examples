@@ -69,9 +69,9 @@
 ---
 1. [v2ray(E+B+C+D+G+A)+trojan+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BD%2BG%2BA)%2Btrojan%2Bnaiveproxy) （以caddy SNI兼顾trojan-go或trojan加naiveproxy的综合应用。）
 #### &emsp;用nginx或haproxy SNI分流兼顾各方优势的综合应用。
-1. [v2ray(E+B+C+D+G+A)+trojan+naiveproxy+nginx\haproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BD%2BG%2BA)%2Btrojan%2Bnaiveproxy%2Bnginx%5Chaproxy) （兼顾除trojan的Xray/v2ray、trojan-go/trojan、caddy的naiveproxy的优势应用。）
+1. [v2ray(E+B+C+D+G+A)+trojan+naiveproxy+nginx\haproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BD%2BG%2BA)%2Btrojan%2Bnaiveproxy%2Bnginx%5Chaproxy) （兼顾除trojan外的Xray/v2ray、trojan-go/trojan、caddy的naiveproxy的优势应用。）
 ---
-1. [v2ray(E+B+C+D+G+A)+caddy(N+T)+nginx\haproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BD%2BG%2BA)%2Bcaddy(N%2BT)%2Bnginx%5Chaproxy) （兼顾除trojan的Xray/v2ray、caddy的naiveproxy与trojian-go的优势应用。）
+1. [v2ray(E+B+C+D+G+A)+caddy(N+T)+nginx\haproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BD%2BG%2BA)%2Bcaddy(N%2BT)%2Bnginx%5Chaproxy) （兼顾除trojan外的Xray/v2ray、caddy的naiveproxy与trojian-go的优势应用。）
 ---
 1. [v2ray(E+B+F+C+D+G+A)+naiveproxy+nginx\haproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BF%2BC%2BD%2BG%2BA)%2Bnaiveproxy%2Bnginx%5Chaproxy) （兼顾Xray/v2ray、caddy的naiveproxy的优势应用。）
 #### &emsp;注意（以上所有实例）:
