@@ -16,8 +16,8 @@
   "apps": {
     "http": {
       "servers": {
-        "naive": {
-          "listen": [":443"], //监听端口
+        "https": {
+          "listen": [":443"], //https默认监听端口
           "routes": [{
             "handle": [{
               "handler": "forward_proxy",
