@@ -16,7 +16,7 @@
   "apps": {
     "http": {
       "servers": {
-        "trojan": {
+        "https": {
           "listen": [":443"], //https默认监听端口
           "listener_wrappers": [{
             "wrapper": "trojan" //caddy-trojan插件应用必须配置
