@@ -16,7 +16,7 @@ Xray 或 v2ray 前置（监听 443 端口），利用 trojan+tcp+xtls 或 trojan
 
 1、Xray 版本不小于 v1.4.0 才支持 gRPC 传输方式。
 
-2、v2ray 版本不小于 v4.43.0 才完美支持 trojan 协议。
+2、v2ray 版本不小于 v4.43.0 才完美支持 trojan 协议。Xray 版本不小于 v1.5.0 才完美支持 TLS 模式下 trojan 协议。
 
 3、nginx 支持 H2C server 及 gRPC proxy，需要 nginx 包含 http_v2_module 模块。
 
