@@ -17,7 +17,7 @@
 
 4、因 trojan-go 或 trojan 不支持 PROXY protocol，故回落不能启用此项应用。
 
-5、因 trojan-go 目前不支持 http/1.1 回落与 h2 回落分开，故 trojan-go 开启 Websocket 支持后只能选 http/1.1 连接及 http/1.1 回落。
+5、因 trojan-go 目前不支持 http/1.1 回落与 h2 回落分开，故 trojan-go 开启 Websocket 支持后只选 http/1.1 连接及 http/1.1 回落。
 
 6、trojan-go 完全兼容 trojan，服务端还有自己的特色：支持 trojan 应用与自己的 Websocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)；支持使用 AEAD 对 trojan 协议流量进行二次加密(基于 Shadowsocks AEAD)。
 
