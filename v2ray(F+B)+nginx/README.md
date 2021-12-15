@@ -8,7 +8,7 @@ Xray 或 v2ray 前置（监听 443 端口），利用 trojan+tcp+tls 或 trojan+
 
 注意：
 
-1、v2ray 版本不小于 v4.43.0 才完美支持 trojan 协议。Xray 版本不小于 [v1.5.0+](https://github.com/XTLS/Xray-core/actions/workflows/release.yml) 才完美支持 TLS 模式下 trojan 协议。
+1、v2ray 版本不小于 v4.43.0 才完美支持 trojan 协议。Xray 版本不小于 v1.5.1 才完美支持 TLS 模式下 trojan 协议。
 
 2、nginx 支持 H2C server，需要 nginx 包含 http_v2_module 模块。
 
