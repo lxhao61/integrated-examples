@@ -26,7 +26,6 @@
             "users": [
               {
                 "id": "058e0bf3-dd56-11e9-aa37-5600024c1d6a", //改成服务端配置的对应UUID
-                "alterId": 0, //为0启用VMessAEAD；如服务器端开启才实际启用，否则实际不启用。如服务器端大于0（即关闭VMessAEAD的），此处数字要与服务器端一致。
                 "security": "auto"
               }
             ]
