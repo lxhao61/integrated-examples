@@ -12,7 +12,6 @@
         "clients": [
           {
             "id": "058e0bf3-dd56-11e9-aa37-5600024c1d6a", //更改为自己的UUID
-            "alterId": 0, //为0启用VMessAEAD，大于0关闭VMessAEAD。
             "email": "2009@gmail.com"
           }
         ],
