@@ -1,6 +1,6 @@
 介绍：
 
-利用 caddy 或 nginx 支持 gRPC 反向代理，实现 trojan+grpc+tls 反向代理应用，TLS 由 caddy 或 nginx 提供及处理。
+利用 caddy 或 nginx 支持 gRPC 代理，实现 trojan+grpc+tls 反向代理应用，TLS 由 caddy 或 nginx 提供及处理。
 
 原理：
 
