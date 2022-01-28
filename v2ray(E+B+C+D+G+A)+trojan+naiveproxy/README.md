@@ -20,29 +20,29 @@
 
 注意：
 
-1、Xray 版本不小于 v1.4.0 或 v2ray 版本不小于v4.36.2，才支持 gRPC 传输方式。
+1、caddy 加 caddy-l4 插件定制编译的才可以实现 SNI 分流，目前仅支持使用 json 配置。
 
-2、caddy 版本不小于 v2.2.0-rc.1 才支持 H2C proxy，即支持 Xray 或 v2ray 的 H2C（gRPC） 反向代理。
+2、采用 SNI 方式实现共用 443 端口，支持各自特色应用，但需多个域名来标记分流。
 
-3、caddy 支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）。
+3、Xray 版本不小于 v1.4.0 或 v2ray 版本不小于v4.36.2，才支持 gRPC 传输方式。
 
-4、caddy 加 caddy-l4 插件定制编译的才可以实现 SNI 分流，目前仅支持使用 json 配置。
+4、caddy 版本不小于 v2.2.0-rc.1 才支持 H2C proxy，即支持 Xray 或 v2ray 的 H2C（gRPC） 反向代理。
 
-5、使用本人 Releases 中编译好的 caddy 文件，可同时支持 SNI 分流、H2C server、H2C proxy、naiveproxy 及接收 PROXY protocol 等应用。
+5、caddy 支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）。
 
-6、本示例中 naiveproxy 仅支持 HTTP/2 代理应用，即 HTTPS 协议传输。
+6、使用本人 Releases 中编译好的 caddy 文件，可同时支持 SNI 分流、H2C server、H2C proxy、naiveproxy 及接收 PROXY protocol 等应用。
 
-7、采用 SNI 方式实现共用 443 端口，支持各自特色应用，但需多个域名来标记分流。
+7、本示例中 naiveproxy 仅支持 HTTP/2 代理应用，即 HTTPS 协议传输。
 
-8、因 trojan-go 或 trojan 仅支持端口监听与端口回落，故共用回落 WEB 服务的 vless+tcp+xtls 或 vless+tcp+tls 回落也仅支持端口回落，即全部回落仅支持端口回落。
+8、Xray 所需证书及密钥推荐使用 caddy 申请，配合 Xray（版本必须不低于v1.3.0）自动重载证书及密钥（OCSP Stapling），可实现证书及密钥申请与更新全自动化。
 
-9、因 trojan-go 或 trojan 不支持 PROXY protocol，故共用回落 WEB 服务的 vless+tcp+xtls 或 vless+tcp+tls 回落也不能启用此项应用，即全部回落不能启用此项应用。
+9、不要使用第三方 ACME 客户端在当前服务器上以 HTTP 验证或 TLS-ALPN 验证方式申请与更新证书及密钥，因 HTTP 验证或 TLS-ALPN 验证方式申请与更新证书及密钥需监听 80 端口或 443 端口，从而与当前应用端口冲突。
 
-10、trojan-go 完全兼容 trojan，服务端还有自己的特色：支持 trojan 应用与自己的 Websocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)；支持使用 AEAD 对 trojan 协议流量进行二次加密(基于 Shadowsocks AEAD)。
+10、因 trojan-go 或 trojan 仅支持端口监听与端口回落，故共用回落 WEB 服务的 vless+tcp+xtls 或 vless+tcp+tls 回落也仅支持端口回落，即全部回落仅支持端口回落。
 
-11、Xray 所需证书及密钥推荐使用 caddy 申请，配合 Xray（版本必须不低于v1.3.0）自动重载证书及密钥（OCSP Stapling），可实现证书及密钥申请与更新全自动化。
+11、因 trojan-go 或 trojan 不支持 PROXY protocol，故共用回落 WEB 服务的 vless+tcp+xtls 或 vless+tcp+tls 回落也不能启用此项应用，即全部回落不能启用此项应用。
 
-12、不要使用第三方 ACME 客户端在当前服务器上以 HTTP 验证或 TLS-ALPN 验证方式申请与更新证书及密钥，因 HTTP 验证或 TLS-ALPN 验证方式申请与更新证书及密钥需监听 80 端口或 443 端口，从而与当前应用端口冲突。
+12、trojan-go 完全兼容 trojan，服务端还有自己的特色：支持 trojan 应用与自己的 Websocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)；支持使用 AEAD 对 trojan 协议流量进行二次加密(基于 Shadowsocks AEAD)。
 
 13、配置1：采用端口分流、端口回落/分流、端口转发。配置2：采用进程分流（对应trojan-go/trojan除外）、端口回落/分流（对应vless+ws除外）、端口转发。配置3：采用进程分流（对应trojan-go/trojan除外）、端口回落/分流（对应vless+ws除外）、端口转发，且启用了 PROXY protocol（全部回落除外）。
 
