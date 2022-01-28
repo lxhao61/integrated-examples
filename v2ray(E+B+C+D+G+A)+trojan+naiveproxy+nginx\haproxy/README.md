@@ -42,9 +42,9 @@
 
 11、trojan-go 完全兼容 trojan，服务端还有自己的特色：支持 trojan 应用与自己的 Websocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)；支持使用 AEAD 对 trojan 协议流量进行二次加密(基于 Shadowsocks AEAD)。
 
-12、不要使用第三方 ACME 客户端在当前服务器上以 HTTP 验证或 TLS-ALPN 验证方式申请与更新证书及密钥，因 HTTP 验证或 TLS-ALPN 验证方式申请与更新证书及密钥需监听 80 端口或 443 端口，从而与当前应用端口冲突。
+12、Xray 所需证书及密钥推荐使用 caddy 申请，配合 Xray（版本必须不低于v1.3.0）自动重载证书及密钥（OCSP Stapling），可实现证书及密钥申请与更新全自动化。
 
-13、Xray 所需证书及密钥推荐使用 caddy 申请，配合 Xray（版本必须不低于v1.3.0）自动重载证书及密钥（OCSP Stapling），可实现证书及密钥申请与更新全自动化。
+13、不要使用第三方 ACME 客户端在当前服务器上以 HTTP 验证或 TLS-ALPN 验证方式申请与更新证书及密钥，因 HTTP 验证或 TLS-ALPN 验证方式申请与更新证书及密钥需监听 80 端口或 443 端口，从而与当前应用端口冲突。
 
 14、配置1：采用端口分流、端口回落/分流、端口转发。配置2：采用进程分流（对应trojan-go/trojan除外）、端口回落/分流（对应vless+ws除外）、端口转发。配置3：采用进程分流（对应trojan-go/trojan除外）、端口回落/分流（对应vless+ws除外）、端口转发，且启用了 PROXY protocol（全部回落除外）。
 
