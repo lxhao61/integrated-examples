@@ -14,17 +14,17 @@ v2ray 或 Xray 前置（监听 443 端口），利用 vless+tcp+tls 或 vless+tc
 
 注意：
 
-1、v2ray 版本不小于 v4.31.0 才支持 trojan 协议。
+1、采用套娃方式实现共用 443 端口，仅需要一个域名及普通证书即可搞定，但套娃不支持 XTLS 应用。
 
-2、nginx 支持 H2C server，需要 nginx 包含 http_v2_module 模块。
+2、v2ray 版本不小于 v4.31.0 才支持 trojan 协议。
 
-3、nginx 支持 HTTP 功能块接收 PROXY protocol，需要 nginx 包含 http_realip_module 模块。
+3、nginx 支持 H2C server，需要 nginx 包含 http_v2_module 模块。
 
-4、nginx 支持 H2C server，但不支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）；故回落配置就必须分成 http/1.1 回落与 h2 回落两部分，以便分别对应 nginx 的 HTTP/1.1 server 与 H2C server。
+4、nginx 支持 HTTP 功能块接收 PROXY protocol，需要 nginx 包含 http_realip_module 模块。
 
-5、套娃不支持 http/1.1 回落与 h2 回落分开（即 fallbacks 中 "alpn" 无效）；故使用套娃 trojan+tcp 回落 nginx，前置应用如果优先使用 h2 连接，那么套娃 trojan+tcp 仅使用 h2 连接及回落。
+5、nginx 支持 H2C server，但不支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）；故回落配置就必须分成 http/1.1 回落与 h2 回落两部分，以便分别对应 nginx 的 HTTP/1.1 server 与 H2C server。
 
-6、采用套娃方式实现共用 443 端口，仅需要一个域名及普通证书即可搞定，但套娃不支持 XTLS 应用。
+6、套娃不支持 http/1.1 回落与 h2 回落分开（即 fallbacks 中 "alpn" 无效）；故使用套娃 trojan+tcp 回落 nginx，前置应用如果优先使用 h2 连接，那么套娃 trojan+tcp 仅使用 h2 连接及回落。
 
 7、不要使用 ACME 客户端在当前服务器上以 HTTP 验证或 TLS-ALPN 验证方式申请与更新证书及密钥，因 HTTP 验证或 TLS-ALPN 验证方式申请与更新证书及密钥需监听 80 端口或 443 端口，从而与当前应用端口冲突。
 
