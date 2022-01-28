@@ -20,21 +20,21 @@
 
 注意：
 
-1、v2ray 版本不小于 v4.31.0 才支持 trojan 协议。
+1、caddy 加 caddy-l4 插件定制编译的才可以实现 SNI 分流，目前仅支持使用 json 配置。
 
-2、Xray 版本不小于 v1.4.0 或 v2ray 版本不小于v4.36.2，才支持 gRPC 传输方式。
+2、采用 SNI 方式实现共用 443 端口，支持各自特色应用，但需多个域名来标记分流。
 
-3、caddy 版本不小于 v2.2.0-rc.1 才支持 H2C proxy，即支持 Xray 或 v2ray 的 H2C（gRPC） 反向代理。
+3、v2ray 版本不小于 v4.31.0 才支持 trojan 协议。
 
-4、caddy 支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）。
+4、Xray 版本不小于 v1.4.0 或 v2ray 版本不小于v4.36.2，才支持 gRPC 传输方式。
 
-5、caddy 加 caddy-l4 插件定制编译的才可以实现 SNI 分流，目前仅支持使用 json 配置。
+5、caddy 版本不小于 v2.2.0-rc.1 才支持 H2C proxy，即支持 Xray 或 v2ray 的 H2C（gRPC） 反向代理。
 
-6、使用本人 Releases 中编译好的 caddy 文件，可同时支持SNI 分流、H2C server、H2C proxy、naiveproxy 及接收 PROXY protocol 等应用。
+6、caddy 支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）。
 
-7、本示例中 naiveproxy 仅支持 HTTP/2 代理应用，即 HTTPS 协议传输。
+7、使用本人 Releases 中编译好的 caddy 文件，可同时支持SNI 分流、H2C server、H2C proxy、naiveproxy 及接收 PROXY protocol 等应用。
 
-8、采用 SNI 方式实现共用 443 端口，支持各自特色应用，但需多个域名来标记分流。
+8、本示例中 naiveproxy 仅支持 HTTP/2 代理应用，即 HTTPS 协议传输。
 
 9、Xray 所需证书及密钥推荐使用 caddy 申请，配合 Xray（版本必须不低于v1.3.0）自动重载证书及密钥（OCSP Stapling），可实现证书及密钥申请与更新全自动化。
 
