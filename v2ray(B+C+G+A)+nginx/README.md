@@ -20,4 +20,4 @@
 
 4、不要使用 ACME 客户端在当前服务器上以 HTTP 验证或 TLS-ALPN 验证方式申请与更新证书及密钥，因 HTTP 验证或 TLS-ALPN 验证方式申请与更新证书及密钥需监听 80 端口或 443 端口，从而与当前应用端口冲突。
 
-5、配置1：采用端口转发。配置2：除SS+v2ray-plugin+tls外，其它采用进程转发。
+5、配置1：采用端口转发。配置2：除shadowsocks+xray-plugin/v2ray-plugin+tls外，其它采用进程转发。
