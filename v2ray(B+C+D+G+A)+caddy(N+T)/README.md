@@ -1,6 +1,6 @@
 介绍：
 
-利用 caddy 支持 WebSocket（WS）、H2C、gRPC 反向代理及 naiveproxy 与 trojan-go 正向代理，实现除 Xray 或 v2ray 的 KCP 应用外，WebSocket（WS）、H2C、gRPC 类应用及 naiveproxy 与 trojan-go 应用共用443端口。包括应用如下：
+利用 caddy 支持 WebSocket（WS）、H2C、gRPC 代理及 naiveproxy 与 trojan-go 代理，实现除 Xray 或 v2ray 的 KCP 应用外，WebSocket（WS）、H2C、gRPC 类反向代理应用及 naiveproxy 与 trojan-go 正向代理应用共用443端口。包括应用如下：
 
 1、B=vless+ws+tls（TLS由caddy提供及处理，不需配置。另可改、可增其它WS类应用，参考对应的服务端单一应用配置示例。）
 
