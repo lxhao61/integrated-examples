@@ -9,16 +9,16 @@
 
 注意：
 
-1、nginx 支持 H2C server，需要 nginx 包含 http_v2_module 模块。
+1、因 trojan-go 或 trojan 不支持 Unix Domain Socket，故回落仅端口回落。
 
-2、nginx 支持 H2C server，但不支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）；故回落配置就必须分成 http/1.1 回落与 h2 回落两部分，以便分别对应 nginx 的 HTTP/1.1 server 与 H2C server。
+2、因 trojan-go 或 trojan 不支持 PROXY protocol，故回落不能启用此项应用。
 
-3、因 trojan-go 或 trojan 不支持 Unix Domain Socket，故回落仅端口回落。
+3、trojan-go 完全兼容 trojan，服务端还有自己的特色：支持 trojan 应用与自己的 Websocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)；支持使用 AEAD 对 trojan 协议流量进行二次加密(基于 Shadowsocks AEAD)。
 
-4、因 trojan-go 或 trojan 不支持 PROXY protocol，故回落不能启用此项应用。
+4、nginx 支持 H2C server，需要 nginx 包含 http_v2_module 模块。
 
-5、因 trojan-go 目前不支持 http/1.1 回落与 h2 回落分开，故 trojan-go 开启 Websocket 支持后只选 http/1.1 连接及 http/1.1 回落。
+5、nginx 支持 H2C server，但不支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）；故回落配置就必须分成 http/1.1 回落与 h2 回落两部分，以便分别对应 nginx 的 HTTP/1.1 server 与 H2C server。
 
-6、trojan-go 完全兼容 trojan，服务端还有自己的特色：支持 trojan 应用与自己的 Websocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)；支持使用 AEAD 对 trojan 协议流量进行二次加密(基于 Shadowsocks AEAD)。
+6、因 trojan-go 目前不支持 http/1.1 回落与 h2 回落分开，故 trojan-go 开启 Websocket 支持后只选 http/1.1 连接及 http/1.1 回落。
 
 7、不要使用 ACME 客户端在当前服务器上以 HTTP 验证或 TLS-ALPN 验证方式申请与更新证书及密钥，因 HTTP 验证或 TLS-ALPN 验证方式申请与更新证书及密钥需监听 80 端口或 443 端口，从而与当前应用端口冲突。
