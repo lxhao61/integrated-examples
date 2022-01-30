@@ -8,20 +8,20 @@
 
 注意：
 
-1、caddy 版本不小于 v2.3.0 才支持 Caddyfile 配置开启 H2C server。
+1、因 trojan-go 或 trojan 不支持 Unix Domain Socket，故回落仅端口回落。
 
-2、caddy 支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）。
+2、因 trojan-go 或 trojan 不支持 PROXY protocol，故回落不能启用此项应用。
 
-3、使用本人 Releases 中编译好的 caddy 文件，可支持 H2C server、naiveproxy 等应用。
+3、trojan-go 完全兼容 trojan，服务端还有自己的特色：支持 trojan 应用与自己的 Websocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)；支持使用 AEAD 对 trojan 协议流量进行二次加密(基于 Shadowsocks AEAD)。
 
-4、本示例的 naiveproxy 仅支持 HTTP/2 代理应用，即 HTTPS 协议传输。
+4、caddy 版本不小于 v2.3.0 才支持 Caddyfile 配置开启 H2C server。
 
-5、本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。
+5、caddy 支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）。
 
-6、因 trojan-go 或 trojan 不支持 Unix Domain Socket，故回落仅端口回落。
+6、使用本人 Releases 中编译好的 caddy 文件，可支持 H2C server、naiveproxy 等应用。
 
-7、因 trojan-go 或 trojan 不支持 PROXY protocol，故回落不能启用此项应用。
+7、本示例的 naiveproxy 仅支持 HTTP/2 代理应用，即 HTTPS 协议传输。
 
-8、trojan-go 完全兼容 trojan，服务端还有自己的特色：支持 trojan 应用与自己的 Websocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)；支持使用 AEAD 对 trojan 协议流量进行二次加密(基于 Shadowsocks AEAD)。
+8、本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。
 
 9、不要使用第三方 ACME 客户端在当前服务器上以 HTTP 验证或 TLS-ALPN 验证方式申请与更新证书及密钥，因 HTTP 验证或 TLS-ALPN 验证方式申请与更新证书及密钥需监听 80 端口或 443 端口，从而与当前应用端口冲突。
