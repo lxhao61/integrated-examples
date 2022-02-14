@@ -30,7 +30,7 @@
         "password": "" //若shadowsocks AEAD加密启用，设置加密密码（必须与服务器设置一致）。
     },
     "mux": {
-        "enabled": false, //多路复用开关，默认关闭。因兼容性多路复用仅与原版服务端连接才可启用；若设置http/1.1协商连接或传输方式为WebSocket，建议启用多路复用，否则关闭。
+        "enabled": false, //多路复用开关，默认关闭。因兼容性多路复用仅与原版服务端连接才可启用；若原版服务端设置http/1.1协商连接或传输方式为WebSocket，建议启用，否则关闭。
         "concurrency": 4,
         "idle_timeout": 60
     },
