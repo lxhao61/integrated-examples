@@ -10,6 +10,6 @@
 
 3、SS 为 shadowsocks 简写。
 
-4、除 Xray 或 v2ray 的 KCP 应用外，其它都 TLS 加密传输。
+4、除 v2ray 或 Xray 的 KCP 应用外，其它都 TLS 加密传输。
 
 5、浏览器推荐使用 Proxy SwitchyOmega 插件来连接客户端的 SOCKS 或 HTTP 代理服务器。
