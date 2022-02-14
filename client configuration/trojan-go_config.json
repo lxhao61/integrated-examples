@@ -31,7 +31,7 @@
     },
     "mux": {
         "enabled": false, //多路复用开关，默认关闭。因兼容性多路复用仅与原版服务端连接才可启用；若原版服务端设置http/1.1协商连接或传输方式为WebSocket，建议启用，否则关闭。
-        "concurrency": 4,
+        "concurrency": 4, //此数据根据网络情况调整。表示4条传输进程复合一个链路发出。
         "idle_timeout": 60
     },
     "router": {
