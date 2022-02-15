@@ -7,7 +7,7 @@
 默认流程：v2ray/Xray client <------ TCP+TLS（HTTPS） ------> v2ray/Xray server  
 回落流程：WEB client <----------------- HTTPS ----------------> v2ray/Xray server <-- 回落 --> caddy（WEB server）
 
-其中 trojan+tcp+tls 或 trojan+tcp+xtls 应用还实现了兼容 trojan，即可使用 trojan 客户端连接。
+其中 trojan+tcp+tls 或 trojan+tcp+xtls 应用还实现了兼容原版 trojan，即可使用原版 trojan 客户端 或 trojan-go 客户端连接。
 
 注意：
 
