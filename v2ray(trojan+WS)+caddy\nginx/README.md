@@ -1,6 +1,6 @@
 介绍：
 
-利用 caddy 或 nginx 支持 WebSocket（WS）代理，实现 trojan+ws+tls 反向代理应用，TLS 由 caddy 或 nginx 提供及处理。此服务端兼容 trojan-go 的 WebSocket 应用，可直接使用 trojan-go 客户端。
+利用 caddy 或 nginx 支持 WebSocket（WS）代理，实现 trojan+ws+tls 反向代理应用，TLS 由 caddy 或 nginx 提供及处理。此服务端兼容 trojan-go 的 WebSocket 应用，可直接使用 trojan-go 客户端连接。
 
 原理：
 
