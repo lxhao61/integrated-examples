@@ -1,6 +1,6 @@
 介绍：
 
-利用 caddy 或 nginx 支持 WebSocket（WS）代理，实现 trojan+ws+tls 反向代理应用，TLS 由 caddy 或 nginx 提供及处理。此服务端兼容 trojan-go 的 WebSocket 应用，客户端可直接使用 trojan-go。
+利用 caddy 或 nginx 支持 WebSocket（WS）代理，实现 trojan+ws+tls 反向代理应用，TLS 由 caddy 或 nginx 提供及处理。此服务端兼容 trojan-go 的 WebSocket 应用，可直接使用 trojan-go 客户端。
 
 原理：
 
@@ -11,7 +11,7 @@
 
 1、v2ray 版本不小于 v4.31.0 才支持 trojan 协议。
 
-2、此应用使用 trojan-go 客户端及 Xray\v2ray 官方客户端连接无问题，使用第三方的 Xray\v2ray 客户端目前基本不行。另 trojan-go 安卓手机客户端可去本人 Releases 中下载。
+2、此应用使用 trojan-go 客户端 或 Xray/v2ray 官方客户端连接无问题，使用第三方的 Xray/v2ray 客户端目前基本不行。另 trojan-go 安卓手机客户端可去本人 Releases 中下载。
 
 3、若采用 caddy 反向代理，本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。支持自动 HTTPS，即自动申请与更新证书与私钥，自动 HTTP 重定向到 HTTPS。
 
