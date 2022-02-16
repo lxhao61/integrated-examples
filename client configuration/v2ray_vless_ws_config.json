@@ -21,11 +21,11 @@
       "settings": {
         "vnext": [
           {
-            "address": "xx.yy", //改成服务端配置的对应域名
-            "port": 443, //改成服务端配置的对应端口（如没有使用SNI分流共用端口，回落应用就是vless+tcp+tls监听端口、反代应用就是caddy或nginx等https监听端口。）
+            "address": "xx.yy", //修改为服务端配置的对应域名
+            "port": 443, //服务端配置的端口
             "users": [
               {
-                "id": "a3d238a4-b777-11ea-90d6-42010a8c000a", //改成服务端配置的对应UUID
+                "id": "a3d238a4-b777-11ea-90d6-42010a8c000a", //修改为服务端配置的对应UUID
                 "encryption": "none"
               }
             ]
@@ -36,7 +36,7 @@
         "security": "tls",
         "network": "ws",
         "wsSettings": {
-          "path": "/5hBv56Es" //改成服务端设置的对应path。大于Xray-core v1.4.0版本，path后加上?ed=2048即可开启WebSocket 0-RTT。
+          "path": "/5hBv56Es" //修改为服务端设置的对应path。大于Xray-core v1.4.0版本，path后加上?ed=2048即可开启WebSocket 0-RTT。
         }
       },
       "mux": {
