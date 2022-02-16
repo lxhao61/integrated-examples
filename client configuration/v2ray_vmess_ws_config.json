@@ -36,7 +36,7 @@
         "security": "tls",
         "network": "ws",
         "wsSettings": {
-          "path": "/5hBv56Es" //修改为服务端设置的对应path。大于Xray-core v1.4.0版本，path后加上?ed=2048即可开启WebSocket 0-RTT。
+          "path": "/5hBv56Es" //修改为服务端配置的对应path。大于Xray-core v1.4.0版本，path后加上?ed=2048即可开启WebSocket 0-RTT。
         }
       },
       "mux": {
