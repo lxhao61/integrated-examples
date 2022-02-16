@@ -36,7 +36,7 @@
         "security": "tls",
         "network": "h2",
         "httpSettings": {
-          "path": "/nSBv5RjE" //修改为服务端设置的path
+          "path": "/nSBv5RjE" //修改为服务端配置的path
         }
       }
     },
