@@ -29,7 +29,7 @@
                 "versions": ["h2c"]
               },
               "upstreams": [{
-                "dial": "127.0.0.1:2010" //转发给本机shadowsocks+grpc监听端口
+                "dial": "127.0.0.1:2011" //转发给本机shadowsocks+grpc监听端口
               }],
               "flush_interval": -1
             }]
