@@ -37,7 +37,7 @@
         "network": "kcp",
         "kcpSettings": {
           "congestion": true,
-          "seed": "60VoqhfjP79nBQyU" //seed密码，修改为服务端设置的对应密码。
+          "seed": "60VoqhfjP79nBQyU" //seed密码，修改为服务端配置的对应密码。
         }
       },
       "mux": {
