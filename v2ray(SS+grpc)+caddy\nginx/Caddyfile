@@ -13,7 +13,7 @@
 		alpn h2 http/1.1
 	}
 
-	reverse_proxy /sdngrpc/* 127.0.0.1:2010 { #与shadowsocks+grpc应用中serviceName对应，转发给本机shadowsocks+grpc监听端口。
+	reverse_proxy /sdngrpc/* 127.0.0.1:2011 { #与shadowsocks+grpc应用中serviceName对应，转发给本机shadowsocks+grpc监听端口。
 		flush_interval -1
 		transport http {
 			versions h2c
