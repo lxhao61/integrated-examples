@@ -20,7 +20,7 @@
           "listen": [":443"],
           "routes": [{
             "match": [{
-              "path": ["/tdngrpc/*"] //与shadowsocks+grpc应用中serviceName对应
+              "path": ["/sdngrpc/*"] //与shadowsocks+grpc应用中serviceName对应
             }],
             "handle": [{
               "handler": "reverse_proxy",
