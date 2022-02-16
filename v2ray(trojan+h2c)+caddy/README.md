@@ -1,6 +1,6 @@
 介绍：
 
-利用 caddy 支持 H2C 代理，实现 trojan+h2c+tls 反向代理应用，TLS 由 caddy 提供及处理。
+利用 caddy 支持 H2C 代理，实现 Xray 或 v2ray 的 trojan+h2c+tls 反向代理应用，TLS 由 caddy 提供及处理。
 
 原理：
 
