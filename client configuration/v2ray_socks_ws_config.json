@@ -21,8 +21,8 @@
       "settings": {
         "servers": [
           {
-            "address": "xx.yy", //改成服务端配置的对应域名
-            "port": 443 //改成服务端配置的对应端口（如没有使用SNI分流共用端口，回落应用就是vless+tcp+tls监听端口、反代应用就是caddy或nginx等https监听端口。）
+            "address": "xx.yy", //修改为服务端配置的对应域名
+            "port": 443 //服务端配置的端口
           }
         ]
       },
