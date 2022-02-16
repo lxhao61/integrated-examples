@@ -76,7 +76,7 @@
 1. [v2ray(E+B+F+C+D+G+A)+naiveproxy+nginx\haproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BF%2BC%2BD%2BG%2BA)%2Bnaiveproxy%2Bnginx%5Chaproxy) （兼顾Xray/v2ray、caddy的naiveproxy的优势应用。）
 #### &emsp;注意（以上所有实例）:
 1. v2ray从v4.33.0版开始删除了XTLS应用，故若还想用XTLS应用，请选Xray。Xray是v2ray的超集（更好的整体性能和XTLS等一系列增强，且完全兼容。），也是因为这个应用分家独自发展。
-2. Xray或v2ray单一核心应用简记：A=vless+kcp+seed、B=vless+ws+tls、C=shadowsocks+xray-plugin/v2ray-plugin+tls、D=vless+h2c+tls、E=vless+tcp+tls/xtls、F=trojan+tcp+tls/xtls、G=vless+grpc+tls。
+2. Xray或v2ray单一核心应用简记：A=vless+kcp+seed、B=vless+ws+tls、C=shadowsocks+xray-plugin/v2ray-plugin+tls的WS应用、D=vless+h2c+tls、E=vless+tcp+tls/xtls、F=trojan+tcp+tls/xtls、G=vless+grpc+tls。
 3. 所有Xray或v2ray配置文件都配置了禁用BT。如不需要，可以删除相关配置，参考v2ray(other configuration)中BT_config.json文件。
 4. 目前caddy的HTTPS服务进程监听采用Unix Domain Socket进程不支持HTTP/3；若开启HTTP/3，caddy无法启动。
 5. 受限应用条件及场景，naiveproxy的QUIC应用（即caddy的HTTP/3代理应用）不是所有相关naiveproxy示例都支持。
