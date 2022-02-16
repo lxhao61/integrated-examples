@@ -1,5 +1,5 @@
 //客户端shadowsocks（SS）加xray-plugin或v2ray-plugin插件的WebSocket应用，其配置如下：
-server address 'xx.yy' //修改为服务端配置的域名
+server address 'xx.yy' //修改为服务端配置的对应域名
 server port '443' //服务端配置的端口
 server password 'diy2003' //修改为服务端配置的对应密码
 server method 'chacha20-ietf-poly1305'
@@ -8,7 +8,7 @@ server plugin_opts 'tls;host=xx.yy;path=/SS1v2ray;mux=4' //xray-plugin插件参�
 
 
 //客户端shadowsocks（SS）加xray-plugin或v2ray-plugin插件的gRPC应用，其配置如下：
-server address 'xx.yy' //修改为服务端配置的域名
+server address 'xx.yy' //修改为服务端配置的对应域名
 server port '443' //服务端配置的端口
 server password 'diy2011' //修改为服务端配置的对应密码
 server method 'chacha20-ietf-poly1305'
