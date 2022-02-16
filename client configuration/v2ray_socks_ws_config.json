@@ -30,7 +30,7 @@
         "security": "tls",
         "network": "ws",
         "wsSettings": {
-          "path": "/8ALdGZ9k" //修改为服务端设置的对应path
+          "path": "/8ALdGZ9k" //修改为服务端配置的对应path
         }
       },
       "mux": {
