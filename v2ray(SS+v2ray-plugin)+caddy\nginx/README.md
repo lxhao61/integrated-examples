@@ -19,4 +19,4 @@
 
 4、若采用 nginx 反向代理，不要使用 ACME 客户端在当前服务器上以 HTTP 验证或 TLS-ALPN 验证方式申请与更新证书及密钥，因 HTTP 验证或 TLS-ALPN 验证方式申请与更新证书及密钥需监听 80 端口或 443 端口，从而与当前应用端口冲突。
 
-5、本示例配置 shadowsocks+xray-plugin+tls 或 shadowsocks+v2ray-plugin+tls 的 WebSocket 应用不等同 Xray 或 v2ray 的 shadowsocks+WebSocket+tls 应用，两者不兼容。它仅兼容原版 shadowsocks（SS） 加 xray-plugin 或 v2ray-plugin 插件的 WebSocket 应用（服务端），即客户端使用原版 shadowsocks 加 xray-plugin 或 v2ray-plugin 插件连接。
+5、本示例配置 shadowsocks+xray-plugin+tls 或 shadowsocks+v2ray-plugin+tls 的 WebSocket 应用不等同 Xray 或 v2ray 的 [shadowsocks+ws+tls](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(socks%5CSS%2BWS)%2Bcaddy%5Cnginx) 应用，两者不兼容。它仅兼容原版 shadowsocks（SS） 加 xray-plugin 或 v2ray-plugin 插件的 WebSocket 应用（服务端），即客户端使用原版 shadowsocks 加 xray-plugin 或 v2ray-plugin 插件连接。
