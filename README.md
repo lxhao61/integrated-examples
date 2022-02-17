@@ -22,7 +22,7 @@
 2. [hysteria](https://github.com/lxhao61/integrated-examples/tree/main/hysteria) （基于QUIC协议修改版的双边加速代理应用。）
 ---
 1. [v2ray(vless\vmess+WS)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(vless%5Cvmess%2BWS)%2Bcaddy%5Cnginx) （vless+ws+tls或vmess+ws+tls反代应用。vless+ws+tls标记为B。）
-2. [v2ray(socks\SS+WS)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(socks%5CSS%2BWS)%2Bcaddy%5Cnginx) （socks+ws+tls或shadowsocks+ws+tls反代应用。）
+2. [v2ray(SS+WS)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(SS%2BWS)%2Bcaddy%5Cnginx) （shadowsocks+ws+tls反代应用。）
 3. [v2ray(SS+v2ray-plugin)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(SS%2Bv2ray-plugin)%2Bcaddy%5Cnginx) （shadowsocks+v2ray-plugin+tls的WS反代应用。标记为C。）
 4. [v2ray(trojan+WS)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(trojan%2BWS)%2Bcaddy%5Cnginx) （trojan+ws+tls反代应用。）
 ---
