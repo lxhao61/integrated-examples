@@ -26,7 +26,7 @@
               "handler": "reverse_proxy",
               "transport": {
                 "protocol": "http",
-                "versions": ["h2c"]
+                "versions": ["h2c","2"]
               },
               "upstreams": [{
                 "dial": "127.0.0.1:2005" //转发给本机vless+h2c或vmess+h2c监听端口
