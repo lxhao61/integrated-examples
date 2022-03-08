@@ -24,9 +24,9 @@
 
 4、相关示例已配置 caddy SNI 分流共用端口，此配置仅备份及参考等。
 
-三、caddy 以 DNS 验证方式申请证书及密钥
+三、caddy 以 DNS-01 验证方式申请证书及密钥
 
-1、以 DNS 验证方式申请证书及密钥，可颁发包含通配符域名的证书。
+1、以 DNS-01 验证方式申请证书及密钥，可颁发包含通配符域名的证书。
 
 2、Xray 服务端可以直接使用 caddy 申请的证书及密钥，配合Xray（版本必须不低于v1.3.0）自动重载证书及密钥（OCSP Stapling），可实现示例所需证书及密钥申请与更新全自动化。
 
@@ -36,9 +36,9 @@
 
 1、示例为通配符证书及密钥申请，普通证书及密钥或混合申请类似。
 
-2、caddy 以 DNS 验证方式申请证书及密钥，必须带对应 DNS API 插件。dnspod 解析分 dnspod.com（国际版）与 dnspod.cn（中国版），故两者插件不通用，必须对应各自 dnspod 解析使用。
+2、caddy 以 DNS-01 验证方式申请证书及密钥，必须带对应 DNS API 插件。dnspod 解析分 dnspod.com（国际版）与 dnspod.cn（中国版），故两者插件不通用，必须对应各自 dnspod 解析使用。
 
-3、cloudflare 已不支持 freenom 的免费域名以 DNS 验证方式申请证书及密钥了。
+3、cloudflare 已不支持 freenom 的免费域名以 DNS-01 验证方式申请证书及密钥了。
 
 4、acmeh 或 zerossl 申请成功后证书及密钥所在路径及目录。  
 1）、acme 申请的普通证书及密钥在 “/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy” 目录中。/home/tls 为设置存放证书及密钥的基本路径。xx.yy 为域名，根据自己域名变化。  
