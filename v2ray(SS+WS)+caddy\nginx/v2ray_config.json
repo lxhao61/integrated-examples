@@ -12,7 +12,7 @@
       "settings": {
         "email": "2008@gmail.com",
         "method": "aes-128-gcm",
-        "password": "diy2008", //修改成自己的密码
+        "password": "diy2008", //修改为自己的密码
         "ota": false,
         "network": "tcp,udp"
       },
@@ -20,7 +20,7 @@
         "network": "ws",
         "security": "none",
         "wsSettings": {
-          "path": "/8ALdGZ9k" //修改成自己的path
+          "path": "/8ALdGZ9k" //修改为自己的path
         }
       },
       "sniffing": {
