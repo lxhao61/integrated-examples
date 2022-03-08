@@ -12,7 +12,7 @@
       "settings": {
         "clients": [
           {
-            "id": "048e0bf2-dd56-11e9-aa37-5600024c1d6a", //修改成自己的UUID
+            "id": "048e0bf2-dd56-11e9-aa37-5600024c1d6a", //修改为自己的UUID
             "email": "2005@gmail.com"
           }
         ],
@@ -22,7 +22,7 @@
         "network": "h2",
         "security": "none",
         "httpSettings": {
-          "path": "/SeuW56Es" //修改成自己的path
+          "path": "/SeuW56Es" //修改为自己的path
         }
       },
       "sniffing": {
