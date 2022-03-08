@@ -12,7 +12,7 @@
       "settings": {
         "clients": [
           {
-            "id": "058e0bf3-dd56-11e9-aa37-5600024c1d6a", //更改为自己的UUID
+            "id": "058e0bf3-dd56-11e9-aa37-5600024c1d6a", //修改为自己的UUID
             "email": "2009@gmail.com"
           }
         ],
@@ -22,7 +22,7 @@
         "network": "grpc",
         "security": "none",
         "grpcSettings": {
-          "serviceName": "cdngrpc" //更改为自己的服务名称，类似于HTTP/2中的Path。
+          "serviceName": "cdngrpc" //修改为自己的服务名称，类似于HTTP/2中的Path。
         }
       },
       "sniffing": {
