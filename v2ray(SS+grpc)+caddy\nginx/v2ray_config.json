@@ -12,7 +12,7 @@
       "settings": {
         "email": "2011@gmail.com",
         "method": "chacha20-ietf-poly1305",
-        "password": "diy2011", //修改成自己的密码
+        "password": "diy2011", //修改为自己的密码
         "ota": false,
         "network": "tcp,udp"
       },
@@ -20,7 +20,7 @@
         "network": "grpc",
         "security": "none",
         "grpcSettings": {
-          "serviceName": "sdngrpc" //更改为自己的服务名称，类似于HTTP/2中的Path。
+          "serviceName": "sdngrpc" //修改为自己的服务名称，类似于HTTP/2中的Path。
         }
       },
       "sniffing": {
