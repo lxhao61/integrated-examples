@@ -11,7 +11,7 @@
       "settings": {
         "clients": [
           {
-            "password":"diy2010", //修改成自己密码
+            "password":"diy2010", //修改为自己密码
             "email": "2010@gmail.com"
           }
         ]
@@ -20,7 +20,7 @@
         "network": "grpc",
         "security": "none",
         "grpcSettings": {
-          "serviceName": "tdngrpc" //更改为自己的服务名称，类似于HTTP/2中的Path。
+          "serviceName": "tdngrpc" //修改为自己的服务名称，类似于HTTP/2中的Path。
         }
       },
       "sniffing": {
