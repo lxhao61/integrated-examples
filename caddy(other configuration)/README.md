@@ -52,8 +52,8 @@
 
 四、caddy DDNS 应用配置
 
-caddy 使用 caddy-dynamicdns 插件与 caddy-dns 插件（仅含alidns、cloudflare、dnspod、dnspodcn、duckdns五个常用caddy-dns插件）实现 DDNS 应用。详见 DDNS_caddy.json 或 DDNS_Caddyfile 配置。
+caddy 使用 caddy-dynamicdns 插件与 caddy-dns 插件（仅含alidns、cloudflare、dnspod、dnspodcn、duckdns五个常用caddy-dns插件）实现 DDNS 应用。基本配置见 DDNS_caddy.json 或 DDNS_Caddyfile 配置示例，详细配置见 caddy-dynamicdns 资源。
 
 五、caddy webdav 应用配置
 
-以 webdav 应用及文件服务打造不同的网盘应用。详见 webdav_caddy.json 或 webdav_Caddyfile 配置。
+以 webdav 应用及文件服务打造不同的网盘应用。详见 webdav_caddy.json 或 webdav_Caddyfile 配置示例。
