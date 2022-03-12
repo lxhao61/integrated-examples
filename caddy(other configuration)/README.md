@@ -50,6 +50,10 @@
 
 6、提供了 dnspod（国际版dnspod.com插件）、cloudflare、dnspodcn（中国版dnspod.cn插件）三种最常见插件配置示例，其它插件配置类似，参考 dnspod（国际版dnspod.com插件） 或 cloudflare 配置示例。
 
-四、caddy webdav 应用配置
+四、caddy DDNS 应用配置
+
+caddy 使用 caddy-dynamicdns 插件与 caddy-dns 插件（仅含alidns、cloudflare、dnspod、dnspodcn、duckdns五个常用caddy-dns插件）实现 DDNS 应用。详见 DDNS_caddy.json 或 DDNS_Caddyfile 配置。
+
+五、caddy webdav 应用配置
 
 以 webdav 应用及文件服务打造不同的网盘应用。详见 webdav_caddy.json 或 webdav_Caddyfile 配置。
