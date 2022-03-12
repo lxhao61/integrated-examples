@@ -21,7 +21,7 @@
         "api_token": "b8a33cc1-3333-2222-a1e6-b049bf07988f" //修改为对应caddy-dns插件的token
       }
       "domains": {
-        "xdddns.duckdns.org": ["@"] //xdddns.duckdns.org修改为注册的域名。@表示本身，若注册的域名为根域名，可二级域名前缀替换@。
+        "xdddns.duckdns.org": ["@"] //xdddns.duckdns.org修改为注册的域名。@表示引用区域本身，若注册的域名为根域名，关联其二级域名用其前缀替换@即可。
       }
     },
 //DDNS配置到此结束
