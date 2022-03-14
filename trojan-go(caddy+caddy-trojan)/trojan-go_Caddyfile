@@ -24,7 +24,7 @@
 	trojan {
 		user diy443 #修改为自己的密码。密码可多组，用空格隔开。
 		connect_method
-		websocket #开启Websocket支持
+		websocket #开启WebSocket支持
 	}
 
 	@host {
