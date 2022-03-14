@@ -13,7 +13,7 @@
 
 2、因 trojan-go 或 trojan 不支持 PROXY protocol，故回落不能启用此项应用。
 
-3、trojan-go 完全兼容 trojan，服务端还有自己的特色：支持 trojan 应用与自己的 Websocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)；支持使用 AEAD 对 trojan 协议流量进行二次加密(基于 Shadowsocks AEAD)。
+3、trojan-go 完全兼容 trojan，服务端还有自己的特色：支持 trojan 应用与自己的 WebSocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)；支持使用 AEAD 对 trojan 协议流量进行二次加密(基于 Shadowsocks AEAD)。
 
 4、caddy 版本不小于 v2.3.0 才支持 Caddyfile 配置开启 H2C server。
 
