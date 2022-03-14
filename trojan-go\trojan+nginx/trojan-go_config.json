@@ -30,7 +30,7 @@
         "prefer_ipv4": false
     },
     "websocket": {
-        "enabled": true, //开启Websocket支持
+        "enabled": true, //开启WebSocket支持
         "path": "",
         "host": ""
     },
