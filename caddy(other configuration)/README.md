@@ -24,7 +24,7 @@
 
 4、相关示例已配置 caddy SNI 分流共用端口，此配置仅备份及参考等。
 
-三、caddy 以 DNS-01 验证方式申请证书及密钥
+三、caddy 以 DNS-01 验证方式申请证书及密钥配置方法
 
 1、以 DNS-01 验证方式申请证书及密钥，可颁发包含通配符域名的证书。
 
@@ -50,10 +50,10 @@
 
 6、提供了 dnspod（国际版dnspod.com插件）、cloudflare、dnspodcn（中国版dnspod.cn插件）三种最常见插件配置示例，其它插件配置类似，参考 dnspod（国际版dnspod.com插件） 或 cloudflare 配置示例。
 
-四、caddy DDNS 应用配置
+四、caddy DDNS 客户端配置方法
 
-caddy 使用 caddy-dynamicdns 插件与 caddy-dns 插件（仅含alidns、cloudflare、dnspod、dnspodcn、duckdns五个常用caddy-dns插件）实现 DDNS 应用（客户端）。基本配置见 DDNS_caddy.json 或 DDNS_Caddyfile 配置示例，详细配置见 caddy-dynamicdns 资源。
+caddy 使用 caddy-dynamicdns 插件与 caddy-dns 插件（仅含alidns、cloudflare、dnspod、dnspodcn、duckdns五个常用caddy-dns插件）实现 DDNS 客户端应用。基本配置见 DDNS_caddy.json 或 DDNS_Caddyfile 配置示例，详细配置见 caddy-dynamicdns 资源。
 
-五、caddy webdav 应用配置
+五、caddy 网盘应用配置方法
 
-以 webdav 应用及文件服务打造不同的网盘应用（服务端）。详见 webdav_caddy.json 或 webdav_Caddyfile 配置示例。
+以 webdav 协议及文件服务打造不同的网盘应用（服务端）,详见 webdav_caddy.json 或 webdav_Caddyfile 配置示例。
