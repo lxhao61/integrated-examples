@@ -39,6 +39,9 @@ DATA=$(apidata $1)
 echo "------------Inbound----------"
 print_sum "$DATA" "inbound"
 echo "-----------------------------"
+echo "------------Outbound----------"
+print_sum "$DATA" "outbound"
+echo "-----------------------------"
 echo
 echo "-------------User------------"
 print_sum "$DATA" "user"
