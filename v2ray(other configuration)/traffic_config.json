@@ -16,7 +16,9 @@
     },
     "system": {
       "statsInboundUplink": false, //当值为true时，开启所有入站代理的上行流量统计。建议不开启。
-      "statsInboundDownlink": false //当值为true时，开启所有入站代理的下行流量统计。建议不开启。
+      "statsInboundDownlink": false, //当值为true时，开启所有入站代理的下行流量统计。建议不开启。
+      "statsOutboundUplink": false, //当值为true时，开启所有入站代理的下行流量统计。建议不开启。
+      "statsOutboundDownlink": false //当值为true时，开启所有入站代理的下行流量统计。建议不开启。
     }
   },
 .........<省略>........
@@ -45,7 +47,7 @@
       "tag": "api"
     }
 .........<省略>........
-//如下配置插入routing首位（注：如有v2ray SNI 分流配置，那就插入它们之后。）（单项参数）
+//如下配置插入routing首位（注：如有v2ray SNI分流配置，那就插入它之后。）（单项参数）
       {
         "type": "field",
         "inboundTag": [
