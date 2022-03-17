@@ -36,13 +36,13 @@ print_sum() {
 }
 
 DATA=$(apidata $1)
-echo "------------Inbound----------" //入站代理的流量统计（可根据traffic_config.json配置是否配置此部分参数）
+echo "-----------Inbound-----------" //入站代理的流量统计（可根据traffic_config.json配置是否配置此部分参数）
 print_sum "$DATA" "inbound"
 echo "-----------------------------"
-echo "------------Outbound----------" //入站代理的流量统计（可根据traffic_config.json配置是否配置此部分参数）
+echo "-----------Outbound----------" //出站代理的流量统计（可根据traffic_config.json配置是否配置此部分参数）
 print_sum "$DATA" "outbound"
 echo "-----------------------------"
 echo
-echo "-------------User------------" //当前等级的所有用户的流量统计
+echo "------------User-------------" //当前等级的所有用户的流量统计
 print_sum "$DATA" "user"
 echo "-----------------------------"
