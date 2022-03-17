@@ -1,6 +1,6 @@
 #!/bin/bash
 
-_APISERVER=127.0.0.1:10085 //此端口必须与v2ray config.json中流量统计端口一致
+_APISERVER=127.0.0.1:10085 //此端口必须与traffic_config.json中流量统计端口一致
 _V2CTL=/usr/local/bin/v2ray/v2ctl //此路径为v2ray的v2ctl实际路径
 
 apidata () {
@@ -36,13 +36,13 @@ print_sum() {
 }
 
 DATA=$(apidata $1)
-echo "------------Inbound----------"
+echo "------------Inbound----------" //入站代理的流量统计（可根据traffic_config.json配置是否配置此部分参数）
 print_sum "$DATA" "inbound"
 echo "-----------------------------"
-echo "------------Outbound----------"
+echo "------------Outbound----------" //入站代理的流量统计（可根据traffic_config.json配置是否配置此部分参数）
 print_sum "$DATA" "outbound"
 echo "-----------------------------"
 echo
-echo "-------------User------------"
+echo "-------------User------------" //当前等级的所有用户的流量统计
 print_sum "$DATA" "user"
 echo "-----------------------------"
