@@ -17,8 +17,8 @@
     "system": {
       "statsInboundUplink": false, //当值为true时，开启所有入站代理的上行流量统计。建议不开启。
       "statsInboundDownlink": false, //当值为true时，开启所有入站代理的下行流量统计。建议不开启。
-      "statsOutboundUplink": false, //当值为true时，开启所有入站代理的下行流量统计。建议不开启。
-      "statsOutboundDownlink": false //当值为true时，开启所有入站代理的下行流量统计。建议不开启。
+      "statsOutboundUplink": false, //当值为true时，开启所有出站代理的下行流量统计。建议不开启。
+      "statsOutboundDownlink": false //当值为true时，开启所有出站代理的下行流量统计。建议不开启。
     }
   },
 .........<省略>........
