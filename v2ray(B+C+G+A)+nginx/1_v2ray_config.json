@@ -113,7 +113,7 @@
         "security": "none",
         "kcpSettings": {
           "congestion": true, //启用拥塞控制
-          "seed": "60VoqhfjP79nBQyU" //seed密码，修改为自己的。
+          "seed": "60VoqhfjP79nBQyU" //seed密码修改为自己的
         }
       },
       "sniffing": {
