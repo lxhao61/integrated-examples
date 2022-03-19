@@ -2,11 +2,9 @@
 //原配置：
 //.........<省略>........
       "settings": {
-        "email": "2011@gmail.com",
         "method": "chacha20-ietf-poly1305",
         "password": "diy2011", //修改为自己的密码
-        "ota": false,
-        "network": "tcp,udp"
+        "email": "2011@gmail.com"
       },
 //.........<省略>........
 
@@ -20,8 +18,7 @@
             "password": "diy2011", //修改为自己的密码
             "email": "2011@gmail.com"
           }
-        ],
-        "network": "tcp,udp"
+        ]
       },
 //.........<省略>........
 
@@ -44,7 +41,6 @@
             "password": "diy2031", //修改为自己的密码
             "email": "2031@gmail.com"
           }
-        ],
-        "network": "tcp,udp"
+        ]
       },
 //.........<省略>........
