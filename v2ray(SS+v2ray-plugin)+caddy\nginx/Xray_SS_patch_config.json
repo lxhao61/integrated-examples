@@ -2,11 +2,8 @@
 //原配置：
 //.........<省略>........
       "settings": {
-        "email": "2003@gmail.com",
         "method": "chacha20-ietf-poly1305",
-        "password": "diy2003", //修改为自己的密码
-        "ota": false,
-        "network": "tcp,udp"
+        "password": "diy2003" //修改为自己的密码
       },
 //.........<省略>........
 
@@ -17,11 +14,9 @@
         "clients": [
           {
             "method": "chacha20-ietf-poly1305",
-            "password": "diy2003", //修改为自己的密码
-            "email": "2003@gmail.com"
+            "password": "diy2003" //修改为自己的密码
           }
-        ],
-        "network": "tcp,udp"
+        ]
       },
 //.........<省略>........
 
@@ -31,20 +26,16 @@
         "clients": [
           {
             "method": "aes-256-gcm",
-            "password": "diy2013", //修改为自己的密码
-            "email": "2013@gmail.com"
+            "password": "diy2013" //修改为自己的密码
           },
           {
             "method": "aes-128-gcm",
-            "password": "diy2023", //修改为自己的密码
-            "email": "2023@gmail.com"
+            "password": "diy2023" //修改为自己的密码
           },
           {
             "method": "chacha20-ietf-poly1305",
-            "password": "diy2033", //修改为自己的密码
-            "email": "2033@gmail.com"
+            "password": "diy2033" //修改为自己的密码
           }
-        ],
-        "network": "tcp,udp"
+        ]
       },
 //.........<省略>........
