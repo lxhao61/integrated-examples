@@ -2,30 +2,30 @@
 //原配置：
 //.........<省略>........
               "tls": {
-                "sni": ["zv.xx.yy"] //修改成自己规划对应vless+tcp+tls的域名
+                "sni": ["zv.xx.yy"] //修改为自己规划对应vless+tcp+tls的域名
               }
 //.........<省略>........
               "tls": {
-                "sni": ["zt.xx.yy"] //更改为自己规划对应trojan-go\trojan的域名
+                "sni": ["zt.xx.yy"] //修改为自己规划对应trojan-go\trojan的域名
               }
 //.........<省略>........
               "tls": {
-                "sni": ["zh.xx.yy"] //更改为自己规划对应https server的域名
+                "sni": ["zh.xx.yy"] //修改为自己规划对应https server的域名
               }
 //.........<省略>........
 
 //以上配置修改为如下：
 //.........<省略>........
               "tls": {
-                "sni": ["zv.xx.yy","z1.xx.yy"] //zv.xx.yy修改成自己规划对应vless+tcp+tls的域名，z1.xx.yy修改成自己规划对应vless+ws+tls与SS+v2ray-plugin+tls的CDN流量中转域名。
+                "sni": ["zv.xx.yy","z1.xx.yy"] //zv.xx.yy修改为自己规划对应vless+tcp+tls的域名，z1.xx.yy修改为自己规划对应vless+ws+tls与SS+v2ray-plugin+tls的CDN流量中转域名。
               }
 //.........<省略>........
               "tls": {
-                "sni": ["zt.xx.yy","z2.xx.yy"] //zt.xx.yy更改为自己规划对应trojan-go\trojan的域名，z2.xx.yy修改成自己规划对应trojan-go的CDN流量中转域名（使用trojan-go才需添加z2.xx.yyy域名）。
+                "sni": ["zt.xx.yy","z2.xx.yy"] //zt.xx.yy修改为自己规划对应trojan-go\trojan的域名，z2.xx.yy修改为自己规划对应trojan-go的CDN流量中转域名（使用trojan-go才需添加z2.xx.yyy域名）。
               }
 //.........<省略>........
               "tls": {
-                "sni": ["zh.xx.yy","z3.xx.yy"] //zh.xx.yy更改为自己规划对应https server的域名，z3.xx.yy更改为自己规划对应vless+grpc+tls的CDN流量中转域名。
+                "sni": ["zh.xx.yy","z3.xx.yy"] //zh.xx.yy修改为自己规划对应https server的域名，z3.xx.yy修改为自己规划对应vless+grpc+tls的CDN流量中转域名。
               }
 //.........<省略>........
 //注意：
