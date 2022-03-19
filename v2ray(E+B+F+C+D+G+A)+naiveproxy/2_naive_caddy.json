@@ -21,7 +21,7 @@
           "routes": [{
             "match": [{
               "tls": {
-                "sni": ["zv.xx.yy"] //更改为自己规划对应vless+tcp+tls的域名
+                "sni": ["zv.xx.yy"] //修改为自己规划对应vless+tcp+tls的域名
               }
             }],
             "handle": [{
@@ -34,7 +34,7 @@
           {
             "match": [{
               "tls": {
-                "sni": ["zt.xx.yy"] //更改为自己规划对应trojan+tcp+tls的域名
+                "sni": ["zt.xx.yy"] //修改为自己规划对应trojan+tcp+tls的域名
               }
             }],
             "handle": [{
@@ -47,7 +47,7 @@
           {
             "match": [{
               "tls": {
-                "sni": ["zh.xx.yy"] //更改为自己规划对应https server的域名
+                "sni": ["zh.xx.yy"] //修改为自己规划对应https server的域名
               }
             }],
             "handle": [{
@@ -87,7 +87,7 @@
             },
             {
               "handler": "file_server",
-              "root": "/var/www/html" //更改为自己存放的web文件路径
+              "root": "/var/www/html" //修改为自己存放的WEB文件路径
             }]
           }],
           "allow_h2c": true //开启h2c server支持
@@ -128,8 +128,8 @@
           {
             "handle": [{
               "handler": "forward_proxy",
-              "auth_user_deprecated": "user", //naiveproxy用户，更改为自己的。
-              "auth_pass_deprecated": "pass", //naiveproxy密码，更改为自己的。
+              "auth_user_deprecated": "user", //naiveproxy用户，修改为自己的。
+              "auth_pass_deprecated": "pass", //naiveproxy密码，修改为自己的。
               "hide_ip": true,
               "hide_via": true,
               "probe_resistance": {}
@@ -146,7 +146,7 @@
             },
             {
               "handler": "file_server",
-              "root": "/var/www/html" //更改为自己存放的web文件路径
+              "root": "/var/www/html" //修改为自己存放的WEB文件路径
             }]
           }],
           "tls_connection_policies": [{
