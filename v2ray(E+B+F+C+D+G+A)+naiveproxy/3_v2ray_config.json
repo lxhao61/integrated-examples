@@ -154,6 +154,7 @@
         "network": "ws",
         "security": "none",
         "wsSettings": {
+          "acceptProxyProtocol": true, //开启PROXY protocol接收，接收trojan+tcp+tls分流前真实来源IP和端口。
           "path": "/SS1v2ray" //修改为自己的path
         }
       },
