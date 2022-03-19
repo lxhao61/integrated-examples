@@ -11,7 +11,7 @@
       "settings": {
         "clients": [
           {
-            "password":"diy443", //修改成自己密码
+            "password":"diy443", //修改为自己密码
             "flow": "xtls-rprx-direct", //启用xtls，必须增加此条参数；否则删除。v2ray从v4.33.0版开始删除了xtls应用，如要使用此应用，建议选用xray。
             "email": "443@gmail.com"
           }
@@ -71,7 +71,7 @@
       "settings": {
         "clients": [
           {
-            "id": "048e0bf2-dd56-11e9-aa37-5600024c1d6a", //修改成自己的UUID
+            "id": "048e0bf2-dd56-11e9-aa37-5600024c1d6a", //修改为自己的UUID
             "email": "2001@gmail.com"
           }
         ],
@@ -81,8 +81,8 @@
         "network": "ws",
         "security": "none",
         "wsSettings": {
-          "acceptProxyProtocol": true, //开启PROXY protocol接收，接收vless+tcp分流前真实来源IP和端口。
-          "path": "/HALdGZ9k" //修改成自己的path
+          "acceptProxyProtocol": true, //开启PROXY protocol接收，接收trojan+tcp分流前真实来源IP和端口。
+          "path": "/HALdGZ9k" //修改为自己的path
         }
       },
       "sniffing": {
@@ -94,8 +94,9 @@
       }
     },
     {
+      "tag": "ddws", //标签，与routing中标签对应。
       "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2002, //监听端口
+      "port": 2002, //Xray-plugin或v2ray-plugin监听端口
       "protocol": "dokodemo-door",
       "settings": {
         "address": "v1.mux.cool",
@@ -106,11 +107,10 @@
         "network": "ws",
         "security": "none",
         "wsSettings": {
-          "acceptProxyProtocol": true, //开启PROXY protocol接收，接收vless+tcp分流前真实来源IP和端口。
-          "path": "/SS1v2ray" //修改成自己的path
+          "acceptProxyProtocol": true, //开启PROXY protocol接收，接收trojan+tcp分流前真实来源IP和端口。
+          "path": "/SS1v2ray" //修改为自己的path
         }
       },
-      "tag": "ddws", //标签，与routing中标签对应。
       "sniffing": {
         "enabled": true,
         "destOverride": [
@@ -124,11 +124,9 @@
       "port": 2003, //此端口无实际用处，但必须存在。
       "protocol": "shadowsocks",
       "settings": {
-        "email": "2003@gmail.com",
         "method": "chacha20-ietf-poly1305",
-        "password": "diy2003", //修改成自己的密码
-        "ota": false,
-        "network": "tcp,udp"
+        "password": "diy2003", //修改为自己的密码
+        "email": "2003@gmail.com"
       },
       "streamSettings": {
         "network": "domainsocket",
@@ -145,7 +143,7 @@
       "settings": {
         "clients": [
           {
-            "id": "058e0bf3-dd56-11e9-aa37-5600024c1d6a", //修改成自己的UUID
+            "id": "058e0bf3-dd56-11e9-aa37-5600024c1d6a", //修改为自己的UUID
             "email": "2009@gmail.com"
           }
         ],
@@ -155,7 +153,7 @@
         "network": "grpc",
         "security": "none",
         "grpcSettings": {
-          "serviceName": "cdngrpc" //更改为自己的服务名称，类似于HTTP/2中的Path。
+          "serviceName": "cdngrpc" //修改为自己的服务名称，类似于HTTP/2中的Path。
         }
       },
       "sniffing": {
@@ -172,7 +170,7 @@
       "settings": {
         "clients": [
           {
-            "id": "0a652466-dd56-11e9-aa37-5600024c1d6a", //修改成自己的UUID
+            "id": "0a652466-dd56-11e9-aa37-5600024c1d6a", //修改为自己的UUID
             "email": "2053@gmail.com"
           }
         ],
@@ -183,7 +181,7 @@
         "security": "none",
         "kcpSettings": {
           "congestion": true, //启用拥塞控制
-          "seed": "60VoqhfjP79nBQyU" //seed密码，修改成自己的。
+          "seed": "60VoqhfjP79nBQyU" //seed密码修改为自己的
         }
       },
       "sniffing": {
@@ -196,7 +194,6 @@
     }
   ],
   "routing": {
-    "domainStrategy": "IPIfNonMatch",
     "rules": [
       {
         "type": "field",
