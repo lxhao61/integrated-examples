@@ -1,8 +1,8 @@
 {
   "log": {
     "loglevel": "warning",
-    "error": "/var/log/v2ray/error.log", //若使用xray，此处目录名称v2ray改成xray。
-    "access": "/var/log/v2ray/access.log" //若使用xray，此处目录名称v2ray改成xray。
+    "error": "/var/log/xray/error.log", //若使用v2ray，此处目录名称xray改成v2ray。
+    "access": "/var/log/xray/access.log" //若使用v2ray，此处目录名称xray改成v2ray。
   },
   "inbounds": [
     {
@@ -10,11 +10,9 @@
       "port": 2011, //shadowsocks+grpc监听端口
       "protocol": "shadowsocks",
       "settings": {
-        "email": "2011@gmail.com",
         "method": "chacha20-ietf-poly1305",
         "password": "diy2011", //修改为自己的密码
-        "ota": false,
-        "network": "tcp,udp"
+        "email": "2011@gmail.com"
       },
       "streamSettings": {
         "network": "grpc",
@@ -33,7 +31,6 @@
     }
   ],
   "routing": {
-    "domainStrategy": "IPIfNonMatch",
     "rules": [
       {
         "type": "field",
