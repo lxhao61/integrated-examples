@@ -54,7 +54,7 @@
             },
             {
               "handler": "file_server",
-              "root": "/var/www/html" //更改为自己存放的web文件路径
+              "root": "/var/www/html" //修改为自己存放的WEB文件路径
             }]
           }],
           "automatic_https": {
