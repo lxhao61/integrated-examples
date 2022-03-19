@@ -12,7 +12,8 @@
       "settings": {
         "clients": [
           {
-            "password":"diy2007" //修改为自己密码
+            "password":"diy2007", //修改为自己密码
+            "email": "2007@gmail.com"
           }
         ]
       },
