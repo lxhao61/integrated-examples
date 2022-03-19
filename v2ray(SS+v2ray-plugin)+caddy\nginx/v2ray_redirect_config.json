@@ -36,7 +36,8 @@
       "protocol": "shadowsocks",
       "settings": {
         "method": "chacha20-ietf-poly1305",
-        "password": "diy2003" //修改为自己的密码
+        "password": "diy2003", //修改为自己的密码
+        "email": "2003@gmail.com"
       }
     }
   ],
