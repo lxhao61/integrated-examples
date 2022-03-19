@@ -3,7 +3,8 @@
 //.........<省略>........
       "settings": {
         "method": "chacha20-ietf-poly1305",
-        "password": "diy2003" //修改为自己的密码
+        "password": "diy2003", //修改为自己的密码
+        "email": "2003@gmail.com"
       },
 //.........<省略>........
 
@@ -14,7 +15,8 @@
         "clients": [
           {
             "method": "chacha20-ietf-poly1305",
-            "password": "diy2003" //修改为自己的密码
+            "password": "diy2003", //修改为自己的密码
+            "email": "2003@gmail.com"
           }
         ]
       },
@@ -26,15 +28,18 @@
         "clients": [
           {
             "method": "aes-256-gcm",
-            "password": "diy2013" //修改为自己的密码
+            "password": "diy2013", //修改为自己的密码
+            "email": "2013@gmail.com"
           },
           {
             "method": "aes-128-gcm",
-            "password": "diy2023" //修改为自己的密码
+            "password": "diy2023", //修改为自己的密码
+            "email": "2023@gmail.com"
           },
           {
             "method": "chacha20-ietf-poly1305",
-            "password": "diy2033" //修改为自己的密码
+            "password": "diy2033", //修改为自己的密码
+            "email": "2033@gmail.com"
           }
         ]
       },
