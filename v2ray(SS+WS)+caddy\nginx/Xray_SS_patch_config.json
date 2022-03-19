@@ -3,7 +3,8 @@
 //.........<省略>........
       "settings": {
         "method": "aes-128-gcm",
-        "password": "diy2008" //修改为自己的密码
+        "password": "diy2008", //修改为自己的密码
+        "email": "2008@gmail.com"
       },
 //.........<省略>........
 
@@ -14,7 +15,8 @@
         "clients": [
           {
             "method": "aes-128-gcm",
-            "password": "diy2008" //修改为自己的密码
+            "password": "diy2008", //修改为自己的密码
+            "email": "2008@gmail.com"
           }
         ]
       },
@@ -26,15 +28,18 @@
         "clients": [
           {
             "method": "aes-256-gcm",
-            "password": "diy2018" //修改为自己的密码
+            "password": "diy2018", //修改为自己的密码
+            "email": "2018@gmail.com"
           },
           {
             "method": "aes-128-gcm",
-            "password": "diy2028" //修改为自己的密码
+            "password": "diy2028", //修改为自己的密码
+            "email": "2028@gmail.com"
           },
           {
             "method": "chacha20-ietf-poly1305",
-            "password": "diy2038" //修改为自己的密码
+            "password": "diy2038", //修改为自己的密码
+            "email": "2038@gmail.com"
           }
         ]
       },
