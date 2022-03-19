@@ -11,7 +11,8 @@
       "protocol": "shadowsocks",
       "settings": {
         "method": "aes-128-gcm",
-        "password": "diy2008" //修改为自己的密码
+        "password": "diy2008", //修改为自己的密码
+        "email": "2008@gmail.com"
       },
       "streamSettings": {
         "network": "ws",
