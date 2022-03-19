@@ -11,7 +11,7 @@
       "settings": {
         "clients": [
           {
-            "id": "048e0bf2-dd56-11e9-aa37-5600024c1d6a", //修改成自己的UUID
+            "id": "048e0bf2-dd56-11e9-aa37-5600024c1d6a", //修改为自己的UUID
             "flow": "xtls-rprx-direct", //启用xtls，必须增加此条参数；否则删除。v2ray从v4.33.0版开始删除了xtls应用，如要使用此应用，建议选用xray。
             "email": "443@gmail.com"
           }
@@ -68,7 +68,7 @@
       "settings": {
         "clients": [
           {
-            "id": "048e0bf2-dd56-11e9-aa37-5600024c1d6a", //修改成自己的UUID
+            "id": "048e0bf2-dd56-11e9-aa37-5600024c1d6a", //修改为自己的UUID
             "email": "2001@gmail.com"
           }
         ],
@@ -78,7 +78,7 @@
         "network": "ws",
         "security": "none",
         "wsSettings": {
-          "path": "/HALdGZ9k" //修改成自己的path
+          "path": "/HALdGZ9k" //修改为自己的path
         }
       },
       "sniffing": {
@@ -90,6 +90,7 @@
       }
     },
     {
+      "tag": "ddws", //标签，与routing中标签对应。
       "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
       "port": 2002, //Xray-plugin或v2ray-plugin监听端口
       "protocol": "dokodemo-door",
@@ -102,10 +103,9 @@
         "network": "ws",
         "security": "none",
         "wsSettings": {
-          "path": "/SS1v2ray" //修改成自己的path
+          "path": "/SS1v2ray" //修改为自己的path
         }
       },
-      "tag": "ddws", //标签，与routing中标签对应。
       "sniffing": {
         "enabled": true,
         "destOverride": [
@@ -116,14 +116,20 @@
     },
     {
       "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2003, //监听端口
+      "port": 2003, //此端口无实际用处，但必须存在。
       "protocol": "shadowsocks",
       "settings": {
-        "email": "2003@gmail.com",
         "method": "chacha20-ietf-poly1305",
-        "password": "diy2003", //修改成自己的密码
-        "ota": false,
-        "network": "tcp,udp"
+        "password": "diy2003", //修改为自己的密码
+        "email": "2003@gmail.com"
+      },
+      "streamSettings": {
+        "network": "domainsocket",
+        "security": "none",
+        "dsSettings": {
+          "path": "ss", //domainsocket文件路径，与outbounds中对应。
+          "abstract": true
+        }
       }
     },
     {
@@ -133,7 +139,7 @@
       "settings": {
         "clients": [
           {
-            "password":"diy6443", //修改成自己密码
+            "password":"diy6443", //修改为自己密码
             "email": "6443@gmail.com"
           }
         ],
@@ -162,7 +168,7 @@
       "settings": {
         "clients": [
           {
-            "id": "0a652466-dd56-11e9-aa37-5600024c1d6a", //修改成自己的UUID
+            "id": "0a652466-dd56-11e9-aa37-5600024c1d6a", //修改为自己的UUID
             "email": "2053@gmail.com"
           }
         ],
@@ -173,7 +179,7 @@
         "security": "none",
         "kcpSettings": {
           "congestion": true, //启用拥塞控制
-          "seed": "60VoqhfjP79nBQyU" //seed密码，修改成自己的。
+          "seed": "60VoqhfjP79nBQyU" //seed密码修改为自己的
         }
       },
       "sniffing": {
@@ -186,7 +192,6 @@
     }
   ],
   "routing": {
-    "domainStrategy": "IPIfNonMatch",
     "rules": [
       {
         "type": "field",
