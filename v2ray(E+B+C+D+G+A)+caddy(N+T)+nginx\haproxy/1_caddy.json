@@ -41,7 +41,7 @@
             },
             {
               "handler": "file_server",
-              "root": "/var/www/html" //更改为自己存放的web文件路径
+              "root": "/var/www/html" //修改为自己存放的WEB文件路径
             }]
           }],
           "allow_h2c": true //开启h2c server支持
@@ -59,7 +59,7 @@
               "handler": "reverse_proxy",
               "transport": {
                 "protocol": "http",
-                "versions": ["h2c"]
+                "versions": ["h2c","2"]
               },
               "upstreams": [{
                 "dial": "127.0.0.1:2005" //转发给本机vless+h2c监听端口
@@ -74,26 +74,33 @@
               "handler": "reverse_proxy",
               "transport": {
                 "protocol": "http",
-                "versions": ["h2c"]
+                "versions": ["h2c","2"]
               },
               "upstreams": [{
                 "dial": "127.0.0.1:2009" //转发给本机vless+grpc监听端口
               }],
-              "flush_interval": -1
+              "flush_interval": -1,
+              "headers": {
+              	"request": {
+                  "set": {
+                    "X-Real-Ip": ["{http.request.remote.host}"]
+                  }
+              	}
+              }
             }]
           },
           {
             "handle": [{
               "handler": "forward_proxy",
-              "auth_user_deprecated": "user", //naiveproxy用户，更改为自己的。
-              "auth_pass_deprecated": "pass", //naiveproxy密码，更改为自己的。
+              "auth_user_deprecated": "user", //naiveproxy用户，修改为自己的。
+              "auth_pass_deprecated": "pass", //naiveproxy密码，修改为自己的。
               "hide_ip": true,
               "hide_via": true,
               "probe_resistance": {}
             },
             {
               "handler": "trojan",
-              "users": ["diy443"], //更改为自己的密码。密码可多组（"password"），用逗号隔开。
+              "users": ["diy443"], //修改为自己的密码。密码可多组（"password"），用逗号隔开。
               "connect_method": true,
               "websocket": true //开启Websocket支持
             }]
@@ -109,7 +116,7 @@
             },
             {
               "handler": "file_server",
-              "root": "/var/www/html" //更改为自己存放的web文件路径
+              "root": "/var/www/html" //修改为自己存放的WEB文件路径
             }]
           }],
           "tls_connection_policies": [{
