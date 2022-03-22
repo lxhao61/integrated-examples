@@ -3,8 +3,8 @@
 	order reverse_proxy before forward_proxy
 	admin off
 	log { #注意：版本不小于v2.4.0才支持日志全局配置，否则各自配置。
-		output file /var/log/caddy/access.log
 		level ERROR
+		output file /var/log/caddy/access.log
 	}
 	servers 127.0.0.1:88 { #与下边本地监听端口对应
 		protocol {
@@ -31,7 +31,7 @@
 			Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
 		}
 		file_server {
-			root /var/www/html #更改为自己存放的web文件路径
+			root /var/www/html #修改为自己存放的WEB文件路径
 		}
 	}
 }
@@ -58,7 +58,7 @@
 	}
 
 	forward_proxy {
-		basic_auth user pass #naiveproxy用户与密码，更改为自己的。
+		basic_auth user pass #naiveproxy用户与密码，修改为自己的。
 		hide_ip
 		hide_via
 		probe_resistance
@@ -69,7 +69,7 @@
 			Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
 		}
 		file_server {
-			root /var/www/html #更改为自己存放的web文件路径
+			root /var/www/html #修改为自己存放的WEB文件路径
 		}
 	}
 }
