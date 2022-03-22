@@ -122,7 +122,14 @@
               "upstreams": [{
                 "dial": "127.0.0.1:2009" //转发给本机vless+grpc监听端口
               }],
-              "flush_interval": -1
+              "flush_interval": -1,
+              "headers": {
+              	"request": {
+                  "set": {
+                    "X-Real-Ip": ["{http.request.remote.host}"]
+                  }
+              	}
+              }
             }]
           },
           {
