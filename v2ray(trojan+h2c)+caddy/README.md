@@ -14,5 +14,3 @@
 2、caddy 版本不小于 v2.2.0-rc.1 才支持 H2C proxy，即支持 Xray 或 v2ray 的 H2C 反向代理。
 
 3、本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。支持自动 HTTPS，即自动申请与更新证书与私钥，自动 HTTP 重定向到 HTTPS。
-
-4、nginx 不支持 H2C proxy，故不能用 nginx 来实现 Xray 或 v2ray 的 H2C 反向代理。
