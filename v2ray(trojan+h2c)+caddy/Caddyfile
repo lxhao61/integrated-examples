@@ -29,6 +29,5 @@
 		file_server {
 			root /var/www/html #修改为自己存放的WEB文件路径
 		}
-		}
 	}
 }
