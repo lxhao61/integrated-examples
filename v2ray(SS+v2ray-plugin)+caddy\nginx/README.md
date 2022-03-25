@@ -15,7 +15,7 @@
 
 2、v2ray_DS_config.json 采用 Unix Domain Socket 连接 shadowsocks 应用与 xray-plugin 或 v2ray-plugin 模块，效率高，但在 Windows 10 Build 17036 之前版本不可用。v2ray_redirect_config.json 采用 Local Loopback 连接 shadowsocks 应用与 xray-plugin 或 v2ray-plugin 模块，效率稍低，但可适用任意系统服务器。
 
-3、本示例 shadowsocks+xray-plugin+tls 或 shadowsocks+v2ray-plugin+tls 的 WebSocket 应用不等同 Xray 或 v2ray 的 [shadowsocks+ws+tls](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(SS%2BWS)%2Bcaddy%5Cnginx) 应用，两者不兼容。它仅兼容原版 shadowsocks 加 xray-plugin 或 v2ray-plugin 插件的 WebSocket 应用（服务端），即客户端使用原版 shadowsocks 加 xray-plugin 或 v2ray-plugin 插件连接。
+3、本示例 shadowsocks+xray-plugin+tls 或 shadowsocks+v2ray-plugin+tls 的 WebSocket 应用不等同 Xray 或 v2ray 的 [shadowsocks+ws+tls](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(SS%2BWS)%2Bcaddy%5Cnginx) 应用，两者不兼容。它仅兼容原版 shadowsocks 加 xray-plugin 或 v2ray-plugin 插件的 WebSocket 应用（服务端），即客户端使用 shadowsocks 加 xray-plugin 或 v2ray-plugin 插件连接。
 
 4、若采用 caddy 反向代理，本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。支持自动 HTTPS，即自动申请与更新证书与私钥，自动 HTTP 重定向到 HTTPS。
 
