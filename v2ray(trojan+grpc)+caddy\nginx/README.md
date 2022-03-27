@@ -13,7 +13,7 @@
 
 2、caddy 版本不小于 v2.2.0-rc.1 才支持 H2C proxy，即支持 Xray 或 v2ray 的 H2C（gRPC）反向代理。
 
-3、因 caddy 实现 H2C 反向代理仅支持端口转发，故通过 caddy 实现 gRPC 反向代理也仅支持端口转发，不支持进程转发。
+3、因 caddy 实现 H2C 反向代理仅支持端口转发，故通过 caddy 基于 H2C 代理实现的 gRPC 反向代理也仅支持端口转发，不支持进程转发。
 
 4、若采用 caddy 反向代理，本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（效果一样）。支持自动 HTTPS，即自动申请与更新证书与私钥，自动 HTTP 重定向到 HTTPS。
 
