@@ -113,7 +113,7 @@
         "network": "grpc",
         "security": "none",
         "grpcSettings": {
-          "serviceName": "cdngrpc" //修改为自己的服务名称，类似于HTTP/2中的Path。
+          "serviceName": "cdngrpc" //修改为自己的gRPC服务名称，类似于HTTP/2中的Path。
         }
       },
       "sniffing": {
@@ -141,7 +141,7 @@
         "security": "none",
         "kcpSettings": {
           "congestion": true, //启用拥塞控制
-          "seed": "60VoqhfjP79nBQyU" //seed密码修改为自己的
+          "seed": "60VoqhfjP79nBQyU" //修改为自己的seed密码
         }
       },
       "sniffing": {
