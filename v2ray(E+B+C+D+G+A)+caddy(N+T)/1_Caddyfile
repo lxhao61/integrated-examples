@@ -36,7 +36,6 @@
 			versions h2c 2
 		}
 		flush_interval -1
-		header_up X-Real-IP {remote_host}
 	}
 
 	forward_proxy {
