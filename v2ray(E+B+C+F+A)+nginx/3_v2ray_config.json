@@ -30,12 +30,12 @@
           {
             "path": "/HALdGZ9k", //通过路径分流
             "dest": "@vless-ws", //分流后转给vless+ws监听进程
-            "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给如下vless-ws应用。1或2表示PROXY protocol插件版本。与上一致，此处建议配置2。
+            "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给如下vless+ws应用。1或2表示PROXY protocol插件版本。与上一致，此处建议配置2。
           },
           {
             "path": "/SS1v2ray", //通过路径分流
             "dest": 2002, //分流后转给Xray-plugin或v2ray-plugin监听端口
-            "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给如下SS- v2ray-plugin应用。1或2表示PROXY protocol插件版本。与上一致，此处建议配置2。
+            "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给如下shadowsocks+xray-plugin/v2ray-plugin应用。1或2表示PROXY protocol插件版本。与上一致，此处建议配置2。
           }
         ]
       },
@@ -187,7 +187,7 @@
         "security": "none",
         "kcpSettings": {
           "congestion": true, //启用拥塞控制
-          "seed": "60VoqhfjP79nBQyU" //seed密码修改为自己的
+          "seed": "60VoqhfjP79nBQyU" //修改为自己的seed密码
         }
       },
       "sniffing": {
