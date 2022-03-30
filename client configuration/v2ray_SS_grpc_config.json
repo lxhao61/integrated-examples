@@ -33,7 +33,7 @@
         "security": "tls",
         "network": "grpc",
         "grpcSettings": {
-          "serviceName": "sdngrpc" //服务路径，相当于HTTP/2与WebSocket中的Path。修改为服务端配置的对应服务路径。
+          "serviceName": "sdngrpc" //修改为服务端配置的对应gRPC服务名称
         }
       }
     },
