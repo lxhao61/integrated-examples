@@ -31,7 +31,7 @@
         "security": "tls",
         "network": "h2",
         "httpSettings": {
-          "path": "/teuW56Es" //修改为服务端设置的path
+          "path": "/teuW56Es" //修改为服务端配置的对应path
         }
       }
     },
