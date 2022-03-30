@@ -49,7 +49,7 @@
             "geosite:geolocation-!cn"
         ],
         "default_policy": "proxy",
-        "geoip": "/trojan-go/geoip.dat", //更改为自己的geoip.dat所在路径
-        "geosite": "/trojan-go/geosite.dat" //更改为自己的geosite.dat所在路径
+        "geoip": "/trojan-go/geoip.dat", //修改为自己的geoip.dat所在路径
+        "geosite": "/trojan-go/geosite.dat" //修改为自己的geosite.dat所在路径
     }
 }
