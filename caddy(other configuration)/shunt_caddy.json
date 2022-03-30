@@ -2,7 +2,7 @@
 //.........<省略>........
           {
             "match": [{
-              "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），更改为自己的域名。
+              "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改为自己的域名。
             }],
             "handle": [{
               "handler": "headers",
@@ -14,7 +14,7 @@
             },
             {
               "handler": "file_server",
-              "root": "/var/www/html" //更改为自己存放的web文件路径
+              "root": "/var/www/html" //修改为自己存放的WEB文件路径
             }]
           }],
 //.........<省略>........
@@ -23,7 +23,7 @@
 //分别回落分流到不同网站，以上配置修改为如下：（示例仅配置了两个网站\域名的回落分流；如需要多个网站\域名，增加对应参数即可。）
           {
             "match": [{
-              "host": ["za.xx.yy"] //更改为分流的域名
+              "host": ["za.xx.yy"] //修改为分流的域名
             }],
             "handle": [{
               "handler": "headers",
@@ -35,12 +35,12 @@
             },
             {
               "handler": "file_server",
-              "root": "/var/www/za" //更改为域名对应存放的web文件路径
+              "root": "/var/www/za" //修改为自己存放的WEB文件路径
             }]
           },
           {
             "match": [{
-              "host": ["zb.xx.yy"] //更改为分流的域名
+              "host": ["zb.xx.yy"] //修改为分流的域名
             }],
             "handle": [{
               "handler": "headers",
@@ -52,7 +52,7 @@
             },
             {
               "handler": "file_server",
-              "root": "/var/www/zb" //更改为域名对应存放的web文件路径
+              "root": "/var/www/zb" //修改为自己存放的WEB文件路径
             }]
           }],
 //.........<省略>........
