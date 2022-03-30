@@ -22,7 +22,7 @@
           "routes": [{
             "match": [{
               "tls": {
-                "sni": ["zv.xx.yy"] //更改为自己分流的域名
+                "sni": ["zv.xx.yy"] //修改为自己分流的域名
               }
             }],
             "handle": [{
@@ -36,7 +36,7 @@
           {
             "match": [{
               "tls": {
-                "sni": ["zh.xx.yy"] //更改为自己分流的域名
+                "sni": ["zh.xx.yy"] //修改为自己分流的域名
               }
             }],
             "handle": [{
