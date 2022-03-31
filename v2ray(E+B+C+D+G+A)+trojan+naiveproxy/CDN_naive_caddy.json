@@ -6,7 +6,7 @@
               }
 //.........<省略>........
               "tls": {
-                "sni": ["zt.xx.yy"] //修改为自己规划对应trojan-go\trojan的域名
+                "sni": ["zt.xx.yy"] //修改为自己规划对应trojan-go或trojan的域名
               }
 //.........<省略>........
               "tls": {
@@ -21,7 +21,7 @@
               }
 //.........<省略>........
               "tls": {
-                "sni": ["zt.xx.yy","z2.xx.yy"] //zt.xx.yy修改为自己规划对应trojan-go\trojan的域名，z2.xx.yy修改为自己规划对应trojan-go的CDN流量中转域名（使用trojan-go才需添加z2.xx.yyy域名）。
+                "sni": ["zt.xx.yy","z2.xx.yy"] //zt.xx.yy修改为自己规划对应trojan-go或trojan的域名，z2.xx.yy修改为自己规划对应trojan-go的CDN流量中转域名（使用trojan-go才需添加z2.xx.yyy域名）。
               }
 //.........<省略>........
               "tls": {
