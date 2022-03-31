@@ -16,7 +16,7 @@
 
 7、naiveproxy（带有forwardproxy插件的caddy才支持naiveproxy应用，否则仅上边应用。TLS由caddy提供及处理。）
 
-8、trojan-go/trojan（TLS由自己提供及处理。）
+8、trojan-go或trojan（TLS由自己提供及处理。）
 
 注意：
 
