@@ -17,7 +17,7 @@
 //以上配置修改为如下：
 //.........<省略>........
               "tls": {
-                "sni": ["zv.xx.yy","z1.xx.yy"] //zv.xx.yy修改为自己规划对应vless+tcp+tls的域名，z1.xx.yy修改为自己规划对应vless+ws+tls与SS+v2ray-plugin+tls的CDN流量中转域名。
+                "sni": ["zv.xx.yy","z1.xx.yy"] //zv.xx.yy修改为自己规划对应vless+tcp+tls的域名，z1.xx.yy修改为自己规划对应vless+ws+tls与shadowsocks+xray-plugin/v2ray-plugin+tls的CDN流量中转域名。
               }
 //.........<省略>........
               "tls": {
