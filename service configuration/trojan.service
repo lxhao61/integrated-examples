@@ -6,7 +6,7 @@ After=network.target network-online.target nss-lookup.target mysql.service maria
 [Service]
 Type=simple
 StandardError=journal
-User=root
+User=root //默认以root用户运行。若修改，请修改为相应权限的用户。
 AmbientCapabilities=CAP_NET_BIND_SERVICE
 ExecStart="/usr/local/bin/trojan/trojan" "/usr/local/etc/trojan/config.json"
 ExecReload=/bin/kill -HUP $MAINPID
