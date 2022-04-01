@@ -10,7 +10,7 @@ nginx SNI 分流的配置方法
 
 3、nginx 支持 TLSv1.3，需要 nginx 包含版本大于 1.1.1 的 OpenSSl 库和 http_ssl_module 模块。
 
-4、nginx 支持 PROXY protocol，需要 nginx 包含 http_realip_module 及 stream_realip_module（可选）模块。
+4、nginx 支持 PROXY protocol 接收，需要 nginx 包含 http_realip_module 及 stream_realip_module（可选）模块。
 
 5、1_SNI_nginx.conf 采用 Local Loopback 连接，实现 nginx SNI 的端口分流。端口分流配置虽然效率稍低，但可适用任意系统服务器。
 
