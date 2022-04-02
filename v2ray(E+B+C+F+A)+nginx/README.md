@@ -24,7 +24,7 @@ v2ray 或 Xray 前置（监听 443 端口），利用 vless+tcp+tls 或 vless+tc
 
 5、nginx 支持 H2C server，但不支持 HTTP/1.1 server 与 H2C server 共用一个端口或进程（Unix Domain Socket 应用）；故 v2ray 或 Xray 回落配置必须分成 http/1.1 回落与 h2 回落两部分，以便分别对应 nginx 的 HTTP/1.1 server 与 H2C server。
 
-6、套娃不支持 http/1.1 回落与 h2 回落分开（即 fallbacks 中 "alpn" 无效）；故套娃 trojan+tcp 仅使用 h2 连接及回落。
+6、套娃不支持 http/1.1 回落与 h2 回落分开（即 fallbacks 中 "alpn" 无效），故套娃 trojan+tcp 仅使用 h2 或 http/1.1 连接及回落。
 
 7、不要使用 ACME 客户端在当前服务器上以 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新证书及密钥，因 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新证书及密钥需监听 80 或 443 端口，从而与当前应用端口冲突。
 
