@@ -16,7 +16,7 @@
 
 7、A=vless+kcp+seed（可改成vmess+kcp+seed，或添加它。）
 
-8、naiveproxy（带有forwardproxy插件的caddy才支持naiveproxy应用，否则仅上边应用。TLS由caddy提供及处理。）
+8、naiveproxy（基于caddy的forwardproxy插件实现，TLS由caddy提供及处理。）
 
 注意：
 
