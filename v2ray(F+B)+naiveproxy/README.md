@@ -6,7 +6,7 @@ v2ray 或 Xray 前置（监听 443 端口），利用 trojan+tcp+tls 或 trojan+
 
 2、B=vless+ws+tls（TLS由trojan+tcp+tls/xtls提供及处理，不需配置；另可改成或添加其它WS类应用，参考对应的服务端单一应用配置示例。）
 
-3、naiveproxy（带有forwardproxy插件的caddy才支持naiveproxy应用，否则仅上边应用。TLS由trojan+tcp+tls/xtls提供及处理，不需配置。）
+3、naiveproxy（基于caddy的forwardproxy插件实现。TLS由trojan+tcp+tls/xtls提供及处理，不需配置。）
 
 注意：
 
