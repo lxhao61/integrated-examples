@@ -1,6 +1,12 @@
 //caddy自动申请与更新证书配置（供Xray或v2ray、trojan-go或trojan及自己使用）
 //一、多个域名申请普通证书配置
 //原配置：
+{
+//.........<省略>........
+  "apps": {
+    "http": {
+      "servers": {
+        "h1": {
 //.........<省略>........
           "tls_connection_policies": [{
             "certificate_selection": {
