@@ -48,16 +48,23 @@
               "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改为自己的域名。
             }],
             "handle": [{
-              "handler": "headers",
-              "response": {
-                "set": {
-                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
-                }
-              }
-            },
-            {
-              "handler": "file_server",
-              "root": "/var/www/html" //修改为自己存放的WEB文件路径
+              "handler": "subroute",
+              "routes": [{
+                "handle": [{
+                  "handler": "headers",
+                  "response": {
+                    "set": {
+                      "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
+                    }
+                  }
+                }]
+              },
+              {
+                "handle": [{
+                  "handler": "file_server",
+                  "root": "/var/www/html" //修改为自己存放的WEB文件路径
+                }]
+              }]
             }]
           }],
           "automatic_https": {
