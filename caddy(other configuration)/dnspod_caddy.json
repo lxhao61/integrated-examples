@@ -1,21 +1,29 @@
 //一、无其它，仅反代应用。
 //原配置：
+{
 //.........<省略>........
+          {
             "match": [{
               "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改为自己的域名。
             }],
 //.........<省略>........
+    "tls": {
       "certificates": {
         "automate": ["xx.yy"] //自动化管理域名证书（包括获取、更新证书及加载证书）。修改为自己的域名。
       }
-//.........<省略>........
+    }
+  }
+}
 
 //以dns api方式申请tls证书（以上配置改为如下）：
+{
 //.........<省略>........
+          {
             "match": [{
               "host": ["*.xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改为自己的域名。
             }],
 //.........<省略>........
+    "tls": {
       "certificates": {
         "automate": ["*.xx.yy"] //自动化管理域名证书（包括获取、更新证书及加载证书）。修改为自己的域名。*.xx.yy表示申请通配符证书。
       },
@@ -44,15 +52,35 @@
 
 //二、无SNI分流，回落为主应用。
 //原配置：
+{
+//.........<省略>........
+  "apps": {
+    "http": {
+      "servers": {
+        "h1": {
 //.........<省略>........
             "match": [{
               "host": ["xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改为自己的域名。
             }],
 //.........<省略>........
           "allow_h2c": true //开启h2c server支持
-//.........<省略>........
+        }
+      }
+    }
+  }
+}
 
 //以dns api方式申请tls证书（以上配置改为如下）：
+{
+//.........<省略>........
+  "storage": {
+    "module": "file_system",
+    "root": "/home/tls" //存放证书及密钥的基本路径
+  },
+  "apps": {
+    "http": {
+      "servers": {
+        "h1": {
 //.........<省略>........
             "match": [{
               "host": ["*.xx.yy"] //限定域名访问（禁止以ip方式访问网站），修改为自己的域名。
@@ -68,10 +96,6 @@
       },
       "automation": {
         "policies": [{
-          "storage": {
-            "module": "file_system",
-            "root": "/home/tls" //存放证书及密钥的基本路径
-          },
           "issuers": [{
             "module": "acme", //acme表示从Let's Encrypt申请证书及密钥，zerossl表示从ZeroSSL申请证书及密钥。必须acme与zerossl二选一（固定证书及密钥的目录便于引用）。
             "challenges": {
@@ -95,6 +119,12 @@
 
 //三、有SNI分流的应用。
 //原配置：
+{
+//.........<省略>........
+  "apps": {
+    "http": {
+      "servers": {
+        "h1": {
 //.........<省略>........
           "tls_connection_policies": [{
             "certificate_selection": {
@@ -120,6 +150,16 @@
 }
 
 //以dns api方式申请tls证书（以上配置改为如下）：
+{
+//.........<省略>........
+  "storage": {
+    "module": "file_system",
+    "root": "/home/tls" //存放证书及密钥的基本路径
+  },
+  "apps": {
+    "http": {
+      "servers": {
+        "h1": {
 //.........<省略>........
           "tls_connection_policies": [{
             "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"],
@@ -135,10 +175,6 @@
       },
       "automation": {
         "policies": [{
-          "storage": {
-            "module": "file_system",
-            "root": "/home/tls" //存放证书及密钥的基本路径
-          },
           "issuers": [{
             "module": "acme", //acme表示从Let's Encrypt申请证书及密钥，zerossl表示从ZeroSSL申请证书及密钥。必须acme与zerossl二选一（固定证书及密钥的目录便于引用）。
             "challenges": {
