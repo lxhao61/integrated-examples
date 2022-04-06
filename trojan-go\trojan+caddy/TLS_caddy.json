@@ -2,20 +2,7 @@
 //单一域名申请普通证书配置
 //原配置：
 {
-  "admin": {
-    "disabled": true
-  },
-  "logging": {
-    "logs": {
-      "default": {
-        "level": "ERROR",
-        "writer": {
-          "output": "file",
-          "filename": "/var/log/caddy/access.log"
-        }
-      }
-    }
-  },
+//.........<省略>........
   "apps": {
     "http": {
       "servers": {
@@ -29,20 +16,7 @@
 
 //以上配置修改为如下：
 {
-  "admin": {
-    "disabled": true
-  },
-  "logging": {
-    "logs": {
-      "default": {
-        "level": "ERROR",
-        "writer": {
-          "output": "file",
-          "filename": "/var/log/caddy/access.log"
-        }
-      }
-    }
-  },
+//.........<省略>........
   "storage": {
     "module": "file_system",
     "root": "/home/tls" //存放证书及密钥的基本路径
