@@ -32,6 +32,16 @@
 }
 
 //以上配置修改为如下：
+{
+//.........<省略>........
+  "storage": {
+    "module": "file_system",
+    "root": "/home/tls" //存放证书及密钥的基本路径
+  },
+  "apps": {
+    "http": {
+      "servers": {
+        "h1": {
 //.........<省略>........
           "tls_connection_policies": [{
             "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"],
@@ -47,10 +57,6 @@
       },
       "automation": {
         "policies": [{
-          "storage": {
-            "module": "file_system",
-            "root": "/home/tls" //存放证书及密钥的基本路径
-          },
           "issuers": [{
             "module": "acme" //acme表示从Let's Encrypt申请证书及密钥，zerossl表示从ZeroSSL申请证书及密钥。必须acme与zerossl二选一（固定证书及密钥的目录便于引用）。
           }]
