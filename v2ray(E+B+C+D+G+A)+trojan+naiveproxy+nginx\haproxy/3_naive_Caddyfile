@@ -1,5 +1,5 @@
 {
-	order forward_proxy before map
+	order forward_proxy before header
 	order reverse_proxy before forward_proxy
 	admin off
 	log { #注意：版本不小于v2.4.0才支持日志全局配置，否则各自配置。
@@ -26,13 +26,11 @@
 :88 { #http/1.1与h2c server监听端口
 	bind 127.0.0.1 #绑定本地主机，避免本机外的机器探测到上面端口。
 
-	route {
-		header {
-			Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
-		}
-		file_server {
-			root /var/www/html #修改为自己存放的WEB文件路径
-		}
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
+	}
+	file_server {
+		root /var/www/html #修改为自己存放的WEB文件路径
 	}
 }
 
@@ -65,12 +63,10 @@
 		probe_resistance
 	}
 
-	route {
-		header {
-			Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
-		}
-		file_server {
-			root /var/www/html #修改为自己存放的WEB文件路径
-		}
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
+	}
+	file_server {
+		root /var/www/html #修改为自己存放的WEB文件路径
 	}
 }
