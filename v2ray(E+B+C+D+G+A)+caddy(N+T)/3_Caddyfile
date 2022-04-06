@@ -1,5 +1,5 @@
 {
-	order trojan before map
+	order trojan before route
 	order forward_proxy before trojan
 	order reverse_proxy before forward_proxy
 	admin off
