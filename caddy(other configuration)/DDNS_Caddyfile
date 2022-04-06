@@ -1,5 +1,5 @@
 {
-	order trojan before map
+#.........<省略>........
 	admin off
 	log { #注意：版本不小于v2.4.0才支持日志全局配置，否则各自配置。
 		level ERROR
