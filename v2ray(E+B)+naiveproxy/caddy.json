@@ -1,6 +1,5 @@
 //若不需要naiveproxy应用，删除配置文件中如下参数即可。
 //.........<省略>........
-          {
             "handle": [{
               "handler": "forward_proxy",
               "auth_user_deprecated": "user", //naiveproxy用户，修改为自己的。
@@ -10,4 +9,5 @@
               "probe_resistance": {}
             }]
           },
+          {
 //.........<省略>........
