@@ -32,6 +32,36 @@
           "listen": ["127.0.0.1:88"], //http/1.1与h2c server本地监听端口
           "routes": [{
             "match": [{
+              "path": ["/HALdGZ9k"], //与vless+ws应用中path对应
+              "header": {
+                "Connection": ["*Upgrade*"],
+                "Upgrade": ["websocket"]
+              }
+            }],
+            "handle": [{
+              "handler": "reverse_proxy",
+              "upstreams": [{
+                "dial": "127.0.0.1:2001" //转发给本机vless+ws监听端口
+              }]
+            }]
+          },
+          {
+            "match": [{
+              "path": ["/SS1v2ray"], //与Xray-plugin或v2ray-plugin模块中path对应
+              "header": {
+                "Connection": ["*Upgrade*"],
+                "Upgrade": ["websocket"]
+              }
+            }],
+            "handle": [{
+              "handler": "reverse_proxy",
+              "upstreams": [{
+                "dial": "127.0.0.1:2002" //转发给本机Xray-plugin或v2ray-plugin监听端口
+              }]
+            }]
+          },
+          {
+            "match": [{
               "path": ["/SeuW56Es"] //与vless+h2c应用中path对应
             }],
             "handle": [{
