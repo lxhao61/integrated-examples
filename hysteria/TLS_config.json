@@ -1,6 +1,6 @@
 {
   "listen": ":2083", //监听端口
-  "protocol": "udp", // 留空或"udp","wechat-video","faketcp"
+  "protocol": "udp", //留空或"udp","wechat-video","faketcp"
   "cert": "/home/tls/xx.yy/xx.yy.crt", //换成自己的证书，绝对路径。
   "key": "/home/tls/xx.yy/xx.yy.key", //换成自己的密钥，绝对路径。
   "obfs": "obfs2083", //修改为自己的混淆密码
