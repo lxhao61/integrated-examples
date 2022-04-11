@@ -3,7 +3,10 @@
 #原配置：
 {
 #.........<省略>........
-	admin off
+	log { #注意：版本不小于v2.4.0才支持日志全局配置，否则各自配置。
+		output file /var/log/caddy/access.log
+		level ERROR
+	}
 #.........<省略>........
 }
 #.........<省略>........
@@ -15,7 +18,10 @@
 #以上配置修改为如下：
 {
 #.........<省略>........
-	admin off
+	log { #注意：版本不小于v2.4.0才支持日志全局配置，否则各自配置。
+		output file /var/log/caddy/access.log
+		level ERROR
+	}
 	storage file_system {
 		root /home/tls #存放证书及密钥的基本路径
 	}
