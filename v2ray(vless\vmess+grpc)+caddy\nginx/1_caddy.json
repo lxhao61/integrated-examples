@@ -5,11 +5,11 @@
   "logging": {
     "logs": {
       "default": {
-        "level": "ERROR",
         "writer": {
           "output": "file",
           "filename": "/var/log/caddy/access.log"
-        }
+        },
+        "level": "ERROR"
       }
     }
   },
