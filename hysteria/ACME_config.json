@@ -1,6 +1,6 @@
 {
   "listen": ":2083", //监听端口
-  "protocol": "udp", // 留空或"udp","wechat-video","faketcp"
+  "protocol": "udp", //留空或"udp","wechat-video","faketcp"
   "acme": {
     "domains": [
       "xx.yy" //修改为自己的域名
