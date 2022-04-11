@@ -2,6 +2,10 @@
 #原配置：
 {
 #.........<省略>........
+	log { #注意：版本不小于v2.4.0才支持日志全局配置，否则各自配置。
+		output file /var/log/caddy/access.log
+		level ERROR
+	}
 }
 
 :443, xx.yy { #xx.yy修改为自己的域名。注意：逗号与域名之间有一个空格。
@@ -14,6 +18,10 @@
 #以dns api方式申请tls证书（以上配置改为如下）：
 {
 #.........<省略>........
+	log { #注意：版本不小于v2.4.0才支持日志全局配置，否则各自配置。
+		output file /var/log/caddy/access.log
+		level ERROR
+	}
 	cert_issuer acme #acme表示从Let's Encrypt申请证书及密钥，zerossl表示从ZeroSSL申请证书及密钥。acme与zerossl二选一。注意：版本不小于v2.4.1才支持。
 	acme_dns dnspod 1232456.e09062f1fd2545555fc8a15fceda2222 #换成你dnspod.com的DP_Id与DP_Key
 }
@@ -33,8 +41,6 @@
 #原配置：
 {
 #.........<省略>........
-	admin off
-#.........<省略>........
 	auto_https off #禁用自动https
 #.........<省略>........
 }
@@ -47,11 +53,9 @@
 #以dns api方式申请tls证书（以上配置改为如下）：
 {
 #.........<省略>........
-	admin off
 	storage file_system {
 		root /home/tls #存放证书及密钥的基本路径
 	}
-#.........<省略>........
 	auto_https off #禁用自动https
 	cert_issuer acme #acme表示从Let's Encrypt申请证书及密钥，zerossl表示从ZeroSSL申请证书及密钥。必须acme与zerossl二选一（固定证书及密钥的目录便于引用）。注意：版本不小于v2.4.1才支持。
 	acme_dns dnspod 1232456.e09062f1fd2545555fc8a15fceda2222 #换成你dnspod.com的DP_Id与DP_Key
@@ -72,7 +76,10 @@
 #原配置：
 {
 #.........<省略>........
-	admin off
+	log { #注意：版本不小于v2.4.0才支持日志全局配置，否则各自配置。
+		output file /var/log/caddy/access.log
+		level ERROR
+	}
 #.........<省略>........
 }
 
@@ -84,7 +91,10 @@
 #以dns api方式申请tls证书（以上配置改为如下）：
 {
 #.........<省略>........
-	admin off
+	log { #注意：版本不小于v2.4.0才支持日志全局配置，否则各自配置。
+		output file /var/log/caddy/access.log
+		level ERROR
+	}
 	storage file_system {
 		root /home/tls #存放证书及密钥的基本路径
 	}
