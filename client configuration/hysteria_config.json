@@ -1,6 +1,6 @@
 {
   "server": "xx.yy:2083", //修改为服务器端配置的域名及端口
-  "protocol": "udp", //留空或"udp","wechat-video","faketcp"
+  "protocol": "udp", //修改为服务器端配置的传输协议
   "acl": "route_list.acl", //修改为自己的ACL文件（选配）。若无此文件，那么必须删除此条参数。
   "obfs": "obfs2083", //修改为服务器端配置的混淆密码
   "auth": "[BASE64]", //修改为服务器端配置的Base64验证密钥（选配）。若服务器端无此部分配置，那么必须删除此条参数。
