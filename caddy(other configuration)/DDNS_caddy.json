@@ -1,18 +1,5 @@
 {
-  "admin": {
-    "disabled": true
-  },
-  "logging": {
-    "logs": {
-      "default": {
-        "writer": {
-          "output": "file",
-          "filename": "/var/log/caddy/access.log"
-        },
-        "level": "ERROR"
-      }
-    }
-  },
+//.........<省略>........
   "apps": {
 //以下为DDNS配置：（原配置插入此部分配置）
     "dynamic_dns": { //加了caddy-dynamicdns插件编译的才支持DDNS应用
