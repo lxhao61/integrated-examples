@@ -29,7 +29,7 @@
               "upstreams": [{
                 "dial": ["unix//dev/shm/vless.sock"] //转给vless+tcp+tls监听进程
               }],
-              "proxy_protocol": "v2" //启用PROXY protocol发送。v1或v2表示PROXY protocol版本，建议采用v2版。""中为空或无此条参数（删除），表示不启用PROXY protocol发送。
+              "proxy_protocol": "v2" //启用PROXY protocol发送。v1或v2表示PROXY protocol版本，建议采用v2版。
             }]
           },
           {
@@ -56,7 +56,7 @@
               "upstreams": [{
                 "dial": ["unix//dev/shm/https.sock"] //转给https server监听进程
               }],
-              "proxy_protocol": "v2" //启用PROXY protocol发送。v1或v2表示PROXY protocol版本，建议采用v2版。""中为空或无此条参数（删除），表示不启用PROXY protocol发送。
+              "proxy_protocol": "v2" //启用PROXY protocol发送。v1或v2表示PROXY protocol版本，建议采用v2版。
             }]
           }]
         }
