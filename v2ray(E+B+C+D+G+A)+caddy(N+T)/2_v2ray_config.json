@@ -17,56 +17,6 @@
           }
         ],
         "decryption": "none",
-
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@lxhao61 
-lxhao61
-/
-integrated-examples
-Public
-Code
-Issues
-2
-Pull requests
-Discussions
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-integrated-examples/v2ray(E+B+C+D+G+A)+naiveproxy/2_v2ray_config.json
-@lxhao61
-lxhao61 Update 2_v2ray_config.json
-Latest commit 4d8d57f 4 minutes ago
- History
- 1 contributor
-259 lines (259 sloc)  8.15 KB
-   
-{
-  "log": {
-    "loglevel": "warning",
-    "error": "/var/log/xray/error.log", //若使用v2ray，此处目录名称xray改成v2ray。
-    "access": "/var/log/xray/access.log" //若使用v2ray，此处目录名称xray改成v2ray。
-  },
-  "inbounds": [
-    {
-      "port": 443, //监听端口
-      "protocol": "vless",
-      "settings": {
-        "clients": [
-          {
-            "id": "048e0bf2-dd56-11e9-aa37-5600024c1d6a", //修改为自己的UUID
-            "flow": "xtls-rprx-direct", //启用xtls，必须增加此条参数；否则删除。v2ray从v4.33.0版开始删除了xtls应用，如要使用此应用，建议选用xray。
-            "email": "443@gmail.com"
-          }
-        ],
-        "decryption": "none",
         "fallbacks": [
           {
             "dest": "/dev/shm/h1h2c.sock", //h2与http/1.1回落进程（共用进程）
