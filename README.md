@@ -8,7 +8,7 @@
 7. 实现了Xray与caddy相关应用的证书及密钥申请与更新全自动化。
 8. 实现了CDN流量中转（基于WebSocket over TLS或基于gRPC over TLS）与正常应用同时使用。
 9. 实现了除v2ray(vless\vmess+kcp+seed)与hysteria示例或应用外，其它应用对外都使用443端口，各应用互不影响。
-10. 实现了除v2ray(vless\vmess+kcp+seed)与hysteria示例或应用外，其它应用都支持流量伪装与防探测，且提供流量伪装的回落或代理网站都支持HTTP自动跳转到HTTPS，SSL/TLS安全评估报告为A+等，与访问/探测真实网站完全一致。
+10. 实现了除v2ray(vless\vmess+kcp+seed)与hysteria示例或应用外，其它应用都支持流量伪装与防探测，且实现流量伪装与防探测的回落或代理网站都支持HTTP自动跳转到HTTPS，SSL/TLS安全评估报告为A+等，与访问/探测真实网站完全一致。
 * **备注：** 端口分流、端口回落/分流、端口转发是指基于Local Loopback连接的不同功能应用分类；进程分流、进程回落/分流、进程转发是指基于Unix Domain Socket连接的不同功能应用分类。
 
 ### 服务端单一应用配置示例
@@ -79,11 +79,12 @@
 1. v2ray从v4.33.0版开始删除了XTLS应用，故若还想用XTLS应用，请选Xray。Xray是v2ray的超集（更好的整体性能和XTLS等一系列增强，且完全兼容。），也是因为这个应用分家独自发展。
 2. Xray或v2ray单一核心应用简记：A=vless+kcp+seed、B=vless+ws+tls、C=shadowsocks+xray-plugin/v2ray-plugin+tls的WS应用、D=vless+h2c+tls、E=vless+tcp+tls/xtls、F=trojan+tcp+tls/xtls、G=vless+grpc+tls。
 3. 所有Xray或v2ray配置文件都配置了禁用BT。如不需要，可以删除相关配置，参考v2ray(other configuration)中BT_config.json文件。
-4. 目前caddy的HTTPS服务进程监听采用Unix Domain Socket进程不支持HTTP/3；若开启HTTP/3，caddy无法启动。
+4. 目前caddy的HTTPS服务监听进程采用Unix Domain Socket不支持HTTP/3；若开启HTTP/3，caddy无法启动。
 5. 受限应用条件及场景，naiveproxy的QUIC应用（即caddy的HTTP/3代理应用）不是所有相关naiveproxy示例都支持。
 6. caddy插件单一应用简记：N=naiveproxy(caddy+forwardproxy)、T=trojan-go(caddy+caddy-trojan)。
 7. 附加相关插件的caddy程序文件已编译好，去本人Releases中下载即可。
-8. trojan-go安卓客户端可以去本人Releases中下载。
+8. trojan-go安卓客户端可以去本人Releases中下载（最前）。
+9. 回落或代理网站等可由其它WEB应用软件提供，自行参考caddy或nginx配置示例。
 
 ### 服务端特殊应用配置示例
 1. [v2ray(other configuration)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(other%20configuration)) （Xray或v2ray的特色应用配置方法。）
