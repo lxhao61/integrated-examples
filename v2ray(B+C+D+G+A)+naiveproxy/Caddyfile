@@ -1,4 +1,4 @@
-#若不需要naiveproxy应用，修改配置文件中如下参数。
+#若不需要naiveproxy应用，按照如下修改。
 #原配置：
 {
 	order forward_proxy before route
