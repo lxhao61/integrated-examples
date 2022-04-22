@@ -36,7 +36,7 @@
 
 8、本示例中 trojan-go 兼容原版 trojan-go，继承了其服务端核心特色：支持 trojan 应用与原版 trojan-go 的 WebSocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)。
 
-9、Xray 所需证书及密钥推荐使用 caddy 申请，配合 Xray（版本必须不低于v1.3.0）自动重载证书及密钥（OCSP Stapling），可实现证书及密钥申请与更新全自动化。
+9、Xray 所需证书及密钥推荐使用 caddy 申请，配合 Xray（版本必须不低于v1.3.0）热重载证书及密钥，可实现证书及密钥申请与更新全自动化。
 
 10、本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（完全等同）。
 
