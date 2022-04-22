@@ -25,17 +25,17 @@
           },
           {
             "dest": "/dev/shm/h1.sock", //http/1.1回落进程
-            "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给nginx。1或2表示PROXY protocol版本。与上一致，此处建议配置2。
+            "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给nginx。1或2表示PROXY protocol版本。与上一致，建议配置2。
           },
           {
             "path": "/HALdGZ9k", //通过路径分流
             "dest": "@vless-ws", //分流后转给vless+ws监听进程
-            "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给如下vless+ws应用。1或2表示PROXY protocol版本。与上一致，此处建议配置2。
+            "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给如下vless+ws应用。1或2表示PROXY protocol版本。与上一致，建议配置2。
           },
           {
             "path": "/SS1v2ray", //通过路径分流
             "dest": 2002, //分流后转给Xray-plugin或v2ray-plugin监听端口
-            "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给如下shadowsocks+xray-plugin/v2ray-plugin应用。1或2表示PROXY protocol版本。与上一致，此处建议配置2。
+            "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给如下shadowsocks+xray-plugin/v2ray-plugin应用。1或2表示PROXY protocol版本。与上一致，建议配置2。
           }
         ]
       },
@@ -151,7 +151,7 @@
         "fallbacks": [
           {
             "dest": "/dev/shm/h2c.sock", //h2回落进程
-            "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给nginx。1或2表示PROXY protocol版本。多级传递，建议配置2。
+            "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给nginx。1或2表示PROXY protocol版本。与上一致，建议配置2。
           }
         ]
       },
