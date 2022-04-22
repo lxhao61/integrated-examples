@@ -46,7 +46,7 @@
 3）、zerossl 申请的普通证书及密钥在 “/home/tls/certificates/acme.zerossl.com-v2-dv90/xx.yy” 目录中。/home/tls 为设置存放证书及密钥的基本路径。xx.yy 为域名，根据自己域名变化。  
 4）、zerossl 申请的通配符证书及密钥在 “/home/tls/certificates/acme.zerossl.com-v2-dv90/wildcard_.xx.yy” 目录中。/home/tls 为设置存放证书及密钥的基本路径。xx.yy 为域名，根据自己域名变化。
 
-5、caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（完全等效）。若使用 caddy 申请证书及密钥推荐使用 json 格式配置，优化更好。
+5、caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（完全等效）。Caddyfile 配置中“#二、无SNI分流，回落为主应用。”必须启用无用端口来联动实现自动申请与更新证书及密钥；推荐使用 json 格式配置，优化更好。
 
 6、提供了 dnspod（国际版dnspod.com插件）、cloudflare、dnspodcn（中国版dnspod.cn插件）三种最常见插件配置示例，其它插件配置类似，参考 dnspod（国际版dnspod.com插件） 或 cloudflare 配置示例。
 
