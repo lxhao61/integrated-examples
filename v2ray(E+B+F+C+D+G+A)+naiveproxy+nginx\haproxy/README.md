@@ -36,7 +36,7 @@
 
 8、使用本人 Releases 中编译好的 caddy 文件，可同时支持 H2C server、H2C proxy、naiveproxy 及接收 PROXY protocol 等应用。
 
-9、Xray 所需证书及密钥推荐使用 caddy 申请，配合 Xray（版本必须不低于v1.3.0）自动重载证书及密钥（OCSP Stapling），可实现证书及密钥申请与更新全自动化。
+9、Xray 所需证书及密钥推荐使用 caddy 申请，配合 Xray（版本必须不低于v1.3.0）热重载证书及密钥，可实现证书及密钥申请与更新全自动化。
 
 10、本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（完全等同）。
 
