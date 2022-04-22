@@ -24,7 +24,7 @@ v2ray 或 Xray 前置（监听 443 端口），利用 vless+tcp+tls 或 vless+tc
 
 5、caddy 发行版不支持接收 PROXY protocol。如要支持接收 PROXY protocol 需选 caddy2-proxyprotocol 插件定制编译，或下载本人 Releases 中编译好的 caddy 来使用即可。
 
-6、Xray 所需证书及密钥推荐使用 caddy 申请，配合 Xray（版本必须不低于v1.3.0）自动重载证书及密钥（OCSP Stapling），可实现证书及密钥申请与更新全自动化。
+6、Xray 所需证书及密钥推荐使用 caddy 申请，配合 Xray（版本必须不低于v1.3.0）热重载证书及密钥，可实现证书及密钥申请与更新全自动化。
 
 7、本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（完全等效）。若使用 caddy 申请证书及密钥推荐使用 json 格式配置，优化更好。
 
