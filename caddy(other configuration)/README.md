@@ -28,9 +28,7 @@
 
 1、以 DNS-01 验证方式申请证书及密钥，可颁发通配符域名的证书。
 
-2、Xray 服务端可使用 caddy 申请的证书及密钥，配合 Xray（版本必须不低于v1.3.0）热重载证书及密钥，可实现证书及密钥申请与更新全自动化。
-
-3、其它服务端也可使用 caddy 申请的证书及密钥，只是若自己不支持热重载证书及密钥，caddy 证书及密钥到期自动更新后需重启自己来重新加载更新后的证书及密钥。
+2、提供了 dnspod（国际版dnspod.com插件）、cloudflare、dnspodcn（中国版dnspod.cn插件）三种最常见插件配置示例，其它插件配置类似，参考 dnspod（国际版dnspod.com插件） 或 cloudflare 配置示例。
 
 注意：
 
@@ -48,7 +46,7 @@
 
 5、caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（完全等效）。Caddyfile 配置中“#二、无SNI分流，回落为主应用。”必须启用无用端口来联动实现自动申请与更新证书及密钥；推荐使用 json 格式配置，优化更好。
 
-6、提供了 dnspod（国际版dnspod.com插件）、cloudflare、dnspodcn（中国版dnspod.cn插件）三种最常见插件配置示例，其它插件配置类似，参考 dnspod（国际版dnspod.com插件） 或 cloudflare 配置示例。
+6、其它应用使用 caddy 申请的证书及密钥，只是若自己不支持热重载证书及密钥，caddy 证书及密钥到期自动更新后需重启自己来重新加载更新后的证书及密钥。
 
 四、caddy DDNS 客户端配置方法
 
