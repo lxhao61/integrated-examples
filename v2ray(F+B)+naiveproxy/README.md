@@ -14,7 +14,7 @@ v2ray 或 Xray 前置（监听 443 端口），利用 trojan+tcp+tls 或 trojan+
 
 2、caddy 版本不小于 v2.3.0 才支持 Caddyfile 配置开启 H2C server。
 
-3、caddy 支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）。
+3、caddy 支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程。
 
 4、使用本人 Releases 中编译好的 caddy 文件，可同时支持 H2C server、naiveproxy 及接收 PROXY protocol 等应用。
 
