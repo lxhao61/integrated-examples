@@ -83,7 +83,7 @@
 5. 受限应用条件及场景，naiveproxy的QUIC应用（即caddy的HTTP/3代理应用）不是所有相关naiveproxy示例都支持。
 6. caddy插件单一应用简记：N=naiveproxy(caddy+forwardproxy)、T=trojan-go(caddy+caddy-trojan)。
 7. 附加相关插件的caddy程序文件已编译好，去本人Releases中下载即可。
-8. trojan-go安卓客户端可以去本人Releases中下载（最前）。
+8. trojan-go安卓客户端可以去本人Releases中下载（最末）。
 9. 回落或代理网站等应用可由其它WEB应用软件实现，自行参考caddy或nginx配置示例。
 
 ### 服务端特殊应用配置示例
