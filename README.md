@@ -84,7 +84,7 @@
 6. caddy插件单一应用简记：N=naiveproxy(caddy+forwardproxy)、T=trojan-go(caddy+caddy-trojan)。
 7. 附加相关插件的caddy程序文件已编译好，去本人Releases中下载即可。
 8. trojan-go安卓客户端可以去本人Releases中下载（最末）。
-9. 流量伪装与防探测网站可由其它WEB应用软件实现，自行参考caddy或nginx配置示例。其中反代支持能力（WebSocket、gRPC及H2C）取决于WEB应用软件自身。
+9. 流量伪装与防探测网站可由其它WEB应用软件实现，其中反代支持能力（WebSocket、gRPC及H2C）取决于自身，配置自行参考caddy或nginx对应示例。
 
 ### 服务端特殊应用配置示例
 1. [v2ray(other configuration)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(other%20configuration)) （Xray或v2ray的特色应用配置方法。）
