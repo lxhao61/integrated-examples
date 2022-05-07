@@ -26,7 +26,7 @@
 
 三、caddy 以 DNS-01 验证方式申请证书及密钥配置方法
 
-1、以 DNS-01 验证方式申请证书及密钥，可颁发通配符域名的证书及密钥。
+1、以 DNS-01 验证方式申请证书及密钥，可颁发通配符证书及密钥。
 
 2、提供了 dnspod（国际版dnspod.com插件）、cloudflare、dnspodcn（中国版dnspod.cn插件）三种最常见插件配置示例，其它插件配置类似，参考 dnspod（国际版dnspod.com插件） 或 cloudflare 配置示例。
 
