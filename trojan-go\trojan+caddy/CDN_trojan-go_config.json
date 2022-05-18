@@ -11,4 +11,6 @@
         "key": "/home/tls/wildcard_.xx.yy/wildcard_.xx.yy.key", //换成自己的通配符密钥或SAN密钥，绝对路径。
 //.........<省略>........
 //注意：
-//1、trojan-go的CDN流量中转（基于WebSocket over TLS）与trojan应用同时提供，仅支持使用通配符证书或SAN证书的不同域名实现，因为trojan-go不支持设置多组证书及密钥。
+//1、trojan-go的CDN流量中转（基于WebSocket over TLS）与trojan应用同时提供，仅支持使用通配符证书或SAN证书的不同域名实现。
+//2、同步修改caddy配置中“限定域名访问的配置”的xx.yy为*.xx.yy（通配符域名）或多个相关域名（可参考如下3中对应此部分修改），否则无法提供流量伪装与防探测（打不开网站）。
+//3、trojan-go可用caddy申请的通配符证书及密钥，其路径详见“caddy(other configuration) （caddy的特殊应用配置方法。）”。
