@@ -68,7 +68,7 @@
             "handle": [{
               "handler": "static_response",
               "headers": {
-                "Location": ["https://{http.request.host}{http.request.uri}"] //http自动跳转https,让网站看起来更真实。
+                "Location": ["https://{http.request.host}{http.request.uri}"] //http自动跳转https，让网站看起来更真实。
               },
               "status_code": 301
             }]
