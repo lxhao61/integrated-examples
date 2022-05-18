@@ -34,7 +34,7 @@
 	tls {
 #.........<省略>........
 #备注：
-#1、免费申请证书及密钥的域名不要超过五个，否则影响证书及密钥的更新。
+#1、申请免费证书及密钥的域名不要超过五个，否则影响证书及密钥的更新。
 #2、acme申请的普通证书及密钥在“/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy”目录中。xx.yy为域名，根据自己域名变化。
 #3、zerossl申请的普通证书及密钥在“/home/tls/certificates/acme.zerossl.com-v2-dv90/xx.yy”目录中。xx.yy为域名，根据自己域名变化。
 #4、v2ray、trojan-go或trojan不支持自动重载证书及密钥，证书及密钥到期更新（证书有效期90天，默认60天后开始更新。）后需手动重启v2ray、trojan-go或trojan来重新加载更新后的证书及密钥。
