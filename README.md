@@ -83,8 +83,8 @@
 5. 目前caddy的HTTPS服务监听进程采用Unix Domain Socket不支持HTTP/3；若开启HTTP/3，caddy无法启动。
 6. 受限应用条件及场景，naiveproxy的QUIC应用（即caddy的HTTP/3代理应用）不是所有相关naiveproxy示例都支持。
 7. 附加相关插件的caddy程序文件已编译好，去本人Releases中下载即可。
-8. 流量伪装与防探测网站可由其它WEB应用软件实现，其中反代支持能力（WebSocket、gRPC及H2C）取决于自身，配置自行参考caddy或nginx对应示例。
-9. trojan-go安卓客户端可以去本人Releases中下载（最末）。
+8. trojan-go安卓客户端可以去本人Releases中下载（最末）。
+9. 流量伪装与防探测网站可由其它WEB应用软件实现，其中反代支持能力（WebSocket、gRPC及H2C）取决于自身，配置自行参考caddy或nginx对应示例。
 
 ### 服务端特殊应用配置示例
 1. [v2ray(other configuration)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(other%20configuration)) （Xray或v2ray的特色应用配置方法。）
