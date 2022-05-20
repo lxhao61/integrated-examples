@@ -79,12 +79,12 @@
 1. v2ray从v4.33.0版开始删除了XTLS应用，故若还想用XTLS应用，请选Xray。Xray是v2ray的超集（更好的整体性能和XTLS等一系列增强，且完全兼容。），也是因为这个应用分家独自发展。
 2. Xray或v2ray单一核心应用简记：A=vless+kcp+seed、B=vless+ws+tls、C=shadowsocks+xray-plugin/v2ray-plugin+tls的WS应用、D=vless+h2c+tls、E=vless+tcp+tls/xtls、F=trojan+tcp+tls/xtls、G=vless+grpc+tls。
 3. 所有Xray或v2ray配置文件都配置了禁用BT。如不需要，可以删除相关配置，参考v2ray(other configuration)中BT_config.json文件。
-4. 目前caddy的HTTPS服务监听进程采用Unix Domain Socket不支持HTTP/3；若开启HTTP/3，caddy无法启动。
-5. 受限应用条件及场景，naiveproxy的QUIC应用（即caddy的HTTP/3代理应用）不是所有相关naiveproxy示例都支持。
-6. caddy插件单一应用简记：N=naiveproxy(caddy+forwardproxy)、T=trojan-go(caddy+caddy-trojan)。
+4. caddy插件单一应用简记：N=naiveproxy(caddy+forwardproxy)、T=trojan-go(caddy+caddy-trojan)。
+5. 目前caddy的HTTPS服务监听进程采用Unix Domain Socket不支持HTTP/3；若开启HTTP/3，caddy无法启动。
+6. 受限应用条件及场景，naiveproxy的QUIC应用（即caddy的HTTP/3代理应用）不是所有相关naiveproxy示例都支持。
 7. 附加相关插件的caddy程序文件已编译好，去本人Releases中下载即可。
-8. trojan-go安卓客户端可以去本人Releases中下载（最末）。
-9. 流量伪装与防探测网站可由其它WEB应用软件实现，其中反代支持能力（WebSocket、gRPC及H2C）取决于自身，配置自行参考caddy或nginx对应示例。
+8. 流量伪装与防探测网站可由其它WEB应用软件实现，其中反代支持能力（WebSocket、gRPC及H2C）取决于自身，配置自行参考caddy或nginx对应示例。
+9. trojan-go安卓客户端可以去本人Releases中下载（最末）。
 
 ### 服务端特殊应用配置示例
 1. [v2ray(other configuration)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(other%20configuration)) （Xray或v2ray的特色应用配置方法。）
