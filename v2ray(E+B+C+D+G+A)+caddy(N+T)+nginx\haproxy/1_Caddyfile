@@ -1,5 +1,5 @@
 {
-	order trojan before header
+	order trojan before route
 	order forward_proxy before trojan
 	order reverse_proxy before forward_proxy
 	admin off
@@ -72,10 +72,12 @@
 		websocket #开启Websocket支持
 	}
 
-	header {
-		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
-	}
-	file_server {
-		root /var/www/html #修改为自己存放的WEB文件路径
+	route {
+		header {
+			Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
+		}
+		file_server {
+			root /var/www/html #修改为自己存放的WEB文件路径
+		}
 	}
 }
