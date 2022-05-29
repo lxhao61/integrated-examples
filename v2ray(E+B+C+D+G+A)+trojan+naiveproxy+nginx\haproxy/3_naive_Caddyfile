@@ -1,5 +1,5 @@
 {
-	order forward_proxy before header
+	order forward_proxy before route
 	order reverse_proxy before forward_proxy
 	admin off
 	log { #注意：版本不小于v2.4.0才支持日志全局配置，否则各自配置。
@@ -63,10 +63,12 @@
 		probe_resistance
 	}
 
-	header {
-		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
-	}
-	file_server {
-		root /var/www/html #修改为自己存放的WEB文件路径
+	route {
+		header {
+			Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
+		}
+		file_server {
+			root /var/www/html #修改为自己存放的WEB文件路径
+		}
 	}
 }
