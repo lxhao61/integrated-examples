@@ -29,13 +29,11 @@
 :88 { #绑定进程后此端口失效，仅做标记作用。
 	bind unix//dev/shm/h1h2c.sock #http/1.1与h2c server监听进程
 
-	route {
-		header {
-			Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
-		}
-		file_server {
-			root /var/www/html #修改为自己存放的WEB文件路径
-		}
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
+	}
+	file_server {
+		root /var/www/html #修改为自己存放的WEB文件路径
 	}
 }
 
