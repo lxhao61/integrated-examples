@@ -1,7 +1,7 @@
 #若不需要naiveproxy应用，按照如下修改。
 #原配置：
 {
-	order forward_proxy before header
+	order forward_proxy before route
 	order reverse_proxy before forward_proxy
 #.........<省略>........
 }
@@ -16,7 +16,7 @@
 
 #以上配置修改为如下：
 {
-	order reverse_proxy before header
+	order reverse_proxy before route
 #.........<省略>........
 }
 #.........<省略>........
