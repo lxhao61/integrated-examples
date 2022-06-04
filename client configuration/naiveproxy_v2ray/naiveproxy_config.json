@@ -1,0 +1,5 @@
+{
+    "listen": "socks://127.0.0.1:52000",
+    "proxy": "<proto>://<user>:<pass>@<hostname>[:<port>]",
+    "log": "/tmp/naive.log"
+  }
