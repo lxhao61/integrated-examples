@@ -14,8 +14,7 @@
             "id": "058e0bf3-dd56-11e9-aa37-5600024c1d6a", //修改为自己的UUID
             "email": "2009@gmail.com"
           }
-        ],
-        "disableInsecureEncryption": true
+        ]
       },
       "streamSettings": {
         "network": "grpc",
