@@ -5,7 +5,7 @@
 原理：
 
 默认流程：WEB client <----------- HTTPS（HTTP/2） ----------> caddy（WEB server）  
-匹配流程：Xray/v2ray client <----- H2C+TLS（HTTP/2） -------> caddy <-- H2C --> Xray/v2ray server
+匹配流程：Xray/v2ray client <----- H2C+TLS（HTTP/2） ------> caddy <-- H2C --> Xray/v2ray server
 
 注意：
 
