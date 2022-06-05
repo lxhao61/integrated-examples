@@ -15,8 +15,7 @@
             "id": "21376258-dd56-11e9-aa37-5600024c1d6a", //修改为自己的UUID
             "email": "2001@gmail.com"
           }
-        ],
-        "disableInsecureEncryption": true
+        ]
       },
       "streamSettings": {
         "network": "ws",
