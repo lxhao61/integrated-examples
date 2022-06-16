@@ -111,7 +111,8 @@
           },
           {
             "match": [{
-              "path": ["/cdngrpc/*"] //与vless+grpc应用中serviceName对应
+              "protocol": "grpc",
+              "path": ["/VALdGZ9k/*"] //与vless+grpc应用中serviceName对应
             }],
             "handle": [{
               "handler": "reverse_proxy",
