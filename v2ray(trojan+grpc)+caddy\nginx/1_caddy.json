@@ -20,7 +20,8 @@
           "listen": [":443"],
           "routes": [{
             "match": [{
-              "path": ["/tdngrpc/*"] //与trojan+grpc应用中serviceName对应
+              "protocol": "grpc",
+              "path": ["/TALdGZ9k/*"] //与trojan+grpc应用中serviceName对应
             }],
             "handle": [{
               "handler": "reverse_proxy",
