@@ -181,7 +181,7 @@
         "network": "grpc",
         "security": "none",
         "grpcSettings": {
-          "serviceName": "cdngrpc" //修改为自己的gRPC服务名称，类似于HTTP/2中的Path。
+          "serviceName": "VALdGZ9k" //修改为自己的gRPC服务名称，类似于HTTP/2中的Path。
         }
       },
       "sniffing": {
