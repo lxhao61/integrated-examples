@@ -20,8 +20,8 @@
           "listen": [":443"],
           "routes": [{
             "match": [{
-              "protocol": "grpc",
-              "path": ["/VALdGZ9k/*"] //与vless+grpc或vmess+grpc应用中serviceName对应
+              "path": ["/VALdGZ9k/*"], //与vless+grpc或vmess+grpc应用中serviceName对应
+              "protocol": "grpc"
             }],
             "handle": [{
               "handler": "reverse_proxy",
