@@ -29,9 +29,6 @@
                 "protocol": "http",
                 "versions": ["h2c","2"]
               },
-              "upstreams": [{
-                "dial": "127.0.0.1:2011" //转发给本机shadowsocks+grpc监听端口
-              }],
               "flush_interval": -1,
               "headers": {
               	"request": {
@@ -39,7 +36,10 @@
                     "X-Real-Ip": ["{http.request.remote.host}"]
                   }
               	}
-              }
+              },
+              "upstreams": [{
+                "dial": "127.0.0.1:2011" //转发给本机shadowsocks+grpc监听端口
+              }]
             }]
           },
           {
