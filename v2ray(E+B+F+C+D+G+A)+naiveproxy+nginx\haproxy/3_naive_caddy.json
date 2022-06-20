@@ -132,6 +132,7 @@
               "any_tag": ["tls01"]
             },
             "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"],
+            "curves": ["x25519","secp256r1","secp384r1","secp521r1"],
             "alpn": ["h2","http/1.1"]
           }],
           "experimental_http3": false //关闭http3 server支持。https server采用进程监听，必须关闭http3 server支持或删除此条参数（默认不启用）。
