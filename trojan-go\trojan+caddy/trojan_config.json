@@ -14,6 +14,7 @@
         "key_password": "",
         "cipher": "ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-CHACHA20-POLY1305",
         "cipher_tls13": "TLS_AES_256_GCM_SHA384:TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256",
+        "curves": "",
         "prefer_server_cipher": true,
         "alpn": [
             "h2", //启用h2连接需配置h2回落，否则不一致（裸奔）容易被墙探测出从而被封。
