@@ -21,7 +21,7 @@
             "http/1.1" //启用http/1.1连接需配置http/1.1回落，否则不一致（裸奔）容易被墙探测出从而被封。
         ],
         "reuse_session": true,
-        "session_ticket": true,
+        "session_ticket": false,
         "plain_http_response": "",
         "fallback_addr": "",
         "fallback_port": 0
