@@ -74,7 +74,7 @@
 ---
 1. [v2ray(E+B+C+D+G+A)+caddy(N+T)+nginx\haproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BD%2BG%2BA)%2Bcaddy(N%2BT)%2Bnginx%5Chaproxy) （由caddy提供trojan-go实现的综合应用。）
 ---
-1. [v2ray(E+B+F+C+D+G+A)+naiveproxy+nginx\haproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BF%2BC%2BD%2BG%2BA)%2Bnaiveproxy%2Bnginx%5Chaproxy) （由Xray或v2ray提供trojan或trojan-go实现的综合应用。）
+1. [v2ray(E+B+F+C+D+G+A)+naiveproxy+nginx\haproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BF%2BC%2BD%2BG%2BA)%2Bnaiveproxy%2Bnginx%5Chaproxy) （由Xray或v2ray提供trojan/trojan-go实现的综合应用。）
 #### &emsp;注意（以上所有示例）:
 1. v2ray从v4.33.0版开始删除了XTLS应用，故若还想用XTLS应用，请选Xray。Xray是v2ray的超集（更好的整体性能和XTLS等一系列增强，且完全兼容。），也是因为这个应用分家独自发展。
 2. Xray或v2ray单一核心应用简记：A=vless+kcp+seed、B=vless+ws+tls、C=shadowsocks+xray-plugin/v2ray-plugin+tls的WS应用、D=vless+h2c+tls、E=vless+tcp+tls/xtls、F=trojan+tcp+tls/xtls、G=vless+grpc+tls。
