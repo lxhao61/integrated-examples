@@ -22,4 +22,4 @@ v2ray 或 Xray 前置（监听 443 端口），利用 trojan+tcp+tls 或 trojan+
 
 7、配置1：采用端口回落/分流。配置2：采用进程回落/分流。配置3：采用进程回落/分流，且启用了 PROXY protocol。
 
-8、若上 vless+ws+tls 改为 trojan+ws+tls，本示例（两个组合应用）即可实现兼容 trojan-go 核心应用，即可使用 trojan-go 客户端连接。
+8、若上 vless+ws+tls 改为 trojan+ws+tls，本示例（两个组合应用）即可实现兼容 trojan-go 应用，即可使用 trojan-go 客户端连接。
