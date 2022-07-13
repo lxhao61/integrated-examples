@@ -11,22 +11,19 @@ jobs:
       matrix:
         config:
         - {
-            name: "Windows-x86_64",
+            name: "windows-x86_64",
             GOARCH: amd64,
-            GOOS: windows,
-            filename: "caddy-windows-x86_64.exe"
+            GOOS: windows
           }
         - {
-            name: "Linux-x86_64",
+            name: "linux-x86_64",
             GOARCH: amd64,
-            GOOS: linux,
-            filename: "caddy-linux-x86_64"
+            GOOS: linux
           }
         - {
-            name: "Linux-arm64",
+            name: "linux-arm64",
             GOARCH: arm64,
-            GOOS: linux,
-            filename: "caddy-linux-arm64"
+            GOOS: linux
           }
 
     steps:
@@ -59,10 +56,20 @@ jobs:
           --with github.com/caddyserver/forwardproxy@caddy2=github.com/klzgrad/forwardproxy@naive \
           --with github.com/imgk/caddy-trojan@509ea098182a5d3a0e9a0e3a5417b1b25ea15c40 \
           --with github.com/mholt/caddy-webdav \
-          --output ./release-tmp/${{ matrix.config.filename }}
+          --output ./release-tmp/caddy
+
+    - name: Calculate Hash
+      run: |
+        sha256sum ./release-tmp/caddy > ./release-tmp/sha256
+
+    - name: Rename for Windows 
+      if: matrix.goos == ${{ matrix.config.GOOS }} 
+      run: |
+        mv ./release-tmp/caddy ./release-tmp/caddy.exe
     
-    - name: Upload
-      uses: actions/upload-artifact@master
+
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v3
       with:
-        name: Upload 
-        path: ./release-tmp
+        name: v2ray-rust-${{ github.sha }}-${{ matrix.config.name }}.7z
+        path: release-tmp
