@@ -63,7 +63,7 @@ jobs:
         sha256sum ./release-tmp/caddy > ./release-tmp/sha256
 
     - name: Rename for Windows 
-      if: matrix.goos == ${{ matrix.config.GOOS }} 
+      if: ${{ matrix.config.GOOS }} == 'windows'
       run: |
         mv ./release-tmp/caddy ./release-tmp/caddy.exe
     
@@ -71,5 +71,5 @@ jobs:
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3
       with:
-        name: v2ray-rust-${{ github.sha }}-${{ matrix.config.name }}.7z
+        name: caddy-${{ github.sha }}-${{ matrix.config.name }}.7z
         path: release-tmp
