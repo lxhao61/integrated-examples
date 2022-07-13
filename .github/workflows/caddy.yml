@@ -6,6 +6,28 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+        - {
+            name: "Windows-x86_64",
+            GOARCH: amd64,
+            GOOS: windows,
+            filename: "caddy-windows-x86_64.exe"
+          }
+        - {
+            name: "Linux-x86_64",
+            GOARCH: amd64,
+            GOOS: linux,
+            filename: "caddy-linux-x86_64"
+          }
+        - {
+            name: "Linux-arm64",
+            GOARCH: arm64,
+            GOOS: linux,
+            filename: "caddy-linux-arm64"
+          }
 
     steps:
     - name: Checkout
@@ -22,6 +44,9 @@ jobs:
     
     - name: Build caddy
       run: |
+        mkdir release-tmp
+        export GOARCH=${{ matrix.config.GOARCH }} 
+        export GOOS=${{ matrix.config.GOOS }} 
         ~/go/bin/xcaddy build \
           --with github.com/mholt/caddy-l4 \
           --with github.com/mholt/caddy-dynamicdns \
@@ -33,10 +58,11 @@ jobs:
           --with github.com/mastercactapus/caddy2-proxyprotocol \
           --with github.com/caddyserver/forwardproxy@caddy2=github.com/klzgrad/forwardproxy@naive \
           --with github.com/imgk/caddy-trojan@509ea098182a5d3a0e9a0e3a5417b1b25ea15c40 \
-          --with github.com/mholt/caddy-webdav
+          --with github.com/mholt/caddy-webdav \
+          --filename ./release-tmp/${{ matrix.config.filename }}
     
     - name: Upload
       uses: actions/upload-artifact@master
       with:
-        name: caddy-linux-amd64
-        path: ./caddy
+        name: Upload 
+        path: ./release-tmp
