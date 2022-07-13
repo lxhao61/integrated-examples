@@ -3,6 +3,12 @@ name: Build caddy
 on:
   workflow_dispatch:
 
+  release:
+    types: 
+      - 'prereleased' 
+      - 'published' 
+      - 'released'
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -13,17 +19,20 @@ jobs:
         - {
             name: "windows-x86_64",
             GOARCH: amd64,
-            GOOS: windows
+            GOOS: windows,
+            release: true
           }
         - {
             name: "linux-x86_64",
             GOARCH: amd64,
-            GOOS: linux
+            GOOS: linux,
+            release: true
           }
         - {
             name: "linux-arm64",
             GOARCH: arm64,
-            GOOS: linux
+            GOOS: linux,
+            release: true
           }
 
     steps:
@@ -58,18 +67,32 @@ jobs:
           --with github.com/mholt/caddy-webdav \
           --output ./release-tmp/caddy
 
-    - name: Calculate Hash
-      run: |
-        sha256sum ./release-tmp/caddy > ./release-tmp/sha256
-
     - name: Rename for Windows 
       if: ${{ matrix.config.GOOS }} == 'windows'
       run: |
         mv ./release-tmp/caddy ./release-tmp/caddy.exe
     
+    - name: Calculate Hash
+      run: |
+        cd ./release-tmp || exit 1
+        sha256sum * > sha256
+    
+    - name: Generate 7zip
+      run: |
+        7z a caddy.7z ./release-tmp/*
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3
       with:
         name: caddy-${{ github.sha }}-${{ matrix.config.name }}.7z
-        path: release-tmp
+        path: caddy.7z
+        
+    - name: Upload to GitHub Release
+      uses: svenstaro/upload-release-action@v2
+      if: github.event_name == 'release' && matrix.config.release
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: caddy.7z
+        asset_name: caddy-${{ matrix.config.name }}.7z
+        tag: ${{ github.ref }}
+        overwrite: true
