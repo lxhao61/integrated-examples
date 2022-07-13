@@ -59,7 +59,7 @@ jobs:
           --with github.com/caddyserver/forwardproxy@caddy2=github.com/klzgrad/forwardproxy@naive \
           --with github.com/imgk/caddy-trojan@509ea098182a5d3a0e9a0e3a5417b1b25ea15c40 \
           --with github.com/mholt/caddy-webdav \
-          --filename ./release-tmp/${{ matrix.config.filename }}
+          --output ./release-tmp/${{ matrix.config.filename }}
     
     - name: Upload
       uses: actions/upload-artifact@master
