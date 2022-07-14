@@ -76,23 +76,30 @@ jobs:
       run: |
         cd ./release-tmp || exit 1
         sha256sum * > sha256
-    
-    - name: Generate 7zip
+
+    - name: Generate zip for Windows
+      if: matrix.config.GOOS == 'windows'
       run: |
-        7z a caddy.7z ./release-tmp/*
+        mkdir release-ready
+        zip -r ./release-ready/caddy-${{ matrix.config.name }}.zip ./release-tmp/*
+    
+    - name: Generate tar for other platform
+      if: matrix.config.GOOS != 'windows'
+      run: |
+        mkdir release-ready
+        tar -zcvf ./release-ready/caddy-${{ matrix.config.name }}.tar.gz ./release-tmp/*
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3
       with:
-        name: caddy-${{ github.sha }}-${{ matrix.config.name }}.7z
-        path: caddy.7z
+        name: caddy-${{ github.sha }}-${{ matrix.config.name }}.zip
+        path: ./release-ready/*
         
     - name: Upload to GitHub Release
       uses: svenstaro/upload-release-action@v2
       if: github.event_name == 'release' && matrix.config.release
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: caddy.7z
-        asset_name: caddy-${{ matrix.config.name }}.7z
+        file: ./release-ready/*
         tag: ${{ github.ref }}
         overwrite: true
