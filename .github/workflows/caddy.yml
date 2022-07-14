@@ -1,0 +1,98 @@
+name: Build caddy
+
+on:
+  workflow_dispatch:
+
+  release:
+    types: 
+      - 'prereleased' 
+      - 'published' 
+      - 'released'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+        - {
+            name: "windows-amd64",
+            GOARCH: amd64,
+            GOOS: windows,
+            release: true
+          }
+        - {
+            name: "linux-amd64",
+            GOARCH: amd64,
+            GOOS: linux,
+            release: true
+          }
+        - {
+            name: "linux-arm64",
+            GOARCH: arm64,
+            GOOS: linux,
+            release: true
+          }
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Install go
+      uses: actions/setup-go@v3
+      with:
+        go-version: '1.18'
+        check-latest: true
+    
+    - name: Install xcaddy
+      run: go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
+    
+    - name: Build caddy
+      run: |
+        mkdir release-tmp
+        export GOARCH=${{ matrix.config.GOARCH }} 
+        export GOOS=${{ matrix.config.GOOS }} 
+        ~/go/bin/xcaddy build \
+          --with github.com/mholt/caddy-l4 \
+          --with github.com/mholt/caddy-dynamicdns \
+          --with github.com/caddy-dns/alidns \
+          --with github.com/caddy-dns/cloudflare \
+          --with github.com/caddy-dns/dnspod \
+          --with clevergo.tech/caddy-dnspodcn \
+          --with github.com/caddy-dns/duckdns \
+          --with github.com/mastercactapus/caddy2-proxyprotocol \
+          --with github.com/caddyserver/forwardproxy@caddy2=github.com/klzgrad/forwardproxy@naive \
+          --with github.com/imgk/caddy-trojan@509ea098182a5d3a0e9a0e3a5417b1b25ea15c40 \
+          --with github.com/mholt/caddy-webdav \
+          --output ./release-tmp/caddy
+
+    - name: Rename for Windows 
+      if: matrix.config.GOOS == 'windows'
+      run: |
+        mv ./release-tmp/caddy ./release-tmp/caddy.exe
+    
+    - name: Calculate Hash
+      run: |
+        cd ./release-tmp || exit 1
+        sha256sum * > sha256
+    
+    - name: Generate 7zip
+      run: |
+        7z a caddy.7z ./release-tmp/*
+
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: caddy-${{ github.sha }}-${{ matrix.config.name }}.7z
+        path: caddy.7z
+        
+    - name: Upload to GitHub Release
+      uses: svenstaro/upload-release-action@v2
+      if: github.event_name == 'release' && matrix.config.release
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: caddy.7z
+        asset_name: caddy-${{ matrix.config.name }}.7z
+        tag: ${{ github.ref }}
+        overwrite: true
