@@ -68,7 +68,7 @@ jobs:
           --output ./release-tmp/caddy
 
     - name: Rename for Windows 
-      if: ${{ matrix.config.GOOS }} == 'windows'
+      if: matrix.config.GOOS == 'windows'
       run: |
         mv ./release-tmp/caddy ./release-tmp/caddy.exe
     
