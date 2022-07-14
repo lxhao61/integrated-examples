@@ -59,13 +59,13 @@ jobs:
             release: true
           }
         - {
-            name: "	darwin-arm64",
+            name: "darwin-arm64",
             GOARCH: arm64,
             GOOS: darwin,
             release: true
           }
         - {
-            name: "	darwin-amd64",
+            name: "darwin-amd64",
             GOARCH: amd64,
             GOOS: darwin,
             release: true
