@@ -97,6 +97,9 @@
 ### systemd服务文件
 &emsp;[service configuration](https://github.com/lxhao61/integrated-examples/tree/main/service%20configuration)（配置软件服务由systemd管理。）
 
+### 构建 Caddy 二进制包
+&emsp;参考 [Actions Workflow](https://github.com/lxhao61/integrated-examples/blob/main/.github/workflows/caddy.yml)
+
 ### 使用/贡献指南
 1. 若科学上网相关软件增加新功能，开始在服务端单一应用配置示例中添加；过一段时间（测试及验证稳定后）才会服务端综合应用配置示例中添加。
 2. 欢迎你提交 PR，如对现行配置示例优化修订，或将自己使用的配置制作模板提交等。
