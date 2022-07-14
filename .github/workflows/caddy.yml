@@ -95,11 +95,20 @@ jobs:
         name: caddy-${{ github.sha }}-${{ matrix.config.name }}
         path: ./release-ready/*
         
-    - name: Upload to GitHub Release
+    - name: Upload to GitHub Release for Windows
       uses: svenstaro/upload-release-action@v2
-      if: github.event_name == 'release' && matrix.config.release
+      if: github.event_name == 'release' && matrix.config.release && matrix.config.GOOS == 'windows'
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ./release-ready/caddy*
+        file: ./release-ready/caddy-${{ matrix.config.name }}.zip
+        tag: ${{ github.ref }}
+        overwrite: true
+        
+    - name: Upload to GitHub Release for other platform
+      uses: svenstaro/upload-release-action@v2
+      if: github.event_name == 'release' && matrix.config.release && matrix.config.GOOS != 'windows'
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: ./release-ready/caddy-${{ matrix.config.name }}.tar.gz
         tag: ${{ github.ref }}
         overwrite: true
