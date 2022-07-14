@@ -17,13 +17,13 @@ jobs:
       matrix:
         config:
         - {
-            name: "windows-x86_64",
+            name: "windows-amd64",
             GOARCH: amd64,
             GOOS: windows,
             release: true
           }
         - {
-            name: "linux-x86_64",
+            name: "linux-amd64",
             GOARCH: amd64,
             GOOS: linux,
             release: true
