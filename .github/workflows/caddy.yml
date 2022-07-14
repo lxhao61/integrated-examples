@@ -50,7 +50,7 @@ jobs:
     
     - name: Build caddy
       run: |
-        mkdir caddy
+        mkdir release-tmp
         export GOARCH=${{ matrix.config.GOARCH }} 
         export GOOS=${{ matrix.config.GOOS }} 
         ~/go/bin/xcaddy build \
@@ -65,29 +65,31 @@ jobs:
           --with github.com/caddyserver/forwardproxy@caddy2=github.com/klzgrad/forwardproxy@naive \
           --with github.com/imgk/caddy-trojan@509ea098182a5d3a0e9a0e3a5417b1b25ea15c40 \
           --with github.com/mholt/caddy-webdav \
-          --output ./caddy/caddy
+          --output ./release-tmp/caddy
 
     - name: Rename for Windows 
       if: matrix.config.GOOS == 'windows'
       run: |
-        mv ./caddy/caddy ./caddy/caddy.exe
+        mv ./release-tmp/caddy ./release-tmp/caddy.exe
     
     - name: Calculate Hash
       run: |
-        cd ./caddy || exit 1
+        cd ./release-tmp || exit 1
         sha256sum * > sha256
 
     - name: Generate zip for Windows
       if: matrix.config.GOOS == 'windows'
       run: |
         mkdir release-ready
-        zip -r ./release-ready/caddy-${{ matrix.config.name }}.zip ./caddy/*
+        cd ./release-tmp
+        zip -r ../release-ready/caddy-${{ matrix.config.name }}.zip *
     
     - name: Generate tar for other platform
       if: matrix.config.GOOS != 'windows'
       run: |
         mkdir release-ready
-        tar -zcvf ./release-ready/caddy-${{ matrix.config.name }}.tar.gz ./caddy/*
+        cd ./release-tmp
+        tar -zcvf ../release-ready/caddy-${{ matrix.config.name }}.tar.gz *
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3
