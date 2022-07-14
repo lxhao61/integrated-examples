@@ -17,6 +17,12 @@ jobs:
       matrix:
         config:
         - {
+            name: "windows-386",
+            GOARCH: 386,
+            GOOS: windows,
+            release: true
+          }
+        - {
             name: "windows-amd64",
             GOARCH: amd64,
             GOOS: windows,
@@ -32,6 +38,36 @@ jobs:
             name: "linux-arm64",
             GOARCH: arm64,
             GOOS: linux,
+            release: true
+          }
+        - {
+            name: "solaris-amd64",
+            GOARCH: amd64,
+            GOOS: solaris,
+            release: true
+          }
+        - {
+            name: "freebsd-amd64",
+            GOARCH: amd64,
+            GOOS: freebsd,
+            release: true
+          }
+        - {
+            name: "freebsd-arm",
+            GOARCH: arm,
+            GOOS: linux,
+            release: true
+          }
+        - {
+            name: "	darwin-arm64",
+            GOARCH: arm64,
+            GOOS: darwin,
+            release: true
+          }
+        - {
+            name: "	darwin-amd64",
+            GOARCH: amd64,
+            GOOS: darwin,
             release: true
           }
 
