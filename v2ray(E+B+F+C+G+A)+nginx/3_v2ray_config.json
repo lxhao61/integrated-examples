@@ -38,18 +38,18 @@
         "network": "tcp",
         "security": "xtls", //如启用xtls，tls必须改成xtls；否则恢复tls。
         "xtlsSettings": { //如启用xtls，tlsSettings必须改成xtlsSettings；否则恢复tlsSettings。
-          "alpn": [
-            "h2", //启用h2连接需配置h2回落，否则不一致（裸奔）容易被墙探测出从而被封。
-            "http/1.1" //启用http/1.1连接需配置http/1.1回落，否则不一致（裸奔）容易被墙探测出从而被封。
-          ],
-          "minVersion": "1.2", //最低tls版本设置，Xray v1.1.4版及以后支持（可选项参数，可以不配置。）。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
-          "cipherSuites": "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256", //密码套件，Xray v1.1.4版及以后支持（可选项参数，可以不配置。）。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
           "certificates": [
             {
-              "ocspStapling": 3600, //OCSP装订更新与证书热重载的时间间隔。Xray v1.3.0版及以后支持（可选项参数，可以不配置。）。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
+              "ocspStapling": 3600, //Xray版本不小于v1.3.0才支持配置OCSP装订更新与证书热重载的时间间隔。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
               "certificateFile": "/home/tls/zv.xx.yy/zv.xx.yy.crt", //换成自己的证书，绝对路径。
               "keyFile": "/home/tls/zv.xx.yy/zv.xx.yy.key" //换成自己的密钥，绝对路径。
             }
+          ],
+          "minVersion": "1.2", //Xray版本不小于v1.1.4才支持配置最低tls版本。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
+          "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256", //Xray版本不小于v1.1.4才支持配置密码套件（若无RSA证书，可删除所有RSA算法的密码套件；无ECC证书，可删除所有ECDSA算法的密码套件。）。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
+          "alpn": [
+            "h2", //启用h2连接需配置h2回落，否则不一致（裸奔）容易被墙探测出从而被封。
+            "http/1.1" //启用http/1.1连接需配置http/1.1回落，否则不一致（裸奔）容易被墙探测出从而被封。
           ]
         },
         "tcpSettings": {
@@ -124,18 +124,18 @@
         "network": "tcp",
         "security": "xtls", //如启用xtls，tls必须改成xtls；否则恢复tls。
         "xtlsSettings": { //如启用xtls，tlsSettings必须改成xtlsSettings；否则恢复tlsSettings。
-          "alpn": [
-            "h2", //启用h2连接需配置h2回落，否则不一致（裸奔）容易被墙探测出从而被封。
-            "http/1.1" //启用http/1.1连接需配置http/1.1回落，否则不一致（裸奔）容易被墙探测出从而被封。
-          ],
-          "minVersion": "1.2", //最低tls版本设置，Xray v1.1.4版及以后支持（可选项参数，可以不配置。）。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
-          "cipherSuites": "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256", //密码套件，Xray v1.1.4版及以后支持（可选项参数，可以不配置。）。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
           "certificates": [
             {
-              "ocspStapling": 3600, //OCSP装订更新与证书热重载的时间间隔。Xray v1.3.0版及以后支持（可选项参数，可以不配置。）。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
+              "ocspStapling": 3600, //Xray版本不小于v1.3.0才支持配置OCSP装订更新与证书热重载的时间间隔。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
               "certificateFile": "/home/tls/zt.xx.yy/zt.xx.yy.crt", //换成自己的证书，绝对路径。
               "keyFile": "/home/tls/zt.xx.yy/zt.xx.yy.key" //换成自己的密钥，绝对路径。
             }
+          ],
+          "minVersion": "1.2", //Xray版本不小于v1.1.4才支持配置最低tls版本。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
+          "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256", //Xray版本不小于v1.1.4才支持配置密码套件（若无RSA证书，可删除所有RSA算法的密码套件；无ECC证书，可删除所有ECDSA算法的密码套件。）。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
+          "alpn": [
+            "h2", //启用h2连接需配置h2回落，否则不一致（裸奔）容易被墙探测出从而被封。
+            "http/1.1" //启用http/1.1连接需配置http/1.1回落，否则不一致（裸奔）容易被墙探测出从而被封。
           ]
         },
         "tcpSettings": {
