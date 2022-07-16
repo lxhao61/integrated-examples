@@ -7,7 +7,7 @@
               "certificateFile": "/home/tls/zv.xx.yy/zv.xx.yy.crt", //换成自己的证书，绝对路径。
               "keyFile": "/home/tls/zv.xx.yy/zv.xx.yy.key" //换成自己的密钥，绝对路径。
             }
-          ]
+          ],
 //.........<省略>........
 
 //以上配置修改为如下：
@@ -23,7 +23,7 @@
               "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/z1.xx.yy/z1.xx.yy.crt", //换成自己的证书，绝对路径。
               "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/z1.xx.yy/z1.xx.yy.key" //换成自己的密钥，绝对路径。
             }
-          ]
+          ],
 //.........<省略>........
 //注意：
 //1、zv.xx.yy、z1.xx.yy表示不同的二级域名。
