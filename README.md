@@ -82,10 +82,11 @@
 4. caddy插件单一应用简记：N=naiveproxy(caddy+forwardproxy)、T=trojan-go(caddy+caddy-trojan)。
 5. 目前caddy采用进程监听不支持HTTP/3，即仅端口监听才支持开启HTTP/3。
 6. 受限应用条件及场景，naiveproxy的QUIC应用（即caddy的HTTP/3代理应用）不是所有相关naiveproxy示例都支持。
-7. 使用caddy自动申请与更新证书，若不指定从那个证书颁发机构（CA）来申请证书，默认启用从Let's Encrypt与ZeroSSL申请免费证书（如果无法从Let's Encrypt申请，它将尝试使用ZeroSSL申请；如果两者都失败，它将暂停并稍后重试。）。当前从Let's Encrypt自动申请的证书默认为RSA证书（若申请ECC证书，必须加入签发ECDSA证书的白名单。），从ZeroSSL自动申请的证书为ECC证书（ECDSA证书）。
-8. 流量伪装与防探测网站可由其它WEB应用软件实现，其反代支持能力（WebSocket、gRPC及H2C）与回落支持能力（H2C server及HTTP/1.1 server）取决于自身，配置自行参考caddy或nginx对应示例。
-9. 附加相关插件的caddy程序文件已编译好，去本人Releases中下载即可。
-10. trojan-go安卓客户端可以去本人Releases中下载（最末）。
+7. 使用caddy自动申请与更新证书，若不指定从那个证书颁发机构（CA）来申请证书，默认启用从Let's Encrypt与ZeroSSL申请免费证书。如果无法从Let's Encrypt申请，它将尝试使用ZeroSSL申请；如果两者都失败，它将暂停并稍后重试。
+8. caddy当前从Let's Encrypt自动申请的证书默认为RSA证书（若申请ECC证书，必须加入签发ECDSA证书的白名单。），从ZeroSSL自动申请的证书为ECC证书（ECDSA证书）。
+9. 流量伪装与防探测网站可由其它WEB应用软件实现，其反代支持能力（WebSocket、gRPC及H2C）与回落支持能力（H2C server及HTTP/1.1 server）取决于自身，配置自行参考caddy或nginx对应示例。
+10. 附加相关插件的caddy程序文件已编译好，去本人Releases中下载即可。
+11. trojan-go安卓客户端可以去本人Releases中下载（最末）。
 
 ### 服务端特殊应用配置示例
 1. [v2ray(other configuration)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(other%20configuration)) （Xray或v2ray的特色应用配置方法。）
