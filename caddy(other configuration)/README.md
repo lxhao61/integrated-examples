@@ -24,21 +24,21 @@
 
 4、相关示例已配置 caddy SNI 分流共用端口，此配置仅备份及参考等。
 
-三、caddy 以 DNS-01 验证方式申请证书及密钥配置方法
+三、caddy 以 DNS-01 验证方式申请证书的配置方法
 
-1、以 DNS-01 验证方式申请证书及密钥，可颁发通配符证书及密钥。
+1、以 DNS-01 验证方式申请证书，可申请通配符证书。
 
 2、提供了 dnspod（dnspod国际版插件）、cloudflare、dnspodcn（dnspod中国版插件）三种最常见插件配置示例，其它插件配置类似，参考 dnspod（dnspod国际版插件） 或 cloudflare 配置示例。
 
 注意：
 
-1、示例为通配符域名的证书及密钥申请，可同时通配符域名与根域名各自申请。
+1、示例为通配符域名的证书申请，可同时通配符域名与根域名各自证书申请。
 
-2、申请免费证书及密钥的域名不要超过五个，否则影响证书及密钥的更新。
+2、申请免费证书的域名不要超过五个，否则影响证书的更新。
 
-3、caddy 以 DNS-01 验证方式申请证书及密钥，必须带对应 DNS API 插件。dnspod 解析分 dnspod.com（国际版）与 dnspod.cn（中国版），故两者插件不通用，必须对应各自 dnspod 解析使用。
+3、caddy 以 DNS-01 验证方式申请证书，必须带对应 DNS API 插件。dnspod 解析分 dnspod.com（国际版）与 dnspod.cn（中国版），故两者插件不通用，必须对应各自 dnspod 解析使用。
 
-4、cloudflare 已不支持 freenom 提供的免费域名以 DNS-01 验证方式申请证书及密钥了。
+4、cloudflare 已不支持 freenom 提供的免费域名以 DNS-01 验证方式申请证书了。
 
 5、acmeh 或 zerossl 申请成功后证书及密钥所在路径及目录。  
 1）、acme 申请的普通证书及密钥在 “/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy” 目录中。/home/tls 为设置存放证书及密钥的基本路径。xx.yy 为域名，根据自己域名变化。  
@@ -46,9 +46,9 @@
 3）、zerossl 申请的普通证书及密钥在 “/home/tls/certificates/acme.zerossl.com-v2-dv90/xx.yy” 目录中。/home/tls 为设置存放证书及密钥的基本路径。xx.yy 为域名，根据自己域名变化。  
 4）、zerossl 申请的通配符证书及密钥在 “/home/tls/certificates/acme.zerossl.com-v2-dv90/wildcard_.xx.yy” 目录中。/home/tls 为设置存放证书及密钥的基本路径。xx.yy 为域名，根据自己域名变化。
 
-6、caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（完全等效）。Caddyfile 配置中“#二、无SNI分流，回落为主应用。”必须启用无用端口来联动实现自动申请与更新证书及密钥；推荐使用 json 格式配置，优化更好。
+6、caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（完全等效）。Caddyfile 配置中“#二、无SNI分流，回落为主应用。”必须启用无用端口来联动实现自动申请与更新证书；推荐使用 json 格式配置，优化更好。
 
-7、其它应用使用 caddy 申请的证书及密钥，只是若自己不支持自动重载证书及密钥，证书及密钥到期更新（证书有效期90天，默认60天后开始更新。）后需手动重启自己来重新加载更新后的证书及密钥。
+7、其它应用使用 caddy 自动申请的证书，若自己不支持自动重载证书，证书到期更新（证书有效期90天，默认60天后开始更新。）后需手动重启自己来重新加载更新后的证书。
 
 四、caddy DDNS 客户端配置方法
 
