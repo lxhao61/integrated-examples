@@ -5,7 +5,7 @@
 4. 实现了nginx SNI分流（TCP转发）与定向UDP转发，以支持SNI分流后的naiveproxy HTTP/3代理应用。
 5. 实现了caddy Caddyfile配置开启H2C server、H2C proxy及接收PROXY protocol等应用支持，让caddy配置简单化。
 6. 实现了caddy json配置SNI分流应用，且支持针对转发端口或进程开启或关闭发送PROXY protocol，灵活性等同haproxy SNI分流。
-7. 实现了caddy与Xray相关应用的证书及密钥申请与更新全自动化。
+7. 实现了caddy与Xray相关应用的证书申请与更新全自动化。
 8. 实现了CDN流量中转（基于WebSocket over TLS或基于gRPC over TLS）与正常应用同时使用。
 9. 实现了除v2ray(vless\vmess+kcp+seed)与hysteria示例或应用外，其它应用对外都使用443端口，各应用互不影响。
 10. 实现了除v2ray(vless\vmess+kcp+seed)与hysteria示例或应用外，其它应用都支持流量伪装与防探测，且提供流量伪装与防探测的回落或代理网站都支持HTTP自动跳转到HTTPS，SSL/TLS安全评估报告为A+等，即所有特征完全与真实网站一致。
@@ -82,7 +82,7 @@
 4. caddy插件单一应用简记：N=naiveproxy(caddy+forwardproxy)、T=trojan-go(caddy+caddy-trojan)。
 5. 目前caddy采用进程监听不支持HTTP/3，即仅端口监听才支持开启HTTP/3。
 6. 受限应用条件及场景，naiveproxy的QUIC应用（即caddy的HTTP/3代理应用）不是所有相关naiveproxy示例都支持。
-7. 使用caddy内置ACME客户端自动申请与更新证书，若不指定从Let's Encrypt或ZeroSSL申请证书，默认情况下同时启用（如果无法从Let's Encrypt申请证书，它将尝试使用ZeroSSL；如果两者都失败，它将暂停并稍后重试。）。当前从Let's Encrypt自动申请的证书默认为RSA证书（申请加入ECDSA白名单后才可自动申请ECC证书）,从ZeroSSL自动申请的证书为ECC证书（ECDSA证书）。
+7. 使用caddy（内置ACME客户端）自动申请与更新证书，若不指定从那个颁发者来申请证书，默认情况下启用从Let's Encrypt与ZeroSSL申请（如果无法从Let's Encrypt申请，它将尝试使用ZeroSSL申请；如果两者都失败，它将暂停并稍后重试。）。当前从Let's Encrypt自动申请的证书默认为RSA证书（申请加入ECDSA白名单后才自动申请ECC证书）,从ZeroSSL自动申请的证书为ECC证书（ECDSA证书）。
 8. 流量伪装与防探测网站可由其它WEB应用软件实现，其反代支持能力（WebSocket、gRPC及H2C）与回落支持能力（H2C server及HTTP/1.1 server）取决于自身，配置自行参考caddy或nginx对应示例。
 9. 附加相关插件的caddy程序文件已编译好，去本人Releases中下载即可。
 10. trojan-go安卓客户端可以去本人Releases中下载（最末）。
