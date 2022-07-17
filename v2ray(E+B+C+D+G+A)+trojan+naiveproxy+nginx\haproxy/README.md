@@ -40,11 +40,11 @@
 
 10、使用本人 Releases 中编译好的 caddy 文件，可同时支持 H2C server、H2C proxy、naiveproxy 及接收 PROXY protocol 等应用。
 
-11、Xray 所需证书及密钥推荐使用 caddy 申请，配合 Xray 支持自动热重载证书及密钥，可实现 Xray 所需证书及密钥更新全自动化。
+11、Xray 所需证书推荐使用 caddy 自动申请，配合 Xray 支持自动热重载证书，可实现 Xray 所需证书更新全自动化。
 
 12、本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（完全等同）。
 
-13、不要使用第三方 ACME 客户端在当前服务器上以 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新证书及密钥，因 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新证书及密钥需监听 80 或 443 端口，从而与当前应用端口冲突。
+13、不要使用第三方 ACME 客户端在当前服务器上以 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新证书，因 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新证书需监听 80 或 443 端口，从而与当前应用端口冲突。
 
 14、配置1：采用端口分流、端口回落/分流、端口转发。配置2：采用进程分流（对应trojan-go/trojan除外）、端口回落/分流（对应vless+ws除外）、端口转发。配置3：采用进程分流（对应trojan-go/trojan除外）、端口回落/分流（对应vless+ws除外）、端口转发，且启用了 PROXY protocol（全部回落除外）。
 
