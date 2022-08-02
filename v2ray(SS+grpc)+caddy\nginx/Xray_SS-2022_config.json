@@ -1,4 +1,4 @@
-//本示例若使用Xray（Xray版本不小于v1.5.9），强烈建议使用Shadowsocks 2022加密方法。
+//本示例若使用Xray（Xray版本不小于v1.5.9），强烈建议使用Shadowsocks 2022加密方法解决了运营商断流/限速等干扰问题。
 //原配置：
 //.........<省略>........
       "settings": {
@@ -35,4 +35,4 @@
         ]
       },
 //.........<省略>........
-//备注：参考Xray官方配置模板中Shadowsocks-2022(https://github.com/XTLS/Xray-examples/tree/main/Shadowsocks-2022)。
+//备注：基础资料参考Xray官方配置模板中Shadowsocks-2022示例及介绍(https://github.com/XTLS/Xray-examples/tree/main/Shadowsocks-2022)，如密钥生成及长度等。
