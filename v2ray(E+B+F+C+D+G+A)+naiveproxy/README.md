@@ -28,7 +28,7 @@
 
 4、Xray 版本不小于 v1.4.0 或 v2ray 版本不小于v4.36.2，才支持 gRPC 传输方式。
 
-5、caddy 版本不小于 v2.2.0-rc.1 才支持 H2C proxy，即支持 Xray 或 v2ray 的 H2C（gRPC） 反向代理。
+5、caddy 版本不小于 v2.2.0 才支持 H2C proxy，即支持 Xray 或 v2ray 的 H2C（gRPC） 反向代理。caddy 版本不小于 v2.5.3 才支持 H2C proxy 的进程转发。
 
 6、caddy 支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程。
 
@@ -40,6 +40,6 @@
 
 10、不要使用第三方 ACME 客户端在当前服务器上以 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新 SSL/TLS 证书，因 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新 SSL/TLS 证书需监听 80 或 443 端口，从而与当前应用端口冲突。
 
-11、配置1：采用端口分流、端口回落/分流、端口转发。配置2：采用进程分流、进程回落/分流、端口转发。配置3：采用进程分流、进程回落/分流、端口转发，且启用了 PROXY protocol。
+11、配置1：采用端口回落/分流、端口转发。配置2：采用进程回落/分流（shadowsocks+xray-plugin/v2ray-plugin+tls 除外）、进程转发。配置3：采用进程回落/分流（shadowsocks+xray-plugin/v2ray-plugin+tls 除外）、进程转发，且启用了 PROXY protocol。
 
 12、若有实际网站服务推荐采用 [v2ray(E+B+F+C+D+G+A)+naiveproxy+nginx\haproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BF%2BC%2BD%2BG%2BA)%2Bnaiveproxy%2Bnginx%5Chaproxy) 示例，否则 caddy 的压力可能过大。
