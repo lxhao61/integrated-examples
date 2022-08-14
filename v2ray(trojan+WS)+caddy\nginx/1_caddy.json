@@ -20,11 +20,11 @@
           "listen": [":443"],
           "routes": [{
             "match": [{
-              "path": ["/9ALdGZ9k"], //与trojan+ws应用中path对应
               "header": {
                 "Connection": ["*Upgrade*"],
                 "Upgrade": ["websocket"]
-              }
+              },
+              "path": ["/9ALdGZ9k"] //与trojan+ws应用中path对应
             }],
             "handle": [{
               "handler": "reverse_proxy",
