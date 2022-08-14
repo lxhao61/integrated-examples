@@ -26,7 +26,7 @@
 
 3、Xray 版本不小于 v1.4.0 或 v2ray 版本不小于v4.36.2，才支持 gRPC 传输方式。
 
-4、因 trojan-go 或 trojan 不支持 Unix Domain Socket，故 caddy SNI 分流 trojan-go 或 trojan 仅启用端口转发；故与 trojan-go 或 trojan 共用 WEB 服务的 vless+tcp+xtls 或 vless+tcp+tls 回落也仅端口回落，即全部端口回落。
+4、因 trojan-go 或 trojan 的监听与回落不支持 Unix Domain Socket，故 caddy SNI 分流 trojan-go 或 trojan 仅启用端口转发；故与 trojan-go 或 trojan 共用 WEB 服务的 vless+tcp+xtls 或 vless+tcp+tls 回落也仅端口回落，即全部端口回落。
 
 5、因 trojan-go 或 trojan 不支持 PROXY protocol，故 caddy SNI 分流 trojan-go 或 trojan 不启用此项应用；故与 trojan-go 或 trojan 共用 WEB 服务的 vless+tcp+xtls 或 vless+tcp+tls 回落也不启用此项应用，即全部回落不启用此项应用。
 
