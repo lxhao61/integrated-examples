@@ -79,7 +79,7 @@
               },
               "flush_interval": -1,
               "upstreams": [{
-               "dial": "unix//dev/shm/vgrpc.sock" //转发给本机vless+grpc监听进程
+                "dial": "unix//dev/shm/vgrpc.sock" //转发给本机vless+grpc监听进程
               }]
             }]
           },
