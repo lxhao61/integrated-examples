@@ -20,11 +20,11 @@
           "listen": [":443"],
           "routes": [{
             "match": [{
-              "path": ["/8ALdGZ9k"], //与socks+ws或shadowsocks+ws应用中path对应
               "header": {
                 "Connection": ["*Upgrade*"],
                 "Upgrade": ["websocket"]
-              }
+              },
+              "path": ["/8ALdGZ9k"] //与socks+ws或shadowsocks+ws应用中path对应
             }],
             "handle": [{
               "handler": "reverse_proxy",
