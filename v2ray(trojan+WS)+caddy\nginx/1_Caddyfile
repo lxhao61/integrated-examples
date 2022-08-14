@@ -15,9 +15,9 @@
 	}
 
 	@tws { #匹配器标签。此标签仅区分，多个不同代理需要改成不同名称，但要与下边‘reverse_proxy’中匹配器标签对应。
-		path /9ALdGZ9k #与trojan+ws应用中path对应
 		header Connection *Upgrade*
 		header Upgrade websocket
+		path /9ALdGZ9k #与trojan+ws应用中path对应
 	}
 	reverse_proxy @tws 127.0.0.1:2007 #转发给本机trojan+ws监听端口
 
