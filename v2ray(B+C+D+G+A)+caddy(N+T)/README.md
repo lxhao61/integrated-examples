@@ -32,4 +32,4 @@
 
 7、本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（完全等同）。支持自动 HTTPS，即自动申请与更新 SSL/TLS 证书，自动 HTTP 重定向到 HTTPS。
 
-8、配置1：采用端口转发。配置2：采用进程转发。
+8、配置1：采用端口转发。配置2：采用进程转发（shadowsocks+xray-plugin/v2ray-plugin+tls 除外）。
