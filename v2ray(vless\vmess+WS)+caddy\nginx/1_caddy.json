@@ -20,11 +20,11 @@
           "listen": [":443"],
           "routes": [{
             "match": [{
-              "path": ["/HALdGZ9k"], //与vless+ws或vmess+ws应用中path对应
               "header": {
                 "Connection": ["*Upgrade*"],
                 "Upgrade": ["websocket"]
-              }
+              },
+              "path": ["/HALdGZ9k"] //与vless+ws或vmess+ws应用中path对应
             }],
             "handle": [{
               "handler": "reverse_proxy",
