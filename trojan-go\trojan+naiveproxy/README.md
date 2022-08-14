@@ -8,7 +8,7 @@
 
 注意：
 
-1、因 trojan-go 或 trojan 不支持 Unix Domain Socket，故回落仅端口回落。
+1、因 trojan-go 或 trojan 回落不支持 Unix Domain Socket 转发，故回落仅端口回落。
 
 2、因 trojan-go 或 trojan 不支持 PROXY protocol，故回落不启用此项应用。
 
