@@ -105,14 +105,14 @@
                 "versions": ["h2c","2"]
               },
               "upstreams": [{
-                "dial": "127.0.0.1:2005" //转发给本机vless+h2c监听端口
+                "dial": "unix//dev/shm/vh2c.sock" //转发给本机vless+h2c监听进程
               }]
             }]
           },
           {
             "match": [{
-              "path": ["/VALdGZ9k/*"], //与vless+grpc应用中serviceName对应
-              "protocol": "grpc"
+              "protocol": "grpc",
+              "path": ["/VALdGZ9k/*"] //与vless+grpc应用中serviceName对应
             }],
             "handle": [{
               "handler": "reverse_proxy",
@@ -122,7 +122,7 @@
               },
               "flush_interval": -1,
               "upstreams": [{
-                "dial": "127.0.0.1:2009" //转发给本机vless+grpc监听端口
+                "dial": "unix//dev/shm/vgrpc.sock" //转发给本机vless+grpc监听进程
               }]
             }]
           },
