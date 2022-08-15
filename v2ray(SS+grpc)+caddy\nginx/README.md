@@ -11,7 +11,7 @@
 
 1、Xray 或 v2ray 的监听地址不支持 shadowsocks（SS） 协议使用 Unix Domain Socket 监听。
 
-2、Xray 版本不小于 v1.4.0 或 v2ray 版本不小于 v4.36.2，才支持 gRPC 传输方式。
+2、Xray 版本不小于 v1.4.0 或 v2ray 版本不小于 v4.36.2 才支持 gRPC 传输方式。
 
 3、caddy 版本不小于 v2.2.0 才支持 H2C proxy，即 caddy 支持基于 H2C 代理实现 Xray 或 v2ray 的 gRPC 反向代理。
 
