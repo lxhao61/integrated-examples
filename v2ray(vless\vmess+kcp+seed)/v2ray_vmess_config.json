@@ -20,6 +20,8 @@
         "network": "kcp",
         "security": "none",
         "kcpSettings": {
+          "uplinkCapacity": 100,
+          "downlinkCapacity": 100,
           "congestion": true, //启用拥塞控制
           "seed": "60VoqhfjP79nBQyU" //修改为自己的seed密码
         }
