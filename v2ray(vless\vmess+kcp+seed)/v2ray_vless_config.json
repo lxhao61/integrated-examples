@@ -6,7 +6,7 @@
   },
   "inbounds": [
     {
-      "port": 2053, //监听端口
+      "port": 2052, //监听端口
       "protocol": "vless",
       "settings": {
         "clients": [
