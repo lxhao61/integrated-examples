@@ -9,7 +9,7 @@
 	servers :443 {
 		protocol {
 			experimental_http3 #开启http3 server支持
-		} #版本v2.5.2后前面protocol及experimental_http3配置调整为：protocols h1 h2 h3
+		} #版本v2.5.2后protocol及experimental_http3配置调整为：protocols h1 h2 h3
 	}
 }
 
