@@ -62,7 +62,7 @@
         }
       }
     },
-    "trojan":{
+    "trojan": {
       "upstream": {
         "upstream": "caddy"
       },
