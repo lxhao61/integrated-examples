@@ -9,7 +9,7 @@
 	}
 	servers 127.0.0.1:88 { #与下边本地监听端口对应
 		protocol {
-			allow_h2c #开启h2c server支持
+			allow_h2c #开启H2C server支持
 		} #版本v2.5.2后配置调整为：protocols h1 h2c
 	}
 	servers 127.0.0.1:7443 { #与下边本地监听端口对应
@@ -17,8 +17,8 @@
 			trojan #caddy-trojan插件应用必须配置
 		}
 		protocol {
-			allow_h2c #开启h2c server支持，caddy-trojan插件应用必须启用。
-			experimental_http3 #开启http3 server支持。若采用haproxy SNI分流，此条参数可删除。
+			allow_h2c #开启H2C server支持，caddy-trojan插件应用必须启用。
+			experimental_http3 #开启HTTP/3 server支持。若采用haproxy SNI分流，此条参数可删除。
 		} #版本v2.5.2后配置调整为：protocols h1 h2c h2 h3
 	}
 	trojan {
@@ -77,7 +77,7 @@
 	}
 
 	trojan {
-		user diy443 #修改为自己的密码。密码可多组，用空格隔开。版本v2.5.2后无此参数（删除）。
+		user diy443 #修改为自己的密码。密码可多组，用空格隔开。版本v2.5.2后无此条参数（删除）。
 		connect_method
 		websocket #开启Websocket支持
 	}
