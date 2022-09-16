@@ -13,7 +13,7 @@
 	}
 	servers 127.0.0.1:7443 { #与下边本地监听端口对应
 		protocol {
-			experimental_http3 #开启http3 server支持。若采用haproxy SNI分流，此部分参数可删除。
+			experimental_http3 #开启HTTP/3 server支持。若采用haproxy SNI分流，此部分参数可删除。
 		} #版本v2.5.2后配置调整为：protocols h1 h2 h3
 	}
 }
