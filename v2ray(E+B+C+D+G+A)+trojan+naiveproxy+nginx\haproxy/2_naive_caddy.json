@@ -44,7 +44,7 @@
               "root": "/var/www/html" //修改为自己存放的WEB文件路径
             }]
           }],
-          "allow_h2c": true //开启h2c server支持
+          "allow_h2c": true //开启h2c server支持。版本v2.5.2后配置调整为："protocols": ["h1","h2c"]
         },
         "https": {
           "listen": ["unix//dev/shm/https.sock"], //https server监听进程
@@ -119,7 +119,7 @@
             "curves": ["x25519","secp521r1","secp384r1","secp256r1"],
             "alpn": ["h2","http/1.1"]
           }],
-          "experimental_http3": false //关闭http3 server支持。https server采用进程监听，必须关闭http3 server支持或删除此条参数（默认不启用）。
+          "experimental_http3": false //https server采用进程监听，必须关闭HTTP/3 server支持。版本v2.5.2后配置调整为："protocols": ["h1","h2"]
         }
       }
     },
