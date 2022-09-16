@@ -9,7 +9,7 @@
 	servers 127.0.0.1:88 { #与下边本地监听端口对应
 		protocol {
 			allow_h2c #开启h2c server支持
-		}
+		} #版本v2.5.2后配置调整为：protocols h1 h2c
 	}
 }
 
