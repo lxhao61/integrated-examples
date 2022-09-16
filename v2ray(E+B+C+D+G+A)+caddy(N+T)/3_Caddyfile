@@ -15,13 +15,13 @@
 		}
 		protocol {
 			allow_h2c #开启h2c server支持
-		} #版本v2.5.2后前面protocol及allow_h2c配置调整为：protocols h1 h2c
+		} #版本v2.5.2后protocol及allow_h2c配置调整为：protocols h1 h2c
 	}
 	trojan {
 		caddy
 		no_proxy
 		users diy443 #修改为自己的密码。密码可多组，用空格隔开。
-	} #版本v2.5.2后才需要配置前面trojan及相关参数
+	} #版本v2.5.2后才需要配置trojan及相关参数
 }
 
 :80 { #http默认监听端口
