@@ -96,7 +96,7 @@
               "root": "/var/www/html" //修改为自己存放的WEB文件路径
             }]
           }],
-          "allow_h2c": true //开启h2c server支持。版本v2.5.2后配置调整为："protocols": ["h1","h2c"]
+          "allow_h2c": true //开启H2C server支持。版本v2.5.2后配置调整为："protocols": ["h1","h2c"]
         },
         "https": {
           "listen": ["unix//dev/shm/https.sock"], //https server监听进程
