@@ -99,7 +99,7 @@ jobs:
           --with github.com/caddy-dns/duckdns \
           --with github.com/mastercactapus/caddy2-proxyprotocol \
           --with github.com/caddyserver/forwardproxy@caddy2=github.com/klzgrad/forwardproxy@naive \
-          --with github.com/imgk/caddy-trojan@509ea098182a5d3a0e9a0e3a5417b1b25ea15c40 \
+          --with github.com/imgk/caddy-trojan \
           --with github.com/mholt/caddy-webdav \
           --output ./release-tmp/caddy
 
