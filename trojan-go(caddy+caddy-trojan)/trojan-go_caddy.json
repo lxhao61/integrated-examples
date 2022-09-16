@@ -58,7 +58,7 @@
             "curves": ["x25519","secp521r1","secp384r1","secp256r1"],
             "alpn": ["h2","http/1.1"]
           }],
-          "allow_h2c": true //开启h2c server支持，caddy-trojan插件应用必须启用。版本v2.5.2后配置调整为："protocols": ["h1","h2c","h2"]
+          "allow_h2c": true //开启H2C server支持，caddy-trojan插件应用必须启用。版本v2.5.2后配置调整为："protocols": ["h1","h2c","h2"]
         }
       }
     },
