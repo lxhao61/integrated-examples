@@ -28,7 +28,7 @@
 	}
 
 	trojan {
-		user diy443 #修改为自己的密码。密码可多组，用空格隔开。版本v2.5.2后无此参数（删除）。
+		user diy443 #修改为自己的密码。密码可多组，用空格隔开。版本v2.5.2后无此条参数（删除）。
 		connect_method
 		websocket #开启WebSocket支持
 	}
