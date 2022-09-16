@@ -13,7 +13,7 @@
 	}
 	servers unix//dev/shm/https.sock { #与下边监听进程对应
 		protocols h1 h2 #禁用HTTP/3及H2C server支持
-	} #版本v2.5.2后必须增加此部分配置（HTTP/3 server不支持监听进程）
+	} #版本v2.5.2后才需要增加此部分配置（HTTP/3 server不支持监听进程）
 }
 
 :80 { #http默认监听端口
