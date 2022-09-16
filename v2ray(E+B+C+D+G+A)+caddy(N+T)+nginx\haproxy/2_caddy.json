@@ -140,7 +140,7 @@
         "proxy": "no_proxy"
       },
       "users": ["diy443"], //修改为自己的密码。密码可多组（"password"），用逗号隔开。
-    }, //版本v2.5.2后才需要配置前面trojan及相关参数
+    }, //版本v2.5.2后才需要配置trojan及相关参数
     "tls": {
       "certificates": {
         "load_files": [{
