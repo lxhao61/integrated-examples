@@ -70,7 +70,7 @@
           "automatic_https": {
             "disable": true //禁用自动https
           },
-          "allow_h2c": true //开启h2c server支持
+          "allow_h2c": true //开启h2c server支持。版本v2.5.2后配置调整为："protocols": ["h1","h2c"]
         }
       }
     }
