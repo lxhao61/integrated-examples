@@ -9,6 +9,7 @@
 		protocol {
 			allow_h2c #开启h2c server支持
 		}
+#版本v2.5.2后上边protocol及开启h2c server支持调整为：protocols h1 h2c
 	}
 }
 
