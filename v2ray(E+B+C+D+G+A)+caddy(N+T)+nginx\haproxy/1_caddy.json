@@ -129,7 +129,7 @@
             "alpn": ["h2","http/1.1"]
           }],
           "allow_h2c": true, //开启h2c server支持，caddy-trojan插件应用必须启用。
-          "experimental_http3": true //开启http3 server支持。若采用haproxy SNI分流，不支持UDP，此条参数可关闭或删除。版本v2.5.2后前面"allow_h2c"与"experimental_http3"配置调整为："protocols": ["h1","h2c","h2","h3"]
+          "experimental_http3": true //开启http3 server支持。若采用haproxy SNI分流，不支持UDP，此条参数可关闭或删除。版本v2.5.2后"allow_h2c"与"experimental_http3"配置调整为："protocols": ["h1","h2c","h2","h3"]
         }
       }
     },
@@ -141,7 +141,7 @@
         "proxy": "no_proxy"
       },
       "users": ["diy443"], //修改为自己的密码。密码可多组（"password"），用逗号隔开。
-    }, //版本v2.5.2后才需要配置前面trojan及相关参数
+    }, //版本v2.5.2后才需要配置trojan及相关参数
     "tls": {
       "certificates": {
         "load_files": [{
