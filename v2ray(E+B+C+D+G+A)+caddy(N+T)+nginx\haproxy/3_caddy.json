@@ -110,7 +110,7 @@
             },
             {
               "handler": "trojan",
-              "users": ["diy443"], //修改为自己的密码。密码可多组（"password"），用逗号隔开。
+              "users": ["diy443"], //修改为自己的密码。密码可多组（"password"），用逗号隔开。版本v2.5.2后无此参数（删除）。
               "connect_method": true,
               "websocket": true //开启Websocket支持
             }]
@@ -144,10 +144,19 @@
             "curves": ["x25519","secp521r1","secp384r1","secp256r1"],
             "alpn": ["h2","http/1.1"]
           }],
-          "allow_h2c": true //caddy-trojan插件应用必须启用
+          "allow_h2c": true //开启h2c server支持，caddy-trojan插件应用必须启用。版本v2.5.2后配置调整为："protocols": ["h1","h2c","h2"]
         }
       }
     },
+    "trojan": {
+      "upstream": {
+        "upstream": "caddy"
+      },
+      "proxy": {
+        "proxy": "no_proxy"
+      },
+      "users": ["diy443"], //修改为自己的密码。密码可多组（"password"），用逗号隔开。
+    }, //版本v2.5.2后才需要配置trojan及相关参数
     "tls": {
       "certificates": {
         "load_files": [{
