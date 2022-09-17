@@ -22,7 +22,7 @@
 
 3、Xray 版本不小于 v1.4.0 或 v2ray 版本不小于 v4.36.2 才支持 gRPC 传输方式。
 
-4、因 trojan-go 或 trojan 不支持 Unix Domain Socket 监听接收与回落转发，故 nginx SNI 分流 trojan-go 或 trojan 仅启用端口转发；故与 trojan-go 或 trojan 共用 WEB 服务的 vless+tcp+xtls 或 vless+tcp+tls 回落也仅端口回落，即全部端口回落。
+4、因 trojan-go 或 trojan 不支持 Unix Domain Socket（UDS） 监听接收与回落转发，故 nginx SNI 分流 trojan-go 或 trojan 仅启用端口转发；故与 trojan-go 或 trojan 共用 WEB 服务的 vless+tcp+xtls 或 vless+tcp+tls 回落也仅端口回落，即全部端口回落。
 
 5、因 trojan-go 或 trojan 不支持 PROXY protocol，故 nginx SNI 分流启用 PROXY protocol 须特殊处理（具体见配置示例）；故与 trojan-go 或 trojan 共用 WEB 服务的 vless+tcp+xtls 或 vless+tcp+tls 回落不启用此项应用，即全部回落不启用此项应用。
 
