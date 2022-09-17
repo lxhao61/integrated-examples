@@ -11,7 +11,7 @@
 
 1、Xray 版本不小于 v1.4.0 或 v2ray 版本不小于 v4.36.2 才支持 gRPC 传输方式。
 
-2、caddy 版本不小于 v2.2.0 才支持 H2C proxy，即 caddy 支持基于 H2C 代理实现 Xray 或 v2ray 的 gRPC 反向代理。caddy 版本不小于 v2.5.3 才支持 H2C proxy 的进程转发。
+2、caddy 版本不小于 v2.2.0 才支持 H2C proxy，即 caddy 支持基于 H2C 代理实现 Xray 或 v2ray 的 gRPC 反向代理。caddy 版本不小于 v2.6.0 才支持 H2C proxy 的 Unix Domain Socket（UDS） 转发。
 
 3、若采用 caddy 反向代理，本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（完全等同）。支持自动 HTTPS，即自动申请与更新 SSL/TLS 证书，自动 HTTP 重定向到 HTTPS。
 
