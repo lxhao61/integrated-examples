@@ -16,7 +16,7 @@
 			proxy_protocol #开启PROXY protocol接收
 			tls #https server开启PROXY protocol接收必须配置
 		}
-		protocols h1 h2 #版本v2.5.2后才需要增加此条参数（HTTP/3 server不支持监听进程），禁用HTTP/3及H2C server支持。
+		protocols h1 h2 #版本v2.5.2后才需要增加此条参数（HTTP/3 server不支持UDS监听），禁用HTTP/3及H2C server支持。
 	}
 }
 
