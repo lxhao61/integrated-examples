@@ -129,7 +129,7 @@
             "alpn": ["h2","http/1.1"]
           }],
           "allow_h2c": true, //开启H2C server支持，caddy-trojan插件应用必须启用。
-          "experimental_http3": true //开启HTTP/3 server支持。若采用haproxy SNI分流，此参数无效（不支持HTTP/3代理应用）。版本v2.5.2后"allow_h2c"与"experimental_http3"配置调整为："protocols": ["h1","h2c","h2","h3"]
+          "experimental_http3": true //开启HTTP/3 server支持。若采用haproxy SNI分流（不支持UDP转发），推荐不开启。版本v2.5.2后"allow_h2c"与"experimental_http3"配置调整为："protocols": ["h1","h2c","h2","h3"]
         }
       }
     },
