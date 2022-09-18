@@ -1,10 +1,10 @@
 {
 	order trojan before route
 	admin off
-	log { #注意：版本不小于v2.4.0才支持日志全局配置，否则各自配置。
+	log {
 		output file /var/log/caddy/access.log
 		level ERROR
-	}
+	} #版本不小于v2.4.0才支持日志全局配置，否则各自配置。
 	servers :443 {
 		listener_wrappers {
 			trojan #caddy-trojan插件应用必须配置
