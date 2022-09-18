@@ -2,10 +2,10 @@
 	order forward_proxy before route
 	order reverse_proxy before forward_proxy
 	admin off
-	log { #注意：版本不小于v2.4.0才支持日志全局配置，否则各自配置。
+	log {
 		output file /var/log/caddy/access.log
 		level ERROR
-	}
+	} #版本不小于v2.4.0才支持日志全局配置，否则各自配置。
 	auto_https off #禁用自动https
 	servers unix//dev/shm/h1h2c.sock { #与下边监听进程对应
 		listener_wrappers {
@@ -30,7 +30,7 @@
 		}
 	}
 
-	@vgrpc { #匹配器标签。此标签仅区分，多个不同代理需要改成不同名称，但要与下边‘reverse_proxy’中匹配器标签对应。
+	@vgrpc {
 		protocol grpc
 		path /VALdGZ9k/* #与vless+grpc应用中serviceName对应
 	}
