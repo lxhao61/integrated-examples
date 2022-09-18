@@ -158,7 +158,7 @@
             "curves": ["x25519","secp521r1","secp384r1","secp256r1"],
             "alpn": ["h2","http/1.1"]
           }],
-          "experimental_http3": false //关闭HTTP/3 server支持（caddy SNI分流不支持HTTP/3代理应用）。版本v2.5.2后配置调整为："protocols": ["h1","h2"]
+          "experimental_http3": false //关闭HTTP/3 server支持（caddy SNI分流不支持UDP转发）。版本v2.5.2后配置调整为："protocols": ["h1","h2"]
         }
       }
     },
