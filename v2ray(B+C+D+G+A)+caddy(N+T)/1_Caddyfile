@@ -3,10 +3,10 @@
 	order forward_proxy before trojan
 	order reverse_proxy before forward_proxy
 	admin off
-	log { #注意：版本不小于v2.4.0才支持日志全局配置，否则各自配置。
+	log {
 		output file /var/log/caddy/access.log
 		level ERROR
-	}
+	} #版本不小于v2.4.0才支持日志全局配置，否则各自配置。
 	servers :443 {
 		listener_wrappers {
 			trojan #caddy-trojan插件应用必须配置
@@ -30,14 +30,14 @@
 		alpn h2 http/1.1
 	}
 
-	@vws { #匹配器标签。此标签仅区分，多个不同代理需要改成不同名称，但要与下边‘reverse_proxy’中匹配器标签对应。
+	@vws {
 		header Connection *Upgrade*
 		header Upgrade websocket
 		path /HALdGZ9k #与vless+ws应用中path对应
 	}
 	reverse_proxy @vws 127.0.0.1:2001 #转发给本机vless+ws监听端口
 
-	@pws { #匹配器标签。此标签仅区分，多个不同代理需要改成不同名称，但要与下边‘reverse_proxy’中匹配器标签对应。
+	@pws {
 		header Connection *Upgrade*
 		header Upgrade websocket
 		path /SS1v2ray #与Xray-plugin或v2ray-plugin模块中path对应
@@ -50,7 +50,7 @@
 		}
 	}
 
-	@vgrpc { #匹配器标签。此标签仅区分，多个不同代理需要改成不同名称，但要与下边‘reverse_proxy’中匹配器标签对应。
+	@vgrpc {
 		protocol grpc
 		path /VALdGZ9k/* #与vless+grpc应用中serviceName对应
 	}
