@@ -7,7 +7,6 @@
       "servers": {
         "h1": {
 //.........<省略>........
-          "allow_h2c": true //开启h2c server支持
         }
       }
     }
@@ -26,7 +25,6 @@
       "servers": {
         "h1": {
 //.........<省略>........
-          "allow_h2c": true //开启h2c server支持
         }
       }
     },
