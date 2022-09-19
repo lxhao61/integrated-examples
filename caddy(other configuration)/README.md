@@ -28,17 +28,17 @@
 
 1、以 DNS-01 验证方式申请 SSL/TLS 证书，可申请通配符证书。
 
-2、提供了 dnspod（dnspod国际版插件）、cloudflare、dnspodcn（dnspod中国版插件）三种最常见插件配置示例，其它插件配置类似，参考 dnspod（dnspod国际版插件） 或 cloudflare 配置示例。
+2、提供了 cloudflare、dnspodcn（dnspod中国版插件）、duckdns 三种最常见插件配置示例，其它插件配置请参考官方资料及 cloudflare 或 duckdns 配置示例。
 
 注意：
 
-1、示例为通配符域名的 SSL/TLS 证书申请，可同时通配符域名与根域名各自 SSL/TLS 证书申请。
+1、示例为通配符域名的 SSL/TLS 证书申请，可同时通配符域名与根域名各自申请。
 
 2、申请免费 SSL/TLS 证书的域名不要超过五个，否则影响 SSL/TLS 证书的更新。
 
 3、caddy 以 DNS-01 验证方式申请 SSL/TLS 证书，必须带对应 DNS API 插件。dnspod 解析分 dnspod.com（国际版）与 dnspod.cn（中国版），故两者插件不通用，必须对应各自 dnspod 解析使用。
 
-4、cloudflare 已不支持 freenom 提供的免费域名以 DNS-01 验证方式申请 SSL/TLS 证书了。
+4、cloudflare 已不支持 freenom 提供的免费域名以 DNS-01 验证方式申请 SSL/TLS 证书了。可以参考 duckdns 配置示例间接实现 cloudflare 用 freenom 提供的免费域名以 DNS-01 验证方式申请 SSL/TLS 证书。
 
 5、acmeh 或 zerossl 申请成功后证书及密钥所在路径及目录。  
 1）、acme 申请的普通证书及密钥在 “/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy” 目录中。/home/tls 为设置存放证书及密钥的基本路径。xx.yy 为域名，根据自己域名变化。  
