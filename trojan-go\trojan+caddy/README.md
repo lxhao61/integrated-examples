@@ -4,8 +4,8 @@
 
 原理：
 
-默认流程：trojan-go/trojan client <-- TCP+TLS（HTTP/2或HTTPS） --> trojan-go/trojan server  
-回落流程：WEB client <---------------- HTTP/2或HTTPS ---------------> trojan-go/trojan server <-- H2C或HTTP/1.1 --> caddy（WEB server）
+默认流程：trojan-go/trojan client <------ HTTP/2或HTTPS ------> trojan-go/trojan server  
+回落流程：WEB client <-------------- HTTP/2或HTTPS -------------> trojan-go/trojan server <-- H2C或HTTP/1.1 --> caddy（WEB server）
 
 注意：
 
