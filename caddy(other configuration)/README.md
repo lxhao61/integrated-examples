@@ -38,7 +38,7 @@
 
 3、caddy 以 DNS-01 验证方式申请 SSL/TLS 证书，必须带对应 DNS API 插件。dnspod 解析分 dnspod.com（国际版）与 dnspod.cn（中国版），故两者插件不通用，必须对应各自 dnspod 解析使用。
 
-4、cloudflare 已不支持 freenom 提供的免费域名以 DNS-01 验证方式申请 SSL/TLS 证书了。可以参考 duckdns 配置示例间接实现 cloudflare 用 freenom 提供的免费域名以 DNS-01 验证方式申请 SSL/TLS 证书。
+4、cloudflare 已不支持 freenom 提供的免费域名以 DNS-01 验证方式申请 SSL/TLS 证书了。可以参考 duckdns 配置示例间接（挑战委托模式）实现 cloudflare 解析的 freenom 免费域名以 DNS-01 验证方式申请 SSL/TLS 证书。
 
 5、acmeh 或 zerossl 申请成功后证书及密钥所在路径及目录。  
 1）、acme 申请的普通证书及密钥在 “/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy” 目录中。/home/tls 为设置存放证书及密钥的基本路径。xx.yy 为域名，根据自己域名变化。  
