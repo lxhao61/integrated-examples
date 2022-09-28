@@ -35,9 +35,9 @@
               "dns": {
                 "provider": {
                   "name": "duckdns",
-                  "api_token": "b8a33cc1-1111-2222-3333-b049bf07988f" //换成你duckdns的token，此token是你注册duckdns后生成的。
-                },
-                "override_domain": "zz.duckdns.org" //换成你duckdns中配置的DDNS域名（二级域名）
+                  "api_token": "b8a33cc1-1111-2222-3333-b049bf07988f", //换成你duckdns的token，此token是你注册duckdns后生成的。
+                  "override_domain": "zz.duckdns.org" //换成你duckdns中配置的DDNS域名（二级域名）
+                }
               }
             }
           }]
@@ -104,9 +104,9 @@
               "dns": {
                 "provider": {
                   "name": "duckdns",
-                  "api_token": "b8a33cc1-1111-2222-3333-b049bf07988f" //换成你duckdns的token，此token是你注册duckdns后生成的。
-                },
-                "override_domain": "zz.duckdns.org" //换成你duckdns中配置的DDNS域名（二级域名）
+                  "api_token": "b8a33cc1-1111-2222-3333-b049bf07988f", //换成你duckdns的token，此token是你注册duckdns后生成的。
+                  "override_domain": "zz.duckdns.org" //换成你duckdns中配置的DDNS域名（二级域名）
+                }
               }
             }
           }]
@@ -177,9 +177,9 @@
               "dns": {
                 "provider": {
                   "name": "duckdns",
-                  "api_token": "b8a33cc1-1111-2222-3333-b049bf07988f" //换成你duckdns的token，此token是你注册duckdns后生成的。
-                },
-                "override_domain": "zz.duckdns.org" //换成你duckdns中配置的DDNS域名（二级域名）
+                  "api_token": "b8a33cc1-1111-2222-3333-b049bf07988f", //换成你duckdns的token，此token是你注册duckdns后生成的。
+                  "override_domain": "zz.duckdns.org" //换成你duckdns中配置的DDNS域名（二级域名）
+                }
               }
             }
           }]
