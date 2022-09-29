@@ -46,16 +46,6 @@
                 }]
               },
               {
-                "handle": [{
-                  "handler": "headers",
-                  "response": {
-                    "set": {
-                      "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
-                    }
-                  }
-                }]
-              },
-              {
                 "match": [{
                   "not": [{
                     "method": ["GET"]
@@ -229,16 +219,6 @@
                 }]
               },
               {
-                "handle": [{
-                  "handler": "headers",
-                  "response": {
-                    "set": {
-                      "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
-                    }
-                  }
-                }]
-              },
-              {
                 "match": [{
                   "not": [{
                     "method": ["GET"]
@@ -305,16 +285,6 @@
                 "handle": [{
                   "handler": "vars",
                   "root": "/home/webdav" //修改为自己的服务器存放文件路径
-                }]
-              },
-              {
-                "handle": [{
-                  "handler": "headers",
-                  "response": {
-                    "set": {
-                      "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
-                    }
-                  }
                 }]
               },
               {
