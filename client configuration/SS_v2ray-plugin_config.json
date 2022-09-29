@@ -2,7 +2,7 @@
 server address 'xx.yy' //修改为服务端配置的对应域名
 server port '443' //服务端配置的端口
 server password 'diy2003' //修改为服务端配置的对应密码
-server method 'chacha20-ietf-poly1305'
+server method 'chacha20-ietf-poly1305'//修改为服务端配置的对应加密协议
 server plugin 'xray-plugin' //启用xray-plugin插件或v2ray-plugin插件
 server plugin_opts 'tls;host=xx.yy;path=/SS1v2ray;mux=4' //host修改为服务端配置的对应域名，path修改为服务端配置的对应path。
 
@@ -11,6 +11,6 @@ server plugin_opts 'tls;host=xx.yy;path=/SS1v2ray;mux=4' //host修改为服务�
 server address 'xx.yy' //修改为服务端配置的对应域名
 server port '443' //服务端配置的端口
 server password 'diy2011' //修改为服务端配置的对应密码
-server method 'chacha20-ietf-poly1305'
+server method 'chacha20-ietf-poly1305'//修改为服务端配置的对应加密协议
 server plugin 'xray-plugin' //启用xray-plugin插件或v2ray-plugin插件
 server plugin_opts 'tls;mode=grpc;host=xx.yy;serviceName=scdngrpc' //host修改为服务端配置的对应域名，serviceName修改为服务端配置的对应serviceName。
