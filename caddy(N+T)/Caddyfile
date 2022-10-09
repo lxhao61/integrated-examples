@@ -13,7 +13,7 @@
 		protocol {
 			allow_h2c #开启H2C server支持，caddy-trojan插件应用必须启用。
 			experimental_http3 #开启HTTP/3 server支持
-		} #版本v2.5.2后配置调整为：protocols h1 h2c h2 h3
+		} #版本v2.5.2后配置调整为：protocols h1 h2 h3
 	}
 	trojan {
 		caddy
