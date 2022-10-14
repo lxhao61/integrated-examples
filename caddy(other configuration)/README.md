@@ -1,6 +1,6 @@
 一、回落后由 caddy 分流到不同网站的配置方法
 
-此方法解决 Xray 或 v2ray 前置监听443后，不影响先前 caddy 前置时不同域名访问不同网站问题。见 shunt_caddy.json 或 shunt_Caddyfile 配置。
+此方法解决 Xray 或 v2ray 前置监听443后，不影响先前 caddy 前置时不同域名访问不同网站问题。见 shunt_caddy.json 配置。
 
 注意：
 
