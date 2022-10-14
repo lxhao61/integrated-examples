@@ -24,6 +24,6 @@
 
 4、本示例中 naiveproxy 除了支持 HTTP/2 代理应用，还同时支持 HTTP/3 代理应用，即 QUIC 协议传输。
 
-5、本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（完全等同）。支持自动 HTTPS，即自动申请与更新 SSL/TLS 证书，自动 HTTP 重定向到 HTTPS。
+5、本示例 caddy 支持自动 HTTPS，即自动申请与更新 SSL/TLS 证书，自动 HTTP 重定向到 HTTPS。
 
 6、配置1：采用端口转发。配置2：采用进程转发（shadowsocks+xray-plugin/v2ray-plugin+tls 反向代理部分除外）。
