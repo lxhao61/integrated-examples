@@ -47,7 +47,7 @@
               "root": "/var/www/html" //修改为自己存放的WEB文件路径
             }]
           }],
-          "allow_h2c": true //开启H2C server支持。版本v2.5.2后配置调整为："protocols": ["h1","h2c"]
+          "protocols": ["h1","h2c"] //开启HTTP/1.1 server与H2C server支持
         },
         "https": {
           "listen": ["unix//dev/shm/https.sock"], //https server监听进程
@@ -132,10 +132,9 @@
               "any_tag": ["tls01"]
             },
             "cipher_suites": ["TLS_AES_256_GCM_SHA384","TLS_AES_128_GCM_SHA256","TLS_CHACHA20_POLY1305_SHA256","TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256","TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256"], //若无RSA证书，可删除所有RSA算法的密码套件；无ECC证书，可删除所有ECDSA算法的密码套件。
-            "curves": ["x25519","secp521r1","secp384r1","secp256r1"],
-            "alpn": ["h2","http/1.1"]
+            "curves": ["x25519","secp521r1","secp384r1","secp256r1"]
           }],
-          "experimental_http3": false //关闭HTTP/3 server支持（HTTP/3 server不支持UDS监听）。版本v2.5.2后配置调整为："protocols": ["h1","h2"]
+          "protocols": ["h1","h2"] //关闭HTTP/3 server支持（HTTP/3 server不支持UDS监听）
         }
       }
     },
