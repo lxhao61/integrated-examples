@@ -21,6 +21,7 @@
 	storage file_system {
 		root /home/tls #存放证书及密钥的基本路径
 	}
+	email your@email.com #选配，推荐。
 	cert_issuer acme #acme表示从Let's Encrypt申请证书及密钥，zerossl表示从ZeroSSL申请证书及密钥。必须acme与zerossl二选一（固定证书及密钥的目录便于引用）。注意：版本不小于v2.4.1才支持。
 #.........<省略>........
 }
