@@ -15,7 +15,7 @@
 
 3、caddy 版本不小于 v2.2.0 才支持 H2C proxy，即 caddy 支持基于 H2C 代理实现 Xray 或 v2ray 的 gRPC 反向代理。
 
-4、若采用 caddy 反向代理，本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（完全等同）。支持自动 HTTPS，即自动申请与更新 SSL/TLS 证书，自动 HTTP 重定向到 HTTPS。
+4、若采用 caddy 反向代理，本示例 caddy 支持自动 HTTPS，即自动申请与更新 SSL/TLS 证书，自动 HTTP 重定向到 HTTPS。
 
 5、nginx 支持 HTTP/2 server 及 gRPC proxy，需要 nginx 包含 http_v2_module 和 http_ssl_module 模块。
 
