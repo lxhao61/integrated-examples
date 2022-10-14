@@ -11,7 +11,7 @@
 
 1、v2ray 版本不小于 v4.31.0 才支持 trojan 协议。
 
-2、caddy 版本不小于 v2.2.0 才支持 H2C proxy，即支持 Xray 或 v2ray 的 H2C 反向代理。caddy 版本不小于 v2.6.0 才支持 H2C proxy 的 Unix Domain Socket（UDS） 转发。
+2、caddy 版本不小于 v2.2.0 才支持 H2C proxy，即支持 Xray 或 v2ray 的 H2C 反向代理。caddy 版本不小于 v2.6.0 才支持 H2C proxy 的 UDS 转发。
 
 3、本示例 caddy 支持自动 HTTPS，即自动申请与更新 SSL/TLS 证书，自动 HTTP 重定向到 HTTPS。
 
