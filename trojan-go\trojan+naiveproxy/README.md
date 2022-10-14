@@ -14,14 +14,10 @@
 
 3、trojan-go 完全兼容 trojan，服务端还有自己的特色：支持 trojan 应用与自己的 WebSocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)；支持使用 AEAD 对 trojan 协议流量进行二次加密(基于 Shadowsocks AEAD)。
 
-4、caddy 版本不小于 v2.3.0 才支持 Caddyfile 配置开启 H2C server。
+4、caddy 支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）。
 
-5、caddy 支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）。
+5、使用本人 Releases 中编译好的 caddy 文件，可支持 H2C server、naiveproxy 等应用。
 
-6、使用本人 Releases 中编译好的 caddy 文件，可支持 H2C server、naiveproxy 等应用。
+6、本示例的 naiveproxy 仅支持 HTTP/2 代理应用，即 HTTPS 协议传输。
 
-7、本示例的 naiveproxy 仅支持 HTTP/2 代理应用，即 HTTPS 协议传输。
-
-8、本示例 caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（完全等效）。若使用 caddy 自动申请 SSL/TLS 证书推荐使用 json 格式配置，优化更好。
-
-9、不要使用第三方 ACME 客户端在当前服务器上以 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新 SSL/TLS 证书，因 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新 SSL/TLS 证书需监听 80 或 443 端口，从而与当前应用端口冲突。
+7、不要使用第三方 ACME 客户端在当前服务器上以 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新 SSL/TLS 证书，因 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新 SSL/TLS 证书需监听 80 或 443 端口，从而与当前应用端口冲突。
