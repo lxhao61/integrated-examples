@@ -28,7 +28,7 @@
             }]
           }]
         },
-        "h1&h2c": {
+        "h1h2c": {
           "listen": ["unix//dev/shm/h1h2c.sock"], //http/1.1与h2c server监听进程
           "routes": [{
             "handle": [{
