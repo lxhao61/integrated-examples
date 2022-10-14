@@ -5,18 +5,12 @@
 		output file /var/log/caddy/access.log
 		level ERROR
 	} #版本不小于v2.4.0才支持日志全局配置，否则各自配置。
-	servers :443 {
-		protocol {
-			experimental_http3 #开启HTTP/3 server支持
-		} #版本v2.5.2后配置调整为：protocols h1 h2 h3
-	}
 }
 
 :443, xx.yy { #xx.yy修改为自己的域名。注意：逗号与域名之间有一个空格。
 	tls {
 		ciphers TLS_AES_256_GCM_SHA384 TLS_AES_128_GCM_SHA256 TLS_CHACHA20_POLY1305_SHA256 TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
 		curves x25519 secp521r1 secp384r1 secp256r1
-		alpn h2 http/1.1
 	}
 
 	forward_proxy {
