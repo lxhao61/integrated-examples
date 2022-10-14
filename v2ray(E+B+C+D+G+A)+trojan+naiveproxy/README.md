@@ -26,13 +26,13 @@
 
 3、Xray 版本不小于 v1.4.0 或 v2ray 版本不小于 v4.36.2 才支持 gRPC 传输方式。
 
-4、因 trojan-go 或 trojan 不支持 Unix Domain Socket（UDS） 监听接收与回落转发，故 caddy SNI 分流 trojan-go 或 trojan 仅启用端口转发；故与 trojan-go 或 trojan 共用 WEB 服务的 vless+tcp+xtls 或 vless+tcp+tls 回落也仅端口回落，即全部端口回落。
+4、因 trojan-go 或 trojan 不支持 UDS 监听接收与回落转发，故 caddy SNI 分流 trojan-go 或 trojan 仅启用端口转发；故与 trojan-go 或 trojan 共用 WEB 服务的 vless+tcp+xtls 或 vless+tcp+tls 回落也仅端口回落，即全部端口回落。
 
 5、因 trojan-go 或 trojan 不支持 PROXY protocol，故 caddy SNI 分流 trojan-go 或 trojan 不启用此项应用；故与 trojan-go 或 trojan 共用 WEB 服务的 vless+tcp+xtls 或 vless+tcp+tls 回落也不启用此项应用，即全部回落不启用此项应用。
 
 6、trojan-go 完全兼容 trojan，服务端还有自己的特色：支持 trojan 应用与自己的 WebSocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)；支持使用 AEAD 对 trojan 协议流量进行二次加密(基于 Shadowsocks AEAD)。
 
-7、caddy 版本不小于 v2.2.0 才支持 H2C proxy，即支持 Xray 或 v2ray 的 H2C（gRPC） 反向代理。caddy 版本不小于 v2.6.0 才支持 H2C proxy 的 Unix Domain Socket（UDS） 转发。
+7、caddy 版本不小于 v2.2.0 才支持 H2C proxy，即支持 Xray 或 v2ray 的 H2C（gRPC） 反向代理。caddy 版本不小于 v2.6.0 才支持 H2C proxy 的 UDS 转发。
 
 8、caddy 支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程。
 
