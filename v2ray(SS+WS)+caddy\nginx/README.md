@@ -9,7 +9,7 @@
 
 注意：
 
-1、Xray 或 v2ray 的监听地址不支持 shadowsocks（SS） 协议使用 Unix Domain Socket（UDS） 监听。
+1、Xray 或 v2ray 的监听地址不支持 shadowsocks（SS） 协议使用 UDS 监听。
 
 2、若采用 caddy 反向代理，本示例 caddy 支持自动 HTTPS，即自动申请与更新 SSL/TLS 证书，自动 HTTP 重定向到 HTTPS。
 
