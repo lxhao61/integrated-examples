@@ -4,11 +4,8 @@
 		output file /var/log/caddy/access.log
 		level ERROR
 	} #版本不小于v2.4.0才支持日志全局配置，否则各自配置。
-	auto_https off #禁用自动https
 	servers 127.0.0.1:88 { #与下边本地监听端口对应
-		protocol {
-			allow_h2c #开启H2C server支持
-		} #版本v2.5.2后配置调整为：protocols h1 h2c
+		protocols h1 h2c #开启H2C server支持
 	}
 }
 
