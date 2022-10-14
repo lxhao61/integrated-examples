@@ -10,8 +10,7 @@
               "any_tag": ["tls01"]
             },
             "cipher_suites": ["TLS_AES_256_GCM_SHA384","TLS_AES_128_GCM_SHA256","TLS_CHACHA20_POLY1305_SHA256","TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256","TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256"], //若无RSA证书，可删除所有RSA算法的密码套件；无ECC证书，可删除所有ECDSA算法的密码套件。
-            "curves": ["x25519","secp521r1","secp384r1","secp256r1"],
-            "alpn": ["h2","http/1.1"]
+            "curves": ["x25519","secp521r1","secp384r1","secp256r1"]
           }],
 //.........<省略>........
     "tls": {
@@ -37,8 +36,7 @@
 //.........<省略>........
           "tls_connection_policies": [{
             "cipher_suites": ["TLS_AES_256_GCM_SHA384","TLS_AES_128_GCM_SHA256","TLS_CHACHA20_POLY1305_SHA256","TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"], //无RSA证书，已删除了所有RSA算法的密码套件。
-            "curves": ["x25519","secp521r1","secp384r1","secp256r1"],
-            "alpn": ["h2","http/1.1"]
+            "curves": ["x25519","secp521r1","secp384r1","secp256r1"]
           }],
 //.........<省略>........
     "tls": {
@@ -48,7 +46,8 @@
       "automation": {
         "policies": [{
           "issuers": [{
-            "module": "acme" //acme表示从Let's Encrypt申请证书及密钥，zerossl表示从ZeroSSL申请证书及密钥。必须acme与zerossl二选一（固定证书及密钥的目录便于引用）。
+            "module": "acme", //acme表示从Let's Encrypt申请证书及密钥，zerossl表示从ZeroSSL申请证书及密钥。必须acme与zerossl二选一（固定证书及密钥的目录便于引用）。
+            "email": "your@email.com" //电子邮件地址。选配，推荐。
           }]
         }]
       }
