@@ -86,6 +86,7 @@
 8. 流量伪装与防探测网站可由其它WEB应用软件实现，其反代支持能力（WebSocket、gRPC及H2C）与回落支持能力（H2C server及HTTP/1.1 server）取决于自身，配置自行参考caddy或nginx对应示例。
 9. 附加相关插件的caddy程序文件已编译好，去本人Releases中下载即可。
 10. trojan-go安卓客户端可以去本人Releases中下载（最末）。
+11. Caddyfile转JSON参考：/usr/local/bin/caddy/caddy adapt --config /usr/local/etc/caddy/Caddyfile --adapter caddyfile --pretty
 
 ### 服务端特殊应用配置示例
 1. [v2ray(other configuration)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(other%20configuration)) （Xray或v2ray的特色应用配置方法。）
