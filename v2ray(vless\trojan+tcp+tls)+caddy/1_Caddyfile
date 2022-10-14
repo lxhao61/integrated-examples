@@ -5,7 +5,7 @@
 		level ERROR
 	} #版本不小于v2.4.0才支持日志全局配置，否则各自配置。
 	servers 127.0.0.1:88 { #与下边本地监听端口对应
-		protocols h1 h2c #开启H2C server支持
+		protocols h1 h2c #开启HTTP/1.1 server与H2C server支持
 	}
 }
 
