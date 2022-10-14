@@ -28,7 +28,7 @@
             }]
           }]
         },
-        "h1&h2c": {
+        "h1h2c": {
           "listen": ["127.0.0.1:88"], //http/1.1与h2c server本地监听端口
           "routes": [{
             "match": [{
