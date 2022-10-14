@@ -20,43 +20,37 @@
           "listen": [":443"], //https默认监听端口
           "routes": [{
             "handle": [{
+              "handler": "forward_proxy",
+              "auth_user_deprecated": "user", //naiveproxy用户，修改为自己的。
+              "auth_pass_deprecated": "pass", //naiveproxy密码，修改为自己的。
+              "hide_ip": true,
+              "hide_via": true,
+              "probe_resistance": {}
+            }]
+          },
+          {
+            "match": [{
+              "host": ["xx.yy"] //限定域名访问（禁止以IP方式访问网站），修改为自己的域名。
+            }],
+            "handle": [{
               "handler": "subroute",
               "routes": [{
                 "handle": [{
-                  "handler": "forward_proxy",
-                  "auth_user_deprecated": "user", //naiveproxy用户，修改为自己的。
-                  "auth_pass_deprecated": "pass", //naiveproxy密码，修改为自己的。
-                  "hide_ip": true,
-                  "hide_via": true,
-                  "probe_resistance": {}
+                  "handler": "headers",
+                  "response": {
+                    "set": {
+                      "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
+                    }
+                  }
                 }]
               },
               {
-                "match": [{
-                  "host": ["xx.yy"] //限定域名访问（禁止以IP方式访问网站），修改为自己的域名。
-                }],
                 "handle": [{
-                  "handler": "subroute",
-                  "routes": [{
-                    "handle": [{
-                      "handler": "headers",
-                      "response": {
-                        "set": {
-                          "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
-                        }
-                      }
-                    }]
-                  },
-                  {
-                    "handle": [{
-                      "handler": "file_server",
-                      "root": "/var/www/html" //修改为自己存放的WEB文件路径
-                    }]
-                  }]
+                  "handler": "file_server",
+                  "root": "/var/www/html" //修改为自己存放的WEB文件路径
                 }]
               }]
-            }],
-            "terminal": true
+            }]
           }],
           "tls_connection_policies": [{
             "cipher_suites": ["TLS_AES_256_GCM_SHA384","TLS_AES_128_GCM_SHA256","TLS_CHACHA20_POLY1305_SHA256","TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"],
