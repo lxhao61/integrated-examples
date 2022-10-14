@@ -55,10 +55,8 @@
           }],
           "tls_connection_policies": [{
             "cipher_suites": ["TLS_AES_256_GCM_SHA384","TLS_AES_128_GCM_SHA256","TLS_CHACHA20_POLY1305_SHA256","TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"],
-            "curves": ["x25519","secp521r1","secp384r1","secp256r1"],
-            "alpn": ["h2","http/1.1"]
-          }],
-          "allow_h2c": true //开启H2C server支持，caddy-trojan插件应用必须启用。版本v2.5.2后配置调整为："protocols": ["h1","h2","h3"]
+            "curves": ["x25519","secp521r1","secp384r1","secp256r1"]
+          }]
         }
       }
     },
@@ -74,6 +72,18 @@
     "tls": {
       "certificates": {
         "automate": ["xx.yy"] //自动化管理域名证书（包括获取、更新证书及加载证书）。修改为自己的域名。
+      },
+      "automation": {
+        "policies": [{
+          "issuers": [{
+            "module": "acme",
+            "email": "your@email.com" //电子邮件地址。选配，推荐。
+          },
+          {
+            "module": "zerossl",
+            "email": "your@email.com" //电子邮件地址。选配，推荐。
+          }]
+        }]
       }
     }
   }
