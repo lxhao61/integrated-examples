@@ -48,9 +48,7 @@
 3）、zerossl 申请的普通证书及密钥在 “/home/tls/certificates/acme.zerossl.com-v2-dv90/xx.yy” 目录中。/home/tls 为设置存放证书及密钥的基本路径。xx.yy 为域名，根据自己域名变化。  
 4）、zerossl 申请的通配符证书及密钥在 “/home/tls/certificates/acme.zerossl.com-v2-dv90/wildcard_.xx.yy” 目录中。/home/tls 为设置存放证书及密钥的基本路径。xx.yy 为域名，根据自己域名变化。
 
-7、caddy 的 Caddyfile 格式配置与 json 格式配置二选一即可（完全等效）。Caddyfile 配置中“#二、无SNI分流，回落为主应用。”必须启用无用端口来联动实现自动申请与更新 SSL/TLS 证书；推荐使用 json 格式配置，优化更好。
-
-8、其它应用使用 caddy 自动申请的 SSL/TLS 证书，若自己不支持自动重载 SSL/TLS 证书，证书到期更新（证书有效期90天，默认60天后开始更新。）后需手动重启自己来重新加载更新后的 SSL/TLS 证书。
+7、其它应用使用 caddy 自动申请的 SSL/TLS 证书，若自己不支持自动重载 SSL/TLS 证书，证书到期更新（证书有效期90天，默认60天后开始更新。）后需手动重启自己来重新加载更新后的 SSL/TLS 证书。
 
 四、caddy DDNS 客户端配置方法
 
