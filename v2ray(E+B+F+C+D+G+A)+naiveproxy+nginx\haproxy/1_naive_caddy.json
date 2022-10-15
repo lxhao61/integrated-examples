@@ -92,23 +92,16 @@
           },
           {
             "handle": [{
-              "handler": "subroute",
-              "routes": [{
-                "handle": [{
-                  "handler": "headers",
-                  "response": {
-                    "set": {
-                      "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
-                    }
-                  }
-                }]
-              },
-              {
-                "handle": [{
-                  "handler": "file_server",
-                  "root": "/var/www/html" //修改为自己存放的WEB文件路径
-                }]
-              }]
+              "handler": "headers",
+              "response": {
+                "set": {
+                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
+                }
+              }
+            },
+            {
+              "handler": "file_server",
+              "root": "/var/www/html" //修改为自己存放的WEB文件路径
             }]
           }],
           "tls_connection_policies": [{
@@ -117,7 +110,8 @@
             },
             "cipher_suites": ["TLS_AES_256_GCM_SHA384","TLS_AES_128_GCM_SHA256","TLS_CHACHA20_POLY1305_SHA256","TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256","TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256"], //若无RSA证书，可删除所有RSA算法的密码套件；无ECC证书，可删除所有ECDSA算法的密码套件。
             "curves": ["x25519","secp521r1","secp384r1","secp256r1"]
-          }]
+          }],
+          "protocols": ["h1","h2","h3"] //开启HTTP/3 server支持（默认，此条参数可以省略不写。）。若采用haproxy SNI分流（不支持UDP转发），推荐不开启。
         }
       }
     },
