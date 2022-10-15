@@ -58,4 +58,4 @@ caddy 使用 caddy-dynamicdns 插件与 caddy-dns 插件（仅含alidns、cloudf
 
 五、caddy 网盘应用配置方法
 
-以 webdav 协议及文件服务应用打造不同的网盘应用（服务端）,详见 webdav_caddy.json 或 webdav_Caddyfile 配置示例。
+以 WebDAV 协议及文件服务应用打造不同的网盘应用（服务端）,详见 webdav_caddy.json 或 webdav_Caddyfile 配置示例。
