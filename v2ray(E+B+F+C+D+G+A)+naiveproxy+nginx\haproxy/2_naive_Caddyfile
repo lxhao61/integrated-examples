@@ -18,7 +18,7 @@
 	redir https://{host}{uri} permanent #http自动跳转https，让网站看起来更真实。
 }
 
-:88 { #绑定进程后此端口失效，仅做标记作用。
+:88 { #绑定UDS后此端口失效，仅做标记作用。
 	bind unix//dev/shm/h1h2c.sock #http/1.1与h2c server监听进程
 
 	header {
@@ -29,7 +29,7 @@
 	}
 }
 
-:7443 { #绑定进程后此端口失效，仅做标记作用。
+:7443 { #绑定UDS后此端口失效，仅做标记作用。
 	bind unix//dev/shm/https.sock #https server监听进程
 
 	tls /home/tls/zh.xx.yy/zh.xx.yy.crt /home/tls/zh.xx.yy/zh.xx.yy.key { #换成自己的证书与密钥，绝对路径。
