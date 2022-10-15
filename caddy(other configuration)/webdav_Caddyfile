@@ -5,10 +5,10 @@
 	}
 	route @notget {
 		basicauth { #可以设置多组用户及密码
-			user JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl #webdav用户与webdav密码（示例为password的哈希密码），修改为自己的。
+			user JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl #验证用户与密码（示例为password的哈希密码），修改为自己的。
 		}
 		webdav {
-			root /home/webdav #修改为自己的webdav服务器存放文件路径
+			root /home/webdav #修改为WebDAV服务器存放文件路径
 		}
 	}
 #.........<省略>........
@@ -22,10 +22,10 @@
 #二、网盘应用
 #.........<省略>........
 	@host {
-		host xx.yy #/限定网盘应用访问，修改为对应域名。
+		host xx.yy #限定网盘应用访问，修改为对应域名。
 	}
 	route @host {
-		root * /home/webdav #修改为自己的服务器存放文件路径
+		root * /home/webdav #修改为文件管理服务存放文件路径
 		@get {
 			method GET
 		}
@@ -36,7 +36,7 @@
 			browse
 		}
 		basicauth { #可以设置多组用户及密码
-			user JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl #用户与密码（示例为password的哈希密码），修改为自己的。
+			user JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl #验证用户与密码（示例为password的哈希密码），修改为自己的。
 		}
 		webdav
 		}
@@ -58,7 +58,7 @@
 		host xx.yy #限定网盘应用访问，修改为对应域名。
 	}
 	route @host2 {
-		root * /home/webdav #修改为自己的服务器存放文件路径
+		root * /home/webdav #修改为文件管理服务存放文件路径
 		@get {
 			method GET
 		}
@@ -66,7 +66,7 @@
 			Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
 		}
 		basicauth { #可以设置多组用户及密码
-			user JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl #用户与密码（示例为password的哈希密码），修改为自己的。
+			user JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl #验证用户与密码（示例为password的哈希密码），修改为自己的。
 		}
 		file_server @get {
 			browse
