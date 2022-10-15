@@ -9,6 +9,9 @@
 	servers 127.0.0.1:88 { #与下边本地监听端口对应
 		protocols h1 h2c #开启HTTP/1.1 server与H2C server支持
 	}
+	servers 127.0.0.1:7443 { #与下边本地监听端口对应
+		protocols h1 h2 h3 #开启HTTP/3 server支持（默认，此条参数可以省略不写。）。若采用haproxy SNI分流（不支持UDP转发），推荐不开启。
+	}
 }
 
 :80 { #http默认监听端口
