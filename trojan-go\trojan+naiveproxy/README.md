@@ -4,7 +4,7 @@
 
 1、trojan-go或trojan（回落配置，TLS由自己提供及处理。）
 
-2、naiveproxy（基于caddy的改进版forwardproxy插件实现，TLS由trojan-go或trojan提供及处理，caddy不需配置。）
+2、naiveproxy（基于caddy的改进版forwardproxy插件实现，TLS由trojan-go或trojan提供及处理，不需配置。）
 
 原理：
 
