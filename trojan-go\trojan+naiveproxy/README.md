@@ -19,7 +19,7 @@
 
 3、trojan-go 完全兼容 trojan，服务端还有自己的特色：支持 trojan 应用与自己的 WebSocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)；支持使用 AEAD 对 trojan 协议流量进行二次加密(基于 Shadowsocks AEAD)。
 
-4、caddy 支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程（Unix Domain Socket 应用）。
+4、caddy 支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程。
 
 5、使用本人 Releases 中编译好的 caddy 文件，可支持 H2C server、naiveproxy 等应用。
 
