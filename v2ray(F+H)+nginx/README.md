@@ -7,7 +7,7 @@ v2ray 或 Xray 前置（监听 443 端口），利用 trojan+tcp+tls 或 trojan+
 
 原理：
 
-默认流程：v2ray/Xray client <---- TCP+TLS（HTTP/2或HTTPS） ----> v2ray/Xray server
+默认流程：v2ray/Xray client <---- TCP+TLS（HTTP/2或HTTPS） ----> v2ray/Xray server  
 回落流程：WEB client <--------------- HTTP/2或HTTPS --------------> v2ray/Xray server <-- H2C或HTTP/1.1 --> nginx（WEB server）
 
 注意：
