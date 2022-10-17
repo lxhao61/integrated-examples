@@ -1,0 +1,38 @@
+//本示例若使用Xray（Xray版本不小于v1.5.9），强烈建议使用Shadowsocks 2022加密方法解决grpc传输方式被运营商断流/限速等干扰问题。
+//原配置：
+//.........<省略>........
+      "settings": {
+        "method": "chacha20-ietf-poly1305",
+        "password": "diy2003", //修改为自己的密码
+        "email": "2003@gmail.com"
+      },
+//.........<省略>........
+
+//以上配置修改为如下：
+//单用户
+//.........<省略>........
+      "settings": {
+        "method": "2022-blake3-aes-128-gcm", //Shadowsocks 2022加密方法之一
+        "password": "LpUp05XrFZb9NGNzl6ZImg==", //修改为自己的密码
+        "email": "2003@gmail.com"
+      },
+//.........<省略>........
+
+//多用户
+//.........<省略>........
+      "settings": {
+        "method": "2022-blake3-aes-128-gcm", //Shadowsocks 2022加密方法之一
+        "password": "rvQ6fK6Y4ckgFVslZlZUgQ==", //修改为自己的主项密码
+        "clients": [
+          {
+            "password": "FPTg9fyNve167Fg8oPkFlQ==", //修改为自己的分项密码
+            "email": "2013@gmail.com"
+          },
+          {
+            "password": "dkv04xu1f+UeM3mXpNJgVA==", //修改为自己的分项密码
+            "email": "2023@gmail.com"
+          }
+        ]
+      },
+//.........<省略>........
+//备注：基础资料参考Xray官方配置模板中Shadowsocks-2022示例及介绍(https://github.com/XTLS/Xray-examples/tree/main/Shadowsocks-2022)，如密钥生成及长度等。
