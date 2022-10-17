@@ -87,8 +87,7 @@
       }
     },
     {
-      "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2005, //vless+h2c监听端口
+      "listen": "/dev/shm/vh2c.sock", //vless+h2c监听进程
       "protocol": "vless",
       "settings": {
         "clients": [
