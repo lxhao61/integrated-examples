@@ -33,9 +33,9 @@
             "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给如下vless+ws应用。1或2表示PROXY protocol版本。与上一致，建议配置2。
           },
           {
-            "path": "/SS1v2ray", //通过路径分流
-            "dest": 2002, //分流后转给Xray-plugin或v2ray-plugin监听端口
-            "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给如下shadowsocks+xray-plugin/v2ray-plugin应用。1或2表示PROXY protocol版本。与上一致，建议配置2。
+            "path": "/9ALdGZ9k", //通过路径分流
+            "dest": "@trojan-ws", //分流后转给trojan+ws监听进程
+            "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给如下trojan+ws应用。1或2表示PROXY protocol版本。与上一致，建议配置2。
           }
         ]
       },
@@ -95,21 +95,22 @@
       }
     },
     {
-      "tag": "ddws", //标签，与routing中标签对应。
-      "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2002, //Xray-plugin或v2ray-plugin监听端口
-      "protocol": "dokodemo-door",
+      "listen": "@trojan-ws", //trojan+ws监听进程
+      "protocol": "trojan",
       "settings": {
-        "address": "v1.mux.cool",
-        "network": "tcp",
-        "followRedirect": false
+        "clients": [
+          {
+            "password":"diy2007", //修改为自己密码
+            "email": "2007@gmail.com"
+          }
+        ]
       },
       "streamSettings": {
         "network": "ws",
         "security": "none",
         "wsSettings": {
           "acceptProxyProtocol": true, //开启PROXY protocol接收，接收vless+tcp+tls分流前真实来源IP和端口。
-          "path": "/SS1v2ray" //修改为自己的path
+          "path": "/9ALdGZ9k" //修改为自己的path
         }
       },
       "sniffing": {
@@ -118,24 +119,6 @@
           "http",
           "tls"
         ]
-      }
-    },
-    {
-      "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2003, //此端口无实际用处，但必须存在。
-      "protocol": "shadowsocks",
-      "settings": {
-        "method": "chacha20-ietf-poly1305",
-        "password": "diy2003", //修改为自己的密码
-        "email": "2003@gmail.com"
-      },
-      "streamSettings": {
-        "network": "domainsocket",
-        "security": "none",
-        "dsSettings": {
-          "path": "ss", //domainsocket文件路径，与outbounds中对应。
-          "abstract": true
-        }
       }
     },
     {
