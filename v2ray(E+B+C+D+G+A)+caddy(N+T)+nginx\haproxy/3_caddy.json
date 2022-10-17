@@ -107,13 +107,15 @@
               "hide_ip": true,
               "hide_via": true,
               "probe_resistance": {}
-            },
-            {
-              "handler": "trojan",
-              "connect_method": true,
-              "websocket": true //开启Websocket支持
             }]
           },
+          {
+            "handle": [{
+              "handler": "trojan",
+              "connect_method": true,
+              "websocket": true //开启WebSocket支持
+            }]
+          }, //此部分配置为trojan-go的WebSocket应用，若删除就仅支持trojan应用。
           {
             "handle": [{
               "handler": "headers",
