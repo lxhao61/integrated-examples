@@ -4,17 +4,17 @@ v2ray 或 Xray 前置（监听 443 端口），利用 vless+tcp+tls 或 vless+tc
 
 1、E=vless+tcp+tls/xtls（回落/分流配置，TLS/XTLS由自己提供及处理。）
 
-2、B=vless+ws+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置。另可改、可增其它WS类应用，参考对应的服务端单一应用配置示例。）
+2、B=vless+ws+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置。另改、增、减，参考Xray/v2ray WebSocket反代应用配置示例。）
 
-3、D=vless+h2c+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置。另可改、可增其它H2C类应用，参考对应的服务端单一应用配置示例。）
+3、D=vless+h2c+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置。另改、增、减，参考Xray/v2ray H2C反代应用配置示例。）
 
-4、G=shadowsocks+grpc+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置。另可改、可增其它gRPC类应用，参考对应的服务端单一应用配置示例。）
+4、G=shadowsocks+grpc+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置。另改、增、减，参考Xray/v2ray gRPC反代应用配置示例。）
 
-5、A=vless+kcp+seed（可改成vmess+kcp+seed，或添加它。）
+5、A=vless+kcp+seed（另改、增、减，参考Xray/v2ray kcp+seed应用配置示例。）
 
-6、naiveproxy（基于caddy的改进版forwardproxy插件实现，TLS由vless+tcp+tls/xtls提供及处理，不需配置。）
+6、naiveproxy（基于caddy的改进版forwardproxy插件实现，TLS由vless+tcp+tls/xtls提供及处理，不需配置。另减，参考caddy插件应用配置示例。）
 
-7、trojan-go（基于caddy的caddy-trojan插件实现，TLS由vless+tcp+tls/xtls提供及处理，不需配置。）
+7、trojan-go（基于caddy的caddy-trojan插件实现，TLS由vless+tcp+tls/xtls提供及处理，不需配置。另减，参考caddy插件应用配置示例。）
 
 注意：
 
