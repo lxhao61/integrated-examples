@@ -1,6 +1,6 @@
 介绍：
 
-本示例服务端以 caddy 源码加改进版 forwardproxy 插件、caddy-trojan 插件编译而成，实现了 naiveproxy 与 trojan-go 服务端加伪装网站应用。
+本示例服务端以 caddy 源码加改进版 forwardproxy 插件、caddy-trojan 插件编译而成 caddy 文件，实现了 naiveproxy 与 trojan-go 服务端加伪装网站应用。
 
 注意：
 
