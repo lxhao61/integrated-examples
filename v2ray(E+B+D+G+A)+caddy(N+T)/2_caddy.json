@@ -31,6 +31,9 @@
         "h1h2c": {
           "listen": ["unix//dev/shm/h1h2c.sock"], //http/1.1与h2c server监听进程
           "listener_wrappers": [{
+            "wrapper": "proxy_protocol" //开启PROXY protocol接收
+          },
+          {
             "wrapper": "trojan" //caddy-trojan插件应用必须配置
           }],
           "routes": [{
@@ -60,6 +63,13 @@
                 "versions": ["h2c","2"]
               },
               "flush_interval": -1,
+              "headers": {
+              	"request": {
+                  "set": {
+                    "X-Real-Ip": ["{http.request.remote.host}"]
+                  }
+              	}
+              },
               "upstreams": [{
                 "dial": "127.0.0.1:2011" //转发给本机shadowsocks+grpc监听端口
               }]
