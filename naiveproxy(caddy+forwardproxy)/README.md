@@ -1,6 +1,6 @@
 介绍：
 
-naiveproxy 服务端是以 caddy 源码加改进版 forwardproxy 插件编译而成，基于 HTTP/2 或 HTTP/3 代理实现科学上网。
+naiveproxy 服务端是以 caddy 源码加改进版 forwardproxy 插件编译而成，实现以 HTTP/2 或 HTTP/3 代理科学上网。
 
 注意：
 
