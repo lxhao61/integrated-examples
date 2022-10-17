@@ -4,15 +4,15 @@
 
 1、E=vless+tcp+tls/xtls（回落/分流配置，TLS/XTLS由自己提供及处理。）
 
-2、B=vless+ws+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置。另可改、可增其它WS类应用，参考对应的服务端单一应用配置示例。）
+2、B=vless+ws+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置。另改、增、减，参考Xray/v2ray WebSocket反代应用配置示例。）
 
 3、F=trojan+tcp+tls/xtls（回落/分流配置，TLS/XTLS由自己提供及处理。）
 
-4、C=shadowsocks+xray-plugin/v2ray-plugin+tls（TLS由trojan+tcp+tls/xtls提供及处理，不需配置。另可改、可增其它WS类应用，参考对应的服务端单一应用配置示例。）
+4、C=trojan+ws+tls（TLS由trojan+tcp+tls/xtls提供及处理，不需配置。另改、增、减，参考Xray/v2ray WebSocket反代应用配置示例。）
 
-5、G=vless+grpc+tls（TLS由nginx提供及处理，不需配置。另可改、可增其它gRPC类应用，参考对应的服务端单一应用配置示例。）
+5、G=shadowsocks+grpc+tls（TLS由nginx提供及处理，不需配置。另改、增、减，参考Xray/v2ray gRPC反代应用配置示例。）
 
-6、A=vless+kcp+seed（可改成vmess+kcp+seed，或添加它。）
+6、A=vless+kcp+seed（另改、增、减，参考Xray/v2ray kcp+seed应用配置示例。）
 
 注意：
 
@@ -20,16 +20,20 @@
 
 2、采用 SNI 方式实现共用 443 端口，支持各自特色应用，但需多个域名来标记分流。
 
-3、Xray 版本不小于 v1.5.1 才完美支持 TLS 模式下 trojan 协议。v2ray 版本不小于 v4.43.0 才完美支持 trojan 协议。
+3、Xray 或 v2ray 的监听地址不支持 shadowsocks（SS） 协议使用 UDS 监听。
 
-4、nginx 支持 HTTP/2 server、gRPC proxy 及 H2C server，需要 nginx 包含 http_v2_module 和 http_ssl_module 模块。
+4、Xray 版本不小于 v1.5.1 才完美支持 TLS 模式下 trojan 协议。v2ray 版本不小于 v4.43.0 才完美支持 trojan 协议。
 
-5、nginx 支持 TLSv1.3，需要包含版本不小于 1.1.1 的 OpenSSL 软件库包和 http_ssl_module 模块。
+5、nginx 支持 HTTP/2 server、gRPC proxy 及 H2C server，需要 nginx 包含 http_v2_module 和 http_ssl_module 模块。
 
-6、nginx 支持 HTTP 功能块接收 PROXY protocol，需要 nginx 包含 http_realip_module 模块。
+6、nginx 支持 TLSv1.3，需要包含版本不小于 1.1.1 的 OpenSSL 软件库包和 http_ssl_module 模块。
 
-7、nginx 支持 H2C server，但不支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程；故回落分成 http/1.1 回落与 h2 回落分别对应 nginx 的 HTTP/1.1 server 与 H2C server。
+7、nginx 支持 HTTP 功能块接收 PROXY protocol，需要 nginx 包含 http_realip_module 模块。
 
-8、不要使用 ACME 客户端在当前服务器上以 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新 SSL/TLS 证书，因 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新 SSL/TLS 证书需监听 80 或 443 端口，从而与当前应用端口冲突。
+8、nginx 支持 H2C server，但不支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程；故回落分成 http/1.1 回落与 h2 回落分别对应 nginx 的 HTTP/1.1 server 与 H2C server。
 
-9、配置1：采用端口分流、端口回落/分流、端口转发。配置2：采用进程分流、进程回落/分流（shadowsocks+xray-plugin/v2ray-plugin+tls 除外）、进程转发。配置3：采用进程分流、进程回落/分流（shadowsocks+xray-plugin/v2ray-plugin+tls 除外）、进程转发，且启用了 PROXY protocol。
+9、不要使用 ACME 客户端在当前服务器上以 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新 SSL/TLS 证书，因 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新 SSL/TLS 证书需监听 80 或 443 端口，从而与当前应用端口冲突。
+
+10、配置1：采用端口分流、端口回落/分流、端口转发。配置2：采用进程分流、进程回落/分流、进程转发（shadowsocks+grpc+tls 除外）。配置3：采用进程分流、进程回落/分流、进程转发（shadowsocks+grpc+tls 除外），且启用了 PROXY protocol。
+
+11、本示例 F 兼容原版 trojan 应用，F+C 组合等同于 trojan-go 应用；即可使用 trojan 客户端 或 trojan-go 客户端对应连接。
