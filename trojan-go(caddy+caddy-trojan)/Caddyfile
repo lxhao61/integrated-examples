@@ -25,10 +25,9 @@
 	}
 
 	trojan {
-		user diy443 #修改为自己的密码。密码可多组，用空格隔开。
 		connect_method
 		websocket #开启WebSocket支持
-	}
+	} #此部分配置为trojan-go的WebSocket应用，若删除就仅支持trojan应用。
 
 	@host {
 		host xx.yy #限定域名访问（禁止以IP方式访问网站），修改为自己的域名。
