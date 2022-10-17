@@ -20,16 +20,16 @@
           {
             "alpn": "h2", //h2回落匹配
             "dest": "/dev/shm/h2c.sock", //h2回落进程
-            "xver": 0 //关闭PROXY protocol发送，不发送真实来源IP和端口给nginx。此条参数可以省略不写（默认）。
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给nginx。1或2表示PROXY protocol版本。
           },
           {
             "dest": "/dev/shm/h1.sock", //http/1.1回落进程
-            "xver": 0 //关闭PROXY protocol发送，不发送真实来源IP和端口给nginx。此条参数可以省略不写（默认）。
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给nginx。1或2表示PROXY protocol版本。
           },
           {
             "path": "/9ALdGZ9k", //通过路径分流
             "dest": "@trojan-ws", //分流后转给trojan+ws监听进程
-            "xver": 0 //关闭PROXY protocol发送，不发送真实来源IP和端口给如下trojan+ws应用。此条参数可以省略不写（默认）。
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给如下trojan+ws应用。1或2表示PROXY protocol版本。
           }
         ]
       },
@@ -75,6 +75,7 @@
         "network": "ws",
         "security": "none",
         "wsSettings": {
+          "acceptProxyProtocol": true, //开启PROXY protocol接收，接收trojan+tcp+tls分流前真实来源IP和端口。
           "path": "/9ALdGZ9k" //修改为自己的path
         }
       },
