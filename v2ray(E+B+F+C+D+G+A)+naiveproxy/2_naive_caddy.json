@@ -28,7 +28,8 @@
               "handler": "proxy",
               "upstreams": [{
                 "dial": ["unix//dev/shm/vless.sock"] //转给vless+tcp+tls监听进程
-              }]
+              }],
+              "proxy_protocol": "v2" //启用PROXY protocol发送。v1或v2表示PROXY protocol版本，建议采用v2版。
             }]
           },
           {
@@ -41,7 +42,8 @@
               "handler": "proxy",
               "upstreams": [{
                 "dial": ["unix//dev/shm/trojan.sock"] //转给trojan+tcp+tls监听进程
-              }]
+              }],
+              "proxy_protocol": "v2" //启用PROXY protocol发送。v1或v2表示PROXY protocol版本，建议采用v2版。
             }]
           },
           {
@@ -54,7 +56,8 @@
               "handler": "proxy",
               "upstreams": [{
                 "dial": ["unix//dev/shm/https.sock"] //转给https server监听进程
-              }]
+              }],
+              "proxy_protocol": "v2" //启用PROXY protocol发送。v1或v2表示PROXY protocol版本，建议采用v2版。
             }]
           }]
         }
@@ -76,6 +79,9 @@
         },
         "h1h2c": {
           "listen": ["unix//dev/shm/h1h2c.sock"], //http/1.1与h2c server监听进程
+          "listener_wrappers": [{
+            "wrapper": "proxy_protocol" //开启PROXY protocol接收
+          }],
           "routes": [{
             "handle": [{
               "handler": "headers",
@@ -94,6 +100,12 @@
         },
         "https": {
           "listen": ["unix//dev/shm/https.sock"], //https server监听进程
+          "listener_wrappers": [{
+            "wrapper": "proxy_protocol" //开启PROXY protocol接收
+          },
+          {
+            "wrapper": "tls" //https server开启PROXY protocol接收必须配置
+          }],
           "routes": [{
             "match": [{
               "path": ["/SeuW56Es"] //与vless+h2c应用中path对应
@@ -121,6 +133,13 @@
                 "versions": ["h2c","2"]
               },
               "flush_interval": -1,
+              "headers": {
+              	"request": {
+                  "set": {
+                    "X-Real-Ip": ["{http.request.remote.host}"]
+                  }
+              	}
+              },
               "upstreams": [{
                 "dial": "127.0.0.1:2011" //转发给本机shadowsocks+grpc监听端口
               }]
