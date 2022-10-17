@@ -31,7 +31,7 @@
 1. [naiveproxy(caddy+forwardproxy)](https://github.com/lxhao61/integrated-examples/tree/main/naiveproxy(caddy%2Bforwardproxy)) （基于caddy插件的naiveproxy应用。标记为N。）
 2. [trojan-go(caddy+caddy-trojan)](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go(caddy%2Bcaddy-trojan)) （基于caddy插件的trojan-go应用。标记为T。）
 3. [caddy(N+T)](https://github.com/lxhao61/integrated-examples/tree/main/caddy(N%2BT)) （基于caddy插件的naiveproxy与trojian-go应用。）
-#### &emsp;rojan-go/trojan回落应用
+#### &emsp;trojan-go/trojan回落应用
 1. [trojan-go\trojan+nginx](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bnginx) （trojan-go/trojan回落nginx应用。）
 2. [trojan-go\trojan+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bnaiveproxy) （trojan-go/trojan加naiveproxy应用。）
 #### &emsp;Xray/v2ray回落应用
