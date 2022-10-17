@@ -95,7 +95,7 @@
         "clients": [
           {
             "id": "048e0bf2-dd56-11e9-aa37-5600024c1d6a", //修改为自己的UUID
-            "email": "443@gmail.com"
+            "email": "5443@gmail.com"
           }
         ],
         "decryption": "none",
