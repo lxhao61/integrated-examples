@@ -188,13 +188,6 @@
     "rules": [
       {
         "type": "field",
-        "inboundTag": [
-          "ddws" //与inbounds中标签对应
-        ],
-        "outboundTag": "ssds" //与outbounds中标签对应
-      },
-      {
-        "type": "field",
         "protocol": [
           "bittorrent"
         ],
@@ -206,17 +199,6 @@
     {
       "protocol": "freedom",
       "settings": {}
-    },
-    {
-      "tag": "ssds", //标签，与routing中标签对应。
-      "protocol": "freedom",
-      "streamSettings": {
-        "network": "domainsocket",
-        "dsSettings": {
-          "path": "ss", //domainsocket文件路径，与streamSettings中对应。
-          "abstract": true
-        }
-      }
     },
     {
       "tag": "blocked",
