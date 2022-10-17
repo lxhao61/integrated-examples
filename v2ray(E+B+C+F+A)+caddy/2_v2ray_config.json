@@ -20,17 +20,17 @@
         "fallbacks": [
           {
             "dest": "@trojan-tcp", //回落给trojan+tcp监听进程
-            "xver": 0 //关闭PROXY protocol发送，不发送真实来源IP和端口给如下trojan+tcp应用。此条参数可以省略不写（默认）。
+            "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给如下trojan+tcp应用。1或2表示PROXY protocol版本。多级传递，建议配置2。
           },
           {
             "path": "/HALdGZ9k", //通过路径分流
             "dest": "@vless-ws", //分流后转给vless+ws监听进程
-            "xver": 0 //关闭PROXY protocol发送，不发送真实来源IP和端口给如下vless+ws应用。此条参数可以省略不写（默认）。
+            "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给如下vless+ws应用。1或2表示PROXY protocol版本。与上一致，建议配置2。
           },
           {
             "path": "/9ALdGZ9k", //通过路径分流
             "dest": "@trojan-ws", //分流后转给trojan+ws监听进程
-            "xver": 0 //关闭PROXY protocol发送，不发送真实来源IP和端口给如下trojan+ws应用。此条参数可以省略不写（默认）。
+            "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给如下trojan+ws应用。1或2表示PROXY protocol版本。与上一致，建议配置2。
           }
         ]
       },
@@ -77,6 +77,7 @@
         "network": "ws",
         "security": "none",
         "wsSettings": {
+          "acceptProxyProtocol": true, //开启PROXY protocol接收，接收vless+tcp+tls分流前真实来源IP和端口。
           "path": "/HALdGZ9k" //修改为自己的path
         }
       },
@@ -103,6 +104,7 @@
         "network": "ws",
         "security": "none",
         "wsSettings": {
+          "acceptProxyProtocol": true, //开启PROXY protocol接收，接收vless+tcp+tls分流前真实来源IP和端口。
           "path": "/9ALdGZ9k" //修改为自己的path
         }
       },
@@ -127,13 +129,16 @@
         "fallbacks": [
           {
             "dest": "/dev/shm/h1h2c.sock", //h2与http/1.1回落进程（共用进程）
-            "xver": 0 //关闭PROXY protocol发送，不发送真实来源IP和端口给caddy。此条参数可以省略不写（默认）。
+            "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给caddy。1或2表示PROXY protocol版本。与上一致，建议配置2。
           }
         ]
       },
       "streamSettings": {
         "network": "tcp",
-        "security": "none"
+        "security": "none",
+        "tcpSettings": {
+          "acceptProxyProtocol": true //开启PROXY protocol接收，接收vless+tcp+tls回落前真实来源IP和端口。
+        }
       },
       "sniffing": {
         "enabled": true,
