@@ -30,6 +30,9 @@
         },
         "h1h2c": {
           "listen": ["127.0.0.1:88"], //http/1.1与h2c server本地监听端口
+          "listener_wrappers": [{
+            "wrapper": "proxy_protocol" //开启PROXY protocol接收
+          }],
           "routes": [{
             "match": [{
               "host": ["xx.yy"] //限定域名访问（禁止以IP方式访问网站），修改为自己的域名。
