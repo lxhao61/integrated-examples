@@ -12,9 +12,10 @@
 * **备注：** 端口分流、端口回落/分流、端口转发是指基于Local Loopback连接的不同功能应用分类；进程分流、进程回落/分流、进程转发是指基于Unix Domain Socket（UDS）连接的不同功能应用分类。
 
 ### 服务端单一/简单应用配置示例
-#### &emsp;使用UDP传输的应用
+#### &emsp;Xray/v2ray kcp+seed应用
 1. [v2ray(vless\vmess+kcp+seed)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(vless%5Cvmess%2Bkcp%2Bseed)) （vless+kcp+seed/vmess+kcp+seed应用。vless+kcp+seed标记为A。）
-2. [hysteria](https://github.com/lxhao61/integrated-examples/tree/main/hysteria) （基于QUIC协议修改的双边加速代理应用。）
+#### &emsp;hysteria应用
+1. [hysteria](https://github.com/lxhao61/integrated-examples/tree/main/hysteria) （基于QUIC协议修改的双边加速代理应用。）
 #### &emsp;Xray/v2ray WebSocket反代应用
 1. [v2ray(vless\vmess+WS)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(vless%5Cvmess%2BWS)%2Bcaddy%5Cnginx) （vless+ws+tls/vmess+ws+tls反代应用。vless+ws+tls标记为B。）
 2. [v2ray(SS+WS)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(SS%2BWS)%2Bcaddy%5Cnginx) （shadowsocks+ws+tls反代应用。）
