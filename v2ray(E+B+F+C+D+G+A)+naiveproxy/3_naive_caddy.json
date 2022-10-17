@@ -124,7 +124,7 @@
           {
             "match": [{
               "protocol": "grpc",
-              "path": ["/VALdGZ9k/*"] //与vless+grpc应用中serviceName对应
+              "path": ["/SALdGZ9k/*"] //与shadowsocks+grpc应用中serviceName对应
             }],
             "handle": [{
               "handler": "reverse_proxy",
@@ -141,7 +141,7 @@
               	}
               },
               "upstreams": [{
-                "dial": "unix//dev/shm/vgrpc.sock" //转发给本机vless+grpc监听进程
+                "dial": "127.0.0.1:2011" //转发给本机shadowsocks+grpc监听端口
               }]
             }]
           },
