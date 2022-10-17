@@ -1,6 +1,6 @@
 介绍：
 
-naiveproxy 服务端是以 caddy 源码加改进版 forwardproxy 插件编译而成，实现 naiveproxy（服务端） 加伪装网站应用。
+naiveproxy 服务端是以 caddy 源码加改进版 forwardproxy 插件编译而成 caddy 文件，实现了 naiveproxy 服务端加伪装网站应用。
 
 注意：
 
