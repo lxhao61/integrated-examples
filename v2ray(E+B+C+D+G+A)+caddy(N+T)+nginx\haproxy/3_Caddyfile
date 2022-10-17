@@ -78,8 +78,8 @@
 
 	trojan {
 		connect_method
-		websocket #开启Websocket支持
-	}
+		websocket #开启WebSocket支持
+	} #此部分配置为trojan-go的WebSocket应用，若删除就仅支持trojan应用。
 
 	route {
 		header {
