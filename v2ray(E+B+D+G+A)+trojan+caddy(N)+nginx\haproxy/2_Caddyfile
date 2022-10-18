@@ -10,6 +10,10 @@
 		protocols h1 h2c #开启HTTP/1.1 server与H2C server支持
 	}
 	servers unix//dev/shm/https.sock { #与下边监听进程对应
+		listener_wrappers {
+			proxy_protocol #开启PROXY protocol接收
+			tls #https server开启PROXY protocol接收必须配置
+		}
 		protocols h1 h2 #关闭HTTP/3 server支持（HTTP/3 server不支持UDS监听）
 	}
 }
