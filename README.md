@@ -34,7 +34,7 @@
 3. [caddy(N+T)](https://github.com/lxhao61/integrated-examples/tree/main/caddy(N%2BT)) （基于caddy插件的naiveproxy与trojian-go应用。）
 #### &emsp;trojan-go/trojan回落应用
 1. [trojan-go\trojan+nginx](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bnginx) （trojan-go/trojan回落nginx应用。）
-2. [trojan-go\trojan+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bnaiveproxy) （trojan-go/trojan加naiveproxy应用。）
+2. [trojan-go\trojan+caddy(N)](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bcaddy(N)) （trojan-go/trojan加naiveproxy应用。）
 #### &emsp;Xray/v2ray回落应用
 1. [v2ray(vless\trojan+tcp+tls)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(vless%5Ctrojan%2Btcp%2Btls)%2Bnginx) （vless+tcp+tls/xtls或trojan+tcp+tls/xtls回落nginx应用。分别标记为E与F。）
 2. [v2ray(vless\trojan+tcp+tls)+caddy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(vless%5Ctrojan%2Btcp%2Btls)%2Bcaddy) （vless+tcp+tls/xtls或trojan+tcp+tls/xtls回落caddy应用。分别标记为E与F。）
