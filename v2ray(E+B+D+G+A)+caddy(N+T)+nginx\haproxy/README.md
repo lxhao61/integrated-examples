@@ -4,17 +4,17 @@
 
 1、E=vless+tcp+tls/xtls（回落/分流配置，TLS/XTLS由自己提供及处理。）
 
-2、B=vless+ws+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置。另改、增、减，参考Xray/v2ray WebSocket反代应用配置示例。）
+2、B=vless+ws+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置。）
 
-3、D=vless+h2c+tls（TLS由caddy提供及处理，不需配置。另改、增、减，参考Xray/v2ray H2C反代应用配置示例。）
+3、D=vless+h2c+tls（TLS由caddy提供及处理，不需配置。）
 
-4、G=shadowsocks+grpc+tls（TLS由caddy提供及处理，不需配置。另改、增、减，参考Xray/v2ray gRPC反代应用配置示例。）
+4、G=shadowsocks+grpc+tls（TLS由caddy提供及处理，不需配置。）
 
-5、A=vless+kcp+seed（另改、增、减，参考Xray/v2ray kcp+seed应用配置示例。）
+5、A=vless+kcp+seed
 
-6、naiveproxy（基于caddy的改进版forwardproxy插件实现，TLS由caddy提供及处理。另减，参考caddy插件应用配置示例。）
+6、naiveproxy（基于caddy的改进版forwardproxy插件实现，TLS由caddy提供及处理。）
 
-7、trojan-go（基于caddy的caddy-trojan插件实现，TLS由caddy提供及处理。另减，参考caddy插件应用配置示例。）
+7、trojan-go（基于caddy的caddy-trojan插件实现，TLS由caddy提供及处理。）
 
 注意：
 
@@ -42,8 +42,8 @@
 
 12、不要使用第三方 ACME 客户端在当前服务器上以 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新 SSL/TLS 证书，因 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新 SSL/TLS 证书需监听 80 或 443 端口，从而与当前应用端口冲突。
 
-13、配置1：采用端口分流、端口回落/分流、端口转发。配置2：采用进程分流、进程回落/分流、进程转发。配置3：采用进程分流、进程回落/分流、进程转发，且启用了 PROXY protocol。
+13、配置1：采用端口分流、端口回落/分流、端口转发，且启用了 PROXY protocol。配置2：采用进程分流、进程回落/分流、进程转发，且启用了 PROXY protocol。
 
-14、若采用配置2/配置3、且使用 nginx SNI 来分流的，想 naiveproxy 同时开启 HTTP/3 代理支持，可参考配置1。方法：nginx 中添加对应 HTTPS server 的定向 UDP 转发配置，对应 HTTPS server 的进程转发改为端口转发；caddy 中对应 HTTPS server 的进程监听改为端口监听，HTTPS server 开启 HTTP/3 支持。
+14、若采用配置2、且使用 nginx SNI 来分流的，想 naiveproxy 同时开启 HTTP/3 代理支持，可参考配置1。方法：nginx 中添加对应 HTTPS server 的定向 UDP 转发配置，对应 HTTPS server 的进程转发改为端口转发；caddy 中对应 HTTPS server 的进程监听改为端口监听，HTTPS server 开启 HTTP/3 支持。
 
 15、若除了实现最多应用的科学上网、还需提供实际网站服务，推荐本示例（实际网站服务可由 nginx 或 caddy 提供服务）；否则推荐采用 [v2ray(E+B+D+G+A)+caddy(N+T)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BD%2BG%2BA)%2Bcaddy(N%2BT)) 示例。
