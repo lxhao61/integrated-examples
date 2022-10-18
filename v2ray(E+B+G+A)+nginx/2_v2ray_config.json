@@ -29,8 +29,8 @@
           },
           {
             "path": "/HALdGZ9k", //通过路径分流
-            "dest": "@vless-ws", //分流后转给vless+ws监听进程
-            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给如下vless+ws应用。1或2表示PROXY protocol版本。
+            "dest": "@vmess-ws", //分流后转给vmess+ws监听进程
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给如下vmess+ws应用。1或2表示PROXY protocol版本。
           }
         ]
       },
@@ -62,16 +62,15 @@
       }
     },
     {
-      "listen": "@vless-ws", //vless+ws监听进程
-      "protocol": "vless",
+      "listen": "@vmess-ws", //vmess+ws监听进程
+      "protocol": "vmess",
       "settings": {
         "clients": [
           {
-            "id": "048e0bf2-dd56-11e9-aa37-5600024c1d6a", //修改为自己的UUID
+            "id": "21376258-dd56-11e9-aa37-5600024c1d6a", //修改为自己的UUID
             "email": "2001@gmail.com"
           }
-        ],
-        "decryption": "none"
+        ]
       },
       "streamSettings": {
         "network": "ws",
