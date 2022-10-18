@@ -1,0 +1,92 @@
+{
+	order trojan before route
+	order forward_proxy before trojan
+	order reverse_proxy before forward_proxy
+	admin off
+	log {
+		output file /var/log/caddy/access.log
+		level ERROR
+	} #版本不小于v2.4.0才支持日志全局配置，否则各自配置。
+	servers unix//dev/shm/h1h2c.sock { #与下边监听进程对应
+		listener_wrappers {
+			proxy_protocol #开启PROXY protocol接收
+		}
+		protocols h1 h2c #开启HTTP/1.1 server与H2C server支持
+	}
+	servers unix//dev/shm/https.sock { #与下边监听进程对应
+		listener_wrappers {
+			proxy_protocol #开启PROXY protocol接收
+			tls #https server开启PROXY protocol接收必须配置
+			trojan #caddy-trojan插件应用必须配置
+		}
+		protocols h1 h2 #关闭HTTP/3 server支持（HTTP/3 server不支持UDS监听）
+	}
+	trojan {
+		caddy
+		no_proxy
+		users diy443 #修改为自己的密码。密码可多组，用空格隔开。
+	}
+}
+
+:80 { #http默认监听端口
+	redir https://{host}{uri} permanent #http自动跳转https，让网站看起来更真实。
+}
+
+:88 { #绑定UDS后此端口失效，仅做标记作用。
+	bind unix//dev/shm/h1h2c.sock #http/1.1与h2c server监听进程
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
+	}
+	file_server {
+		root /var/www/html #修改为自己存放的WEB文件路径
+	}
+}
+
+:7443 { #绑定UDS后此端口失效，仅做标记作用。
+	bind unix//dev/shm/https.sock #https server监听进程
+
+	tls /home/tls/zh.xx.yy/zh.xx.yy.crt /home/tls/zh.xx.yy/zh.xx.yy.key { #换成自己的证书与密钥，绝对路径。
+		ciphers TLS_AES_256_GCM_SHA384 TLS_AES_128_GCM_SHA256 TLS_CHACHA20_POLY1305_SHA256 TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 #若无RSA证书，可删除所有RSA算法的密码套件；无ECC证书，可删除所有ECDSA算法的密码套件。
+		curves x25519 secp521r1 secp384r1 secp256r1
+	}
+
+	reverse_proxy /SeuW56Es unix//dev/shm/vh2c.sock { #与vless+h2c应用中path对应，转发给本机vless+h2c监听进程。
+		transport http {
+			versions h2c 2
+		}
+	}
+
+	@vgrpc {
+		protocol grpc
+		path /VALdGZ9k/* #与vless+grpc应用中serviceName对应
+	}
+	reverse_proxy @vgrpc unix//dev/shm/vgrpc.sock { #转发给本机vless+grpc监听进程
+		transport http {
+			versions h2c 2
+		}
+		flush_interval -1
+		header_up X-Real-IP {remote_host}
+	}
+
+	forward_proxy {
+		basic_auth user pass #naiveproxy用户与密码，修改为自己的。
+		hide_ip
+		hide_via
+		probe_resistance
+	}
+
+	trojan {
+		connect_method
+		websocket #开启WebSocket支持
+	} #此部分配置为trojan-go的WebSocket应用，若删除就仅支持trojan应用。
+
+	route {
+		header {
+			Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
+		}
+		file_server {
+			root /var/www/html #修改为自己存放的WEB文件路径
+		}
+	}
+}
