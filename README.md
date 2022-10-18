@@ -41,27 +41,27 @@
 
 ### 服务端综合应用配置示例
 #### &emsp;Xray/v2ray反代为主的综合应用
-1. [v2ray(B+C+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(B%2BC%2BG%2BA)%2Bnginx) （反向代理WebSocket、gRPC的综合应用。）
-2. [v2ray(B+C+D+G+A)+caddy(N+T)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(B%2BC%2BD%2BG%2BA)%2Bcaddy(N%2BT)) （反向代理WebSocket、H2C、gRPC加naiveproxy与trojian-go的综合应用。）
+1. [v2ray(B+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(B%2BG%2BA)%2Bnginx) （反向代理WebSocket、gRPC的综合应用。）
+2. [v2ray(B+D+G+A)+caddy(N+T)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(B%2BD%2BG%2BA)%2Bcaddy(N%2BT)) （反向代理WebSocket、H2C、gRPC加naiveproxy与trojian-go的综合应用。）
 #### &emsp;Xray/v2ray vless回落应用为主的综合应用
-1. [v2ray(E+B+C+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BG%2BA)%2Bnginx) （以vless+tcp+tls/xtls为主的综合应用。）
-2. [v2ray(E+B+C+D+G+A)+caddy(N+T)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BD%2BG%2BA)%2Bcaddy(N%2BT)) （以vless+tcp+tls/xtls为主加naiveproxy与trojian-go的综合应用。）
+1. [v2ray(E+B+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BG%2BA)%2Bnginx) （以vless+tcp+tls/xtls为主的综合应用。）
+2. [v2ray(E+B+D+G+A)+caddy(N+T)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BD%2BG%2BA)%2Bcaddy(N%2BT)) （以vless+tcp+tls/xtls为主加naiveproxy与trojian-go的综合应用。）
 #### &emsp;Xray/v2ray trojan回落应用为主的综合应用
-1. [v2ray(F+B+C+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(F%2BB%2BC%2BG%2BA)%2Bnginx) （以trojan+tcp+tls/xtls为主的综合应用。）
-2. [v2ray(F+B+C+D+G+A)+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(F%2BB%2BC%2BD%2BG%2BA)%2Bnaiveproxy) （以trojan+tcp+tls/xtls为主加naiveproxy的综合应用。）
+1. [v2ray(F+C+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(F%2BC%2BG%2BA)%2Bnginx) （以trojan+tcp+tls/xtls为主的综合应用。）
+2. [v2ray(F+C+D+G+A)+caddy(N)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(F%2BC%2BD%2BG%2BA)%2Bcaddy(N)) （以trojan+tcp+tls/xtls为主加naiveproxy的综合应用。）
 #### &emsp;Xray/v2ray以套娃方式实现vless与trojan回落共存的综合应用
 1. [v2ray(E+B+C+F+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BF%2BA)%2Bnginx) （由套娃方式实现的综合应用。）
 2. [v2ray(E+B+C+F+A)+caddy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BF%2BA)%2Bcaddy) （由套娃方式实现的综合应用。）
 #### &emsp;以nginx/caddy兼顾SNI分流实现Xray/v2ray的vless与trojan回落共存综合应用
 1. [v2ray(E+B+F+C+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BF%2BC%2BG%2BA)%2Bnginx) （由nginx兼顾SNI分流实现的综合应用。）
-2. [v2ray(E+B+F+C+D+G+A)+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BF%2BC%2BD%2BG%2BA)%2Bnaiveproxy) （由caddy兼顾SNI分流实现的综合应用。）
+2. [v2ray(E+B+F+C+D+G+A)+caddy(N)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BF%2BC%2BD%2BG%2BA)%2Bcaddy(N)) （由caddy兼顾SNI分流实现的综合应用。）
 #### &emsp;以nginx/caddy兼顾SNI分流实现Xray/v2ray的vless回落与rojan-go/trojan回落共存的综合应用
-1. [v2ray(E+B+C+G+A)+trojan+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BG%2BA)%2Btrojan%2Bnginx) （由nginx兼顾SNI分流实现的综合应用。）
-2. [v2ray(E+B+C+D+G+A)+trojan+naiveproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BD%2BG%2BA)%2Btrojan%2Bnaiveproxy) （由caddy兼顾SNI分流实现的综合应用。）
+1. [v2ray(E+B+G+A)+trojan+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BG%2BA)%2Btrojan%2Bnginx) （由nginx兼顾SNI分流实现的综合应用。）
+2. [v2ray(E+B+D+G+A)+trojan+caddy(N)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BD%2BG%2BA)%2Btrojan%2Bcaddy(N)) （由caddy兼顾SNI分流实现的综合应用。）
 #### &emsp;由nginx/haproxy专职SNI分流实现兼顾各方优势的综合应用
-1. [v2ray(E+B+C+D+G+A)+trojan+naiveproxy+nginx\haproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BD%2BG%2BA)%2Btrojan%2Bnaiveproxy%2Bnginx%5Chaproxy) （trojan-go/trojan由原版实现的综合应用。）
-2. [v2ray(E+B+C+D+G+A)+caddy(N+T)+nginx\haproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BC%2BD%2BG%2BA)%2Bcaddy(N%2BT)%2Bnginx%5Chaproxy) （trojan-go/trojan由caddy插件实现的综合应用。）
-3. [v2ray(E+B+F+C+D+G+A)+naiveproxy+nginx\haproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BF%2BC%2BD%2BG%2BA)%2Bnaiveproxy%2Bnginx%5Chaproxy) （trojan/trojan-go由Xray/v2ray配置实现的综合应用。）
+1. [v2ray(E+B+D+G+A)+trojan+caddy(N)+nginx\haproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BD%2BG%2BA)%2Btrojan%2Bcaddy(N)%2Bnginx%5Chaproxy) （trojan-go/trojan由原版实现的综合应用。）
+2. [v2ray(E+B+D+G+A)+caddy(N+T)+nginx\haproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BD%2BG%2BA)%2Bcaddy(N%2BT)%2Bnginx%5Chaproxy) （trojan-go/trojan由caddy插件实现的综合应用。）
+3. [v2ray(E+B+F+C+D+G+A)+caddy(N)+nginx\haproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BF%2BC%2BD%2BG%2BA)%2Bcaddy(N)%2Bnginx%5Chaproxy) （trojan/trojan-go由Xray/v2ray配置实现的综合应用。）
 #### &emsp;注意（以上所有示例）:
 1. v2ray从v4.33.0版开始删除了XTLS应用，故若还想用XTLS应用，请选Xray。Xray是v2ray的超集（更好的整体性能和XTLS等一系列增强，且完全兼容。），也是因为这个应用分家独自发展。
 2. Xray/v2ray单一核心应用简记：A=vless+kcp+seed、B=vless+ws+tls、C=trojan+ws+tls、D=vless+h2c+tls、E=vless+tcp+tls/xtls、F=trojan+tcp+tls/xtls、G=shadowsocks+grpc+tls。
