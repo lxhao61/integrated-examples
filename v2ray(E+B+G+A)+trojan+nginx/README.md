@@ -4,7 +4,7 @@
 
 1、E=vless+tcp+tls/xtls（回落/分流配置，TLS/XTLS由自己提供及处理。）
 
-2、B=vless+ws+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置。）
+2、B=vmess+ws+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置。）
 
 3、G=shadowsocks+grpc+tls（TLS由nginx提供及处理，不需配置。）
 
