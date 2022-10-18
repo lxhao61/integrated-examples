@@ -4,11 +4,11 @@
 
 1、E=vless+tcp+tls/xtls（回落/分流配置，TLS/XTLS由自己提供及处理。）
 
-2、B=vless+ws+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置。另改、增、减，参考Xray/v2ray WebSocket反代应用配置示例。）
+2、B=vless+ws+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置。）
 
-3、G=shadowsocks+grpc+tls（TLS由nginx提供及处理，不需配置。另改、增、减，参考Xray/v2ray gRPC反代应用配置示例。）
+3、G=shadowsocks+grpc+tls（TLS由nginx提供及处理，不需配置。）
 
-4、A=vless+kcp+seed（另改、增、减，参考Xray/v2ray kcp+seed应用配置示例。）
+4、A=vless+kcp+seed
 
 5、trojan-go或trojan（TLS由自己提供及处理。）
 
@@ -40,4 +40,4 @@
 
 13、不要使用 ACME 客户端在当前服务器上以 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新 SSL/TLS 证书，因 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新 SSL/TLS 证书需监听 80 或 443 端口，从而与当前应用端口冲突。
 
-14、配置1：采用端口分流、端口回落/分流、端口转发。配置2：采用进程分流（trojan-go/trojan 除外）、端口回落/分流（vless+ws+tls 除外）、进程转发。配置3：采用进程分流（trojan-go/trojan 除外）、端口回落/分流（vless+ws+tls 除外）、进程转发，且启用了 PROXY protocol（全部回落除外）。
+14、配置1：采用端口分流、端口回落/分流、端口转发，且启用了 PROXY protocol（全部回落除外）。配置2：采用进程分流（trojan-go/trojan 除外）、端口回落/分流（vless+ws+tls 除外）、进程转发，且启用了 PROXY protocol（全部回落除外）。
