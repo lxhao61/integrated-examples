@@ -4,17 +4,17 @@ v2ray 或 Xray 前置（监听 443 端口），利用 vless+tcp+tls 或 vless+tc
 
 1、E=vless+tcp+tls/xtls（回落/分流配置，TLS/XTLS由自己提供及处理。）
 
-2、B=vless+ws+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置。另改、增、减，参考Xray/v2ray WebSocket反代应用配置示例。）
+2、B=vless+ws+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置。）
 
-3、D=vless+h2c+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置。另改、增、减，参考Xray/v2ray H2C反代应用配置示例。）
+3、D=vless+h2c+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置。）
 
-4、G=shadowsocks+grpc+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置。另改、增、减，参考Xray/v2ray gRPC反代应用配置示例。）
+4、G=shadowsocks+grpc+tls（TLS由vless+tcp+tls/xtls提供及处理，不需配置。）
 
-5、A=vless+kcp+seed（另改、增、减，参考Xray/v2ray kcp+seed应用配置示例。）
+5、A=vless+kcp+seed
 
-6、naiveproxy（基于caddy的改进版forwardproxy插件实现，TLS由vless+tcp+tls/xtls提供及处理，不需配置。另减，参考caddy插件应用配置示例。）
+6、naiveproxy（基于caddy的改进版forwardproxy插件实现，TLS由vless+tcp+tls/xtls提供及处理，不需配置。）
 
-7、trojan-go（基于caddy的caddy-trojan插件实现，TLS由vless+tcp+tls/xtls提供及处理，不需配置。另减，参考caddy插件应用配置示例。）
+7、trojan-go（基于caddy的caddy-trojan插件实现，TLS由vless+tcp+tls/xtls提供及处理，不需配置。）
 
 注意：
 
@@ -36,6 +36,6 @@ v2ray 或 Xray 前置（监听 443 端口），利用 vless+tcp+tls 或 vless+tc
 
 9、不要使用第三方 ACME 客户端在当前服务器上以 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新 SSL/TLS 证书，因 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新 SSL/TLS 证书需监听 80 或 443 端口，从而与当前应用端口冲突。
 
-10、配置1：采用端口回落/分流、端口转发。配置2：采用进程回落/分流、进程转发（shadowsocks+grpc+tls 除外）。配置3：采用进程回落/分流、进程转发（shadowsocks+grpc+tls 除外），且启用了 PROXY protocol。
+10、配置1：采用端口回落/分流、端口转发，且启用了 PROXY protocol。配置2：采用进程回落/分流、进程转发（shadowsocks+grpc+tls 除外），且启用了 PROXY protocol。
 
 11、若有实际网站服务推荐采用 [v2ray(E+B+D+G+A)+caddy(N+T)+nginx\haproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BD%2BG%2BA)%2Bcaddy(N%2BT)%2Bnginx%5Chaproxy) 示例，平衡兼顾各应用。
