@@ -42,6 +42,6 @@
 
 11、配置1：采用端口分流、端口回落/分流、端口转发。配置2：采用进程分流、进程回落/分流、进程转发（shadowsocks+grpc+tls 除外）。配置3：采用进程分流、进程回落/分流、进程转发（shadowsocks+grpc+tls 除外），且启用了 PROXY protocol。
 
-12、若有实际网站服务推荐采用 v2ray(E+B+F+C+D+G+A)+naiveproxy+nginx\haproxy 示例，否则 caddy 的压力可能过大。
+12、若有实际网站服务推荐采用 [v2ray(E+B+F+C+D+G+A)+caddy(N)+nginx\haproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BF%2BC%2BD%2BG%2BA)%2Bcaddy(N)%2Bnginx%5Chaproxy) 示例，否则 caddy 的压力可能过大。
 
 13、本示例 F 兼容原版 trojan 应用，F+C 组合等同于 trojan-go 应用；即可使用 trojan 客户端 或 trojan-go 客户端对应连接。
