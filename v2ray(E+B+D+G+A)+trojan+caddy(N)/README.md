@@ -46,4 +46,4 @@
 
 14、配置1：采用端口分流、端口回落/分流、端口转发。配置2：采用进程分流（trojan-go/trojan 除外）、端口回落/分流（vless+ws+tls 除外）、进程转发。配置3：采用进程分流（trojan-go/trojan 除外）、端口回落/分流（vless+ws+tls 除外）、进程转发，且启用了 PROXY protocol（全部回落除外）。
 
-15、若有实际网站服务推荐采用 v2ray(E+B+C+D+G+A)+trojan+naiveproxy+nginx\haproxy 示例，否则 caddy 的压力可能过大。
+15、若有实际网站服务推荐采用 [v2ray(E+B+D+G+A)+trojan+caddy(N)+nginx\haproxy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BD%2BG%2BA)%2Btrojan%2Bcaddy(N)%2Bnginx%5Chaproxy) 示例，否则 caddy 的压力可能过大。
