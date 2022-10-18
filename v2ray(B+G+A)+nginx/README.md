@@ -2,11 +2,11 @@
 
 利用 nginx 支持 WebSocket（WS）、gRPC 代理，实现除 Xray 或 v2ray 的 KCP 应用外，WebSocket（WS）、gRPC 类反向代理应用共用 443 端口。包括应用如下：
 
-1、B=vless+ws+tls（TLS由nginx提供及处理，不需配置。另改、增、减，参考Xray/v2ray WebSocket反代应用配置示例。）
+1、B=vless+ws+tls（TLS由nginx提供及处理，不需配置。）
 
-2、G=shadowsocks+grpc+tls（TLS由nginx提供及处理，不需配置。另改、增、减，参考Xray/v2ray gRPC反代应用配置示例。）
+2、G=shadowsocks+grpc+tls（TLS由nginx提供及处理，不需配置。）
 
-3、A=vless+kcp+seed（另改、增、减，参考Xray/v2ray kcp+seed应用配置示例。）
+3、A=vless+kcp+seed
 
 注意：
 
