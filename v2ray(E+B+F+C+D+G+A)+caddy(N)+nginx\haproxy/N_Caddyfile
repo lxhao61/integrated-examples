@@ -1,0 +1,24 @@
+#若不需要naiveproxy应用，按照如下修改。
+#原配置：
+{
+	order forward_proxy before route
+	order reverse_proxy before forward_proxy
+#.........<省略>........
+}
+#.........<省略>........
+	forward_proxy {
+		basic_auth user pass #naiveproxy用户与密码，修改为自己的。
+		hide_ip
+		hide_via
+		probe_resistance
+	}
+#.........<省略>........
+
+#以上配置修改为如下：
+{
+	order reverse_proxy before route
+#.........<省略>........
+}
+#.........<省略>........
+#<删除上边forward_proxy参数块>
+#.........<省略>........
