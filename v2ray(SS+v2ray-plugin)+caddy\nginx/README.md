@@ -1,8 +1,8 @@
 介绍：
 
-1、本示例配置采用 Xray 或 v2ray 自带 shadowsocks 应用加自身‘分离’出的 xray-plugin 或 v2ray-plugin 模块，直接实现原版 shadowsocks 加 xray-plugin 或 v2ray-plugin 插件的 WebSocket 应用（服务端）。
+1、本示例配置采用 Xray 或 v2ray 自带 shadowsocks 应用加 Dokodemo-Door 的 WebSocket 应用（dd+ws)，直接实现原版 shadowsocks 加 xray-plugin 或 v2ray-plugin 插件的 WebSocket 服务端应用。
 
-2、利用 caddy 或 nginx 支持 WebSocket（WS）代理，实现 shadowsocks+xray-plugin+tls 或 shadowsocks+v2ray-plugin+tls 的 WebSocket 反向代理应用，TLS 由 caddy 或 nginx 提供及处理。
+2、利用 caddy 或 nginx 支持 WebSocket（WS）代理，实现等同原版 shadowsocks+xray-plugin+tls 或 shadowsocks+v2ray-plugin+tls 的 WebSocket 反向代理应用，TLS 由 caddy 或 nginx 提供及处理。
 
 原理：
 
@@ -13,9 +13,9 @@
 
 1、Xray 或 v2ray 的监听地址不支持 shadowsocks（SS） 协议使用 UDS 监听。
 
-2、v2ray_UDS_config.json 采用 Unix Domain Socket 连接 shadowsocks 应用与 xray-plugin 或 v2ray-plugin 模块。v2ray_LL_config.json 采用 Local Loopback 连接 shadowsocks 应用与 xray-plugin 或 v2ray-plugin 模块。
+2、v2ray_UDS_config.json 表示采用 Unix Domain Socket 实现 shadowsocks 应用与 dd+ws 应用连接。v2ray_LL_config.json 采用 Local Loopback 实现 shadowsocks 应用与 dd+ws 应用连接。
 
-3、本示例 shadowsocks+xray-plugin+tls 或 shadowsocks+v2ray-plugin+tls 的 WebSocket 应用不等同 Xray 或 v2ray 的 [shadowsocks+ws+tls](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(SS%2BWS)%2Bcaddy%5Cnginx) 应用，两者不兼容。它仅兼容原版 shadowsocks 加 xray-plugin 或 v2ray-plugin 插件的 WebSocket 应用（服务端），即客户端使用 shadowsocks 加 xray-plugin 或 v2ray-plugin 插件连接。
+3、本示例 shadowsocks+xray-plugin+tls 或 shadowsocks+v2ray-plugin+tls 的 WebSocket 应用不等同 Xray 或 v2ray 的 [shadowsocks+ws+tls](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(SS%2BWS)%2Bcaddy%5Cnginx) 应用，两者不兼容。
 
 4、若采用 caddy 反向代理，本示例 caddy 支持自动 HTTPS，即自动申请与更新 SSL/TLS 证书，自动 HTTP 重定向到 HTTPS。
 
