@@ -1,6 +1,6 @@
 介绍：
 
-1、本示例配置采用 Xray 或 v2ray 自带 shadowsocks 应用加 Dokodemo-Door 的 WebSocket 应用 （dd+ws） 组合，直接实现原版 shadowsocks 加 xray-plugin 或 v2ray-plugin 的 WebSocket 服务端应用。
+1、本示例配置采用 Xray 或 v2ray 自带 shadowsocks 应用加 Dokodemo-Door 的 WebSocket 应用（dd+ws） 组合，直接实现原版 shadowsocks 加 xray-plugin 或 v2ray-plugin 的 WebSocket 服务端应用。
 
 2、利用 caddy 或 nginx 支持 WebSocket（WS） 代理，实现等同原版 shadowsocks+xray-plugin+tls 或 shadowsocks+v2ray-plugin+tls 的 WebSocket 反向代理应用，TLS 由 caddy 或 nginx 提供及处理。
 
