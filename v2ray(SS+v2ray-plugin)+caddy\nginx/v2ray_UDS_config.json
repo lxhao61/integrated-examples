@@ -31,7 +31,7 @@
       }
     },
     {
-      "port": 2003, //传输方式使用domain socket后此端口生效，但必须存在。
+      "port": 2003, //使用domain socket作为传输方式后此端口失效，但必须存在。
       "protocol": "shadowsocks",
       "settings": {
         "method": "chacha20-ietf-poly1305",
