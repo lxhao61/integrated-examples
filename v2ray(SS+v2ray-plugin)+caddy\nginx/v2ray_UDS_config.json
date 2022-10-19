@@ -8,7 +8,7 @@
     {
       "tag": "ddws", //标签，与routing中标签对应。
       "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2002, //Xray-plugin或v2ray-plugin监听端口
+      "port": 2002, //dd+ws监听端口
       "protocol": "dokodemo-door",
       "settings": {
         "address": "v1.mux.cool",
@@ -31,8 +31,7 @@
       }
     },
     {
-      "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2003, //此端口无实际用处，但必须存在。
+      "port": 2003, //传输方式使用domain socket后此端口生效，但必须存在。
       "protocol": "shadowsocks",
       "settings": {
         "method": "chacha20-ietf-poly1305",
@@ -56,7 +55,7 @@
         "inboundTag": [
           "ddws" //与inbounds中标签对应
         ],
-        "outboundTag": "ssds" //与outbounds中标签对应
+        "outboundTag": "uds" //与outbounds中标签对应
       },
       {
         "type": "field",
@@ -73,7 +72,7 @@
       "settings": {}
     },
     {
-      "tag": "ssds", //标签，与routing中标签对应。
+      "tag": "uds", //标签，与routing中标签对应。
       "protocol": "freedom",
       "streamSettings": {
         "network": "domainsocket",
