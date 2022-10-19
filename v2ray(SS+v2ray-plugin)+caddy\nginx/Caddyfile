@@ -17,9 +17,9 @@
 	@pws {
 		header Connection *Upgrade*
 		header Upgrade websocket
-		path /2ALdGZ9k #与Xray-plugin或v2ray-plugin模块中path对应
+		path /2ALdGZ9k #与dd+ws应用中path对应
 	}
-	reverse_proxy @pws 127.0.0.1:2002 #转发给本机Xray-plugin或v2ray-plugin监听端口
+	reverse_proxy @pws 127.0.0.1:2002 #转发给本机dd+ws监听端口
 
 	@host {
 		host xx.yy #限定域名访问（禁止以IP方式访问网站），修改为自己的域名。
