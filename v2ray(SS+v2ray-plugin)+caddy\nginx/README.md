@@ -13,7 +13,7 @@
 
 1、Xray 或 v2ray 的监听地址不支持 shadowsocks（SS） 协议使用 UDS 监听。
 
-2、v2ray_UDS_config.json 表示采用 Unix Domain Socket 实现 shadowsocks 应用与 dd+ws 应用连接。v2ray_LL_config.json 采用 Local Loopback 实现 shadowsocks 应用与 dd+ws 应用连接。
+2、v2ray_UDS_config.json 表示采用 Unix Domain Socket 实现 shadowsocks 应用与 dd+ws 应用连接。v2ray_LL_config.json 表示采用 Local Loopback 实现 shadowsocks 应用与 dd+ws 应用连接。
 
 3、本示例 shadowsocks+xray-plugin+tls 或 shadowsocks+v2ray-plugin+tls 的 WebSocket 应用不等同 Xray 或 v2ray 的 [shadowsocks+ws+tls](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(SS%2BWS)%2Bcaddy%5Cnginx) 应用，两者不兼容。
 
