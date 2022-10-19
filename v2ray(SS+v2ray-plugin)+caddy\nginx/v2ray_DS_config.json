@@ -19,7 +19,7 @@
         "network": "ws",
         "security": "none",
         "wsSettings": {
-          "path": "/SS1v2ray" //修改为自己的path
+          "path": "/2ALdGZ9k" //修改为自己的path
         }
       },
       "sniffing": {
