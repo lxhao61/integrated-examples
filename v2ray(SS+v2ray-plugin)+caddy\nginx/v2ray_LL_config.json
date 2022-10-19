@@ -48,7 +48,7 @@
         "inboundTag": [
           "ddws" //与inbounds中标签对应
         ],
-        "outboundTag": "redirect" //与outbounds中标签对应
+        "outboundTag": "loopback" //与outbounds中标签对应
       },
       {
         "type": "field",
@@ -65,10 +65,10 @@
       "settings": {}
     },
     {
-      "tag": "redirect", //标签，与routing中标签对应。
+      "tag": "loopback", //标签，与routing中标签对应。
       "protocol": "freedom",
       "settings": {
-        "redirect": "127.0.0.1:2003" //转发给本地SS监听端口
+        "redirect": "127.0.0.1:2003" //转发给本机SS监听端口
       }
     },
     {
