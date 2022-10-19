@@ -40,7 +40,7 @@
 2. [v2ray(vless\trojan+tcp+tls)+caddy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(vless%5Ctrojan%2Btcp%2Btls)%2Bcaddy) （vless+tcp+tls/xtls或trojan+tcp+tls/xtls回落caddy应用。分别标记为E与F。）
 
 ### 服务端综合应用配置示例
-#### &emsp;Xray/v2ray反代为主的综合应用
+#### &emsp;Xray/v2ray反向代理的综合应用
 1. [v2ray(B+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(B%2BG%2BA)%2Bnginx) （反向代理WebSocket、gRPC的综合应用。）
 2. [v2ray(B+D+G+A)+caddy(N+T)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(B%2BD%2BG%2BA)%2Bcaddy(N%2BT)) （反向代理WebSocket、H2C、gRPC加naiveproxy与trojian-go的综合应用。）
 #### &emsp;Xray/v2ray vless分流/回落为主的综合应用
