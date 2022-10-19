@@ -18,9 +18,9 @@
 
 1、caddy 加 caddy-l4 插件定制编译的才可以实现 SNI 分流，目前仅支持使用 json 配置（不支持 Caddyfile 配置）。
 
-2、1_SNI_caddy.json 采用 Local Loopback 连接，实现转发端口（域名）的分流，简称 caddy SNI 的端口分流。端口分流配置虽然效率稍低，但可适用任意系统服务器。
+2、1_SNI_caddy.json 采用 Local Loopback 连接，实现转发端口（域名）的分流，简称 caddy SNI 的端口分流。
 
-3、2_SNI_caddy.json 采用 Unix Domain Socket 连接，实现转发进程（域名）的分流，简称 caddy SNI 的进程分流。进程分流配置效率高，但在 Windows 10 Build 17036 之前版本不可用。
+3、2_SNI_caddy.json 采用 Unix Domain Socket 连接，实现转发进程（域名）的分流，简称 caddy SNI 的进程分流。
 
 4、相关示例已配置 caddy SNI 分流共用端口，此配置仅备份及参考等。
 
