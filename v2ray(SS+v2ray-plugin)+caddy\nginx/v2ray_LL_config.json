@@ -8,7 +8,7 @@
     {
       "tag": "ddws", //标签，与routing中标签对应。
       "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2002, //Xray-plugin或v2ray-plugin监听端口
+      "port": 2002, //dd+ws监听端口
       "protocol": "dokodemo-door",
       "settings": {
         "address": "v1.mux.cool",
@@ -32,7 +32,7 @@
     },
     {
       "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2003, //监听端口
+      "port": 2003, //SS监听端口
       "protocol": "shadowsocks",
       "settings": {
         "method": "chacha20-ietf-poly1305",
@@ -48,7 +48,7 @@
         "inboundTag": [
           "ddws" //与inbounds中标签对应
         ],
-        "outboundTag": "ssrr" //与outbounds中标签对应
+        "outboundTag": "redirect" //与outbounds中标签对应
       },
       {
         "type": "field",
@@ -65,10 +65,10 @@
       "settings": {}
     },
     {
-      "tag": "ssrr", //标签，与routing中标签对应。
+      "tag": "redirect", //标签，与routing中标签对应。
       "protocol": "freedom",
       "settings": {
-        "redirect": "127.0.0.1:2003" //转发给本地2003端口
+        "redirect": "127.0.0.1:2003" //转发给本地SS监听端口
       }
     },
     {
