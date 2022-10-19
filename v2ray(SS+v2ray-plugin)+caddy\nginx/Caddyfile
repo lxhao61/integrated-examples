@@ -17,7 +17,7 @@
 	@pws {
 		header Connection *Upgrade*
 		header Upgrade websocket
-		path /SS1v2ray #与Xray-plugin或v2ray-plugin模块中path对应
+		path /2ALdGZ9k #与Xray-plugin或v2ray-plugin模块中path对应
 	}
 	reverse_proxy @pws 127.0.0.1:2002 #转发给本机Xray-plugin或v2ray-plugin监听端口
 
