@@ -17,9 +17,9 @@
 	@sws {
 		header Connection *Upgrade*
 		header Upgrade websocket
-		path /8ALdGZ9k #与socks+ws或shadowsocks+ws应用中path对应
+		path /8ALdGZ9k #与shadowsocks+ws应用中path对应
 	}
-	reverse_proxy @sws 127.0.0.1:2008 #转发给本机socks+ws或shadowsocks+ws监听端口
+	reverse_proxy @sws 127.0.0.1:2008 #转发给本机shadowsocks+ws监听端口
 
 	@host {
 		host xx.yy #限定域名访问（禁止以IP方式访问网站），修改为自己的域名。
