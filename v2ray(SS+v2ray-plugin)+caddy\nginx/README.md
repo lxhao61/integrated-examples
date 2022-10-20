@@ -11,7 +11,7 @@
 
 注意：
 
-1、Xray 或 v2ray 的监听地址不支持 shadowsocks（SS） 协议使用 UDS 监听。
+1、Xray 或 v2ray 的监听地址不支持 Dokodemo-Door 协议使用 UDS 监听。
 
 2、v2ray_UDS_config.json 采用 Unix Domain Socket 实现 shadowsocks 应用与 dd+ws 应用连接；v2ray_LL_config.json 采用 Local Loopback 实现 shadowsocks 应用与 dd+ws 应用连接，根据情况二选一即可。
 
