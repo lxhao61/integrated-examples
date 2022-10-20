@@ -1,7 +1,7 @@
 **这里是分享怎么搭建主流科学上网的优化配置及最优组合示例（如是不太了解科学上网，建议先依次从简单到复杂参考及部署。），其特点如下：**  
-1. 实现了SNI分流应用的端口分流到进程分流及启用PROXY protocol的从低到高（效率）应用支持。
-2. 实现了回落应用的端口回落/分流到进程回落/分流及启用PROXY protocol的从低到高（效率）应用支持。
-3. 实现了反代应用的端口转发到进程转发的从低到高（效率）应用支持。
+1. 实现了SNI分流使用Local Loopback连接或使用Unix Domain Socket（UDS）连接及启用PROXY protocol支持。
+2. 实现了分流/回落使用Local Loopback连接或使用Unix Domain Socket（UDS）连接及启用PROXY protocol支持。
+3. 实现了反代使用Local Loopback连接或使用Unix Domain Socket（UDS）连接支持。
 4. 实现了nginx SNI分流（TCP转发）与定向UDP转发，以支持SNI分流后的naiveproxy HTTP/3代理应用。
 5. 实现了caddy Caddyfile配置开启H2C server、H2C proxy及接收PROXY protocol等应用支持，让caddy配置简单化。
 6. 实现了caddy json配置SNI分流应用，且支持针对转发端口或进程开启或关闭发送PROXY protocol，灵活性等同haproxy SNI分流。
@@ -9,7 +9,6 @@
 8. 实现了CDN流量中转（基于WebSocket over TLS或基于gRPC over TLS）与正常应用同时使用。
 9. 实现了除v2ray(vless\vmess+kcp+seed)与hysteria应用外，其它应用对外都使用443端口，各应用互不影响。
 10. 实现了除v2ray(vless\vmess+kcp+seed)与hysteria应用外，其它应用都支持流量伪装与防探测，且提供流量伪装与防探测的回落或代理网站都支持HTTP自动跳转到HTTPS，SSL/TLS安全评估报告为A+等，即所有特征完全与真实网站一致。
-* **备注：** 端口分流、端口回落/分流、端口转发是指基于Local Loopback连接的不同功能应用分类；进程分流、进程回落/分流、进程转发是指基于Unix Domain Socket（UDS）连接的不同功能应用分类。
 
 ### 服务端单一/简单应用配置示例
 #### &emsp;Xray/v2ray kcp+seed应用
