@@ -13,9 +13,9 @@
 
 注意：
 
-1、因 trojan-go 或 trojan 不支持 UDS 回落转发，故回落仅端口回落。
+1、因 trojan-go 或 trojan 不支持 UDS，故回落仅使用 Local Loopback 连接。
 
-2、因 trojan-go 或 trojan 不支持 PROXY protocol，故回落不启用此项应用。
+2、因 trojan-go 或 trojan 不支持 PROXY protocol，故回落不启用 PROXY protocol。
 
 3、trojan-go 完全兼容 trojan，服务端还有自己的特色：支持 trojan 应用与自己的 WebSocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)；支持使用 AEAD 对 trojan 协议流量进行二次加密(基于 Shadowsocks AEAD)。
 
