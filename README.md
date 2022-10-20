@@ -1,6 +1,6 @@
 **这里是分享怎么搭建主流科学上网的优化配置及最优组合示例（如是不太了解科学上网，建议先依次从简单到复杂参考及部署。），其特点如下：**  
 1. 实现了SNI分流使用Local Loopback连接或使用Unix Domain Socket（UDS）连接及启用PROXY protocol支持。
-2. 实现了分流/回落使用Local Loopback连接或使用Unix Domain Socket（UDS）连接及启用PROXY protocol支持。
+2. 实现了回落/分流使用Local Loopback连接或使用Unix Domain Socket（UDS）连接及启用PROXY protocol支持。
 3. 实现了反代使用Local Loopback连接或使用Unix Domain Socket（UDS）连接支持。
 4. 实现了nginx SNI分流（TCP转发）与定向UDP转发，以支持SNI分流后的naiveproxy HTTP/3代理应用。
 5. 实现了caddy Caddyfile配置开启H2C server、H2C proxy及接收PROXY protocol等应用支持，让caddy配置简单化。
@@ -42,19 +42,19 @@
 #### &emsp;Xray/v2ray反向代理的综合应用
 1. [v2ray(B+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(B%2BG%2BA)%2Bnginx) （反向代理WebSocket、gRPC的综合应用。）
 2. [v2ray(B+D+G+A)+caddy(N+T)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(B%2BD%2BG%2BA)%2Bcaddy(N%2BT)) （反向代理WebSocket、H2C、gRPC加naiveproxy与trojian-go的综合应用。）
-#### &emsp;Xray/v2ray vless分流/回落为主的综合应用
+#### &emsp;Xray/v2ray vless回落/分流为主的综合应用
 1. [v2ray(E+B+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BG%2BA)%2Bnginx) （以vless+tcp+tls/xtls为主的综合应用。）
 2. [v2ray(E+B+D+G+A)+caddy(N+T)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BD%2BG%2BA)%2Bcaddy(N%2BT)) （以vless+tcp+tls/xtls为主加naiveproxy与trojian-go的综合应用。）
-#### &emsp;Xray/v2ray trojan分流/回落为主的综合应用
+#### &emsp;Xray/v2ray trojan回落/分流为主的综合应用
 1. [v2ray(F+C+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(F%2BC%2BG%2BA)%2Bnginx) （以trojan+tcp+tls/xtls为主的综合应用。）
 2. [v2ray(F+C+D+G+A)+caddy(N)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(F%2BC%2BD%2BG%2BA)%2Bcaddy(N)) （以trojan+tcp+tls/xtls为主加naiveproxy的综合应用。）
-#### &emsp;以套娃方式实现vless分流/回落与trojan回落共存为主的综合应用
+#### &emsp;以套娃方式实现vless回落/分流与trojan回落共存为主的综合应用
 1. [v2ray(E+C+F+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BC%2BF%2BA)%2Bnginx) （由套娃方式实现的综合应用。）
 2. [v2ray(E+C+F+A)+caddy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BC%2BF%2BA)%2Bcaddy) （由套娃方式实现的综合应用。）
-#### &emsp;以nginx/caddy兼顾SNI分流实现vless分流/回落与trojan分流/回落共存为主的综合应用
+#### &emsp;以nginx/caddy兼顾SNI分流实现vless回落/分流与trojan回落/分流共存为主的综合应用
 1. [v2ray(E+B+F+C+G+A)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BF%2BC%2BG%2BA)%2Bnginx) （由nginx兼顾SNI分流实现的综合应用。）
 2. [v2ray(E+B+F+C+D+G+A)+caddy(N)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BF%2BC%2BD%2BG%2BA)%2Bcaddy(N)) （由caddy兼顾SNI分流实现的综合应用。）
-#### &emsp;以nginx/caddy兼顾SNI分流实现vless分流/回落为主的综合应用与trojan-go/trojan共存
+#### &emsp;以nginx/caddy兼顾SNI分流实现vless回落/分流为主的综合应用与trojan-go/trojan共存
 1. [v2ray(E+B+G+A)+trojan+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BG%2BA)%2Btrojan%2Bnginx) （由nginx兼顾SNI分流实现的综合应用。）
 2. [v2ray(E+B+D+G+A)+trojan+caddy(N)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(E%2BB%2BD%2BG%2BA)%2Btrojan%2Bcaddy(N)) （由caddy兼顾SNI分流实现的综合应用。）
 #### &emsp;由nginx/haproxy专职SNI分流实现兼顾各方优势的综合应用
@@ -69,7 +69,7 @@
 5. 目前caddy采用UDS监听不支持HTTP/3，即仅端口监听才支持开启HTTP/3。
 6. 受限应用条件及场景，naiveproxy的QUIC应用（即caddy的HTTP/3代理应用）不是所有相关naiveproxy示例都支持。
 7. 当前caddy从Let's Encrypt或ZeroSSL自动申请的SSL/TLS证书都为ECC证书。
-8. 流量伪装与防探测网站可由其它WEB应用软件实现，其反代支持能力（WebSocket、gRPC及H2C）与回落支持能力（H2C server及HTTP/1.1 server）取决于自身，配置自行参考caddy或nginx对应示例。
+8. 流量伪装与防探测网站可由其它WEB应用软件实现，其支持反代（WebSocket、gRPC及H2C）与支持回落（H2C server及HTTP/1.1 server）取决于自身，配置自行参考caddy或nginx对应示例。
 9. 附加相关插件的caddy程序文件已编译好，去本人Releases中下载即可。
 10. trojan-go安卓客户端可以去本人Releases中下载（最末）。
 
