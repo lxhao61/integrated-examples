@@ -20,7 +20,7 @@
 
 2、1_SNI_caddy.json 采用 Local Loopback 连接，实现 caddy SNI 的端口分流。
 
-3、2_SNI_caddy.json 采用 Unix Domain Socket 连接，实现 caddy SNI 的进程分流。
+3、2_SNI_caddy.json 采用 UDS 连接，实现 caddy SNI 的进程分流。
 
 4、相关示例已配置 caddy SNI 分流共用端口，此配置仅备份及参考等。
 
