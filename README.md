@@ -7,8 +7,8 @@
 6. 实现了caddy json配置SNI分流应用，且支持针对转发端口或进程开启或关闭发送PROXY protocol，灵活性等同haproxy SNI分流。
 7. 实现了caddy与Xray相关应用的SSL/TLS证书申请与更新全自动化。
 8. 实现了CDN流量中转（基于WebSocket over TLS或基于gRPC over TLS）与正常应用同时使用。
-9. 实现了除v2ray(vless\vmess+kcp+seed)与hysteria应用外，其它应用对外都使用443端口，各应用互不影响。
-10. 实现了除v2ray(vless\vmess+kcp+seed)与hysteria应用外，其它应用都支持流量伪装与防探测，且提供流量伪装与防探测的回落或代理网站都支持HTTP自动跳转到HTTPS，SSL/TLS安全评估报告为A+等，即所有特征完全与真实网站一致。
+9. 实现了除Xray/v2ray mKCP与hysteria应用外，其它应用对外都使用443端口，各应用互不影响。
+10. 实现了除Xray/v2ray mKCP与hysteria应用外，其它应用都支持流量伪装与防探测，且提供流量伪装与防探测的回落或代理网站都支持HTTP自动跳转到HTTPS，SSL/TLS安全评估报告为A+等，即所有特征完全与真实网站一致。
 
 ### 服务端单一/简单应用配置示例
 #### &emsp;caddy插件应用
