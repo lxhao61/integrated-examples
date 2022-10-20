@@ -18,10 +18,9 @@
 #### &emsp;trojan-go/trojan回落应用
 1. [trojan-go\trojan+nginx](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bnginx) （trojan-go/trojan回落nginx应用。）
 2. [trojan-go\trojan+caddy(N)](https://github.com/lxhao61/integrated-examples/tree/main/trojan-go%5Ctrojan%2Bcaddy(N)) （trojan-go/trojan加naiveproxy应用。）
-#### &emsp;Xray/v2ray kcp+seed应用
+#### &emsp;Xray/v2ray mKCP与hysteria应用
 1. [v2ray(vless\vmess+kcp+seed)](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(vless%5Cvmess%2Bkcp%2Bseed)) （vless+kcp+seed/vmess+kcp+seed应用。vless+kcp+seed标记为A。）
-#### &emsp;hysteria应用
-1. [hysteria](https://github.com/lxhao61/integrated-examples/tree/main/hysteria) （基于QUIC协议修改的双边加速代理应用。）
+2. [hysteria](https://github.com/lxhao61/integrated-examples/tree/main/hysteria) （基于QUIC协议修改的双边加速代理应用。）
 #### &emsp;Xray/v2ray WebSocket反代应用
 1. [v2ray(vless\vmess+WS)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(vless%5Cvmess%2BWS)%2Bcaddy%5Cnginx) （vless+ws+tls/vmess+ws+tls反代应用。vmess+ws+tls标记为B。）
 2. [v2ray(SS+WS)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(SS%2BWS)%2Bcaddy%5Cnginx) （shadowsocks+ws+tls反代应用。）
