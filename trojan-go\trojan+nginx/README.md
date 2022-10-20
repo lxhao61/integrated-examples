@@ -9,7 +9,7 @@
 
 注意：
 
-1、因 trojan-go 或 trojan 不支持 UDS 回落转发，故回落仅端口回落。
+1、因 trojan-go 或 trojan 不支持 UDS，故回落仅端口回落。
 
 2、因 trojan-go 或 trojan 不支持 PROXY protocol，故回落不启用此项应用。
 
