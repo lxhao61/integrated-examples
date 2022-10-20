@@ -207,7 +207,7 @@
         "clients": [
           {
             "id": "0a652466-dd56-11e9-aa37-5600024c1d6a", //修改为自己的UUID
-            "email": "2053@gmail.com"
+            "email": "2052@gmail.com"
           }
         ],
         "decryption": "none"
