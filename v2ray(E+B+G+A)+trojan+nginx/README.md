@@ -22,9 +22,9 @@
 
 4、Xray 版本不小于 v1.4.0 或 v2ray 版本不小于 v4.36.2 才支持 gRPC 传输方式。
 
-5、因 trojan-go 或 trojan 不支持 UDS 监听接收与回落转发，故 nginx SNI 分流 trojan-go 或 trojan 仅启用端口转发；故与 trojan-go 或 trojan 共用 WEB 服务的 vless+tcp+xtls 或 vless+tcp+tls 回落也仅端口回落，即全部端口回落。
+5、因 trojan-go 或 trojan 不支持 UDS 监听与 UDS 回落，故 nginx SNI 分流 trojan-go 或 trojan 使用 Local Loopback 连接；故与 trojan-go 或 trojan 共用 WEB 服务的 vless+tcp+xtls 或 vless+tcp+tls 回落也仅端口回落，即全部回落使用 Local Loopback 连接。
 
-6、因 trojan-go 或 trojan 不支持 PROXY protocol，故 nginx SNI 分流启用 PROXY protocol 须特殊处理（具体见配置示例）；故与 trojan-go 或 trojan 共用 WEB 服务的 vless+tcp+xtls 或 vless+tcp+tls 回落不启用此项应用，即全部回落不启用此项应用。
+6、因 trojan-go 或 trojan 不支持 PROXY protocol，故 nginx SNI 分流启用 PROXY protocol 须特殊处理（具体见配置示例）；故与 trojan-go 或 trojan 共用 WEB 服务的 vless+tcp+xtls 或 vless+tcp+tls 回落不启用此项应用，即全部回落不启用 PROXY protocol。
 
 7、trojan-go 完全兼容 trojan，服务端还有自己的特色：支持 trojan 应用与自己的 WebSocket 应用共存；支持 CDN 流量中转(基于 WebSocket over TLS)；支持使用 AEAD 对 trojan 协议流量进行二次加密(基于 Shadowsocks AEAD)。
 
@@ -40,4 +40,4 @@
 
 13、不要使用 ACME 客户端在当前服务器上以 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新 SSL/TLS 证书，因 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新 SSL/TLS 证书需监听 80 或 443 端口，从而与当前应用端口冲突。
 
-14、配置1：使用 Local Loopback 连接，且启用了 PROXY protocol（全部回落除外）。配置2：使用 UDS 连接（对应 shadowsocks+grpc+tls、全部回落除外。），且启用了 PROXY protocol（全部回落除外）。
+14、配置1：使用 Local Loopback 连接，且启用了 PROXY protocol（全部回落除外）。配置2：使用 UDS 连接（对应 shadowsocks+grpc+tls、SNI 分流 trojan-go 或 trojan、全部回落除外。），且启用了 PROXY protocol（全部回落除外）。
