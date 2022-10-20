@@ -40,4 +40,4 @@
 
 13、不要使用 ACME 客户端在当前服务器上以 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新 SSL/TLS 证书，因 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新 SSL/TLS 证书需监听 80 或 443 端口，从而与当前应用端口冲突。
 
-14、配置1：采用端口分流、端口回落/分流、端口转发，且启用了 PROXY protocol（全部回落除外）。配置2：采用进程分流（trojan-go/trojan 除外）、端口回落/分流（vless+ws+tls 除外）、进程转发，且启用了 PROXY protocol（全部回落除外）。
+14、配置1：采用端口分流、端口回落/分流、端口转发，且启用了 PROXY protocol（全部回落除外）。配置2：采用进程分流（对应 trojan-go/trojan 除外）、进程回落/分流（对应 trojan-go/trojan 除外）、进程转发，且启用了 PROXY protocol（全部回落除外）。
