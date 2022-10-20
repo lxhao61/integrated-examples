@@ -13,4 +13,4 @@
 
 2、本示例 caddy 支持自动 HTTPS，即自动申请与更新 SSL/TLS 证书，自动 HTTP 重定向到 HTTPS。
 
-3、配置1：采用端口转发。配置2：采用进程转发。
+3、配置1：使用 Local Loopback 连接。配置2：使用 UDS 连接。
