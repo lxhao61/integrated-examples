@@ -41,6 +41,12 @@ jobs:
             release: true
           }
         - {
+            name: "linux-s390x",
+            GOARCH: s390x,
+            GOOS: linux,
+            release: true
+          }
+        - {
             name: "freebsd-amd64",
             GOARCH: amd64,
             GOOS: freebsd,
