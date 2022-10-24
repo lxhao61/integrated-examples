@@ -1,21 +1,25 @@
 #!/bin/bash
 
 _APISERVER=127.0.0.1:10085 //此端口必须与traffic_config.json中流量统计端口一致
-_Xray=/usr/local/bin/xray/xray //此路径为Xray的实际路径
+_XRAY=/usr/local/bin/xray/xray //此路径为Xray的实际路径
 
 apidata () {
     local ARGS=
     if [[ $1 == "reset" ]]; then
       ARGS="reset: true"
     fi
-    $_Xray api statsquery --server=$_APISERVER "${ARGS}" \
+    $_XRAY api statsquery --server=$_APISERVER "${ARGS}" \
     | awk '{
         if (match($1, /"name":/)) {
             f=1; gsub(/^"|link"|,$/, "", $2);
             split($2, p,  ">>>");
             printf "%s:%s->%s\t", p[1],p[2],p[4];
         }
-        else if (match($1, /"value":/) && f){ f = 0; printf "%.0f\n", $2; }
+        else if (match($1, /"value":/) && f){
+          f = 0;
+          gsub(/"/, "", $2);
+          printf "%.0f\n", $2;
+        }
         else if (match($0, /}/) && f) { f = 0; print 0; }
     }'
 }
