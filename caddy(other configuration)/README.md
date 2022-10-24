@@ -1,6 +1,6 @@
 一、回落后由 caddy 分流到不同网站的配置方法
 
-此方法解决 Xray 或 v2ray 前置监听443后，不影响先前 caddy 前置时不同域名访问不同网站问题。见 shunt_caddy.json 或 shunt_Caddyfile 配置。
+此方法解决 Xray 或 v2ray 前置监听 443 后，不影响先前 caddy 前置时不同域名访问不同网站问题。见 shunt_caddy.json 或 shunt_Caddyfile 配置。
 
 注意：
 
@@ -38,7 +38,7 @@
 
 三、caddy DDNS 客户端配置方法
 
-caddy 使用 caddy-dynamicdns 插件与 caddy-dns 插件（仅含alidns、cloudflare、dnspod、dnspodcn、duckdns五个常用caddy-dns插件）实现 DDNS 客户端应用。基本配置见 DDNS_caddy.json 或 DDNS_Caddyfile 配置示例，详细配置见 caddy-dynamicdns 资源。
+caddy 使用 caddy-dynamicdns 插件与 caddy-dns 插件（仅含 alidns、cloudflare、dnspod、dnspodcn、duckdns 五个常用 caddy-dns 插件）实现 DDNS 客户端应用。基本配置见 DDNS_caddy.json 或 DDNS_Caddyfile 配置示例，详细配置见 caddy-dynamicdns 资源。
 
 四、caddy 网盘应用配置方法
 
