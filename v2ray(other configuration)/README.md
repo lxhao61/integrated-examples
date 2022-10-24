@@ -48,7 +48,7 @@
 
 2、流量统计处理
 
-1）、把 traffic.sh（Xray_traffic.sh或v2ray_traffic.sh） 脚本上传到服务器 root 目录，并授予执行权限（chmod +x traffic.sh）。
+1）、把对应 traffic.sh（Xray_traffic.sh或v2ray_traffic.sh） 脚本上传到服务器 root 目录，并授予执行权限（chmod +x traffic.sh）。
 
 2）、执行 ./traffic.sh 即可查看流量统计。
 
