@@ -6,7 +6,7 @@ _XRAY=/usr/local/bin/xray/xray //此路径为Xray的实际路径
 apidata () {
     local ARGS=
     if [[ $1 == "reset" ]]; then
-      ARGS="reset: true"
+      ARGS="-reset=true"
     fi
     $_XRAY api statsquery --server=$_APISERVER "${ARGS}" \
     | awk '{
