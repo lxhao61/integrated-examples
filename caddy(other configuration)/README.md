@@ -4,9 +4,9 @@
 
 注意：
 
-1、若不同域名没有使用通配符证书，那么还需要在 Xray 或 v2ray 中并列配置多个域名对应的证书及密钥。
+1、若不同域名没有使用通配符证书，那么还需要在 Xray/v2ray 中并列配置多个域名对应的证书及密钥。
 
-2、此回落到不同网站是 Xray 或 v2ray 解除 TLS 后 caddy 进行的 host（域名）分流。
+2、此回落到不同网站是 Xray/v2ray 解除 TLS 后 caddy 进行的 host（域名）分流。
 
 3、也可以用 caddy SNI、nginx SNI、haproxy SNI、Xray fallbacks SNI 等分流来解决问题（不同方法，达到相同效果。），相关分流见各自配置示例。
 
