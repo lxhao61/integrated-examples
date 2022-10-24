@@ -1,0 +1,70 @@
+//一、与caddy对应的Xray回落配置：
+//1、Xray常规配置（端口模式）：
+.........<省略>........
+        "fallbacks": [
+          {
+            "dest": 88, //h2与http/1.1回落端口（共用端口）
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给caddy。1或2表示PROXY protocol版本。
+          },
+.........<省略>........
+        ]
+//2、修改Xray常规配置如下：（示例仅配置了两个域名的分流；如需要多个域名，增加对应参数即可。）
+.........<省略>........
+        "fallbacks": [
+          {
+            "name": "zv.xx.yy", //修改为自己分流的域名
+            "dest": 818, //h2与http/1.1回落端口（共用端口）
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给caddy。1或2表示PROXY protocol版本。
+          },
+          {
+            "name": "zt.xx.yy", //修改为自己分流的域名
+            "dest": 828, //h2与http/1.1回落端口（共用端口）
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给caddy。1或2表示PROXY protocol版本。
+          },
+.........<省略>........
+        ]
+注：若"dest"的参数配置为进程模式，配置类似。
+
+//二、与nginx对应的Xray回落配置：
+//1、Xray常规配置（端口模式）：
+.........<省略>........
+        "fallbacks": [
+          {
+            "alpn": "h2", //h2回落匹配
+            "dest": 82, //h2回落端口
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给nginx。1或2表示PROXY protocol版本。
+          },
+          {
+            "dest": 81, //http/1.1回落端口
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给nginx。1或2表示PROXY protocol版本。
+          },
+.........<省略>........
+        ]
+//2、修改Xray常规配置如下：（示例仅配置了两个域名的分流；如需要多个域名，增加对应参数即可。）
+.........<省略>........
+        "fallbacks": [
+          {
+            "name": "zv.xx.yy", //修改为自己分流的域名
+            "alpn": "h2", //h2回落匹配
+            "dest": 812, //h2回落端口
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给nginx。1或2表示PROXY protocol版本。
+          },
+          {
+            "name": "zv.xx.yy", //修改为自己分流的域名
+            "dest": 811, //http/1.1回落端口
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给nginx。1或2表示PROXY protocol版本。
+          },
+          {
+            "name": "zt.xx.yy", //修改为自己分流的域名
+            "alpn": "h2", //h2回落匹配
+            "dest": 822, //h2回落端口
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给nginx。1或2表示PROXY protocol版本。
+          },
+          {
+            "name": "zt.xx.yy", //修改为自己分流的域名
+            "dest": 821, //http/1.1回落端口
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给nginx。1或2表示PROXY protocol版本。
+          },
+.........<省略>........
+        ]
+注：若"dest"的参数配置为进程模式，配置类似。
