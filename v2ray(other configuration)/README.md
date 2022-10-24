@@ -10,7 +10,7 @@
 
 二、Xray fallbacks SNI 回落/分流到不同网站的配置方法
 
-此方法解决 Xray 前置监听443后，不影响原来不同域名访问不同网站问题。见 fallbacks_SNI_config.json 配置。
+此方法解决 Xray 前置监听 443 后，不影响原来不同域名访问不同网站问题。见 fallbacks_SNI_config.json 配置。
 
 注意：
 
@@ -20,7 +20,7 @@
 
 3、此 fallbacks SNI 回落/分流是解除 TLS 后 Xray 进行的 name（域名）分流。
 
-4、也可以用 nginx SNI、haproxy SNI、caddy 分流（SNI或host分流） 等分流来解决问题（不同方法，达到相同效果。），相关分流见各自配置示例。
+4、也可以用 nginx SNI、haproxy SNI、caddy 分流（SNI 分流 或 host 分流） 等分流来解决问题（不同方法，达到相同效果。），相关分流见各自配置示例。
 
 三、Xray/v2ray SNI 分流的配置方法
 
@@ -38,7 +38,7 @@
 
 四、Xray/v2ray 流量统计的配置方法
 
-1、配置流量统计（见traffic_config.json配置）
+1、配置流量统计（见 traffic_config.json 配置）
 
 1）、入站的流量统计（不推荐，一般建议关闭。），根据各个入站 tag 来记录。
 
@@ -48,7 +48,7 @@
 
 2、流量统计处理
 
-1）、把对应 traffic.sh（Xray_traffic.sh或v2ray_traffic.sh） 脚本上传到服务器 root 目录，并授予执行权限（chmod +x traffic.sh）。
+1）、把对应 traffic.sh（Xray_traffic.sh 或 v2ray_traffic.sh） 脚本上传到服务器 root 目录，并授予执行权限（chmod +x traffic.sh）。
 
 2）、执行 ./traffic.sh 即可查看流量统计。
 
