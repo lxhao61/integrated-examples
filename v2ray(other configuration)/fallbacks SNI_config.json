@@ -17,7 +17,7 @@
             "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给caddy。1或2表示PROXY protocol版本。
           },
           {
-            "name": "zt.xx.yy",//修改为自己分流的域名
+            "name": "zt.xx.yy", //修改为自己分流的域名
             "dest": 828, //h2与http/1.1回落端口（共用端口）
             "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给caddy。1或2表示PROXY protocol版本。
           },
@@ -44,24 +44,24 @@
 .........<省略>........
         "fallbacks": [
           {
-            "name": "zv.xx.yy",//修改为自己分流的域名
+            "name": "zv.xx.yy", //修改为自己分流的域名
             "alpn": "h2", //h2回落匹配
             "dest": 812, //h2回落端口
             "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给nginx。1或2表示PROXY protocol版本。
           },
           {
-            "name": "zv.xx.yy",//修改为自己分流的域名
+            "name": "zv.xx.yy", //修改为自己分流的域名
             "dest": 811, //http/1.1回落端口
             "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给nginx。1或2表示PROXY protocol版本。
           },
           {
-            "name": "zt.xx.yy",//修改为自己分流的域名
+            "name": "zt.xx.yy", //修改为自己分流的域名
             "alpn": "h2", //h2回落匹配
             "dest": 822, //h2回落端口
             "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给nginx。1或2表示PROXY protocol版本。
           },
           {
-            "name": "zt.xx.yy",//修改为自己分流的域名
+            "name": "zt.xx.yy", //修改为自己分流的域名
             "dest": 821, //http/1.1回落端口
             "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给nginx。1或2表示PROXY protocol版本。
           },
