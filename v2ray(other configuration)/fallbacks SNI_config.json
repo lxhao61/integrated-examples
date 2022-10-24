@@ -3,8 +3,8 @@
 .........<省略>........
         "fallbacks": [
           {
-            "dest": 88, //dest h2与http/1.1回落共用此端口，回落到web服务器。需web服务器同一端口，同时支持h2c server与http/1.1 server应用。
-            "xver": 0  //发送PROXY protocol，专用于传递请求的真实来源IP和端口，填版本1或2，默认为0，即不发送。
+            "dest": 88, //h2与http/1.1回落端口（共用端口）
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给caddy。1或2表示PROXY protocol版本。
           },
 .........<省略>........
         ]
@@ -12,14 +12,14 @@
 .........<省略>........
         "fallbacks": [
           {
-            "name": "zv.xx.yy",//修改为自己分流的域名
-            "dest": 818, //h2与http/1.1回落共用此端口，回落到web服务器。需web服务器同一端口，同时支持h2c server与http/1.1 server应用，端口不能相同。
-            "xver": 0  //发送PROXY protocol，专用于传递请求的真实来源IP和端口，填版本1或2，默认为0，即不发送。
+            "name": "zv.xx.yy", //修改为自己分流的域名
+            "dest": 818, //h2与http/1.1回落端口（共用端口）
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给caddy。1或2表示PROXY protocol版本。
           },
           {
             "name": "zt.xx.yy",//修改为自己分流的域名
-            "dest": 828, //h2与http/1.1回落共用此端口，回落到web服务器。需web服务器同一端口，同时支持h2c server与http/1.1 server应用，端口不能相同。
-            "xver": 0  //发送PROXY protocol，专用于传递请求的真实来源IP和端口，填版本1或2，默认为0，即不发送。
+            "dest": 828, //h2与http/1.1回落端口（共用端口）
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给caddy。1或2表示PROXY protocol版本。
           },
 .........<省略>........
         ]
@@ -31,12 +31,12 @@
         "fallbacks": [
           {
             "alpn": "h2", //h2回落匹配
-            "dest": 82, //h2回落端口，端口不能相同。
-            "xver": 0 //发送PROXY protocol，专用于传递请求的真实来源IP和端口，填版本1或2，默认为0，即不发送。
+            "dest": 82, //h2回落端口
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给nginx。1或2表示PROXY protocol版本。
           },
           {
-            "dest": 81, //http/1.1回落端口，端口不能相同。
-            "xver": 0 //发送PROXY protocol，专用于传递请求的真实来源IP和端口，填版本1或2，默认为0，即不发送。
+            "dest": 81, //http/1.1回落端口
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给nginx。1或2表示PROXY protocol版本。
           },
 .........<省略>........
         ]
@@ -46,24 +46,24 @@
           {
             "name": "zv.xx.yy",//修改为自己分流的域名
             "alpn": "h2", //h2回落匹配
-            "dest": 812, //h2回落端口，端口不能相同。
-            "xver": 0  //发送PROXY protocol，专用于传递请求的真实来源IP和端口，填版本1或2，默认为0，即不发送。
+            "dest": 812, //h2回落端口
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给nginx。1或2表示PROXY protocol版本。
           },
           {
             "name": "zv.xx.yy",//修改为自己分流的域名
-            "dest": 811, //http/1.1回落端口，端口不能相同。
-            "xver": 0  //发送PROXY protocol，专用于传递请求的真实来源IP和端口，填版本1或2，默认为0，即不发送。
+            "dest": 811, //http/1.1回落端口
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给nginx。1或2表示PROXY protocol版本。
           },
           {
             "name": "zt.xx.yy",//修改为自己分流的域名
             "alpn": "h2", //h2回落匹配
-            "dest": 822, //h2回落端口，端口不能相同。
-            "xver": 0  //发送PROXY protocol，专用于传递请求的真实来源IP和端口，填版本1或2，默认为0，即不发送。
+            "dest": 822, //h2回落端口
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给nginx。1或2表示PROXY protocol版本。
           },
           {
             "name": "zt.xx.yy",//修改为自己分流的域名
-            "dest": 821, //http/1.1回落端口，端口不能相同。
-            "xver": 0  //发送PROXY protocol，专用于传递请求的真实来源IP和端口，填版本1或2，默认为0，即不发送。
+            "dest": 821, //http/1.1回落端口
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给nginx。1或2表示PROXY protocol版本。
           },
 .........<省略>........
         ]
