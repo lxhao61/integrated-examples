@@ -26,7 +26,7 @@
 
 4、cloudflare 已不支持 freenom 提供的免费域名以 DNS-01 验证方式申请 SSL/TLS 证书了。可以参考 duckdns 配置示例间接（挑战委托模式）实现 cloudflare 解析的 freenom 免费域名以 DNS-01 验证方式申请 SSL/TLS 证书。
 
-5、挑战委托模式最早由 duckdns 插件专属支持，后 caddy 通用支持了（参数有调整）。其它插件不推荐配置此应用：A、其它插件使用此模式需要两个根域名，其中一个域名仅用它二级域名来中间关联，极大浪费。 B、目前其它插件 Caddyfile 配置挑战委托模式很不方便，无对应全局配置参数。
+5、挑战委托模式最早由 duckdns 插件专属支持，后 caddy 通用支持了（目前 Caddyfile 支持不完全）。其它插件不推荐配置此应用：A、其它插件使用此模式需要两个根域名，其中一个域名仅用它二级域名来中间关联，极大浪费。 B、目前其它插件 Caddyfile 配置挑战委托模式很不方便，无对应全局配置参数。
 
 6、acmeh 或 zerossl 申请成功后证书及密钥所在路径及目录。  
 1）、acme 申请的普通证书及密钥在 “/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy” 目录中。/home/tls 为设置存放证书及密钥的基本路径。xx.yy 为域名，根据自己域名变化。  
