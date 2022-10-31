@@ -67,7 +67,7 @@
 4. caddy插件单一应用简记：N=naiveproxy(caddy+forwardproxy)、T=trojan-go(caddy+caddy-trojan)。
 5. 目前caddy采用UDS监听不支持HTTP/3，即仅端口监听才支持开启HTTP/3。
 6. 受限应用条件及场景，naiveproxy的QUIC应用（即caddy的HTTP/3代理应用）不是所有相关naiveproxy示例都支持。
-7. 当前caddy从Let's Encrypt或ZeroSSL自动申请的SSL/TLS证书都为ECC证书。
+7. 当前caddy从Let's Encrypt或ZeroSSL自动申请的SSL/TLS证书默认都为ECC证书。
 8. 流量伪装与防探测网站可由其它WEB应用软件实现，其支持反代（WebSocket、gRPC及H2C）与支持回落（H2C server及HTTP/1.1 server）取决于自身，配置自行参考caddy或nginx对应示例。
 9. 附加相关插件的caddy程序文件已编译好，去本人Releases中下载即可。
 10. trojan-go安卓客户端可以去本人Releases中下载（最末）。
