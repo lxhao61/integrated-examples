@@ -94,7 +94,7 @@
         "handlers": [{
           "handler": "exec", //版本不小于v2.6.3加入此插件支持（本项目）
           "command": "systemctl", //确保Caddy有权运行此命令，即Caddy用户至少为root组权限用户。
-          "args": ["restart","trojan-go"] //若使用trojan，trojan-go改为trojan。
+          "args": ["restart","trojan-go"] //若使用Trojan，Trojan-go改为Trojan。
         }]
       }]
     } //此部分配置为events应用：自动同步重启Trojan-go或Trojan来加载更新后的TLS证书，解决Trojan-go或Trojan不支持自动重载TLS证书问题。（此方法为当前解决此问题的最简单方法。）
