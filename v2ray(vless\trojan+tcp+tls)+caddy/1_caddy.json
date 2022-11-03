@@ -86,7 +86,7 @@
         "events": ["cert_obtained"],
         "handlers": [{
           "handler": "exec", //版本不小于v2.6.3加入此插件支持（本项目）
-          "command": "systemctl", //需要Caddy有权运行此命令，即Caddy用户至少为root组权限用户。
+          "command": "systemctl", //确保Caddy有权运行此命令，即Caddy用户至少为root组权限用户。
           "args": ["restart","v2ray"]
         }]
       }]
