@@ -2,9 +2,9 @@
 
 本示例配置为 Trojan-Go 或 Trojan 与 NaïveProxy 应用。Trojan-Go 或 Trojan 服务端前置（监听 443 端口）处理来自墙内的 HTTPS 请求，如果是合法的 Trojan-Go 或 Trojan 客户端请求，那么为该请求提供服务（科学上网）；否则将已解除 TLS 的流量请求回落（转发）给 Caddy，由 Caddy 为其提供 WEB 服务，若 Caddy 发现是 NaïveProxy 流量就进行正向代理。其应用如下：
 
-1、Trojan-Go或Trojan（回落配置，TLS由自己提供及处理。）
+1、Trojan-Go或Trojan（回落配置，TLS由Caddy提供及处理。）
 
-2、NaïveProxy（基于Caddy的改进版forwardproxy插件实现，TLS由Trojan-Go或Trojan提供及处理，不需配置。）
+2、NaïveProxy（基于Caddy的改进版forwardproxy插件实现，TLS由Trojan-Go或Trojan处理，不需配置。）
 
 原理：
 
@@ -25,6 +25,4 @@
 
 6、本示例的 NaïveProxy 仅支持 HTTP/2 代理应用，即 HTTPS 协议传输。
 
-7、从Let's Encrypt申请的普通TLS证书在“/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy”目录中；xx.yy为域名，根据域名变化。从ZeroSSL申请的普通TLS证书在“/home/tls/certificates/acme.zerossl.com-v2-dv90/xx.yy”目录中；xx.yy为域名，根据域名变化。
-
-8、通配符TLS证书申请配置详见“caddy(other configuration) （Caddy的特殊应用配置方法。）”。
+7、本示例 Trojan-Go 或 Trojan 所需 TLS证书由 Caddy 提供，实现证书自动申请及更新，且 Trojan-Go 或 Trojan 同步重载更新证书。
