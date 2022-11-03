@@ -93,3 +93,7 @@
     } //此部分配置为events应用：自动同步重启V2Ray来加载更新后的TLS证书，解决V2Ray不支持自动重载TLS证书问题。（此方法为当前解决此问题的最简单方法。）
   }
 }
+//备注：
+//1、从Let's Encrypt申请的普通TLS证书在“/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy”目录中；xx.yy为域名，根据域名变化。
+//2、从ZeroSSL申请的普通TLS证书在“/home/tls/certificates/acme.zerossl.com-v2-dv90/xx.yy”目录中；xx.yy为域名，根据域名变化。
+//3、从Let's Encrypt或ZeroSSL申请通配符TLS证书配置，详见“caddy(other configuration) （Caddy的特殊应用配置方法。）”。
