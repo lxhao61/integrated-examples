@@ -19,6 +19,6 @@
 
 4、从Let's Encrypt申请的普通TLS证书在“/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy”目录中；xx.yy为域名，根据域名变化。从ZeroSSL申请的普通TLS证书在“/home/tls/certificates/acme.zerossl.com-v2-dv90/xx.yy”目录中；xx.yy为域名，根据域名变化。
 
-5、通配符TLS证书申请配置详见“caddy(other configuration) （caddy的特殊应用配置方法。）”。
+5、通配符TLS证书申请配置详见“caddy(other configuration) （Caddy的特殊应用配置方法。）”。
 
 6、配置1：使用 Local Loopback 连接，且启用了 PROXY protocol。配置2：使用 UDS 连接，且启用了 PROXY protocol。
