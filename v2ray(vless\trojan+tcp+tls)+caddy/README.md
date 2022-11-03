@@ -17,7 +17,7 @@
 
 3、Caddy 发行版不支持接收 PROXY protocol。如要支持接收 PROXY protocol 需选 caddy2-proxyprotocol 插件定制编译，或下载本人 Releases 中编译好的 Caddy 来使用即可。
 
-4、从acme申请的普通TLS证书在“/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy”目录中；xx.yy为域名，根据域名变化。从zerossl申请的普通TLS证书在“/home/tls/certificates/acme.zerossl.com-v2-dv90/xx.yy”目录中；xx.yy为域名，根据域名变化。
+4、从Let's Encrypt申请的普通TLS证书在“/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy”目录中；xx.yy为域名，根据域名变化。从ZeroSSL申请的普通TLS证书在“/home/tls/certificates/acme.zerossl.com-v2-dv90/xx.yy”目录中；xx.yy为域名，根据域名变化。
 
 5、通配符TLS证书申请配置，详见“caddy(other configuration) （caddy的特殊应用配置方法。）”。
 
