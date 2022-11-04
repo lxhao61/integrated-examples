@@ -53,13 +53,13 @@
           {
             "match": [{
               "tls": {
-                "sni": ["zh.xx.yy"] //修改为自己规划对应https server的域名
+                "sni": ["zh.xx.yy"] //修改为自己规划对应HTTPS server的域名
               }
             }],
             "handle": [{
               "handler": "proxy",
               "upstreams": [{
-                "dial": ["127.0.0.1:7443"] //转给https server本地监听端口
+                "dial": ["127.0.0.1:7443"] //转给HTTPS server本地监听端口
               }],
               "proxy_protocol": "v2" //启用PROXY protocol发送。v1或v2表示PROXY protocol版本，建议采用v2版。
             }]
@@ -108,7 +108,7 @@
             "wrapper": "proxy_protocol" //开启PROXY protocol接收
           },
           {
-            "wrapper": "tls" //https server开启PROXY protocol接收必须配置
+            "wrapper": "tls" //HTTPS server开启PROXY protocol接收必须配置
           }],
           "routes": [{
             "match": [{
