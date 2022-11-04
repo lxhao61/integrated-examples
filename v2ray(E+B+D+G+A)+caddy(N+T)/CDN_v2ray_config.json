@@ -1,5 +1,5 @@
 //使用多个域名实现CDN流量中转与正常应用共存配置
-//一、多个域名使用各自普通证书
+//一、多个域名使用各自普通TLS证书
 //原配置：
 //.........<省略>........
           "certificates": [
@@ -28,11 +28,11 @@
 //.........<省略>........
 //注意：
 //1、z1.xx.yy与z2.xx.yy表示两个不同域名（推荐采用根域名相同的两个二级域名即可）。
-//2、同步修改caddy配置中“限定域名访问的配置”（可参考如下3中对应此部分修改），否则无法提供流量伪装与防探测（打不开网站）。
-//3、Xray或v2ray可用caddy申请的普通证书及密钥，其路径详见“TLS_caddy.json”或“TLS_Caddyfile”。
+//2、同步修改Caddy配置中“限定域名访问的配置”（可参考如下3中对应此部分修改），否则无法提供流量伪装与防探测（打不开网站）。
+//3、Xray或V2Ray可用Caddy申请的普通TLS证书，其路径详见“CDN_caddy.json”。
 
 
-//二、多个域名使用同一个通配符证书或SAN证书
+//二、多个域名使用同一个通配符TLS证书
 //原配置：
 //.........<省略>........
           "certificates": [
@@ -49,11 +49,11 @@
           "certificates": [
             {
               "ocspStapling": 3600, //OCSP装订更新与证书热重载的时间间隔。Xray v1.3.0版及以后支持（可选项参数，可以不配置。）。目前v2ray不支持，若使用v2ray做服务端必须删除此项参数。
-              "certificateFile": "/home/tls/wildcard_.xx.yy/wildcard_.xx.yy.crt", //换成自己的通配符证书或SAN证书，绝对路径。
-              "keyFile": "/home/tls/wildcard_.xx.yy/wildcard_.xx.yy.key" //换成自己的通配符密钥或SAN密钥，绝对路径。
+              "certificateFile": "/home/tls/wildcard_.xx.yy/wildcard_.xx.yy.crt", //换成自己的通配符证书，绝对路径。
+              "keyFile": "/home/tls/wildcard_.xx.yy/wildcard_.xx.yy.key" //换成自己的通配符密钥，绝对路径。
             }
           ],
 //.........<省略>........
 //注意：
-//1、同步修改caddy配置中“限定域名访问的配置”的xx.yy为*.xx.yy（通配符域名）或多个相关域名（可参考如下2中对应此部分修改），否则无法提供流量伪装与防探测（打不开网站）。
-//2、Xray或v2ray可用caddy申请的通配符证书及密钥，其路径详见“caddy(other configuration) （caddy的特殊应用配置方法。）”。
+//1、同步修改Caddy配置中“限定域名访问的配置”的xx.yy为*.xx.yy（通配符域名）或多个相关域名（可参考如下2中对应此部分修改），否则无法提供流量伪装与防探测（打不开网站）。
+//2、Xray或V2Ray可用Caddy申请的通配符TLS证书，其路径详见“caddy(other configuration) （Caddy的特殊应用配置方法。）”。
