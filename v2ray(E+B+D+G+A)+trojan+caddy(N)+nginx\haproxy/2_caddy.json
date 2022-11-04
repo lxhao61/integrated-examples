@@ -51,7 +51,7 @@
           "protocols": ["h1","h2c"] //开启HTTP/1.1 server与H2C server支持
         },
         "https": {
-          "listen": ["127.0.0.1:7443"], //HTTPS server本地监听端口
+          "listen": ["unix//dev/shm/https.sock"], //HTTPS server监听进程
           "listener_wrappers": [{
             "wrapper": "proxy_protocol" //开启PROXY protocol接收
           },
@@ -125,7 +125,7 @@
             "cipher_suites": ["TLS_AES_256_GCM_SHA384","TLS_AES_128_GCM_SHA256","TLS_CHACHA20_POLY1305_SHA256","TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"],
             "curves": ["x25519","secp521r1","secp384r1","secp256r1"]
           }],
-          "protocols": ["h1","h2","h3"] //开启HTTP/3 server支持（默认，此条参数可以省略不写。）。若采用HAProxy SNI分流（目前不支持UDP转发），推荐不开启。
+          "protocols": ["h1","h2"] //关闭HTTP/3 server支持（HTTP/3 server不支持UDS监听）
         }
       }
     },
