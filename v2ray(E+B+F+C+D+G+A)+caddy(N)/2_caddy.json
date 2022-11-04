@@ -13,6 +13,10 @@
       }
     }
   },
+  "storage": {
+    "module": "file_system",
+    "root": "/home/tls" //存放TLS证书的基本路径
+  },
   "apps": {
     "layer4": { //加了caddy-l4插件编译的才可启用SNI分流
       "servers": {
@@ -66,19 +70,19 @@
     "http": {
       "servers": {
         "h1": {
-          "listen": [":80"], //http默认监听端口
+          "listen": [":80"], //HTTP默认监听端口
           "routes": [{
             "handle": [{
               "handler": "static_response",
               "headers": {
-                "Location": ["https://{http.request.host}{http.request.uri}"] //http自动跳转https，让网站看起来更真实。
+                "Location": ["https://{http.request.host}{http.request.uri}"] //HTTP自动跳转HTTPS，让网站看起来更真实。
               },
               "status_code": 301
             }]
           }]
         },
         "h1h2c": {
-          "listen": ["unix//dev/shm/h1h2c.sock"], //http/1.1与h2c server监听进程
+          "listen": ["unix//dev/shm/h1h2c.sock"], //HTTP/1.1 server及H2C server监听进程
           "listener_wrappers": [{
             "wrapper": "proxy_protocol" //开启PROXY protocol接收
           }],
@@ -170,9 +174,6 @@
             }]
           }],
           "tls_connection_policies": [{
-            "certificate_selection": {
-              "any_tag": ["tls01"]
-            },
             "cipher_suites": ["TLS_AES_256_GCM_SHA384","TLS_AES_128_GCM_SHA256","TLS_CHACHA20_POLY1305_SHA256","TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256","TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256"], //若无RSA证书，可删除所有RSA算法的密码套件；无ECC证书，可删除所有ECDSA算法的密码套件。
             "curves": ["x25519","secp521r1","secp384r1","secp256r1"]
           }],
@@ -182,12 +183,31 @@
     },
     "tls": {
       "certificates": {
-        "load_files": [{
-          "certificate": "/home/tls/zh.xx.yy/zh.xx.yy.crt", //换成自己的证书，绝对路径。
-          "key": "/home/tls/zh.xx.yy/zh.xx.yy.key", //换成自己的密钥，绝对路径。
-          "tags": ["tls01"]
+        "automate": ["zv.xx.yy","zt.xx.yy","zh.xx.yy"] //自动化管理TLS证书（包括获取、更新及加载证书）。修改为自己的域名。
+      },
+      "automation": {
+        "policies": [{
+          "issuers": [{
+            "module": "acme", //acme表示从Let's Encrypt申请TLS证书，zerossl表示从ZeroSSL申请TLS证书。必须acme与zerossl二选一（固定TLS证书的目录便于引用）。
+            "email": "your@email.com" //电子邮件地址。选配，推荐。
+          }]
         }]
       }
-    }
+    }, //删除如下events应用配置块（Xray支持自动热重载TLS证书不需要，或V2Ray使用Crontab解决V2Ray不支持自动重载TLS证书问题。），且去掉本行大括号后逗号。
+    "events": { //版本不小于v2.6.0才支持
+      "subscriptions": [{
+        "events": ["cert_obtained"],
+        "handlers": [{
+          "handler": "exec", //版本不小于v2.6.3加入此插件支持（本项目）
+          "command": "systemctl", //确保Caddy有权运行此命令，即Caddy用户至少为root组权限用户。
+          "args": ["restart","v2ray"]
+        }]
+      }]
+    } //此部分配置为events应用：自动同步重启V2Ray来加载更新后的TLS证书，解决V2Ray不支持自动重载TLS证书问题。（此方法为当前解决此问题的最简单方法。）
   }
 }
+//备注：
+//1、申请免费TLS证书的域名不要超过五个，否则影响TLS证书的更新。
+//2、从Let's Encrypt申请的普通TLS证书在‘/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zv.xx.yy’目录中；zv.xx.yy为域名，根据域名变化。
+//3、从ZeroSSL申请的普通TLS证书在‘/home/tls/certificates/acme.zerossl.com-v2-dv90/zv.xx.yy’目录中；zv.xx.yy为域名，根据域名变化。
+//4、从Let's Encrypt或ZeroSSL申请通配符TLS证书配置，详见‘caddy(other configuration) （Caddy的特殊应用配置方法。）’。
