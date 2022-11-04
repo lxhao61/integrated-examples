@@ -103,8 +103,8 @@
           {
             "handle": [{
               "handler": "forward_proxy",
-              "auth_user_deprecated": "user", //naiveproxy用户，修改为自己的。
-              "auth_pass_deprecated": "pass", //naiveproxy密码，修改为自己的。
+              "auth_user_deprecated": "user", //NaïveProxy用户，修改为自己的。
+              "auth_pass_deprecated": "pass", //NaïveProxy密码，修改为自己的。
               "hide_ip": true,
               "hide_via": true,
               "probe_resistance": {}
