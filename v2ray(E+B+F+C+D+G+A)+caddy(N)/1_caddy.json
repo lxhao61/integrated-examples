@@ -103,7 +103,7 @@
           "protocols": ["h1","h2c"] //开启HTTP/1.1 server与H2C server支持
         },
         "https": {
-          "listen": ["127.0.0.1:7443"], //https server本地监听端口
+          "listen": ["127.0.0.1:7443"], //HTTPS server本地监听端口
           "listener_wrappers": [{
             "wrapper": "proxy_protocol" //开启PROXY protocol接收
           },
