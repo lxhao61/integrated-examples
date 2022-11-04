@@ -80,7 +80,7 @@
           }]
         }]
       }
-    }, //删除如下events应用配置块（Xray支持自动热重载TLS证书不需要，或V2Ray不使用如下方法解决V2Ray不支持自动重载TLS证书问题。），且去掉本行大括号后逗号。
+    }, //删除如下events应用配置块（Xray支持自动热重载TLS证书不需要，或V2Ray使用Crontab解决V2Ray不支持自动重载TLS证书问题。），且去掉本行大括号后逗号。
     "events": { //版本不小于v2.6.0才支持
       "subscriptions": [{
         "events": ["cert_obtained"],
