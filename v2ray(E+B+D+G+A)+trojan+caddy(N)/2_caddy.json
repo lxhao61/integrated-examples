@@ -189,7 +189,7 @@
           }]
         }]
       }
-    }, //删除如下events应用配置块（Xray支持自动热重载TLS证书不需要，或V2Ray使用Crontab解决V2Ray不支持自动重载TLS证书问题。），且去掉本行大括号后逗号。
+    },
     "events": { //版本不小于v2.6.0才支持
       "subscriptions": [{
         "events": ["cert_obtained"],
@@ -197,13 +197,19 @@
           "handler": "exec", //版本不小于v2.6.3加入此插件支持（本项目）
           "command": "systemctl", //确保Caddy有权运行此命令，即Caddy用户至少为root组权限用户。
           "args": ["restart","v2ray"]
+        },
+        {
+          "handler": "exec", //版本不小于v2.6.3加入此插件支持（本项目）
+          "command": "systemctl", //确保Caddy有权运行此命令，即Caddy用户至少为root组权限用户。
+          "args": ["restart","trojan-go"] //若使用Trojan，参数trojan-go改为trojan。
         }]
       }]
-    } //此部分配置为events应用：自动同步重启V2Ray来加载更新后的TLS证书，解决V2Ray不支持自动重载TLS证书问题。（此方法为当前解决此问题的最简单方法。）
+    } //此部分配置为events应用：自动同步重启V2Ray与Trojan-Go或Trojan来加载更新后的TLS证书，解决V2Ray与Trojan-Go或Trojan不支持自动重载TLS证书问题。（此方法为当前解决此问题的最简单方法。）
   }
 }
 //备注：
-//1、申请免费TLS证书的域名不要超过五个，否则影响TLS证书的更新。
-//2、从Let's Encrypt申请的普通TLS证书在‘/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zv.xx.yy’目录中；zv.xx.yy为域名，根据域名变化。
-//3、从ZeroSSL申请的普通TLS证书在‘/home/tls/certificates/acme.zerossl.com-v2-dv90/zv.xx.yy’目录中；zv.xx.yy为域名，根据域名变化。
-//4、从Let's Encrypt或ZeroSSL申请通配符TLS证书配置，详见‘caddy(other configuration) （Caddy的特殊应用配置方法。）’。
+//1、上面events应用配置可根据需要删减部分或全部。如Xray支持自动热重载TLS证书不需要配置，或V2Ray与Trojan-Go或Trojan使用Crontab解决V2Ray与Trojan-Go或Trojan不支持自动重载TLS证书问题等。
+//2、申请免费TLS证书的域名不要超过五个，否则影响TLS证书的更新。
+//3、从Let's Encrypt申请的普通TLS证书在‘/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zv.xx.yy’目录中；zv.xx.yy为域名，根据域名变化。
+//4、从ZeroSSL申请的普通TLS证书在‘/home/tls/certificates/acme.zerossl.com-v2-dv90/zv.xx.yy’目录中；zv.xx.yy为域名，根据域名变化。
+//5、从Let's Encrypt或ZeroSSL申请通配符TLS证书配置，详见‘caddy(other configuration) （Caddy的特殊应用配置方法。）’。
