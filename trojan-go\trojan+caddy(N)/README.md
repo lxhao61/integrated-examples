@@ -2,7 +2,7 @@
 
 本示例配置为 Trojan-Go 或 Trojan 与 NaïveProxy 应用。Trojan-Go 或 Trojan 服务端前置（监听 443 端口）处理来自墙内的 HTTPS 请求，如果是合法的 Trojan-Go 或 Trojan 客户端请求，那么为该请求提供服务（科学上网）；否则将已解除 TLS 的流量请求回落（转发）给 Caddy，由 Caddy 为其提供 WEB 服务，若 Caddy 发现是 NaïveProxy 流量就进行正向代理。其应用如下：
 
-1、Trojan-Go或Trojan（回落配置，TLS由Caddy提供、由Trojan-Go或Trojan处理。）
+1、Trojan-Go或Trojan（回落配置，TLS由自己提供及处理。）
 
 2、NaïveProxy（基于Caddy的改进版forwardproxy插件实现，TLS由Trojan-Go或Trojan处理，不需配置。）
 
