@@ -4,7 +4,7 @@
 	order reverse_proxy before forward_proxy
 	admin off
 	log {
-		output file /var/log/caddy/access.log
+		output file /var/log/caddy/error.log
 		level ERROR
 	} #版本不小于v2.4.0才支持日志全局配置，否则各自配置。
 	storage file_system {
@@ -23,7 +23,7 @@
 	servers unix//dev/shm/https.sock { #与下边监听进程对应
 		listener_wrappers {
 			proxy_protocol #开启PROXY protocol接收
-			tls #https server开启PROXY protocol接收必须配置
+			tls #HTTPS server开启PROXY protocol接收必须配置
 			trojan #caddy-trojan插件应用必须配置
 		}
 		protocols h1 h2 #关闭HTTP/3 server支持（HTTP/3 server不支持UDS监听）
@@ -33,10 +33,6 @@
 		no_proxy
 		users diy443 #修改为自己的密码。密码可多组，用空格隔开。
 	}
-	#删除如下events应用配置块（Xray支持自动热重载TLS证书不需要，或V2Ray使用Crontab解决V2Ray不支持自动重载TLS证书问题。）
-	events { #版本不小于v2.6.0才支持
-		on cert_obtained exec systemctl restart v2ray #版本不小于v2.6.3加入exec插件支持（本项目）。确保Caddy有权运行systemctl命令，即Caddy用户至少为root组权限用户。
-	} #此部分配置为events应用：自动同步重启V2Ray来加载更新后的TLS证书，解决V2Ray不支持自动重载TLS证书问题。（此方法为当前解决此问题的最简单方法。）
 }
 
 :80 { #HTTP默认监听端口
@@ -44,7 +40,7 @@
 }
 
 :88 { #绑定UDS后此端口失效，仅做标记作用。
-	bind unix//dev/shm/h1h2c.sock #http/1.1与h2c server监听进程
+	bind unix//dev/shm/h1h2c.sock #绑定UDS（HTTP/1.1 server及H2C server监听进程）
 
 	header {
 		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
@@ -54,11 +50,11 @@
 	}
 }
 
-:7443, zv.xx.yy:7443, zh.xx.yy:7443 { #zv.xx.yy、zh.xx.yy修改为自己的域名。注意：逗号与域名之间有一个空格。
-	bind unix//dev/shm/https.sock #HTTPS server监听进程
+:7443, zv.xx.yy:7443, zh.xx.yy:7443 { #绑定UDS后此端口失效，仅做标记作用。zv.xx.yy、zh.xx.yy修改为自己的域名。注意：逗号与域名（或含端口）之间有一个空格。
+	bind unix//dev/shm/https.sock #绑定UDS（HTTPS server监听进程）
 
-	tls {
-		ciphers TLS_AES_256_GCM_SHA384 TLS_AES_128_GCM_SHA256 TLS_CHACHA20_POLY1305_SHA256 TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+	tls /home/tls/zh.xx.yy/zh.xx.yy.crt /home/tls/zh.xx.yy/zh.xx.yy.key { #换成自己的证书与密钥，绝对路径。
+		ciphers TLS_AES_256_GCM_SHA384 TLS_AES_128_GCM_SHA256 TLS_CHACHA20_POLY1305_SHA256 TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 #若无RSA证书，可删除所有RSA算法的密码套件；无ECC证书，可删除所有ECDSA算法的密码套件。
 		curves x25519 secp521r1 secp384r1 secp256r1
 	}
 
@@ -81,7 +77,7 @@
 	}
 
 	forward_proxy {
-		basic_auth user pass #naiveproxy用户与密码，修改为自己的。
+		basic_auth user pass #NaïveProxy用户与密码，修改为自己的。
 		hide_ip
 		hide_via
 		probe_resistance
@@ -90,7 +86,7 @@
 	trojan {
 		connect_method
 		websocket #开启WebSocket支持
-	} #此部分配置为trojan-go的WebSocket应用，若删除就仅支持trojan应用。
+	} #此部分配置为caddy-trojan插件的WebSocket应用，若删除就仅支持Trojan应用。
 
 	route {
 		header {
@@ -105,4 +101,7 @@
 #1、申请免费TLS证书的域名不要超过五个，否则影响TLS证书的更新。
 #2、从Let's Encrypt申请的普通TLS证书在‘/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zv.xx.yy’目录中；zv.xx.yy为域名，根据域名变化。
 #3、从ZeroSSL申请的普通TLS证书在‘/home/tls/certificates/acme.zerossl.com-v2-dv90/zv.xx.yy’目录中；zv.xx.yy为域名，根据域名变化。
-#4、从Let's Encrypt或ZeroSSL申请通配符TLS证书配置，详见‘caddy(other configuration) （Caddy的特殊应用配置方法。）’。
+#4、从Let's Encrypt或ZeroSSL申请通配符TLS证书配置，详见‘caddy(other configuration) （Caddy的特殊应用配置方法。）’中对应介绍及对应caddy-dns插件配置示例。
+#5、因V2Ray不支持‘证书热更新’功能，即V2Ray不会自动识别TLS证书更新并重载TLS证书，当使用Caddy（内置ACME客户端）申请的TLS证书还需进行如下配置：
+#1）、使用Unix和类Unix操作系统的Crontab指令定时重启V2Ray重载更新后的TLS证书。（通用解决办法）
+#2）、使用Caddy的events应用配置实现专业ACME客户端acme.sh的reloadcmd参数应用，即TLS证书自动更新后就执行重启V2Ray重载更新后的TLS证书。详见‘caddy(other configuration) （Caddy的特殊应用配置方法。）’中对应介绍及对应配置示例。
