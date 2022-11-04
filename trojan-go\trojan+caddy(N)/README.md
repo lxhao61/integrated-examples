@@ -23,6 +23,6 @@
 
 5、使用本人 Releases 中编译好的 Caddy 文件，可支持 H2C server、NaïveProxy 等应用。
 
-6、本示例的 NaïveProxy 仅支持 HTTP/2 代理应用，即 HTTPS 协议传输。
+6、本示例中 NaïveProxy 仅支持 HTTP/2 代理应用，即 HTTPS 协议传输。
 
-7、本示例的 Trojan-Go 或 Trojan 所需 TLS 证书由 Caddy 提供，实现 TLS 证书自动申请及更新，且同步 Trojan-Go 或 Trojan 重载 TLS 证书。
+7、本示例中 Trojan-Go 或 Trojan 所需 TLS 证书由 Caddy 提供，实现 TLS 证书自动申请及更新，且同步 Trojan-Go 或 Trojan 重载 TLS 证书。
