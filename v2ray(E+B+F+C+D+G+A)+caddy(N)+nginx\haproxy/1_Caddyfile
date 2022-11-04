@@ -24,7 +24,7 @@
 			proxy_protocol #开启PROXY protocol接收
 			tls #https server开启PROXY protocol接收必须配置
 		}
-		protocols h1 h2 h3 #开启HTTP/3 server支持（默认）。若采用HAProxy SNI分流（不支持UDP转发），推荐不开启。
+		protocols h1 h2 h3 #开启HTTP/3 server支持（默认，此条参数可以省略不写。）。若采用HAProxy SNI分流（不支持UDP转发），推荐不开启。
 	}
 }
 
