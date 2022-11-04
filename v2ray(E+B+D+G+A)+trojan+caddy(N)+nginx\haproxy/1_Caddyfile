@@ -6,6 +6,13 @@
 		output file /var/log/caddy/access.log
 		level ERROR
 	} #版本不小于v2.4.0才支持日志全局配置，否则各自配置。
+	storage file_system {
+		root /home/tls #存放TLS证书的基本路径
+	}
+
+	cert_issuer acme #acme表示从Let's Encrypt申请TLS证书，zerossl表示从ZeroSSL申请TLS证书。必须acme与zerossl二选一（固定TLS证书的目录便于引用）。注意：版本不小于v2.4.1才支持。
+	email your@email.com #电子邮件地址。选配，推荐。
+
 	servers 127.0.0.1:88 { #与下边本地监听端口对应
 		protocols h1 h2c #开启HTTP/1.1 server与H2C server支持
 	}
@@ -16,6 +23,11 @@
 		}
 		protocols h1 h2 h3 #开启HTTP/3 server支持（默认）。若采用haproxy SNI分流（不支持UDP转发），推荐不开启。
 	}
+
+	events { #版本不小于v2.6.0才支持
+		on cert_obtained exec systemctl restart v2ray #版本不小于v2.6.3加入exec插件支持（本项目）。确保Caddy有权运行systemctl命令，即Caddy用户至少为root组权限用户。
+		on cert_obtained exec systemctl restart trojan-go #版本不小于v2.6.3加入exec插件支持（本项目）。确保Caddy有权运行systemctl命令，即Caddy用户至少为root组权限用户。若使用Trojan，参数trojan-go改为trojan。
+	} #此部分配置为events应用：自动同步重启V2Ray与Trojan-Go或Trojan来加载更新后的TLS证书，解决V2Ray与Trojan-Go或Trojan不支持自动重载TLS证书问题。（此方法为当前解决此问题的最简单方法。）
 }
 
 :80 { #http默认监听端口
@@ -33,11 +45,11 @@
 	}
 }
 
-:7443 { #https server监听端口
+:7443, zv.xx.yy:7443, zt.xx.yy:7443, zh.xx.yy:7443 { #zv.xx.yy、zt.xx.yy、zh.xx.yy修改为自己的域名。注意：逗号与域名之间有一个空格。
 	bind 127.0.0.1 #绑定本地主机，避免本机外的机器探测到上面端口。
 
-	tls /home/tls/zh.xx.yy/zh.xx.yy.crt /home/tls/zh.xx.yy/zh.xx.yy.key { #换成自己的证书与密钥，绝对路径。
-		ciphers TLS_AES_256_GCM_SHA384 TLS_AES_128_GCM_SHA256 TLS_CHACHA20_POLY1305_SHA256 TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 #若无RSA证书，可删除所有RSA算法的密码套件；无ECC证书，可删除所有ECDSA算法的密码套件。
+	tls {
+		ciphers TLS_AES_256_GCM_SHA384 TLS_AES_128_GCM_SHA256 TLS_CHACHA20_POLY1305_SHA256 TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
 		curves x25519 secp521r1 secp384r1 secp256r1
 	}
 
@@ -75,3 +87,9 @@
 		}
 	}
 }
+#备注：
+#1、上面events应用配置可根据需要删减部分或全部。如Xray支持自动热重载TLS证书不需要配置，或V2Ray与Trojan-Go或Trojan使用Crontab解决V2Ray与Trojan-Go或Trojan不支持自动重载TLS证书问题等。
+#2、申请免费TLS证书的域名不要超过五个，否则影响TLS证书的更新。
+#3、从Let's Encrypt申请的普通TLS证书在‘/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zv.xx.yy’目录中；zv.xx.yy为域名，根据域名变化。
+#4、从ZeroSSL申请的普通TLS证书在‘/home/tls/certificates/acme.zerossl.com-v2-dv90/zv.xx.yy’目录中；zv.xx.yy为域名，根据域名变化。
+#5、从Let's Encrypt或ZeroSSL申请通配符TLS证书配置，详见‘caddy(other configuration) （Caddy的特殊应用配置方法。）’。
