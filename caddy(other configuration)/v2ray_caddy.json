@@ -1,11 +1,28 @@
-#使用Caddy的events配置来解决V2Ray不支持自动重载TLS证书问题
-#原配置：
+//使用Caddy的events配置来解决V2Ray不支持自动重载TLS证书问题
+//原配置：
 {
-#.........<省略>........
+  "admin": {
+    "disabled": true
+  },
+  "logging": {
+//.........<省略>........
+    "tls": {
+      "certificates": {
+        "automate": ["zv.xx.yy","zt.xx.yy","zh.xx.yy"] //自动化管理TLS证书（包括获取、更新及加载证书）。修改为自己的域名。
+      },
+      "automation": {
+        "policies": [{
+          "issuers": [{
+            "module": "acme", //acme表示从Let's Encrypt申请TLS证书，zerossl表示从ZeroSSL申请TLS证书。必须acme与zerossl二选一（固定TLS证书的目录便于引用）。
+            "email": "your@email.com" //电子邮件地址。选配，推荐。
+          }]
+        }]
+      }
+    }
+  }
 }
-#.........<省略>........
 
-#以上配置修改为如下：
+//以上配置修改为如下：
 {
   "admin": {
     "disabled": true
@@ -37,7 +54,5 @@
     }
   }
 }
-#备注：
- //此部分配置为events应用：自动同步重启V2Ray来加载更新后的TLS证书，解决V2Ray不支持自动重载TLS证书问题。（此方法为当前解决此问题的最简单方法。）
-#此方法为当前解决此问题的最简单方法。
- //删除如下events应用配置块（Xray支持自动热重载TLS证书不需要，或V2Ray使用Crontab解决V2Ray不支持自动重载TLS证书问题。），且去掉本行大括号后逗号。
+//备注：
+//此方法为当前解决此问题的最简单方法。
