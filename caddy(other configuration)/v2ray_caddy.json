@@ -7,6 +7,10 @@
 
 #以上配置修改为如下：
 {
+  "admin": {
+    "disabled": true
+  },
+  "logging": {
 //.........<省略>........
     "tls": {
       "certificates": {
