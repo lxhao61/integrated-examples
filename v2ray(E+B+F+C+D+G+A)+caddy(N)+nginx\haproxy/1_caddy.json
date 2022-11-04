@@ -128,7 +128,7 @@
             "cipher_suites": ["TLS_AES_256_GCM_SHA384","TLS_AES_128_GCM_SHA256","TLS_CHACHA20_POLY1305_SHA256","TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"],
             "curves": ["x25519","secp521r1","secp384r1","secp256r1"]
           }],
-          "protocols": ["h1","h2","h3"] //开启HTTP/3 server支持（默认，此条参数可以省略不写。）。若采用haproxy SNI分流（不支持UDP转发），推荐不开启。
+          "protocols": ["h1","h2","h3"] //开启HTTP/3 server支持（默认，此条参数可以省略不写。）。若采用HAProxy SNI分流（目前不支持UDP转发），推荐不开启。
         }
       }
     },
@@ -151,4 +151,7 @@
 //1、申请免费TLS证书的域名不要超过五个，否则影响TLS证书的更新。
 //2、从Let's Encrypt申请的普通TLS证书在‘/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zv.xx.yy’目录中；zv.xx.yy为域名，根据域名变化。
 //3、从ZeroSSL申请的普通TLS证书在‘/home/tls/certificates/acme.zerossl.com-v2-dv90/zv.xx.yy’目录中；zv.xx.yy为域名，根据域名变化。
-//4、从Let's Encrypt或ZeroSSL申请通配符TLS证书配置，详见‘caddy(other configuration) （Caddy的特殊应用配置方法。）’。
+//4、从Let's Encrypt或ZeroSSL申请通配符TLS证书配置，详见‘caddy(other configuration) （Caddy的特殊应用配置方法。）’中对应介绍及对应caddy-dns插件配置示例。
+//5、因V2Ray不支持‘证书热更新’功能，即V2Ray不会自动识别TLS证书更新并重载TLS证书，当使用Caddy（内置ACME客户端）申请的TLS证书还需进行如下配置：
+//1）、使用Unix和类Unix操作系统的Crontab指令定时重启V2Ray重载更新后的TLS证书。（通用解决办法）
+//2）、使用Caddy的events应用配置实现专业ACME客户端acme.sh的reloadcmd参数应用，即TLS证书自动更新后就执行重启V2Ray重载更新后的TLS证书。详见‘caddy(other configuration) （Caddy的特殊应用配置方法。）’中对应介绍及对应配置示例。
