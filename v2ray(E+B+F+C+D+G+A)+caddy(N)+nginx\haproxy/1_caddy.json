@@ -7,7 +7,7 @@
       "default": {
         "writer": {
           "output": "file",
-          "filename": "/var/log/caddy/access.log"
+          "filename": "/var/log/caddy/error.log"
         },
         "level": "ERROR"
       }
