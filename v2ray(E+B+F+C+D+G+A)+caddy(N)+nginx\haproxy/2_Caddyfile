@@ -3,7 +3,7 @@
 	order reverse_proxy before forward_proxy
 	admin off
 	log {
-		output file /var/log/caddy/access.log
+		output file /var/log/caddy/error.log
 		level ERROR
 	} #版本不小于v2.4.0才支持日志全局配置，否则各自配置。
 	storage file_system {
@@ -33,7 +33,7 @@
 }
 
 :88 { #绑定UDS后此端口失效，仅做标记作用。
-	bind unix//dev/shm/h1h2c.sock #HTTP/1.1 server及H2C server监听进程
+	bind unix//dev/shm/h1h2c.sock #绑定UDS（HTTP/1.1 server及H2C server监听进程）
 
 	header {
 		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
