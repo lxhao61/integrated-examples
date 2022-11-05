@@ -1,14 +1,14 @@
 //使用多个域名实现CDN流量中转与Trojan应用共存配置
 //原配置：
 //.........<省略>........
-        "cert": "/home/tls/xx.yy/xx.yy.crt", //换成自己的证书，绝对路径。
-        "key": "/home/tls/xx.yy/xx.yy.key", //换成自己的密钥，绝对路径。
+        "cert": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy/xx.yy.crt", //换成自己的证书，绝对路径。
+        "key": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy/xx.yy.key", //换成自己的密钥，绝对路径。
 //.........<省略>........
 
 //以上配置修改为如下：
 //.........<省略>........
-        "cert": "/home/tls/wildcard_.xx.yy/wildcard_.xx.yy.crt", //换成自己的通配符证书，绝对路径。
-        "key": "/home/tls/wildcard_.xx.yy/wildcard_.xx.yy.key", //换成自己的通配符密钥，绝对路径。
+        "cert": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/wildcard_.xx.yy/wildcard_.xx.yy.crt", //换成自己的通配符证书，绝对路径。
+        "key": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/wildcard_.xx.yy/wildcard_.xx.yy.key", //换成自己的通配符密钥，绝对路径。
 //.........<省略>........
 //备注：
 //1、Trojan-Go的CDN流量中转（基于WebSocket over TLS）与Trojan应用同时提供，仅支持使用通配符证书的不同域名实现。
