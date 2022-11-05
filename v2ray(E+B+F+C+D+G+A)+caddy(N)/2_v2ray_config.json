@@ -6,8 +6,7 @@
   },
   "inbounds": [
     {
-      "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 5443, //vless+tcp+tls监听端口
+      "listen": "/dev/shm/vless.sock", //vless+tcp+tls监听进程
       "protocol": "vless",
       "settings": {
         "clients": [
@@ -20,12 +19,12 @@
         "decryption": "none",
         "fallbacks": [
           {
-            "dest": 88, //h2与http/1.1回落端口（共用端口）
+            "dest": "/dev/shm/h1h2c.sock", //h2与http/1.1回落进程（共用进程）
             "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给Caddy。1或2表示PROXY protocol版本。多级传递，建议配置2。
           },
           {
             "path": "/HALdGZ9k", //通过路径分流
-            "dest": 2001, //分流后转给vmess+ws监听端口
+            "dest": "@vmess-ws", //分流后转给vmess+ws监听进程
             "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给如下vmess+ws应用。1或2表示PROXY protocol版本。多级传递，建议配置2。
           }
         ]
@@ -88,8 +87,7 @@
       }
     },
     {
-      "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 6443, //trojan+tcp+tls监听端口
+      "listen": "/dev/shm/trojan.sock", //trojan+tcp+tls监听进程
       "protocol": "trojan",
       "settings": {
         "clients": [
@@ -101,12 +99,12 @@
         ],
         "fallbacks": [
           {
-            "dest": 88, //h2与http/1.1回落端口（共用端口）
+            "dest": "/dev/shm/h1h2c.sock", //h2与http/1.1回落进程（共用进程）
             "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给Caddy。1或2表示PROXY protocol版本。多级传递，建议配置2。
           },
           {
             "path": "/9ALdGZ9k", //通过路径分流
-            "dest": 2007, //分流后转给trojan+ws监听端口
+            "dest": "@trojan-ws", //分流后转给trojan+ws监听进程
             "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给如下trojan+ws应用。1或2表示PROXY protocol版本。与上一致，建议配置2。
           }
         ]
