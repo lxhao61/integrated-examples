@@ -9,8 +9,8 @@
     ],
     "log_level": 2,
     "ssl": {
-        "cert": "/home/tls/xx.yy/xx.yy.crt", //换成自己的证书，绝对路径。
-        "key": "/home/tls/xx.yy/xx.yy.key", //换成自己的密钥，绝对路径。
+        "cert": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy/xx.yy.crt", //换成自己的证书，绝对路径。
+        "key": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy/xx.yy.key", //换成自己的密钥，绝对路径。
         "key_password": "",
         "cipher": "ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-CHACHA20-POLY1305", //若证书为RSA证书，所有ECDSA改为RSA。
         "cipher_tls13": "TLS_AES_256_GCM_SHA384:TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256",
