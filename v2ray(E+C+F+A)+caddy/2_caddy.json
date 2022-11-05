@@ -70,7 +70,7 @@
     },
     "tls": {
       "certificates": {
-        "automate": ["zv.xx.yy","zh.xx.yy"] //自动化管理TLS证书（包括获取、更新及加载证书）。修改为自己的域名。
+        "automate": ["xx.yy"] //自动化管理TLS证书（包括获取、更新及加载证书）。修改为自己的域名。
       },
       "automation": {
         "policies": [{
