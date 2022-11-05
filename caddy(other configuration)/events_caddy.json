@@ -1,0 +1,58 @@
+//使用Caddy的events配置来解决V2Ray不支持自动重载TLS证书问题
+//原配置：
+{
+  "admin": {
+    "disabled": true
+  },
+  "logging": {
+//.........<省略>........
+    "tls": {
+      "certificates": {
+        "automate": ["zv.xx.yy","zt.xx.yy","zh.xx.yy"] //自动化管理TLS证书（包括获取、更新及加载证书）。修改为自己的域名。
+      },
+      "automation": {
+        "policies": [{
+          "issuers": [{
+            "module": "acme", //acme表示从Let's Encrypt申请TLS证书，zerossl表示从ZeroSSL申请TLS证书。必须acme与zerossl二选一（固定TLS证书的目录便于引用）。
+            "email": "your@email.com" //电子邮件地址。选配，推荐。
+          }]
+        }]
+      }
+    }
+  }
+}
+
+//以上配置修改为如下：
+{
+  "admin": {
+    "disabled": true
+  },
+  "logging": {
+//.........<省略>........
+    "tls": {
+      "certificates": {
+        "automate": ["zv.xx.yy","zt.xx.yy","zh.xx.yy"] //自动化管理TLS证书（包括获取、更新及加载证书）。修改为自己的域名。
+      },
+      "automation": {
+        "policies": [{
+          "issuers": [{
+            "module": "acme", //acme表示从Let's Encrypt申请TLS证书，zerossl表示从ZeroSSL申请TLS证书。必须acme与zerossl二选一（固定TLS证书的目录便于引用）。
+            "email": "your@email.com" //电子邮件地址。选配，推荐。
+          }]
+        }]
+      }
+    },
+    "events": { //版本不小于v2.6.0才支持
+      "subscriptions": [{
+        "events": ["cert_obtained"],
+        "handlers": [{
+          "handler": "exec", //版本不小于v2.6.3加入此插件支持（本项目）
+          "command": "systemctl", //确保Caddy有权运行此命令，即Caddy用户至少为root组权限用户。
+          "args": ["restart","v2ray"]
+        }]
+      }]
+    }
+  }
+}
+//备注：
+//此方法为当前解决此问题的最简单方法。
