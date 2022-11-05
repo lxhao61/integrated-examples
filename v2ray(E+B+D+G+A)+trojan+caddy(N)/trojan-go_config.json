@@ -8,7 +8,7 @@
         "diy443" //修改为自己的密码。密码可多组（"password"），用逗号隔开。
     ],
     "log_level": 2,
-    "log_file": "/var/log/trojan-go/access.log", //修改为自己的日志路径
+    "log_file": "/var/log/trojan-go/error.log", //错误日志的文件地址
     "ssl": {
         "cert": "/home/tls/zt.xx.yy/zt.xx.yy.crt", //换成自己的证书，绝对路径。
         "key": "/home/tls/zt.xx.yy/zt.xx.yy.key", //换成自己的密钥，绝对路径。
@@ -38,8 +38,8 @@
         "host": "" //若使用了CDN，一般需填入域名；否则不正确的host可能导致CDN无法转发请求。
     },
     "shadowsocks": {
-        "enabled": false, //若使用了Websocket、且经过不可信的CDN进行中转（如国内CDN）或连接遭到了GFW针对TLS的中间人攻击等可开启；否则shadowsocks AEAD加密一般关闭。
+        "enabled": false, //若使用了WebSocket、且经过不可信的CDN进行中转（如国内CDN）或连接遭到了GFW针对TLS的中间人攻击等可开启；否则Shadowsocks AEAD加密一般关闭。
         "method": "AES-128-GCM",
-        "password": "" //配置shadowsocks AEAD加密密码。若shadowsocks AEAD加密启用必须配置，不能留空。
+        "password": "" //配置Shadowsocks AEAD加密密码。若Shadowsocks AEAD加密启用必须配置，不能留空。
     }
 }
