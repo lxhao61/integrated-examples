@@ -26,7 +26,7 @@
         "handlers": [{
           "handler": "exec",
           "command": "systemctl", //确保Caddy有权运行此命令，即Caddy用户至少为root组权限用户。
-          "args": ["restart","v2ray"] //重启v2ray。v2ray可以调整为其它程序。
+          "args": ["restart","v2ray"] //可以调整为其它程序
         }]
       }]
     }
@@ -48,12 +48,12 @@
         "handlers": [{
           "handler": "exec",
           "command": "systemctl", //确保Caddy有权运行此命令，即Caddy用户至少为root组权限用户。
-          "args": ["restart","v2ray"] //重启v2ray。v2ray可以调整为其它程序。
+          "args": ["restart","v2ray"] //可以调整为其它程序
         },
         {
-          "handler": "exec", //本项目版本不小于v2.6.3加入此插件支持
+          "handler": "exec",
           "command": "systemctl", //确保Caddy有权运行此命令，即Caddy用户至少为root组权限用户。
-          "args": ["restart","trojan-go"] //重启原版trojan-go。trojan-go可以调整为其它程序。
+          "args": ["restart","trojan-go"] //可以调整为其它程序
         }]
       }]
     }
@@ -75,17 +75,17 @@
         "handlers": [{
           "handler": "exec",
           "command": "systemctl", //确保Caddy有权运行此命令，即Caddy用户至少为root组权限用户。
-          "args": ["restart","v2ray"] //重启v2ray。
+          "args": ["restart","v2ray"]
         },
         {
           "handler": "exec",
           "command": "systemctl", //确保Caddy有权运行此命令，即Caddy用户至少为root组权限用户。
-          "args": ["restart","hysteria"] //重启hysteria
+          "args": ["restart","hysteria"]
         },
         {
           "handler": "exec",
           "command": "systemctl", //确保Caddy有权运行此命令，即Caddy用户至少为root组权限用户。
-          "args": ["restart","trojan-go"] //重启原版trojan-go。若使用原版Trojan，参数trojan-go改为trojan。
+          "args": ["restart","trojan-go"]
         }]
       }]
     }
