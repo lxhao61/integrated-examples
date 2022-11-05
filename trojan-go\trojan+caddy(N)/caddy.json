@@ -87,7 +87,7 @@
           }]
         }]
       }
-    }, //若Trojan-Go或Trojan不使用events应用配置解决不支持‘证书热更新’功能，删除如下events应用配置块，且去掉本行大括号后逗号。
+    }, //若Trojan-Go或Trojan不使用‘events’应用配置应用配置解决不支持‘证书热更新’功能，删除如下events应用配置块，且去掉本行大括号后逗号。
     "events": { //版本不小于v2.6.0才支持
       "subscriptions": [{
         "events": ["cert_obtained"],
@@ -97,7 +97,7 @@
           "args": ["restart","trojan-go"] //若使用Trojan，参数trojan-go改为trojan。
         }]
       }]
-    } //此部分为events应用配置
+    } //此部分为‘events’应用配置
   }
 }
 //备注：
