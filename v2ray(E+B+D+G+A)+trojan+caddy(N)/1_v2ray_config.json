@@ -49,7 +49,7 @@
           ]
         },
         "tcpSettings": {
-          "acceptProxyProtocol": true //开启PROXY protocol接收，接收Nginx或HAProxy SNI分流前真实来源IP和端口。
+          "acceptProxyProtocol": true //开启PROXY protocol接收，接收Caddy SNI分流前真实来源IP和端口。
         }
       },
       "sniffing": {
