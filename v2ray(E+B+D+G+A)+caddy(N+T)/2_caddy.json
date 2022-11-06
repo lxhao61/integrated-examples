@@ -152,6 +152,6 @@
   }
 }
 //备注：
-//1、从Let's Encrypt申请的普通TLS证书在‘/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zv.xx.yy’目录中。/home/tls为存放TLS证书的基本路径，zv.xx.yy为域名，目录根据域名变化。
-//2、从ZeroSSL申请的普通TLS证书在‘/home/tls/certificates/acme.zerossl.com-v2-dv90/zv.xx.yy’目录中。/home/tls为存放TLS证书的基本路径，zv.xx.yy为域名，目录根据域名变化。 
+//1、从Let's Encrypt申请的普通TLS证书在‘/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy’目录中。/home/tls为存放TLS证书的基本路径，xx.yy为域名，目录根据域名变化。
+//2、从ZeroSSL申请的普通TLS证书在‘/home/tls/certificates/acme.zerossl.com-v2-dv90/xx.yy’目录中。/home/tls为存放TLS证书的基本路径，xx.yy为域名，目录根据域名变化。 
 //3、本配置仅支持申请普通TLS证书，若要申请通配符TLS证书请参考‘caddy(other configuration) （Caddy的特殊应用配置方法。）’中对应介绍及对应配置示例。
