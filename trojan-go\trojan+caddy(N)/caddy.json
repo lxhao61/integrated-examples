@@ -87,23 +87,10 @@
           }]
         }]
       }
-    }, //若Trojan-Go或Trojan不使用‘events’应用配置应用配置解决不支持‘证书热更新’功能，删除如下events应用配置块，且去掉本行大括号后逗号。
-    "events": { //版本不小于v2.6.0才支持
-      "subscriptions": [{
-        "events": ["cert_obtained"],
-        "handlers": [{
-          "handler": "exec", //版本不小于v2.6.3加入此插件支持（本项目）
-          "command": "systemctl", //确保Caddy有权运行此命令，即Caddy用户至少为root组权限用户。
-          "args": ["restart","trojan-go"] //若使用Trojan，参数trojan-go改为trojan。
-        }]
-      }]
-    } //此部分为‘events’应用配置
+    }
   }
 }
 //备注：
-//1、从Let's Encrypt申请的普通TLS证书在‘/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy’目录中；xx.yy为域名，根据域名变化。
-//2、从ZeroSSL申请的普通TLS证书在‘/home/tls/certificates/acme.zerossl.com-v2-dv90/xx.yy’目录中；xx.yy为域名，根据域名变化。
-//3、从Let's Encrypt或ZeroSSL申请通配符TLS证书配置，详见‘caddy(other configuration) （Caddy的特殊应用配置方法。）’中对应介绍及对应caddy-dns插件配置示例。
-//4、因Trojan-Go、Trojan不支持‘证书热更新’功能，即Trojan-Go、Trojan不会自动识别TLS证书更新并重载TLS证书，当使用Caddy（内置ACME客户端）申请的TLS证书时可选择如下方法之一解决：
-//1）、Linux系统使用Crontab指令定时重启Trojan-Go或Trojan重载更新后的TLS证书，其它系统使用类似命令/工具来定时重启Trojan-Go或Trojan重载更新后的TLS证书。（通用解决办法）
-//2）、使用Caddy的‘events’应用配置实现TLS证书自动更新后就执行重启Trojan-Go或Trojan重载更新后的TLS证书（类似acme.sh的reloadcmd参数应用）。详见上边配置示例。
+//1、从Let's Encrypt申请的普通TLS证书在‘/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy’目录中。/home/tls为存放TLS证书的基本路径，xx.yy为域名，目录根据域名变化。
+//2、从ZeroSSL申请的普通TLS证书在‘/home/tls/certificates/acme.zerossl.com-v2-dv90/xx.yy’目录中。/home/tls为存放TLS证书的基本路径，xx.yy为域名，目录根据域名变化。 
+//3、本配置仅支持申请普通TLS证书，若要申请通配符TLS证书请参考‘caddy(other configuration) （Caddy的特殊应用配置方法。）’中对应介绍及对应配置示例。
