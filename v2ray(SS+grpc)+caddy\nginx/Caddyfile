@@ -2,7 +2,7 @@
 	order reverse_proxy before route
 	admin off
 	log {
-		output file /var/log/caddy/access.log
+		output file /var/log/caddy/error.log
 		level ERROR
 	} #版本不小于v2.4.0才支持日志全局配置，否则各自配置。
 	email your@email.com #电子邮件地址。选配，推荐。
@@ -38,3 +38,5 @@
 		}
 	}
 }
+#备注：
+#1、本配置仅支持申请普通TLS证书，若要申请通配符TLS证书请参考‘caddy(other configuration) （Caddy的特殊应用配置方法。）’中对应介绍及对应配置示例。
