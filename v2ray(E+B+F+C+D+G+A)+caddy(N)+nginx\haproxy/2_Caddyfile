@@ -86,10 +86,8 @@
 	}
 }
 #备注：
+##备注：
 #1、申请免费TLS证书的域名不要超过五个，否则影响TLS证书的更新。
-#2、从Let's Encrypt申请的普通TLS证书在‘/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zv.xx.yy’目录中；zv.xx.yy为域名，根据域名变化。
-#3、从ZeroSSL申请的普通TLS证书在‘/home/tls/certificates/acme.zerossl.com-v2-dv90/zv.xx.yy’目录中；zv.xx.yy为域名，根据域名变化。
-#4、从Let's Encrypt或ZeroSSL申请通配符TLS证书配置，详见‘caddy(other configuration) （Caddy的特殊应用配置方法。）’中对应介绍及对应caddy-dns插件配置示例。
-#5、因V2Ray不支持‘证书热更新’功能，即V2Ray不会自动识别TLS证书更新并重载TLS证书，当使用Caddy（内置ACME客户端）申请的TLS证书时可选择如下方法之一解决：
-#1）、Linux系统使用Crontab指令定时重启V2Ray重载更新后的TLS证书，其它系统使用类似命令/工具来定时重启V2Ray重载更新后的TLS证书。（通用解决办法）
-#2）、使用Caddy的‘events’应用配置实现TLS证书自动更新后就执行重启V2Ray重载更新后的TLS证书（类似acme.sh的reloadcmd参数应用）。详见‘caddy(other configuration) （Caddy的特殊应用配置方法。）’中对应介绍及对应配置示例。
+#2、从Let's Encrypt申请的普通TLS证书在‘/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zv.xx.yy’目录中。/home/tls为存放TLS证书的基本路径，zv.xx.yy为域名，目录根据域名变化。
+#3、从ZeroSSL申请的普通TLS证书在‘/home/tls/certificates/acme.zerossl.com-v2-dv90/zv.xx.yy’目录中。/home/tls为存放TLS证书的基本路径，zv.xx.yy为域名，目录根据域名变化。 
+#4、本配置仅支持申请普通TLS证书，若要申请通配符TLS证书请参考‘caddy(other configuration) （Caddy的特殊应用配置方法。）’中对应介绍及对应配置示例。
