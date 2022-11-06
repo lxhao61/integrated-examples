@@ -8,7 +8,7 @@
 
 3、F=trojan+tcp+tls/xtls（回落/分流配置，TLS/XTLS由自己提供及处理。）
 
-4、C=trojan+ws+tls（TLS由trojan+tcp+tls/xtls提供及处理。）
+4、C=trojan+ws+tls（TLS由trojan+tcp+tls/xtls提供及处理，不需配置。）
 
 5、D=vless+h2c+tls（TLS由Caddy提供及处理，不需配置。）
 
