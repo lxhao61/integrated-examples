@@ -28,11 +28,11 @@
 
 三、Caddy Events 应用配置方法
 
-实现TLS证书自动更新后就执行重启关联程序重载更新后的TLS证书（类似acme.sh的reloadcmd参数应用），配置见 events_caddy.json 或 events_Caddyfile 示例。
+实现 TLS 证书自动更新后就执行重启关联程序重载更新后的 TLS 证书（类似acme.sh的reloadcmd参数应用），配置见 events_caddy.json 或 events_Caddyfile 示例。
 
-四、Caddy 使用外部TLS证书配置方法
+四、使用外部 TLS 证书对应 Caddy 的配置方法
 
-Caddy 使用外部TLS证书配置方法，配置见 TLS_caddy.json 或 TLS_Caddyfile 示例。
+使用外部 TLS 证书对应 Caddy 的配置方法，配置见 TLS_caddy.json 或 TLS_Caddyfile 示例。
 
 五、Caddy 网盘应用配置方法
 
