@@ -1,6 +1,6 @@
 介绍：
 
-利用 Caddy 或 Nginx 支持 gRPC 代理，实现 Xray 或 V2Ray 的 shadowsocks+grpc+tls 反向代理应用，TLS 由 Caddy 或 Nginx 提供及处理。此服务端兼容原版 Shadowsocks 加 xray-plugin 或 v2ray-plugin 插件的 gRPC 应用（服务端），即客户端也可使用 Shadowsocks 加 xray-plugin 或 v2ray-plugin 插件连接。
+利用 Caddy 或 Nginx 支持 gRPC 代理，实现 Xray 或 V2Ray 的 shadowsocks+grpc+tls 反向代理应用，TLS 由 Caddy 或 Nginx 提供及处理。此服务端兼容原版 Shadowsocks 加 xray-plugin 或 v2ray-plugin 插件的 gRPC 应用（服务端），即客户端可使用 Shadowsocks 加 xray-plugin 或 v2ray-plugin 插件连接。
 
 原理：
 
