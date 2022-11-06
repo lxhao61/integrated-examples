@@ -12,9 +12,7 @@
 
 二、Caddy 以 DNS-01 验证方式申请 TLS 证书的配置方法
 
-1、以 DNS-01 验证方式可申请通配符 TLS 证书。
-
-2、提供了 cloudflare、dnspodcn（dnspod中国版插件）、duckdns 三种最常见插件配置示例，其它插件配置请参考官方资料及 cloudflare 或 duckdns 示例。
+提供了 cloudflare、dnspodcn（dnspod中国版插件）、duckdns 三种最常见插件配置示例，其它插件配置请参考官方资料及 cloudflare 或 duckdns 示例。
 
 注意：
 
