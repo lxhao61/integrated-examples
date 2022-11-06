@@ -17,7 +17,7 @@
               "ocspStapling": 3600, //Xray版本不小于v1.3.0才支持配置OCSP装订更新与证书热重载的时间间隔。目前V2Ray不支持，若使用V2Ray做服务端必须删除此项参数。
               "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zv.xx.yy/zv.xx.yy.crt", //换成自己的证书，绝对路径。
               "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zv.xx.yy/zv.xx.yy.key" //换成自己的密钥，绝对路径。
-            }
+            },
             {
               "ocspStapling": 3600, //Xray版本不小于v1.3.0才支持配置OCSP装订更新与证书热重载的时间间隔。目前V2Ray不支持，若使用V2Ray做服务端必须删除此项参数。
               "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/z1.xx.yy/z1.xx.yy.crt", //换成自己的证书，绝对路径。
