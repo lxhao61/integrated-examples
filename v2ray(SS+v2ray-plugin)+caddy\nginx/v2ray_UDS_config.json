@@ -1,8 +1,8 @@
 {
   "log": {
     "loglevel": "warning",
-    "error": "/var/log/xray/error.log", //若使用v2ray，此处目录名称xray改成v2ray。
-    "access": "/var/log/xray/access.log" //若使用v2ray，此处目录名称xray改成v2ray。
+    "error": "/var/log/xray/error.log", //若使用V2Ray，此处目录名称xray改成v2ray。
+    "access": "/var/log/xray/access.log" //若使用V2Ray，此处目录名称xray改成v2ray。
   },
   "inbounds": [
     {
@@ -31,7 +31,7 @@
       }
     },
     {
-      "port": 2003, //使用domain socket作为传输方式后此端口失效，但必须存在。
+      "port": 2003, //使用UDS作为传输方式后此端口失效，但必须存在。
       "protocol": "shadowsocks",
       "settings": {
         "method": "chacha20-ietf-poly1305",
@@ -42,7 +42,7 @@
         "network": "domainsocket",
         "security": "none",
         "dsSettings": {
-          "path": "ss", //domainsocket文件路径，与outbounds中对应。
+          "path": "ss", //UDS文件路径，与outbounds中对应。
           "abstract": true
         }
       }
@@ -77,7 +77,7 @@
       "streamSettings": {
         "network": "domainsocket",
         "dsSettings": {
-          "path": "ss", //domainsocket文件路径，与streamSettings中对应。
+          "path": "ss", //UDS文件路径，与streamSettings中对应。
           "abstract": true
         }
       }
