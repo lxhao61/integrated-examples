@@ -45,5 +45,5 @@
 
 :7443 {
 #.........<省略>........
-	tls /home/tls/xx.yy/xx.yy.crt /home/tls/xx.yy/xx.yy.key { #换成自己的证书与密钥，绝对路径。
+	tls /home/tls/zh.xx.yy/zh.xx.yy.crt /home/tls/zh.xx.yy/zh.xx.yy.key { #换成自己的证书与密钥，绝对路径。
 #.........<省略>........
