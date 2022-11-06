@@ -42,7 +42,7 @@
 
 12、本示例中 V2Ray 或 Xray 与 Trojan-Go 或 Trojan 所需 TLS 证书由 Caddy（内置 ACME 客户端） 提供，实现 TLS 证书自动申请及更新。
 
-13、V2Ray 、 Trojan-Go 、 Trojan 不支持‘证书热更新’功能，即 V2Ray 、 Trojan-Go 、 Trojan 不会自动识别 TLS 证书更新并重载 TLS 证书，之前可使用通用办法解决，现在可选择 Caddy 的专属办法解决了。
+13、V2Ray、Trojan-Go、Trojan 不支持‘证书热更新’功能，即 V2Ray、Trojan-Go、Trojan 不会自动识别 TLS 证书更新并重载 TLS 证书，之前可使用通用办法解决，现在可选择 Caddy 的专属办法解决了。
 
 1）、Linux 类系统使用 Crontab 指令定时重启 V2Ray 与 Trojan-Go 或 Trojan 来重载更新后的 TLS 证书，其它系统使用类似命令/工具来定时重启 V2Ray 与 Trojan-Go 或 Trojan 来重载更新后的 TLS 证书。（通用办法）
 
