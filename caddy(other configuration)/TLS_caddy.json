@@ -1,15 +1,12 @@
 //一、回落为主应用（无SNI分流）
 //原配置：
 {
-  "admin": {
-    "disabled": true
-  },
-  "logging": {
 //.........<省略>........
   "storage": {
     "module": "file_system",
     "root": "/home/tls" //存放TLS证书的基本路径
   },
+  "apps": {
 //.........<省略>........
     "tls": {
       "certificates": {
@@ -29,10 +26,8 @@
 
 //以上配置改为如下：
 {
-  "admin": {
-    "disabled": true
-  },
-  "logging": {
+//.........<省略>........
+  "apps": {
 //.........<省略>........
   }
 }
@@ -41,15 +36,12 @@
 //二、SNI分流为主的应用
 //原配置：
 {
-  "admin": {
-    "disabled": true
-  },
-  "logging": {
 //.........<省略>........
   "storage": {
     "module": "file_system",
     "root": "/home/tls" //存放TLS证书的基本路径
   },
+  "apps": {
 //.........<省略>........
           "tls_connection_policies": [{
             "cipher_suites": ["TLS_AES_256_GCM_SHA384","TLS_AES_128_GCM_SHA256","TLS_CHACHA20_POLY1305_SHA256","TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"],
@@ -74,10 +66,8 @@
 
 //以上配置改为如下：
 {
-  "admin": {
-    "disabled": true
-  },
-  "logging": {
+//.........<省略>........
+  "apps": {
 //.........<省略>........
           "tls_connection_policies": [{
             "certificate_selection": {
