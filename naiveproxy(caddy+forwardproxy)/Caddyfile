@@ -2,7 +2,7 @@
 	order forward_proxy before route
 	admin off
 	log {
-		output file /var/log/caddy/access.log
+		output file /var/log/caddy/error.log
 		level ERROR
 	} #版本不小于v2.4.0才支持日志全局配置，否则各自配置。
 	email your@email.com #电子邮件地址。选配，推荐。
@@ -15,7 +15,7 @@
 	}
 
 	forward_proxy {
-		basic_auth user pass #naiveproxy用户与密码，修改为自己的。
+		basic_auth user pass #NaïveProxy用户与密码，修改为自己的。
 		hide_ip
 		hide_via
 		probe_resistance
