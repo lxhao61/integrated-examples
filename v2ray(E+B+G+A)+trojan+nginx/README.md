@@ -10,7 +10,7 @@
 
 4、A=vless+kcp+seed
 
-5、trojan-go或trojan（TLS由自己提供及处理。）
+5、Trojan-Go或Trojan（TLS由自己提供及处理。）
 
 注意：
 
