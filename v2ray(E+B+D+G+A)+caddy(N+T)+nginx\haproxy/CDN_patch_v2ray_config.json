@@ -26,4 +26,5 @@
           ],
 //.........<省略>........
 //备注：
-//1、新增普通TLS证书成功申请才能进行上述修改，详见‘CDN_patch_caddy.json’或‘CDN_patch_Caddyfile’。
+//1、此配置为‘CDN_nginx.conf’或‘CDN_haproxy.cfg’中‘二、多个域名使用各自普通TLS证书’配置的补充。
+//2、新增普通TLS证书成功申请才能进行上述修改，详见‘CDN_patch_caddy.json’或‘CDN_patch_Caddyfile’。
