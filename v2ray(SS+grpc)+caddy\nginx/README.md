@@ -4,7 +4,7 @@
 
 原理：
 
-默认流程：WEB client <----------- HTTP/2（H2C+TLS） -----------> Caddy/Nginx（WEB server）  
+默认流程：WEB client <----------- HTTP/2（H2C+TLS） ------------> Caddy/Nginx（WEB server）  
 反代流程：Shadowsocks/Xray/V2Ray client <------ gRPC+TLS ------> Caddy/Nginx <-- gRPC --> Xray/V2Ray server
 
 注意：
