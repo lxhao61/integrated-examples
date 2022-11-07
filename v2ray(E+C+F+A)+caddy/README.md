@@ -1,6 +1,6 @@
 介绍：
 
-V2Ray 或 Xray 前置（监听 443 端口），利用 vless+tcp+tls 或 vless+tcp+xtls 强大的回落及分流 WebSocket（WS） 特性、套娃 trojan+tcp 后回落 Caddy，实现除 V2Ray 或 Xray 的 mKCP 应用外共用 443 端口。其应用如下：
+V2Ray 或 Xray 前置（监听 443 端口），利用 vless+tcp+tls 或 vless+tcp+xtls 回落及分流 WebSocket（WS） 特性、套娃 trojan+tcp 后回落 Caddy，实现除 V2Ray 或 Xray 的 mKCP 应用外共用 443 端口，其应用如下：
 
 1、E=vless+tcp+tls/xtls（回落/分流配置，TLS/XTLS由自己提供及处理。）
 
