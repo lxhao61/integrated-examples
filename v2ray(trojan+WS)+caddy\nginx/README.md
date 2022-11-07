@@ -6,8 +6,7 @@
 
 默认流程：WEB client <------------ HTTPS（HTTP/1.1+TLS） ------------> Caddy/Nginx（WEB server）  
 反代流程：Trojan-Go/Xray/V2Ray client <------- WebSocket+TLS -------> Caddy/Nginx <-- WebSocket --> Xray/V2Ray server
--------
---------
+
 注意：
 
 1、V2Ray 版本不小于 v4.31.0 才支持 trojan 协议。
