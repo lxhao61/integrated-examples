@@ -1,7 +1,7 @@
 #!/bin/bash
 
 _APISERVER=127.0.0.1:10085 //此端口必须与traffic_config.json中流量统计端口一致
-_V2CTL=/usr/local/bin/v2ray/v2ctl //此路径为v2ray的v2ctl实际路径
+_V2CTL=/usr/local/bin/v2ray/v2ctl //此路径为V2Ray的v2ctl实际路径
 
 apidata () {
     local ARGS=
