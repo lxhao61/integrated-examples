@@ -1,4 +1,4 @@
-一、Xray/v2ray 禁用 BT 的配置方法
+一、V2Ray 或 Xray 禁用 BT 的配置方法
 
 见 BT_config.json 配置。
 
@@ -6,7 +6,7 @@
 
 1、仅服务端配置即可。
 
-2、Xray/v2ray 示例中各应用都配置了禁用 BT，此配置方法仅备份及参考。
+2、V2Ray 或 Xray 示例中各应用都配置了禁用 BT，此配置方法仅备份及参考。
 
 二、Xray fallbacks SNI 回落/分流到不同网站的配置方法
 
@@ -20,23 +20,23 @@
 
 3、此 fallbacks SNI 回落/分流是解除 TLS 后 Xray 进行的 name（域名）分流。
 
-4、也可以用 nginx SNI、haproxy SNI、caddy 分流（SNI 分流 或 host 分流） 等分流来解决问题（不同方法，达到相同效果。），相关分流见各自配置示例。
+4、也可以用 Nginx SNI、HAProxy SNI、Caddy 分流（SNI 分流 或 host 分流） 等分流来解决问题（不同方法，达到相同效果。），相关分流见各自配置示例。
 
-三、Xray/v2ray SNI 分流的配置方法
+三、Xray/V2Ray SNI 分流的配置方法
 
-此方法也可以解决 Xray 或 v2ray 应用与网站应用（原网站不想做回落网站，或 nginx、caddy 等有多个网站应用。）共用 443 端口问题。
+此方法也可以解决 Xray 或 v2ray 应用与网站应用（原网站不想做回落网站，或 Nginx、Caddy 等有多个网站应用。）共用 443 端口问题。
 
 注意：
 
-1、Xray/v2ray SNI 分流不支持 PROXY protocol 发送。
+1、Xray/V2Ray SNI 分流不支持 PROXY protocol 发送。
 
-2、1_SNI_config.json 采用 Local Loopback 连接，实现 Xray/v2ray SNI 的端口分流。
+2、1_SNI_config.json 采用 Local Loopback 连接，实现 Xray/V2Ray SNI 的端口分流。
 
-3、2_SNI_config.json 采用 UDS 连接，实现 Xray/v2ray SNI 的进程分流。
+3、2_SNI_config.json 采用 UDS 连接，实现 Xray/V2Ray SNI 的进程分流。
 
-4、原 Xray/v2ray SNI 分流示例已被其它 SNI 分流示例优势替代，此配置仅备份及参考等。
+4、原 Xray/V2Ray SNI 分流示例已被其它 SNI 分流示例优势替代，此配置仅备份及参考等。
 
-四、Xray/v2ray 流量统计的配置方法
+四、V2Ray 或 Xray 流量统计的配置方法
 
 1、配置流量统计（见 traffic_config.json 配置）
 
