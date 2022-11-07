@@ -5,7 +5,7 @@
 原理：
 
 默认流程：V2Ray/Xray client <---- TCP+TLS（HTTP/2或HTTPS） ----> V2Ray/Xray server  
-回落流程：WEB client <--------------- HTTP/2或HTTPS --------------> V2Ray/Xray server <-- H2C或HTTP/1.1 --> Nginx（WEB server）
+回落流程：WEB client <-------------- HTTP/2或HTTPS --------------> V2Ray/Xray server <-- H2C或HTTP/1.1 --> Nginx（WEB server）
 
 其中 trojan+tcp+tls 或 trojan+tcp+xtls 应用还实现了兼容原版 Trojan，即可使用 Trojan 客户端 或 Trojan-Go 客户端连接。
 
