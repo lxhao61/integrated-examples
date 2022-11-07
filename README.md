@@ -34,8 +34,8 @@
 2. [v2ray(SS+grpc)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(SS%2Bgrpc)%2Bcaddy%5Cnginx)（兼容原版Shadowsocks加v2ray-plugin插件的gRPC反代应用。标记为G。）
 3. [v2ray(trojan+grpc)+caddy\nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(trojan%2Bgrpc)%2Bcaddy%5Cnginx)（trojan+grpc+tls反代应用。）
 #### &emsp;Xray/V2Ray VLESS/Trojan回落应用
-1. [v2ray(vless\trojan+tcp+tls)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(vless%5Ctrojan%2Btcp%2Btls)%2Bnginx) （vless+tcp+tls/xtls或trojan+tcp+tls/xtls回落Nginx应用。分别标记为E与F。）
-2. [v2ray(vless\trojan+tcp+tls)+caddy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(vless%5Ctrojan%2Btcp%2Btls)%2Bcaddy) （vless+tcp+tls/xtls或trojan+tcp+tls/xtls回落Caddy应用。分别标记为E与F。）
+1. [v2ray(vless\trojan+tcp+tls)+nginx](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(vless%5Ctrojan%2Btcp%2Btls)%2Bnginx)（vless+tcp+tls/xtls或trojan+tcp+tls/xtls回落Nginx应用。分别标记为E与F。）
+2. [v2ray(vless\trojan+tcp+tls)+caddy](https://github.com/lxhao61/integrated-examples/tree/main/v2ray(vless%5Ctrojan%2Btcp%2Btls)%2Bcaddy)（vless+tcp+tls/xtls或trojan+tcp+tls/xtls回落Caddy应用。分别标记为E与F。）
 
 ### 服务端综合应用配置示例
 #### &emsp;Xray/V2Ray反向代理的综合应用
