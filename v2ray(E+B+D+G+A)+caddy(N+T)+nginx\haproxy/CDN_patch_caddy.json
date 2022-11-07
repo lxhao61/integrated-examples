@@ -14,5 +14,4 @@
 //.........<省略>........
 //备注：
 //1、申请免费TLS证书的域名不要超过五个，否则影响TLS证书的更新。
-//2、从Let's Encrypt申请的普通TLS证书在‘/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zv.xx.yy’目录中。/home/tls为存放TLS证书的基本路径，zv.xx.yy为域名，目录根据域名变化。
-//3、从ZeroSSL申请的普通TLS证书在‘/home/tls/certificates/acme.zerossl.com-v2-dv90/zv.xx.yy’目录中。/home/tls为存放TLS证书的基本路径，zv.xx.yy为域名，目录根据域名变化。 
+//2、此配置为‘CDN_nginx.conf’或‘CDN_haproxy.cfg’中‘二、多个域名使用各自普通TLS证书’配置的补充。
