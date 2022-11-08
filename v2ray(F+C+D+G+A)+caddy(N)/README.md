@@ -1,6 +1,6 @@
 介绍：
 
-V2Ray 或 Xray 前置（监听 443 端口），利用 trojan+tcp+tls 或 trojan+tcp+xtls 回落及分流 WebSocket（WS）特性与 Caddy 为 H2C 与 gRPC 提供反向代理、为 forwardproxy 插件提供正向代理，实现除 V2Ray 或 Xray 的 mKCP 应用外共用 443 端口，其应用如下：
+V2Ray 或 Xray 前置（监听 443 端口），利用 trojan+tcp+tls 或 trojan+tcp+xtls 回落及分流 WebSocket（WS）特性与 Caddy 为 H2C 与 gRPC 提供反向代理、为 forwardproxy 插件提供正向代理，实现除 Xray 或 V2Ray 的 mKCP 应用外共用 443 端口，其应用如下：
 
 1、F=trojan+tcp+tls/xtls（回落/分流配置，TLS/XTLS由自己提供及处理。）
 
@@ -28,7 +28,7 @@ V2Ray 或 Xray 前置（监听 443 端口），利用 trojan+tcp+tls 或 trojan+
 
 6、本示例中 NaïveProxy 仅支持 HTTP/2 代理应用，即 HTTPS 协议传输。
 
-7、本示例中 V2Ray 或 Xray 所需 TLS 证书由 Caddy（内置 ACME 客户端） 提供，实现 TLS 证书自动申请及更新。
+7、本示例中 Xray 或 V2Ray 所需 TLS 证书由 Caddy（内置 ACME 客户端） 提供，实现 TLS 证书自动申请及更新。
 
 8、V2Ray 不支持‘证书热更新’功能，即 V2Ray 不会自动识别 TLS 证书更新并重载 TLS 证书，之前可使用通用办法解决，现在可选择 Caddy 的专属办法解决了。
 
