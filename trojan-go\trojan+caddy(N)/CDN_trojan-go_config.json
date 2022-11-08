@@ -11,4 +11,5 @@
         "key": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/wildcard_.xx.yy/wildcard_.xx.yy.key", //换成自己的通配符密钥，绝对路径。
 //.........<省略>........
 //备注：
-//1、Trojan-Go的CDN流量中转（基于WebSocket over TLS）与Trojan应用同时提供，仅支持使用通配符证书的不同域名实现。
+//1、此共存配置示例是基于多个域名使用同一个通配符TLS证书实现，因Trojan-Go不支持配置多组TLS证书。
+//2、同步修改Caddy配置中‘host’对应域名为*.xx.yy（通配符域名），否则打不开网站（无法提供流量伪装与防探测）。
