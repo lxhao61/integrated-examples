@@ -1,6 +1,6 @@
 介绍：
 
-V2Ray 或 Xray 前置（监听 443 端口），利用 trojan+tcp+tls 或 trojan+tcp+xtls 回落及分流 WebSocket（WS）特性与 Nginx 为 gRPC 提供反向代理，实现除 V2Ray 或 Xray 的 mKCP 应用外共用 443 端口，其应用如下：
+V2Ray 或 Xray 前置（监听 443 端口），利用 trojan+tcp+tls 或 trojan+tcp+xtls 回落及分流 WebSocket（WS）特性与 Nginx 为 gRPC 提供反向代理，实现除 Xray 或 V2Ray 的 mKCP 应用外共用 443 端口，其应用如下：
 
 1、F=trojan+tcp+tls/xtls（回落/分流配置，TLS/XTLS由自己提供及处理。）
 
