@@ -26,7 +26,7 @@ V2Ray 或 Xray 前置（监听 443 端口），利用 vless+tcp+tls 或 vless+tc
 
 4、Caddy 支持 HTTP/1.1 server 与 H2C server 共用一个端口或一个进程。
 
-5、使用本人 Releases 中编译好的 Caddy 文件，可同时支持 H2C server、H2C proxy、Trojan-Go、NaïveProxy 及接收 PROXY protocol 等应用。
+5、使用本人 Releases 中编译好的 Caddy 文件，可同时支持 H2C server、H2C proxy、NaïveProxy、Trojan-Go 及接收 PROXY protocol 等应用。
 
 6、本示例中 NaïveProxy 仅支持 HTTP/2 代理应用，即 HTTPS 协议传输。
 
