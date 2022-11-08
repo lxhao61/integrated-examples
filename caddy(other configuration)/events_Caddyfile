@@ -5,36 +5,46 @@
 }
 #.........<省略>........
 
-#联动执行一个程序配置，原配置修改为如下：
+#联动执行一个程序配置（Caddy使用root权限的用户），原配置修改为如下：
 {
 #.........<省略>........
 	events {
-		on cert_obtained exec systemctl restart v2ray #确保Caddy有权运行systemctl命令，即Caddy用户至少为root组权限用户。可以调整为其它程序。
-	} #版本不小于v2.6.0才支持
+		on cert_obtained exec systemctl restart v2ray #可以调整为其它程序
+	}
 }
 #.........<省略>........
 
-#联动执行两个程序配置，原配置修改为如下：
+#联动执行两个程序配置（Caddy使用root权限的用户），原配置修改为如下：
 {
 #.........<省略>........
 	events {
-		on cert_obtained exec systemctl restart v2ray #确保Caddy有权运行systemctl命令，即Caddy用户至少为root组权限用户。可以调整为其它程序。
-		on cert_obtained exec systemctl restart trojan-go #确保Caddy有权运行systemctl命令，即Caddy用户至少为root组权限用户。可以调整为其它程序。
-	} #版本不小于v2.6.0才支持
+		on cert_obtained exec systemctl restart v2ray #可以调整为其它程序
+		on cert_obtained exec systemctl restart trojan-go #可以调整为其它程序
+	}
 }
 #.........<省略>........
 
-#联动执行三个程序配置，原配置修改为如下：
+#联动执行一个程序配置（Caddy使用具有sudo权限的用户），原配置修改为如下：
 {
 #.........<省略>........
 	events {
-		on cert_obtained exec systemctl restart v2ray #确保Caddy有权运行systemctl命令，即Caddy用户至少为root组权限用户。
-		on cert_obtained exec systemctl restart hysteria #确保Caddy有权运行systemctl命令，即Caddy用户至少为root组权限用户。
-		on cert_obtained exec systemctl restart trojan-go #确保Caddy有权运行systemctl命令，即Caddy用户至少为root组权限用户。
-	} #版本不小于v2.6.0才支持
+		on cert_obtained exec sudo systemctl restart v2ray #可以调整为其它程序
+	}
+}
+#.........<省略>........
+
+#联动执行两个程序配置（Caddy使用具有sudo权限的用户），原配置修改为如下：
+{
+#.........<省略>........
+	events {
+		on cert_obtained exec sudo systemctl restart v2ray #可以调整为其它程序
+		on cert_obtained exec sudo systemctl restart trojan-go #可以调整为其它程序
+	}
 }
 #.........<省略>........
 #备注：
-#1、本项目从版本v2.6.3开始加入此插件支持。
-#2、实现相关程序自动识别TLS证书更新并重载TLS证书配置。
-#3、上述配置示例为当前解决此问题的最优方法，推荐。
+#1、本项目Caddy版本v2.6.3后才支持上边events应用配置（caddy-events-exec插件加入）。
+#2、本示例实现了TLS证书自动更新后就执行重启相关程序来重载更新后的TLS证书（类似 acme.sh 的 reloadcmd 参数应用），相关程序可以根据实际增加。
+#3、本示例sudo权限的用户需禁用执行sudo权限（临时使用root权限）命令时输入密码验证，否则因验证通不过无法成功执行。
+#4、如要解决执行sudo权限命令时默认需重复输入密码验证问题：觉得可以考虑引入脚本及联动它，由脚本完成sudo权限用户的密码验证，再由脚本执行重启相关程序。（此方案仅提供思路，请自行折腾。）
+#5、本示例为当前解决此问题的最优及最简单办法（相比‘通用办法’），推荐。
