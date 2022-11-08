@@ -1,6 +1,6 @@
 介绍：
 
-利用 Nginx 或 HAProxy 支持 SNI 分流特性，对 vless+tcp+tls 或 vless+tcp+xtls、Trojan-Go 或 Trojan、HTTPS server 进行 SNI 分流（四层转发），实现除 V2Ray 或 Xray 的 mKCP 应用外共用 443 端口。其中 vless+tcp+tls 或 vless+tcp+xtls 为 WebSocket（WS） 提供分流转发；Caddy 为 vless+tcp+tls 或 vless+tcp+xtls 与 Trojan-Go 或 Trojan 提供回落服务，为 V2Ray 或 Xray 的 H2C 与 gRPC 进行反向代理，为 forwardproxy 插件提供正向代理，其应用如下：
+利用 Nginx 或 HAProxy 支持 SNI 分流特性，对 vless+tcp+tls 或 vless+tcp+xtls、Trojan-Go 或 Trojan、HTTPS server 进行 SNI 分流（四层转发），实现除 Xray 或 V2Ray 的 mKCP 应用外共用 443 端口。其中 vless+tcp+tls 或 vless+tcp+xtls 为 WebSocket（WS） 提供分流转发；Caddy 为 vless+tcp+tls 或 vless+tcp+xtls 与 Trojan-Go 或 Trojan 提供回落服务，为 Xray 或 V2Ray 的 H2C 与 gRPC 进行反向代理，为 forwardproxy 插件提供正向代理，其应用如下：
 
 1、E=vless+tcp+tls/xtls（回落/分流配置，TLS/XTLS由自己提供及处理。）
 
@@ -40,7 +40,7 @@
 
 11、使用本人 Releases 中编译好的 Caddy 文件，可同时支持 H2C server、H2C proxy、NaïveProxy 及接收 PROXY protocol 等应用。
 
-12、本示例中 V2Ray 或 Xray 与 Trojan-Go 或 Trojan 所需 TLS 证书由 Caddy（内置 ACME 客户端） 提供，实现 TLS 证书自动申请及更新。
+12、本示例中 Xray 或 V2Ray 与 Trojan-Go 或 Trojan 所需 TLS 证书由 Caddy（内置 ACME 客户端） 提供，实现 TLS 证书自动申请及更新。
 
 13、V2Ray、Trojan-Go、Trojan 不支持‘证书热更新’功能，即 V2Ray、Trojan-Go、Trojan 不会自动识别 TLS 证书更新并重载 TLS 证书，之前可使用通用办法解决，现在可选择 Caddy 的专属办法解决了。
 
