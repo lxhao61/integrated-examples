@@ -1,6 +1,6 @@
 介绍：
 
-本示例以 Caddy 源码加 caddy-trojan 插件编译而成 Caddy 文件，仅一个软件就实现了 Trojan-Go 服务端加伪装网站应用。
+本示例使用 Caddy 源码加 caddy-trojan 插件编译而成 Caddy 文件，仅一个软件就实现了 Trojan-Go 服务端加伪装网站应用。
 
 注意：
 
