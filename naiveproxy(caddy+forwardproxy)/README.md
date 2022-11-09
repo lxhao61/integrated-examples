@@ -1,6 +1,6 @@
 介绍：
 
-本示例以 Caddy 源码加改进版 forwardproxy 插件编译而成 Caddy 文件，实现了 NaïveProxy 服务端加伪装网站应用。
+本示例使用 Caddy 源码加改进版 forwardproxy 插件编译而成 Caddy 文件，实现了 NaïveProxy 服务端加伪装网站应用。
 
 注意：
 
