@@ -24,7 +24,7 @@
 
 4、Cloudflare 已不支持 Freenom 提供的免费域名以 DNS-01 验证方式申请 TLS 证书了。可以参考 duckdns 配置示例间接（挑战委托模式）实现 Cloudflare 解析的 Freenom 免费域名以 DNS-01 验证方式申请 TLS 证书。
 
-5、挑战委托模式最早由 duckdns 插件专属支持，后 Caddy 通用支持了（目前 Caddyfile 支持不完全）。其它插件不推荐配置此应用：A、其它插件使用此模式需要两个根域名，其中一个域名仅用它二级域名来中间关联，极大浪费。 B、目前其它插件 Caddyfile 配置挑战委托模式很不方便，无对应全局配置参数。
+5、挑战委托模式最早由 duckdns 插件专属支持，后 Caddy 通用支持了（目前 Caddyfile 支持不完全）。其它插件不推荐配置此应用：A、其它插件使用此模式需要两个根域名；其中一个域名仅用它二级域名来中间关联，极大浪费。 B、目前其它插件 Caddyfile 配置挑战委托模式很不方便，无对应全局配置参数。
 
 三、Caddy 的 events exec 应用配置方法
 
@@ -40,4 +40,4 @@
 
 六、Caddy DDNS 客户端配置方法
 
-Caddy 使用 caddy-dynamicdns 插件与 caddy-dns 插件（仅含 alidns、cloudflare、dnspod、dnspodcn、duckdns 五个常用 caddy-dns 插件）实现 DDNS 客户端应用。基本配置见 DDNS_caddy.json 或 DDNS_Caddyfile 示例，详细配置见 caddy-dynamicdns 资源。
+Caddy 使用 caddy-dynamicdns 插件及对应 caddy-dns 插件实现 DDNS 客户端应用。基本配置见 DDNS_caddy.json 或 DDNS_Caddyfile 示例，详细配置见 caddy-dynamicdns 资源。
