@@ -45,7 +45,7 @@
 #备注：
 #1、本项目Caddy从版本v2.6.3开始才支持上边events exec应用配置。
 #2、本示例实现了TLS证书自动更新后就执行重启相关程序来重载更新后的TLS证书（类似acme.sh的reloadcmd参数应用），相关程序可以根据实际增加。
-#3、本示例sudo权限用户重启相关程序不需要密码，其sudo权限配置可参考如下对应配置（兼顾安全的最小权限配置）：
+#3、本示例sudo权限用户重启相关程序不需要密码，其sudo权限配置可参考如下之一对应配置（兼顾安全的最小权限配置）：
 #1）、cuser ALL=NOPASSWD:/bin/systemctl restart v2ray （表示Caddy的cuser用户使用sudo权限重启v2ray不需要密码）
 #2）、cuser ALL=NOPASSWD:/bin/systemctl restart v2ray,/bin/systemctl restart trojan-go （表示Caddy的cuser用户使用sudo权限重启v2ray与trojan-go都不需要密码）
 #3）、cuser ALL=NOPASSWD:/bin/systemctl restart [a-zA-Z]* （表示Caddy的cuser用户使用sudo权限重启所有程序不需要密码。需配置重启程序太多及嫌麻烦可参考此配置。）
