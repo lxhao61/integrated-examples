@@ -1,4 +1,4 @@
-#Caddy的events exec应用配置
+#caddy-events-exec插件应用配置
 #原配置：
 {
 #.........<省略>........
