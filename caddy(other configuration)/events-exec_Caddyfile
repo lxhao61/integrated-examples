@@ -49,4 +49,4 @@
 #1）、cuser ALL=NOPASSWD:/bin/systemctl restart v2ray （表示Caddy的cuser用户使用sudo权限重启v2ray不需要密码）
 #2）、cuser ALL=NOPASSWD:/bin/systemctl restart v2ray,/bin/systemctl restart trojan-go （表示Caddy的cuser用户使用sudo权限重启v2ray与trojan-go都不需要密码）
 #3）、cuser ALL=NOPASSWD:/bin/systemctl restart [a-zA-Z]* （表示Caddy的cuser用户使用sudo权限重启所有程序不需要密码。需配置重启程序太多及嫌麻烦可参考此配置。）
-#4、本示例为当前解决v2ray、trojan-go等不支持‘证书热更新’功能的最优办法（相比‘通用办法’），推荐。
+#4、本示例为当前解决V2Ray、Trojan-Go、Hysteria等不支持自动识别 TLS 证书更新并重载 TLS 证书的最优办法（相比‘通用办法’），推荐。
