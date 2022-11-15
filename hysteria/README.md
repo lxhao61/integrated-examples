@@ -8,6 +8,14 @@ Hysteria 是一个功能丰富的、专为恶劣网络环境进行优化的网�
 
 2、ACME_config.json 示例表示使用内置 ACME 客户端从 Let's Encrypt 为服务端自动申请与更新 TLS 证书（独自使用推荐），TLS_config.json 示例表示使用外部 TLS 证书（已有科学上网应用再增加此应用推荐）；两示例根据实际情况二选一即可。
 
-3、如内网超过 10G 或高延迟跨国超过 1G，建议增加 [UDP 接收缓冲区大小](https://github.com/HyNetwork/hysteria/wiki/%E4%BC%98%E5%8C%96)对超高传速度进行优化。
+3、Hysteria 目前使用外部 TLS 证书时，不支持‘证书热更新’功能，即 Hysteria 不会自动识别 TLS 证书更新并重载 TLS 证书，可使用如下方法之一解决。
 
-4、若网络极差推荐部署，相比 V2Ray 或 Xray 的 mKCP 应用加速明显。
+1）、Linux 类系统使用 Crontab 指令定时重启 Hysteria 来重载更新后的 TLS 证书，其它系统使用类似命令/工具来定时重启 Hysteria 来重载更新后的 TLS 证书。（通用办法）
+
+2）、若 TLS 证书由 Caddy（内置 ACME 客户端） 提供，可使用 caddy-events-exec 插件应用实现 TLS 证书自动更新后就执行重启 Hysteria 来重载更新后的 TLS 证书，详见 ‘caddy(other configuration) （Caddy的特殊应用配置方法。）’中对应介绍及对应配置示例。（Caddy专属办法）
+
+3）、若 TLS 证书由 acme.sh 客户端提供，可使用 reloadcmd 参数实现 TLS 证书自动更新后就执行重启 Hysteria 来重载更新后的 TLS 证书，详见 acme.sh 客户端说明。（acme.sh专属办法）
+
+4、如内网超过 10G 或高延迟跨国超过 1G，建议增加 [UDP 接收缓冲区大小](https://github.com/HyNetwork/hysteria/wiki/%E4%BC%98%E5%8C%96)对超高传速度进行优化。
+
+5、若网络极差推荐部署，相比 Xray 或 V2Ray 的 mKCP 应用加速明显。
