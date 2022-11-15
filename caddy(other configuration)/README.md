@@ -26,7 +26,7 @@
 
 5、挑战委托模式最早由 duckdns 插件专属支持，后 Caddy 通用支持了（目前 Caddyfile 支持不完全）。其它插件不推荐配置此应用：A、其它插件使用此模式需要两个根域名；其中一个域名仅用它二级域名来中间关联，极大浪费。 B、目前其它插件 Caddyfile 配置挑战委托模式很不方便，无对应全局配置参数。
 
-三、caddy-events-exec插件应用配置方法
+三、caddy-events-exec 插件应用配置方法
 
 以 caddy-events-exec 插件实现 TLS 证书自动更新后就执行重启相关程序重载更新后的 TLS 证书（类似 acme.sh 的 reloadcmd 参数应用），配置见 events-exec_caddy.json 或 events-exec_Caddyfile 示例。
 
