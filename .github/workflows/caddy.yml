@@ -89,7 +89,7 @@ jobs:
         mkdir release-tmp
         export GOARCH=${{ matrix.config.GOARCH }} 
         export GOOS=${{ matrix.config.GOOS }} 
-        ~/go/bin/xcaddy build \
+        ~/go/bin/xcaddy build master \
           --with github.com/mholt/caddy-l4 \
           --with github.com/mholt/caddy-dynamicdns \
           --with github.com/caddy-dns/alidns \
