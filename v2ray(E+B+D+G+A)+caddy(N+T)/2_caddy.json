@@ -121,7 +121,7 @@
             }]
           }],
           "automatic_https": {
-            "disable": true //禁用自动https
+            "disable": true //禁用自动HTTPS
           },
           "protocols": ["h1","h2c"] //开启HTTP/1.1 server与H2C server支持
         }
