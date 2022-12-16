@@ -1,0 +1,63 @@
+//启用XTLS Direct配置
+//1、原vless+tcp+tls配置块：
+//.........<省略>........
+        "clients": [
+          {
+            "id": "048e0bf2-dd56-11e9-aa37-5600024c1d6a", //修改为自己的UUID
+            "email": "443@gmail.com"
+          }
+        ],
+//.........<省略>........
+        "security": "tls",
+        "tlsSettings": {
+//.........<省略>........
+        }
+//.........<省略>........
+
+//以上配置修改为如下：
+//.........<省略>........
+        "clients": [
+          {
+            "id": "048e0bf2-dd56-11e9-aa37-5600024c1d6a", //修改为自己的UUID
+            "flow": "xtls-rprx-direct", //启用XTLS Direct，必须增加此项配置；否则删除。
+            "email": "443@gmail.com"
+          }
+        ],
+//.........<省略>........
+        "security": "xtls", //如启用XTLS Direct，tls必须改成xtls；否则恢复tls。
+        "xtlsSettings": { //如启用XTLS Direct，tlsSettings必须改成xtlsSettings；否则恢复tlsSettings。
+//.........<省略>........
+        }
+//.........<省略>........
+
+
+//2、原trojan+tcp+tls配置块：
+//.........<省略>........
+        "clients": [
+          {
+            "password":"diy443", //修改为自己密码
+            "email": "443@gmail.com"
+          }
+        ],
+//.........<省略>........
+        "security": "tls",
+        "tlsSettings": {
+//.........<省略>........
+        }
+//.........<省略>........
+
+//以上配置修改为如下：
+//.........<省略>........
+        "clients": [
+          {
+            "password":"diy443", //修改为自己密码
+            "flow": "xtls-rprx-direct", //启用XTLS Direct，必须增加此项配置；否则删除。
+            "email": "443@gmail.com"
+          }
+        ],
+//.........<省略>........
+        "security": "xtls", //如启用XTLS Direct，tls必须改成xtls；否则恢复tls。
+        "xtlsSettings": { //如启用XTLS Direct，tlsSettings必须改成xtlsSettings；否则恢复tlsSettings。
+//.........<省略>........
+        }
+//.........<省略>........
