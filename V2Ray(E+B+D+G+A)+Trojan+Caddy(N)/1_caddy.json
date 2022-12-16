@@ -1,0 +1,199 @@
+{
+  "admin": {
+    "disabled": true
+  },
+  "logging": {
+    "logs": {
+      "default": {
+        "writer": {
+          "output": "file",
+          "filename": "/var/log/caddy/error.log"
+        },
+        "level": "ERROR"
+      }
+    }
+  },
+  "storage": {
+    "module": "file_system",
+    "root": "/home/tls" //存放TLS证书的基本路径
+  },
+  "apps": {
+    "layer4": { //加了caddy-l4插件编译的才可启用SNI分流
+      "servers": {
+        "sni": {
+          "listen": [":443"], //443监听端口
+          "routes": [{
+            "match": [{
+              "tls": {
+                "sni": ["zv.xx.yy"] //修改为自己规划对应vless+tcp+tls的域名
+              }
+            }],
+            "handle": [{
+              "handler": "proxy",
+              "upstreams": [{
+                "dial": ["127.0.0.1:5443"] //转给vless+tcp+tls本地监听端口
+              }],
+              "proxy_protocol": "v2" //启用PROXY protocol发送。v1或v2表示PROXY protocol版本，建议采用v2版。
+            }]
+          },
+          {
+            "match": [{
+              "tls": {
+                "sni": ["zt.xx.yy"] //修改为自己规划对应Trojan-Go或Trojan的域名
+              }
+            }],
+            "handle": [{
+              "handler": "proxy",
+              "upstreams": [{
+                "dial": ["127.0.0.1:6443"] //转给Trojan-Go或Trojan本地监听端口
+              }]
+            }]
+          },
+          {
+            "match": [{
+              "tls": {
+                "sni": ["zh.xx.yy"] //修改为自己规划对应HTTPS server的域名
+              }
+            }],
+            "handle": [{
+              "handler": "proxy",
+              "upstreams": [{
+                "dial": ["127.0.0.1:7443"] //转给HTTPS server本地监听端口
+              }],
+              "proxy_protocol": "v2" //启用PROXY protocol发送。v1或v2表示PROXY protocol版本，建议采用v2版。
+            }]
+          }]
+        }
+      }
+    },
+    "http": {
+      "servers": {
+        "h1": {
+          "listen": [":80"], //HTTP默认监听端口
+          "routes": [{
+            "handle": [{
+              "handler": "static_response",
+              "headers": {
+                "Location": ["https://{http.request.host}{http.request.uri}"] //HTTP自动跳转HTTPS，让网站看起来更真实。
+              },
+              "status_code": 301
+            }]
+          }]
+        },
+        "h1h2c": {
+          "listen": ["127.0.0.1:88"], //HTTP/1.1 server及H2C server本地监听端口
+          "routes": [{
+            "handle": [{
+              "handler": "headers",
+              "response": {
+                "set": {
+                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
+                }
+              }
+            },
+            {
+              "handler": "file_server",
+              "root": "/var/www/html" //修改为自己存放的WEB文件路径
+            }]
+          }],
+          "protocols": ["h1","h2c"] //开启HTTP/1.1 server与H2C server支持
+        },
+        "https": {
+          "listen": ["127.0.0.1:7443"], //HTTPS server本地监听端口
+          "listener_wrappers": [{
+            "wrapper": "proxy_protocol" //开启PROXY protocol接收
+          },
+          {
+            "wrapper": "tls" //HTTPS server开启PROXY protocol接收必须配置
+          }],
+          "routes": [{
+            "match": [{
+              "path": ["/SeuW56Es"] //与vless+h2c应用中path对应
+            }],
+            "handle": [{
+              "handler": "reverse_proxy",
+              "transport": {
+                "protocol": "http",
+                "versions": ["h2c","2"]
+              },
+              "upstreams": [{
+                "dial": "unix//dev/shm/vh2c.sock" //转发给本机vless+h2c监听进程
+              }]
+            }]
+          },
+          {
+            "match": [{
+              "protocol": "grpc",
+              "path": ["/SALdGZ9k/*"] //与shadowsocks+grpc应用中serviceName对应
+            }],
+            "handle": [{
+              "handler": "reverse_proxy",
+              "transport": {
+                "protocol": "http",
+                "versions": ["h2c","2"]
+              },
+              "upstreams": [{
+                "dial": "127.0.0.1:2011" //转发给本机shadowsocks+grpc监听端口
+              }],
+              "flush_interval": -1,
+              "headers": {
+              	"request": {
+                  "set": {
+                    "X-Real-Ip": ["{http.request.remote.host}"]
+                  }
+              	}
+              }
+            }]
+          },
+          {
+            "handle": [{
+              "handler": "forward_proxy",
+              "auth_user_deprecated": "user", //NaiveProxy用户，修改为自己的。
+              "auth_pass_deprecated": "pass", //NaiveProxy密码，修改为自己的。
+              "hide_ip": true,
+              "hide_via": true,
+              "probe_resistance": {}
+            }]
+          },
+          {
+            "handle": [{
+              "handler": "headers",
+              "response": {
+                "set": {
+                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
+                }
+              }
+            },
+            {
+              "handler": "file_server",
+              "root": "/var/www/html" //修改为自己存放的WEB文件路径
+            }]
+          }],
+          "tls_connection_policies": [{
+            "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256","TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"],
+            "curves": ["x25519","secp521r1","secp384r1","secp256r1"]
+          }],
+          "protocols": ["h1","h2"] //开启HTTP/1.1 server与HTTP/2 server支持（Caddy SNI分流不支持UDP转发）
+        }
+      }
+    },
+    "tls": {
+      "certificates": {
+        "automate": ["zv.xx.yy","zt.xx.yy","zh.xx.yy"] //自动化管理TLS证书（包括获取、更新及加载证书）。修改为自己的域名。
+      },
+      "automation": {
+        "policies": [{
+          "issuers": [{
+            "module": "acme", //acme表示从Let's Encrypt申请TLS证书，zerossl表示从ZeroSSL申请TLS证书。必须acme与zerossl二选一（固定TLS证书的目录便于引用）。
+            "email": "your@email.com" //修改为自己的电子邮箱（选配）
+          }]
+        }]
+      }
+    }
+  }
+}
+//备注：
+//1、申请免费TLS证书的域名不要超过五个，否则影响TLS证书的更新。
+//2、从Let's Encrypt申请的普通TLS证书在‘/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zv.xx.yy’目录中。/home/tls为存放TLS证书的基本路径，zv.xx.yy为域名，目录根据域名变化。
+//3、从ZeroSSL申请的普通TLS证书在‘/home/tls/certificates/acme.zerossl.com-v2-dv90/zv.xx.yy’目录中。/home/tls为存放TLS证书的基本路径，zv.xx.yy为域名，目录根据域名变化。 
+//4、本配置仅支持申请普通TLS证书，若要申请通配符TLS证书请参考‘Caddy(Other Configuration) （Caddy的特殊应用配置方法。）’中对应介绍及对应配置示例。
