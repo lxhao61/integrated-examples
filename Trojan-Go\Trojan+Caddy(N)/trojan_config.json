@@ -1,0 +1,36 @@
+{
+    "run_type": "server",
+    "local_addr": "0.0.0.0",
+    "local_port": 443, //监听端口
+    "remote_addr": "127.0.0.1",
+    "remote_port": 88, //h2与http/1.1回落端口（共用端口）
+    "password": [
+        "diy443" //修改为自己的密码。密码可多组（"password"），用逗号隔开。
+    ],
+    "log_level": 2,
+    "ssl": {
+        "cert": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy/xx.yy.crt", //换成自己的证书，绝对路径。
+        "key": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy/xx.yy.key", //换成自己的密钥，绝对路径。
+        "key_password": "",
+        "prefer_server_cipher": true, //优先使用服务端的密码套件（对如下TLSv1.2协议的密码套件有效）
+        "cipher": "ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256",
+        "cipher_tls13": "TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384:TLS_AES_128_GCM_SHA256", //若不启用TLSv1.3，可删除此项配置。
+        "curves": "",
+        "alpn": [
+            "h2", //启用h2连接需配置h2回落，否则不一致（裸奔）容易被墙探测出从而被封。
+            "http/1.1" //启用http/1.1连接需配置http/1.1回落，否则不一致（裸奔）容易被墙探测出从而被封。
+        ],
+        "reuse_session": true,
+        "session_ticket": false,
+        "session_timeout": 600,
+        "plain_http_response": ""
+    },
+    "tcp": {
+        "prefer_ipv4": false,
+        "no_delay": true,
+        "keep_alive": true,
+        "reuse_port": false,
+        "fast_open": false,
+        "fast_open_qlen": 20
+    }
+}
