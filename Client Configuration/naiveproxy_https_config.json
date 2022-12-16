@@ -1,0 +1,5 @@
+{
+  "listen": "socks://127.0.0.1:1080",
+  "proxy": "https://user:pass@xx.yy", //user修改为服务端配置的用户，pass修改为服务端配置的密码，xx.yy修改为服务端配置的对应域名。
+  "log": ""
+}

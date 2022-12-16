@@ -1,0 +1,24 @@
+{
+    "run_type": "client",
+    "local_addr": "127.0.0.1",
+    "local_port": 1080,
+    "remote_addr": "xx.yy", //修改为服务端配置的对应域名
+    "remote_port": 443, //服务端配置的端口
+    "password": [
+        "diy443" //修改为服务端配置的对应密码
+    ],
+    "log_level": 2,
+    "ssl": {
+        "verify_hostname": true,
+        "sni": "",
+        "reuse_session": true,
+        "session_ticket": false
+    },
+    "tcp": {
+        "no_delay": true,
+        "keep_alive": true,
+        "reuse_port": false,
+        "fast_open": false,
+        "fast_open_qlen": 20
+    }
+}
