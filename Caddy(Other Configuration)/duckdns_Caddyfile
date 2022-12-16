@@ -1,0 +1,68 @@
+#一、仅反代应用
+#原配置：
+{
+#.........<省略>........
+	email your@email.com #修改为自己的电子邮箱（选配）
+}
+
+:443, xx.yy { #xx.yy修改为自己的域名。注意：逗号与域名之间有一个空格。
+#.........<省略>........
+	@host {
+		host xx.yy #限定域名访问（禁止以IP方式访问网站），修改为自己的域名。
+	}
+#.........<省略>........
+
+#以dns api方式申请tls证书（以上配置改为如下）：
+{
+#.........<省略>........
+	email your@email.com #修改为自己的电子邮箱（选配）
+	acme_dns duckdns b8a33cc1-1111-2222-3333-b049bf07988f { #换成你duckdns的token，此token是你注册duckdns后生成的。
+		override_domain zz.duckdns.org #换成你duckdns中配置的DDNS域名（二级域名）
+	}
+}
+
+:443, *.xx.yy { #*.xx.yy表示为通配符域名，修改为自己的域名。注意：逗号与域名之间有一个空格。
+#.........<省略>........
+	@host {
+		host *.xx.yy #限定域名访问（禁止以IP方式访问网站），修改为自己的域名。
+	}
+#.........<省略>........
+#注意：
+#1、Caddy采用DNS-01验证方式申请的证书与域名是一一对应的，不支持申请包含根域名的通配符TLS证书。
+#2、调整限定域名访问范围，不严格可直接修改为通配符域名。
+#3、此配置为挑战委托模式，实现无DNS-01验证方式的域名委托给有DNS-01验证方式的域名申请TLS证书。
+#4、挑战委托模式实现条件：*.xx.yy关联zz.duckdns.org（CNAME记录），zz.duckdns.org关联VPS IP（A记录）。
+#5、若不使用挑战委托模式：删除override_domain zz.duckdns.org这条参数及包含它的{}，所有*.xx.yy（或xx.yy）修改为zz.duckdns.org。
+
+
+#二、SNI分流为主的应用
+#原配置：
+{
+#.........<省略>........
+	email your@email.com #修改为自己的电子邮箱（选配）
+#.........<省略>........
+}
+#.........<省略>........
+
+:7443, zv.xx.yy:7443, zt.xx.yy:7443, zh.xx.yy:7443 { #HTTPS server监听端口/绑定UDS后此端口失效，仅做标记作用。zv.xx.yy、zt.xx.yy、zh.xx.yy修改为自己的域名。注意：逗号与域名（或含端口）之间有一个空格。
+#.........<省略>........
+
+#以dns api方式申请tls证书（以上配置改为如下）：
+{
+#.........<省略>........
+	email your@email.com #修改为自己的电子邮箱（选配）
+	acme_dns duckdns b8a33cc1-1111-2222-3333-b049bf07988f { #换成你duckdns的token，此token是你注册duckdns后生成的。
+		override_domain zz.duckdns.org #换成你duckdns中配置的DDNS域名（二级域名）
+	}
+#.........<省略>........
+}
+#.........<省略>........
+
+:7443, *.xx.yy:7443 { #*.xx.yy表示为通配符域名，修改为自己的域名。注意：逗号与域名之间有一个空格。
+#.........<省略>........
+#注意：
+#1、Caddy采用DNS-01验证方式申请的证书与域名是一一对应的，不支持申请包含根域名的通配符TLS证书。
+#2、此配置为挑战委托模式，实现无DNS-01验证方式的域名委托给有DNS-01验证方式的域名申请TLS证书。
+#3、挑战委托模式实现条件：*.xx.yy关联zz.duckdns.org（CNAME记录），zz.duckdns.org关联VPS IP（A记录）。
+#4、从Let's Encrypt申请的通配符TLS证书在 “/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/wildcard_.xx.yy” 目录中。/home/tls为存放TLS证书的基本路径，xx.yy为根域名，目录根据域名变化。  
+#5、从ZeroSSL申请的通配符TLS证书在 “/home/tls/certificates/acme.zerossl.com-v2-dv90/wildcard_.xx.yy” 目录中。/home/tls为存放TLS证书的基本路径，xx.yy为根域名，目录根据域名变化。

@@ -1,0 +1,133 @@
+//一、回落为主应用（无SNI分流）
+//原配置：
+{
+  "admin": {
+    "disabled": true
+  },
+  "logging": {
+//.........<省略>........
+            "match": [{
+              "host": ["xx.yy"] //限定域名访问（禁止以IP方式访问网站），修改为自己的域名。
+            }],
+//.........<省略>........
+    "tls": {
+      "certificates": {
+        "automate": ["xx.yy"] //自动化管理TLS证书（包括获取、更新及加载证书）。修改为自己的域名。
+      },
+      "automation": {
+        "policies": [{
+          "issuers": [{
+            "module": "acme", //acme表示从Let's Encrypt申请TLS证书，zerossl表示从ZeroSSL申请TLS证书。必须acme与zerossl二选一（固定TLS证书的目录便于引用）。
+            "email": "your@email.com" //修改为自己的电子邮箱（选配）
+          }]
+        }]
+      }
+    }
+  }
+}
+
+//以dns api方式申请tls证书（以上配置改为如下）：
+{
+  "admin": {
+    "disabled": true
+  },
+  "logging": {
+//.........<省略>........
+            "match": [{
+              "host": ["*.xx.yy"] //限定域名访问（禁止以IP方式访问网站），修改为自己的域名。
+            }],
+//.........<省略>........
+    "tls": {
+      "certificates": {
+        "automate": ["*.xx.yy"] //自动化管理TLS证书（包括获取、更新及加载证书）。*.xx.yy表示为通配符域名，修改为自己的域名。
+      },
+      "automation": {
+        "policies": [{
+          "issuers": [{
+            "module": "acme", //acme表示从Let's Encrypt申请TLS证书，zerossl表示从ZeroSSL申请TLS证书。必须acme与zerossl二选一（固定TLS证书的目录便于引用）。
+            "email": "your@email.com", //修改为自己的电子邮箱（选配）
+            "challenges": {
+              "dns": {
+                "provider": {
+                  "Language": "en",
+                  "BaseURL": "https://dnsapi.cn",
+                  "name": "dnspodcn",
+                  "AppID": "1232456", //换成你dnspod.cn的DP_Id
+                  "AppToken": "e09062f1fd2545555fc8a15fceda2222" //换成你dnspod.cn的DP_Key
+                }
+              }
+            }
+          }]
+        }]
+      }
+    }
+  }
+}
+//注意：
+//1、Caddy采用DNS-01验证方式申请的证书与域名是一一对应的，不支持申请包含根域名的通配符TLS证书。
+//2、调整限定域名访问范围，不严格可直接修改为通配符域名。
+//3、从Let's Encrypt申请的通配符TLS证书在 “/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/wildcard_.xx.yy” 目录中。/home/tls为存放TLS证书的基本路径，xx.yy为根域名，目录根据域名变化。  
+//4、从ZeroSSL申请的通配符TLS证书在 “/home/tls/certificates/acme.zerossl.com-v2-dv90/wildcard_.xx.yy” 目录中。/home/tls为存放TLS证书的基本路径，xx.yy为根域名，目录根据域名变化。
+
+
+//二、SNI分流为主的应用
+//原配置：
+{
+  "admin": {
+    "disabled": true
+  },
+  "logging": {
+//.........<省略>........
+    "tls": {
+      "certificates": {
+        "automate": ["zv.xx.yy","zt.xx.yy","zh.xx.yy"] //自动化管理TLS证书（包括获取、更新及加载证书）。修改为自己的域名。
+      },
+      "automation": {
+        "policies": [{
+          "issuers": [{
+            "module": "acme", //acme表示从Let's Encrypt申请TLS证书，zerossl表示从ZeroSSL申请TLS证书。必须acme与zerossl二选一（固定TLS证书的目录便于引用）。
+            "email": "your@email.com" //修改为自己的电子邮箱（选配）
+          }]
+        }]
+      }
+    }
+  }
+}
+
+//以dns api方式申请tls证书（以上配置改为如下）：
+{
+  "admin": {
+    "disabled": true
+  },
+  "logging": {
+//.........<省略>........
+    "tls": {
+      "certificates": {
+        "automate": ["*.xx.yy"] //自动化管理TLS证书（包括获取、更新及加载证书）。*.xx.yy表示为通配符域名，修改为自己的域名。
+      },
+      "automation": {
+        "policies": [{
+          "issuers": [{
+            "module": "acme", //acme表示从Let's Encrypt申请TLS证书，zerossl表示从ZeroSSL申请TLS证书。必须acme与zerossl二选一（固定TLS证书的目录便于引用）。
+            "email": "your@email.com", //修改为自己的电子邮箱（选配）
+            "challenges": {
+              "dns": {
+                "provider": {
+                  "Language": "en",
+                  "BaseURL": "https://dnsapi.cn",
+                  "name": "dnspodcn",
+                  "AppID": "1232456", //换成你dnspod.cn的DP_Id
+                  "AppToken": "e09062f1fd2545555fc8a15fceda2222" //换成你dnspod.cn的DP_Key
+                }
+              }
+            }
+          }]
+        }]
+      }
+    }
+  }
+}
+//注意：
+//1、Caddy采用DNS-01验证方式申请的证书与域名是一一对应的，不支持申请包含根域名的通配符TLS证书。
+//2、从Let's Encrypt申请的通配符TLS证书在 “/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/wildcard_.xx.yy” 目录中。/home/tls为存放TLS证书的基本路径，xx.yy为根域名，目录根据域名变化。  
+//3、从ZeroSSL申请的通配符TLS证书在 “/home/tls/certificates/acme.zerossl.com-v2-dv90/wildcard_.xx.yy” 目录中。/home/tls为存放TLS证书的基本路径，xx.yy为根域名，目录根据域名变化。
