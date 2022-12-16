@@ -1,0 +1,52 @@
+//使用多个域名实现CDN流量中转与正常应用共存配置
+//一、多个域名使用各自普通TLS证书
+//原配置：
+//.........<省略>........
+          "certificates": [
+            {
+              "ocspStapling": 3600, //Xray版本不小于v1.3.0才支持配置OCSP装订更新与证书热重载的时间间隔。目前V2Ray不支持，若使用V2Ray做服务端必须删除此项配置。
+              "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy/xx.yy.crt", //换成自己的证书，绝对路径。
+              "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy/xx.yy.key" //换成自己的密钥，绝对路径。
+            }
+          ],
+//.........<省略>........
+
+//以上配置修改为如下：
+//.........<省略>........
+          "certificates": [
+            {
+              "ocspStapling": 3600, //Xray版本不小于v1.3.0才支持配置OCSP装订更新与证书热重载的时间间隔。目前V2Ray不支持，若使用V2Ray做服务端必须删除此项配置。
+              "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/z1.xx.yy/z1.xx.yy.crt", //换成自己的证书，绝对路径。
+              "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/z1.xx.yy/z1.xx.yy.key" //换成自己的密钥，绝对路径。
+            },
+            {
+              "ocspStapling": 3600, //Xray版本不小于v1.3.0才支持配置OCSP装订更新与证书热重载的时间间隔。目前V2Ray不支持，若使用V2Ray做服务端必须删除此项配置。
+              "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/z2.xx.yy/z2.xx.yy.crt", //换成自己的证书，绝对路径。
+              "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/z2.xx.yy/z2.xx.yy.key" //换成自己的密钥，绝对路径。
+            }
+          ],
+//.........<省略>........
+
+
+//二、多个域名使用同一个通配符TLS证书
+//原配置：
+//.........<省略>........
+          "certificates": [
+            {
+              "ocspStapling": 3600, //Xray版本不小于v1.3.0才支持配置OCSP装订更新与证书热重载的时间间隔。目前V2Ray不支持，若使用V2Ray做服务端必须删除此项配置。
+              "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy/xx.yy.crt", //换成自己的证书，绝对路径。
+              "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy/xx.yy.key" //换成自己的密钥，绝对路径。
+            }
+          ],
+//.........<省略>........
+
+//以上配置修改为如下：
+//.........<省略>........
+          "certificates": [
+            {
+              "ocspStapling": 3600, //Xray版本不小于v1.3.0才支持配置OCSP装订更新与证书热重载的时间间隔。目前V2Ray不支持，若使用V2Ray做服务端必须删除此项配置。
+              "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/wildcard_.xx.yy/wildcard_.xx.yy.crt", //换成自己的通配符证书，绝对路径。
+              "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/wildcard_.xx.yy/wildcard_.xx.yy.key" //换成自己的通配符密钥，绝对路径。
+            }
+          ],
+//.........<省略>........
