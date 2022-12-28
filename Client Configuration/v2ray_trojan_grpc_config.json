@@ -32,6 +32,9 @@
         "network": "grpc",
         "grpcSettings": {
           "serviceName": "tdngrpc" //修改为服务端配置的对应gRPC服务名称
+        },
+        "tlsSettings": {
+          "fingerprint": "chrome" //启用模拟Chrome指纹（V2Ray不支持，若使用V2Ray做客户端必须删除此项配置。）。可选firefox、chrome、safari、randomized（表示随机指纹）或为空（表示不启用指纹），强烈推荐启用。
         }
       }
     },

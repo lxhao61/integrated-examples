@@ -24,14 +24,17 @@
             "address": "xx.yy", //修改为服务端配置的对应域名
             "port": 443, //服务端配置的端口
             "password": "diy443", //修改为服务端配置的对应密码
-            "flow": "xtls-rprx-direct" //仅启用xtls应用才有此项参数（参数值可自己调整），否则启用tls应用必须删除此项参数。
+            "flow": "xtls-rprx-direct" //启用XTLS应用（含XTLS Vision）才有此项配置（参数根据服务端调整），否则删除。V2Ray不支持，若使用V2Ray做客户端必须删除此项配置。
           }
         ]
       },
       "streamSettings": {
-        "security": "xtls", //启用xtls应用（使用xtls应用请选Xray，且服务端已配置支持。），否则启用tls应用。
+        "security": "xtls", //启用XTLS Direct配置为xtls，否则配置为tls（含XTLS Vision）。
         "network": "tcp",
-        "tcpSettings": {}
+        "tcpSettings": {},
+        "tlsSettings": {
+          "fingerprint": "chrome" //启用模拟Chrome指纹（V2Ray不支持，若使用V2Ray做客户端必须删除此项配置。）。可选firefox、chrome、safari、randomized（表示随机指纹）或为空（表示不启用指纹），强烈推荐启用。
+        }
       }
     },
     {
