@@ -61,7 +61,7 @@
 2. [V2Ray(E+B+D+G+A)+Caddy(N+T)+Nginx\HAProxy](https://github.com/lxhao61/integrated-examples/tree/main/V2Ray(E%2BB%2BD%2BG%2BA)%2BCaddy(N%2BT)%2BNginx%5CHAProxy) （Trojan-Go/Trojan由Caddy插件实现的综合应用。）
 3. [V2Ray(E+B+F+C+D+G+A)+Caddy(N)+Nginx\HAProxy](https://github.com/lxhao61/integrated-examples/tree/main/V2Ray(E%2BB%2BF%2BC%2BD%2BG%2BA)%2BCaddy(N)%2BNginx%5CHAProxy) （Trojan/Trojan-Go由Xray/V2Ray配置实现的综合应用。）
 #### &emsp;注意（以上所有示例）:
-1. V2Ray从v4.33.0版开始删除了XTLS应用，故若还想用XTLS应用，请选Xray。Xray是V2Ray的超集（更好的整体性能和XTLS等一系列增强，且完全兼容。），也是因为这个应用分家独自发展。
+1. V2Ray从v4.33.0版后删除了XTLS应用，故若想用XTLS应用，请选Xray。Xray是V2Ray的超集（更好的整体性能和XTLS等一系列增强，且完全兼容。），也是因为这个应用分家独自发展。
 2. Xray/V2Ray单一核心应用简记：A=vless+kcp+seed、B=vmess+ws+tls、C=trojan+ws+tls、D=vless+h2c+tls、E=vless+tcp+tls/xtls、F=trojan+tcp+tls/xtls、G=shadowsocks+grpc+tls。
 3. Xray/V2Ray示例中各应用都配置了禁用BT。如不需要，可参考V2Ray(Other Configuration)中BT_config.json示例删除相关配置。
 4. Caddy插件单一应用简记：N=NaiveProxy(Caddy+forwardproxy)、T=Trojan-Go(Caddy+caddy-trojan)。
