@@ -34,12 +34,12 @@
       },
       "streamSettings": {
         "security": "tls",
+        "tlsSettings": {
+          "fingerprint": "chrome" //启用模拟Chrome指纹。可选firefox、chrome、safari、randomized（表示随机指纹）或为空（表示不启用指纹），强烈推荐启用。
+        }, //仅Xray支持此应用，否则必须删除此部分配置。
         "network": "h2",
         "httpSettings": {
           "path": "/nSBv5RjE" //修改为服务端配置的对应path
-        },
-        "tlsSettings": {
-          "fingerprint": "chrome" //启用模拟Chrome指纹（V2Ray不支持，若使用V2Ray做客户端必须删除此项配置。）。可选firefox、chrome、safari、randomized（表示随机指纹）或为空（表示不启用指纹），强烈推荐启用。
         }
       }
     },
