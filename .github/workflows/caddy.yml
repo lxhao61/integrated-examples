@@ -53,20 +53,20 @@ jobs:
             release: true
           }
         - {
-            name: "freebsd-arm",
-            GOARCH: arm,
-            GOOS: linux,
-            release: true
-          }
-        - {
-            name: "darwin-arm64",
+            name: "freebsd-arm64",
             GOARCH: arm64,
-            GOOS: darwin,
+            GOOS: linux,
             release: true
           }
         - {
             name: "darwin-amd64",
             GOARCH: amd64,
+            GOOS: darwin,
+            release: true
+          }
+        - {
+            name: "darwin-arm64",
+            GOARCH: arm64,
             GOOS: darwin,
             release: true
           }
