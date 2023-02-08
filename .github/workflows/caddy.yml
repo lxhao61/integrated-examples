@@ -41,6 +41,13 @@ jobs:
             release: true
           }
         - {
+            name: "linux-armv5",
+            GOARCH: arm,
+            GOARM: 5,
+            GOOS: linux,
+            release: true
+          }
+        - {
             name: "linux-s390x",
             GOARCH: s390x,
             GOOS: linux,
@@ -53,20 +60,20 @@ jobs:
             release: true
           }
         - {
-            name: "freebsd-arm",
-            GOARCH: arm,
-            GOOS: linux,
-            release: true
-          }
-        - {
-            name: "darwin-arm64",
+            name: "freebsd-arm64",
             GOARCH: arm64,
-            GOOS: darwin,
+            GOOS: linux,
             release: true
           }
         - {
             name: "darwin-amd64",
             GOARCH: amd64,
+            GOOS: darwin,
+            release: true
+          }
+        - {
+            name: "darwin-arm64",
+            GOARCH: arm64,
             GOOS: darwin,
             release: true
           }
@@ -78,7 +85,7 @@ jobs:
     - name: Install go
       uses: actions/setup-go@v3
       with:
-        go-version: '1.19'
+        go-version: '1.20'
         check-latest: true
     
     - name: Install xcaddy
