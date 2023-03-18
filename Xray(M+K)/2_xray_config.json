@@ -1,0 +1,101 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "error": "/var/log/xray/error.log",
+    "access": "/var/log/xray/access.log"
+  },
+  "inbounds": [
+    {
+      "port": 443, //VLESS+Vision+REALITY监听端口
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "048e0bf2-dd56-11e9-aa37-5600024c1d6a", //修改为自己的UUID
+            "flow": "xtls-rprx-vision", //启用XTLS Vision
+            "email": "443@gmail.com"
+          }
+        ],
+        "decryption": "none",
+        "fallbacks": [
+          {
+            "dest": "@vlessh2c", //回落给VLESS+H2C监听进程
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给如下VLESS+H2C应用。1或2表示PROXY protocol版本。
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "show": false, //选填，若为true输出调试信息。
+          "dest": "xx.yy:443", //转发给自己选定的目标网站。目标网站使用外部的一般为xx.yy:443，目标网站使用自己的一般直接端口或UDS。
+          "xver": 0, //选填，默认关闭PROXY protocol发送。可填1或2开启PROXY protocol发送，1或2表示PROXY protocol版本。
+          "serverNames": [ //必填，客户端可用的serverName列表，暂不支持*通配符。
+            "xx.yy" //修改为目标网站证书对应的域名
+          ],
+          "privateKey": "qZbyc2jAkWAhFEI7P5qhfBpI5yt4pgTS8-HgjpPjt8U", //修改为自己执行./xray x25519后生成的一对密钥中私钥。
+          "shortIds": [ //必填，客户端可用的shortId列表，可用于区分不同的客户端。
+            "" //若有此项，客户端shortId可为空。若不为空，可0到f（0123456789abcdef），长度为2的倍数，长度上限为16。
+          ]
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    },
+    {
+      "listen": "@vlessh2c", //VLESS+H2C监听进程
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "048e0bf2-dd56-11e9-aa37-5600024c1d6a", //修改为自己的UUID
+            "email": "2005@gmail.com"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "h2",
+        "security": "none",
+        "sockopt": {
+          "acceptProxyProtocol": true //开启PROXY protocol接收，接收VLESS+Vision+REALITY回落前真实来源IP和端口。
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "blocked"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
