@@ -1,0 +1,54 @@
+{
+	order trojan before route
+	order forward_proxy before trojan
+	admin off
+	log {
+		output file /var/log/caddy/error.log
+		level ERROR
+	} #版本不小于v2.4.0才支持日志全局配置
+	email your@email.com #修改为自己的电子邮箱（选配）
+
+	servers :443 {
+		listener_wrappers {
+			trojan #caddy-trojan插件应用必须配置
+		}
+	}
+	trojan {
+		caddy
+		no_proxy
+		users diy443 #修改为自己的密码。密码可多组，用空格隔开。
+	}
+}
+
+:443, xx.yy { #xx.yy修改为自己的域名。注意：逗号与域名之间有一个空格。
+	tls {
+		ciphers TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+		curves x25519 secp521r1 secp384r1 secp256r1
+	}
+
+	forward_proxy {
+		basic_auth user pass #NaiveProxy用户与密码，修改为自己的。
+		hide_ip
+		hide_via
+		probe_resistance
+	}
+
+	trojan {
+		connect_method
+		websocket
+	} #此部分配置为caddy-trojan插件的WebSocket应用，若删除就仅支持Trojan应用。
+
+	@host {
+		host xx.yy #限定域名访问（禁止以IP方式访问网站），修改为自己的域名。
+	}
+	route @host {
+		header {
+			Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
+		}
+		file_server {
+			root /var/www/html #修改为自己存放的WEB文件路径
+		}
+	}
+}
+#备注：
+#1、本配置仅支持申请普通TLS证书，若要申请通配符TLS证书请参考‘Caddy(Other Configuration) （Caddy的特殊应用配置方法。）’中对应介绍及对应配置示例。
