@@ -1,0 +1,80 @@
+//原回落配置：
+//.........<省略>........
+          "routes": [{ //或者其它应用后{开始
+            "match": [{
+              "host": ["xx.yy"] //限定域名访问（禁止以IP方式访问网站），修改为自己的域名。
+            }],
+            "handle": [{
+              "handler": "subroute",
+              "routes": [{
+                "handle": [{
+                  "handler": "headers",
+                  "response": {
+                    "set": {
+                      "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
+                    }
+                  }
+                }]
+              },
+              {
+                "handle": [{
+                  "handler": "file_server",
+                  "root": "/var/www/html" //修改为自己存放的WEB文件路径
+                }]
+              }]
+            }]
+          }],
+//.........<省略>........
+
+
+//分别回落分流到不同网站，以上配置修改为如下：（示例仅配置了两个网站/域名的回落分流；如需要多个网站/域名，增加对应参数即可。）
+//.........<省略>........
+          "routes": [{ //或者其它应用后{开始
+            "match": [{
+              "host": ["za.xx.yy"] //修改为分流的域名
+            }],
+            "handle": [{
+              "handler": "subroute",
+              "routes": [{
+                "handle": [{
+                  "handler": "headers",
+                  "response": {
+                    "set": {
+                      "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
+                    }
+                  }
+                }]
+              },
+              {
+                "handle": [{
+                  "handler": "file_server",
+                  "root": "/var/www/za" //修改为自己存放的WEB文件路径
+                }]
+              }]
+            }]
+          },
+          {
+            "match": [{
+              "host": ["zb.xx.yy"] //修改为分流的域名
+            }],
+            "handle": [{
+              "handler": "subroute",
+              "routes": [{
+                "handle": [{
+                  "handler": "headers",
+                  "response": {
+                    "set": {
+                      "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
+                    }
+                  }
+                }]
+              },
+              {
+                "handle": [{
+                  "handler": "file_server",
+                  "root": "/var/www/zb" //修改为自己存放的WEB文件路径
+                }]
+              }]
+            }]
+          }],
+//.........<省略>........

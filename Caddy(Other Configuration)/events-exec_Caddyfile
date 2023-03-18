@@ -1,0 +1,52 @@
+#caddy-events-exec插件应用
+#原配置：
+{
+#.........<省略>........
+}
+#.........<省略>........
+
+#Caddy用户拥有root权限联动执行一个程序配置（原配置修改为如下）：
+{
+#.........<省略>........
+	events {
+		on cert_obtained exec systemctl restart hysteria #可以调整为其它程序
+	}
+}
+#.........<省略>........
+
+#Caddy用户拥有root权限联动执行两个程序配置（原配置修改为如下）：
+{
+#.........<省略>........
+	events {
+		on cert_obtained exec systemctl restart v2ray #可以调整为其它程序
+		on cert_obtained exec systemctl restart hysteria #可以调整为其它程序
+	}
+}
+#.........<省略>........
+
+#Caddy用户拥有sudo权限联动执行一个程序配置（原配置修改为如下）：
+{
+#.........<省略>........
+	events {
+		on cert_obtained exec sudo systemctl restart hysteria #可以调整为其它程序
+	}
+}
+#.........<省略>........
+
+#Caddy用户拥有sudo权限联动执行两个程序配置（原配置修改为如下）：
+{
+#.........<省略>........
+	events {
+		on cert_obtained exec sudo systemctl restart v2ray #可以调整为其它程序
+		on cert_obtained exec sudo systemctl restart hysteria #可以调整为其它程序
+	}
+}
+#.........<省略>........
+#备注：
+#1、本项目Caddy从版本v2.6.2开始才支持caddy-events-exec插件应用。
+#2、本示例实现了TLS证书自动更新后就执行重启相关程序来重载更新后的TLS证书，相关程序可以根据实际增加。
+#3、本示例sudo权限用户重启相关程序不需要密码，其sudo权限配置可参考如下之一对应配置（兼顾安全的最小权限配置）：
+#1）、nobody ALL=NOPASSWD:/bin/systemctl restart hysteria （表示Caddy的nobody用户使用sudo权限重启hysteria不需要密码）
+#2）、nobody ALL=NOPASSWD:/bin/systemctl restart v2ray,/bin/systemctl restart hysteria （表示Caddy的nobody用户使用sudo权限重启v2ray与hysteria都不需要密码）
+#3）、nobody ALL=NOPASSWD:/bin/systemctl restart [a-zA-Z]* （表示Caddy的nobody用户使用sudo权限重启所有程序不需要密码。需配置重启程序太多及嫌麻烦可参考此配置。）
+#4、本示例为当前解决V2Ray、Trojan-Go/Trojan、Hysteria（使用外部TLS证书）等不支持自动识别TLS证书更新并重载TLS证书的最优办法（相比‘通用办法’，推荐。）。
