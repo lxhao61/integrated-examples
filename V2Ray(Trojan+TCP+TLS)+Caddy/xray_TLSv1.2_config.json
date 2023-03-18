@@ -1,0 +1,15 @@
+//使用非AES算法密码套件来防止被封
+//原配置：
+//.........<省略>........
+          "minVersion": "1.2", //Xray版本不小于v1.1.4才支持配置最小TLS版本。目前V2Ray不支持，若使用V2Ray做服务端必须删除此项配置。
+          "cipherSuites": "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", //Xray版本不小于v1.1.4才支持配置密码套件。目前V2Ray不支持，若使用V2Ray做服务端必须删除此项配置。
+//.........<省略>........
+
+//以上配置修改为如下：
+//.........<省略>........
+          "minVersion": "1.2",
+          "maxVersion": "1.2",
+          "cipherSuites": "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256",
+//.........<省略>........
+//备注：
+//1、强烈推荐客户端启用模拟指纹来与此服务端应用配合使用。
