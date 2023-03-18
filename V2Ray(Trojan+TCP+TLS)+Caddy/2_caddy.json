@@ -1,0 +1,89 @@
+{
+  "admin": {
+    "disabled": true
+  },
+  "logging": {
+    "logs": {
+      "default": {
+        "writer": {
+          "output": "file",
+          "filename": "/var/log/caddy/error.log"
+        },
+        "level": "ERROR"
+      }
+    }
+  },
+  "storage": {
+    "module": "file_system",
+    "root": "/home/tls" //存放TLS证书的基本路径
+  },
+  "apps": {
+    "http": {
+      "servers": {
+        "h1": {
+          "listen": [":80"], //HTTP默认监听端口
+          "routes": [{
+            "handle": [{
+              "handler": "static_response",
+              "headers": {
+                "Location": ["https://{http.request.host}{http.request.uri}"] //HTTP自动跳转HTTPS，让网站看起来更真实。
+              },
+              "status_code": 301
+            }]
+          }]
+        },
+        "h1h2c": {
+          "listen": ["unix/@h1h2c"], //HTTP/1.1 server及H2C server监听进程
+          "listener_wrappers": [{
+            "wrapper": "proxy_protocol" //开启PROXY protocol接收
+          }],
+          "routes": [{
+            "match": [{
+              "host": ["xx.yy"] //限定域名访问（禁止以IP方式访问网站），修改为自己的域名。
+            }],
+            "handle": [{
+              "handler": "subroute",
+              "routes": [{
+                "handle": [{
+                  "handler": "headers",
+                  "response": {
+                    "set": {
+                      "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
+                    }
+                  }
+                }]
+              },
+              {
+                "handle": [{
+                  "handler": "file_server",
+                  "root": "/var/www/html" //修改为自己存放的WEB文件路径
+                }]
+              }]
+            }]
+          }],
+          "automatic_https": {
+            "disable": true
+          }, //禁用自动HTTPS
+          "protocols": ["h1","h2c"] //开启HTTP/1.1 server与H2C server支持
+        }
+      }
+    },
+    "tls": {
+      "certificates": {
+        "automate": ["xx.yy"] //自动化管理TLS证书（包括获取、更新及加载证书）。修改为自己的域名。
+      },
+      "automation": {
+        "policies": [{
+          "issuers": [{
+            "module": "acme", //acme表示从Let's Encrypt申请TLS证书，zerossl表示从ZeroSSL申请TLS证书。必须acme与zerossl二选一（固定TLS证书的目录便于引用）。
+            "email": "your@email.com" //修改为自己的电子邮箱（选配）
+          }]
+        }]
+      }
+    }
+  }
+}
+//备注：
+//1、从Let's Encrypt申请的普通TLS证书在‘/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy’目录中。/home/tls为存放TLS证书的基本路径，xx.yy为域名，目录根据域名变化。
+//2、从ZeroSSL申请的普通TLS证书在‘/home/tls/certificates/acme.zerossl.com-v2-dv90/xx.yy’目录中。/home/tls为存放TLS证书的基本路径，xx.yy为域名，目录根据域名变化。 
+//3、本配置仅支持申请普通TLS证书，若要申请通配符TLS证书请参考‘Caddy(Other Configuration) （Caddy的特殊应用配置方法。）’中对应介绍及对应配置示例。
