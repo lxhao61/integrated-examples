@@ -1,0 +1,28 @@
+#使用非AES算法密码套件来防止被封
+#原配置：
+{
+#.........<省略>........
+}
+#.........<省略>........
+	tls {
+		ciphers TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+		curves x25519 secp521r1 secp384r1 secp256r1
+	}
+#.........<省略>........
+
+#以上配置修改为如下：
+{
+#.........<省略>........
+	servers :443 {
+		protocols h1 h2 #TLSv1.2不支持HTTP/3 server。
+	}
+}
+#.........<省略>........
+	tls {
+		protocols tls1.2 tls1.2
+		ciphers TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+		curves x25519 secp521r1 secp384r1 secp256r1
+	}
+#.........<省略>........
+#备注：
+#1、强烈推荐客户端启用模拟指纹来与此服务端应用配合使用。
