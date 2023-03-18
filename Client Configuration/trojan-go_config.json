@@ -1,0 +1,55 @@
+{
+    "run_type": "client",
+    "local_addr": "127.0.0.1",
+    "local_port": 1080,
+    "remote_addr": "xx.yy", //修改为服务端配置的对应域名
+    "remote_port": 443, //服务端配置的端口
+    "password": [
+        "diy443" //修改为服务端配置的对应密码
+    ],
+    "log_level": 2,
+    "ssl": {
+        "verify_hostname": true,
+        "sni": "",
+        "reuse_session": true,
+        "session_ticket": false,
+        "fingerprint": "chrome" //模拟TLS指纹，可任一chrome、firefox、ios选项配置。
+    },
+    "tcp": {
+        "no_delay": true,
+        "keep_alive": true
+    },
+    "websocket": {
+        "enabled": false, //websocket开关，默认关闭（即trojan模式，此情况等同原版trojan使用。）。
+        "path": "", //取决服务端是否设置路径，否则默认（为空）即可。
+        "host": "" //若进行CDN流量中转需设置域名，否则默认（为空）即可。
+    },
+    "shadowsocks": {
+        "enabled": false, //shadowsocks AEAD加密开关，默认关闭。是否启用取决服务端设置（必须与服务器设置一致）。
+        "method": "AES-128-GCM",
+        "password": "" //若shadowsocks AEAD加密启用，设置加密密码（必须与服务器设置一致）。
+    },
+    "mux": {
+        "enabled": false, //多路复用开关，默认关闭。因兼容性，多路复用仅与原版服务端连接才可启用；若原版服务端设置http/1.1协商连接或传输方式为WebSocket，建议启用，否则关闭。
+        "concurrency": 4, //此数据根据网络情况调整。表示4条传输进程复合一个链路发出。
+        "idle_timeout": 60
+    },
+    "router": {
+        "enabled": true, //路由策略，默认开启。
+        "bypass": [
+            "geoip:cn",
+            "geoip:private",
+            "geosite:cn",
+            "geosite:private"
+        ],
+        "block": [
+            "geosite:category-ads"
+        ],
+        "proxy": [
+            "geosite:geolocation-!cn"
+        ],
+        "default_policy": "proxy",
+        "geoip": "/trojan-go/geoip.dat", //修改为自己的geoip.dat所在路径
+        "geosite": "/trojan-go/geosite.dat" //修改为自己的geosite.dat所在路径
+    }
+}

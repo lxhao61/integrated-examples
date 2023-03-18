@@ -1,0 +1,70 @@
+{
+  "log": {},
+  "inbounds": [
+    {
+      "port": "1080",
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": true
+      }
+    },
+    {
+      "port": "1081",
+      "protocol": "http",
+      "settings": {}
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "xx.yy", //修改为服务端配置的对应域名
+            "port": 443, //服务端配置的端口
+            "users": [
+              {
+                "id": "058e0bf3-dd56-11e9-aa37-5600024c1d6a", //修改为服务端配置的对应UUID
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "security": "tls",
+        "tlsSettings": {
+          "fingerprint": "chrome" //模拟TLS指纹，可任一chrome、firefox、safari、ios、android、edge、360、qq、random、randomized选项配置。
+        }, //仅Xray支持此应用，否则必须删除此部分配置。
+        "network": "grpc",
+        "grpcSettings": {
+          "serviceName": "cdngrpc" //修改为服务端配置的对应gRPC服务名称
+        }
+      }
+    },
+    {
+      "tag": "direct", //如果要使用路由，这个tag是一定要有的，在这里direct就是freedom的一个标号。
+      "protocol": "freedom",
+      "settings": {}
+    }
+  ],
+  "routing": {
+    "domainStrategy": "IPOnDemand",
+    "rules": [
+      {
+        "type": "field",
+        "outboundTag": "direct", //与上tag对应
+        "domain": ["geosite:cn"] //中国大陆主流网站的域名
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct", //与上tag对应
+        "ip": [
+          "geoip:cn", //中国大陆的IP
+          "geoip:private" //私有地址IP，如路由器等。
+        ]
+      }
+    ]
+  }
+}
