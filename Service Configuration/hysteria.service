@@ -1,0 +1,17 @@
+[Unit]
+Description=Hysteria, a feature-packed network utility optimized for networks of poor quality
+Documentation=https://github.com/HyNetwork/hysteria/wiki
+After=network.target
+
+[Service]
+User=root //默认以root用户运行。若修改，请修改为相应权限的用户。
+CapabilityBoundingSet=CAP_NET_RAW CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_RAW CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/local/bin/hysteria/hysteria -config /usr/local/etc/hysteria/config.json server
+Restart=on-failure
+RestartPreventExitStatus=1
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
