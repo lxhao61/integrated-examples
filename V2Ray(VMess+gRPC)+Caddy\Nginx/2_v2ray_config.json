@@ -1,0 +1,57 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "error": "/var/log/xray/error.log", //若使用V2Ray，此处目录名称xray改成v2ray。
+    "access": "/var/log/xray/access.log" //若使用V2Ray，此处目录名称xray改成v2ray。
+  },
+  "inbounds": [
+    {
+      "listen": "/dev/shm/vmessgrpc.sock", //VMess+gRPC监听进程。若采用Caddy反向代理，/dev/shm/vmessgrpc.sock修改为@vmessgrpc。
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "058e0bf3-dd56-11e9-aa37-5600024c1d6a", //修改为自己的UUID
+            "email": "2009@gmail.com"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "none",
+        "grpcSettings": {
+          "serviceName": "VALdGZ9k" //修改为自己的gRPC服务名称，类似于HTTP/2中的Path。
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "blocked"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
