@@ -1,0 +1,79 @@
+{
+    "log": {
+        "disabled": false,
+        "level": "error",
+        "output": "/tmp/sing-box.log",
+        "timestamp": true
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "cloudflare",
+                "address": "tls://1.0.0.1:863",
+                "address_strategy": "prefer_ipv4",
+                "detour": "proxy_out"
+            },
+            {
+                "tag": "alidns",
+                "address": "223.5.5.5",
+                "address_strategy": "prefer_ipv4",
+                "detour": "direct_out"
+            }
+        ],
+        "rules": [
+            {
+                "geosite":[
+                    "cn"
+                ],
+                "server": "alidns"
+            }
+        ]
+    },
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 2080,
+            "sniff": true,
+            "set_system_proxy": true
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "geosite": [
+                    "cn"
+                ],
+                "geoip": [
+                    "cn",
+                    "private"
+                ],
+                "outbound": "direct_out"
+            },
+            {
+                "geosite": [
+                    "category-ads-all"
+                ],
+                "outbound": "block"
+            }
+        ]
+    },
+    "outbounds": [
+        {
+            "tag": "proxy_out",
+            "type": "socks",
+            "server": "127.0.0.1",
+            "server_port": 52000,
+            "udp_over_tcp": true
+        },
+        {
+            "type": "direct",
+            "tag": "direct_out"
+        },
+        {
+            "type": "block",
+            "tag": "block"
+        }
+    ]
+}
