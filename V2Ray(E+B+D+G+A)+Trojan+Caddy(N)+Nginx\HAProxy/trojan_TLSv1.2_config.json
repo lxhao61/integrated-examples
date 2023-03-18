@@ -1,0 +1,13 @@
+//使用非AES算法密码套件来防止被封
+//原配置：
+//.........<省略>........
+        "prefer_server_cipher": true, //优先使用服务端的密码套件（对如下TLSv1.2协议的密码套件有效）
+        "cipher": "ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256",
+        "cipher_tls13": "TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384:TLS_AES_128_GCM_SHA256", //若不启用TLSv1.3，可删除此项配置。
+//.........<省略>........
+
+//以上配置修改为如下：
+//.........<省略>........
+        "prefer_server_cipher": true,
+        "cipher": "ECDHE-ECDSA-CHACHA20-POLY1305",
+//.........<省略>........
