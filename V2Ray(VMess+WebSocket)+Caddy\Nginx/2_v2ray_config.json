@@ -1,0 +1,57 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "error": "/var/log/xray/error.log", //若使用V2Ray，此处目录名称xray改成v2ray。
+    "access": "/var/log/xray/access.log" //若使用V2Ray，此处目录名称xray改成v2ray。
+  },
+  "inbounds": [
+    {
+      "listen": "/dev/shm/vmessws.sock", //VMess+WebSocket监听进程。若采用Caddy反向代理，/dev/shm/vmessws.sock修改为@vmessws。
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "21376258-dd56-11e9-aa37-5600024c1d6a", //修改为自己的UUID
+            "email": "2001@gmail.com"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "path": "/HALdGZ9k" //修改为自己的path
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "blocked"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
