@@ -1,0 +1,80 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "error": "/var/log/xray/error.log", //若使用V2Ray，此处目录名称xray改成v2ray。
+    "access": "/var/log/xray/access.log" //若使用V2Ray，此处目录名称xray改成v2ray。
+  },
+  "inbounds": [
+    {
+      "port": 443, //监听端口
+      "protocol": "trojan",
+      "settings": {
+        "clients": [
+          {
+            "password":"diy443", //修改为自己密码
+            "email": "443@gmail.com"
+          }
+        ],
+        "fallbacks": [
+          {
+            "alpn": "h2", //h2回落匹配
+            "dest": "/dev/shm/h2c.sock", //h2回落进程
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给Nginx。1或2表示PROXY protocol版本。
+          },
+          {
+            "dest": "/dev/shm/h1.sock", //http/1.1回落进程
+            "xver": 1 //开启PROXY protocol发送，发送真实来源IP和端口给Nginx。1或2表示PROXY protocol版本。
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "tls",
+        "tlsSettings": {
+          "certificates": [
+            {
+              "ocspStapling": 3600, //Xray版本不小于v1.3.0才支持配置OCSP装订更新与证书热重载的时间间隔。目前V2Ray不支持，若使用V2Ray做服务端必须删除此项配置。
+              "certificateFile": "/home/tls/xx.yy/xx.yy.crt", //换成自己的证书，绝对路径。
+              "keyFile": "/home/tls/xx.yy/xx.yy.key" //换成自己的密钥，绝对路径。
+            }
+          ],
+          "minVersion": "1.2", //Xray版本不小于v1.1.4才支持配置最小TLS版本。目前V2Ray不支持，若使用V2Ray做服务端必须删除此项配置。
+          "cipherSuites": "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256", //Xray版本不小于v1.1.4才支持配置密码套件（若无RSA证书，可删除所有RSA算法的密码套件；无ECC证书，可删除所有ECDSA算法的密码套件。）。目前V2Ray不支持，若使用V2Ray做服务端必须删除此项配置。
+          "alpn": [
+            "h2", //启用h2连接需配置h2回落，否则不一致（裸奔）容易被墙探测出从而被封。
+            "http/1.1" //启用http/1.1连接需配置http/1.1回落，否则不一致（裸奔）容易被墙探测出从而被封。
+          ]
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "blocked"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
