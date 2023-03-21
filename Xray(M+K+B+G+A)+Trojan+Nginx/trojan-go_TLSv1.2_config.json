@@ -1,0 +1,15 @@
+//使用非AES算法密码套件来防止被封
+//原配置：
+//.........<省略>........
+        "prefer_server_cipher": true, //优先使用服务端的密码套件（对如下TLSv1.2协议的密码套件有效）
+        "cipher": "TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", //若不启用TLSv1.3，删除前三个密码套件。若证书为RSA证书，所有ECDSA改为RSA。
+//.........<省略>........
+
+//以上配置修改为如下：
+//.........<省略>........
+        "prefer_server_cipher": true,
+        "cipher": "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256", //若证书为RSA证书，ECDSA改为RSA。
+//.........<省略>........
+//备注：
+//1、不支持Cloudflare的CDN流量中转（基于WebSocket over TLS或基于gRPC over TLS）。
+//2、强烈推荐客户端启用模拟指纹来与此服务端应用配合使用。
