@@ -112,8 +112,8 @@
           "certificates": [
             {
               "ocspStapling": 3600, //Xray版本不小于v1.3.0才支持配置OCSP装订更新与证书热重载的时间间隔
-              "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zt.xx.yy/zt.xx.yy.crt", //换成自己的证书，绝对路径。
-              "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zt.xx.yy/zt.xx.yy.key" //换成自己的密钥，绝对路径。
+              "certificateFile": "/home/tls/wildcard_.xx.yy/wildcard_.xx.yy.crt", //换成自己的通配符证书或SAN证书，绝对路径。
+              "keyFile": "/home/tls/wildcard_.xx.yy/wildcard_.xx.yy.key" //换成自己的通配符密钥或SAN密钥，绝对路径。
             }
           ],
           "minVersion": "1.2", //Xray版本不小于v1.1.4才支持配置最小TLS版本
