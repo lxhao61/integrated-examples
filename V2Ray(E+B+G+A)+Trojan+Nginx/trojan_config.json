@@ -9,8 +9,8 @@
     ],
     "log_level": 2,
     "ssl": {
-        "cert": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zt.xx.yy/zt.xx.yy.crt", //换成自己的证书，绝对路径。
-        "key": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zt.xx.yy/zt.xx.yy.key", //换成自己的密钥，绝对路径。
+        "cert": "/home/tls/zt.xx.yy/zt.xx.yy.crt", //换成自己的证书，绝对路径。
+        "key": "/home/tls/zt.xx.yy/zt.xx.yy.key", //换成自己的密钥，绝对路径。
         "key_password": "",
         "prefer_server_cipher": true, //优先使用服务端的密码套件（对如下TLSv1.2协议的密码套件有效）
         "cipher": "ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256", //若证书为RSA证书，所有ECDSA改为RSA。
