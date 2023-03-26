@@ -50,4 +50,4 @@
 
 14、配置1：使用 Local Loopback 连接，且启用了 PROXY protocol（全部回落除外）。配置2：使用混合连接（能 UDS 连接的全部 UDS 连接），且启用了 PROXY protocol（全部回落除外）。
 
-15、若现有 Nginx 网站或大型网站或需要 NaiveProxy 支持 HTTP/3 代理应用，推荐采用 [V2Ray(E+B+D+G+A)+Trojan+Caddy(N)+Nginx\HAProxy](https://github.com/lxhao61/integrated-examples/tree/main/V2Ray(E%2BB%2BD%2BG%2BA)%2BTrojan%2BCaddy(N)%2BNginx%5CHAProxy) 示例。
+15、若已有 Nginx 或大型网站、或需要 NaiveProxy 支持 HTTP/3 代理应用，推荐采用 [V2Ray(E+B+D+G+A)+Trojan+Caddy(N)+Nginx\HAProxy](https://github.com/lxhao61/integrated-examples/tree/main/V2Ray(E%2BB%2BD%2BG%2BA)%2BTrojan%2BCaddy(N)%2BNginx%5CHAProxy) 示例。
