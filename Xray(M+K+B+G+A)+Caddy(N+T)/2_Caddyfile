@@ -15,7 +15,7 @@
 			tls #HTTPS server开启PROXY protocol接收必须配置
 			trojan #caddy-trojan插件应用必须配置
 		}
-		protocols h1 h2 #开启HTTP/1.1 server与HTTP/2 server支持（REALITY应用的转发不支持UDP转发）
+		protocols h1 h2 #开启HTTP/1.1 server与HTTP/2 server支持（REALITY转发不支持UDP透传）
 	}
 	trojan {
 		caddy
