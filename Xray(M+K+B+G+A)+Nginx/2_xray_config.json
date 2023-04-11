@@ -76,7 +76,7 @@
       }
     },
     {
-      "listen": "@vmessws", //VMess+WebSocket监听进程
+      "listen": "/dev/shm/vmessws.sock", //VMess+WebSocket监听进程
       "protocol": "vmess",
       "settings": {
         "clients": [
