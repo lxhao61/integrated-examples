@@ -41,3 +41,7 @@ Caddy 使用非自己内置 ACME 客户端提供的 TLS 证书时，其配置见
 六、Caddy DDNS 客户端配置方法
 
 Caddy 使用 caddy-dynamicdns 插件及对应的 caddy-dns 插件实现对应的 DDNS 客户端应用。基本配置见 DDNS_caddy.json 或 DDNS_Caddyfile 示例，详细配置见 caddy-dynamicdns 资源。
+
+七、套 CDN 后显示客户端真实IP配置方法
+
+以 realip 插件解决反代应用套 CDN 后 Xray 或 V2Ray 日志不能显示客户端真实IP问题，配置见 cloudflare_caddy.json 或 CDN_IP_Caddyfile 示例。

@@ -1,0 +1,27 @@
+//套Cloudflare CDN后Xray/V2Ray日志显示客户端真实IP配置
+//原配置：
+//........<省略>........
+          "routes": [{ //主路由
+//........<省略>........
+          }],
+//........<省略>........
+
+//以上配置修改为如下：
+//........<省略>........
+          "routes": [{
+            "handle": [{
+              "handler": "realip",
+              "header": "X-Forwarded-For",
+              "presets": ["cloudflare"],
+              "max_hops": 5,
+              "refresh_frequency": 0,
+              "strict": false
+            }]
+          },
+          {
+//........<省略>........
+          }],
+//........<省略>........
+//备注：
+//1、本项目Caddy从版本v2.6.4开始才支持realip插件应用。
+//2、若使用其它非Cloudflare CDN后也想实现此效果，需自己调整realip的参数。
