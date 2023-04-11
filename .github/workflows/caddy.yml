@@ -107,7 +107,6 @@ jobs:
           --with github.com/caddyserver/forwardproxy@caddy2=github.com/sagernet/forwardproxy@latest \
           --with github.com/imgk/caddy-trojan \
           --with github.com/mholt/caddy-webdav \
-          --with github.com/WeidiDeng/caddy-cloudflare-ip \
           --with github.com/kirsch33/realip \
           --output ./release-tmp/caddy
 
