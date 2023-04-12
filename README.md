@@ -95,10 +95,11 @@
 4. Caddy插件单一应用简记：N=NaiveProxy(Caddy+forwardproxy)、T=Trojan-Go(Caddy+caddy-trojan)。
 5. 受限应用条件及场景，NaiveProxy的QUIC应用（即Caddy的HTTP/3代理应用）不是所有相关NaiveProxy示例都支持。
 6. 当前Caddy从Let's Encrypt或ZeroSSL自动申请的TLS证书默认都为ECC证书。
-7. 综合应用配置示例中使用mKCP、WebSocket、HTTP/2、gRPC传输方式的应用配置可删、可换、可增（套娃实现REALITY H2/gRPC应用除外）；参考‘服务端单一/简单应用配置示例’中对应配置示例修改。
-8. 流量伪装与防探测网站可由其它WEB应用软件实现，其支持反代（WebSocket、gRPC及H2C）与支持回落（H2C server及HTTP/1.1 server）取决于自身，自行参考Caddy或Nginx对应配置示例。
-9. 附加相关插件的Caddy程序文件已编译好，去本人Releases中下载即可。
-10. Trojan-Go安卓手机客户端可以去本人Releases中下载（最末）。
+7. 若CDN流量中转（基于WebSocket over TLS或基于gRPC over TLS）使用不可信的CDN进行中转，Xray/V2Ray示例推荐使用自身带加密的VMess或Shadowsocks协议配置；否则推荐使用自身不带加密的VLESS或Trojan协议配置。
+8. 综合应用配置示例中使用mKCP、WebSocket、HTTP/2、gRPC传输方式的应用配置可删、可换、可增（套娃实现REALITY H2/gRPC应用除外）；参考‘服务端单一/简单应用配置示例’中对应配置示例修改。
+9. 流量伪装与防探测网站可由其它WEB应用软件实现，其支持反代（WebSocket、gRPC及H2C）与支持回落（H2C server及HTTP/1.1 server）取决于自身，自行参考Caddy或Nginx对应配置示例。
+10. 附加相关插件的Caddy程序文件已编译好，去本人Releases中下载即可。
+11. Trojan-Go安卓手机客户端可以去本人Releases中下载（最末）。
 
 ### 服务端特殊应用配置示例
 1. [V2Ray(Other Configuration)](https://github.com/lxhao61/integrated-examples/tree/main/V2Ray(Other%20Configuration)) （Xray或V2Ray的特色应用配置方法。）
