@@ -1,3 +1,4 @@
+[ENGLISH](README.ENG.md)
 介绍：
 
 Hysteria 是一个功能丰富的、专为恶劣网络环境进行优化的网络工具（双边加速），基于修改版的 QUIC 协议，可实现 SOCKS5 代理 (TCP & UDP)、HTTP/HTTPS 代理、TCP/UDP 转发、TCP/UDP TPROXY 透明代理 (Linux)、TUN (Windows 下为 TAP) 应用。
