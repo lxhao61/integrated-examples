@@ -1,0 +1,73 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "error": "/var/log/xray/error.log",
+    "access": "/var/log/xray/access.log"
+  },
+  "inbounds": [
+    {
+      "port": 443, //监听端口
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "048e0bf2-dd56-11e9-aa37-5600024c1d6a", //修改为自己的UUID
+            "flow": "xtls-rprx-vision", //启用XTLS Vision
+            "email": "443@gmail.com"
+          }
+        ],
+        "decryption": "none",
+        "fallbacks": [
+          {
+            "dest": "@h1h2c.sock", //h2回落与http/1.1回落共用进程
+            "xver": 2 //开启PROXY protocol发送，发送真实来源IP和端口给Caddy。1或2表示PROXY protocol版本。
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "tls",
+        "tlsSettings": {
+          "certificates": [
+            {
+              "ocspStapling": 3600,
+              "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy/xx.yy.crt", //换成自己的证书，绝对路径。
+              "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy/xx.yy.key" //换成自己的密钥，绝对路径。
+            }
+          ],
+          "rejectUnknownSni": true, //若接收到的SNI与证书域名不匹配就拒绝TLS握手（禁止以IP方式访问网站）
+          "minVersion": "1.2"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "blocked"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
