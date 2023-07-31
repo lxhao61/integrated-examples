@@ -1,0 +1,63 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "error": "/var/log/xray/error.log",
+    "access": "/var/log/xray/access.log"
+  },
+  "inbounds": [
+    {
+      "port": 443, //监听端口
+      "protocol": "shadowsocks",
+      "settings": {
+        "method": "chacha20-poly1305",
+        "password": "diy443", //修改为自己的密码
+        "email": "443@gmail.com"
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "reality",
+        "realitySettings": {
+          "show": false, //选填，若为true输出调试信息。
+          "dest": "xx.yy:443", //转发给自己选定的目标网站。目标网站使用外部的一般为xx.yy:443。
+          "xver": 0, //选填，默认关闭PROXY protocol发送。可填1或2开启PROXY protocol发送，1或2表示PROXY protocol版本。
+          "serverNames": [ //必填，客户端可用的serverName列表，暂不支持*通配符。
+            "xx.yy" //修改为目标网站证书对应的域名
+          ],
+          "privateKey": "qZbyc2jAkWAhFEI7P5qhfBpI5yt4pgTS8-HgjpPjt8U", //修改为自己执行./xray x25519后生成的一对密钥中私钥。
+          "shortIds": [ //必填，客户端可用的shortId列表，可用于区分不同的客户端。
+            "" //若有此项，客户端shortId可为空。若不为空，可0到f（0123456789abcdef），长度为2的倍数，长度上限为16。
+          ]
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "blocked"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
