@@ -1,0 +1,42 @@
+{
+	order reverse_proxy before route
+	admin off
+	log {
+		output file /var/log/caddy/error.log
+		level ERROR
+	} #版本不小于v2.4.0才支持日志全局配置
+	email your@email.com #修改为自己的电子邮箱（选配）
+
+	servers :443 {
+		protocols h1 h2 #TLSv1.2不支持HTTP/3 server
+	}
+}
+
+:443, xx.yy { #xx.yy修改为自己的域名。注意：逗号与域名之间有一个空格。
+	tls {
+		protocols tls1.2 tls1.2
+		ciphers TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 #非AES算法的密码套件
+		curves secp521r1 secp384r1 secp256r1
+	}
+
+	reverse_proxy /SeuW56Es 127.0.0.1:2005 { #与VLESS+H2C应用中path对应，转发给本机VLESS+H2C监听端口。
+		transport http {
+			versions h2c 2
+		}
+	}
+
+	@host {
+		host xx.yy #限定域名访问（禁止以IP方式访问网站），修改为自己的域名。
+	}
+	route @host {
+		header {
+			Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用HSTS
+		}
+		file_server {
+			root /var/www/html #修改为自己存放的WEB文件路径
+		}
+	}
+}
+#备注：
+#1、本配置仅支持申请普通TLS证书，若要申请通配符TLS证书请参考‘Caddy(Other Configuration) （Caddy的特殊应用配置方法。）’中对应介绍及对应配置示例。
+#2、本配置使用非AES算法的密码套件配置来避免被封。
