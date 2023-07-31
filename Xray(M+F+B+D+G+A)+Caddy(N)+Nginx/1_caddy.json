@@ -1,0 +1,186 @@
+{
+  "admin": {
+    "disabled": true
+  },
+  "logging": {
+    "logs": {
+      "default": {
+        "writer": {
+          "output": "file",
+          "filename": "/var/log/caddy/error.log"
+        },
+        "level": "ERROR"
+      }
+    }
+  },
+  "storage": {
+    "module": "file_system",
+    "root": "/home/tls" //存放TLS证书的基本路径
+  },
+  "apps": {
+    "http": {
+      "servers": {
+        "h1": {
+          "listen": [":80"],
+          "routes": [{
+            "handle": [{
+              "handler": "static_response",
+              "headers": {
+                "Location": ["https://{http.request.host}{http.request.uri}"] //HTTP自动跳转HTTPS，让网站看起来更真实。
+              },
+              "status_code": 301
+            }]
+          }]
+        },
+        "h1h2c": {
+          "listen": ["127.0.0.1:88"], //H2C server及HTTP/1.1 server本地监听端口
+          "listener_wrappers": [{
+            "wrapper": "proxy_protocol" //开启PROXY protocol接收
+          }],
+          "routes": [{
+            "handle": [{
+              "handler": "headers",
+              "response": {
+                "set": {
+                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
+                }
+              }
+            },
+            {
+              "handler": "file_server",
+              "root": "/var/www/html" //修改为自己存放的WEB文件路径
+            }]
+          }],
+          "protocols": ["h1","h2c"] //开启HTTP/1.1 server与H2C server支持
+        },
+        "http3": {
+          "listen": ["127.0.0.1:7443"], //HTTP/3 server本地监听端口
+          "listener_wrappers": [{
+            "wrapper": "proxy_protocol" //开启PROXY protocol接收
+          },
+          {
+            "wrapper": "tls" //HTTP/3 server开启PROXY protocol接收必须配置
+          }],
+          "routes": [{
+            "match": [{
+              "path": ["/HALdGZ9k"], //与VMess+WebSocket应用中path对应
+              "header": {
+                "Connection": ["*Upgrade*"],
+                "Upgrade": ["websocket"]
+              }
+            }],
+            "handle": [{
+              "handler": "reverse_proxy",
+              "upstreams": [{
+                "dial": "127.0.0.1:2001" //转发给本机VMess+WebSocket监听端口
+              }]
+            }]
+          },
+          {
+            "match": [{
+              "path": ["/SeuW56Es"] //与VLESS+H2C应用中path对应
+            }],
+            "handle": [{
+              "handler": "reverse_proxy",
+              "transport": {
+                "protocol": "http",
+                "versions": ["h2c","2"]
+              },
+              "upstreams": [{
+                "dial": "127.0.0.1:2005" //转发给本机VLESS+H2C监听端口
+              }]
+            }]
+          },
+          {
+            "match": [{
+              "protocol": "grpc",
+              "path": ["/SALdGZ9k/*"] //与Shadowsocks+gRPC应用中serviceName对应
+            }],
+            "handle": [{
+              "handler": "reverse_proxy",
+              "transport": {
+                "protocol": "http",
+                "versions": ["h2c","2"]
+              },
+              "upstreams": [{
+                "dial": "127.0.0.1:2011" //转发给本机Shadowsocks+gRPC监听端口
+              }],
+              "headers": {
+              	"request": {
+                  "set": {
+                    "X-Real-IP": ["{http.vars.client_ip}"]
+                  }
+              	}
+              }
+            }]
+          },
+          {
+            "handle": [{
+              "handler": "forward_proxy",
+              "auth_user_deprecated": "user", //NaiveProxy用户，修改为自己的。
+              "auth_pass_deprecated": "pass", //NaiveProxy密码，修改为自己的。
+              "hide_ip": true,
+              "hide_via": true,
+              "probe_resistance": {}
+            }]
+          },
+          {
+            "handle": [{
+              "handler": "headers",
+              "response": {
+                "set": {
+                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
+                }
+              }
+            },
+            {
+              "handler": "file_server",
+              "root": "/var/www/html" //修改为自己存放的WEB文件路径
+            }]
+          }],
+          "tls_connection_policies": [{
+            "match": {
+              "sni": ["z1.xx.yy"] //限定域名连接，修改为自己的域名。
+            },
+            "protocol_min": "tls1.2",
+            "protocol_max": "tls1.2",
+            "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"], //非AES算法的密码套件
+            "curves": ["secp521r1","secp384r1","secp256r1"]
+          },
+          {
+            "match": {
+              "sni": ["zv.xx.yy","zh.xx.yy","h3.xx.yy"] //限定域名连接，修改为自己的域名。
+            },
+            "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256","TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"],
+            "curves": ["x25519","secp521r1","secp384r1","secp256r1"]
+          }],
+          "trusted_proxies": {
+            "source": "cloudflare", //cloudflare为使用cloudflare ips，由caddy-cloudflare-ip插件提供。
+            "interval": "12h",
+            "timeout": "15s"
+          }, //配置可信CDN服务器的IP范围，以实现套CDN的应用的访问IP还原为客户端原始IP。若使用其它非Cloudflare CDN，需自己调整trusted_proxies的配置参数。（选配，套CDN配置。）
+          "protocols": ["h1","h2","h3"] //默认配置
+        }
+      }
+    },
+    "tls": {
+      "certificates": {
+        "automate": ["zv.xx.yy","zt.xx.yy","zh.xx.yy","z1.xx.yy","h3.xx.yy"] //自动化管理TLS证书（包括获取、更新及加载证书）。修改为自己的域名。
+      },
+      "automation": {
+        "policies": [{
+          "issuers": [{
+            "module": "acme", //acme表示从Let's Encrypt申请TLS证书，zerossl表示从ZeroSSL申请TLS证书。必须acme与zerossl二选一（固定TLS证书的目录便于引用）。
+            "email": "your@email.com" //修改为自己的电子邮箱（选配）
+          }]
+        }]
+      }
+    }
+  }
+}
+//备注：
+//1、申请免费TLS证书的域名不要超过五个，否则影响TLS证书的更新。
+//2、从Let's Encrypt申请的普通TLS证书在‘/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zv.xx.yy’目录中。/home/tls为存放TLS证书的基本路径，zv.xx.yy为域名，目录根据域名变化。
+//3、从ZeroSSL申请的普通TLS证书在‘/home/tls/certificates/acme.zerossl.com-v2-dv90/zv.xx.yy’目录中。/home/tls为存放TLS证书的基本路径，zv.xx.yy为域名，目录根据域名变化。 
+//4、本配置仅支持申请普通TLS证书，若要申请通配符TLS证书请参考‘Caddy(Other Configuration) （Caddy的特殊应用配置方法。）’中对应介绍及对应配置示例。
+//5、本配置支持套CDN（zh.xx.yy）、非AES算法的密码套件配置（z1.xx.yy）及HTTP/3代理（h3.xx.yy）。
