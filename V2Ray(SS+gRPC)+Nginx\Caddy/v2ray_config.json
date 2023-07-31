@@ -1,0 +1,55 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "error": "/var/log/xray/error.log", //若使用V2Ray，此处目录名称xray改成v2ray。
+    "access": "/var/log/xray/access.log" //若使用V2Ray，此处目录名称xray改成v2ray。
+  },
+  "inbounds": [
+    {
+      "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
+      "port": 2011, //Shadowsocks+gRPC监听端口
+      "protocol": "shadowsocks",
+      "settings": {
+        "method": "chacha20-poly1305",
+        "password": "diy2011", //修改为自己的密码
+        "email": "2011@gmail.com"
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "none",
+        "grpcSettings": {
+          "serviceName": "SALdGZ9k" //修改为自己的gRPC服务名称，类似于HTTP/2中的Path。
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "blocked"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
