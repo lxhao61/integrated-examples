@@ -1,0 +1,91 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "error": "/var/log/xray/error.log", //若使用V2Ray，此处目录名称xray改成v2ray。
+    "access": "/var/log/xray/access.log" //若使用V2Ray，此处目录名称xray改成v2ray。
+  },
+  "inbounds": [
+    {
+      "tag": "ddws", //标签，与routing中标签对应。
+      "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
+      "port": 2002, //Door+WebSocket监听端口
+      "protocol": "dokodemo-door",
+      "settings": {
+        "address": "v1.mux.cool",
+        "network": "tcp",
+        "followRedirect": false
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "path": "/2ALdGZ9k" //修改为自己的path
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    },
+    {
+      "port": 2003, //使用UDS作为传输方式后此端口失效，但必须存在。
+      "protocol": "shadowsocks",
+      "settings": {
+        "method": "chacha20-poly1305",
+        "password": "diy2003", //修改为自己的密码
+        "email": "2003@gmail.com"
+      },
+      "streamSettings": {
+        "network": "domainsocket",
+        "security": "none",
+        "dsSettings": {
+          "path": "ssuds", //UDS文件路径，与outbounds中对应。
+          "abstract": true //开启后不必考虑上面UDS文件绝对路径
+        }
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "inboundTag": [
+          "ddws" //与inbounds中标签对应
+        ],
+        "outboundTag": "uds" //与outbounds中标签对应
+      },
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "blocked"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "uds", //标签，与routing中标签对应。
+      "protocol": "freedom",
+      "streamSettings": {
+        "network": "domainsocket",
+        "dsSettings": {
+          "path": "ssuds", //UDS文件路径，与streamSettings中对应。
+          "abstract": true //开启后不必考虑上面UDS文件绝对路径
+        }
+      }
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}

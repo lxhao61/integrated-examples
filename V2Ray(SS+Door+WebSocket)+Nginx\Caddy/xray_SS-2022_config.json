@@ -1,0 +1,46 @@
+//Shadowsocks-2022配置
+//原配置：
+//........<省略>........
+      "settings": {
+        "method": "chacha20-poly1305",
+        "password": "diy2003", //修改为自己的密码
+        "email": "2003@gmail.com"
+      },
+//........<省略>........
+
+//以上配置修改为如下：
+//单用户
+//........<省略>........
+      "settings": {
+        "method": "2022-blake3-chacha20-poly1305", //Shadowsocks-2022加密方法之一
+        "password": "81qjRtwJZWx2gBphrLk18WZQ06B3Y2Vxlnqe903xXqU=", //修改为自己的密钥
+        "email": "2003@gmail.com"
+      },
+//........<省略>........
+
+//多用户
+//........<省略>........
+      "settings": {
+        "method": "2022-blake3-aes-128-gcm", //Shadowsocks-2022加密方法之一
+        "password": "rvQ6fK6Y4ckgFVslZlZUgQ==", //修改为自己的主项密钥
+        "clients": [
+          {
+            "password": "FPTg9fyNve167Fg8oPkFlQ==", //修改为自己的分项密钥
+            "email": "2003@gmail.com"
+          },
+          {
+            "password": "dkv04xu1f+UeM3mXpNJgVA==", //修改为自己的分项密钥
+            "email": "2013@gmail.com"
+          }
+        ]
+      },
+//........<省略>........
+//备注：
+//1、Xray从v1.5.9版开始支持Shadowsocks-2022。
+//2、密钥生成及长度
+//在服务器上直接使用‘openssl rand -base64 <长度> ’命令生成符合如下加密方法的对应密钥。
+//      加密方法	              密钥长度
+//2022-blake3-aes-128-gcm	16
+//2022-blake3-aes-256-gcm	32
+//2022-blake3-chacha20-poly1305	32
+//3、多用户的客户端的密钥为主项密钥:分项密钥的组合，如rvQ6fK6Y4ckgFVslZlZUgQ==:FPTg9fyNve167Fg8oPkFlQ==。
