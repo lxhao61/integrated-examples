@@ -1,0 +1,170 @@
+{
+  "admin": {
+    "disabled": true
+  },
+  "logging": {
+    "logs": {
+      "default": {
+        "writer": {
+          "output": "file",
+          "filename": "/var/log/caddy/error.log"
+        },
+        "level": "ERROR"
+      }
+    }
+  },
+  "apps": {
+    "http": {
+      "servers": {
+        "http3": {
+          "listen": [":443"],
+          "listener_wrappers": [{
+            "wrapper": "trojan" //caddy-trojan插件应用必须配置
+          }],
+          "routes": [{
+            "match": [{
+              "path": ["/HALdGZ9k"], //与VMess+WebSocket应用中path对应
+              "header": {
+                "Connection": ["*Upgrade*"],
+                "Upgrade": ["websocket"]
+              }
+            }],
+            "handle": [{
+              "handler": "reverse_proxy",
+              "upstreams": [{
+                "dial": "127.0.0.1:2001" //转发给本机VMess+WebSocket监听端口
+              }]
+            }]
+          },
+          {
+            "match": [{
+              "path": ["/SeuW56Es"] //与VLESS+H2C应用中path对应
+            }],
+            "handle": [{
+              "handler": "reverse_proxy",
+              "transport": {
+                "protocol": "http",
+                "versions": ["h2c","2"]
+              },
+              "upstreams": [{
+                "dial": "127.0.0.1:2005" //转发给本机VLESS+H2C监听端口
+              }]
+            }]
+          },
+          {
+            "match": [{
+              "protocol": "grpc",
+              "path": ["/SALdGZ9k/*"] //与Shadowsocks+gRPC应用中serviceName对应
+            }],
+            "handle": [{
+              "handler": "reverse_proxy",
+              "transport": {
+                "protocol": "http",
+                "versions": ["h2c","2"]
+              },
+              "upstreams": [{
+                "dial": "127.0.0.1:2011" //转发给本机Shadowsocks+gRPC监听端口
+              }],
+              "headers": {
+              	"request": {
+                  "set": {
+                    "X-Real-IP": ["{http.vars.client_ip}"]
+                  }
+              	}
+              }
+            }]
+          },
+          {
+            "handle": [{
+              "handler": "forward_proxy",
+              "auth_user_deprecated": "user", //NaiveProxy用户，修改为自己的。
+              "auth_pass_deprecated": "pass", //NaiveProxy密码，修改为自己的。
+              "hide_ip": true,
+              "hide_via": true,
+              "probe_resistance": {}
+            }]
+          },
+          {
+            "handle": [{
+              "handler": "trojan",
+              "connect_method": true,
+              "websocket": true
+            }]
+          }, //此部分配置为caddy-trojan插件的WebSocket应用，若删除就仅支持Trojan应用。
+          {
+            "handle": [{
+              "handler": "headers",
+              "response": {
+                "set": {
+                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用HSTS
+                }
+              }
+            },
+            {
+              "handler": "file_server",
+              "root": "/var/www/html" //修改为自己存放的WEB文件路径
+            }]
+          }],
+          "tls_connection_policies": [{
+            "match": {
+              "sni": ["z1.xx.yy"] //限定域名连接（禁止以IP方式访问网站），修改为自己的域名。
+            },
+            "protocol_min": "tls1.2",
+            "protocol_max": "tls1.2",
+            "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"], //非AES算法的密码套件
+            "curves": ["secp521r1","secp384r1","secp256r1"]
+          },
+          {
+            "match": {
+              "sni": ["z2.xx.yy","h3.xx.yy"] //限定域名连接（禁止以IP方式访问网站），修改为自己的域名。
+            },
+            "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256","TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"],
+            "curves": ["x25519","secp521r1","secp384r1","secp256r1"]
+          }],
+          "trusted_proxies": {
+            "source": "cloudflare", //cloudflare为使用cloudflare ips，由caddy-cloudflare-ip插件提供。
+            "interval": "12h",
+            "timeout": "15s"
+          }, //配置可信CDN服务器的IP范围，以实现套CDN的应用的访问IP还原为客户端原始IP。若使用其它非Cloudflare CDN，需自己调整trusted_proxies的配置参数。（选配，套CDN配置。）
+          "protocols": ["h1","h2","h3"] //默认配置
+        }
+      }
+    },
+    "trojan": {
+      "proxy": {
+        "proxy": "no_proxy"
+      },
+      "upstream": {
+        "upstream": "memory"
+      },
+      "users": ["diy443"] //修改为自己的密码。密码可多组（"password"），用逗号隔开。
+    },
+    "tls": {
+      "certificates": {
+        "automate": ["z1.xx.yy","z2.xx.yy","h3.xx.yy"] //自动化管理域名证书（包括获取、更新证书及加载证书）。修改为自己的域名。
+      },
+      "automation": {
+        "policies": [{
+          "issuers": [{
+            "module": "acme",
+            "email": "your@email.com" //修改为自己的电子邮箱（选配），与下一致。
+          },
+          {
+            "module": "zerossl",
+            "email": "your@email.com" //修改为自己的电子邮箱（选配），与上一致。
+          }]
+        }]
+      }
+    }
+  }
+}
+//备注：
+//1、申请免费TLS证书的域名不要超过五个，否则影响TLS证书的更新。
+//2、本配置仅支持申请普通TLS证书，若要申请通配符TLS证书请参考‘Caddy(Other Configuration) （Caddy的特殊应用配置方法。）’中对应介绍及对应配置示例。
+//3、本示例使用非AES算法的密码套件配置（z1.xx.yy）、套CDN（z2.xx.yy）来避免被封。
+//4、本示例使用不同域名来实现介绍中各应用，其办法如下：
+//1）、VMess+WebSocket+TLS仅使用z2.xx.yy域名。
+//2）、VLESS+H2C+TLS仅使用z1.xx.yy域名。
+//3）、Shadowsocks+gRPC+TLS可随意使用z1.xx.yy域名或z2.xx.yy域名。
+//4）、NaiveProxy使用HTTPS协议时用z1.xx.yy域名，使用QUIC协议时用h3.xx.yy域名。
+//5）、Trojan-Go使用Trojan应用时用z1.xx.yy域名，使用WebSocket应用时用z2.xx.yy域名。
