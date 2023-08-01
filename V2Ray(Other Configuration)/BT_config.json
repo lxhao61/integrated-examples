@@ -1,0 +1,25 @@
+//在inbounds中为每个应用添加如下参数（若此应用需禁用BT）（单项参数）
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+
+//如下配置插入routing末尾（全局参数）
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "blocked"
+      }
+
+//如下配置插入outbounds末尾（全局参数）
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+

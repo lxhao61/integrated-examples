@@ -1,0 +1,54 @@
+//如下配置插入inbounds首位（全局参数）
+    {
+      "port": 443, //SNI分流应用的监听端口
+      "protocol": "dokodemo-door",
+      "settings": {
+        "address": "0.0.0.0",
+        "network": "tcp",
+        "followRedirect": false
+      },
+      "sniffing": {
+        "enabled": true, //开启流量探测
+        "destOverride": [
+          "tls" //tls探测,以实现SNI分流应用。
+        ]
+      }
+    },
+
+//如下配置插入routing首位（如下是两个域名示例，若多个就增加相关部分即可。）（各分项参数）
+      {
+        "type": "field",
+        "domain": [
+          "zv.xx.yy" //修改成自己分流的域名
+        ],
+        "outboundTag": "zv" //与outbounds中标签对应
+      },
+      {
+        "type": "field",
+        "domain": [
+          "zt.xx.yy" //修改成自己分流的域名
+        ],
+        "outboundTag": "zt" //与outbounds中标签对应
+      },
+
+//如下配置插入outbounds末尾标记blocked部分之前（如下是两个进程/域名示例，若多个就增加相关部分即可。）（各分项参数）
+    {
+      "tag": "zv", //标签，与routing中标签对应。
+      "protocol": "freedom",
+      "streamSettings": {
+        "network": "domainsocket",
+        "dsSettings": {
+          "path": "/dev/shm/vless.sock" //与应用的进程对应
+        }
+      }
+    },
+    {
+      "tag": "zt", //标签，与routing中标签对应。
+      "protocol": "freedom",
+      "streamSettings": {
+        "network": "domainsocket",
+        "dsSettings": {
+          "path": "/dev/shm/trojan.sock" //与应用的进程对应
+        }
+      }
+    },

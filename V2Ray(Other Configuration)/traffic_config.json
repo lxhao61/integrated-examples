@@ -1,0 +1,66 @@
+//在配置中添加如下参数集（全局参数）
+  "stats": {}, //目前统计信息没有任何参数，只要此项存在，内部的统计开启。（开关）
+  "api": {
+    "tag": "api",
+    "services": [
+      "StatsService"
+    ]
+  },
+  "policy": {
+    "levels": {
+      "0": { //用户组等级标识，可以多个用户组。
+        "statsUserUplink": true, //当值为true时，开启当前等级的所有用户的上行流量统计。
+        "statsUserDownlink": true //当值为true时，开启当前等级的所有用户的下行流量统计。
+      }
+    },
+    "system": {
+      "statsInboundUplink": false, //当值为true时，开启所有入站代理的上行流量统计。建议不开启。
+      "statsInboundDownlink": false, //当值为true时，开启所有入站代理的下行流量统计。建议不开启。
+      "statsOutboundUplink": false, //当值为true时，开启所有出站代理的下行流量统计。建议不开启。
+      "statsOutboundDownlink": false //当值为true时，开启所有出站代理的下行流量统计。建议不开启。
+    }
+  },
+
+//在inbounds中添加标识参数（针对各端口或进程、用户组等级归属与email标记）（各分项参数）
+    {
+      "tag": "VLESS-TCP-TLS", //此端口或进程的入站流量统计标识。如没开启入站流量统计，此参数可以不添加。
+      "port": 443,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "e731f153-4f31-49d3-9e8f-ff8f396135ef",
+            "level": 0, //用户组等级归属。默认0级组统计，此处可以省略。
+            "email": "443@gmail.com" //用户组内流量统计标识。如要统计此用户，那么必须配置email，且不相同。
+          }
+        ],
+//........<省略>........
+      }
+    }
+
+//如下配置插入inbounds末尾（全局参数）
+    {
+      "listen": "127.0.0.1",
+      "port": 10085, //此端口与Xray_traffic.sh或v2ray_traffic.sh中端口对应
+      "protocol": "dokodemo-door",
+      "settings": {
+        "address": "127.0.0.1"
+      },
+      "tag": "api"
+    }
+
+//如下配置插入routing的rules首位（注：如有v2ray SNI分流配置，那就插入它之后。）（全局参数）
+      {
+        "type": "field",
+        "inboundTag": [
+          "api" 
+        ],
+        "outboundTag": "api"
+      },
+
+//在Outbounds中添加标识参数（针对协议或策略等）（各分项参数）
+    {
+      "tag": "out", //此协议或策略等的出站流量统计标识。如没开启出站流量统计，此参数可以不添加。
+      "protocol": "freedom",
+      "settings": {}
+    },
