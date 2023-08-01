@@ -1,0 +1,13 @@
+#Caddy反向代理到HTTP/2或HTTPS网站配置方法
+#........<省略>........
+		file_server {
+			root /var/www/html #修改为自己存放的WEB文件路径
+		}
+#........<省略>........
+
+#以上配置修改为如下：
+#........<省略>........
+		reverse_proxy https://xz.yz { #xz.yz为国外HTTP/2或HTTPS网站域名
+			header_up Host {upstream_hostport}
+		}
+#........<省略>........

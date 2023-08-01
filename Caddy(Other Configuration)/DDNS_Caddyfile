@@ -1,0 +1,26 @@
+#DDNS客户端配置
+#原配置：
+{
+#........<省略>........
+	log {
+		output file /var/log/caddy/error.log
+		level ERROR
+	} #版本不小于v2.4.0才支持日志全局配置
+#........<省略>........
+}
+
+#以上配置修改为如下：
+{
+#........<省略>........
+	log {
+		output file /var/log/caddy/error.log
+		level ERROR
+	} #版本不小于v2.4.0才支持日志全局配置
+	dynamic_dns { #加了caddy-dynamicdns插件编译的才支持DDNS应用
+		provider duckdns b8a33cc1-3333-2222-a1e6-b049bf07988f #可修改为其它caddy-dns插件（加了对应插件编译的才支持）及对应caddy-dns插件的token
+		domains {
+			xdddns.duckdns.org #修改为关联的域名
+		}
+	}
+#........<省略>........
+}

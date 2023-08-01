@@ -1,0 +1,94 @@
+//caddy-events-exec插件应用
+//原配置：
+//........<省略>........
+    "tls": {
+//........<省略>........
+    }
+//........<省略>........
+
+//1、重启/重载单个程序
+//原配置修改为如下（Caddy用户拥有root权限）：
+//........<省略>........
+    "tls": {
+//........<省略>........
+    },
+    "events": {
+      "subscriptions": [{
+        "events": ["cert_obtained"],
+        "handlers": [{
+          "handler": "exec",
+          "command": "systemctl",
+          "args": ["restart","hysteria"] //可以调整为其它程序
+        }]
+      }]
+    }
+//........<省略>........
+
+//原配置修改为如下（Caddy用户拥有sudo权限）：
+//........<省略>........
+    "tls": {
+//........<省略>........
+    },
+    "events": {
+      "subscriptions": [{
+        "events": ["cert_obtained"],
+        "handlers": [{
+          "handler": "exec",
+          "command": "sudo",
+          "args": ["systemctl","restart","hysteria"] //可以调整为其它程序
+        }]
+      }]
+    }
+//........<省略>........
+
+//2、重启/重载多个程序
+//原配置修改为如下（Caddy用户拥有root权限）：
+//........<省略>........
+    "tls": {
+//........<省略>........
+    },
+    "events": {
+      "subscriptions": [{
+        "events": ["cert_obtained"],
+        "handlers": [{
+          "handler": "exec",
+          "command": "systemctl",
+          "args": ["reload","nginx"] //可以调整为其它程序
+        },
+        {
+          "handler": "exec",
+          "command": "systemctl",
+          "args": ["restart","hysteria"] //可以调整为其它程序
+        }]
+      }]
+    }
+//........<省略>........
+
+//原配置修改为如下（Caddy用户拥有sudo权限）：
+//........<省略>........
+    "tls": {
+//........<省略>........
+    },
+    "events": {
+      "subscriptions": [{
+        "events": ["cert_obtained"],
+        "handlers": [{
+          "handler": "exec",
+          "command": "sudo",
+          "args": ["systemctl","reload","nginx"] //可以调整为其它程序
+        },
+        {
+          "handler": "exec",
+          "command": "sudo",
+          "args": ["systemctl","restart","hysteria"] //可以调整为其它程序
+        }]
+      }]
+    }
+//........<省略>........
+//备注：
+//1、本示例实现了TLS证书自动更新后就联动执行重启/重载相关程序来重载更新后的TLS证书。
+//2、本示例sudo权限用户重启/重载相关程序需要取消密码验证，其配置可参考如下（Caddy使用nodody用户）：
+//1）、nobody ALL=NOPASSWD:/bin/systemctl restart hysteria （表示nobody用户使用sudo权限重启hysteria不需要密码）
+//2）、nobody ALL=NOPASSWD:/bin/systemctl reload nginx （表示nobody用户使用sudo权限重载Nginx不需要密码）
+//3）、nobody ALL=NOPASSWD:/bin/systemctl restart X,/bin/systemctl restart Y （表示nobody用户使用sudo权限重启X与Y都不需要密码）
+//4）、nobody ALL=NOPASSWD:/bin/systemctl restart [a-zA-Z]* （表示nobody用户使用sudo权限重启所有程序都不需要密码。不推荐。）
