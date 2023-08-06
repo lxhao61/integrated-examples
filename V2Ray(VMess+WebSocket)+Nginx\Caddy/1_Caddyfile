@@ -1,9 +1,11 @@
 {
 	order reverse_proxy before route
 	admin off
+	persist_config off
 	log {
-		output file /var/log/caddy/error.log
-		level ERROR
+		output file /var/log/caddy/default.log
+		format console
+		level WARN
 	} #版本不小于v2.4.0才支持日志全局配置
 	email your@email.com #修改为自己的电子邮箱（选配）
 
@@ -12,7 +14,7 @@
 			interval 12h
 			timeout 15s
 		} #配置可信CDN服务器的IP范围，以实现套CDN的应用的访问IP还原为客户端原始IP。若使用其它非Cloudflare CDN，需自己调整trusted_proxies的配置参数。（选配，套CDN配置。）
-		protocols h1 h2
+		protocols h1 h2 h3 #默认配置（可省略）
 	}
 }
 
@@ -20,7 +22,6 @@
 	tls {
 		ciphers TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 		curves x25519 secp521r1 secp384r1 secp256r1
-		alpn http/1.1 h2
 	}
 
 	@vmws {
