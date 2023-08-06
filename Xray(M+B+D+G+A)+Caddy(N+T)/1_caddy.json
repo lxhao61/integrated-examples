@@ -1,22 +1,28 @@
 {
   "admin": {
-    "disabled": true
+    "disabled": true,
+    "config": {
+      "persist": false
+    }
   },
   "logging": {
     "logs": {
       "default": {
         "writer": {
           "output": "file",
-          "filename": "/var/log/caddy/error.log"
+          "filename": "/var/log/caddy/default.log"
         },
-        "level": "ERROR"
+        "encoder": {
+          "format": "console"
+        },
+        "level": "WARN"
       }
     }
   },
   "apps": {
     "http": {
       "servers": {
-        "h1": {
+        "srvh1": {
           "listen": [":80"],
           "routes": [{
             "handle": [{
@@ -26,9 +32,10 @@
               },
               "status_code": 301
             }]
-          }]
+          }],
+          "protocols": ["h1"] //仅开启HTTP/1.1 server支持
         },
-        "http2": {
+        "srvh2": {
           "listen": ["127.0.0.1:7443"], //HTTP/2 server本地监听端口
           "listener_wrappers": [{
             "wrapper": "proxy_protocol" //开启PROXY protocol接收
@@ -144,7 +151,7 @@
             "interval": "12h",
             "timeout": "15s"
           }, //配置可信CDN服务器的IP范围，以实现套CDN的应用的访问IP还原为客户端原始IP。若使用其它非Cloudflare CDN，需自己调整trusted_proxies的配置参数。（选配，套CDN配置。）
-          "protocols": ["h1","h2"] //开启HTTP/1.1 server与HTTP/2 server支持（REALITY转发不支持UDP透传）
+          "protocols": ["h1","h2"] //开启HTTPS server与HTTP/2 server支持（REALITY转发不支持UDP透传）
         }
       }
     },

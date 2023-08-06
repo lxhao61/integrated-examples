@@ -1,22 +1,28 @@
 {
   "admin": {
-    "disabled": true
+    "disabled": true,
+    "config": {
+      "persist": false
+    }
   },
   "logging": {
     "logs": {
       "default": {
         "writer": {
           "output": "file",
-          "filename": "/var/log/caddy/error.log"
+          "filename": "/var/log/caddy/default.log"
         },
-        "level": "ERROR"
+        "encoder": {
+          "format": "console"
+        },
+        "level": "WARN"
       }
     }
   },
   "apps": {
     "http": {
       "servers": {
-        "h1": {
+        "srvh1": {
           "listen": [":80"],
           "routes": [{
             "handle": [{
@@ -26,9 +32,10 @@
               },
               "status_code": 301
             }]
-          }]
+          }],
+          "protocols": ["h1"] //仅开启HTTP/1.1 server支持
         },
-        "http2": {
+        "srvh2": {
           "listen": ["unix/@http2.sock"], //HTTP/2 server监听进程
           "listener_wrappers": [{
             "wrapper": "proxy_protocol" //开启PROXY protocol接收
@@ -125,7 +132,7 @@
           }],
           "tls_connection_policies": [{
             "match": {
-              "sni": ["z1.xx.yy"] //限定域名连接（禁止以IP方式访问网站），修改为自己的域名。
+              "sni": ["z3.xx.yy"] //限定域名连接（禁止以IP方式访问网站），修改为自己的域名。
             },
             "protocol_min": "tls1.2",
             "protocol_max": "tls1.2",
@@ -134,7 +141,7 @@
           },
           {
             "match": {
-              "sni": ["z2.xx.yy","h3.xx.yy"] //限定域名连接（禁止以IP方式访问网站），修改为自己的域名。
+              "sni": ["z1.xx.yy","z2.xx.yy"] //限定域名连接（禁止以IP方式访问网站），修改为自己的域名。
             },
             "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256","TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"],
             "curves": ["x25519","secp521r1","secp384r1","secp256r1"]
@@ -144,7 +151,7 @@
             "interval": "12h",
             "timeout": "15s"
           }, //配置可信CDN服务器的IP范围，以实现套CDN的应用的访问IP还原为客户端原始IP。若使用其它非Cloudflare CDN，需自己调整trusted_proxies的配置参数。（选配，套CDN配置。）
-          "protocols": ["h1","h2"] //开启HTTP/1.1 server与HTTP/2 server支持（REALITY转发不支持UDP透传）
+          "protocols": ["h1","h2"] //开启HTTPS server与HTTP/2 server支持（REALITY转发不支持UDP透传）
         }
       }
     },
