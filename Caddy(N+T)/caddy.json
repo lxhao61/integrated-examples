@@ -1,22 +1,28 @@
 {
   "admin": {
-    "disabled": true
+    "disabled": true,
+    "config": {
+      "persist": false
+    }
   },
   "logging": {
     "logs": {
       "default": {
         "writer": {
           "output": "file",
-          "filename": "/var/log/caddy/error.log"
+          "filename": "/var/log/caddy/default.log"
         },
-        "level": "ERROR"
+        "encoder": {
+          "format": "console"
+        },
+        "level": "WARN"
       }
     }
   },
   "apps": {
     "http": {
       "servers": {
-        "http3": {
+        "srvh3": {
           "listen": [":443"],
           "listener_wrappers": [{
             "wrapper": "trojan" //caddy-trojan插件应用必须配置
@@ -73,7 +79,7 @@
             "interval": "12h",
             "timeout": "15s"
           }, //配置可信CDN服务器的IP范围，以实现套CDN的应用的访问IP还原为客户端原始IP。若使用其它非Cloudflare CDN，需自己调整trusted_proxies的配置参数。（选配，套CDN配置。）
-          "protocols": ["h1","h2","h3"] //默认配置
+          "protocols": ["h1","h2","h3"] //默认配置（可省略）
         }
       }
     },
