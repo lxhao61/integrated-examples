@@ -1,15 +1,21 @@
 {
   "admin": {
-    "disabled": true
+    "disabled": true,
+    "config": {
+      "persist": false
+    }
   },
   "logging": {
     "logs": {
       "default": {
         "writer": {
           "output": "file",
-          "filename": "/var/log/caddy/error.log"
+          "filename": "/var/log/caddy/default.log"
         },
-        "level": "ERROR"
+        "encoder": {
+          "format": "console"
+        },
+        "level": "WARN"
       }
     }
   },
@@ -20,7 +26,7 @@
   "apps": {
     "http": {
       "servers": {
-        "h1": {
+        "srvh1": {
           "listen": [":80"],
           "routes": [{
             "handle": [{
@@ -30,9 +36,10 @@
               },
               "status_code": 301
             }]
-          }]
+          }],
+          "protocols": ["h1"] //仅开启HTTP/1.1 server支持
         },
-        "h1h2c": {
+        "srvh2c": {
           "listen": ["unix/@h1h2c.sock"], //H2C server及HTTP/1.1 server监听进程
           "listener_wrappers": [{
             "wrapper": "proxy_protocol" //开启PROXY protocol接收
