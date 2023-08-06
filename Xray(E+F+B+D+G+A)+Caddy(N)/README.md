@@ -26,7 +26,7 @@
 
 4、Caddy 支持 H2C server 与 HTTP/1.1 server 共用一个端口或一个进程。
 
-5、Caddy 版本不小于 v2.6.5 才默认支持 PROXY protocol 接收。若 Caddy 版本小于 v2.6.5 需加 caddy2-proxyprotocol 插件定制编译才支持 PROXY protocol 接收。
+5、Caddy 版本不小于 v2.7.0 才默认支持 PROXY protocol 接收。若 Caddy 版本小于 v2.7.0 需加 caddy2-proxyprotocol 插件定制编译才支持 PROXY protocol 接收。
 
 6、Caddy 版本不小于 v2.6.0 才支持 H2C/gRPC 代理的 UDS 转发。
 
