@@ -1,0 +1,16 @@
+[Unit]
+Description=tuic service
+Documentation=https://github.com/EAimTY/tuic
+After=network.target nss-lookup.target
+
+[Service]
+User=root //默认以root用户运行。若修改，请修改为相应权限的用户。
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
+ExecStart=/usr/local/bin/tuic/tuic -c /usr/local/etc/tuic/config.json
+Restart=on-failure
+RestartSec=10
+LimitNOFILE=infinity
+
+[Install]
+WantedBy=multi-user.target
