@@ -1,15 +1,15 @@
 **这里是分享怎么搭建主流科学上网的优化配置及最优组合示例（如是不太了解科学上网，建议先依次从简单到复杂参考及部署。），其特点如下：**  
-1. 实现了SNI分流使用Local Loopback连接或使用Unix Domain Socket（UDS）连接及启用PROXY protocol支持。
-2. 实现了反代使用Local Loopback连接或使用Unix Domain Socket（UDS）连接支持。
-3. 实现了回落/分流使用Local Loopback连接或使用Unix Domain Socket（UDS）连接及启用PROXY protocol支持。
+1. 实现了反代使用Local Loopback连接或使用Unix Domain Socket（UDS）连接支持。
+2. 实现了回落/分流使用Local Loopback连接或使用Unix Domain Socket（UDS）连接及启用PROXY protocol支持。
+3. 实现了SNI分流使用Local Loopback连接或使用Unix Domain Socket（UDS）连接及启用PROXY protocol支持。
 4. 实现了Caddy、V2Ray/Xray使用UDS连接时采用Abstract sockets模式（不需考虑文件路径及权限设置问题）。
 5. 实现了Nginx SNI分流（TCP转发）与定向UDP转发配合以支持SNI分流后的NaiveProxy HTTP/3代理应用。
 6. 实现了使用json配置Caddy SNI分流，且可针对分流端口或进程是否开启PROXY protocol发送。
 7. 实现了Caddy与相关应用的TLS证书申请与更新全自动化。
 8. 实现了服务端综合应用配置示例中使用mKCP、WebSocket、HTTP/2（H2）、gRPC传输方式的应用配置可删、可换、可增（REALITY H2/gRPC应用除外），灵活组合而不影响整体架构。
 9. 实现了正常应用与CDN流量中转（基于WebSocket over TLS或基于gRPC over TLS）同时使用。
-10. 实现了除V2Ray/Xray的mKCP应用与Hysteria应用之外，其它应用对外都使用443端口，各应用互不影响。
-11. 实现了除V2Ray/Xray的mKCP应用与Hysteria应用之外，其它应用都支持流量伪装与防探测，且提供流量伪装与防探测的回落或代理网站都支持HTTP自动跳转到HTTPS，SSL/TLS安全评估报告为A+（非AES算法的密码套件配置示例除外）等，即所有特征完全与真实网站一致。
+10. 实现了除V2Ray/Xray的mKCP应用与TUIC/Hysteria应用之外，其它应用对外都使用443端口，各应用互不影响。
+11. 实现了除V2Ray/Xray的mKCP应用与TUIC/Hysteria应用之外，其它应用都支持流量伪装与防探测，且提供流量伪装与防探测的回落或代理网站都支持HTTP自动跳转到HTTPS，SSL/TLS安全评估报告为A+（非AES算法的密码套件配置示例除外）等，即所有特征完全与真实网站一致。
 
 ### 服务端单一/简单应用配置示例
 #### &emsp;V2Ray/Xray的mKCP应用
@@ -43,8 +43,9 @@
 1. [NaiveProxy(Caddy+forwardproxy)](https://github.com/lxhao61/integrated-examples/tree/main/NaiveProxy(Caddy%2Bforwardproxy))（基于Caddy插件的NaiveProxy应用。标记为N。）
 2. [Trojan-Go(Caddy+caddy-trojan)](https://github.com/lxhao61/integrated-examples/tree/main/Trojan-Go(Caddy%2Bcaddy-trojan))（基于Caddy插件的Trojan-Go应用。标记为T。）
 3. [Caddy(N+T)](https://github.com/lxhao61/integrated-examples/tree/main/Caddy(N%2BT))（基于Caddy插件的NaiveProxy与Trojan-Go共存应用。）
-#### &emsp;Hysteria应用
-1. [Hysteria](https://github.com/lxhao61/integrated-examples/tree/main/Hysteria)（基于QUIC协议修改的双边加速代理应用。）
+#### &emsp;TUIC与Hysteria应用
+1. [TUIC](https://github.com/lxhao61/integrated-examples/tree/main/TUIC)（基于原生QUIC协议的代理应用。）
+2. [Hysteria](https://github.com/lxhao61/integrated-examples/tree/main/Hysteria)（基于QUIC协议修改的双边加速代理应用。）
 
 ### 服务端综合应用配置示例
 #### &emsp;以反代为核心的综合应用
