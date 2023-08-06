@@ -1,9 +1,11 @@
 {
 	order reverse_proxy before route
 	admin off
+	persist_config off
 	log {
-		output file /var/log/caddy/error.log
-		level ERROR
+		output file /var/log/caddy/default.log
+		format console
+		level WARN
 	} #版本不小于v2.4.0才支持日志全局配置
 	email your@email.com #修改为自己的电子邮箱（选配）
 
