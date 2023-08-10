@@ -1,0 +1,103 @@
+{
+  "log": {
+    "loglevel": "error",
+    "error": "/tmp/v2_err.log"
+  },
+  "dns": {
+    "servers": [
+      {
+        "address": "tcp://1.1.1.1:53",
+        "domains": ["geosite:geolocation-!cn"]
+      },
+      {
+        "address": "114.114.114.114",
+        "domains": ["geosite:cn"],
+        "expectIPs": ["geoip:cn"]
+      },
+      {
+        "address": "223.5.5.5",
+        "domains": ["geosite:cn"]
+      },
+      "localhost"
+    ]
+  },
+  "inbounds": [
+    {
+      "port": 1080,
+      "listen": "127.0.0.1",
+      "tag": "socks-inbound",
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      }
+    }
+  ],
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "domainMatcher": "mph",
+    "rules": [
+      {
+        "type": "field",
+        "domain": ["geosite:category-ads-all"],
+        "outboundTag": "blocked"
+      },
+      {
+        "type": "field",
+        "domain": ["geosite:cn"],
+        "outboundTag": "direct"
+      },
+      {
+        "type": "field",
+        "ip": ["geoip:cn", "geoip:private"],
+        "outboundTag": "direct"
+      },
+      {
+        "type": "field",
+        "domain": ["geosite:geolocation-!cn"],
+        "outboundTag": "proxy"
+      },
+      {
+        "type": "field",
+        "ip": ["114.114.114.114"],
+        "outboundTag": "direct"
+      },
+      {
+        "type": "field",
+        "ip": ["1.1.1.1"],
+        "outboundTag": "proxy"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "socks",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 52000
+          }
+        ]
+      },
+      "tag": "proxy"
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {
+        "response": {
+          "type": "http"
+        }
+      },
+      "tag": "blocked"
+    }, 
+    {
+      "protocol": "freedom",
+      "tag": "direct"
+    }
+  ]
+}
