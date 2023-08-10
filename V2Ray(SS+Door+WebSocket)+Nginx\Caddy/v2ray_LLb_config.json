@@ -1,0 +1,83 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "error": "/var/log/xray/error.log", //若使用 V2Ray，此处目录名称 xray 改成 v2ray。
+    "access": "/var/log/xray/access.log" //若使用 V2Ray，此处目录名称 xray 改成 v2ray。
+  },
+  "inbounds": [
+    {
+      "tag": "ddws", //标签，与 routing 中标签对应。
+      "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
+      "port": 2002, //Door+WebSocket 监听端口
+      "protocol": "dokodemo-door",
+      "settings": {
+        "address": "v1.mux.cool",
+        "network": "tcp",
+        "followRedirect": false
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "path": "/2ALdGZ9k" //修改为自己的路径
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    },
+    {
+      "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
+      "port": 2003, //SS 监听端口
+      "protocol": "shadowsocks",
+      "settings": {
+        "method": "chacha20-poly1305", //仅 V2Ray 配置，否则必须删除。
+        "password": "diy2011", //修改为自己的密码。仅 V2Ray 配置，否则必须删除。
+        "ivCheck": true, //启用 IV 检查功能。仅 V2Ray 配置，否则必须删除。
+        "method": "2022-blake3-chacha20-poly1305", //仅 Xray 配置，否则必须删除。
+        "password": "feQT4vJflkrv+ayrOPJtyOmysCCG0y4sCVlqISRL2mI=", //修改为自己的密钥。仅 Xray 配置，否则必须删除。
+        "email": "2011@gmail.com"
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "inboundTag": [
+          "ddws" //与 inbounds 中标签对应
+        ],
+        "outboundTag": "loopback" //与 outbounds 中标签对应
+      },
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "blocked"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "loopback", //标签，与 routing 中标签对应。
+      "protocol": "freedom",
+      "settings": {
+        "redirect": "127.0.0.1:2003" //转发给本机 SS 监听端口
+      }
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
