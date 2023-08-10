@@ -1,0 +1,148 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "error": "/var/log/xray/error.log",
+    "access": "/var/log/xray/access.log"
+  },
+  "inbounds": [
+    {
+      "port": 443, //VLESS+Vision+REALITY 监听端口
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "048e0bf2-dd56-11e9-aa37-5600024c1d6a", //修改为自己的 UUID
+            "flow": "xtls-rprx-vision", //启用 XTLS Vision
+            "email": "443@gmail.com"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "show": false, //选填，若为 true 输出调试信息。
+          "dest": "/dev/shm/http2.sock", //转发给自己的网站监听进程
+          "xver": 2, //开启 PROXY protocol 发送，发送真实来源 IP 和端口给自己的网站。 1 或 2 表示 PROXY protocol 版本。
+          "serverNames": [ //必填，客户端可用的 serverName 列表，暂不支持 * 通配符。
+            "z1.xx.yy" //修改为自己的网站域名
+          ],
+          "privateKey": "iD0BftokWqJ6UhCzVBlK2sI5OjmfWks0PAdU3SLWKUw", //修改为自己执行 ./xray x25519 后生成的一对密钥中私钥
+          "shortIds": [ //必填，客户端可用的 shortId 列表，可用于区分不同的客户端。
+            "" //若有此项，客户端 shortId 可为空。若不为空，可 0 到 f（0123456789abcdef），长度为 2 的倍数，长度上限为 16 。
+          ]
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    },
+    {
+      "listen": "/dev/shm/vmessws.sock", //VMess+WebSocket 监听进程
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "21376258-dd56-11e9-aa37-5600024c1d6a", //修改为自己的 UUID
+            "email": "2001@gmail.com"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "path": "/HALdGZ9k" //修改为自己的路径
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    },
+    {
+      "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
+      "port": 2011, //Shadowsocks+gRPC 监听端口
+      "protocol": "shadowsocks",
+      "settings": {
+        "method": "2022-blake3-chacha20-poly1305",
+        "password": "3FezOkwhvB5vb3y25C13IYYtM6KbI37EjbX0lLlx7oo=", //修改为自己的密钥
+        "email": "2011@gmail.com"
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "none",
+        "grpcSettings": {
+          "serviceName": "SALdGZ9k" //修改为自己的 gRPC 服务名称
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    },
+    {
+      "port": 2052, //监听端口
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "0a652466-dd56-11e9-aa37-5600024c1d6a", //修改为自己的 UUID
+            "email": "2052@gmail.com"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "kcp",
+        "security": "none",
+        "kcpSettings": {
+          "uplinkCapacity": 100,
+          "downlinkCapacity": 100,
+          "congestion": true, //启用拥塞控制
+          "seed": "60VoqhfjP79nBQyU" //修改为自己的混淆密码
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "blocked"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
