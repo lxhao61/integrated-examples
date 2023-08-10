@@ -1,0 +1,73 @@
+//Caddy 的转发与回落到不同网站配置
+//原配置：
+//........<省略>........
+          { //若为单一应用此‘{’省略
+            "handle": [{
+              "handler": "headers",
+              "response": {
+                "set": {
+                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用 HSTS
+                }
+              }
+            },
+            {
+              "handler": "file_server",
+              "root": "/var/www/html" //修改为自己存放的 WEB 文件路径
+            }]
+          }],
+//........<省略>........
+
+//以上配置修改为如下：（示例仅配置了两个网站的转发与回落；如需要多个网站，增加对应参数即可。）
+//........<省略>........
+          { //若为单一应用此‘{’省略
+            "match": [{
+              "host": ["za.xx.yy"] //修改为对应网站的域名
+            }],
+            "handle": [{
+              "handler": "subroute",
+              "routes": [{
+                "handle": [{
+                  "handler": "headers",
+                  "response": {
+                    "set": {
+                      "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用 HSTS
+                    }
+                  }
+                }]
+              },
+              {
+                "handle": [{
+                  "handler": "file_server",
+                  "root": "/var/www/za" //修改为自己存放的 WEB 文件路径
+                }]
+              }]
+            }]
+          },
+          {
+            "match": [{
+              "host": ["zb.xx.yy"] //修改为分流的域名
+            }],
+            "handle": [{
+              "handler": "subroute",
+              "routes": [{
+                "handle": [{
+                  "handler": "headers",
+                  "response": {
+                    "set": {
+                      "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用 HSTS
+                    }
+                  }
+                }]
+              },
+              {
+                "handle": [{
+                  "handler": "file_server",
+                  "root": "/var/www/zb" //修改为自己存放的 WEB 文件路径
+                }]
+              }]
+            }]
+          }],
+          "automatic_https": {
+            "disable": true
+          }, //禁用自动 HTTPS
+//........<省略>........
