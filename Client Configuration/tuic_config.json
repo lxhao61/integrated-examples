@@ -1,0 +1,15 @@
+{
+    "relay": {
+        "server": "xx.yy:2053", //修改为服务端分配的域名及端口
+        "uuid": "1bb2ce31-1bce-4d83-bfc1-59886c6fac66", //修改为服务器端配置的 UUID
+        "password": "diy2053", //修改为服务端配置的密码
+        "ip": "2.2.2.2", //修改为服务端的 IP
+        "udp_relay_mode": "quic", //UDP 中继模式
+        "congestion_control": "bbr" //拥塞控制算法
+    },
+    "local": {
+        "server": "[::]:1080",
+        "dual_stack": true
+    },
+    "log_level": "warn"
+}
