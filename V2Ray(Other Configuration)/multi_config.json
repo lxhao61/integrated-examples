@@ -1,0 +1,61 @@
+//VMess 协议配置多个用户组方法
+//原配置：
+//........<省略>........
+        "clients": [
+          {
+            "id": "21376258-dd56-11e9-aa37-5600024c1d6a", //修改为自己的 UUID
+            "email": "2001@gmail.com"
+          }
+        ]
+//........<省略>........
+
+//以上配置修改为如下：
+//........<省略>........
+        "clients": [
+          {
+            "id": "21376258-dd56-11e9-aa37-5600024c1d6a", //修改为自己的 UUID
+            "email": "2001@gmail.com"
+          }，
+//........<省略>........
+          {
+            "id": "31376258-dd56-11e9-aa37-5600024c1d6a", //修改为自己的 UUID
+            "email": "3001@gmail.com"
+          }
+        ]
+//........<省略>........
+//备注：
+//1、V2Ray 或 Xray 的 VLESS 或 Trojan 协议配置多个用户组方法与上示例类似。增加多个用户组即可，组与组之间用逗号分割。
+
+
+//Shadowsocks 协议配置多个用户组方法
+//原配置：
+//........<省略>........
+      "settings": {
+        "method": "2022-blake3-chacha20-poly1305",
+        "password": "3FezOkwhvB5vb3y25C13IYYtM6KbI37EjbX0lLlx7oo=", //修改为自己的密钥
+        "email": "2011@gmail.com"
+      },
+//........<省略>........
+
+//以上配置修改为如下：
+//........<省略>........
+      "settings": {
+        "method": "2022-blake3-aes-128-gcm",
+        "password": "dkv04xu1f+UeM3mXpNJgVA==", //主项密钥，修改为自己的。
+        "clients": [
+          {
+            "password": "FPTg9fyNve167Fg8oPkFlQ==", //分项密钥，修改为自己的。
+            "email": "2011@gmail.com"
+          },
+//........<省略>........
+          {
+            "password": "rvQ6fK6Y4ckgFVslZlZUgQ==", //分项密钥，修改为自己的。
+            "email": "2021@gmail.com"
+          }
+        ]
+      },
+//........<省略>........
+//备注：
+//1、V2Ray 不支持 Shadowsocks 协议配置多个用户组，且也不支持 Shadowsocks 2022 新协议。
+//2、Xray 的 Shadowsocks 2022 新协议仅 2022-blake3-chacha20-poly1305 加密方式不支持配置多个用户组。
+//3、多用户组应用的客户端密钥为‘主项密钥:各分项密钥’的组合。如 dkv04xu1f+UeM3mXpNJgVA==:FPTg9fyNve167Fg8oPkFlQ== 等。
