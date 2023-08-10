@@ -1,0 +1,78 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "error": "/var/log/xray/error.log",
+    "access": "/var/log/xray/access.log"
+  },
+  "inbounds": [
+    {
+      "port": 443, //监听端口
+      "protocol": "trojan",
+      "settings": {
+        "clients": [
+          {
+            "password":"diy443", //修改为自己密码
+            "email": "443@gmail.com"
+          }
+        ],
+        "fallbacks": [
+          {
+            "alpn": "h2", //h2 回落匹配
+            "dest": "/dev/shm/h2c.sock", //h2 回落进程
+            "xver": 2 //开启 PROXY protocol 发送，发送真实来源 IP 和端口给 Nginx。 1 或 2 表示 PROXY protocol 版本。
+          }, //对应 Nginx 版本小于 v1.25.1 配置，否则必须删除。
+          {
+            "dest": "/dev/shm/h1.sock", //http/1.1 回落进程或 h2 回落与 http/1.1 回落共用进程（对应 Nginx 版本不小于 v1.25.1 配置，回落共用进程修改为 /dev/shm/h1h2c.sock。）
+            "xver": 2 //开启 PROXY protocol 发送，发送真实来源 IP 和端口给 Nginx。 1 或 2 表示 PROXY protocol 版本。
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "tls",
+        "tlsSettings": {
+          "certificates": [
+            {
+              "ocspStapling": 3600,
+              "certificateFile": "/home/tls/xx.yy/xx.yy.crt", //换成自己的证书，绝对路径。
+              "keyFile": "/home/tls/xx.yy/xx.yy.key" //换成自己的密钥，绝对路径。
+            }
+          ],
+          "rejectUnknownSni": true, //若接收到的 SNI 与证书域名不匹配就拒绝 TLS 握手（禁止以 IP 方式访问网站）
+          "minVersion": "1.2",
+          "maxVersion": "1.2",
+          "cipherSuites": "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256" //非 AES 算法的密码套件。若无 RSA 证书，可删除 RSA 算法的密码套件；无 ECC 证书，可删除 ECDSA 算法的密码套件。
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "blocked"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
