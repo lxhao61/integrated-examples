@@ -3,17 +3,17 @@
 //........<省略>........
     "tls": {
       "certificates": {
-        "automate": ["z1.xx.yy","z2.xx.yy"] //自动化管理 TLS 证书（包括获取、更新及加载证书）。修改为自己的域名。（域名名称与数量以实际为准）
+        "automate": ["z1.xx.yy","z2.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。（域名名称与数量以实际为准）
       },
       "automation": {
         "policies": [{
           "issuers": [{
             "module": "acme",
-            "email": "your@email.com" //修改为自己的电子邮箱（选配），与下一致。
+            "email": "your@email.com" //修改为自己的电子邮箱，与下一致。（选配）
           },
           {
             "module": "zerossl",
-            "email": "your@email.com" //修改为自己的电子邮箱（选配），与上一致。
+            "email": "your@email.com" //修改为自己的电子邮箱，与上一致。（选配）
           }]
         }]
       }
@@ -24,13 +24,13 @@
 //........<省略>........
     "tls": {
       "certificates": {
-        "automate": ["*.xx.yy"] //自动化管理 TLS 证书（包括获取、更新及加载证书）。*.xx.yy 表示为通配符域名，修改为自己的域名。
+        "automate": ["*.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。*.xx.yy 表示为通配符域名，修改为自己的域名。
       },
       "automation": {
         "policies": [{
           "issuers": [{
             "module": "acme",
-            "email": "your@email.com", //修改为自己的电子邮箱（选配），与下一致。
+            "email": "your@email.com", //修改为自己的电子邮箱，与下一致。（选配）
             "challenges": {
               "dns": {
                 "provider": {
@@ -45,7 +45,7 @@
           },
           {
             "module": "zerossl",
-            "email": "your@email.com", //修改为自己的电子邮箱（选配），与上一致。
+            "email": "your@email.com", //修改为自己的电子邮箱，与上一致。（选配）
             "challenges": {
               "dns": {
                 "provider": {
@@ -71,13 +71,13 @@
 //........<省略>........
     "tls": {
       "certificates": {
-        "automate": ["xx.yy"] //自动化管理 TLS 证书（包括获取、更新及加载证书）。修改为自己的域名。（域名名称与数量以实际为准）
+        "automate": ["xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。（域名名称与数量以实际为准）
       },
       "automation": {
         "policies": [{
           "issuers": [{
             "module": "acme", //acme 表示从 Let's Encrypt 申请 TLS 证书，zerossl 表示从 ZeroSSL 申请 TLS 证书。必须 acme 与 zerossl 二选一（固定 TLS 证书的目录便于引用）。
-            "email": "your@email.com" //修改为自己的电子邮箱（选配）
+            "email": "your@email.com" //修改为自己的电子邮箱。（选配）
           }]
         }]
       }
@@ -88,13 +88,13 @@
 //........<省略>........
     "tls": {
       "certificates": {
-        "automate": ["*.xx.yy"] //自动化管理 TLS 证书（包括获取、更新及加载证书）。*.xx.yy 表示为通配符域名，修改为自己的域名。
+        "automate": ["*.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。*.xx.yy 表示为通配符域名，修改为自己的域名。
       },
       "automation": {
         "policies": [{
           "issuers": [{
             "module": "acme", //acme 表示从 Let's Encrypt 申请 TLS 证书，zerossl 表示从 ZeroSSL 申请 TLS 证书。必须 acme 与 zerossl 二选一（固定 TLS 证书的目录便于引用）。
-            "email": "your@email.com", //修改为自己的电子邮箱（选配）
+            "email": "your@email.com", //修改为自己的电子邮箱。（选配）
             "challenges": {
               "dns": {
                 "provider": {
@@ -122,13 +122,13 @@
 //........<省略>........
     "tls": {
       "certificates": {
-        "automate": ["zv.xx.yy","zt.xx.yy","zh.xx.yy"] //自动化管理 TLS 证书（包括获取、更新及加载证书）。修改为自己的域名。（域名名称与数量以实际为准）
+        "automate": ["zv.xx.yy","zt.xx.yy","zh.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。（域名名称与数量以实际为准）
       },
       "automation": {
         "policies": [{
           "issuers": [{
             "module": "acme", //acme 表示从 Let's Encrypt 申请 TLS 证书，zerossl 表示从 ZeroSSL 申请 TLS 证书。必须 acme 与 zerossl 二选一（固定 TLS 证书的目录便于引用）。
-            "email": "your@email.com" //修改为自己的电子邮箱（选配）
+            "email": "your@email.com" //修改为自己的电子邮箱。（选配）
           }]
         }]
       }
@@ -139,13 +139,13 @@
 //........<省略>........
     "tls": {
       "certificates": {
-        "automate": ["*.xx.yy"] //自动化管理 TLS 证书（包括获取、更新及加载证书）。*.xx.yy 表示为通配符域名，修改为自己的域名。
+        "automate": ["*.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。*.xx.yy 表示为通配符域名，修改为自己的域名。
       },
       "automation": {
         "policies": [{
           "issuers": [{
             "module": "acme", //acme 表示从 Let's Encrypt 申请 TLS 证书，zerossl 表示从 ZeroSSL 申请TLS证书。必须 acme 与 zerossl 二选一（固定 TLS 证书的目录便于引用）。
-            "email": "your@email.com", //修改为自己的电子邮箱（选配）
+            "email": "your@email.com", //修改为自己的电子邮箱。（选配）
             "challenges": {
               "dns": {
                 "provider": {
