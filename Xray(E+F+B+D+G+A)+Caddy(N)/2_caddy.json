@@ -31,7 +31,7 @@
           "routes": [{
             "match": [{
               "tls": {
-                "sni": ["zv.xx.yy"] //对应 VLESS+Vision+TLS 的域名（禁止以 IP 方式访问网站），修改为自己的。
+                "sni": ["zv.xx.yy"] //对应 VLESS+Vision+TLS 的域名，修改为自己的。
               }
             }],
             "handle": [{
@@ -45,7 +45,7 @@
           {
             "match": [{
               "tls": {
-                "sni": ["zt.xx.yy"] //对应 Trojan+TCP+TLS 的域名（禁止以 IP 方式访问网站），修改为自己的。
+                "sni": ["zt.xx.yy"] //对应 Trojan+TCP+TLS 的域名，修改为自己的。
               }
             }],
             "handle": [{
@@ -59,7 +59,7 @@
           {
             "match": [{
               "tls": {
-                "sni": ["zh.xx.yy","z1.xx.yy"] //对应 HTTP/2 server 的域名（禁止以 IP 方式访问网站），修改为自己的。
+                "sni": ["zh.xx.yy","z1.xx.yy"] //对应 HTTP/2 server 的域名，修改为自己的。
               }
             }],
             "handle": [{
@@ -207,7 +207,7 @@
             "match": {
               "sni": ["zh.xx.yy"] //限定域名连接，修改为自己的域名。
             },
-            "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256","TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"],
+            "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"],
             "curves": ["x25519","secp521r1","secp384r1","secp256r1"]
           }],
           "trusted_proxies": {
@@ -215,19 +215,19 @@
             "interval": "12h",
             "timeout": "15s"
           }, //配置可信代理服务器的 IP 范围，以实现套 CDN 后服务端记录的客户端 IP 为真实来源 IP。若使用其它非 Cloudflare CDN，需调整 trusted_proxies 配置。（选配，套 CDN 配置。）
-          "protocols": ["h1","h2"] //开启 HTTPS server 与 HTTP/2 server 支持（Caddy SNI 分流不支持 UDP 转发）
+          "protocols": ["h1","h2"] //开启 HTTPS server 与 HTTP/2 server 支持。（Caddy SNI 分流不支持 UDP 转发）
         }
       }
     },
     "tls": {
       "certificates": {
-        "automate": ["zv.xx.yy","zt.xx.yy","zh.xx.yy","z1.xx.yy"] //自动化管理 TLS 证书（包括获取、更新及加载证书）。修改为自己的域名。
+        "automate": ["zv.xx.yy","zt.xx.yy","zh.xx.yy","z1.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。
       },
       "automation": {
         "policies": [{
           "issuers": [{
             "module": "acme", //acme 表示从 Let's Encrypt 申请 TLS 证书，zerossl 表示从 ZeroSSL 申请 TLS 证书。必须 acme 与 zerossl 二选一（固定 TLS 证书的目录便于引用）。
-            "email": "your@email.com" //修改为自己的电子邮箱（选配）
+            "email": "your@email.com" //修改为自己的电子邮箱。（选配）
           }]
         }]
       }
@@ -236,9 +236,9 @@
 }
 //备注：
 //1、申请免费 TLS 证书的域名不要超过五个，否则影响 TLS 证书的更新。
-//2、从 Let's Encrypt 申请的普通 TLS 证书在‘/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zv.xx.yy’目录中。/home/tls 为存放 TLS 证书的基本路径，zv.xx.yy 为域名，目录根据域名变化。
-//3、从 ZeroSSL 申请的普通 TLS 证书在‘/home/tls/certificates/acme.zerossl.com-v2-dv90/zv.xx.yy’目录中。/home/tls 为存放 TLS 证书的基本路径，zv.xx.yy 为域名，目录根据域名变化。 
-//4、本配置仅支持申请普通 TLS 证书，若要申请通配符 TLS 证书请参考‘Caddy(Other Configuration) （Caddy 的特殊应用配置方法。）’中对应介绍及对应配置示例。
+//2、从 Let's Encrypt 申请的普通 TLS 证书在 ‘/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zv.xx.yy’ 目录中。/home/tls 为存放 TLS 证书的基本路径，zv.xx.yy 为域名，目录根据域名变化。
+//3、从 ZeroSSL 申请的普通 TLS 证书在 ‘/home/tls/certificates/acme.zerossl.com-v2-dv90/zv.xx.yy’ 目录中。/home/tls 为存放 TLS 证书的基本路径，zv.xx.yy 为域名，目录根据域名变化。 
+//4、本配置仅支持申请普通 TLS 证书，若要申请通配符 TLS 证书请参考 ‘Caddy(Other Configuration) （Caddy 的特殊应用配置方法。）’ 中对应介绍及对应配置示例。
 //5、本示例使用 XTLS Vision 配置（zv.xx.yy）、非 AES 算法的密码套件配置（zt.xx.yy）、套 CDN（zh.xx.yy）、非 AES 算法的密码套件配置（z1.xx.yy）来避免被封。
 //6、本示例使用不同域名来实现介绍中各应用，其办法如下：
 //1）、VLESS+Vision+TLS 仅使用 zv.xx.yy 域名。
@@ -247,3 +247,4 @@
 //4）、VLESS+H2C+TLS 仅使用 z1.xx.yy 域名。
 //5）、Shadowsocks+gRPC+TLS 可随意使用 zh.xx.yy 域名与 z1.xx.yy 域名。
 //6）、NaiveProxy仅 使用 z1.xx.yy 域名（使用 HTTPS 协议）。
+//7、本示例的 SNI 分流自带限定域名连接（包括禁止以 IP 方式访问网站）。
