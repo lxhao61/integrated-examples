@@ -18,7 +18,7 @@
 
 注意：
 
-1、Caddy 加 caddy-l4 插件定制编译的才可以实现 SNI 分流，目前仅支持使用 json 配置（不支持 Caddyfile 配置）。
+1、Caddy 加 caddy-l4 插件定制编译的才可以实现 SNI 分流，目前仅支持 JSON 配置、不支持 Caddyfile 配置。
 
 2、Xray 版本不小于 v1.8.0 才支持 REALITY，其同步 uTLS（强制客户端必须使用指纹伪造）。
 
