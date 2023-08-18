@@ -224,5 +224,3 @@
     }
   ]
 }
-//备注：
-//1、本配置支持 XTLS Vision 配置（zv.xx.yy）、非 AES 算法的密码套件配置（zt.xx.yy）。
