@@ -35,18 +35,18 @@
       "protocol": "shadowsocks",
       "settings": {
         "method": "chacha20-poly1305", //仅 V2Ray 配置，否则必须删除。
-        "password": "diy2011", //修改为自己的密码。仅 V2Ray 配置，否则必须删除。
-        "ivCheck": true, //启用 IV 检查功能。仅 V2Ray 配置，否则必须删除。
+        "password": "diy2003", //修改为自己的密码。（仅 V2Ray 配置，否则必须删除。）
+        "ivCheck": true, //启用 IV 检查功能。（仅 V2Ray 配置，否则必须删除。）
         "method": "2022-blake3-chacha20-poly1305", //仅 Xray 配置，否则必须删除。
-        "password": "feQT4vJflkrv+ayrOPJtyOmysCCG0y4sCVlqISRL2mI=", //修改为自己的密钥。仅 Xray 配置，否则必须删除。
-        "email": "2011@gmail.com"
+        "password": "feQT4vJflkrv+ayrOPJtyOmysCCG0y4sCVlqISRL2mI=", //修改为自己的密钥。（仅 Xray 配置，否则必须删除。）
+        "email": "2003@gmail.com"
       },
       "streamSettings": {
         "network": "domainsocket",
         "security": "none",
         "dsSettings": {
           "path": "ssuds", //UDS 文件路径，与 outbounds 中对应。
-          "abstract": true //开启后不必考虑上面 UDS 文件绝对路径
+          "abstract": true //开启后不必考虑上面 UDS 文件路径及权限设置
         }
       }
     }
@@ -81,7 +81,7 @@
         "network": "domainsocket",
         "dsSettings": {
           "path": "ssuds", //UDS 文件路径，与 streamSettings 中对应。
-          "abstract": true //开启后不必考虑上面 UDS 文件绝对路径
+          "abstract": true //开启后不必考虑上面 UDS 文件路径及权限设置
         }
       }
     },
