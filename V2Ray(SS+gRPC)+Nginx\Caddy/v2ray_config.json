@@ -11,10 +11,10 @@
       "protocol": "shadowsocks",
       "settings": {
         "method": "chacha20-poly1305", //仅 V2Ray 配置，否则必须删除。
-        "password": "diy2011", //修改为自己的密码。仅 V2Ray 配置，否则必须删除。
-        "ivCheck": true, //启用 IV 检查功能。仅 V2Ray 配置，否则必须删除。
+        "password": "diy2011", //修改为自己的密码。（仅 V2Ray 配置，否则必须删除。）
+        "ivCheck": true, //启用 IV 检查功能。（仅 V2Ray 配置，否则必须删除。）
         "method": "2022-blake3-chacha20-poly1305", //仅 Xray 配置，否则必须删除。
-        "password": "3FezOkwhvB5vb3y25C13IYYtM6KbI37EjbX0lLlx7oo=", //修改为自己的密钥。仅 Xray 配置，否则必须删除。
+        "password": "3FezOkwhvB5vb3y25C13IYYtM6KbI37EjbX0lLlx7oo=", //修改为自己的密钥。（仅 Xray 配置，否则必须删除。）
         "email": "2011@gmail.com"
       },
       "streamSettings": {
