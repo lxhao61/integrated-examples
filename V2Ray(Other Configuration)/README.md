@@ -1,6 +1,6 @@
-一、V2Ray 或 Xray 各个应用配置多个用户组方法
+一、V2Ray 或 Xray 各应用配置多用户方法
 
-见 multi_config.json 配置示例。
+在各应用中 "settings" 项目内增加用户，具体见 multi_config.json 配置示例。
 
 二、V2Ray 或 Xray 流量统计的配置方法
 
