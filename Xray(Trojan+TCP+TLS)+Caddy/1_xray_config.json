@@ -33,7 +33,7 @@
               "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy/xx.yy.key" //换成自己的密钥，绝对路径。
             }
           ],
-          "rejectUnknownSni": true, //若接收到的 SNI 与证书域名不匹配就拒绝 TLS 握手（禁止以 IP 方式访问网站）
+          "rejectUnknownSni": true, //限定域名连接（包括禁止以 IP 方式访问网站）
           "minVersion": "1.2",
           "maxVersion": "1.2",
           "cipherSuites": "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256" //非 AES 算法的密码套件
