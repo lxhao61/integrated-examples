@@ -1,16 +1,16 @@
 {
   "listen": ":2083", //监听端口
-  "protocol": "udp", //留空或 "udp", "wechat-video", "faketcp"
+  "protocol": "udp", //协议目前有 udp、wechat-video、faketcp 可选。留空默认 udp。
   "cert": "/home/tls/xx.yy/xx.yy.crt", //换成自己的证书，绝对路径。
   "key": "/home/tls/xx.yy/xx.yy.key", //换成自己的密钥，绝对路径。
   "obfs": "obfs2083", //修改为自己的混淆密码
-  "auth": { //验证配置（此部分选配）。客户端或服务端性能很垃圾，推荐不配置此部分参数。
-    "mode": "passwords", //验证模式，目前支持"none", "passwords", "external"。普通用户不推荐使用 external（外部验证接入）验证模式。
+  "auth": {
+    "mode": "passwords", //验证模式，目前支持 none、passwords、external。external 为外部验证接入，非普通用户使用。
     "config": [
-      "diy2083" //修改为自己的验证密钥，验证密钥可多组（"password"），用逗号隔开。
+      "diy2083" //修改为自己的验证密码。验证密码可多组（"password"），用逗号隔开。
     ]
-  },
+  }, //验证配置。若客户端或服务端性能很垃圾，推荐不配置。（选配）
   "up_mbps": 100,
   "down_mbps": 100,
-  "alpn": "h3" //alpn 标签（选配）。传输协议选 UDP，推荐 alpn 标签配置为 h3。
+  "alpn": "h3" //alpn 标签。传输协议选 UDP，推荐 alpn 标签配置为 h3。（选配）
 }
