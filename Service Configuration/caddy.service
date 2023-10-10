@@ -6,10 +6,10 @@ Requires=network-online.target
 
 [Service]
 Type=notify
-User=root //默认以 root 用户运行。若修改，请修改为相应权限的用户。
-Group=root //默认以 root 组运行。若修改，请修改为相应权限的组。
-ExecStart=/usr/local/bin/caddy/caddy run --environ --config /usr/local/etc/caddy/caddy.json //调用 JSON 配置。如调用 Caddyfile 配置，caddy.json 修改为 Caddyfile 即可。
-ExecReload=/usr/local/bin/caddy/caddy reload --config /usr/local/etc/caddy/caddy.json --force //调用 JSON 配置。如调用 Caddyfile 配置，caddy.json 修改为 Caddyfile 即可。
+User=root //以 root 用户运行。若修改，请修改为相应权限的用户。
+Group=root //以 root 组运行。若修改，请修改为相应权限的组。
+ExecStart=/usr/local/bin/caddy/caddy run --config /usr/local/etc/caddy/caddy.json --environ //调用 JSON 配置。如调用 Caddyfile 配置，caddy.json 修改为 Caddyfile。
+ExecReload=/usr/local/bin/caddy/caddy reload --config /usr/local/etc/caddy/caddy.json --force //调用 JSON 配置。如调用 Caddyfile 配置，caddy.json 修改为 Caddyfile。
 TimeoutStopSec=5s
 LimitNOFILE=1048576
 LimitNPROC=512
