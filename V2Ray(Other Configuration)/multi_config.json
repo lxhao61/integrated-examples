@@ -1,4 +1,4 @@
-//VMess 协议配置多个用户组方法
+//VMess 协议配置多用户方法
 //原配置：
 //........<省略>........
         "clients": [
@@ -18,16 +18,16 @@
           }，
 //........<省略>........
           {
-            "id": "31376258-dd56-11e9-aa37-5600024c1d6a", //修改为自己的 UUID
+            "id": "30016258-dd56-11e9-aa37-5600024c1d6a", //修改为自己的 UUID
             "email": "3001@gmail.com"
           }
         ]
 //........<省略>........
 //备注：
-//1、V2Ray 或 Xray 的 VLESS 或 Trojan 协议配置多个用户组方法与上示例类似。增加多个用户组即可，组与组之间用逗号分割。
+//1、V2Ray 或 Xray 的 VLESS 或 Trojan 协议配置多用户方法与上示例相同，用户（大括号）之间用逗号分割。
 
 
-//Shadowsocks 协议配置多个用户组方法
+//Shadowsocks 协议配置多用户方法
 //原配置：
 //........<省略>........
       "settings": {
@@ -56,6 +56,6 @@
       },
 //........<省略>........
 //备注：
-//1、V2Ray 不支持 Shadowsocks 协议配置多个用户组，且也不支持 Shadowsocks 2022 新协议。
-//2、Xray 的 Shadowsocks 2022 新协议仅 2022-blake3-chacha20-poly1305 加密方式不支持配置多个用户组。
-//3、多用户组应用的客户端密钥为‘主项密钥:各分项密钥’的组合。如 dkv04xu1f+UeM3mXpNJgVA==:FPTg9fyNve167Fg8oPkFlQ== 等。
+//1、V2Ray 不支持 Shadowsocks 协议配置多用户，且也不支持 Shadowsocks 2022 新协议。
+//2、Xray 的 Shadowsocks 2022 新协议仅 2022-blake3-chacha20-poly1305 加密方式不支持配置多用户。
+//3、多用户应用的客户端密钥为‘主项密钥:各分项密钥’的组合。如 dkv04xu1f+UeM3mXpNJgVA==:FPTg9fyNve167Fg8oPkFlQ== 等。
