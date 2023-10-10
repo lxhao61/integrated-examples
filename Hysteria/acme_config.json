@@ -1,3 +1,4 @@
+//Hysteria 的 v1 版配置示例
 {
   "listen": ":2083", //监听端口
   "protocol": "udp", //协议目前有 udp、wechat-video、faketcp 可选。留空默认 udp 。
@@ -18,3 +19,30 @@
   "down_mbps": 100,
   "alpn": "h3" //alpn 标签。传输协议选 UDP，推荐 alpn 标签配置为 h3。（选配）
 }
+//备注：
+//1、Hysteria 的 v1 版与 v2 版不兼容。
+
+
+//Hysteria 的 v2 版配置示例
+{
+  "listen": ":443", //监听端口。若 UDP 的 443 端口已占用（例如 Caddy 已启用 HTTP/3 支持），可改成 8443 端口。
+  "acme": {
+    "domains": [
+      "xx.yy" //修改为自己的域名
+    ],
+    "email": "your@email.com" //修改为自己的电子邮箱。（选配）
+  },
+  "auth": {
+    "type": "password", //验证模式
+    "password": "diy443" //修改为自己的验证密码
+  },
+  "masquerade": {
+    "type": "file", //文件服务器模式
+    "file": {
+      "dir": "/var/www/html" //修改为自己存放的 WEB 文件路径
+    }
+  } //伪装网站（HTTP/3）配置。若使用反向代理模式（反向代理到一个网站），请参考官方示例调整此部分配置。
+}
+//备注：
+//1、Hysteria 的 v1 版与 v2 版不兼容。
+//2、Hysteria 的 v2 版支持伪装成普通网站应用。
