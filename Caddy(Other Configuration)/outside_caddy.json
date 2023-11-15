@@ -1,36 +1,19 @@
 //一、以反代或 REALITY Vision 为核心应用
 //原配置：
 //........<省略>........
-          "tls_connection_policies": [{
-            "match": {
-              "sni": ["z1.xx.yy"] //限定域名访问（禁止以 IP 方式访问网站），修改为自己的域名。
-            },
-            "protocol_min": "tls1.2",
-            "protocol_max": "tls1.2",
-            "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"], //非 AES 算法的密码套件
-            "curves": ["secp521r1","secp384r1","secp256r1"]
-          },
-          {
-            "match": {
-              "sni": ["z2.xx.yy"] //限定域名访问（禁止以 IP 方式访问网站），修改为自己的域名。
-            },
-            "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256","TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"],
-            "curves": ["x25519","secp521r1","secp384r1","secp256r1"]
-          }],
-//........<省略>........
     "tls": {
       "certificates": {
-        "automate": ["z1.xx.yy","z2.xx.yy"] //自动化管理 TLS 证书（包括获取、更新及加载证书）。修改为自己的域名。
+        "automate": ["z1.xx.yy","z2.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。（域名名称与数量以实际为准）
       },
       "automation": {
         "policies": [{
           "issuers": [{
             "module": "acme",
-            "email": "your@email.com" //修改为自己的电子邮箱（选配），与下一致。
+            "email": "your@email.com" //修改为自己的电子邮箱，与下一致。（选配）
           },
           {
             "module": "zerossl",
-            "email": "your@email.com" //修改为自己的电子邮箱（选配），与上一致。
+            "email": "your@email.com" //修改为自己的电子邮箱，与上一致。（选配）
           }]
         }]
       }
@@ -39,35 +22,16 @@
 
 //以上配置修改为如下：
 //........<省略>........
-          "tls_connection_policies": [{
-            "certificate_selection": {
-              "any_tag": ["tls01"] //关联对应证书标签
-            },
-            "protocol_min": "tls1.2",
-            "protocol_max": "tls1.2",
-            "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"], //非 AES 算法的密码套件
-            "curves": ["secp521r1","secp384r1","secp256r1"]
-          },
-          {
-            "certificate_selection": {
-              "any_tag": ["tls02"] //关联对应证书标签
-            },
-            "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256","TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"],
-            "curves": ["x25519","secp521r1","secp384r1","secp256r1"]
-          }],
-//........<省略>........
     "tls": {
       "certificates": {
         "load_files": [{
           "certificate": "/home/tls/z1.xx.yy/z1.xx.yy.crt", //换成自己的证书，绝对路径。
-          "key": "/home/tls/z1.xx.yy/z1.xx.yy.key", //换成自己的密钥，绝对路径。
-          "tags": ["tls01"] //关联对应证书标签
+          "key": "/home/tls/z1.xx.yy/z1.xx.yy.key" //换成自己的密钥，绝对路径。
         },
         {
           "certificate": "/home/tls/z2.xx.yy/z2.xx.yy.crt", //换成自己的证书，绝对路径。
-          "key": "/home/tls/z2.xx.yy/z2.xx.yy.key", //换成自己的密钥，绝对路径。
-          "tags": ["tls02"] //关联对应证书标签
-        }] //若使用通配符证书或 SAN 证书合并一组即可。
+          "key": "/home/tls/z2.xx.yy/z2.xx.yy.key" //换成自己的密钥，绝对路径。
+        }] //若使用通配符证书或 SAN 证书，合并一组即可。
       }
     }
 //........<省略>........
@@ -83,13 +47,13 @@
 //........<省略>........
     "tls": {
       "certificates": {
-        "automate": ["xx.yy"] //自动化管理 TLS 证书（包括获取、更新及加载证书）。修改为自己的域名。
+        "automate": ["z1.xx.yy","z2.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。（域名名称与数量以实际为准）
       },
       "automation": {
         "policies": [{
           "issuers": [{
             "module": "acme", //acme 表示从 Let's Encrypt 申请 TLS 证书，zerossl 表示从 ZeroSSL 申请 TLS 证书。必须 acme 与 zerossl 二选一（固定 TLS 证书的目录便于引用）。
-            "email": "your@email.com" //修改为自己的电子邮箱（选配）
+            "email": "your@email.com" //修改为自己的电子邮箱。（选配）
           }]
         }]
       }
@@ -100,7 +64,7 @@
 //........<省略>........
 //.....<删除此部分>.....
 //........<省略>........
-//.....<删除此部分>.....
+//<删除此部分且上连逗号>
 //........<省略>........
 
 
@@ -112,32 +76,15 @@
     "root": "/home/tls" //存放 TLS 证书的基本路径
   },
 //........<省略>........
-          "tls_connection_policies": [{
-            "match": {
-              "sni": ["z1.xx.yy"] //限定域名访问，修改为自己的域名。
-            },
-            "protocol_min": "tls1.2",
-            "protocol_max": "tls1.2",
-            "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"], //非 AES 算法的密码套件
-            "curves": ["secp521r1","secp384r1","secp256r1"]
-          },
-          {
-            "match": {
-              "sni": ["zv.xx.yy","zh.xx.yy"] //限定域名访问，修改为自己的域名。
-            },
-            "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256","TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"],
-            "curves": ["x25519","secp521r1","secp384r1","secp256r1"]
-          }],
-//........<省略>........
     "tls": {
       "certificates": {
-        "automate": ["zv.xx.yy","zt.xx.yy","zh.xx.yy","z1.xx.yy"] //自动化管理 TLS 证书（包括获取、更新及加载证书）。修改为自己的域名。
+        "automate": ["zv.xx.yy","zt.xx.yy","zh.xx.yy","zn.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。（域名名称与数量以实际为准）
       },
       "automation": {
         "policies": [{
           "issuers": [{
             "module": "acme", //acme 表示从 Let's Encrypt 申请 TLS 证书，zerossl 表示从 ZeroSSL 申请 TLS 证书。必须 acme 与 zerossl 二选一（固定 TLS 证书的目录便于引用）。
-            "email": "your@email.com" //修改为自己的电子邮箱（选配）
+            "email": "your@email.com" //修改为自己的电子邮箱。（选配）
           }]
         }]
       }
@@ -148,40 +95,20 @@
 //........<省略>........
 //.....<删除此部分>.....
 //........<省略>........
-          "tls_connection_policies": [{
-            "certificate_selection": {
-              "any_tag": ["tls01"] //关联对应证书标签
-            },
-            "protocol_min": "tls1.2",
-            "protocol_max": "tls1.2",
-            "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"], //非 AES 算法的密码套件
-            "curves": ["secp521r1","secp384r1","secp256r1"]
-          },
-          {
-            "certificate_selection": {
-              "any_tag": ["tls02","tls03"] //关联对应证书标签
-            },
-            "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256","TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"],
-            "curves": ["x25519","secp521r1","secp384r1","secp256r1"]
-          }],
-//........<省略>........
     "tls": {
       "certificates": {
         "load_files": [{
-          "certificate": "/home/tls/z1.xx.yy/z1.xx.yy.crt", //换成自己的证书，绝对路径。
-          "key": "/home/tls/z1.xx.yy/z1.xx.yy.key", //换成自己的密钥，绝对路径。
-          "tags": ["tls01"] //关联对应证书标签
+          "certificate": "/home/tls/zh.xx.yy/zh.xx.yy.crt", //换成自己的证书，绝对路径。
+          "key": "/home/tls/zh.xx.yy/zh.xx.yy.key" //换成自己的密钥，绝对路径。
         },
         {
           "certificate": "/home/tls/zv.xx.yy/zv.xx.yy.crt", //换成自己的证书，绝对路径。
-          "key": "/home/tls/zv.xx.yy/zv.xx.yy.key", //换成自己的密钥，绝对路径。
-          "tags": ["tls02"] //关联对应证书标签
-        },
+          "key": "/home/tls/zv.xx.yy/zv.xx.yy.key" //换成自己的密钥，绝对路径。
+        }, //对应 REALITY Vision 应用配置，否则删除。
         {
-          "certificate": "/home/tls/zh.xx.yy/zh.xx.yy.crt", //换成自己的证书，绝对路径。
-          "key": "/home/tls/zh.xx.yy/zh.xx.yy.key", //换成自己的密钥，绝对路径。
-          "tags": ["tls03"] //关联对应证书标签
-        }] //若使用通配符证书或 SAN 证书合并一组即可。
+          "certificate": "/home/tls/zn.xx.yy/zn.xx.yy.crt", //换成自己的证书，绝对路径。
+          "key": "/home/tls/zn.xx.yy/zn.xx.yy.key" //换成自己的密钥，绝对路径。
+        }] //若使用通配符证书或 SAN 证书，合并一组即可。
       }
     }
 //........<省略>........
