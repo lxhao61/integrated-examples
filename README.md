@@ -1,4 +1,4 @@
-**这里是分享怎么搭建主流科学上网的优化配置及最优组合示例（如是不太了解科学上网，建议先依次从简单到复杂参考及部署。），其特点如下：**  
+**这里是分享主流科学上网的最优组合示例及优化配置（如是不太了解科学上网及部署，建议先依次从简单到复杂参考。），其特点如下：**  
 1. 实现了反代使用 Local Loopback 连接或使用 UDS（Unix Domain Socket） 连接可选。
 2. 实现了回落/分流使用 Local Loopback 连接及启用 PROXY protocol 支持或使用 UDS（Unix Domain Socket） 连接及启用 PROXY protocol 支持可选。
 3. 实现了 SNI 分流使用 Local Loopback 连接及启用 PROXY protocol 支持或使用 UDS（Unix Domain Socket） 连接及启用 PROXY protocol 支持可选。
