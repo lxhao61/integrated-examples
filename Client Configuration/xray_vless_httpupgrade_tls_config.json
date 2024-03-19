@@ -25,7 +25,7 @@
             "port": 443,
             "users": [
               {
-                "id": "a3d238a4-b777-11ea-90d6-42010a8c000a", //修改为服务端配置的 UUID
+                "id": "1ba3e75b-7c2a-4991-9695-7d39b16fd3e1", //修改为服务端配置的 UUID
                 "encryption": "none"
               }
             ]
@@ -36,10 +36,10 @@
         "security": "tls",
         "tlsSettings": {
           "fingerprint": "chrome" //模拟 TLS 指纹，可任一 chrome、firefox、safari、ios、edge、qq、random、randomized 选项配置。
-        }, //仅 Xray 支持此应用，否则必须删除此部分配置。
-        "network": "ws",
-        "wsSettings": {
-          "path": "/5hBv56Es" //修改为服务端配置的路径。大于 Xray-core v1.8.9 版本，路径后加上 ?ed=2560 即可开启 WebSocket 0-RTT。
+        },
+        "network": "httpupgrade",
+        "httpupgradeSettings": {
+          "path": "/ChttpZ9k" //修改为服务端配置的路径。大于 Xray-core v1.8.9 版本，路径后加上 ?ed=2560 即可开启 HttpUpgrade 0-RTT。
         }
       },
       "mux": {

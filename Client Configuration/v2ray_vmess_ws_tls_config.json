@@ -39,11 +39,11 @@
         }, //仅 Xray 支持此应用，否则必须删除此部分配置。
         "network": "ws",
         "wsSettings": {
-          "path": "/5hBv56Es" //修改为服务端配置的路径。大于 Xray-core v1.4.0 版本，路径后加上 ?ed=2048 即可开启 WebSocket 0-RTT。
+          "path": "/5hBv56Es" //修改为服务端配置的路径。大于 Xray-core v1.8.9 版本，路径后加上 ?ed=2560 即可开启 WebSocket 0-RTT。
         }
       },
       "mux": {
-        "enabled": true, //ws类传输方式，建议开启。
+        "enabled": true, //启用多路复用
         "concurrency": 4 //此数据根据网络情况调整。表示 4 条传输进程复合一个链路发出。
       }
     },
