@@ -31,10 +31,14 @@
 }]
 ```
 
+```
 $ echo -n "user:pass" | base64 | tr -d '\n' | base64
+```
 
 使用以上命令可对 user:pass 进行二次 base64 编码。
 
+```
 $ echo -e "$(echo "your_user:pass_base64" | base64 --decode | base64 --decode)"
+```
 
 使用以上命令可检验你对 user:pass 进行的二次 base64 编码是否正确。
