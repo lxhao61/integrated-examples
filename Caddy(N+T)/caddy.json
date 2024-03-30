@@ -30,8 +30,7 @@
           "routes": [{
             "handle": [{
               "handler": "forward_proxy",
-              "auth_user_deprecated": "user", //NaiveProxy 用户，修改为自己的。
-              "auth_pass_deprecated": "pass", //NaiveProxy 密码，修改为自己的。
+              "auth_credentials": ["your_user:pass_base64"], //使用你的 user:pass 二次编译后的 base64 编码
               "hide_ip": true,
               "hide_via": true,
               "probe_resistance": {}
