@@ -43,3 +43,30 @@
 12、本示例 F 兼容原版 Trojan 的服务端应用，即可使用 Trojan 或 Trojan-Go 客户端连接。
 
 13、若已有 Nginx 在用网站、或需要 NaiveProxy 支持 HTTP/3 代理应用，推荐采用 [Xray(E+F+B+D+G+A)+Caddy(N)+Nginx](https://github.com/lxhao61/integrated-examples/tree/main/Xray(E%2BF%2BB%2BD%2BG%2BA)%2BCaddy(N)%2BNginx) 示例。
+
+14、由于新版的 forwardproxy 插件已经弃用了 "auth_user_deprecated" 以及 "auth_pass_deprecated" 字段，故而使用 caddy.json 文件进行配置时需要配合 "auth_credentials" 字段来配置原本的 user:pass 信息，具体变更方法如下:
+
+``` json
+"handle": [{
+  "handler": "forward_proxy",
+  "auth_user_deprecated": "user", //NaiveProxy 用户，修改为自己的。
+  "auth_pass_deprecated": "pass", //NaiveProxy 密码，修改为自己的。
+  ...
+}]
+```
+改为
+``` json
+"handle": [{
+  "handler": "forward_proxy",
+  "auth_credentials": ["your_user:pass_base64"], //使用你的 user:pass 二次编译后的 base64 编码。
+  ...
+}]
+```
+使用以下命令可对 user:pass 进行二次 base64 编码。
+```
+$ echo -n "user:pass" | base64 | tr -d '\n' | base64
+```
+使用以下命令可检验你对 user:pass 进行的二次 base64 编码是否正确。
+```
+$ echo -e "$(echo "your_user:pass_base64" | base64 --decode | base64 --decode)"
+```
