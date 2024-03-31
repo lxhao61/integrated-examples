@@ -173,7 +173,7 @@
           {
             "handle": [{
               "handler": "forward_proxy",
-              "auth_credentials": ["your_base64"] //输入将NaiveProxy的user:pass二次base64编码后所得的字符串
+              "auth_credentials": ["your_user:pass_base64"] //输入将NaiveProxy的user:pass二次base64编码后所得的字符串
               "hide_ip": true,
               "hide_via": true,
               "probe_resistance": {}
