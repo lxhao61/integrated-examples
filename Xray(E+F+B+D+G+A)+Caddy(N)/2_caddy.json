@@ -233,10 +233,6 @@
     }
   }
 }
-//可以使用以下命令生成user:pass二次base64编码后的字符串
-//$ echo -n "user:pass" | base64 | tr -d '\n' | base64
-//可以使用以下命令检验user:pass二次base64编码后的字符串是否正确
-//$ echo -e "$(echo "your_user:pass_base64" | base64 --decode | base64 --decode)"
 //备注：
 //1、申请免费 TLS 证书的域名不要超过五个，否则影响 TLS 证书的更新。 
 //2、若域名为 zt.xx.yy，那么从 Let's Encrypt 申请的普通 TLS 证书在 ‘/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zt.xx.yy’ 目录中。/home/tls 为存放 TLS 证书的基本路径，目录随域名变化。
@@ -251,3 +247,7 @@
 //5）、Shadowsocks+gRPC+TLS 可随意使用 zh.xx.yy 域名与 zn.xx.yy 域名。
 //6）、NaiveProxy 仅使用 zn.xx.yy 域名（使用 HTTPS 协议）。
 //7、本示例的 SNI 分流自带限定域名连接（包括禁止以 IP 方式访问网站）。
+//8、可以使用以下命令生成 user:pass 二次 base64 编码后的字符串
+//$ echo -n "user:pass" | base64 | tr -d '\n' | base64
+//9、可以使用以下命令检验 user:pass 二次 base64 编码后的字符串是否正确
+//$ echo -e "$(echo "your_user:pass_base64" | base64 --decode | base64 --decode)"

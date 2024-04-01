@@ -197,3 +197,7 @@
 //4）、Shadowsocks+gRPC+TLS 可随意使用 z2.xx.yy 域名与 z3.xx.yy 域名。
 //5）、NaiveProxy 仅使用 z3.xx.yy 域名（使用 HTTPS 协议）。
 //6）、Trojan-Go 使用 Trojan 应用时用 z3.xx.yy 域名，使用 WebSocket 应用时用 z2.xx.yy 域名。
+//5、可以使用以下命令生成 user:pass 二次 base64 编码后的字符串
+//$ echo -n "user:pass" | base64 | tr -d '\n' | base64
+//6、可以使用以下命令检验 user:pass 二次 base64 编码后的字符串是否正确
+//$ echo -e "$(echo "your_user:pass_base64" | base64 --decode | base64 --decode)"
