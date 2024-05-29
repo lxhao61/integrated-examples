@@ -18,7 +18,6 @@
       },
       "streamSettings": {
         "network": "kcp",
-        "security": "none",
         "kcpSettings": {
           "uplinkCapacity": 100,
           "downlinkCapacity": 100,
