@@ -40,7 +40,7 @@
           "protocols": ["h1"] //仅开启 HTTP/1.1 server 支持
         },
         "srvh2c": {
-          "listen": ["unix/@h1h2c.sock"], //H2C server 及 HTTP/1.1 server 监听进程
+          "listen": ["unix/@uds88.sock"], //H2C server 及 HTTP/1.1 server 监听进程
           "listener_wrappers": [{
             "wrapper": "proxy_protocol" //开启 PROXY protocol 接收
           }],
@@ -85,7 +85,7 @@
             "source": "cloudflare", //cloudflare 为使用 cloudflare ips，由 caddy-cloudflare-ip 插件提供。
             "interval": "12h",
             "timeout": "15s"
-          }, //配置可信代理服务器的 IP 范围，以实现套 CDN 后服务端记录的客户端 IP 为真实来源 IP。若使用其它非 Cloudflare CDN，需调整 trusted_proxies 配置。（选配，套 CDN 配置。）
+          }, //配置可信代理服务器的 IP 范围，以实现套 CDN 后服务端记录的客户端 IP 为真实来源 IP。若使用其它非 Cloudflare CDN，需调整 trusted_proxies 配置。（选配）
           "protocols": ["h1","h2c"] //开启 HTTP/1.1 server 与 H2C server 支持
         }
       }
