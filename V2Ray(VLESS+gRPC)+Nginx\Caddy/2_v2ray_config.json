@@ -6,7 +6,7 @@
   },
   "inbounds": [
     {
-      "listen": "/dev/shm/vlessgrpc.sock", //VLESS+gRPC 监听进程。若接收来自 Caddy 的转发，此监听进程修改为 @vlessgrpc.sock。
+      "listen": "/dev/shm/uds2013.sock", //VLESS+gRPC 监听进程。若接收来自 Caddy 的转发，此监听进程修改为 @uds2013.sock。
       "protocol": "vless",
       "settings": {
         "clients": [
@@ -19,7 +19,6 @@
       },
       "streamSettings": {
         "network": "grpc",
-        "security": "none",
         "grpcSettings": {
           "serviceName": "VRLdGZ9k" //修改为自己的 gRPC 服务名称
         }
