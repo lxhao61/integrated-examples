@@ -13,7 +13,7 @@
 		trusted_proxies cloudflare { #cloudflare 为使用 cloudflare ips，由 caddy-cloudflare-ip 插件提供。
 			interval 12h
 			timeout 15s
-		} #配置可信代理服务器的 IP 范围，以实现套 CDN 后服务端记录的客户端 IP 为真实来源 IP。若使用其它非 Cloudflare CDN，需调整 trusted_proxies 配置。（选配，套 CDN 配置。）
+		} #配置可信代理服务器的 IP 范围，以实现套 CDN 后服务端记录的客户端 IP 为真实来源 IP。若使用其它非 Cloudflare CDN，需调整 trusted_proxies 配置。（选配）
 		protocols h1 h2 h3 #默认配置。（可省略）
 	}
 }
