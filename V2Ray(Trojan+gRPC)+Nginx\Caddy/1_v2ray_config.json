@@ -19,7 +19,6 @@
       },
       "streamSettings": {
         "network": "grpc",
-        "security": "none",
         "grpcSettings": {
           "serviceName": "TALdGZ9k" //修改为自己的 gRPC 服务名称
         }
