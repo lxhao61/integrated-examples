@@ -6,7 +6,7 @@
   },
   "inbounds": [
     {
-      "listen": "/dev/shm/vmessgrpc.sock", //VMess+gRPC 监听进程。若接收来自 Caddy 的转发，此监听进程修改为 @vmessgrpc.sock。
+      "listen": "/dev/shm/uds2009.sock", //VMess+gRPC 监听进程。若接收来自 Caddy 的转发，此监听进程修改为 @uds2009.sock。
       "protocol": "vmess",
       "settings": {
         "clients": [
@@ -18,7 +18,6 @@
       },
       "streamSettings": {
         "network": "grpc",
-        "security": "none",
         "grpcSettings": {
           "serviceName": "VALdGZ9k" //修改为自己的 gRPC 服务名称
         }
