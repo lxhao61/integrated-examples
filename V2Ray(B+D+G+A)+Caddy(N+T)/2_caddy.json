@@ -38,7 +38,7 @@
             "handle": [{
               "handler": "reverse_proxy",
               "upstreams": [{
-                "dial": "unix/@vmessws.sock" //转发给本机 VMess+WebSocket 监听进程
+                "dial": "unix/@uds2001.sock" //转发给本机 VMess+WebSocket 监听进程
               }]
             }]
           },
@@ -53,7 +53,7 @@
                 "versions": ["h2c","2"]
               },
               "upstreams": [{
-                "dial": "unix/@vlessh2c.sock" //转发给本机 VLESS+H2C 监听进程
+                "dial": "unix/@uds2005.sock" //转发给本机 VLESS+H2C 监听进程
               }]
             }]
           },
@@ -115,10 +115,8 @@
             "match": {
               "sni": ["z1.xx.yy"] //限定域名连接（禁止以 IP 方式访问网站），修改为自己的域名。
             },
-            "protocol_min": "tls1.2",
             "protocol_max": "tls1.2",
-            "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"], //非 AES 算法的密码套件
-            "curves": ["secp521r1","secp384r1","secp256r1"]
+            "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"] //非 AES 算法的密码套件
           },
           {
             "match": {
@@ -131,7 +129,7 @@
             "source": "cloudflare", //cloudflare 为使用 cloudflare ips，由 caddy-cloudflare-ip 插件提供。
             "interval": "12h",
             "timeout": "15s"
-          }, //配置可信代理服务器的 IP 范围，以实现套 CDN 后服务端记录的客户端 IP 为真实来源 IP。若使用其它非 Cloudflare CDN，需调整 trusted_proxies 配置。（选配，套 CDN 配置。）
+          }, //配置可信代理服务器的 IP 范围，以实现套 CDN 后服务端记录的客户端 IP 为真实来源 IP。若使用其它非 Cloudflare CDN，需调整 trusted_proxies 配置。（选配）
           "protocols": ["h1","h2","h3"] //默认配置。（可省略）
         }
       }
