@@ -18,10 +18,9 @@
 	tls {
 		protocols tls1.2 tls1.2
 		ciphers TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 #非 AES 算法的密码套件
-		curves secp521r1 secp384r1 secp256r1
 	}
 
-	reverse_proxy /teuW56Es unix/@trojanh2c.sock { #与 Trojan+H2C 应用中 path 对应，转发给本机 Trojan+H2C 监听进程。
+	reverse_proxy /teuW56Es unix/@uds2006.sock { #与 Trojan+H2C 应用中 path 对应，转发给本机 Trojan+H2C 监听进程。
 		transport http {
 			versions h2c 2
 		}

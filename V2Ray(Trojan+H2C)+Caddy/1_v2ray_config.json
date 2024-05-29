@@ -19,7 +19,6 @@
       },
       "streamSettings": {
         "network": "h2",
-        "security": "none",
         "httpSettings": {
           "path": "/teuW56Es" //修改为自己的路径
         }
