@@ -18,7 +18,6 @@
 	tls {
 		protocols tls1.2 tls1.2
 		ciphers TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 #非 AES 算法的密码套件
-		curves secp521r1 secp384r1 secp256r1
 	}
 
 	reverse_proxy /SeuW56Es 127.0.0.1:2005 { #与 VLESS+H2C 应用中 path 对应，转发给本机 VLESS+H2C 监听端口。

@@ -6,7 +6,7 @@
   },
   "inbounds": [
     {
-      "listen": "@vlessh2c.sock", //VLESS+H2C 监听进程
+      "listen": "@uds2005.sock", //VLESS+H2C 监听进程
       "protocol": "vless",
       "settings": {
         "clients": [
@@ -19,7 +19,6 @@
       },
       "streamSettings": {
         "network": "h2",
-        "security": "none",
         "httpSettings": {
           "path": "/SeuW56Es" //修改为自己的路径
         }
