@@ -19,7 +19,6 @@
       },
       "streamSettings": {
         "network": "ws",
-        "security": "none",
         "wsSettings": {
           "path": "/HALdGZ9k" //修改为自己的路径
         }
