@@ -52,10 +52,8 @@
             "match": {
               "sni": ["z1.xx.yy"] //限定域名连接（包括禁止以 IP 方式访问网站），修改为自己的域名。
             },
-            "protocol_min": "tls1.2",
             "protocol_max": "tls1.2",
-            "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"], //非 AES 算法的密码套件
-            "curves": ["secp521r1","secp384r1","secp256r1"]
+            "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"] //非 AES 算法的密码套件
           },
           {
             "match": {
@@ -91,5 +89,4 @@
 //1、申请免费 TLS 证书的域名不要超过五个，否则影响 TLS 证书的更新。
 //2、本配置仅支持申请普通 TLS 证书，若要申请通配符 TLS 证书请参考 ‘Caddy(Other Configuration) （Caddy 的特殊应用配置方法。）’ 中对应介绍及对应配置示例。
 //3、本示例使用非 AES 算法的密码套件配置（z1.xx.yy）来避免被封。
-//4、本示例使用不同域名来实现介绍中各应用，其办法如下：
-//1）、NaiveProxy 使用 HTTPS 协议时用 z1.xx.yy 域名，使用 QUIC 协议时用 h3.xx.yy 域名。
+//4、本示例使用不同域名来实现介绍中各应用，其办法：NaiveProxy 使用 HTTPS 协议时用 z1.xx.yy 域名，使用 QUIC 协议时用 h3.xx.yy 域名。
