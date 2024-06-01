@@ -23,7 +23,7 @@
         "security": "reality",
         "realitySettings": {
           "show": false, //选填，若为 true 输出调试信息。
-          "dest": "@http2.sock", //转发给自己的网站监听进程
+          "dest": "@uds7443.sock", //转发给自己的网站监听进程
           "xver": 2, //开启 PROXY protocol 发送，发送真实来源 IP 和端口给自己的网站。 1 或 2 表示 PROXY protocol 版本。
           "serverNames": [ //必填，客户端可用的 serverName 列表，暂不支持 * 通配符。
             "z1.xx.yy" //修改为自己的网站域名
@@ -43,7 +43,7 @@
       }
     },
     {
-      "listen": "@vmessws.sock", //VMess+WebSocket 监听进程
+      "listen": "@uds2001.sock", //VMess+WebSocket 监听进程
       "protocol": "vmess",
       "settings": {
         "clients": [
@@ -55,7 +55,6 @@
       },
       "streamSettings": {
         "network": "ws",
-        "security": "none",
         "wsSettings": {
           "path": "/HALdGZ9k" //修改为自己的路径
         }
@@ -69,7 +68,7 @@
       }
     },
     {
-      "listen": "@vlessh2c.sock", //VLESS+H2C 监听进程
+      "listen": "@uds2005.sock", //VLESS+H2C 监听进程
       "protocol": "vless",
       "settings": {
         "clients": [
@@ -82,7 +81,6 @@
       },
       "streamSettings": {
         "network": "h2",
-        "security": "none",
         "httpSettings": {
           "path": "/SeuW56Es" //修改为自己的路径
         }
@@ -100,13 +98,12 @@
       "port": 2011, //Shadowsocks+gRPC 监听端口
       "protocol": "shadowsocks",
       "settings": {
-        "method": "2022-blake3-chacha20-poly1305",
-        "password": "3FezOkwhvB5vb3y25C13IYYtM6KbI37EjbX0lLlx7oo=", //修改为自己的密钥
+        "method": "chacha20-poly1305", //修改为自己的加密方法。推荐使用 Shadowsocks 2022 协议。
+        "password": "diy2011", //修改为自己的密码/密钥。符合 Shadowsocks 2022 协议的密钥生成方法参考官方对应介绍。
         "email": "2011@gmail.com"
       },
       "streamSettings": {
         "network": "grpc",
-        "security": "none",
         "grpcSettings": {
           "serviceName": "SALdGZ9k" //修改为自己的 gRPC 服务名称
         }
@@ -133,7 +130,6 @@
       },
       "streamSettings": {
         "network": "kcp",
-        "security": "none",
         "kcpSettings": {
           "uplinkCapacity": 100,
           "downlinkCapacity": 100,

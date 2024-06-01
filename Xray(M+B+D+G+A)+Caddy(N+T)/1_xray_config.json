@@ -56,7 +56,6 @@
       },
       "streamSettings": {
         "network": "ws",
-        "security": "none",
         "wsSettings": {
           "path": "/HALdGZ9k" //修改为自己的路径
         }
@@ -84,7 +83,6 @@
       },
       "streamSettings": {
         "network": "h2",
-        "security": "none",
         "httpSettings": {
           "path": "/SeuW56Es" //修改为自己的路径
         }
@@ -102,13 +100,12 @@
       "port": 2011, //Shadowsocks+gRPC 监听端口
       "protocol": "shadowsocks",
       "settings": {
-        "method": "2022-blake3-chacha20-poly1305",
-        "password": "3FezOkwhvB5vb3y25C13IYYtM6KbI37EjbX0lLlx7oo=", //修改为自己的密钥
+        "method": "chacha20-poly1305", //修改为自己的加密方法。推荐使用 Shadowsocks 2022 协议。
+        "password": "diy2011", //修改为自己的密码/密钥。符合 Shadowsocks 2022 协议的密钥生成方法参考官方对应介绍。
         "email": "2011@gmail.com"
       },
       "streamSettings": {
         "network": "grpc",
-        "security": "none",
         "grpcSettings": {
           "serviceName": "SALdGZ9k" //修改为自己的 gRPC 服务名称
         }
@@ -135,7 +132,6 @@
       },
       "streamSettings": {
         "network": "kcp",
-        "security": "none",
         "kcpSettings": {
           "uplinkCapacity": 100,
           "downlinkCapacity": 100,
