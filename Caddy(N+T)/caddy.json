@@ -30,8 +30,7 @@
           "routes": [{
             "handle": [{
               "handler": "forward_proxy",
-              "auth_user_deprecated": "user", //NaiveProxy 用户，修改为自己的。
-              "auth_pass_deprecated": "pass", //NaiveProxy 密码，修改为自己的。
+              "auth_credentials": ["ZFhObGNqcHdZWE56"], //此为 NaiveProxy 用户与密码组合（user:pass）使用 base64 编码生成的字符串，修改为自己的。
               "hide_ip": true,
               "hide_via": true,
               "probe_resistance": {}
@@ -101,7 +100,8 @@
             "email": "your@email.com" //修改为自己的电子邮箱，与下一致。（选配）
           },
           {
-            "module": "zerossl",
+            "module": "acme",
+            "ca": "https://acme.zerossl.com/v2/DV90",
             "email": "your@email.com" //修改为自己的电子邮箱，与上一致。（选配）
           }]
         }]
@@ -116,3 +116,6 @@
 //4、本示例使用不同域名来实现介绍中各应用，其办法如下：
 //1）、NaiveProxy 使用 HTTPS 协议时用 z1.xx.yy 域名，使用 QUIC 协议时用 h3.xx.yy 域名。
 //2）、Trojan-Go 使用 Trojan 应用时用 z1.xx.yy 域名，使用 WebSocket 应用时用 z2.xx.yy 域名。
+//5、NaiveProxy 字符串生成及还原办法如下：
+//1）、若 user 与 pass 分别为 NaiveProxy 用户与密码，其组合使用 base64 编码生成命令：echo -n "user:pass" | base64 | tr -d '\n' | base64
+//2）、若 ZFhObGNqcHdZWE56 为 NaiveProxy 字符串，使用 base64 编码还原命令：echo -e "$(echo "ZFhObGNqcHdZWE56" | base64 --decode | base64 --decode)"
