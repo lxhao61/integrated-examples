@@ -59,18 +59,29 @@
           {
             "match": [{
               "tls": {
-                "sni": ["zh.xx.yy","zn.xx.yy"] //对应 HTTP/2 server 的域名，修改为自己的。
+                "sni": ["zh.xx.yy","zn.xx.yy","h3.xx.yy"] //对应 HTTP/3 server 的域名，修改为自己的。
               }
             }],
             "handle": [{
               "handler": "proxy",
               "upstreams": [{
-                "dial": ["127.0.0.1:7443"] //转给 HTTP/2 server 本地监听端口
+                "dial": ["127.0.0.1:7443"] //转给 HTTP/3 server 本地监听端口
               }],
               "proxy_protocol": "v2" //启用 PROXY protocol 发送。v1 或 v2 表示 PROXY protocol 版本，建议采用 v2 版。
             }]
           }]
-        }
+        },
+        "udppy": {
+          "listen": ["udp/:443"],
+          "routes": [{
+            "handle": [{
+              "handler": "proxy",
+              "upstreams": [{
+                "dial": ["udp/127.0.0.1:7443"] //转给 HTTP/3 server 本地监听端口
+              }]
+            }]
+          }]
+        } //定向 UDP 转发配置
       }
     },
     "http": {
@@ -109,13 +120,13 @@
           }],
           "protocols": ["h1","h2c"] //开启 HTTP/1.1 server 与 H2C server 支持
         },
-        "srvh2": {
-          "listen": ["127.0.0.1:7443"], //HTTP/2 server 本地监听端口
+        "srvh3": {
+          "listen": ["127.0.0.1:7443"], //HTTP/3 server 本地监听端口
           "listener_wrappers": [{
             "wrapper": "proxy_protocol" //开启 PROXY protocol 接收
           },
           {
-            "wrapper": "tls" //HTTP/2 server 开启 PROXY protocol 接收必须配置
+            "wrapper": "tls" //HTTP/3 server 开启 PROXY protocol 接收必须配置
           }],
           "routes": [{
             "match": [{
@@ -173,8 +184,7 @@
           {
             "handle": [{
               "handler": "forward_proxy",
-              "auth_user_deprecated": "user", //NaiveProxy 用户，修改为自己的。
-              "auth_pass_deprecated": "pass", //NaiveProxy 密码，修改为自己的。
+              "auth_credentials": ["ZFhObGNqcHdZWE56"], //此为 NaiveProxy 用户与密码组合（user:pass）使用 base64 编码生成的字符串，修改为自己的。
               "hide_ip": true,
               "hide_via": true,
               "probe_resistance": {}
@@ -190,6 +200,14 @@
               }
             },
             {
+              "handler": "headers",
+              "response": {
+                "set": {
+                  "Alt-Svc": ["h3=\":443\"; ma=2592000"]
+                }
+              }
+            }, //通告 HTTP/3 server 的可用性（对外使用代理的 UDP 443 端口才需要配置）
+            {
               "handler": "file_server",
               "root": "/var/www/html" //修改为自己存放的 WEB 文件路径
             }]
@@ -203,7 +221,7 @@
           },
           {
             "match": {
-              "sni": ["zh.xx.yy"] //限定域名连接，修改为自己的域名。
+              "sni": ["zh.xx.yy","h3.xx.yy"] //限定域名连接，修改为自己的域名。
             },
             "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"],
             "curves": ["x25519","secp521r1","secp384r1","secp256r1"]
@@ -213,18 +231,19 @@
             "interval": "12h",
             "timeout": "15s"
           }, //配置可信代理服务器的 IP 范围，以实现套 CDN 后服务端记录的客户端 IP 为真实来源 IP。若使用其它非 Cloudflare CDN，需调整 trusted_proxies 配置。（选配）
-          "protocols": ["h1","h2"] //开启 HTTPS server 与 HTTP/2 server 支持。（Caddy SNI 分流不支持 UDP 转发）
+          "protocols": ["h1","h2","h3"] //默认配置。（可省略）
         }
       }
     },
     "tls": {
       "certificates": {
-        "automate": ["zv.xx.yy","zt.xx.yy","zh.xx.yy","zn.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。
+        "automate": ["zv.xx.yy","zt.xx.yy","zh.xx.yy","zn.xx.yy","h3.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。
       },
       "automation": {
         "policies": [{
           "issuers": [{
-            "module": "acme", //acme 表示从 Let's Encrypt 申请 TLS 证书，zerossl 表示从 ZeroSSL 申请 TLS 证书。必须 acme 与 zerossl 二选一（固定 TLS 证书的目录便于引用）。
+            "module": "acme",
+            "ca": "https://acme.zerossl.com/v2/DV90", //此项配置表示从 ZeroSSL 申请免费 TLS 证书，删除此项配置（默认）表示从 Let's Encrypt 申请免费 TLS 证书。
             "email": "your@email.com" //修改为自己的电子邮箱。（选配）
           }]
         }]
@@ -244,5 +263,8 @@
 //3）、VMess+WebSocket+TLS 仅使用 zh.xx.yy 域名。
 //4）、VLESS+H2C+TLS 仅使用 zn.xx.yy 域名。
 //5）、Shadowsocks+gRPC+TLS 可随意使用 zh.xx.yy 域名与 zn.xx.yy 域名。
-//6）、NaiveProxy 仅使用 zn.xx.yy 域名（使用 HTTPS 协议）。
+//6）、NaiveProxy 使用 HTTPS 协议时用 zn.xx.yy 域名，使用 QUIC 协议时用 h3.xx.yy 域名。
 //7、本示例的 SNI 分流自带限定域名连接（包括禁止以 IP 方式访问网站）。
+//8、NaiveProxy 字符串生成及还原办法如下：
+//1）、若 user 与 pass 分别为 NaiveProxy 用户与密码，其组合使用 base64 编码生成命令：echo -n "user:pass" | base64 | tr -d '\n' | base64
+//2）、若 ZFhObGNqcHdZWE56 为 NaiveProxy 字符串，使用 base64 编码还原命令：echo -e "$(echo "ZFhObGNqcHdZWE56" | base64 --decode | base64 --decode)"

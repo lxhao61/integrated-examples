@@ -1,6 +1,6 @@
 介绍：
 
-利用 Caddy 支持 SNI 分流特性，对 VLESS+Vision+TLS、Trojan+TCP+TLS、HTTP/2 server 进行 SNI 分流（四层转发），实现除 Xray 的 mKCP 应用外各应用共用 443 端口。其中 Caddy 同时为 VLESS+Vision+TLS 与 Trojan+TCP+TLS 提供 WEB 服务（回落应用），为 Xray 的 WebSocket、H2C、gRPC 提供反向代理，为 forwardproxy 插件提供正向代理，其应用如下：
+利用 Caddy 支持 SNI 分流特性，对 VLESS+Vision+TLS、Trojan+TCP+TLS、HTTP/3 server 进行 SNI 分流（四层转发），实现除 Xray 的 mKCP 应用外各应用共用 443 端口。其中 Caddy 同时为 VLESS+Vision+TLS 与 Trojan+TCP+TLS 提供 WEB 服务（回落应用），为 Xray 的 WebSocket、H2C、gRPC 提供反向代理，为 forwardproxy 插件提供正向代理，其应用如下：
 
 1、E=VLESS+Vision+TLS（回落/分流配置，TLS 由自己启用及处理。）
 
@@ -18,7 +18,7 @@
 
 注意：
 
-1、Caddy 加 caddy-l4 插件定制编译才可以实现 SNI 分流，目前仅支持 JSON 配置、不支持 Caddyfile 配置。
+1、Caddy 加 caddy-l4 插件定制编译才可以实现 SNI 分流及定向 UDP 转发，目前仅支持 JSON 配置、不支持 Caddyfile 配置。
 
 2、Xray 版本不小于 v1.7.2 才完美支持 VLESS 协议的 XTLS Vision 应用。
 
@@ -34,12 +34,10 @@
 
 8、使用本人 Releases 中编译好的 Caddy 文件，可同时支持 SNI 分流、NaiveProxy 及 PROXY protocol 等应用。
 
-9、本示例 NaiveProxy 仅支持 HTTP/2 代理应用，即 HTTPS 协议传输。
+9、本示例 NaiveProxy 除了支持 HTTP/2 代理应用，还同时支持 HTTP/3 代理应用，即 QUIC 协议传输。若 NaiveProxy 使用 HTTP/3 代理应用，建议[增加 UDP 接收缓冲区大小](https://github.com/quic-go/quic-go/wiki/UDP-Buffer-Sizes)。
 
 10、本示例所需 TLS 证书由 Caddy（内置 ACME 客户端） 提供，实现 TLS 证书自动申请及更新。
 
-11、配置1：使用 Local Loopback 连接，且启用了 PROXY protocol。配置2：使用 UDS 连接（对应 Shadowsocks+gRPC+TLS 除外），且启用了 PROXY protocol。
+11、配置1：使用 Local Loopback 连接，且启用了 PROXY protocol。配置2：使用 UDS 连接（对应 HTTP/3 server、Shadowsocks+gRPC+TLS 除外），且启用了 PROXY protocol。
 
 12、本示例 F 兼容原版 Trojan 的服务端应用，即可使用 Trojan 或 Trojan-Go 客户端连接。
-
-13、若已有 Nginx 在用网站、或需要 NaiveProxy 支持 HTTP/3 代理应用，推荐采用 [Xray(E+F+B+D+G+A)+Caddy(N)+Nginx](https://github.com/lxhao61/integrated-examples/tree/main/Xray(E%2BF%2BB%2BD%2BG%2BA)%2BCaddy(N)%2BNginx) 示例。
