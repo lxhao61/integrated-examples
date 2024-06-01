@@ -40,7 +40,7 @@
           "protocols": ["h1"] //仅开启 HTTP/1.1 server 支持
         },
         "srvh2c": {
-          "listen": ["unix/@h1h2c.sock"], //H2C server 及 HTTP/1.1 server 监听进程
+          "listen": ["unix/@uds88.sock"], //H2C server 及 HTTP/1.1 server 监听进程
           "listener_wrappers": [{
             "wrapper": "proxy_protocol" //开启 PROXY protocol 接收
           }],
