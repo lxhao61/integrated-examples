@@ -20,11 +20,15 @@
             "alpn": "h2", //h2 回落匹配
             "dest": 82, //h2 回落端口
             "xver": 2 //开启 PROXY protocol 发送，发送真实来源 IP 和端口给 Nginx。 1 或 2 表示 PROXY protocol 版本。
-          }, //对应 Nginx 版本小于 v1.25.1 配置，否则必须删除。
+          }, //对应 Nginx 版本小于 v1.25.1 配置，否则此部分必须删除。
           {
-            "dest": 81, //http/1.1 回落端口或 h2 回落与 http/1.1 回落共用端口（对应 Nginx 版本不小于 v1.25.1 配置，回落共用端口修改为 88 。）
+            "dest": 81, //http/1.1 回落端口
             "xver": 2 //开启 PROXY protocol 发送，发送真实来源 IP 和端口给 Nginx。 1 或 2 表示 PROXY protocol 版本。
-          }
+          } //对应 Nginx 版本小于 v1.25.1 配置，否则此部分必须删除。
+          {
+            "dest": 88, //h2 回落与 http/1.1 回落共用端口
+            "xver": 2 //开启 PROXY protocol 发送，发送真实来源 IP 和端口给 Nginx。 1 或 2 表示 PROXY protocol 版本。
+          } //对应 Nginx 版本不小于 v1.25.1 配置，否则此部分必须删除。
         ]
       },
       "streamSettings": {

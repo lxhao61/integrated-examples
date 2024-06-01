@@ -18,13 +18,17 @@
         "fallbacks": [
           {
             "alpn": "h2", //h2 回落匹配
-            "dest": "/dev/shm/h2c.sock", //h2 回落进程
+            "dest": "/dev/shm/uds82.sock", //h2 回落进程
             "xver": 2 //开启 PROXY protocol 发送，发送真实来源 IP 和端口给 Nginx。 1 或 2 表示 PROXY protocol 版本。
-          }, //对应 Nginx 版本小于 v1.25.1 配置，否则必须删除。
+          }, //对应 Nginx 版本小于 v1.25.1 配置，否则此部分必须删除。
           {
-            "dest": "/dev/shm/h1.sock", //http/1.1 回落进程或 h2 回落与 http/1.1 回落共用进程（对应 Nginx 版本不小于 v1.25.1 配置，回落共用进程修改为 /dev/shm/h1h2c.sock。）
+            "dest": "/dev/shm/uds81.sock", //http/1.1 回落进程
             "xver": 2 //开启 PROXY protocol 发送，发送真实来源 IP 和端口给 Nginx。 1 或 2 表示 PROXY protocol 版本。
-          }
+          } //对应 Nginx 版本小于 v1.25.1 配置，否则此部分必须删除。
+          {
+            "dest": "/dev/shm/uds88.sock", //h2 回落与 http/1.1 回落共用进程
+            "xver": 2 //开启 PROXY protocol 发送，发送真实来源 IP 和端口给 Nginx。 1 或 2 表示 PROXY protocol 版本。
+          } //对应 Nginx 版本不小于 v1.25.1 配置，否则此部分必须删除。
         ]
       },
       "streamSettings": {
