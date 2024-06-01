@@ -21,6 +21,9 @@
       },
       "streamSettings": {
         "network": "tcp",
+        "tcpSettings": {
+          "acceptProxyProtocol": true //开启 PROXY protocol 接收，接收 Nginx SNI 分流前真实来源 IP 和端口。
+        },
         "security": "reality",
         "realitySettings": {
           "show": false, //选填，若为 true 输出调试信息。
@@ -33,9 +36,6 @@
           "shortIds": [ //必填，客户端可用的 shortId 列表，可用于区分不同的客户端。
             "" //若有此项，客户端 shortId 可为空。若不为空，可 0 到 f（0123456789abcdef），长度为 2 的倍数，长度上限为 16 。
           ]
-        },
-        "tcpSettings": {
-          "acceptProxyProtocol": true //开启 PROXY protocol 接收，接收 Nginx SNI 分流前真实来源 IP 和端口。
         }
       },
       "sniffing": {
@@ -66,6 +66,9 @@
       },
       "streamSettings": {
         "network": "tcp",
+        "tcpSettings": {
+          "acceptProxyProtocol": true //开启 PROXY protocol 接收，接收 Nginx SNI 分流前真实来源 IP 和端口。
+        },
         "security": "tls",
         "tlsSettings": {
           "certificates": [
@@ -78,9 +81,6 @@
           "minVersion": "1.2",
           "maxVersion": "1.2",
           "cipherSuites": "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256" //非 AES 算法的密码套件
-        },
-        "tcpSettings": {
-          "acceptProxyProtocol": true //开启 PROXY protocol 接收，接收 Nginx SNI 分流前真实来源 IP 和端口。
         }
       },
       "sniffing": {
@@ -105,7 +105,6 @@
       },
       "streamSettings": {
         "network": "ws",
-        "security": "none",
         "wsSettings": {
           "path": "/HALdGZ9k" //修改为自己的路径
         }
@@ -133,7 +132,6 @@
       },
       "streamSettings": {
         "network": "h2",
-        "security": "none",
         "httpSettings": {
           "path": "/SeuW56Es" //修改为自己的路径
         }
@@ -151,13 +149,12 @@
       "port": 2011, //Shadowsocks+gRPC 监听端口
       "protocol": "shadowsocks",
       "settings": {
-        "method": "2022-blake3-chacha20-poly1305",
-        "password": "3FezOkwhvB5vb3y25C13IYYtM6KbI37EjbX0lLlx7oo=", //修改为自己的密钥
+        "method": "chacha20-poly1305", //修改为自己的加密方法。推荐使用 Shadowsocks 2022 协议。
+        "password": "diy2011", //修改为自己的密码/密钥。符合 Shadowsocks 2022 协议的密钥生成方法参考官方对应介绍。
         "email": "2011@gmail.com"
       },
       "streamSettings": {
         "network": "grpc",
-        "security": "none",
         "grpcSettings": {
           "serviceName": "SALdGZ9k" //修改为自己的 gRPC 服务名称
         }
@@ -184,7 +181,6 @@
       },
       "streamSettings": {
         "network": "kcp",
-        "security": "none",
         "kcpSettings": {
           "uplinkCapacity": 100,
           "downlinkCapacity": 100,
