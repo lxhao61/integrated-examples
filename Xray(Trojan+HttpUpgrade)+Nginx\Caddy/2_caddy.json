@@ -86,7 +86,8 @@
             "email": "your@email.com" //修改为自己的电子邮箱，与下一致。（选配）
           },
           {
-            "module": "zerossl",
+            "module": "acme",
+            "ca": "https://acme.zerossl.com/v2/DV90",
             "email": "your@email.com" //修改为自己的电子邮箱，与上一致。（选配）
           }]
         }]
