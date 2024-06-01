@@ -23,7 +23,7 @@
         "security": "reality",
         "realitySettings": {
           "show": false, //选填，若为 true 输出调试信息。
-          "dest": "@uds7443.sock", //转发给自己的网站监听进程
+          "dest": 7443, //转发给自己的网站监听端口
           "xver": 2, //开启 PROXY protocol 发送，发送真实来源 IP 和端口给自己的网站。 1 或 2 表示 PROXY protocol 版本。
           "serverNames": [ //必填，客户端可用的 serverName 列表，暂不支持 * 通配符。
             "z1.xx.yy" //修改为自己的网站域名
