@@ -124,8 +124,7 @@
           {
             "handle": [{
               "handler": "forward_proxy",
-              "auth_user_deprecated": "user", //NaiveProxy 用户，修改为自己的。
-              "auth_pass_deprecated": "pass", //NaiveProxy 密码，修改为自己的。
+              "auth_credentials": ["ZFhObGNqcHdZWE56"], //此为 NaiveProxy 用户与密码组合（user:pass）使用 base64 编码生成的字符串，修改为自己的。
               "hide_ip": true,
               "hide_via": true,
               "probe_resistance": {}
@@ -183,7 +182,8 @@
       "automation": {
         "policies": [{
           "issuers": [{
-            "module": "acme", //acme 表示从 Let's Encrypt 申请 TLS 证书，zerossl 表示从 ZeroSSL 申请 TLS 证书。必须 acme 与 zerossl 二选一（固定 TLS 证书的目录便于引用）。
+            "module": "acme",
+            "ca": "https://acme.zerossl.com/v2/DV90", //此项配置表示从 ZeroSSL 申请免费 TLS 证书，删除此项配置（默认）表示从 Let's Encrypt 申请免费 TLS 证书。
             "email": "your@email.com" //修改为自己的电子邮箱。（选配）
           }]
         }]
@@ -196,3 +196,6 @@
 //2、若域名为 zt.xx.yy，那么从 Let's Encrypt 申请的普通 TLS 证书在 ‘/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zt.xx.yy’ 目录中。/home/tls 为存放 TLS 证书的基本路径，目录随域名变化。
 //3、若域名为 zt.xx.yy，那么从 ZeroSSL 申请的普通 TLS 证书在 ‘/home/tls/certificates/acme.zerossl.com-v2-dv90/zt.xx.yy’ 目录中。/home/tls 为存放 TLS 证书的基本路径，目录随域名变化。
 //4、本配置仅支持申请普通 TLS 证书，若要申请通配符 TLS 证书请参考 ‘Caddy(Other Configuration) （Caddy 的特殊应用配置方法。）’ 中对应介绍及对应配置示例。
+//5、NaiveProxy 字符串生成及还原办法如下：
+//1）、若 user 与 pass 分别为 NaiveProxy 用户与密码，其组合使用 base64 编码生成命令：echo -n "user:pass" | base64 | tr -d '\n' | base64
+//2）、若 ZFhObGNqcHdZWE56 为 NaiveProxy 字符串，使用 base64 编码还原命令：echo -e "$(echo "ZFhObGNqcHdZWE56" | base64 --decode | base64 --decode)"
