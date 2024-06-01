@@ -18,7 +18,7 @@
 
 注意：
 
-1、Nginx 支持 SNI 分流需要 Nginx 包含 stream_core_module 和 stream_ssl_preread_module 模块。
+1、Nginx 支持 SNI 分流及定向 UDP 转发需要 Nginx 包含 stream_core_module 和 stream_ssl_preread_module 模块。
 
 2、Xray 版本不小于 v1.7.2 才完美支持 VLESS 协议的 XTLS Vision 应用。
 
