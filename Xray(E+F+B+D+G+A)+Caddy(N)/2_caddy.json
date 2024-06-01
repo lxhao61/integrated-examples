@@ -37,7 +37,7 @@
             "handle": [{
               "handler": "proxy",
               "upstreams": [{
-                "dial": ["unix/@vless.sock"] //转给 VLESS+Vision+TLS 监听进程
+                "dial": ["unix/@uds5443.sock"] //转给 VLESS+Vision+TLS 监听进程
               }],
               "proxy_protocol": "v2" //启用 PROXY protocol 发送。v1 或 v2 表示 PROXY protocol 版本，建议采用 v2 版。
             }]
@@ -51,7 +51,7 @@
             "handle": [{
               "handler": "proxy",
               "upstreams": [{
-                "dial": ["unix/@trojan.sock"] //转给 Trojan+TCP+TLS 监听进程
+                "dial": ["unix/@uds6443.sock"] //转给 Trojan+TCP+TLS 监听进程
               }],
               "proxy_protocol": "v2" //启用 PROXY protocol 发送。v1 或 v2 表示 PROXY protocol 版本，建议采用 v2 版。
             }]
@@ -65,7 +65,7 @@
             "handle": [{
               "handler": "proxy",
               "upstreams": [{
-                "dial": ["unix/@http2.sock"] //转给 HTTP/2 server 监听进程
+                "dial": ["unix/@uds7443.sock"] //转给 HTTP/2 server 监听进程
               }],
               "proxy_protocol": "v2" //启用 PROXY protocol 发送。v1 或 v2 表示 PROXY protocol 版本，建议采用 v2 版。
             }]
@@ -89,7 +89,7 @@
           "protocols": ["h1"] //仅开启 HTTP/1.1 server 支持
         },
         "srvh2c": {
-          "listen": ["unix/@h1h2c.sock"], //H2C server 及 HTTP/1.1 server 监听进程
+          "listen": ["unix/@uds88.sock"], //H2C server 及 HTTP/1.1 server 监听进程
           "listener_wrappers": [{
             "wrapper": "proxy_protocol" //开启 PROXY protocol 接收
           }],
@@ -110,7 +110,7 @@
           "protocols": ["h1","h2c"] //开启 HTTP/1.1 server 与 H2C server 支持
         },
         "srvh2": {
-          "listen": ["unix/@http2.sock"], //HTTP/2 server 监听进程
+          "listen": ["unix/@uds7443.sock"], //HTTP/2 server 监听进程
           "listener_wrappers": [{
             "wrapper": "proxy_protocol" //开启 PROXY protocol 接收
           },
@@ -128,7 +128,7 @@
             "handle": [{
               "handler": "reverse_proxy",
               "upstreams": [{
-                "dial": "unix/@vmessws.sock" //转发给本机 VMess+WebSocket 监听进程
+                "dial": "unix/@uds2001.sock" //转发给本机 VMess+WebSocket 监听进程
               }]
             }]
           },
@@ -143,7 +143,7 @@
                 "versions": ["h2c","2"]
               },
               "upstreams": [{
-                "dial": "unix/@vlessh2c.sock" //转发给本机 VLESS+H2C 监听进程
+                "dial": "unix/@uds2005.sock" //转发给本机 VLESS+H2C 监听进程
               }]
             }]
           },
@@ -198,10 +198,8 @@
             "match": {
               "sni": ["zn.xx.yy"] //限定域名连接，修改为自己的域名。
             },
-            "protocol_min": "tls1.2",
             "protocol_max": "tls1.2",
-            "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"], //非 AES 算法的密码套件
-            "curves": ["secp521r1","secp384r1","secp256r1"]
+            "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"] //非 AES 算法的密码套件
           },
           {
             "match": {
@@ -214,7 +212,7 @@
             "source": "cloudflare", //cloudflare 为使用 cloudflare ips，由 caddy-cloudflare-ip 插件提供。
             "interval": "12h",
             "timeout": "15s"
-          }, //配置可信代理服务器的 IP 范围，以实现套 CDN 后服务端记录的客户端 IP 为真实来源 IP。若使用其它非 Cloudflare CDN，需调整 trusted_proxies 配置。（选配，套 CDN 配置。）
+          }, //配置可信代理服务器的 IP 范围，以实现套 CDN 后服务端记录的客户端 IP 为真实来源 IP。若使用其它非 Cloudflare CDN，需调整 trusted_proxies 配置。（选配）
           "protocols": ["h1","h2"] //开启 HTTPS server 与 HTTP/2 server 支持。（Caddy SNI 分流不支持 UDP 转发）
         }
       }

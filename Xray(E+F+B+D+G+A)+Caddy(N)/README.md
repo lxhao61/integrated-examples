@@ -18,7 +18,7 @@
 
 注意：
 
-1、Caddy 加 caddy-l4 插件定制编译的才可以实现 SNI 分流，目前仅支持 JSON 配置、不支持 Caddyfile 配置。
+1、Caddy 加 caddy-l4 插件定制编译才可以实现 SNI 分流，目前仅支持 JSON 配置、不支持 Caddyfile 配置。
 
 2、Xray 版本不小于 v1.7.2 才完美支持 VLESS 协议的 XTLS Vision 应用。
 
