@@ -9,8 +9,8 @@
       "port": 443, //监听端口
       "protocol": "shadowsocks",
       "settings": {
-        "method": "2022-blake3-chacha20-poly1305",
-        "password": "SS9xpkM0BXSfSyPqzXo6hE94TSMG6P0EHDEb9NgSZ3k=", //修改为自己的密钥
+        "method": "chacha20-poly1305", //修改为自己的加密方法。推荐使用 Shadowsocks 2022 协议。
+        "password": "diy443", //修改为自己的密码/密钥。符合 Shadowsocks 2022 协议的密钥生成方法参考官方对应介绍。
         "email": "443@gmail.com"
       },
       "streamSettings": {
