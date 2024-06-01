@@ -19,7 +19,6 @@
       },
       "streamSettings": {
         "network": "httpupgrade",
-        "security": "none",
         "httpupgradeSettings": {
           "path": "/AhttpZ9k" //修改为自己的路径
         }
