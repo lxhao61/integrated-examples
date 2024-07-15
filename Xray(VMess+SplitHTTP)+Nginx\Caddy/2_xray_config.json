@@ -1,0 +1,57 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "error": "/var/log/xray/error.log",
+    "access": "/var/log/xray/access.log"
+  },
+  "inbounds": [
+    {
+      "listen": "@uds2019.sock", //VMess+SplitHTTP 监听进程。（对接 Caddy 配置，否则必须删除。）
+      "listen": "/dev/shm/uds2019.sock,0666", //VMess+SplitHTTP 监听进程及访问权限。（对接 Nginx 配置，否则必须删除。）
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "019e0bf3-dd56-11e9-aa37-5600024c1d6a", //修改为自己的 UUID
+            "email": "2019@gmail.com"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "splithttp",
+        "splithttpSettings": {
+          "path": "/VMSpdG9k" //修改为自己的路径
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "blocked"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
