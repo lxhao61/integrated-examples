@@ -1,0 +1,62 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "error": "/var/log/xray/error.log",
+    "access": "/var/log/xray/access.log"
+  },
+  "inbounds": [
+    {
+      "port": 443, //监听端口
+      "protocol": "shadowsocks",
+      "settings": {
+        "method": "chacha20-poly1305", //修改为自己的加密方法。推荐使用 Shadowsocks 2022 协议。
+        "password": "diy443", //修改为自己的密码/密钥。符合 Shadowsocks 2022 协议的密钥生成方法参考官方对应介绍。
+        "email": "443@gmail.com"
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "reality",
+        "realitySettings": {
+          "dest": "xx.yy:443", //转发给自己选定的目标网站。目标网站使用外部的一般为 xx.yy:443 。
+          "xver": 0, //选填，默认关闭 PROXY protocol 发送。
+          "serverNames": [ //必填，客户端可用的 serverName 列表，暂不支持 * 通配符。
+            "xx.yy" //修改为目标网站证书对应的域名
+          ],
+          "privateKey": "2NZgrpXXvXL0brh1bg4pNXcSUl9ElHp6VjCFAxzpxnM", //修改为自己执行 ./xray x25519 后生成的一对密钥中私钥
+          "shortIds": [ //必填，客户端可用的 shortId 列表，可用于区分不同的客户端。
+            "" //若有此项，客户端 shortId 可为空。若不为空，可 0 到 f（0123456789abcdef），长度为 2 的倍数，长度上限为 16 。
+          ]
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "blocked"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
