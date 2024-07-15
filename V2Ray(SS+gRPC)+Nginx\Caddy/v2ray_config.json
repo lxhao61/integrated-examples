@@ -1,0 +1,55 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "error": "/var/log/xray/error.log", //若使用 V2Ray，此处目录名称 xray 改成 v2ray。
+    "access": "/var/log/xray/access.log" //若使用 V2Ray，此处目录名称 xray 改成 v2ray。
+  },
+  "inbounds": [
+    {
+      "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
+      "port": 2011, //Shadowsocks+gRPC 监听端口
+      "protocol": "shadowsocks",
+      "settings": {
+        "method": "chacha20-poly1305", //修改为自己的加密方法。Xray 推荐使用 Shadowsocks 2022 协议。
+        "password": "diy2011", //修改为自己的密码/密钥。符合 Shadowsocks 2022 协议的密钥生成方法参考 Xray 官方对应介绍。
+        "ivCheck": true, //启用 IV 检查功能。（仅 V2Ray 配置，否则必须删除。）
+        "email": "2011@gmail.com"
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "grpcSettings": {
+          "serviceName": "SALdGZ9k" //修改为自己的 gRPC 服务名称
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "blocked"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
