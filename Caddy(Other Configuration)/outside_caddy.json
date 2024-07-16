@@ -1,0 +1,117 @@
+//一、以反代或 REALITY Vision 为核心应用（无 SNI 分流）
+//原配置：
+//........<省略>........
+    "tls": {
+      "certificates": {
+        "automate": ["z1.xx.yy","z2.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。（域名名称与数量以实际为准）
+      },
+      "automation": {
+        "policies": [{
+          "issuers": [{
+            "module": "acme",
+            "email": "your@email.com" //修改为自己的电子邮箱，与下一致。（选配）
+          },
+          {
+            "module": "acme",
+            "ca": "https://acme.zerossl.com/v2/DV90",
+            "email": "your@email.com" //修改为自己的电子邮箱，与上一致。（选配）
+          }]
+        }]
+      }
+    }
+//........<省略>........
+
+//以上配置修改为如下：
+//........<省略>........
+    "tls": {
+      "certificates": {
+        "load_files": [{
+          "certificate": "/home/tls/z1.xx.yy/z1.xx.yy.crt", //换成自己的证书，绝对路径。
+          "key": "/home/tls/z1.xx.yy/z1.xx.yy.key" //换成自己的密钥，绝对路径。
+        },
+        {
+          "certificate": "/home/tls/z2.xx.yy/z2.xx.yy.crt", //换成自己的证书，绝对路径。
+          "key": "/home/tls/z2.xx.yy/z2.xx.yy.key" //换成自己的密钥，绝对路径。
+        }] //若使用通配符证书或 SAN 证书，合并一组即可。
+      }
+    }
+//........<省略>........
+
+
+//二、以回落/分流或 XTLS Vision 为核心应用（无 SNI 分流）
+//原配置：
+//........<省略>........
+  "storage": {
+    "module": "file_system",
+    "root": "/home/tls" //存放 TLS 证书的基本路径
+  },
+//........<省略>........
+    "tls": {
+      "certificates": {
+        "automate": ["z1.xx.yy","z2.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。（域名名称与数量以实际为准）
+      },
+      "automation": {
+        "policies": [{
+          "issuers": [{
+            "module": "acme",
+            "ca": "https://acme.zerossl.com/v2/DV90", //此项配置表示从 ZeroSSL 申请免费 TLS 证书，删除此项配置（默认）表示从 Let's Encrypt 申请免费 TLS 证书。
+            "email": "your@email.com" //修改为自己的电子邮箱。（选配）
+          }]
+        }]
+      }
+    }
+//........<省略>........
+
+//以上配置修改为如下：
+//........<省略>........
+//.....<删除此部分>.....
+//........<省略>........
+//<删除此部分且上连逗号>
+//........<省略>........
+
+
+//三、以 SNI 分流为核心应用
+//原配置：
+//........<省略>........
+  "storage": {
+    "module": "file_system",
+    "root": "/home/tls" //存放 TLS 证书的基本路径
+  },
+//........<省略>........
+    "tls": {
+      "certificates": {
+        "automate": ["zv.xx.yy","zt.xx.yy","h3.xx.yy","zn.xx.yy","zh.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。（域名名称与数量以实际为准）
+      },
+      "automation": {
+        "policies": [{
+          "issuers": [{
+            "module": "acme",
+            "ca": "https://acme.zerossl.com/v2/DV90", //此项配置表示从 ZeroSSL 申请免费 TLS 证书，删除此项配置（默认）表示从 Let's Encrypt 申请免费 TLS 证书。
+            "email": "your@email.com" //修改为自己的电子邮箱。（选配）
+          }]
+        }]
+      }
+    }
+//........<省略>........
+
+//以上配置修改为如下：
+//........<省略>........
+//.....<删除此部分>.....
+//........<省略>........
+    "tls": {
+      "certificates": {
+        "load_files": [{
+          "certificate": "/home/tls/h3.xx.yy/h3.xx.yy.crt", //换成自己的证书，绝对路径。
+          "key": "/home/tls/h3.xx.yy/h3.xx.yy.key" //换成自己的密钥，绝对路径。
+        },
+        {
+          "certificate": "/home/tls/zn.xx.yy/zn.xx.yy.crt", //换成自己的证书，绝对路径。
+          "key": "/home/tls/zn.xx.yy/zn.xx.yy.key" //换成自己的密钥，绝对路径。
+        },
+        {
+          "certificate": "/home/tls/zh.xx.yy/zh.xx.yy.crt", //换成自己的证书，绝对路径。
+          "key": "/home/tls/zh.xx.yy/zh.xx.yy.key" //换成自己的密钥，绝对路径。
+        }] //若使用通配符证书或 SAN 证书，合并一组即可。
+      }
+    }
+//........<省略>........
