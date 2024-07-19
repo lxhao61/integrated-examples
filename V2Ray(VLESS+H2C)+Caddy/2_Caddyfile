@@ -3,10 +3,16 @@
 	admin off
 	persist_config off
 	log {
-		output file /var/log/caddy/default.log
+		output file /var/log/caddy/error.log #错误日志的文件地址
 		format console
-		level WARN
-	} #版本不小于 v2.4.0 才支持日志全局配置
+		level ERROR
+	}
+	log log0 {
+		output file /var/log/caddy/access.log #访问日志的文件地址
+		format console
+		include http.log.access.log0
+	} #访问日志的输出配置。（选配）
+
 	email your@email.com #修改为自己的电子邮箱。（选配）
 
 	servers :443 {
@@ -19,6 +25,8 @@
 		protocols tls1.2 tls1.2
 		ciphers TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 #非 AES 算法的密码套件
 	}
+
+	log log0 #访问日志的启用配置。（选配）
 
 	reverse_proxy /SeuW56Es unix/@uds2005.sock { #与 VLESS+H2C 应用中 path 对应，转发给本机 VLESS+H2C 监听进程。
 		transport http {
