@@ -43,20 +43,17 @@
     },
     {
       "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2001, //VMess+WebSocket 监听端口
-      "protocol": "vmess",
+      "port": 2011, //Shadowsocks+gRPC 监听端口
+      "protocol": "shadowsocks",
       "settings": {
-        "clients": [
-          {
-            "id": "21376258-dd56-11e9-aa37-5600024c1d6a", //修改为自己的 UUID
-            "email": "2001@gmail.com"
-          }
-        ]
+        "method": "chacha20-poly1305", //修改为自己的加密方法。推荐使用 Shadowsocks 2022 协议。
+        "password": "diy2011", //修改为自己的密码/密钥。符合 Shadowsocks 2022 协议的密钥生成方法参考官方对应介绍。
+        "email": "2011@gmail.com"
       },
       "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "path": "/HALdGZ9k" //修改为自己的路径
+        "network": "grpc",
+        "grpcSettings": {
+          "serviceName": "SALdGZ9k" //修改为自己的 gRPC 服务名称
         }
       },
       "sniffing": {
@@ -96,17 +93,20 @@
     },
     {
       "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2011, //Shadowsocks+gRPC 监听端口
-      "protocol": "shadowsocks",
+      "port": 2001, //VMess+WebSocket 监听端口
+      "protocol": "vmess",
       "settings": {
-        "method": "chacha20-poly1305", //修改为自己的加密方法。推荐使用 Shadowsocks 2022 协议。
-        "password": "diy2011", //修改为自己的密码/密钥。符合 Shadowsocks 2022 协议的密钥生成方法参考官方对应介绍。
-        "email": "2011@gmail.com"
+        "clients": [
+          {
+            "id": "21376258-dd56-11e9-aa37-5600024c1d6a", //修改为自己的 UUID
+            "email": "2001@gmail.com"
+          }
+        ]
       },
       "streamSettings": {
-        "network": "grpc",
-        "grpcSettings": {
-          "serviceName": "SALdGZ9k" //修改为自己的 gRPC 服务名称
+        "network": "ws",
+        "wsSettings": {
+          "path": "/HALdGZ9k" //修改为自己的路径
         }
       },
       "sniffing": {
