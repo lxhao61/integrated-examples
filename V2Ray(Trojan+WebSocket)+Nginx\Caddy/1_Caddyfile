@@ -3,10 +3,16 @@
 	admin off
 	persist_config off
 	log {
-		output file /var/log/caddy/default.log
+		output file /var/log/caddy/error.log #错误日志的文件地址
 		format console
-		level WARN
-	} #版本不小于 v2.4.0 才支持日志全局配置
+		level ERROR
+	}
+	log log0 {
+		output file /var/log/caddy/access.log #访问日志的文件地址
+		format console
+		include http.log.access.log0
+	} #访问日志的输出配置。（选配）
+
 	email your@email.com #修改为自己的电子邮箱。（选配）
 
 	servers :443 {
@@ -24,10 +30,12 @@
 		curves x25519 secp521r1 secp384r1 secp256r1
 	}
 
+	log log0 #访问日志的启用配置。（选配）
+
 	@tws {
-		path /9ALdGZ9k #与 Trojan+WebSocket 应用中 path 对应
 		header Connection *Upgrade*
 		header Upgrade websocket
+		path /9ALdGZ9k #与 Trojan+WebSocket 应用中 path 对应
 	}
 	reverse_proxy @tws 127.0.0.1:2007 #转发给本机 Trojan+WebSocket 监听端口
 
