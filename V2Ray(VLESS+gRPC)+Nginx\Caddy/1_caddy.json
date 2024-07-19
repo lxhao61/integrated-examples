@@ -10,13 +10,24 @@
       "default": {
         "writer": {
           "output": "file",
-          "filename": "/var/log/caddy/default.log"
+          "filename": "/var/log/caddy/error.log" //错误日志的文件地址
         },
         "encoder": {
           "format": "console"
         },
-        "level": "WARN"
-      }
+        "level": "ERROR",
+        "exclude": ["http.log.access.log0"] //启用访问日志需要的配置，否则必须删除。
+      },
+      "log0": {
+        "writer": {
+          "output": "file",
+          "filename": "/var/log/caddy/access.log" //访问日志的文件地址
+        },
+        "encoder": {
+          "format": "console"
+        },
+        "include": ["http.log.access.log0"]
+      } //访问日志的输出配置。（选配）
     }
   },
   "apps": {
@@ -26,8 +37,8 @@
           "listen": [":443"],
           "routes": [{
             "match": [{
-              "protocol": "grpc",
-              "path": ["/VRLdGZ9k/*"] //与 VLESS+gRPC 应用中 serviceName 对应
+              "path": ["/VRLdGZ9k/*"], //与 VLESS+gRPC 应用中 serviceName 对应
+              "protocol": "grpc"
             }],
             "handle": [{
               "handler": "reverse_proxy",
@@ -80,6 +91,9 @@
             "interval": "12h",
             "timeout": "15s"
           }, //配置可信代理服务器的 IP 范围，实现获取客户端真实 IP。若使用非 Cloudflare CDN，需自己调整 trusted_proxies 配置。
+          "logs": {
+            "default_logger_name": "log0"
+          }, //访问日志的启用配置。（选配）
           "protocols": ["h1","h2","h3"] //默认配置。（可省略）
         }
       }
