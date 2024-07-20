@@ -7,7 +7,7 @@
 6. 实现了 Caddy 所有 NaiveProxy 除了支持 HTTPS 代理应用，还同时支持 HTTP/3 代理应用，即 QUIC 协议传输。
 7. 实现了由 Caddy 提供 TLS 证书的应用，其证书申请、更新及重载更新证书都可全自动化。
 8. 实现了正常应用与 CDN 流量中转（基于 WebSocket/HTTPUpgrade/gRPC/SplitHTTP over TLS） 应用可同时使用，且使用 CDN 进行流量中转也能获取到客户端真实 IP。
-9. 实现了服务端综合应用配置示例中所有非 TCP 传输方式的 V2Ray/Xray 应用可删、可换、可增，灵活修改而不影响整体使用。
+9. 实现了服务端综合应用配置示例中所有非 TCP 传输方式的应用可删、可换、可增，灵活修改而不影响整体使用。
 10. 实现了除 V2Ray/Xray 的 mKCP 应用及 Hysteria 应用外，其它应用对外都使用 TCP/UDP 443 端口，各应用互不影响。
 11. 实现了除 V2Ray/Xray 的 mKCP 应用及 Hysteria 应用外，其它应用都支持流量伪装与防探测，且提供流量伪装与防探测的网站都支持 HTTP 自动跳转到 HTTPS，SSL/TLS 安全评估报告为 A+（非 AES 算法的密码套件配置示例除外） 等，即所有特征完全与真实网站一致。
 
@@ -76,10 +76,10 @@
 3. V2Ray/Xray 单一核心应用简记：A=VLESS+mKCP+seed、B=VMess+WebSocket+TLS、D=VLESS+H2C+TLS、E=VLESS+Vision+TLS、F=Trojan+TCP+TLS、G=Shadowsocks+gRPC+TLS、K=VLESS+H2C+REALITY、M=VLESS+Vision+REALITY。
 4. Caddy 插件单一应用简记：N=NaiveProxy(Caddy+forwardproxy)、T=Trojan-Go(Caddy+caddy-trojan)。
 5. 目前 Caddy 从 Let's Encrypt 或 ZeroSSL 申请的免费 TLS 证书默认为 ECC 证书。
-6. 综合应用配置示例中所有非 TCP 传输方式的 V2Ray/Xray 应用怎么删、换、增，请参考‘服务端单一/简单应用配置示例’中对应示例。
-7. 基于安全原因，WebSocket 传输方式的应用目前仅推荐使用 CDN 进行流量中转；Xray 应用推荐使用 HTTPUpgrade 传输方式的应用替代，功能相同且效率更高。
-8. 若 CDN 流量中转不支持 WebSocket/HTTPUpgrade、gRPC 通过，可使用 SplitHTTP 传输方式的应用替换来解决。
-9. 若使用不可信的 CDN 进行流量中转，推荐使用自带加密的 VMess 或 Shadowsocks 协议配置；否则推荐使用轻量的 VLESS 或 Trojan 协议配置。
+6. 基于安全原因，WebSocket 传输方式的应用目前仅推荐使用 CDN 进行流量中转；Xray 应用推荐使用 HTTPUpgrade 传输方式的应用替代，功能相同且效率更高。
+7. 若 CDN 流量中转不支持 WebSocket/HTTPUpgrade、gRPC 通过，可使用 SplitHTTP 传输方式的应用替换来解决。
+8. 若使用不可信的 CDN 进行流量中转，推荐使用自带加密的 VMess 或 Shadowsocks 协议配置；否则推荐使用轻量的 VLESS 或 Trojan 协议配置。
+9. 综合应用配置示例中非 TCP 传输方式的应用怎么删、换、增，请参考‘服务端单一/简单应用配置示例’中对应示例。
 10. 流量伪装与防探测网站可由其它 WEB 应用软件实现，其支持反代应用（反代 WebSocket/HTTPUpgrade、gRPC、SplitHTTP 及 H2C）与支持回落应用（提供 H2C server 及 HTTP/1.1 server 的 WEB 服务）等取决于自身，其配置自行参考 Caddy 或 Nginx 对应示例。
 11. 支持本项目的 Caddy 程序文件已编译好，去本人 Releases 中下载即可。
 12. Trojan-Go 安卓手机客户端可以去本人 Releases 中下载（最末）。
