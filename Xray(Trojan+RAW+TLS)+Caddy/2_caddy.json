@@ -1,0 +1,98 @@
+{
+  "admin": {
+    "disabled": true,
+    "config": {
+      "persist": false
+    }
+  },
+  "logging": {
+    "logs": {
+      "default": {
+        "writer": {
+          "output": "file",
+          "filename": "/var/log/caddy/error.log" //错误日志的文件地址
+        },
+        "encoder": {
+          "format": "console"
+        },
+        "level": "ERROR",
+        "exclude": ["http.log.access.log0"] //启用访问日志需要的配置，否则必须删除。
+      },
+      "log0": {
+        "writer": {
+          "output": "file",
+          "filename": "/var/log/caddy/access.log" //访问日志的文件地址
+        },
+        "encoder": {
+          "format": "console"
+        },
+        "include": ["http.log.access.log0"]
+      } //访问日志的输出配置。（选配）
+    }
+  },
+  "storage": {
+    "module": "file_system",
+    "root": "/home/tls" //存放 TLS 证书的基本路径
+  },
+  "apps": {
+    "http": {
+      "servers": {
+        "srvh1": {
+          "listen": [":80"],
+          "routes": [{
+            "handle": [{
+              "handler": "static_response",
+              "headers": {
+                "Location": ["https://{http.request.host}{http.request.uri}"] //HTTP 自动跳转 HTTPS，让网站看起来更真实。
+              },
+              "status_code": 301
+            }]
+          }],
+          "protocols": ["h1"] //仅开启 HTTP/1.1 server 支持
+        },
+        "srvh2c": {
+          "listen": ["unix/@uds88.sock"], //H2C server 及 HTTP/1.1 server 监听进程
+          "listener_wrappers": [{
+            "wrapper": "proxy_protocol" //开启 PROXY protocol 接收
+          }],
+          "routes": [{
+            "handle": [{
+              "handler": "headers",
+              "response": {
+                "set": {
+                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用 HSTS
+                }
+              }
+            },
+            {
+              "handler": "file_server",
+              "root": "/var/www/html" //修改为自己存放的 WEB 文件路径
+            }]
+          }],
+          "logs": {
+            "default_logger_name": "log0"
+          }, //访问日志的启用配置。（选配）
+          "protocols": ["h1","h2c"] //开启 HTTP/1.1 server 与 H2C server 支持
+        }
+      }
+    },
+    "tls": {
+      "certificates": {
+        "automate": ["xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。
+      },
+      "automation": {
+        "policies": [{
+          "issuers": [{
+            "module": "acme",
+            "ca": "https://acme.zerossl.com/v2/DV90", //此项配置表示从 ZeroSSL 申请免费 TLS 证书，删除此项配置（默认）表示从 Let's Encrypt 申请免费 TLS 证书。
+            "email": "your@email.com" //修改为自己的电子邮箱。（选配）
+          }]
+        }]
+      }
+    }
+  }
+}
+//备注：
+//1、若域名为 xx.yy，那么从 Let's Encrypt 申请的普通 TLS 证书在 ‘/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy’ 目录中。/home/tls 为存放 TLS 证书的基本路径，目录随域名变化。
+//2、若域名为 xx.yy，那么从 ZeroSSL 申请的普通 TLS 证书在 ‘/home/tls/certificates/acme.zerossl.com-v2-dv90/xx.yy’ 目录中。/home/tls 为存放 TLS 证书的基本路径，目录随域名变化。
+//3、本配置仅支持申请普通 TLS 证书，若要申请通配符 TLS 证书请参考 ‘Caddy(Other Configuration) （Caddy 的特殊应用配置方法。）’ 中对应介绍及对应配置示例。
