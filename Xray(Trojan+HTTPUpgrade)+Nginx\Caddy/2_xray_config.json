@@ -1,0 +1,57 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "error": "/var/log/xray/error.log",
+    "access": "/var/log/xray/access.log"
+  },
+  "inbounds": [
+    {
+      "listen": "@uds2027.sock", //Trojan+HTTPUpgrade 监听进程。（对接 Caddy 配置，否则必须删除。）
+      "listen": "/dev/shm/uds2027.sock,0666", //Trojan+HTTPUpgrade 监听进程及访问权限。（对接 Nginx 配置，否则必须删除。）
+      "protocol": "trojan",
+      "settings": {
+        "clients": [
+          {
+            "password":"diy2027", //修改为自己密码
+            "email": "2027@gmail.com"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "httpupgrade",
+        "httpupgradeSettings": {
+          "path": "/DhttpZ9k" //修改为自己的路径
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "blocked"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
