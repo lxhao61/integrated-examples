@@ -1,0 +1,56 @@
+{
+	order reverse_proxy before route
+	admin off
+	persist_config off
+	log {
+		output file /var/log/caddy/error.log #错误日志的文件地址
+		format console
+		level ERROR
+	}
+	log log0 {
+		output file /var/log/caddy/access.log #访问日志的文件地址
+		format console
+		include http.log.access.log0
+	} #访问日志的输出配置。（选配）
+
+	email your@email.com #修改为自己的电子邮箱。（选配）
+
+	servers :443 {
+		trusted_proxies cloudflare { #cloudflare 为使用 cloudflare ips，由 caddy-cloudflare-ip 插件提供。
+			interval 12h
+			timeout 15s
+		} #配置可信代理服务器的 IP 范围，实现获取客户端真实 IP。若使用非 Cloudflare CDN，需自己调整 trusted_proxies 配置。
+		protocols h1 h2 h3 #默认配置。（可省略）
+	}
+}
+
+:443, xx.yy { #xx.yy 修改为自己的域名。注意：逗号与域名之间有一个空格。
+	tls {
+		ciphers TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+		curves x25519 secp521r1 secp384r1 secp256r1
+	}
+
+	log log0 #访问日志的启用配置。（选配）
+
+	@vlws {
+		header Connection *Upgrade*
+		header Upgrade websocket
+		path /WqLdGZ9k #与 VLESS+WebSocket 应用中 path 对应
+	}
+	reverse_proxy @vlws unix/@uds2012.sock #转发给本机 VLESS+WebSocket 监听进程
+
+	@host {
+		host xx.yy #限定域名访问（包括禁止以 IP 方式访问网站），修改为自己的域名。
+	}
+	route @host {
+		header {
+			Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用 HSTS
+		}
+		file_server {
+			root /var/www/html #修改为自己存放的 WEB 文件路径
+		}
+	}
+}
+#备注：
+#1、本配置仅支持申请普通 TLS 证书，若要申请通配符 TLS 证书请参考 ‘Caddy(Other Configuration) （Caddy 的特殊应用配置方法。）’ 中对应介绍及对应配置示例。
+#2、本示例仅推荐使用 CDN 流量中转来避免被封。
