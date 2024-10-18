@@ -1,0 +1,57 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "error": "/var/log/xray/error.log",
+    "access": "/var/log/xray/access.log"
+  },
+  "inbounds": [
+    {
+      "listen": "@uds2021.sock", //VMess+HTTPUpgrade 监听进程。（对接 Caddy 配置，否则必须删除。）
+      "listen": "/dev/shm/uds2021.sock,0666", //VMess+HTTPUpgrade 监听进程及访问权限。（对接 Nginx 配置，否则必须删除。）
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "5bbe7349-d866-4f43-a575-a5cb4a5fd998", //修改为自己的 UUID
+            "email": "2021@gmail.com"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "httpupgrade",
+        "httpupgradeSettings": {
+          "path": "/AhttpZ9k" //修改为自己的路径
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "blocked"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
