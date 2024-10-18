@@ -1,0 +1,57 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "error": "/var/log/xray/error.log", //若使用 V2Ray，此处目录名称 xray 改成 v2ray。
+    "access": "/var/log/xray/access.log" //若使用 V2Ray，此处目录名称 xray 改成 v2ray。
+  },
+  "inbounds": [
+    {
+      "listen": "@uds2005.sock", //VLESS+H2C 监听进程
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "e3f4322b-422a-4a19-8ec7-e9d845b5fc2d", //修改为自己的 UUID
+            "email": "2005@gmail.com"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "h2",
+        "httpSettings": {
+          "path": "/SeuW56Es" //修改为自己的路径
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "blocked"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
