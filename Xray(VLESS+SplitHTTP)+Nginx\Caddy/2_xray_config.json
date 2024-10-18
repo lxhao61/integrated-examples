@@ -1,0 +1,58 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "error": "/var/log/xray/error.log",
+    "access": "/var/log/xray/access.log"
+  },
+  "inbounds": [
+    {
+      "listen": "@uds2023.sock", //VLESS+SplitHTTP 监听进程。（对接 Caddy 配置，否则必须删除。）
+      "listen": "/dev/shm/uds2023.sock,0666", //VLESS+SplitHTTP 监听进程及访问权限。（对接 Nginx 配置，否则必须删除。）
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "af7d5cf8-442d-4bb3-8a76-eb367178781d", //修改为自己的 UUID
+            "email": "2023@gmail.com"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "splithttp",
+        "splithttpSettings": {
+          "path": "/VLSpdG9k" //修改为自己的路径
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "blocked"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
