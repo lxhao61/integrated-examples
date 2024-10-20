@@ -1,7 +1,6 @@
 //删除 BT 禁用配置
 //一、删除个别 BT 禁用
 //在 inbounds 中找到对应应用删除如下配置（单项配置）
-      },
       "sniffing": {
         "enabled": true,
         "destOverride": [
@@ -9,11 +8,11 @@
           "tls",
           "quic"
         ]
+      }
 
 
 //二、删除全部 BT 禁用
 //1、在 inbounds 中找到每个应用一一删除如下配置（单项配置）
-      },
       "sniffing": {
         "enabled": true,
         "destOverride": [
@@ -21,6 +20,7 @@
           "tls",
           "quic"
         ]
+      }
 
 //2、在 routing 中删除如下配置（全局配置）
       {
