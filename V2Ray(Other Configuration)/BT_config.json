@@ -1,4 +1,7 @@
-//在 inbounds 中为每个应用添加如下参数（若此应用需禁用 BT）（单项参数）
+//删除 BT 禁用配置
+//一、删除个别 BT 禁用
+//在 inbounds 中找到对应应用删除如下配置（单项配置）
+      },
       "sniffing": {
         "enabled": true,
         "destOverride": [
@@ -6,9 +9,20 @@
           "tls",
           "quic"
         ]
-      }
 
-//如下配置插入 routing 末尾（全局参数）
+
+//二、删除全部 BT 禁用
+//1、在 inbounds 中找到每个应用一一删除如下配置（单项配置）
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+
+//2、在 routing 中删除如下配置（全局配置）
       {
         "type": "field",
         "protocol": [
@@ -17,7 +31,7 @@
         "outboundTag": "block"
       }
 
-//如下配置插入 outbounds 末尾（全局参数）
+//3、在 outbounds 中删除如下配置（全局配置）
     {
       "tag": "block",
       "protocol": "blackhole",
