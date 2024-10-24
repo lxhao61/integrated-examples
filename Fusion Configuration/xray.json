@@ -1,0 +1,117 @@
+//服务端综合应用及 Hysteria 应用的融合配置
+//原配置：
+{
+//........<省略>........
+  "inbounds": [
+//........<省略>........
+    {
+      "port": 2052, //监听端口
+      "protocol": "vless",
+      "settings": {
+//........<省略>........
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "block"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
+
+//以上配置修改为如下：
+{
+//........<省略>........
+  "dns": {
+    "servers": [
+      "https+local://dns.google/dns-query",
+      "https+local://dns.adguard.com/dns-query"
+    ] //可修改为其它 DNS
+  },
+  "inbounds": [
+//........<省略>........
+    {
+      "listen": "127.0.0.1",
+      "port": 1080,
+      "protocol": "socks", //兼容 Socks 4 、Socks 4a 、Socks 5, 以及 HTTP 。
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    }, //接收 NaiveProxy、Trojan-Go(caddy-trojan 插件) 及 Hysteria 转发来的流量配置。若无这些应用，请删除。
+    {
+      "port": 2052, //监听端口
+      "protocol": "vless",
+      "settings": {
+//........<省略>........
+      }
+    }
+  ],
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "type": "field",
+        "domain": [
+          "geosite:cn" //若需要禁止其它国家的国内流量配置，请参考官方资料修改。
+        ],
+        "outboundTag": "block"
+      },
+      {
+        "type": "field",
+        "ip": [
+          "geoip:cn" //若需要禁止其它国家的国内流量配置，请参考官方资料修改。
+        ],
+        "outboundTag": "block"
+      },
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "block"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {
+        "domainStrategy": "UseIP"
+      }
+    }, //默认出站（全局）使用内置 DNS 服务器
+    {
+      "tag": "block",
+      "protocol": "blackhole",
+      "settings": {
+        "response": {
+          "type": "http"
+        }
+      }
+    }
+  ]
+}

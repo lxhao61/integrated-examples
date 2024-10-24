@@ -1,0 +1,27 @@
+//caddy-trojan 插件应用流量通过 HTTP 转发给 V2Ray/Xray 处理
+//原配置：
+//........<省略>........
+    "trojan": {
+      "upstream": {
+        "upstream": "caddy"
+      },
+      "proxy": {
+        "proxy": "no_proxy"
+      },
+      "users": ["diy6443"] //修改为自己的密码。密码可多组，用逗号隔开。
+    },
+//........<省略>........
+
+//以上配置修改为如下：
+//........<省略>........
+    "trojan": {
+      "upstream": {
+        "upstream": "caddy"
+      },
+      "proxy": {
+        "proxy": "env_proxy"
+      },
+      "users": ["diy6443"] //修改为自己的密码。密码可多组，用逗号隔开。
+    },
+//........<省略>........
+//注意：还需在 caddy.service 文件的 [Service] 中插入 env ALL_PROXY=http://127.0.0.1:1080 。若转发给 V2Ray 处理， 1080 改为 1081 。
