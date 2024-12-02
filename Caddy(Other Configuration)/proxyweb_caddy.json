@@ -1,0 +1,29 @@
+//Caddy 反向代理到 HTTP/2 或 HTTPS 网站配置方法
+//原配置：
+//........<省略>........
+            {
+              "handler": "file_server",
+              "root": "/var/www/html" //修改为自己存放的 WEB 文件路径
+            }]
+//........<省略>........
+
+//以上配置修改为如下：
+//........<省略>........
+            {
+              "handler": "reverse_proxy",
+              "transport": {
+                "protocol": "http",
+                "tls": {}
+              },
+              "headers": {
+              	"request": {
+                  "set": {
+                    "Host": ["{http.reverse_proxy.upstream.hostport}"]
+                  }
+              	}
+              },
+              "upstreams": [{
+                "dial": "xz.yz:443" //xz.yz 为国外 HTTP/2 或 HTTPS 网站域名
+              }]
+            }]
+//........<省略>........
