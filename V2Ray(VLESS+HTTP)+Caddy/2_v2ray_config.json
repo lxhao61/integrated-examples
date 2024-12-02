@@ -1,0 +1,59 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "error": "/var/log/V2Ray/error.log",
+    "access": "/var/log/V2Ray/access.log"
+  },
+  "inbounds": [
+    {
+      "listen": "@uds2005.sock", //VLESS+HTTP 监听进程
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "e3f4322b-422a-4a19-8ec7-e9d845b5fc2d", //修改为自己的 UUID
+            "email": "2005@gmail.com"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "http",
+        "httpSettings": {
+          "host": ["xx.yy"], //使用本应用的域名。（选配，仅 IOS 客户端需要。）
+          "path": "/SeuW56Es" //修改为自己的路径
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "block"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
