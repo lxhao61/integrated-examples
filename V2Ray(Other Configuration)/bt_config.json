@@ -1,0 +1,31 @@
+//删除屏蔽 BT 流量配置方法
+//1、在 inbounds 的应用中找到如下配置：
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+//注意：
+//1)、此为此应用的流量探测配置（屏蔽 BT 流量的辅助/分项配置）。删除此配置，此应用无屏蔽 BT 流量了。
+//2)、此配置删除后还需删除上面大括号后的逗号，保持配置正确性。
+
+//2、在 routing 中找到如下配置：
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "block"
+      }
+//注意：此为屏蔽 BT 流量的核心/全局配置，只有各应用都已删除上 1 项配置才可删除。
+
+//3、在 outbounds 中找到如下配置：
+    {
+      "tag": "block",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+//注意：此为规则处理配置（屏蔽 BT 流量的辅助/全局配置），只有无其它配置关联才可删除。
