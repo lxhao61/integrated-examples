@@ -1,0 +1,141 @@
+//服务端深度融合配置
+//原配置：
+{
+//........<省略>........
+  "inbounds": [
+//........<省略>........
+    {
+      "port": 2052, //监听端口
+      "protocol": "vless",
+      "settings": {
+//........<省略>........
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "block"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
+
+//以上配置修改为如下：
+{
+//........<省略>........
+  "dns": {
+    "servers": [
+      "https+local://dns.google/dns-query",
+      "https+local://dns.adguard.com/dns-query"
+    ] //可修改为其它 DNS 地址
+  }, //内置 DNS 服务器配置
+  "inbounds": [
+//........<省略>........
+    {
+      "listen": "127.0.0.1",
+      "port": 1080,
+      "protocol": "socks", //兼容 Socks 4 、Socks 4a 、Socks 5 。
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    }, //接收 NaiveProxy 及 Hysteria 转发来的流量配置。若无这些应用，请删除。
+    {
+      "listen": "127.0.0.1",
+      "port": 1081,
+      "protocol": "http",
+      "settings": {},
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    }, //接收 Trojan-Go(caddy-trojan 插件) 转发来的流量配置。若无此应用，请删除。
+    {
+      "port": 2052, //监听端口
+      "protocol": "vless",
+      "settings": {
+//........<省略>........
+      }
+    }
+  ],
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "type": "field",
+        "domain": [
+          "geosite:google",
+          "geosite:geolocation-!cn",
+        ],
+        "outboundTag": "direct"
+      }, //处理 google 域名与非中国域名配置
+      {
+        "type": "field",
+        "domain": [
+          "geosite:cn"
+        ],
+        "outboundTag": "block"
+      }, //处理中国域名配置
+      {
+        "type": "field",
+        "ip": [
+          "geoip:cn"
+        ],
+        "outboundTag": "block"
+      }, //处理中国 IP 配置
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "block"
+      } //处理 BT 配置
+    ]
+  },
+  "outbounds": [
+    {
+      "tag": "direct",
+      "protocol": "freedom",
+      "settings": {
+        "domainStrategy": "UseIP" //使用内置 DNS 服务器
+      }
+    }, //直连配置（默认出站）
+    {
+      "tag": "block",
+      "protocol": "blackhole",
+      "settings": {
+        "response": {
+          "type": "http"
+        }
+      }
+    } //屏蔽配置
+  ]
+}
+//备注：如上为使用定制 DNS 解析、屏蔽回中国流量及 BT 流量的服务端深度融合配置，符合自己需求的精细配置请参考官方资料自行修改。

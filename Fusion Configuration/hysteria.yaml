@@ -1,0 +1,8 @@
+#Hysteria 流量通过 Socks5 转发给 V2Ray/Xray 处理
+#在配置中添加 Socks5 出站配置
+outbounds:
+  - name: socks
+    type: socks5
+    socks5:
+      addr: 127.0.0.1:1080
+#备注：推荐如上添加在 auth 配置块后。
