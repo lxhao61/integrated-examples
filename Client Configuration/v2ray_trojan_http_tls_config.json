@@ -1,0 +1,65 @@
+{
+  "log": {},
+  "inbounds": [
+    {
+      "port": "1080",
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      }
+    },
+    {
+      "port": "1081",
+      "protocol": "http",
+      "settings": {}
+    }
+  ],
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "type": "field",
+        "domain": ["geosite:cn"], //中国大陆主流网站的域名
+        "outboundTag": "direct" //与下 outbounds 中 tag 对应
+      },
+      {
+        "type": "field",
+        "ip": [
+          "geoip:cn", //中国大陆的 IP
+          "geoip:private" //私有地址 IP，如路由器等。
+        ],
+        "outboundTag": "direct" //与下 outbounds 中 tag 对应
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "xx.yy", //修改为使用本应用的域名
+            "port": 443,
+            "password": "diy2006" //修改为服务端配置的密码
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "http",
+        "httpSettings": {
+          "host": ["xx.yy"], //仅服务端有此项才配置，否则删除。域名与上一致。
+          "path": "/teuW56Es" //修改为服务端配置的路径
+        },
+        "security": "tls",
+        "tlsSettings": {
+          "alpn": ["h2"]
+        }
+      }
+    },
+    {
+      "tag": "direct",
+      "protocol": "freedom",
+      "settings": {}
+    }
+  ]
+}
