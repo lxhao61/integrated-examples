@@ -1,0 +1,58 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "error": "/var/log/V2Ray/error.log",
+    "access": "/var/log/V2Ray/access.log"
+  },
+  "inbounds": [
+    {
+      "listen": "@uds2006.sock", //Trojan+HTTP 监听进程
+      "protocol": "trojan",
+      "settings": {
+        "clients": [
+          {
+            "password":"diy2006", //修改为自己密码
+            "email": "2006@gmail.com"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "http",
+        "httpSettings": {
+          "host": ["xx.yy"], //使用本应用的域名。（选配，仅 IOS 客户端需要。）
+          "path": "/teuW56Es" //修改为自己的路径
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "block"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
