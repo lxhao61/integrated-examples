@@ -1,0 +1,248 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "error": "/var/log/xray/error.log",
+    "access": "/var/log/xray/access.log"
+  },
+  "inbounds": [
+    {
+      "listen": "/dev/shm/uds5443.sock,0666", //VLESS+Vision+TLS 监听进程及访问权限
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "048e0bf2-dd56-11e9-aa37-5600024c1d6a", //修改为自己的 UUID
+            "flow": "xtls-rprx-vision", //启用 XTLS Vision
+            "email": "5443@gmail.com"
+          }
+        ],
+        "decryption": "none",
+        "fallbacks": [
+          {
+            "dest": "/dev/shm/uds88.sock", //回落给 H2C server 及 HTTP/1.1 server 监听进程
+            "xver": 1 //开启 PROXY protocol 发送，发送真实来源 IP 和端口给 Nginx。 1 或 2 表示 PROXY protocol 版本。
+          } //对应 Nginx 版本不小于 v1.25.1 配置，否则此部分必须删除。
+          {
+            "alpn": "h2",
+            "dest": "/dev/shm/uds82.sock", //回落给 H2C server 监听进程
+            "xver": 1 //开启 PROXY protocol 发送，发送真实来源 IP 和端口给 Nginx。 1 或 2 表示 PROXY protocol 版本。
+          }, //对应 Nginx 版本小于 v1.25.1 配置，否则此部分必须删除。
+          {
+            "dest": "/dev/shm/uds81.sock", //回落给 HTTP/1.1 server 监听进程
+            "xver": 1 //开启 PROXY protocol 发送，发送真实来源 IP 和端口给 Nginx。 1 或 2 表示 PROXY protocol 版本。
+          } //对应 Nginx 版本小于 v1.25.1 配置，否则此部分必须删除。
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "rawSettings": {
+          "acceptProxyProtocol": true //开启 PROXY protocol 接收，接收 Nginx SNI 分流前真实来源 IP 和端口。
+        },
+        "security": "tls",
+        "tlsSettings": {
+          "certificates": [
+            {
+              "ocspStapling": 3600,
+              "certificateFile": "/home/tls/zv.xx.yy/zv.xx.yy.crt", //换成自己的证书，绝对路径。
+              "keyFile": "/home/tls/zv.xx.yy/zv.xx.yy.key" //换成自己的密钥，绝对路径。
+            }
+          ],
+          "minVersion": "1.2"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    },
+    {
+      "listen": "/dev/shm/uds6443.sock,0666", //Trojan+RAW+TLS 监听进程及访问权限
+      "protocol": "trojan",
+      "settings": {
+        "clients": [
+          {
+            "password":"diy6443", //修改为自己密码
+            "email": "6443@gmail.com"
+          }
+        ],
+        "fallbacks": [
+          {
+            "dest": "/dev/shm/uds88.sock", //回落给 H2C server 及 HTTP/1.1 server 监听进程
+            "xver": 1 //开启 PROXY protocol 发送，发送真实来源 IP 和端口给 Nginx。 1 或 2 表示 PROXY protocol 版本。
+          } //对应 Nginx 版本不小于 v1.25.1 配置，否则此部分必须删除。
+          {
+            "alpn": "h2",
+            "dest": "/dev/shm/uds82.sock", //回落给 H2C server 监听进程
+            "xver": 1 //开启 PROXY protocol 发送，发送真实来源 IP 和端口给 Nginx。 1 或 2 表示 PROXY protocol 版本。
+          }, //对应 Nginx 版本小于 v1.25.1 配置，否则此部分必须删除。
+          {
+            "dest": "/dev/shm/uds81.sock", //回落给 HTTP/1.1 server 监听进程
+            "xver": 1 //开启 PROXY protocol 发送，发送真实来源 IP 和端口给 Nginx。 1 或 2 表示 PROXY protocol 版本。
+          } //对应 Nginx 版本小于 v1.25.1 配置，否则此部分必须删除。
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "rawSettings": {
+          "acceptProxyProtocol": true //开启 PROXY protocol 接收，接收 Nginx SNI 分流前真实来源 IP 和端口。
+        },
+        "security": "tls",
+        "tlsSettings": {
+          "certificates": [
+            {
+              "ocspStapling": 3600,
+              "certificateFile": "/home/tls/zt.xx.yy/zt.xx.yy.crt", //换成自己的证书，绝对路径。
+              "keyFile": "/home/tls/zt.xx.yy/zt.xx.yy.key" //换成自己的密钥，绝对路径。
+            }
+          ],
+          "minVersion": "1.2",
+          "maxVersion": "1.2",
+          "cipherSuites": "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256" //非 AES 算法的密码套件。若无 RSA 证书，可删除 RSA 算法的密码套件；无 ECC 证书，可删除 ECDSA 算法的密码套件。
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    },
+    {
+      "listen": "/dev/shm/uds2023.sock,0666", //VLESS+XHTTP 监听进程及访问权限
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "af7d5cf8-442d-4bb3-8a76-eb367178781d", //修改为自己的 UUID
+            "email": "2023@gmail.com"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "xhttpSettings": {
+          "path": "/VLSpdG9k" //修改为自己的路径
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    },
+    {
+      "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
+      "port": 2011, //Shadowsocks+gRPC 监听端口
+      "protocol": "shadowsocks",
+      "settings": {
+        "method": "chacha20-poly1305", //修改为自己的加密方法。推荐使用 Shadowsocks 2022 协议。
+        "password": "diy2011", //修改为自己的密码/密钥。符合 Shadowsocks 2022 协议的密钥生成方法参考官方对应介绍。
+        "email": "2011@gmail.com"
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "grpcSettings": {
+          "serviceName": "SALdGZ9k" //修改为自己的 gRPC 服务名称
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    },
+    {
+      "listen": "/dev/shm/uds2021.sock,0666", //VMess+HTTPUpgrade 监听进程及访问权限
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "5bbe7349-d866-4f43-a575-a5cb4a5fd998", //修改为自己的 UUID
+            "email": "2021@gmail.com"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "httpupgrade",
+        "httpupgradeSettings": {
+          "path": "/AhttpZ9k" //修改为自己的路径
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    },
+    {
+      "port": 2052, //监听端口
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "0a652466-dd56-11e9-aa37-5600024c1d6a", //修改为自己的 UUID
+            "email": "2052@gmail.com"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "kcp",
+        "kcpSettings": {
+          "uplinkCapacity": 100,
+          "downlinkCapacity": 100,
+          "congestion": true, //启用拥塞控制
+          "readBufferSize": 5,
+          "writeBufferSize": 5,
+          "seed": "60VoqhfjP79nBQyU" //修改为自己的混淆密码
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "block"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
