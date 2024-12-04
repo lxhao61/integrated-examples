@@ -1,0 +1,196 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "error": "/var/log/xray/error.log",
+    "access": "/var/log/xray/access.log"
+  },
+  "inbounds": [
+    {
+      "port": 443, //监听端口
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "048e0bf2-dd56-11e9-aa37-5600024c1d6a", //修改为自己的 UUID
+            "flow": "xtls-rprx-vision", //启用 XTLS Vision
+            "email": "443@gmail.com"
+          }
+        ],
+        "decryption": "none",
+        "fallbacks": [
+          {
+            "path": "/AhttpZ9k", //路径分流
+            "dest": 2021, //分流后转给 VMess+HTTPUpgrade 监听端口
+            "xver": 1 //开启 PROXY protocol 发送，发送真实来源 IP 和端口给如下 VMess+HTTPUpgrade 应用。 1 或 2 表示 PROXY protocol 版本。
+          },
+          {
+            "dest": 88, //回落给 H2C server 及 HTTP/1.1 server 监听端口
+            "xver": 1 //开启 PROXY protocol 发送，发送真实来源 IP 和端口给 Caddy。 1 或 2 表示 PROXY protocol 版本。
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "tls",
+        "tlsSettings": {
+          "certificates": [
+            {
+              "ocspStapling": 3600,
+              "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/z1.xx.yy/z1.xx.yy.crt", //换成自己的证书，绝对路径。
+              "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/z1.xx.yy/z1.xx.yy.key" //换成自己的密钥，绝对路径。
+            },
+            {
+              "ocspStapling": 3600,
+              "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/z2.xx.yy/z2.xx.yy.crt", //换成自己的证书，绝对路径。
+              "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/z2.xx.yy/z2.xx.yy.key" //换成自己的密钥，绝对路径。
+            } //若使用通配符证书，合并一组即可。
+          ],
+          "rejectUnknownSni": true, //限定域名连接（包括禁止以 IP 方式访问网站）
+          "minVersion": "1.2"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    },
+    {
+      "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
+      "port": 2023, //VLESS+XHTTP 监听端口
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "af7d5cf8-442d-4bb3-8a76-eb367178781d", //修改为自己的 UUID
+            "email": "2023@gmail.com"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "xhttpSettings": {
+          "path": "/VLSpdG9k" //修改为自己的路径
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    },
+    {
+      "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
+      "port": 2011, //Shadowsocks+gRPC 监听端口
+      "protocol": "shadowsocks",
+      "settings": {
+        "method": "chacha20-poly1305", //修改为自己的加密方法。推荐使用 Shadowsocks 2022 协议。
+        "password": "diy2011", //修改为自己的密码/密钥。符合 Shadowsocks 2022 协议的密钥生成方法参考官方对应介绍。
+        "email": "2011@gmail.com"
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "grpcSettings": {
+          "serviceName": "SALdGZ9k" //修改为自己的 gRPC 服务名称
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    },
+    {
+      "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
+      "port": 2021, //VMess+HTTPUpgrade 监听端口
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "5bbe7349-d866-4f43-a575-a5cb4a5fd998", //修改为自己的 UUID
+            "email": "2021@gmail.com"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "httpupgrade",
+        "httpupgradeSettings": {
+          "acceptProxyProtocol": true, //开启 PROXY protocol 接收，接收 VLESS+Vision+TLS 分流前真实来源 IP 和端口。
+          "path": "/AhttpZ9k" //修改为自己的路径
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    },
+    {
+      "port": 2052, //监听端口
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "0a652466-dd56-11e9-aa37-5600024c1d6a", //修改为自己的 UUID
+            "email": "2052@gmail.com"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "kcp",
+        "kcpSettings": {
+          "uplinkCapacity": 100,
+          "downlinkCapacity": 100,
+          "congestion": true, //启用拥塞控制
+          "readBufferSize": 5,
+          "writeBufferSize": 5,
+          "seed": "60VoqhfjP79nBQyU" //修改为自己的混淆密码
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "block"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
