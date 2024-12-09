@@ -2,9 +2,9 @@
 
 Xray 前置（监听 443 端口），利用 VLESS+Vision+REALITY 回落 Trojan+XHTTP（套娃），实现 VLESS+Vision+REALITY 与 Trojan+XHTTP+REALITY 应用共用 443 端口，其应用如下：
 
-1、M=VLESS+Vision+REALITY（回落与转发配置，REALITY 所需 TLS 由外部网站提供。）
+1、M=VLESS+Vision+REALITY（转发及回落配置，REALITY 所需 TLS 由外部网站提供。）
 
-2、K=Trojan+XHTTP+REALITY（回落配置，REALITY 由 VLESS+Vision+REALITY 启用及处理。）
+2、K=Trojan+XHTTP+REALITY（套娃配置，REALITY 由 VLESS+Vision+REALITY 启用及处理。）
 
 注意：
 
