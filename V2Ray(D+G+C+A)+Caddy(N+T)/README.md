@@ -20,7 +20,7 @@
 
 2、V2Ray 版本不小于 v4.37.0 才支持 Shadowsocks 启用 IV 检查功能，可使某些 IV 重放攻击更加困难。
 
-3、Caddy 版本不小于 v2.6.0 才支持 H2C/gRPC 反向代理的 UDS 转发。
+3、Caddy 版本不小于 v2.6.0 才支持 H2C 反向代理的 UDS 转发。
 
 4、使用本人 Releases 中编译好的 Caddy 文件，可同时支持 NaiveProxy、Trojan-Go 等应用。
 
