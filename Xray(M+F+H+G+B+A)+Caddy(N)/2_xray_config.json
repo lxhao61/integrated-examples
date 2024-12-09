@@ -16,13 +16,15 @@
             "email": "5443@gmail.com"
           }
         ],
-        "decryption": "none"
+        "decryption": "none",
+        "fallbacks": [
+          {
+            "dest": "@uds2023.sock" //回落给 VLESS+XHTTP 监听进程
+          }
+        ] //回落配置。（选配）
       },
       "streamSettings": {
         "network": "raw",
-        "rawSettings": {
-          "acceptProxyProtocol": true //开启 PROXY protocol 接收，接收 Caddy SNI 分流前真实来源 IP 和端口。
-        },
         "security": "reality",
         "realitySettings": {
           "target": 7443, //转发给自己的网站监听端口
@@ -34,6 +36,9 @@
           "shortIds": [
             "" //若有此项，客户端 shortId 可为空。若不为空，可 0 到 f（0123456789abcdef），长度为 2 的倍数，长度上限为 16 。
           ] //必填，客户端可用的 shortId 列表，可用于区分不同的客户端。
+        },
+        "rawSettings": {
+          "acceptProxyProtocol": true //开启 PROXY protocol 接收，接收 Caddy SNI 分流前真实来源 IP 和端口。
         }
       },
       "sniffing": {
@@ -64,9 +69,6 @@
       },
       "streamSettings": {
         "network": "raw",
-        "rawSettings": {
-          "acceptProxyProtocol": true //开启 PROXY protocol 接收，接收 Caddy SNI 分流前真实来源 IP 和端口。
-        },
         "security": "tls",
         "tlsSettings": {
           "certificates": [
@@ -79,6 +81,9 @@
           "minVersion": "1.2",
           "maxVersion": "1.2",
           "cipherSuites": "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256" //非 AES 算法的密码套件
+        },
+        "rawSettings": {
+          "acceptProxyProtocol": true //开启 PROXY protocol 接收，接收 Caddy SNI 分流前真实来源 IP 和端口。
         }
       },
       "sniffing": {
