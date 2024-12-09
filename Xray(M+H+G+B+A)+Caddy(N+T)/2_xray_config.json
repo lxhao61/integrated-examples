@@ -16,7 +16,12 @@
             "email": "443@gmail.com"
           }
         ],
-        "decryption": "none"
+        "decryption": "none",
+        "fallbacks": [
+          {
+            "dest": "@uds2023.sock" //回落给 VLESS+XHTTP 监听进程
+          }
+        ] //回落配置。（选配）
       },
       "streamSettings": {
         "network": "raw",
