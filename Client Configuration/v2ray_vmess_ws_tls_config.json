@@ -51,14 +51,14 @@
       },
       "streamSettings": {
         "network": "ws",
-        "wsSettings": {
-          "path": "/HALdGZ9k" //修改为服务端配置的路径。大于 Xray-core v1.8.9 版本，路径后加上 ?ed=2560 即可开启 WebSocket 0-RTT。
-        },
         "security": "tls",
         "tlsSettings": {
-          "serverName": "xx.yy", //修改为使用本应用的域名。（仅 address 使用服务端的 IP 必须配置，否则可删除。）
+          "serverName": "xx.yy", //修改为使用本应用的域名。（address 使用 IP 后必须配置，否则可删除。）
           "alpn": ["http/1.1"],
           "fingerprint": "chrome" //模拟 TLS 指纹，可任一 chrome、firefox、safari、ios、edge、qq、random、randomized 选项配置。V2Ray（v4 版） 不支持，此项配置必须删除。
+        },
+        "wsSettings": {
+          "path": "/HALdGZ9k" //修改为服务端配置的路径。大于 Xray-core v1.8.9 版本，路径后加上 ?ed=2560 即可开启 WebSocket 0-RTT。
         }
       },
       "mux": {

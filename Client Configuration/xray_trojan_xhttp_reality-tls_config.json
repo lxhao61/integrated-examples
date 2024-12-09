@@ -1,3 +1,4 @@
+//VLESS+XHTTP+REALITY 上行/VLESS+XHTTP+TLS 下行的分离配置
 {
   "log": {},
   "inbounds": [
@@ -34,18 +35,13 @@
   },
   "outbounds": [
     {
-      "protocol": "vless",
+      "protocol": "trojan",
       "settings": {
-        "vnext": [
+        "servers": [
           {
-            "address": "2.2.2.2", //修改为使用本应用的域名或自己服务端的 IP
+            "address": "2.2.2.2", //修改为使用本应用的 IPv4 对应域名或自己服务端的 IPv4
             "port": 443,
-            "users": [
-              {
-                "id": "af7d5cf8-442d-4bb3-8a76-eb367178781d", //修改为服务端配置的 UUID
-                "encryption": "none"
-              }
-            ]
+            "password": "diy2020" //修改为服务端配置的密码
           }
         ]
       },
@@ -53,14 +49,29 @@
         "network": "xhttp",
         "security": "reality",
         "realitySettings": {
-          "serverName": "xx.yy", //修改为服务端配置的域名
+          "serverName": "h3.xx.yy", //修改为服务端配置的域名
           "publicKey": "SU8ZzrdS1DETJj0y3u4xFkPTCcf6HwJCBbbjWCoMMHw", //修改为服务端私钥的对应公钥
           "shortId": "", //修改为服务端 shortIds 配置之一
           "spiderX": "", //选填，爬虫初始路径与参数，建议每个客户端不同。
           "fingerprint": "chrome" //模拟 TLS 指纹，可任一 chrome、firefox、safari、ios、edge、qq、random、randomized 选项配置。
         },
         "xhttpSettings": {
-          "mode": "auto" //上行所使用的模式，默认自动。可根据实际情况选用其它模式，解决连通及优化问题。
+          "mode": "auto", //上行所使用的模式，默认自动。可根据实际情况选用其它模式，解决连通及优化问题。
+          "path": "/TSpLdG9k", //修改为服务端配置的路径
+          "downloadSettings": {
+            "address": "2.2.2.2", //修改为使用本应用的 IPv6 对应域名或自己服务端的 IPv6
+            "port": 443,
+            "network": "xhttp",
+            "security": "tls",
+            "tlsSettings": {
+              "serverName": "h3.xx.yy", //修改为使用本应用的域名。（对应 address 使用 IP 后必须配置，否则可删除。）
+              "alpn": ["h2"], //若服务端支持 HTTP/3 传输其值可改为 h3
+              "fingerprint": "chrome" //模拟 TLS 指纹，可任一 chrome、firefox、safari、ios、edge、qq、random、randomized 选项配置。
+            },
+            "xhttpSettings": {
+              "path": "/TSpLdG9k" //必须与上路径一致
+            }
+          }
         }
       }
     },
@@ -71,3 +82,6 @@
     }
   ]
 }
+//备注：
+//1、上行与下行对应的 IP（IPv4/IPv6） 可根据实际情况对调。
+//2、上行与下行对应的应用可根据实际情况对调。

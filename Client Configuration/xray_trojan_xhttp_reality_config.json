@@ -48,11 +48,14 @@
         "network": "xhttp",
         "security": "reality",
         "realitySettings": {
-          "serverName": "xx.yy", //修改为使用本应用的域名
+          "serverName": "xx.yy", //修改为服务端配置的域名
           "publicKey": "XZImaWSkHZeFYMkLBVr8lywIhYg9uZw8pTYhOb8Axl4", //修改为服务端私钥的对应公钥
           "shortId": "", //修改为服务端 shortIds 配置之一
           "spiderX": "", //选填，爬虫初始路径与参数，建议每个客户端不同。
           "fingerprint": "chrome" //模拟 TLS 指纹，可任一 chrome、firefox、safari、ios、edge、qq、random、randomized 选项配置。
+        },
+        "xhttpSettings": {
+          "mode": "auto" //上行所使用的模式，默认自动。可根据实际情况选用其它模式，解决连通及优化问题。
         }
       }
     },
