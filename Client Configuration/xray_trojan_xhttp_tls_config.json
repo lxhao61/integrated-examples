@@ -1,4 +1,4 @@
-一、直连或 CDN 流量中转各自独立配置
+//一、直连或 CDN 流量中转独立配置
 {
   "log": {},
   "inbounds": [
@@ -47,14 +47,15 @@
       },
       "streamSettings": {
         "network": "xhttp",
-        "xhttpSettings": {
-          "path": "/TSpLdG9k" //修改为服务端配置的路径
-        },
         "security": "tls",
         "tlsSettings": {
-          "serverName": "xx.yy", //修改为使用本应用的域名。（仅 address 使用服务端的 IP 必须配置，否则可删除。）
+          "serverName": "xx.yy", //修改为使用本应用的域名。（address 使用 IP 后必须配置，否则可删除。）
           "alpn": ["h2"], //若服务端（含使用 CDN 流量中转的服务器）支持 HTTP/3 传输其值可改为 h3
           "fingerprint": "chrome" //模拟 TLS 指纹，可任一 chrome、firefox、safari、ios、edge、qq、random、randomized 选项配置。
+        },
+        "xhttpSettings": {
+          "mode": "auto", //上行所使用的模式，默认自动。可根据实际情况选用其它模式，解决连通及优化问题。
+          "path": "/TSpLdG9k" //修改为服务端配置的路径
         }
       }
     },
@@ -66,7 +67,7 @@
   ]
 }
 
-二、CDN 流量中转与直连上下行分离配置
+//二、CDN 流量中转上行/直连下行的分离配置
 {
   "log": {},
   "inbounds": [
@@ -115,28 +116,29 @@
       },
       "streamSettings": {
         "network": "xhttp",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "zh.xx.yy", //修改为使用本应用的 CDN 流量中转域名。（对应 address 使用 IP 后必须配置，否则可删除。）
+          "alpn": ["h2"], //若 CDN 流量中转服务器支持 HTTP/3 传输其值可改为 h3
+          "fingerprint": "chrome" //模拟 TLS 指纹，可任一 chrome、firefox、safari、ios、edge、qq、random、randomized 选项配置。
+        },
         "xhttpSettings": {
+          "mode": "auto", //上行所使用的模式，默认自动。可根据实际情况选用其它模式，解决连通及优化问题。
           "path": "/TSpLdG9k", //修改为服务端配置的路径
           "downloadSettings": {
             "address": "2.2.2.2", //修改为使用本应用的直连域名或自己服务端的 IP
             "port": 443,
             "network": "xhttp",
-            "xhttpSettings": {
-              "path": "/TSpLdG9k" //必须与上路径一致
-            },
             "security": "tls",
             "tlsSettings": {
-              "serverName": "h3.xx.yy", //修改为使用本应用的直连域名。（仅 address 使用服务端的 IP 必须配置，否则可删除。）
+              "serverName": "h3.xx.yy", //修改为使用本应用的直连域名。（对应 address 使用 IP 后必须配置，否则可删除。）
               "alpn": ["h2"], //若服务端（非 CDN 流量中转服务器）支持 HTTP/3 传输其值可改为 h3
               "fingerprint": "chrome" //模拟 TLS 指纹，可任一 chrome、firefox、safari、ios、edge、qq、random、randomized 选项配置。
+            },
+            "xhttpSettings": {
+              "path": "/TSpLdG9k" //必须与上路径一致
             }
           }
-        },
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "zh.xx.yy", //修改为使用本应用的 CDN 流量中转域名。（仅 address 使用服务端的 IP 必须配置，否则可删除。）
-          "alpn": ["h2"], //若 CDN 流量中转服务器支持 HTTP/3 传输其值可改为 h3
-          "fingerprint": "chrome" //模拟 TLS 指纹，可任一 chrome、firefox、safari、ios、edge、qq、random、randomized 选项配置。
         }
       }
     },
@@ -147,3 +149,6 @@
     }
   ]
 }
+//备注：
+//1、本配置实际为使用两个不同 IP 来实现的上下行分离应用，上下行可根据实际情况对调。
+//2、若服务端支持双 IP（IPv4/IPv6），可用双 IP 来实现上下行分离应用。

@@ -46,14 +46,14 @@
       },
       "streamSettings": {
         "network": "grpc",
-        "grpcSettings": {
-          "serviceName": "TALdGZ9k" //修改为服务端配置的 gRPC 服务名称
-        },
         "security": "tls",
         "tlsSettings": {
-          "serverName": "xx.yy", //修改为使用本应用的域名。（仅 address 使用服务端的 IP 必须配置，否则可删除。）
+          "serverName": "xx.yy", //修改为使用本应用的域名。（address 使用 IP 后必须配置，否则可删除。）
           "alpn": ["h2"],
           "fingerprint": "chrome" //模拟 TLS 指纹，可任一 chrome、firefox、safari、ios、edge、qq、random、randomized 选项配置。V2Ray（v4 版） 不支持，此项配置必须删除。
+        },
+        "grpcSettings": {
+          "serviceName": "TALdGZ9k" //修改为服务端配置的 gRPC 服务名称
         }
       }
     },
