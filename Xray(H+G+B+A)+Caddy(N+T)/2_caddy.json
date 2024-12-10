@@ -46,7 +46,7 @@
               "handler": "reverse_proxy",
               "transport": {
                 "protocol": "http",
-                "versions": ["1.1","h2c"]
+                "versions": ["h2c","2"]
               },
               "upstreams": [{
                 "dial": "unix/@uds2023.sock" //转发给本机 VLESS+XHTTP 监听进程
