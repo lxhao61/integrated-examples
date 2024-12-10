@@ -16,7 +16,12 @@
             "email": "443@gmail.com"
           }
         ],
-        "decryption": "none"
+        "decryption": "none",
+        "fallbacks": [
+          {
+            "dest": 2023 //回落给 VLESS+XHTTP 监听端口
+          }
+        ] //回落配置。（选配）
       },
       "streamSettings": {
         "network": "raw",
