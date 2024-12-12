@@ -6,7 +6,7 @@ Xray 前置（监听 443 端口），利用 VLESS+Vision+REALITY 支持转发给
 
 2、H=VLESS+XHTTP+TLS（反代配置，TLS 由 Caddy 提供及处理。）
 
-3、VLESS+XHTTP+REALITY（套娃配置，REALITY 由 VLESS+Vision+REALITY 启用及处理。）
+3、K=VLESS+XHTTP+REALITY（套娃配置，REALITY 由 VLESS+Vision+REALITY 启用及处理。）
 
 4、G=Shadowsocks+gRPC+TLS（反代配置，TLS 由 Caddy 提供及处理。）
 
@@ -26,7 +26,7 @@ Xray 前置（监听 443 端口），利用 VLESS+Vision+REALITY 支持转发给
 
 3、Xray 版本不小于 v24.11.30 才支持完全体 XHTTP，其 XHTTP 传输方式实现了真正的上下行分离（见客户端配置示例），给 GFW 针对单个连接的分析带来了麻烦。
 
-4、VLESS+XHTTP+REALITY 为选配，与 H 共用 VLESS+XHTTP 配置；仅服务端支持双 IP（IPv4/IPv6） 推荐配置，使用它与 H 组合可实现 XHTTP 应用上下行分离。
+4、K 为选配、与 H 共用 VLESS+XHTTP 配置，仅服务端支持双 IP（IPv4/IPv6） 推荐配置，使用它与 H 组合可实现 XHTTP 应用上下行分离。
 
 5、Caddy 版本不小于 v2.6.0 才支持 H2C 反向代理的 UDS 转发。
 

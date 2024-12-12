@@ -220,10 +220,11 @@
 //4、本示例使用不同域名来实现介绍中各应用，其办法如下：
 //1）、VLESS+Vision+REALITY 客户端仅使用 h3.xx.yy 域名连接。
 //2）、VLESS+XHTTP+TLS 客户端可随意使用 h3.xx.yy 域名、z2.xx.yy 域名连接。
-//3）、Shadowsocks+gRPC+TLS 客户端可随意使用 z1.xx.yy 域名、z2.xx.yy 域名连接。
-//4）、VMess+HTTPUpgrade+TLS 客户端可随意使用 z1.xx.yy 域名、z2.xx.yy 域名连接。
-//5）、NaiveProxy 客户端使用 HTTPS 协议时用 z1.xx.yy 域名连接，使用 QUIC 协议时用 h3.xx.yy 域名连接。
-//6）、Trojan-Go 客户端使用 Trojan 应用时用 z1.xx.yy 域名连接，使用 WebSocket 应用时用 z2.xx.yy 域名连接。
+//3）、VLESS+XHTTP+REALITY 客户端仅使用 h3.xx.yy 域名连接。
+//4）、Shadowsocks+gRPC+TLS 客户端可随意使用 z1.xx.yy 域名、z2.xx.yy 域名连接。
+//5）、VMess+HTTPUpgrade+TLS 客户端可随意使用 z1.xx.yy 域名、z2.xx.yy 域名连接。
+//6）、NaiveProxy 客户端使用 HTTPS 协议时用 z1.xx.yy 域名连接，使用 QUIC 协议时用 h3.xx.yy 域名连接。
+//7）、Trojan-Go 客户端使用 Trojan 应用时用 z1.xx.yy 域名连接，使用 WebSocket 应用时用 z2.xx.yy 域名连接。
 //5、NaiveProxy 字符串生成及还原办法如下：
 //1）、若 user 与 pass 分别为 NaiveProxy 用户与密码，其字符串使用后面 base64 编码命令生成：echo -n "user:pass" | base64 | tr -d '\n' | base64
 //2）、若 ZFhObGNqcHdZWE56 为 NaiveProxy 字符串，其用户与密码使用后面 base64 编码命令还原：echo -e "$(echo "ZFhObGNqcHdZWE56" | base64 --decode | base64 --decode)"
