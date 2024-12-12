@@ -19,8 +19,8 @@
         "decryption": "none",
         "fallbacks": [
           {
-            "dest": 2020, //回落给 Trojan+XHTTP 监听端口
-            "xver": 1 //开启 PROXY protocol 发送，发送真实来源IP和端口给如下 Trojan+XHTTP 应用。 1 或 2 表示 PROXY protocol 版本。
+            "dest": 2023, //回落给 VLESS+XHTTP 监听端口
+            "xver": 1 //开启 PROXY protocol 发送，发送真实来源IP和端口给如下 VLESS+XHTTP 应用。 1 或 2 表示 PROXY protocol 版本。
           }
         ]
       },
@@ -50,15 +50,16 @@
     },
     {
       "listen": "127.0.0.1", //只监听本机，避免本机外的机器探测到下面端口。
-      "port": 2020, //Trojan+XHTTP 监听端口
-      "protocol": "trojan",
+      "port": 2023, //VLESS+XHTTP 监听端口
+      "protocol": "vless",
       "settings": {
         "clients": [
           {
-            "password":"diy2020", //修改为自己密码
-            "email": "2020@gmail.com"
+            "id": "af7d5cf8-442d-4bb3-8a76-eb367178781d", //修改为自己的 UUID
+            "email": "2023@gmail.com"
           }
-        ]
+        ],
+        "decryption": "none"
       },
       "streamSettings": {
         "network": "xhttp",

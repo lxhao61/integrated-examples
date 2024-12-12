@@ -19,8 +19,8 @@
         "decryption": "none",
         "fallbacks": [
           {
-            "dest": "@uds2020.sock", //回落给 Trojan+XHTTP 监听进程
-            "xver": 1 //开启 PROXY protocol 发送，发送真实来源IP和端口给如下 Trojan+XHTTP 应用。 1 或 2 表示 PROXY protocol 版本。
+            "dest": "@uds2023.sock", //回落给 VLESS+XHTTP 监听进程
+            "xver": 1 //开启 PROXY protocol 发送，发送真实来源IP和端口给如下 VLESS+XHTTP 应用。 1 或 2 表示 PROXY protocol 版本。
           }
         ]
       },
@@ -49,15 +49,16 @@
       }
     },
     {
-      "listen": "@uds2020.sock", //Trojan+XHTTP 监听进程
-      "protocol": "trojan",
+      "listen": "@uds2023.sock", //VLESS+XHTTP 监听进程
+      "protocol": "vless",
       "settings": {
         "clients": [
           {
-            "password":"diy2020", //修改为自己密码
-            "email": "2020@gmail.com"
+            "id": "af7d5cf8-442d-4bb3-8a76-eb367178781d", //修改为自己的 UUID
+            "email": "2023@gmail.com"
           }
-        ]
+        ],
+        "decryption": "none"
       },
       "streamSettings": {
         "network": "xhttp",
