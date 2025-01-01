@@ -1,6 +1,6 @@
 介绍：
 
-Xray 前置（监听 443 端口），利用 VLESS+Vision+TLS 回落/分流 HTTPUpgrade 特点及 Nginx 为 XHTTP、gRPC 提供反向代理，实现除 Xray 的 mKCP 应用外各应用共用 443 端口，其应用如下：
+Xray 前置（监听 443 端口），利用 VLESS+Vision+TLS 回落/分流特点先分流出 HTTPUpgrade 应用，其余的回落给 Nginx 处理，Nginx 为 XHTTP、gRPC 提供反向代理，实现除 Xray 的 mKCP 应用外各应用共用 443 端口，其应用如下：
 
 1、E=VLESS+Vision+TLS（回落/分流配置，TLS 由自己启用及处理。）
 
@@ -16,7 +16,7 @@ Xray 前置（监听 443 端口），利用 VLESS+Vision+TLS 回落/分流 HTTPU
 
 1、Xray 的监听地址不支持 Shadowsocks 协议使用 UDS 监听。
 
-2、Xray 版本不小于 v24.10.31（SplitHTTP 升级为 XHTTP），其 XHTTP 传输方式才实现了真正的上下行分离（见客户端配置示例），给 GFW 针对单个连接的分析带来了麻烦。
+2、Xray 版本不小于 v24.11.30 才支持完全体 XHTTP，其 XHTTP 传输方式实现了真正的上下行分离（见客户端配置示例），给 GFW 针对单个连接的分析带来了麻烦。
 
 3、Nginx 支持 H2C server 需要 Nginx 包含 http_v2_module 模块构建。
 
