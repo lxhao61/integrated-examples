@@ -1,6 +1,6 @@
 介绍：
 
-Xray 前置（监听 443 端口），利用 VLESS+Vision+TLS 回落/分流 HTTPUpgrade 特点及 Caddy 为 XHTTP、gRPC 提供反向代理，实现除 Xray 的 mKCP 应用外各应用共用 443 端口，其应用如下：
+Xray 前置（监听 443 端口），利用 VLESS+Vision+TLS 回落/分流特点先分流出 HTTPUpgrade 应用，其余的回落给 Caddy 处理，Caddy 为 XHTTP、gRPC 提供反向代理，实现除 Xray 的 mKCP 应用外各应用共用 443 端口，其应用如下：
 
 1、E=VLESS+Vision+TLS（回落/分流配置，TLS 由自己启用及处理。）
 
@@ -16,11 +16,11 @@ Xray 前置（监听 443 端口），利用 VLESS+Vision+TLS 回落/分流 HTTPU
 
 1、Xray 的监听地址不支持 Shadowsocks 协议使用 UDS 监听。
 
-2、Xray 版本不小于 v24.10.31（SplitHTTP 升级为 XHTTP），其 XHTTP 传输方式才实现了真正的上下行分离（见客户端配置示例），给 GFW 针对单个连接的分析带来了麻烦。
+2、Xray 版本不小于 v24.11.30 才支持完全体 XHTTP，其 XHTTP 传输方式实现了真正的上下行分离（见客户端配置示例），给 GFW 针对单个连接的分析带来了麻烦。
 
 3、Caddy 支持 H2C server 与 HTTP/1.1 server 共用一个端口或一个进程。
 
-4、Caddy 版本不小于 v2.6.0 才支持 H2C/gRPC 代理的 UDS 转发。
+4、Caddy 版本不小于 v2.6.0 才支持 H2C 反向代理的 UDS 转发。
 
 5、Caddy 版本不小于 v2.7.0 才默认支持 PROXY protocol 接收。若 Caddy 版本小于 v2.7.0 需加 caddy2-proxyprotocol 插件定制编译才支持 PROXY protocol 接收。
 
