@@ -37,7 +37,7 @@
   "apps": {
     "layer4": {
       "servers": {
-        "sni": {
+        "tcpsni": {
           "listen": [":443"],
           "routes": [{
             "match": [{
@@ -149,7 +149,7 @@
               "handler": "reverse_proxy",
               "transport": {
                 "protocol": "http",
-                "versions": ["1.1","h2c"]
+                "versions": ["h2c","2"]
               },
               "upstreams": [{
                 "dial": "unix/@uds2023.sock" //转发给本机 VLESS+XHTTP 监听进程
@@ -208,8 +208,8 @@
               "handler": "headers",
               "response": {
                 "set": {
-                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"], //启用 HSTS
-                  "Alt-Svc": ["h3=\":443\"; ma=2592000"] //通告 HTTP/3 server 的可用性。（对外使用代理的 UDP 443 端口才需要配置）
+                  "Alt-Svc": ["h3=\":443\"; ma=2592000"], //通告 HTTP/3 server 的可用性。（对外使用代理的 UDP 443 端口才需要配置）
+                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用 HSTS
                 }
               }
             },

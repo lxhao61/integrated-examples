@@ -22,15 +22,15 @@
 
 2、Xray 的监听地址不支持 Shadowsocks 协议使用 UDS 监听。
 
-3、Xray 版本不小于 v24.10.31（SplitHTTP 升级为 XHTTP），其 XHTTP 传输方式才实现了真正的上下行分离（见客户端配置示例），给 GFW 针对单个连接的分析带来了麻烦。
+3、Xray 版本不小于 v24.11.30 才支持完全体 XHTTP，其 XHTTP 传输方式实现了真正的上下行分离（见客户端配置示例），给 GFW 针对单个连接的分析带来了麻烦。
 
 4、Caddy 支持 H2C server 与 HTTP/1.1 server 共用一个端口或一个进程。
 
-5、Caddy 版本不小于 v2.6.0 才支持 H2C/gRPC 反向代理的 UDS 转发。
+5、Caddy 版本不小于 v2.6.0 才支持 H2C 反向代理的 UDS 转发。
 
 6、Caddy 版本不小于 v2.7.0 才默认支持 PROXY protocol 接收。若 Caddy 版本小于 v2.7.0 需加 caddy2-proxyprotocol 插件定制编译才支持 PROXY protocol 接收。
 
-7、使用本人 Releases 中编译好的 Caddy 文件，可同时支持 SNI 分流及定向转发 UDP、NaiveProxy 及 PROXY protocol 等应用。
+7、使用本人 Releases 中编译好的 Caddy 文件，可同时支持 SNI 分流及定向 UDP 转发、NaiveProxy 及 PROXY protocol 等应用。
 
 8、本示例所需 TLS 证书由 Caddy（内置 ACME 客户端） 提供，实现 TLS 证书自动申请及更新。
 
