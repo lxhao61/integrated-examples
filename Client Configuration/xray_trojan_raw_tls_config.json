@@ -38,7 +38,7 @@
       "settings": {
         "servers": [
           {
-            "address": "xx.yy", //修改为使用本应用的域名
+            "address": "2.2.2.2", //修改为使用本应用的域名或自己服务端的 IP
             "port": 443,
             "password": "diy6443" //修改为服务端配置的密码
           }
@@ -48,6 +48,7 @@
         "network": "raw",
         "security": "tls",
         "tlsSettings": {
+          "serverName": "xx.yy", //修改为使用本应用的域名。（address 使用 IP 后必须配置，否则可删除。）
           "alpn": ["h2","http/1.1"],
           "fingerprint": "chrome" //模拟 TLS 指纹，可任一 chrome、firefox、safari、ios、edge、qq、random、randomized 选项配置。
         }

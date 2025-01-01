@@ -38,7 +38,7 @@
       "settings": {
         "vnext": [
           {
-            "address": "xx.yy", //修改为使用本应用的域名
+            "address": "2.2.2.2", //修改为使用本应用的域名或自己服务端的 IP
             "port": 443,
             "users": [
               {
@@ -51,13 +51,14 @@
       },
       "streamSettings": {
         "network": "http",
-        "httpSettings": {
-          "host": ["xx.yy"], //仅服务端有此项才配置，否则删除。域名与上一致。
-          "path": "/SeuW56Es" //修改为服务端配置的路径
-        },
         "security": "tls",
         "tlsSettings": {
+          "serverName": "xx.yy", //修改为使用本应用的域名。（address 使用 IP 后必须配置，否则可删除。）
           "alpn": ["h2"]
+        },
+        "httpSettings": {
+          "host": ["xx.yy"], //仅服务端有此项才配置，否则删除。
+          "path": "/SeuW56Es" //修改为服务端配置的路径
         }
       }
     },
