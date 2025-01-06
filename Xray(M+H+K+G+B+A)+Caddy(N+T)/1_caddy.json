@@ -43,9 +43,9 @@
               }]
             }]
           }]
-        }
+        } //定向 UDP 转发配置
       }
-    }, //定向 UDP 转发配置
+    },
     "http": {
       "servers": {
         "srvh1": {
@@ -91,8 +91,8 @@
           },
           {
             "match": [{
-              "path": ["/SALdGZ9k/*"], //与 Shadowsocks+gRPC 应用中 serviceName 对应
-              "protocol": "grpc"
+              "protocol": "grpc",
+              "path": ["/SALdGZ9k/*"] //与 Shadowsocks+gRPC 应用中 serviceName 对应
             }],
             "handle": [{
               "handler": "reverse_proxy",
@@ -147,8 +147,8 @@
               "handler": "headers",
               "response": {
                 "set": {
-                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"], //启用 HSTS
-                  "Alt-Svc": ["h3=\":443\"; ma=2592000"] //通告 HTTP/3 server 的可用性。（对外使用代理的 UDP 443 端口才需要配置）
+                  "Alt-Svc": ["h3=\":443\"; ma=2592000"], //通告 HTTP/3 server 的可用性。（对外使用代理的 UDP 443 端口才需要配置）
+                  "Strict-Transport-Security": ["max-age=31536000; includeSubDomains; preload"] //启用 HSTS
                 }
               }
             },
@@ -185,11 +185,11 @@
       }
     },
     "trojan": {
-      "upstream": {
-        "upstream": "caddy"
-      },
       "proxy": {
         "proxy": "no_proxy"
+      },
+      "upstream": {
+        "upstream": "caddy"
       },
       "users": ["diy6443"] //修改为自己的密码。密码可多组，用逗号隔开。
     },
