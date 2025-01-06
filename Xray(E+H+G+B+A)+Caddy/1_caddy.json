@@ -64,7 +64,7 @@
               "handler": "reverse_proxy",
               "transport": {
                 "protocol": "http",
-                "versions": ["1.1","h2c"]
+                "versions": ["h2c","2"]
               },
               "upstreams": [{
                 "dial": "127.0.0.1:2023" //转发给本机 VLESS+XHTTP 监听端口
@@ -74,8 +74,8 @@
           },
           {
             "match": [{
-              "path": ["/SALdGZ9k/*"], //与 Shadowsocks+gRPC 应用中 serviceName 对应
-              "protocol": "grpc"
+              "protocol": "grpc",
+              "path": ["/SALdGZ9k/*"] //与 Shadowsocks+gRPC 应用中 serviceName 对应
             }],
             "handle": [{
               "handler": "reverse_proxy",
