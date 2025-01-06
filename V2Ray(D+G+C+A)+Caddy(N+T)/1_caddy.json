@@ -55,8 +55,8 @@
           },
           {
             "match": [{
-              "path": ["/SALdGZ9k/*"], //与 Shadowsocks+gRPC 应用中 serviceName 对应
-              "protocol": "grpc"
+              "protocol": "grpc",
+              "path": ["/SALdGZ9k/*"] //与 Shadowsocks+gRPC 应用中 serviceName 对应
             }],
             "handle": [{
               "handler": "reverse_proxy",
@@ -149,11 +149,11 @@
       }
     },
     "trojan": {
-      "upstream": {
-        "upstream": "caddy"
-      },
       "proxy": {
         "proxy": "no_proxy"
+      },
+      "upstream": {
+        "upstream": "caddy"
       },
       "users": ["diy6443"] //修改为自己的密码。密码可多组，用逗号隔开。
     },
