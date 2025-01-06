@@ -1,19 +1,40 @@
-#1、Hysteria2 的 HTTP/3 配置示例
+#1、Hysteria2 的 HTTP/3 通用配置示例
 listen: :443 #HTTP/3 监听端口
 tls:
-  cert: /home/tls/xx.yy/xx.yy.crt #换成自己的证书，绝对路径。
-  key: /home/tls/xx.yy/xx.yy.key #换成自己的密钥，绝对路径。
+  cert: /home/tls/h3.xx.yy/h3.xx.yy.crt #换成自己的证书，绝对路径。
+  key: /home/tls/h3.xx.yy/h3.xx.yy.key #换成自己的密钥，绝对路径。
 auth:
   type: password #单用户密码验证模式。若使用多用户密码验证模式，请参考官方示例调整。
   password: 123a65h7890 #单用户验证密码，修改为自己的。
 masquerade:
-  type: file #配置静态文件服务器。若配置反向代理，请参考官方示例调整。
-  file:
-    dir: /var/www/html #修改为自己存放的 WEB 文件路径
-#备注：本示例仅共用 TCP/UDP 443 端口推荐，即 Hysteria2 使用 UDP 443 端口，其它应用使用 TCP 443 端口。
+  type: proxy #配置反向代理
+  proxy:
+    url: https://h3.xx.yy #修改为自己的域名
+    rewriteHost: true
+#备注：
+#1、本示例仅共用 TCP/UDP 443 端口推荐使用，即 Hysteria2 使用 UDP 443 端口，其它应用使用 TCP 443 端口（含共用 TCP 443 端口）。
+#2、本示例与本仓库其它示例共用 TCP/UDP 443 端口需其它示例有定向 UDP 转发配置的必须删除此配置，无定向 UDP 转发配置的必须删除 HTTP/3 启用配置。
 
 
-#2、Hysteria2 的混淆配置示例
+#2、Hysteria2 的 HTTP/3 专用配置示例
+listen: 127.0.0.1:2443 #HTTP/3 本地监听端口
+tls:
+  cert: "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/hy.xx.yy/hy.xx.yy.crt #换成自己的证书，绝对路径。
+  key: "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/hy.xx.yy/hy.xx.yy.key #换成自己的密钥，绝对路径。
+auth:
+  type: password #单用户密码验证模式。若使用多用户密码验证模式，请参考官方示例调整。
+  password: 123a65h7890 #单用户验证密码，修改为自己的。
+masquerade:
+  type: proxy #配置反向代理
+  proxy:
+    url: https://hy.xx.yy #修改为自己的域名
+    rewriteHost: true
+#备注：
+#1、本示例目前仅限与本仓库其它 Caddy 相关示例共用 UDP 443 端口时使用。
+#2、使用本示例时需先将 Caddy 定向 UDP 转发配置升级成 Caddy SNI 分流共用 UDP 443 端口配置，具体修改见 quic-sni_caddy.json 配置。
+
+
+#3、Hysteria2 的混淆配置示例
 listen: :2083 #UDP 监听端口
 tls:
   cert: /home/tls/xx.yy/xx.yy.crt #换成自己的证书，绝对路径。
@@ -26,5 +47,5 @@ auth:
   type: password #单用户密码验证模式。若使用多用户密码验证模式，请参考官方示例调整。
   password: 123a65h7890 #单用户验证密码，修改为自己的。
 #备注：
-#1、如果 UDP 443 端口已被 NaiveProxy 的 HTTP/3 代理应用占用，推荐使用本示例来解决。
-#2、如果你的网络针对性屏蔽了 QUIC 或 HTTP/3 流量（但允许其他 UDP 流量），可使用本示例来解决。
+#1、如果你的网络针对性屏蔽了 HTTP/3 流量（但允许其他 UDP 流量），推荐使用本示例来解决。
+#2、如果 UDP 443 端口已被其它应用占用，可使用本示例来解决。

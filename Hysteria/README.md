@@ -6,7 +6,7 @@ Hysteria 是一个功能丰富的，专为恶劣网络环境（如卫星网络�
 
 1、Hysteria 版本不小于 v2.5.0 其内置 ACME 客户端才支持以 DNS-01 验证方式申请与更新 TLS 证书（即支持申请通配符 TLS 证书）。另外若以 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新 TLS 证书请分别确保 80 或 443 端口无其它应用占用。
 
-2、acme_config.yaml 表示使用内置 ACME 客户端自动申请与更新 TLS 证书，outside_config.yaml 表示使用外部 TLS 证书；根据实际情况选一示例参考即可。
+2、acme_config.yaml 表示使用内置 ACME 客户端自动申请与更新 TLS 证书，outside_config.yaml 表示使用外部 TLS 证书。
 
 3、Hysteria 使用外部 TLS 证书时不支持‘证书热更新’功能，即 Hysteria 不会自动识别 TLS 证书已更新并重载，可使用如下方法之一解决。
 

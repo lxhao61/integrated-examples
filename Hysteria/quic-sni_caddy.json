@@ -1,0 +1,89 @@
+//Caddy SNI 分流共用 UDP 443 端口配置
+//Xray(M+H+K+G+B+A)+Caddy(N+T) 的 Caddy 原配置如下：
+//........<省略>........
+        "udppy": {
+          "listen": ["udp/:443"],
+          "routes": [{
+            "handle": [{
+              "handler": "proxy",
+              "upstreams": [{
+                "dial": ["udp/127.0.0.1:7443"] //转给 HTTP/3 server 本地监听端口
+              }]
+            }]
+          }]
+        } //定向 UDP 转发配置
+//........<省略>........
+            "match": {
+              "sni": ["h3.xx.yy","z2.xx.yy"] //限定域名连接（包括禁止以 IP 方式访问网站），修改为自己的域名。
+            },
+//........<省略>........
+      "certificates": {
+        "automate": ["h3.xx.yy","z1.xx.yy","z2.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。
+      },
+      "automation": {
+        "policies": [{
+          "issuers": [{
+            "module": "acme",
+            "email": "your@email.com" //修改为自己的电子邮箱，与下一致。（选配）
+          },
+          {
+            "module": "acme",
+            "ca": "https://acme.zerossl.com/v2/DV90",
+            "email": "your@email.com" //修改为自己的电子邮箱，与上一致。（选配）
+          }]
+        }]
+      }
+//........<省略>........
+
+//以上配置修改为如下：
+//........<省略>........
+  "storage": {
+    "module": "file_system",
+    "root": "/home/tls" //存放 TLS 证书的基本路径
+  }, //增加此配置以方便 Hysteria 使用 Caddy 提供的 TLS 证书。（推荐加在 "apps" 上）
+//........<省略>........
+        "udpsni": {
+          "listen": ["udp/:443"],
+          "routes": [{
+            "match": [{
+              "quic": {
+                "sni": ["hy.xx.yy"] //对应 Hysteria 的域名，修改为自己的。
+              }
+            }],
+            "handle": [{
+              "handler": "proxy",
+              "upstreams": [{
+                "dial": ["udp/127.0.0.1:2443"] //转给 Hysteria 本地监听端口
+              }]
+            }]
+          },
+          {
+            "handle": [{
+              "handler": "proxy",
+              "upstreams": [{
+                "dial": ["udp/127.0.0.1:7443"] //转给 HTTP/3 server 本地监听端口
+              }]
+            }]
+          }]
+        } //基于 QUIC SNI 的 Caddy SNI 分流配置
+//........<省略>........
+            "match": {
+              "sni": ["h3.xx.yy","z2.xx.yy","hy.xx.yy"] //增加 Hysteria 域名以便启用，让其支持 HTTPS 及 HTTP/2。
+            },
+//........<省略>........
+      "certificates": {
+        "automate": ["h3.xx.yy","z1.xx.yy","z2.xx.yy","hy.xx.yy"] //增加 Hysteria 域名以便申请 TLS 证书。（仅申请普通 TLS 证书才需增加）
+      },
+      "automation": {
+        "policies": [{
+          "issuers": [{
+            "module": "acme",
+            "ca": "https://acme.zerossl.com/v2/DV90", //此项配置表示从 ZeroSSL 申请免费 TLS 证书，删除此项配置（默认）表示从 Let's Encrypt 申请免费 TLS 证书。
+            "email": "your@email.com" //修改为自己的电子邮箱。（选配）
+          }]
+        }]
+      }
+//........<省略>........
+//备注：
+//1、Xray(E+F+H+G+B+A)+Caddy(N) 与 Xray(M+F+H+K+G+B+A)+Caddy(N) 的 Caddy 配置升级与上修改类似，只是不必增加存放 TLS 证书的基本路径配置、不需修改己固定从 Let's Encrypt 或 ZeroSSL 之一申请证书配置。
+//2、若申请普通 TLS 证书的域名超过五个，推荐所属域名申请通配符 TLS 证书。
