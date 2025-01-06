@@ -1,0 +1,48 @@
+//限定从 Let's Encrypt 与 ZeroSSL 申请免费 TLS 证书配置
+//若原配置如下：
+//........<省略>........
+    "tls": {
+      "certificates": {
+        "automate": ["zv.xx.yy","zt.xx.yy","zn.xx.yy","h3.xx.yy","zh.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。
+      },
+      "automation": {
+        "policies": [{
+          "issuers": [{
+            "module": "acme",
+            "ca": "https://acme.zerossl.com/v2/DV90", //此项配置表示从 ZeroSSL 申请免费 TLS 证书，删除此项配置（默认）表示从 Let's Encrypt 申请免费 TLS 证书。
+            "email": "your@email.com" //修改为自己的电子邮箱。（选配）
+          }]
+        }]
+      }
+    }
+//........<省略>........
+
+//以上配置修改为如下：
+//........<省略>........
+    "tls": {
+      "certificates": {
+        "automate": ["zv.xx.yy","zt.xx.yy","zn.xx.yy","h3.xx.yy","zh.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。
+      },
+      "automation": {
+        "policies": [{
+          "subjects": ["h3.xx.yy","zh.xx.yy"], //限定域名从 Let's Encrypt 申请免费 TLS 证书
+          "issuers": [{
+            "module": "acme",
+            "email": "your@email.com" //修改为自己的电子邮箱。（选配）
+          }]
+        },
+        {
+          "subjects": ["zv.xx.yy","zt.xx.yy","zn.xx.yy"], //限定域名从 ZeroSSL 申请免费 TLS 证书
+          "issuers": [{
+            "module": "acme",
+            "ca": "https://acme.zerossl.com/v2/DV90",
+            "email": "your@email.com" //修改为自己的电子邮箱。（选配）
+          }]
+        }]
+      }
+    }
+//........<省略>........
+//备注：
+//1、本配置为限定从 Let's Encrypt 与 ZeroSSL 申请免费普通 TLS 证书的配置示例，与域名关联的其它配置根据实际调整。
+//2、从 Let's Encrypt 与 ZeroSSL 各自申请免费 TLS 证书的域名不要超过五个(两者不能超过十个)，否则影响 TLS 证书的更新。
+//3、若要申请通配符 TLS 证书请参考 ‘Caddy(Other Configuration) （Caddy 的特殊应用配置方法。）’ 中对应介绍及对应配置示例。
