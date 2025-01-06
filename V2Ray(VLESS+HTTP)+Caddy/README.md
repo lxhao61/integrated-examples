@@ -9,7 +9,7 @@
 
 注意：
 
-1、Caddy 版本不小于 v2.6.0 才支持 H2C/gRPC 反向代理的 UDS 转发。
+1、Caddy 版本不小于 v2.6.0 才支持 H2C 反向代理的 UDS 转发。
 
 2、本示例 Caddy 支持自动 HTTPS，即自动申请与更新 TLS 证书，自动 HTTP 重定向到 HTTPS。
 
