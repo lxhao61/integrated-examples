@@ -46,7 +46,7 @@
     "rules": [
       {
         "type": "field",
-        "inoundTag": [
+        "inboundTag": [
           "inddws" //与 inbounds 中标签对应
         ],
         "outboundTag": "outddws" //与 outbounds 中标签对应
