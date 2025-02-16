@@ -29,8 +29,8 @@
           "certificates": [
             {
               "ocspStapling": 3600,
-              "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy/xx.yy.crt", //换成自己的证书，绝对路径。
-              "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/xx.yy/xx.yy.key" //换成自己的密钥，绝对路径。
+              "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zt.xx.yy/zt.xx.yy.crt", //换成自己的证书，绝对路径。
+              "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zt.xx.yy/zt.xx.yy.key" //换成自己的密钥，绝对路径。
             }
           ],
           "rejectUnknownSni": true, //限定域名连接（包括禁止以 IP 方式访问网站）
