@@ -1,6 +1,6 @@
 {
   "admin": {
-    "disabled": true,
+    "disabled": true, //禁用 admin API。（选配）
     "config": {
       "persist": false
     }
@@ -46,18 +46,17 @@
               "handler": "reverse_proxy",
               "transport": {
                 "protocol": "http",
-                "versions": ["1.1","h2c"]
+                "versions": ["h2c","2"]
               },
               "upstreams": [{
                 "dial": "unix/@uds2023.sock" //转发给本机 VLESS+XHTTP 监听进程
-              }],
-              "flush_interval": -1
+              }]
             }]
           },
           {
             "match": [{
-              "path": ["/SALdGZ9k/*"], //与 Shadowsocks+gRPC 应用中 serviceName 对应
-              "protocol": "grpc"
+              "protocol": "grpc",
+              "path": ["/SALdGZ9k/*"] //与 Shadowsocks+gRPC 应用中 serviceName 对应
             }],
             "handle": [{
               "handler": "reverse_proxy",
@@ -123,14 +122,14 @@
           }],
           "tls_connection_policies": [{
             "match": {
-              "sni": ["z1.xx.yy"] //限定域名连接（包括禁止以 IP 方式访问网站），修改为自己的域名。
+              "sni": ["hy.xx.yy"] //限定域名连接（包括禁止以 IP 方式访问网站），修改为自己的域名。
             },
             "protocol_max": "tls1.2",
             "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"] //非 AES 算法的密码套件
           },
           {
             "match": {
-              "sni": ["h3.xx.yy","z2.xx.yy"] //限定域名连接（包括禁止以 IP 方式访问网站），修改为自己的域名。
+              "sni": ["h3.xx.yy","zh.xx.yy"] //限定域名连接（包括禁止以 IP 方式访问网站），修改为自己的域名。
             },
             "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"],
             "curves": ["x25519","secp521r1","secp384r1","secp256r1"],
@@ -149,17 +148,17 @@
       }
     },
     "trojan": {
-      "upstream": {
-        "upstream": "caddy"
-      },
       "proxy": {
         "proxy": "no_proxy"
+      },
+      "upstream": {
+        "upstream": "caddy"
       },
       "users": ["diy6443"] //修改为自己的密码。密码可多组，用逗号隔开。
     },
     "tls": {
       "certificates": {
-        "automate": ["z1.xx.yy","z2.xx.yy","h3.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。
+        "automate": ["hy.xx.yy","h3.xx.yy","zh.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。
       },
       "automation": {
         "policies": [{
@@ -180,13 +179,13 @@
 //备注：
 //1、申请免费 TLS 证书的域名不要超过五个，否则影响 TLS 证书的更新。
 //2、本配置仅支持申请普通 TLS 证书，若要申请通配符 TLS 证书请参考 ‘Caddy(Other Configuration) （Caddy 的特殊应用配置方法。）’ 中对应介绍及对应配置示例。
-//3、本示例使用非 AES 算法的密码套件配置（z1.xx.yy）、CDN 流量中转（z2.xx.yy）来避免被封。
+//3、本示例使用非 AES 算法的密码套件配置（hy.xx.yy）、CDN 流量中转（zh.xx.yy）来避免被封。
 //4、本示例使用不同域名来实现介绍中各应用，其办法如下：
-//1）、VLESS+XHTTP+TLS 客户端可随意使用 z2.xx.yy 域名、h3.xx.yy 域名连接。
-//2）、Shadowsocks+gRPC+TLS 客户端可随意使用 z1.xx.yy 域名、z2.xx.yy 域名连接。
-//3）、VMess+HTTPUpgrade+TLS 客户端可随意使用 z1.xx.yy 域名、z2.xx.yy 域名连接。
-//4）、NaiveProxy 客户端使用 HTTPS 协议时用 z1.xx.yy 域名连接，使用 QUIC 协议时用 h3.xx.yy 域名连接。
-//5）、Trojan-Go 客户端使用 Trojan 应用时用 z1.xx.yy 域名连接，使用 WebSocket 应用时用 z2.xx.yy 域名连接。
+//1）、VLESS+XHTTP+TLS 客户端可随意使用 h3.xx.yy 域名、zh.xx.yy 域名连接。
+//2）、Shadowsocks+gRPC+TLS 客户端可随意使用 hy.xx.yy 域名、zh.xx.yy 域名连接。
+//3）、VMess+HTTPUpgrade+TLS 客户端可随意使用 hy.xx.yy 域名、zh.xx.yy 域名连接。
+//4）、NaiveProxy 客户端使用 HTTPS 协议时用 hy.xx.yy 域名连接，使用 QUIC 协议时用 h3.xx.yy 域名连接。
+//5）、Trojan-Go 客户端使用 Trojan 应用时用 hy.xx.yy 域名连接，使用 WebSocket 应用时用 zh.xx.yy 域名连接。
 //5、NaiveProxy 字符串生成及还原办法如下：
 //1）、若 user 与 pass 分别为 NaiveProxy 用户与密码，其字符串使用后面 base64 编码命令生成：echo -n "user:pass" | base64 | tr -d '\n' | base64
 //2）、若 ZFhObGNqcHdZWE56 为 NaiveProxy 字符串，其用户与密码使用后面 base64 编码命令还原：echo -e "$(echo "ZFhObGNqcHdZWE56" | base64 --decode | base64 --decode)"
