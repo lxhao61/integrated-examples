@@ -4,7 +4,7 @@ server port '443'
 server method 'chacha20-poly1305' //修改为服务端配置的加密方式
 server password 'diy2003' //修改为服务端配置的密码或密钥
 server plugin 'xray-plugin' //启用 xray-plugin 插件。可修改为 v2ray-plugin 插件。
-server plugin_opts 'tls;host=xx.yy;path=/2ALdGZ9k;mux=4' //host 修改为使用本应用的域名，path 修改为服务端配置的路径。
+server plugin_opts 'tls;host=zh.xx.yy;path=/2ALdGZ9k;mux=4' //host 修改为使用本应用的域名，path 修改为服务端配置的路径。
 
 
 //客户端shadowsocks（SS）加 xray-plugin 或 v2ray-plugin 插件的 gRPC 应用，其配置如下：
@@ -13,4 +13,4 @@ server port '443'
 server method 'chacha20-poly1305' //修改为服务端配置的加密方式
 server password 'diy2011' //修改为服务端配置的密码或密钥
 server plugin 'xray-plugin' //启用 xray-plugin 插件。可修改为 v2ray-plugin 插件。
-server plugin_opts 'tls;mode=grpc;host=xx.yy;serviceName=SALdGZ9k' //host 修改为使用本应用的域名，serviceName 修改为服务端配置的名称。
+server plugin_opts 'tls;mode=grpc;host=hy.xx.yy;serviceName=SALdGZ9k' //host 修改为使用本应用的域名，serviceName 修改为服务端配置的名称。

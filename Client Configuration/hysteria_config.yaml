@@ -1,4 +1,4 @@
-server: xx.yy:443 #修改为使用本应用的域名及端口
+server: hy.xx.yy:443 #修改为使用本应用的域名及端口
 obfs: #若服务端没有配置混淆密码，此部分必须删除。
   type: salamander
   salamander:

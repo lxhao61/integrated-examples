@@ -1,0 +1,94 @@
+{
+  "log": {},
+  "inbounds": [
+    {
+      "port": "1080",
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      }
+    },
+    {
+      "port": "1081",
+      "protocol": "http",
+      "settings": {}
+    }
+  ],
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "type": "field",
+        "domain": ["geosite:cn"], //中国大陆主流网站的域名
+        "outboundTag": "direct" //与下 outbounds 中 tag 对应
+      },
+      {
+        "type": "field",
+        "ip": [
+          "geoip:cn", //中国大陆的 IP
+          "geoip:private" //私有地址 IP，如路由器等。
+        ],
+        "outboundTag": "direct" //与下 outbounds 中 tag 对应
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "3.3.3.3", //修改为使用本应用的 CDN 流量中转域名或自己服务端的 IP
+            "port": 443,
+            "users": [
+              {
+                "id": "af7d5cf8-442d-4bb3-8a76-eb367178781d", //修改为服务端配置的 UUID
+                "encryption": "none"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "zh.xx.yy", //修改为使用本应用的 CDN 流量中转域名。（对应 address 使用 IP 后必须配置，否则可删除。）
+          "alpn": ["h2"], //若 CDN 流量中转服务器支持 HTTP/3 传输其值可改为 h3
+          "fingerprint": "chrome" //模拟 TLS 指纹，可任一 chrome、firefox、safari、ios、edge、qq、random、randomized 选项配置。
+        },
+        "xhttpSettings": {
+          "mode": "auto", //上行所使用的模式，默认自动。可根据实际情况选用其它模式解决连通问题：若不通先选 stream-up，还不通再选 packet-up（兼容性最强）。
+          "path": "/VLSpdG9k", //修改为服务端配置的路径
+          "extra": {
+            "downloadSettings": {
+              "address": "2.2.2.2", //修改为使用本应用的直连域名或自己服务端的 IP
+              "port": 443,
+              "network": "xhttp",
+              "security": "reality",
+              "realitySettings": {
+                "serverName": "h3.xx.yy", //修改为服务端配置的域名
+                "publicKey": "DsQx461u0W36DcLxN0jCuIjt944GeVdtTfPReoUqTwI", //修改为服务端私钥的对应公钥
+                "shortId": "", //修改为服务端 shortIds 配置之一
+                "spiderX": "", //选填，爬虫初始路径与参数，建议每个客户端不同。
+                "fingerprint": "chrome" //模拟 TLS 指纹，可任一 chrome、firefox、safari、ios、edge、qq、random、randomized 选项配置。
+              },
+              "xhttpSettings": {
+                "path": "/VLSpdG9k" //必须与上路径一致
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "tag": "direct",
+      "protocol": "freedom",
+      "settings": {}
+    }
+  ]
+}
+//备注：
+//1、本示例为上行对应 VLESS+XHTTP+TLS（CDN）、下行对应 VLESS+XHTTP+REALITY 共用 VLESS+XHTTP 配置的上下分离应用，上下行对应的应用（含域名及 IP）可根据实际情况对调。
+//2、若服务端支持双栈（IPv4 与 IPv6），可直接使用双栈 IP 来实现上下行分离应用。
+//3、非必要上下行分离应用不要使用同一 IP（含上下行使用域名为同一 IP），使用同一 IP 仅限上下行不同时使用 HTTP/2 传输（TCP）。
