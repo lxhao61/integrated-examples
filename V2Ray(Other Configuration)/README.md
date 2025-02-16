@@ -36,16 +36,16 @@
 
 2、采用 traffic.sh 脚本进行流量统计简单好用，但不支持重启及配置修改后保持之前记录，即重启及配置修改后记录归零。
 
-六、V2Ray/Xray SNI 分流的配置方法
+六、V2Ray/Xray 的 SNI 分流共用 TCP 443 端口配置方法
 
-此方法也可以解决 V2Ray 或 Xray 应用与网站应用（原网站不想做回落网站，或 Nginx、Caddy 等有多个网站应用。）共用 443 端口问题。
+此方法也可解决 V2Ray 或 Xray 应用与网站应用（原网站不想做回落网站，或 Nginx、Caddy 等有多个网站应用。）共用 TCP 443 端口问题。
 
 注意：
 
-1、V2Ray/Xray SNI 分流不支持 PROXY protocol 发送。
+1、V2Ray/Xray 的 SNI 分流共用 TCP 443 端口配置不支持 PROXY protocol 发送。
 
-2、1_sni_config.json 采用 Local Loopback 连接，实现 V2Ray/Xray SNI 的端口分流。
+2、1_sni_config.json 采用 Local Loopback 连接，实现 SNI 分流共用 TCP 443 端口配置的端口转发。
 
-3、2_sni_config.json 采用 UDS 连接，实现 V2Ray/Xray SNI 的进程分流。
+3、2_sni_config.json 采用 UDS 连接，实现 SNI 分流共用 TCP 443 端口配置的进程转发。
 
-4、V2Ray/Xray SNI 分流已被其它 SNI 分流优势替代，其配置示例仅备份及参考等。
+4、V2Ray/Xray 的 SNI 分流共用 TCP 443 端口配置已被其它 SNI 分流共用 TCP 443 端口配置优势替代，其配置示例仅备份及参考等。

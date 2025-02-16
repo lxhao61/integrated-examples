@@ -1,6 +1,6 @@
 //如下配置插入 inbounds 首位（全局参数）
     {
-      "port": 443, //SNI 分流应用的监听端口
+      "port": 443,
       "protocol": "dokodemo-door",
       "settings": {
         "address": "0.0.0.0",
