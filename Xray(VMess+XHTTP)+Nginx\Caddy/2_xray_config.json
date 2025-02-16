@@ -6,8 +6,8 @@
   },
   "inbounds": [
     {
-      "listen": "@uds2019.sock", //VMess+XHTTP 监听进程。（对接 Caddy 配置，否则必须删除。）
-      "listen": "/dev/shm/uds2019.sock,0666", //VMess+XHTTP 监听进程及访问权限。（对接 Nginx 配置，否则必须删除。）
+      "listen": "@uds2017.sock", //VMess+XHTTP 监听进程。（对接 Caddy 配置，否则必须删除。）
+      "listen": "/dev/shm/uds2017.sock,0666", //VMess+XHTTP 监听进程及访问权限。（对接 Nginx 配置，否则必须删除。）
       "protocol": "vmess",
       "settings": {
         "clients": [
