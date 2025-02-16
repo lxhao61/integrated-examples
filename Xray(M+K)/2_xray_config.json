@@ -19,8 +19,8 @@
         "decryption": "none",
         "fallbacks": [
           {
-            "dest": "@uds2020.sock", //回落给 Trojan+XHTTP 监听进程
-            "xver": 1 //开启 PROXY protocol 发送，发送真实来源IP和端口给如下 Trojan+XHTTP 应用。 1 或 2 表示 PROXY protocol 版本。
+            "dest": "@uds2023.sock", //回落给 VLESS+XHTTP 监听进程
+            "xver": 1 //开启 PROXY protocol 发送，发送真实来源IP和端口给如下 VLESS+XHTTP 应用。 1 或 2 表示 PROXY protocol 版本。
           }
         ]
       },
@@ -49,18 +49,22 @@
       }
     },
     {
-      "listen": "@uds2020.sock", //Trojan+XHTTP 监听进程
-      "protocol": "trojan",
+      "listen": "@uds2023.sock", //VLESS+XHTTP 监听进程
+      "protocol": "vless",
       "settings": {
         "clients": [
           {
-            "password":"diy2020", //修改为自己密码
-            "email": "2020@gmail.com"
+            "id": "af7d5cf8-442d-4bb3-8a76-eb367178781d", //修改为自己的 UUID
+            "email": "2023@gmail.com"
           }
-        ]
+        ],
+        "decryption": "none"
       },
       "streamSettings": {
         "network": "xhttp",
+        "xhttpSettings": {
+          "path": "/VLSpdG9k" //修改为自己的路径
+        }, //若服务端支持双栈（IPv4 与 IPv6） 可配置实现 XHTTP 应用上下行分离，否则可删除此部分配置。（选配）
         "sockopt": {
           "acceptProxyProtocol": true //开启 PROXY protocol 接收，接收 VLESS+Vision+REALITY 回落前真实来源 IP 和端口。
         }
