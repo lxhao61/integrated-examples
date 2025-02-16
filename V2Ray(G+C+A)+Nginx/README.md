@@ -1,6 +1,6 @@
 介绍：
 
-利用 Nginx 支持 gRPC、WebSocket 反向代理，实现除 V2Ray 的 mKCP 应用外各应用共用 443 端口，其应用如下：
+利用 Nginx 支持 gRPC、WebSocket 反向代理，实现除 V2Ray 的 mKCP 应用外各应用共用 TCP 443 端口，其应用如下：
 
 1、G=Shadowsocks+gRPC+TLS（反代配置，TLS 由 Nginx 启用及处理。）
 
