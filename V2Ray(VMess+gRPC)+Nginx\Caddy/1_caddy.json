@@ -1,6 +1,6 @@
 {
   "admin": {
-    "disabled": true,
+    "disabled": true, //禁用 admin API。（选配）
     "config": {
       "persist": false
     }
@@ -37,8 +37,8 @@
           "listen": [":443"],
           "routes": [{
             "match": [{
-              "path": ["/VALdGZ9k/*"], //与 VMess+gRPC 应用中 serviceName 对应
-              "protocol": "grpc"
+              "protocol": "grpc",
+              "path": ["/VALdGZ9k/*"] //与 VMess+gRPC 应用中 serviceName 对应
             }],
             "handle": [{
               "handler": "reverse_proxy",
@@ -74,14 +74,14 @@
           }],
           "tls_connection_policies": [{
             "match": {
-              "sni": ["z1.xx.yy"] //限定域名连接（包括禁止以 IP 方式访问网站），修改为自己的域名。
+              "sni": ["hy.xx.yy"] //限定域名连接（包括禁止以 IP 方式访问网站），修改为自己的域名。
             },
             "protocol_max": "tls1.2",
             "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"] //非 AES 算法的密码套件
           },
           {
             "match": {
-              "sni": ["z2.xx.yy"] //限定域名连接（包括禁止以 IP 方式访问网站），修改为自己的域名。
+              "sni": ["zh.xx.yy"] //限定域名连接（包括禁止以 IP 方式访问网站），修改为自己的域名。
             },
             "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"],
             "curves": ["x25519","secp521r1","secp384r1","secp256r1"]
@@ -100,7 +100,7 @@
     },
     "tls": {
       "certificates": {
-        "automate": ["z1.xx.yy","z2.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。
+        "automate": ["hy.xx.yy","zh.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。
       },
       "automation": {
         "policies": [{
@@ -121,4 +121,4 @@
 //备注：
 //1、申请免费 TLS 证书的域名不要超过五个，否则影响 TLS 证书的更新。
 //2、本配置仅支持申请普通 TLS 证书，若要申请通配符 TLS 证书请参考 ‘Caddy(Other Configuration) （Caddy 的特殊应用配置方法。）’ 中对应介绍及对应配置示例。
-//3、本示例使用非 AES 算法的密码套件配置（z1.xx.yy）、CDN 流量中转（z2.xx.yy） 来避免被封。
+//3、本示例使用非 AES 算法的密码套件配置（hy.xx.yy）、CDN 流量中转（zh.xx.yy） 来避免被封。
