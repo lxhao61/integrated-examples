@@ -1,6 +1,6 @@
 {
 	order reverse_proxy before route
-	admin off
+	admin off #禁用 admin API。（选配）
 	persist_config off
 	log {
 		output file /var/log/caddy/error.log #错误日志的文件地址
@@ -24,7 +24,7 @@
 	}
 }
 
-:443, xx.yy { #xx.yy 修改为自己的域名。注意：逗号与域名之间有一个空格。
+:443, zh.xx.yy { #zh.xx.yy 修改为自己的域名。注意：逗号与域名之间有一个空格。
 	tls {
 		ciphers TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
 		curves x25519 secp521r1 secp384r1 secp256r1
@@ -40,7 +40,7 @@
 	reverse_proxy @vlws 127.0.0.1:2012 #转发给本机 VLESS+WebSocket 监听端口
 
 	@host {
-		host xx.yy #限定域名访问（包括禁止以 IP 方式访问网站），修改为自己的域名。
+		host zh.xx.yy #限定域名访问（包括禁止以 IP 方式访问网站），修改为自己的域名。
 	}
 	route @host {
 		header {
