@@ -3,7 +3,7 @@
 //........<省略>........
     "tls": {
       "certificates": {
-        "automate": ["z1.xx.yy","z2.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。（域名名称与数量以实际为准）
+        "automate": ["hy.xx.yy","zh.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。（域名名称与数量以实际为准）
       },
       "automation": {
         "policies": [{
@@ -67,12 +67,12 @@
 //4、若不使用挑战委托模式：删除 "override_domain": "zz.duckdns.org" 这条参数及同步删除 "api_token" 参数末尾逗号，对应域名修改为你在 duckdns 中配置的 DDNS 域名。
 
 
-//二、以回落/分流或 XTLS Vision 或 SNI 分流为核心应用
+//二、以回落/分流或 SNI 分流为核心应用
 //原配置：
 //........<省略>........
     "tls": {
       "certificates": {
-        "automate": ["z1.xx.yy","z2.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。（域名名称与数量以实际为准）
+        "automate": ["hy.xx.yy","zh.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。（域名名称与数量以实际为准）
       },
       "automation": {
         "policies": [{

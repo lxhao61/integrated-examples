@@ -3,7 +3,7 @@
 //........<省略>........
     "tls": {
       "certificates": {
-        "automate": ["z1.xx.yy","z2.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。（域名名称与数量以实际为准）
+        "automate": ["hy.xx.yy","zh.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。（域名名称与数量以实际为准）
       },
       "automation": {
         "policies": [{
@@ -26,19 +26,19 @@
     "tls": {
       "certificates": {
         "load_files": [{
-          "certificate": "/home/tls/z1.xx.yy/z1.xx.yy.crt", //换成自己的证书，绝对路径。
-          "key": "/home/tls/z1.xx.yy/z1.xx.yy.key" //换成自己的密钥，绝对路径。
+          "certificate": "/home/tls/hy.xx.yy/hy.xx.yy.crt", //换成自己的证书，绝对路径。
+          "key": "/home/tls/hy.xx.yy/hy.xx.yy.key" //换成自己的密钥，绝对路径。
         },
         {
-          "certificate": "/home/tls/z2.xx.yy/z2.xx.yy.crt", //换成自己的证书，绝对路径。
-          "key": "/home/tls/z2.xx.yy/z2.xx.yy.key" //换成自己的密钥，绝对路径。
+          "certificate": "/home/tls/zh.xx.yy/zh.xx.yy.crt", //换成自己的证书，绝对路径。
+          "key": "/home/tls/zh.xx.yy/zh.xx.yy.key" //换成自己的密钥，绝对路径。
         }] //若使用通配符证书或 SAN 证书，合并一组即可。
       }
     }
 //........<省略>........
 
 
-//二、以回落/分流或 XTLS Vision 为核心应用（无 SNI 分流）
+//二、以回落/分流为核心应用（无 SNI 分流）
 //原配置：
 //........<省略>........
   "storage": {
@@ -48,7 +48,7 @@
 //........<省略>........
     "tls": {
       "certificates": {
-        "automate": ["z1.xx.yy","z2.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。（域名名称与数量以实际为准）
+        "automate": ["hy.xx.yy","zh.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。（域名名称与数量以实际为准）
       },
       "automation": {
         "policies": [{
@@ -80,7 +80,7 @@
 //........<省略>........
     "tls": {
       "certificates": {
-        "automate": ["zv.xx.yy","zt.xx.yy","h3.xx.yy","zn.xx.yy","zh.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。（域名名称与数量以实际为准）
+        "automate": ["hy.xx.yy","h3.xx.yy","zt.xx.yy","zh.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。（域名名称与数量以实际为准）
       },
       "automation": {
         "policies": [{
@@ -101,12 +101,12 @@
     "tls": {
       "certificates": {
         "load_files": [{
-          "certificate": "/home/tls/h3.xx.yy/h3.xx.yy.crt", //换成自己的证书，绝对路径。
-          "key": "/home/tls/h3.xx.yy/h3.xx.yy.key" //换成自己的密钥，绝对路径。
+          "certificate": "/home/tls/hy.xx.yy/hy.xx.yy.crt", //换成自己的证书，绝对路径。
+          "key": "/home/tls/hy.xx.yy/hy.xx.yy.key" //换成自己的密钥，绝对路径。
         },
         {
-          "certificate": "/home/tls/zn.xx.yy/zn.xx.yy.crt", //换成自己的证书，绝对路径。
-          "key": "/home/tls/zn.xx.yy/zn.xx.yy.key" //换成自己的密钥，绝对路径。
+          "certificate": "/home/tls/h3.xx.yy/h3.xx.yy.crt", //换成自己的证书，绝对路径。
+          "key": "/home/tls/h3.xx.yy/h3.xx.yy.key" //换成自己的密钥，绝对路径。
         },
         {
           "certificate": "/home/tls/zh.xx.yy/zh.xx.yy.crt", //换成自己的证书，绝对路径。

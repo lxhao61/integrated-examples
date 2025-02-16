@@ -15,15 +15,15 @@
                 "protocol": "http",
                 "tls": {}
               },
+              "upstreams": [{
+                "dial": "xz.yz:443" //xz.yz 为国外 HTTP/2 或 HTTPS 网站域名
+              }],
               "headers": {
-              	"request": {
+                "request": {
                   "set": {
                     "Host": ["{http.reverse_proxy.upstream.hostport}"]
                   }
-              	}
-              },
-              "upstreams": [{
-                "dial": "xz.yz:443" //xz.yz 为国外 HTTP/2 或 HTTPS 网站域名
-              }]
+                }
+              }
             }]
 //........<省略>........
