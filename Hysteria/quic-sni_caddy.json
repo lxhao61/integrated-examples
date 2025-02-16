@@ -1,0 +1,64 @@
+//Caddy 的定向 UDP 转发配置升级成 SNI 分流共用 UDP 443 端口配置
+//原配置：
+//........<省略>........
+        "udppy": {
+          "listen": ["udp/:443"],
+          "routes": [{
+            "handle": [{
+              "handler": "proxy",
+              "upstreams": [{
+                "dial": ["udp/127.0.0.1:7443"] //转给 HTTP/3 server 本地监听端口
+              }]
+            }]
+          }]
+        } //定向 UDP 转发配置
+//........<省略>........
+          "issuers": [{
+            "module": "acme",
+            "email": "your@email.com" //修改为自己的电子邮箱，与下一致。（选配）
+          },
+          {
+            "module": "acme",
+            "ca": "https://acme.zerossl.com/v2/DV90",
+            "email": "your@email.com" //修改为自己的电子邮箱，与上一致。（选配）
+          }] //默认启用两个 ACME 才需修改
+//........<省略>........
+
+//以上配置修改为如下：
+//........<省略>........
+  "storage": {
+    "module": "file_system",
+    "root": "/home/tls" //存放 TLS 证书的基本路径
+  }, //若原配置中无此配置需添加以方便 Hysteria 使用 Caddy 提供的 TLS 证书。（推荐加在 "apps" 上面）
+//........<省略>........
+        "udpsni": {
+          "listen": ["udp/:443"],
+          "routes": [{
+            "match": [{
+              "quic": {
+                "sni": ["hy.xx.yy"] //若使用 zt.xx.yy 或 zv.xx.yy 来对应 Hysteria 应用，需在 "srvh2c" 配置中添加‘通告 HTTP/3 server 的可用性’配置。
+              }
+            }],
+            "handle": [{
+              "handler": "proxy",
+              "upstreams": [{
+                "dial": ["udp/127.0.0.1:2443"] //转给 Hysteria 本地监听端口
+              }]
+            }]
+          },
+          {
+            "handle": [{
+              "handler": "proxy",
+              "upstreams": [{
+                "dial": ["udp/127.0.0.1:7443"] //转给 HTTP/3 server 本地监听端口
+              }]
+            }]
+          }]
+        } //SNI 分流共用 UDP 443 端口配置
+//........<省略>........
+          "issuers": [{
+            "module": "acme",
+            "ca": "https://acme.zerossl.com/v2/DV90", //此项配置表示从 ZeroSSL 申请免费 TLS 证书，删除此项配置（默认）表示从 Let's Encrypt 申请免费 TLS 证书。
+            "email": "your@email.com" //修改为自己的电子邮箱。（选配）
+          }] //调整为一个 ACME 才能固定证书路径
+//........<省略>........
