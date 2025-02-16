@@ -29,7 +29,10 @@
           "shortIds": [
             "" //若有此项，客户端 shortId 可为空。若不为空，可 0 到 f（0123456789abcdef），长度为 2 的倍数，长度上限为 16 。
           ] //必填，客户端可用的 shortId 列表，可用于区分不同的客户端。
-        }
+        },
+        "xhttpSettings": {
+          "path": "/TSpLdG9k" //修改为自己的路径
+        } //若服务端支持双栈（IPv4 与 IPv6） 可配置实现 XHTTP 应用上下行分离，否则可删除此部分配置。（选配）
       },
       "sniffing": {
         "enabled": true,
