@@ -4,8 +4,8 @@
 
 原理：
 
-默认流程：Xray client <------ RAW+TLS（HTTP/2或HTTPS） ------> Xray server  
-回落流程：WEB client <-------------- HTTP/2或HTTPS --------------> Xray server <-- H2C或HTTP/1.1 --> Caddy（WEB server）
+默认流程：Xray client <---- RAW+TLS（HTTP/2或HTTPS） ----> Xray server  
+回落流程：WEB client <------------ HTTP/2或HTTPS ------------> Xray server <-- H2C或HTTP/1.1 --> Caddy（WEB server）
 
 注意：
 
