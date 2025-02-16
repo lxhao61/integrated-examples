@@ -21,7 +21,7 @@
       "streamSettings": {
         "network": "http",
         "httpSettings": {
-          "host": ["xx.yy"], //使用本应用的域名。（选配，仅 IOS 客户端需要。）
+          "host": ["hy.xx.yy"], //使用本应用的域名。（选配，仅 IOS 客户端需要。）
           "path": "/SeuW56Es" //修改为自己的路径
         }
       },
