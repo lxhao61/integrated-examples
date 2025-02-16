@@ -2,11 +2,11 @@
 //原配置：
 //........<省略>........
     "trojan": {
-      "upstream": {
-        "upstream": "caddy"
-      },
       "proxy": {
         "proxy": "no_proxy"
+      },
+      "upstream": {
+        "upstream": "caddy"
       },
       "users": ["diy6443"] //修改为自己的密码。密码可多组，用逗号隔开。
     },
@@ -15,11 +15,11 @@
 //以上配置修改为如下：
 //........<省略>........
     "trojan": {
-      "upstream": {
-        "upstream": "caddy"
-      },
       "proxy": {
         "proxy": "env_proxy"
+      },
+      "upstream": {
+        "upstream": "caddy"
       },
       "users": ["diy6443"] //修改为自己的密码。密码可多组，用逗号隔开。
     },
