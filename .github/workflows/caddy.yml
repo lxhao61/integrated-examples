@@ -101,7 +101,6 @@ jobs:
           --with clevergo.tech/caddy-dnspodcn \
           --with github.com/WeidiDeng/caddy-cloudflare-ip \
           --with github.com/caddyserver/forwardproxy=github.com/klzgrad/forwardproxy@naive \
-          --with github.com/imgk/caddy-trojan \
           --with github.com/mholt/caddy-webdav \
           --output ./release-tmp/caddy
 
