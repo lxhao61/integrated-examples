@@ -98,7 +98,7 @@ jobs:
         export GOOS=${{ matrix.config.GOOS }} 
         ~/go/bin/xcaddy build \
           --with github.com/mholt/caddy-l4 \
-          --with clevergo.tech/caddy-dnspodcn \
+          --with github.com/razonyang/caddy-dnspodcn \
           --with github.com/caddy-dns/duckdns \
           --with github.com/mholt/caddy-events-exec \
           --with github.com/WeidiDeng/caddy-cloudflare-ip \
