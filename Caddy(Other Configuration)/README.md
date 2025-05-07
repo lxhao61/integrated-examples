@@ -4,11 +4,11 @@
 
 二、以 DNS-01 验证方式申请 TLS 证书的配置方法
 
-Caddy 以 DNS-01 验证方式申请 TLS 证书，必须带对应 DNS API 插件。目前仅提供支持 cloudflare、dnspodcn（dnspod 中国版）、duckdns 三种常见插件配置示例。
+Caddy 以 DNS-01 验证方式申请 TLS 证书，必须带对应 DNS API 插件。本仓库仅提供 cloudflare、tencentcloud、duckdns 三种常见插件配置示例。
 
 注意：
 
-1、以 DNS-01 验证方式才支持通配符 TLS 证书申请。示例为通配符域名的 TLS 证书申请，可通配符域名、普通域名（含根域名）单一或组合申请（证书是各自分开的）。
+1、以 DNS-01 验证方式才支持通配符 TLS 证书申请。
 
 2、申请免费 TLS 证书的域名不要超过五个，否则影响 TLS 证书的更新。
 
@@ -39,7 +39,3 @@ Caddy 使用非自己内置 ACME 客户端提供的 TLS 证书时，其配置见
 七、网盘应用配置方法
 
 以 caddy-webdav 插件及文件服务应用打造不同的网盘应用（服务端），配置见 webdav_caddy.json 或 webdav_Caddyfile 示例。
-
-八、DDNS 客户端配置方法
-
-Caddy 使用 caddy-dynamicdns 插件及对应的 caddy-dns 插件实现对应的 DDNS 客户端应用。基本配置见 ddns_caddy.json 或 ddns_Caddyfile 示例，详细配置见 caddy-dynamicdns 资源。
