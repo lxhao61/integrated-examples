@@ -1,0 +1,83 @@
+//屏蔽回中国流量配置
+//原配置：
+{
+//........<省略>........
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "block"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
+
+//以上配置修改为如下：
+{
+//........<省略>........
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "type": "field",
+        "domain": [
+          "geosite:google",
+          "geosite:geolocation-!cn",
+        ],
+        "outboundTag": "direct"
+      }, //处理 google 域名与非中国域名配置
+      {
+        "type": "field",
+        "domain": [
+          "geosite:cn"
+        ],
+        "outboundTag": "block"
+      }, //处理中国域名配置
+      {
+        "type": "field",
+        "ip": [
+          "geoip:cn"
+        ],
+        "outboundTag": "block"
+      }, //处理中国 IP 配置
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "block"
+      } //处理 BT 配置
+    ]
+  },
+  "outbounds": [
+    {
+      "tag": "direct",
+      "protocol": "freedom",
+      "settings": {}
+    }, //直连配置（默认出站）
+    {
+      "tag": "block",
+      "protocol": "blackhole",
+      "settings": {
+        "response": {
+          "type": "http"
+        }
+      }
+    } //屏蔽配置
+  ]
+}
+//备注：如上为屏蔽回中国流量及 BT 流量配置，若要屏蔽回其它国家流量请参考官方资料自行修改。

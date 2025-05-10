@@ -1,0 +1,30 @@
+//使用内置 DNS 服务器配置
+//1、添加内置 DNS 服务器配置
+  "dns": {
+    "servers": [
+      "https+local://dns.google/dns-query",
+      "https+local://dns.adguard.com/dns-query"
+    ] //可修改为其它 DNS 地址
+  },
+//备注：推荐如上添加在 inbounds 配置前，另符合自己需求的精细配置请参考官方资料自行修改。
+
+
+//2、出站使用内置 DNS 服务器配置
+//原配置：
+//........<省略>........
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },
+//........<省略>........
+
+//以上配置修改为如下：
+//........<省略>........
+    {
+      "protocol": "freedom",
+      "settings": {
+        "domainStrategy": "UseIP"
+      }
+    },
+//........<省略>........
+//备注：如上为默认出站使用内置 DNS 服务器配置，符合自己需求的精细配置请参考官方资料自行修改。
