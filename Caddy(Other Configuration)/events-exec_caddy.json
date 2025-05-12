@@ -1,0 +1,49 @@
+//caddy-events-exec 插件应用
+//原配置：
+//........<省略>........
+    "tls": {
+//........<省略>........
+    }
+//........<省略>........
+
+
+//原配置修改为如下：
+//1、若 Caddy 用户拥有 root 权限
+//........<省略>........
+    "tls": {
+//........<省略>........
+    },
+    "events": {
+      "subscriptions": [{
+        "events": ["cert_obtained"],
+        "handlers": [{
+          "handler": "exec",
+          "command": "systemctl",
+          "args": ["restart","hysteria"] //可调整为其它程序
+        }]
+      }]
+    }
+//........<省略>........
+
+//2、若 Caddy 用户拥有 sudo 权限
+//........<省略>........
+    "tls": {
+//........<省略>........
+    },
+    "events": {
+      "subscriptions": [{
+        "events": ["cert_obtained"],
+        "handlers": [{
+          "handler": "exec",
+          "command": "sudo",
+          "args": ["systemctl","restart","hysteria"] //可调整为其它程序
+        }]
+      }]
+    }
+//........<省略>........
+//备注：
+//1、本示例实现了 TLS 证书自动更新后就联动执行重启相关程序来重载更新后的 TLS 证书。
+//2、本示例 sudo 权限用户重启相关程序需取消密码验证，其配置参考如下（若 Caddy 使用 nodody 用户，在 /etc/sudoers 中加入如下之一解决）：
+//1）、nobody ALL=NOPASSWD:/bin/systemctl restart hysteria （表示 nobody 用户使用 sudo 权限重启 Hysteria 不需要密码）
+//2）、nobody ALL=NOPASSWD:/bin/systemctl restart X,/bin/systemctl restart Y （表示 nobody 用户使用 sudo 权限重启 X 与 Y 都不需要密码）
+//3）、nobody ALL=NOPASSWD:/bin/systemctl restart [a-zA-Z]* （表示 nobody 用户使用 sudo 权限重启所有程序都不需要密码。不推荐。）
