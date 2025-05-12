@@ -1,0 +1,23 @@
+//NaiveProxy 流量通过 Socks5 转发给 V2Ray/Xray 处理
+//原配置：
+//........<省略>........
+            "handle": [{
+              "handler": "forward_proxy",
+              "auth_credentials": ["ZFhObGNqcHdZWE56"], //此为 NaiveProxy 用户与密码组合（user:pass）使用 base64 编码生成的字符串，修改为自己的。字符串可多组，用逗号隔开。
+              "hide_ip": true,
+              "hide_via": true,
+              "probe_resistance": {}
+            }]
+//........<省略>........
+
+//以上配置修改为如下：
+//........<省略>........
+            "handle": [{
+              "handler": "forward_proxy",
+              "auth_credentials": ["ZFhObGNqcHdZWE56"], //此为 NaiveProxy 用户与密码组合（user:pass）使用 base64 编码生成的字符串，修改为自己的。字符串可多组，用逗号隔开。
+              "hide_ip": true,
+              "hide_via": true,
+              "probe_resistance": {},
+              "upstream": "socks5://127.0.0.1:1080"
+            }]
+//........<省略>........
