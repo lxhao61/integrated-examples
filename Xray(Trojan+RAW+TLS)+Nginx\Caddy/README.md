@@ -1,11 +1,11 @@
 介绍：
 
-本示例配置为 Trojan+RAW+TLS 应用。Xray 服务端前置（监听 443 端口）处理来自墙内的 HTTP/2 或 HTTPS 请求，如果是合法的 Xray 客户端请求，那么为该请求提供服务（科学上网）；否则将已解除 TLS 的流量请求回落（转发）给 Nginx 或 Caddy，由 Nginx 或 Caddy 为其提供 WEB 服务。
+本示例为 Trojan+RAW+TLS 应用。Xray 服务端前置（监听 443 端口）处理来自墙内的连接请求，如果是合法的 Xray 客户端请求，那么为该请求提供服务（科学上网）；否则将已解除 TLS 的连接请求回落（转发）给 Nginx 或 Caddy，由 Nginx 或 Caddy 为其提供 WEB 服务。
 
 原理：
 
-默认流程：Xray client <---- RAW+TLS（HTTP/2或HTTPS） ----> Xray server  
-回落流程：WEB client <------------ HTTP/2或HTTPS ------------> Xray server <-- H2C或HTTP/1.1 --> Nginx/Caddy（WEB server）
+默认流程：Xray client <------ RAW+TLS ------> Xray server  
+回落流程：WEB client <------ HTTP/2或HTTPS ------> Xray server <-- H2C或HTTP/1.1 --> Nginx/Caddy（WEB server）
 
 注意：
 
