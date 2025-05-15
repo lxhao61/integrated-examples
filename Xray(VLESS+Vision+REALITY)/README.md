@@ -1,6 +1,6 @@
 介绍：
 
-本示例实现类似 Xray 的 VLESS+Vision+TLS（对应 [Xray(VLESS+Vision+TLS)+Nginx](https://github.com/lxhao61/integrated-examples/tree/main/Xray(VLESS+Vision+TLS)+Nginx) 或 [Xray(VLESS+Vision+TLS)+Caddy](https://github.com/lxhao61/integrated-examples/tree/main/Xray(VLESS%2BVision%2BTLS)%2BCaddy) 示例） 应用，TLS 由 REALITY 取代。可消除服务端 TLS 指纹特征，仍有前向保密性等，且证书链攻击无效，安全性超越常规 TLS。可指向别人的网站，无需自己买域名、配置 TLS 服务端，更方便，实现向中间人呈现指定 SNI 的全程真实 TLS，可解决 SNI 名单阻断问题。
+本示例 VLESS+Vision+REALITY（别称 REALITY Vision） 为 Xray 的 VLESS+Vision+TLS（别称 XTLS Vision） 应用的改进。TLS 由 REALITY 取代，可消除服务端 TLS 指纹特征，仍有前向保密性等，且证书链攻击无效，安全性超越常规 TLS。可指向别人的网站，无需自己买域名、配置 TLS 服务端，更方便，实现向中间人呈现指定 SNI 的全程真实 TLS，可解决 SNI 名单阻断问题。
 
 原理：
 
