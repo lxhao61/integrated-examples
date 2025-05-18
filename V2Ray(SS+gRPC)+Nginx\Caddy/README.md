@@ -25,4 +25,4 @@
 
 8、若选用 Caddy 实现应用，本示例 Caddy 支持自动 HTTPS，即自动申请与更新 TLS 证书，自动 HTTP 重定向到 HTTPS。
 
-9、本示例兼容原版 Shadowsocks 加 v2ray-plugin 或 xray-plugin 插件的 grpc-tls 模式服务端应用，即客户端可使用 Shadowsocks 加 v2ray-plugin 或 xray-plugin 插件连接。
+9、本示例兼容原版 Shadowsocks 加 v2ray-plugin 或 xray-plugin 插件的 grpc-tls 模式服务端应用，即可使用原版 Shadowsocks 加 v2ray-plugin 或 xray-plugin 插件的客户端来连接。
