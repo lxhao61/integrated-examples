@@ -20,14 +20,6 @@
         "wsSettings": {
           "path": "/2ALdGZ9k" //修改为自己的路径
         }
-      },
-      "sniffing": {
-        "enabled": true,
-        "destOverride": [
-          "http",
-          "tls",
-          "quic"
-        ]
       }
     },
     {
@@ -39,6 +31,14 @@
         "password": "diy2003", //修改为自己的密码/密钥。符合 Shadowsocks 2022 协议的密钥生成方法参考 Xray 官方对应介绍。
         "ivCheck": true, //启用 IV 检查功能。（仅 V2Ray 配置，否则必须删除。）
         "email": "2003@gmail.com"
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
       }
     }
   ],
