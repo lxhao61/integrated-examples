@@ -39,7 +39,7 @@
       "settings": {
         "servers": [
           {
-            "address": "zh.xx.yy", //修改为使用本应用的域名
+            "address": "zh.xx.yy", //修改为使用本应用的 CDN 流量中转域名
             "port": 443,
             "method": "chacha20-poly1305", //修改为服务端配置的加密方式
             "password": "diy2011" //修改为服务端配置的密码/密钥
@@ -108,7 +108,7 @@
       "settings": {
         "servers": [
           {
-            "address": "2.2.2.2", //修改为使用本应用的域名或自己服务端的 IP 或 CDN 优选 IP
+            "address": "2.2.2.2", //修改为使用本应用的直连域名或自己服务端的 IP 或 CDN 优选 IP
             "port": 443,
             "method": "chacha20-poly1305", //修改为服务端配置的加密方式
             "password": "diy2011" //修改为服务端配置的密码/密钥
@@ -119,7 +119,7 @@
         "network": "grpc",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "hy.xx.yy", //修改为使用本应用的域名。（若上面 address 使用本应用的域名，此项可删除。）
+          "serverName": "hy.xx.yy", //修改为使用本应用的直连域名。（若上面 address 使用本应用的直连域名，此项可删除。）
           "alpn": ["h2"],
           "fingerprint": "chrome" //模拟 TLS 指纹，可任一 chrome、firefox、safari、ios、edge、qq、random、randomized 选项配置。V2Ray（v4 版） 不支持，此项配置必须删除。
         },

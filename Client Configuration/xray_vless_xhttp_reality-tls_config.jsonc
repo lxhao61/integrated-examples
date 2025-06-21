@@ -61,7 +61,7 @@
           "fingerprint": "chrome" //模拟 TLS 指纹，可任一 chrome、firefox、safari、ios、edge、qq、random、randomized 选项配置。
         },
         "xhttpSettings": {
-          "mode": "auto", //上行所使用的模式，默认自动。可根据实际情况选用其它模式解决连通问题：若不通先选 stream-up，还不通再选 packet-up（兼容性最强）。
+          "mode": "auto", //上行所使用的模式，默认自动。若不通可根据实际情况自选模式：首选 stream-up 模式，次选 packet-up 模式（兼容性最强）。
           "path": "/VLSpdG9k", //修改为服务端配置的路径
           "extra": {
             "downloadSettings": {
@@ -156,7 +156,7 @@
           "fingerprint": "chrome" //模拟 TLS 指纹，可任一 chrome、firefox、safari、ios、edge、qq、random、randomized 选项配置。
         },
         "xhttpSettings": {
-          "mode": "auto", //上行所使用的模式，默认自动。可根据实际情况选用其它模式解决连通问题：若不通先选 stream-up，还不通再选 packet-up（兼容性最强）。
+          "mode": "auto", //上行所使用的模式，默认自动。
           "path": "/VLSpdG9k", //修改为服务端配置的路径
           "extra": {
             "downloadSettings": {

@@ -39,7 +39,7 @@
       "settings": {
         "vnext": [
           {
-            "address": "zh.xx.yy", //修改为使用本应用的域名
+            "address": "zh.xx.yy", //修改为使用本应用的 CDN 流量中转域名
             "port": 443,
             "users": [
               {
@@ -116,7 +116,7 @@
       "settings": {
         "vnext": [
           {
-            "address": "2.2.2.2", //修改为使用本应用的域名或自己服务端的 IP 或 CDN 优选 IP
+            "address": "2.2.2.2", //修改为使用本应用的直连域名或自己服务端的 IP 或 CDN 优选 IP
             "port": 443,
             "users": [
               {
@@ -131,7 +131,7 @@
         "network": "httpupgrade",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "hy.xx.yy", //修改为使用本应用的域名。（若上面 address 使用本应用的域名，此项可删除。）
+          "serverName": "hy.xx.yy", //修改为使用本应用的直连域名。（若上面 address 使用本应用的直连域名，此项可删除。）
           "alpn": ["http/1.1"],
           "fingerprint": "chrome" //模拟 TLS 指纹，可任一 chrome、firefox、safari、ios、edge、qq、random、randomized 选项配置。
         },
