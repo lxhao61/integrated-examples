@@ -1,0 +1,20 @@
+[Unit]
+Description=Caddy Service
+Documentation=https://caddyserver.com/docs/
+After=network.target network-online.target
+Requires=network-online.target
+
+[Service]
+Type=notify
+User=root //以 root 用户运行。若修改，请修改为相应权限的用户。
+Group=root //以 root 组运行。若修改，请修改为相应权限的组。
+ExecStart=/usr/local/bin/caddy/caddy run --environ --config /usr/local/etc/caddy/caddy.json //加载 JSON 配置。若加载 Caddyfile 配置，caddy.json 改为 Caddyfile。若加载 JSONC 配置，caddy.json 改为 caddy.jsonc、后再添加 --adapter jsonc 参数。
+ExecReload=/usr/local/bin/caddy/caddy reload --config /usr/local/etc/caddy/caddy.json --force //重载 JSON 配置。若重载 Caddyfile 配置，caddy.json 改为 Caddyfile。若重载 JSONC 配置，caddy.json 改为 caddy.jsonc、后再添加 --adapter jsonc 参数。
+TimeoutStopSec=5s
+LimitNOFILE=1048576
+PrivateTmp=true
+ProtectSystem=full
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
