@@ -90,7 +90,7 @@
       },
       "users": ["diy6443"], //修改为自己的密码。密码可多组，用逗号隔开。
       "proxy": {
-        "proxy": "no_proxy"
+        "proxy": "none"
       }
     },
     "tls": {
