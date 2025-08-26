@@ -85,7 +85,7 @@ jobs:
     - name: Install go
       uses: actions/setup-go@v5
       with:
-        go-version: '1.24'
+        go-version: '1.25'
         check-latest: true
     
     - name: Install xcaddy
@@ -97,17 +97,17 @@ jobs:
         export GOARCH=${{ matrix.config.GOARCH }} 
         export GOOS=${{ matrix.config.GOOS }} 
         ~/go/bin/xcaddy build \
-          --with github.com/caddyserver/jsonc-adapter \
-          --with github.com/mholt/caddy-l4 \
-          --with github.com/caddy-dns/cloudflare \
-          --with github.com/caddy-dns/tencentcloud \
-          --with github.com/caddy-dns/duckdns \
-          --with github.com/mholt/caddy-events-exec \
-          --with github.com/WeidiDeng/caddy-cloudflare-ip \
-          --with github.com/xcaddyplugins/caddy-trusted-cloudfront \
           --with github.com/caddyserver/forwardproxy=github.com/klzgrad/forwardproxy@naive \
           --with github.com/imgk/caddy-trojan \
           --with github.com/mholt/caddy-webdav \
+          --with github.com/WeidiDeng/caddy-cloudflare-ip \
+          --with github.com/xcaddyplugins/caddy-trusted-cloudfront \
+          --with github.com/caddy-dns/cloudflare \
+          --with github.com/caddy-dns/duckdns \
+          --with github.com/caddy-dns/tencentcloud \
+          --with github.com/mholt/caddy-events-exec \
+          --with github.com/mholt/caddy-l4 \
+          --with github.com/caddyserver/jsonc-adapter \
           --output ./release-tmp/caddy
 
     - name: Rename for Windows 
