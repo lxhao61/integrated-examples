@@ -3,12 +3,6 @@ name: Build caddy
 on:
   workflow_dispatch:
 
-  release:
-    types: 
-      - 'prereleased' 
-      - 'published' 
-      - 'released'
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,63 +13,53 @@ jobs:
         - {
             name: "windows-386",
             GOARCH: 386,
-            GOOS: windows,
-            release: true
+            GOOS: windows
           }
         - {
             name: "windows-amd64",
             GOARCH: amd64,
-            GOOS: windows,
-            release: true
+            GOOS: windows
           }
         - {
             name: "linux-amd64",
             GOARCH: amd64,
-            GOOS: linux,
-            release: true
+            GOOS: linux
           }
         - {
             name: "linux-arm64",
             GOARCH: arm64,
-            GOOS: linux,
-            release: true
+            GOOS: linux
           }
         - {
             name: "linux-armv5",
             GOARCH: arm,
             GOARM: 5,
-            GOOS: linux,
-            release: true
+            GOOS: linux
           }
         - {
             name: "linux-s390x",
             GOARCH: s390x,
-            GOOS: linux,
-            release: true
+            GOOS: linux
           }
         - {
             name: "freebsd-amd64",
             GOARCH: amd64,
-            GOOS: freebsd,
-            release: true
+            GOOS: freebsd
           }
         - {
             name: "freebsd-arm64",
             GOARCH: arm64,
-            GOOS: linux,
-            release: true
+            GOOS: freebsd
           }
         - {
             name: "darwin-amd64",
             GOARCH: amd64,
-            GOOS: darwin,
-            release: true
+            GOOS: darwin
           }
         - {
             name: "darwin-arm64",
             GOARCH: arm64,
-            GOOS: darwin,
-            release: true
+            GOOS: darwin
           }
 
     steps:
@@ -85,7 +69,7 @@ jobs:
     - name: Install go
       uses: actions/setup-go@v5
       with:
-        go-version: '1.24'
+        go-version: '1.25'
         check-latest: true
     
     - name: Install xcaddy
@@ -97,13 +81,14 @@ jobs:
         export GOARCH=${{ matrix.config.GOARCH }} 
         export GOOS=${{ matrix.config.GOOS }} 
         ~/go/bin/xcaddy build \
-          --with github.com/mholt/caddy-l4 \
-          --with github.com/caddy-dns/duckdns \
-          --with github.com/mholt/caddy-events-exec \
-          --with github.com/WeidiDeng/caddy-cloudflare-ip \
           --with github.com/caddyserver/forwardproxy=github.com/klzgrad/forwardproxy@naive \
           --with github.com/imgk/caddy-trojan \
           --with github.com/mholt/caddy-webdav \
+          --with github.com/WeidiDeng/caddy-cloudflare-ip \
+          --with github.com/caddy-dns/cloudflare \
+          --with github.com/mholt/caddy-events-exec \
+          --with github.com/mholt/caddy-l4 \
+          --with github.com/caddyserver/jsonc-adapter \
           --output ./release-tmp/caddy
 
     - name: Rename for Windows 
@@ -114,42 +99,10 @@ jobs:
     - name: Calculate Hash
       run: |
         cd ./release-tmp || exit 1
-        sha256sum * > sha256
-
-    - name: Generate zip for Windows
-      if: matrix.config.GOOS == 'windows'
-      run: |
-        mkdir release-ready
-        cd ./release-tmp
-        zip -r ../release-ready/caddy-${{ matrix.config.name }}.zip *
-    
-    - name: Generate tar for other platform
-      if: matrix.config.GOOS != 'windows'
-      run: |
-        mkdir release-ready
-        cd ./release-tmp
-        tar -zcvf ../release-ready/caddy-${{ matrix.config.name }}.tar.gz *
+        sha256sum caddy* > sha256
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: caddy-${{ github.sha }}-${{ matrix.config.name }}
-        path: ./release-ready/*
-        
-    - name: Upload to GitHub Release for Windows
-      uses: svenstaro/upload-release-action@v2
-      if: github.event_name == 'release' && matrix.config.release && matrix.config.GOOS == 'windows'
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ./release-ready/caddy-${{ matrix.config.name }}.zip
-        tag: ${{ github.ref }}
-        overwrite: true
-        
-    - name: Upload to GitHub Release for other platform
-      uses: svenstaro/upload-release-action@v2
-      if: github.event_name == 'release' && matrix.config.release && matrix.config.GOOS != 'windows'
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ./release-ready/caddy-${{ matrix.config.name }}.tar.gz
-        tag: ${{ github.ref }}
-        overwrite: true
+        name: caddy-${{ matrix.config.name }}
+        path: ./release-tmp/*
