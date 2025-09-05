@@ -38,7 +38,7 @@
       "settings": {
         "servers": [
           {
-            "address": "zh.xx.yy", //修改为使用本应用的域名
+            "address": "cdn.example.com", //修改为使用本应用的域名
             "port": 443,
             "password": "diy2007" //修改为服务端配置的密码
           }
