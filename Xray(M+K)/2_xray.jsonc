@@ -28,10 +28,10 @@
         "network": "raw",
         "security": "reality",
         "realitySettings": {
-          "target": "xx.yy:443", //转发给自己选定的目标网站。目标网站使用别人的一般为 xx.yy:443 。
+          "target": "h2r.example.com:443", //修改为自己选定的目标网站
           "xver": 0, //选填，默认关闭 PROXY protocol 发送。
           "serverNames": [
-            "xx.yy" //修改为目标网站的域名
+            "h2r.example.com" //修改为目标网站的域名
           ], //必填，客户端可用的 serverName 列表，暂不支持 * 通配符。
           "privateKey": "iD0BftokWqJ6UhCzVBlK2sI5OjmfWks0PAdU3SLWKUw", //修改为自己执行 ./xray x25519 后生成的一对密钥中私钥
           "shortIds": [
