@@ -40,8 +40,8 @@
           "certificates": [
             {
               "ocspStapling": 3600,
-              "certificateFile": "/home/tls/zv.xx.yy/zv.xx.yy.crt", //换成自己的证书，绝对路径。
-              "keyFile": "/home/tls/zv.xx.yy/zv.xx.yy.key" //换成自己的密钥，绝对路径。
+              "certificateFile": "/home/tls/h2t.example.com/h2t.example.com.crt", //换成自己的证书，绝对路径。
+              "keyFile": "/home/tls/h2t.example.com/h2t.example.com.key" //换成自己的密钥，绝对路径。
             }
           ],
           "minVersion": "1.2"
@@ -92,8 +92,8 @@
           "certificates": [
             {
               "ocspStapling": 3600,
-              "certificateFile": "/home/tls/zt.xx.yy/zt.xx.yy.crt", //换成自己的证书，绝对路径。
-              "keyFile": "/home/tls/zt.xx.yy/zt.xx.yy.key" //换成自己的密钥，绝对路径。
+              "certificateFile": "/home/tls/t2n.example.com/t2n.example.com.crt", //换成自己的证书，绝对路径。
+              "keyFile": "/home/tls/t2n.example.com/t2n.example.com.key" //换成自己的密钥，绝对路径。
             }
           ],
           "minVersion": "1.2",
