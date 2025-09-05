@@ -38,7 +38,7 @@
 //........<省略>........
           {
             "match": [{
-              "host": ["zz.xx.yy"] //限定网盘应用访问，修改为对应域名。
+              "host": ["dav.example.com"] //限定网盘应用访问，修改为对应域名。
             }],
             "handle": [{
               "handler": "subroute",
@@ -102,7 +102,7 @@
 //........<省略>........
           {
             "match": [{
-              "host": ["zz.xx.yy"] //限定网盘应用访问，修改为对应域名。
+              "host": ["dav.example.com"] //限定网盘应用访问，修改为对应域名。
             }],
             "handle": [{
               "handler": "subroute",

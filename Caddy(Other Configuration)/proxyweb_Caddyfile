@@ -7,7 +7,7 @@
 
 #以上配置修改为如下：
 #........<省略>........
-		reverse_proxy https://xz.yz { #xz.yz 为国外 HTTP/2 或 HTTPS 网站域名
+		reverse_proxy https://www.example.com { #www.example.com 为国外 HTTP/2 或 HTTPS 网站域名
 			header_up Host {upstream_hostport}
 		}
 #........<省略>........

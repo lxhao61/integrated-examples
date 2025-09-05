@@ -16,7 +16,7 @@
                 "tls": {}
               },
               "upstreams": [{
-                "dial": "xz.yz:443" //xz.yz 为国外 HTTP/2 或 HTTPS 网站域名
+                "dial": "www.example.com:443" //www.example.com 为国外 HTTP/2 或 HTTPS 网站域名
               }],
               "headers": {
                 "request": {

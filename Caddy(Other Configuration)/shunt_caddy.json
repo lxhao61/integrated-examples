@@ -21,7 +21,7 @@
 //........<省略>........
           { //若为单一应用此‘{’省略
             "match": [{
-              "host": ["za.xx.yy"] //修改为对应网站的域名
+              "host": ["za.example.com"] //修改为对应网站的域名
             }],
             "handle": [{
               "handler": "headers",
@@ -38,7 +38,7 @@
           },
           {
             "match": [{
-              "host": ["zb.xx.yy"] //修改为分流的域名
+              "host": ["zb.example.com"] //修改为分流的域名
             }],
             "handle": [{
               "handler": "headers",
