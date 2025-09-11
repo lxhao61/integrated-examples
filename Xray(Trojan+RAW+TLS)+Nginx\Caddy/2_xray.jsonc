@@ -39,14 +39,14 @@
         "network": "raw",
         "security": "tls",
         "tlsSettings": {
+          "rejectUnknownSni": true, //限定域名连接（包括禁止以 IP 方式访问网站）
           "certificates": [
             {
               "ocspStapling": 3600,
-              "certificateFile": "/home/tls/zt.xx.yy/zt.xx.yy.crt", //换成自己的证书，绝对路径。
-              "keyFile": "/home/tls/zt.xx.yy/zt.xx.yy.key" //换成自己的密钥，绝对路径。
+              "certificateFile": "/home/tls/t2n.example.com/t2n.example.com.crt", //换成自己的证书，绝对路径。
+              "keyFile": "/home/tls/t2n.example.com/t2n.example.com.key" //换成自己的密钥，绝对路径。
             }
           ],
-          "rejectUnknownSni": true, //限定域名连接（包括禁止以 IP 方式访问网站）
           "minVersion": "1.2",
           "maxVersion": "1.2",
           "cipherSuites": "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256" //非 AES 算法的密码套件。若无 RSA 证书，可删除 RSA 算法的密码套件；无 ECC 证书，可删除 ECDSA 算法的密码套件。
