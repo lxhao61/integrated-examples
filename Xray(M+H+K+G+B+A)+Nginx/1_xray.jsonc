@@ -30,7 +30,7 @@
           "target": 8443, //转发给自己网站的监听端口
           "xver": 1, //开启 PROXY protocol 发送，发送真实来源 IP 和端口给自己的网站。 1 或 2 表示 PROXY protocol 版本。
           "serverNames": [
-            "h3.xx.yy" //修改为自己的网站域名
+            "h3a.example.com" //修改为自己的网站域名
           ], //必填，客户端可用的 serverName 列表，暂不支持 * 通配符。
           "privateKey": "iD0BftokWqJ6UhCzVBlK2sI5OjmfWks0PAdU3SLWKUw", //修改为自己执行 ./xray x25519 后生成的一对密钥中私钥
           "shortIds": [
