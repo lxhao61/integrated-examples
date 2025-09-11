@@ -7,7 +7,7 @@
             "handle": [{
               "handler": "proxy",
               "upstreams": [{
-                "dial": ["udp/127.0.0.1:7443"] //转给 HTTP/3 server 本地监听端口
+                "dial": ["udp/127.0.0.1:8443"] //转给 HTTP/3 server 本地监听端口
               }]
             }]
           }]
@@ -36,13 +36,13 @@
           "routes": [{
             "match": [{
               "quic": {
-                "sni": ["hy.xx.yy"] //若使用 zt.xx.yy 或 zv.xx.yy 来对应 Hysteria 应用，需在 "srvh2c" 配置中添加‘通告 HTTP/3 server 的可用性’配置。
+                "sni": ["h2y.example.com"] //若使用 t2n.example.com 或 h2t.example.com 来对应 Hysteria 应用，需在 "srvh2c" 配置中添加‘通告 HTTP/3 server 的可用性’配置。
               }
             }],
             "handle": [{
               "handler": "proxy",
               "upstreams": [{
-                "dial": ["udp/127.0.0.1:2443"] //转给 Hysteria 本地监听端口
+                "dial": ["udp/127.0.0.1:3443"] //转给 Hysteria 本地监听端口
               }]
             }]
           },
@@ -50,7 +50,7 @@
             "handle": [{
               "handler": "proxy",
               "upstreams": [{
-                "dial": ["udp/127.0.0.1:7443"] //转给 HTTP/3 server 本地监听端口
+                "dial": ["udp/127.0.0.1:8443"] //转给 HTTP/3 server 本地监听端口
               }]
             }]
           }]
