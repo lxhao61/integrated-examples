@@ -61,22 +61,22 @@
           }],
           "tls_connection_policies": [{
             "match": {
-              "sni": ["hy.xx.yy"] //限定域名连接（包括禁止以 IP 方式访问网站），修改为自己的域名。
+              "sni": ["h2y.example.com"] //限定域名连接（包括禁止以 IP 方式访问网站），修改为自己的域名。
             },
             "protocol_max": "tls1.2",
             "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"] //非 AES 算法的密码套件
           },
           {
             "match": {
-              "sni": ["zh.xx.yy"] //限定域名连接（包括禁止以 IP 方式访问网站），修改为自己的域名。
+              "sni": ["cdn.example.com"] //限定域名连接（包括禁止以 IP 方式访问网站），修改为自己的域名。
             },
             "cipher_suites": ["TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"]
           }],
           "trusted_proxies": {
-            "source": "cloudflare", //cloudflare 为使用 cloudflare ips，由 caddy-cloudflare-ip 插件提供。
+            "source": "cloudflare",
             "interval": "12h",
             "timeout": "15s"
-          }, //配置可信代理服务器的 IP 范围，实现获取客户端真实 IP。若使用非 Cloudflare CDN，需自己调整 trusted_proxies 配置。
+          }, //配置可信任 Cloudflare IPs，实现使用 Cloudflare CDN 后也能获取到客户端真实 IP。若使用非 Cloudflare CDN，需自己调整配置。
           "logs": {
             "default_logger_name": "log0"
           }, //访问日志的启用配置。（选配）
@@ -95,7 +95,7 @@
     },
     "tls": {
       "certificates": {
-        "automate": ["hy.xx.yy","zh.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。
+        "automate": ["h2y.example.com","cdn.example.com"] //自动化管理 TLS 证书（包括自动申请与更新证书）。修改为自己的域名。
       },
       "automation": {
         "policies": [{
@@ -116,5 +116,5 @@
 //备注：
 //1、申请免费 TLS 证书的域名不要超过五个，否则影响 TLS 证书的更新。
 //2、本配置仅支持申请普通 TLS 证书，若要申请通配符 TLS 证书请参考 ‘Caddy(Other Configuration) （Caddy 的特殊应用配置方法。）’ 中对应介绍及对应配置示例。
-//3、本示例使用非 AES 算法的密码套件配置（hy.xx.yy）、CDN 流量中转（zh.xx.yy） 来避免被封。
-//4、本示例使用不同域名来实现介绍中各应用，其办法：Trojan-Go 客户端使用 Trojan 应用时用 hy.xx.yy 域名连接，使用 WebSocket 应用时用 zh.xx.yy 域名连接。
+//3、本示例使用非 AES 算法的密码套件配置（h2y.example.com）、CDN 流量中转（cdn.example.com） 来避免被封。
+//4、本示例使用不同域名来实现介绍中各应用，其办法：Trojan-Go 客户端使用 Trojan 应用时用 h2y.example.com 域名连接，使用 WebSocket 应用时用 cdn.example.com 域名连接。
