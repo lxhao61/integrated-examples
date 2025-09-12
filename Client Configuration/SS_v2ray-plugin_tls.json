@@ -1,20 +1,20 @@
 //1、客户端 Shadowsocks（SS） 加 xray-plugin 或 v2ray-plugin 插件的 websocket-tls 应用，其配置参考如下：
-server 'zh.xx.yy' //修改为使用本应用的域名
+server 'cdn.example.com' //修改为使用本应用的域名
 server_port '443'
 method 'chacha20-poly1305' //修改为服务端配置的加密方式
 password 'diy2003' //修改为服务端配置的密码或密钥
 plugin 'xray-plugin' //启用 xray-plugin 插件。可修改为 v2ray-plugin 插件。
-plugin_opts 'tls;host=zh.xx.yy;path=/2ALdGZ9k;mux=4' //host 修改为使用本应用的域名，path 修改为服务端配置的路径，mux 可根据网络情况调整多路复用。
+plugin_opts 'tls;host=cdn.example.com;path=/2ALdGZ9k;mux=4' //host 修改为使用本应用的域名，path 修改为服务端配置的路径，mux 可根据网络情况调整多路复用。
 
 
 //2、客户端 Shadowsocks（SS） 加 xray-plugin 或 v2ray-plugin 插件的 grpc-tls 应用，其配置参考如下：
 //1)、CDN 流量中转配置
-server 'zh.xx.yy' //修改为使用本应用的 CDN 流量中转域名
+server 'cdn.example.com' //修改为使用本应用的 CDN 流量中转域名
 server_port '443'
 method 'chacha20-poly1305' //修改为服务端配置的加密方式
 password 'diy2011' //修改为服务端配置的密码或密钥
 plugin 'xray-plugin' //启用 xray-plugin 插件。可修改为 v2ray-plugin 插件。
-plugin_opts 'tls;mode=grpc;host=zh.xx.yy;serviceName=SALdGZ9k' //host 修改为使用本应用的 CDN 流量中转域名，serviceName 修改为服务端配置的名称。
+plugin_opts 'tls;mode=grpc;host=cdn.example.com;serviceName=SALdGZ9k' //host 修改为使用本应用的 CDN 流量中转域名，serviceName 修改为服务端配置的名称。
 
 //2)、常规及 CDN 优选 IP 配置（推荐）
 server '2.2.2.2' //修改为使用本应用的直连域名或自己服务端的 IP 或 CDN 优选 IP
@@ -22,4 +22,4 @@ server_port '443'
 method 'chacha20-poly1305' //修改为服务端配置的加密方式
 password 'diy2011' //修改为服务端配置的密码或密钥
 plugin 'xray-plugin' //启用 xray-plugin 插件。可修改为 v2ray-plugin 插件。
-plugin_opts 'tls;mode=grpc;host=hy.xx.yy;serviceName=SALdGZ9k' //host 修改为使用本应用的直连域名，serviceName 修改为服务端配置的名称。
+plugin_opts 'tls;mode=grpc;host=h2y.example.com;serviceName=SALdGZ9k' //host 修改为使用本应用的直连域名，serviceName 修改为服务端配置的名称。

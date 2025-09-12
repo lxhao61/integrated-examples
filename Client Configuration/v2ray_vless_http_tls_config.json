@@ -53,11 +53,11 @@
         "network": "http",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "hy.xx.yy", //修改为使用本应用的域名。若上面 address 使用本应用的域名，此项可删除。
+          "serverName": "h2y.example.com", //修改为使用本应用的域名。若上面 address 使用本应用的域名，此项可删除。
           "alpn": ["h2"]
         },
         "httpSettings": {
-          "host": ["hy.xx.yy"], //仅服务端有此项才配置，否则删除。
+          "host": ["h2y.example.com"], //仅服务端有此项才配置，否则删除。
           "path": "/SeuW56Es" //修改为服务端配置的路径
         }
       }
