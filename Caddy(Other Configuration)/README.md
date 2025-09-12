@@ -1,6 +1,6 @@
-一、限定从 Let's Encrypt 与 ZeroSSL 申请 TLS 证书的配置方法
+一、限定从 Let's Encrypt 与 ZeroSSL 分别申请 TLS 证书的配置方法
 
-此方法可实现不同域名的 TLS 证书由不同 TLS 证书提供商提供、或避开申请免费普通 TLS 证书的域名超过五个问题，配置见 two_caddy.json 文件。
+此方法可实现不同域名由不同 CA 机构提供 TLS 证书，绕开从单一 CA 机构申请免费 TLS 证书、其域名超过五个问题，配置见 two_caddy.json 文件。
 
 二、以 DNS-01 验证方式申请 TLS 证书的配置方法
 

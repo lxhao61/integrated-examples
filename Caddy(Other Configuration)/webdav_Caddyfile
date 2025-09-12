@@ -22,7 +22,7 @@
 #配置二
 #........<省略>........
 	@host {
-		host zz.xx.yy #限定网盘应用访问，修改为对应域名。
+		host dav.example.com #限定网盘应用访问，修改为对应域名。
 	}
 	route @host {
 		root * /home/webdav #修改为文件管理服务存放文件路径
@@ -54,7 +54,7 @@
 #配置三
 #........<省略>........
 	@host2 {
-		host zz.xx.yy #限定网盘应用访问，修改为对应域名。
+		host dav.example.com #限定网盘应用访问，修改为对应域名。
 	}
 	route @host2 {
 		root * /home/webdav #修改为文件管理服务存放文件路径
