@@ -19,28 +19,28 @@
       {
         "type": "field",
         "domain": [
-          "zv.xx.yy" //修改成自己分流的域名
+          "h2t.example.com" //修改成自己分流的域名
         ],
-        "outboundTag": "zv" //与 outbounds 中标签对应
+        "outboundTag": "h2t" //与 outbounds 中标签对应
       },
       {
         "type": "field",
         "domain": [
-          "zt.xx.yy" //修改成自己分流的域名
+          "t2n.example.com" //修改成自己分流的域名
         ],
-        "outboundTag": "zt" //与 outbounds 中标签对应
+        "outboundTag": "t2n" //与 outbounds 中标签对应
       },
       {
         "type": "field",
         "domain": [
-          "zh.xx.yy" //修改成自己分流的域名
+          "cdn.example.com" //修改成自己分流的域名
         ],
-        "outboundTag": "zh" //与 outbounds 中标签对应
+        "outboundTag": "cdn" //与 outbounds 中标签对应
       },
 
 //如下配置插入 outbounds 末尾标记 blocked 部分之前（如下是两个进程/域名示例，若多个就增加相关部分即可。）（各分项参数）
     {
-      "tag": "zv", //标签，与 routing 中标签对应。
+      "tag": "h2t", //标签，与 routing 中标签对应。
       "protocol": "freedom",
       "streamSettings": {
         "network": "domainsocket",
@@ -50,7 +50,7 @@
       }
     },
     {
-      "tag": "zt", //标签，与 routing 中标签对应。
+      "tag": "t2n", //标签，与 routing 中标签对应。
       "protocol": "freedom",
       "streamSettings": {
         "network": "domainsocket",
@@ -60,7 +60,7 @@
       }
     },
     {
-      "tag": "zh", //标签，与 routing 中标签对应。
+      "tag": "cdn", //标签，与 routing 中标签对应。
       "protocol": "freedom",
       "streamSettings": {
         "network": "domainsocket",
