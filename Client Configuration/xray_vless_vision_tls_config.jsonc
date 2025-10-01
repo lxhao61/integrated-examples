@@ -54,10 +54,15 @@
         "network": "raw",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "zv.xx.yy", //修改为使用本应用的域名。若上面 address 使用本应用的域名，此项可删除。
+          "serverName": "h2t.example.com", //修改为使用本应用的域名。若上面 address 使用本应用的域名，此项可删除。
           "alpn": ["h2","http/1.1"],
           "fingerprint": "chrome" //模拟 TLS 指纹，可任一 chrome、firefox、safari、ios、edge、qq、random、randomized 选项配置。
         }
+      },
+      "mux": {
+        "enabled": true, //启用多路复用
+        "concurrency": 4, //表示 4 条传输进程复合一个链路发出，此最大并发连接数可根据网络情况调整。
+        "xudpConcurrency": -1 //表示不使用 Mux 模块承载 UDP 流量、将使用代理协议原本的 UDP 传输方式，此最大并发子 UoT 数量可根据实际情况调整。
       }
     },
     {
