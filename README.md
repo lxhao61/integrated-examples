@@ -14,55 +14,55 @@
 
 ### 服务端常用单一及简单应用配置示例
 #### &emsp;V2Ray/Xray 的 mKCP 应用
-1. [V2Ray(VMess\VLESS+mKCP+seed)](https://github.com/lxhao61/integrated-examples/tree/main/V2Ray(VMess%5CVLESS%2BmKCP%2Bseed))（VMess/VLESS+mKCP+seed 应用。VLESS+mKCP+seed 标记为 A。）
+1. [V2Ray(VMess\VLESS+mKCP+seed)](https://github.com/lxhao61/integrated-examples/tree/new/V2Ray(VMess%5CVLESS%2BmKCP%2Bseed))（VMess/VLESS+mKCP+seed 应用。VLESS+mKCP+seed 标记为 A。）
 #### &emsp;V2Ray/Xray 的反代 WebSocket 应用
-1. [V2Ray(VMess+WebSocket)+Nginx\Caddy](https://github.com/lxhao61/integrated-examples/tree/main/V2Ray(VMess%2BWebSocket)%2BNginx%5CCaddy)（VMess+WebSocket+TLS 应用。标记为 C。）
-2. [V2Ray(VLESS+WebSocket)+Nginx\Caddy](https://github.com/lxhao61/integrated-examples/tree/main/V2Ray(VLESS%2BWebSocket)%2BNginx%5CCaddy)（VLESS+WebSocket+TLS 应用。）
-3. [V2Ray[SS+(DD+WebSocket)]+Nginx\Caddy](https://github.com/lxhao61/integrated-examples/tree/main/V2Ray%5BSS%2B(DD%2BWebSocket)%5D%2BNginx%5CCaddy)（等同 Shadowsocks 加 v2ray-plugin 插件的 websocket-tls 应用。）
-4. [V2Ray(Trojan+WebSocket)+Nginx\Caddy](https://github.com/lxhao61/integrated-examples/tree/main/V2Ray(Trojan%2BWebSocket)%2BNginx%5CCaddy)（兼容 Trojan-Go 的 WebSocket 应用。）
+1. [V2Ray(VMess+WebSocket)+Nginx\Caddy](https://github.com/lxhao61/integrated-examples/tree/new/V2Ray(VMess%2BWebSocket)%2BNginx%5CCaddy)（VMess+WebSocket+TLS 应用。标记为 C。）
+2. [V2Ray(VLESS+WebSocket)+Nginx\Caddy](https://github.com/lxhao61/integrated-examples/tree/new/V2Ray(VLESS%2BWebSocket)%2BNginx%5CCaddy)（VLESS+WebSocket+TLS 应用。）
+3. [V2Ray[SS+(DD+WebSocket)]+Nginx\Caddy](https://github.com/lxhao61/integrated-examples/tree/new/V2Ray%5BSS%2B(DD%2BWebSocket)%5D%2BNginx%5CCaddy)（等同 Shadowsocks 加 v2ray-plugin 插件的 websocket-tls 应用。）
+4. [V2Ray(Trojan+WebSocket)+Nginx\Caddy](https://github.com/lxhao61/integrated-examples/tree/new/V2Ray(Trojan%2BWebSocket)%2BNginx%5CCaddy)（兼容 Trojan-Go 的 WebSocket 应用。）
 #### &emsp;V2Ray 的反代 H2C 应用
-1. [V2Ray(VLESS+HTTP)+Caddy](https://github.com/lxhao61/integrated-examples/tree/main/V2Ray(VLESS%2BHTTP)%2BCaddy)（VLESS+HTTP+TLS 应用。）
-2. [V2Ray(Trojan+HTTP)+Caddy](https://github.com/lxhao61/integrated-examples/tree/main/V2Ray(Trojan%2BHTTP)%2BCaddy)（Trojan+HTTP+TLS 应用。标记为 D。）
+1. [V2Ray(VLESS+HTTP)+Caddy](https://github.com/lxhao61/integrated-examples/tree/new/V2Ray(VLESS%2BHTTP)%2BCaddy)（VLESS+HTTP+TLS 应用。）
+2. [V2Ray(Trojan+HTTP)+Caddy](https://github.com/lxhao61/integrated-examples/tree/new/V2Ray(Trojan%2BHTTP)%2BCaddy)（Trojan+HTTP+TLS 应用。标记为 D。）
 #### &emsp;V2Ray/Xray 的反代 gRPC 应用
-1. [V2Ray(VMess+gRPC)+Nginx\Caddy](https://github.com/lxhao61/integrated-examples/tree/main/V2Ray(VMess%2BgRPC)%2BNginx%5CCaddy)（VMess+gRPC+TLS 应用。）
-2. [V2Ray(VLESS+gRPC)+Nginx\Caddy](https://github.com/lxhao61/integrated-examples/tree/main/V2Ray(VLESS%2BgRPC)%2BNginx%5CCaddy)（VLESS+gRPC+TLS 应用。）
-3. [V2Ray(SS+gRPC)+Nginx\Caddy](https://github.com/lxhao61/integrated-examples/tree/main/V2Ray(SS%2BgRPC)%2BNginx%5CCaddy)（兼容 Shadowsocks 加 v2ray-plugin 插件的 grpc-tls 应用。标记为 G。）
+1. [V2Ray(VMess+gRPC)+Nginx\Caddy](https://github.com/lxhao61/integrated-examples/tree/new/V2Ray(VMess%2BgRPC)%2BNginx%5CCaddy)（VMess+gRPC+TLS 应用。）
+2. [V2Ray(VLESS+gRPC)+Nginx\Caddy](https://github.com/lxhao61/integrated-examples/tree/new/V2Ray(VLESS%2BgRPC)%2BNginx%5CCaddy)（VLESS+gRPC+TLS 应用。）
+3. [V2Ray(SS+gRPC)+Nginx\Caddy](https://github.com/lxhao61/integrated-examples/tree/new/V2Ray(SS%2BgRPC)%2BNginx%5CCaddy)（兼容 Shadowsocks 加 v2ray-plugin 插件的 grpc-tls 应用。标记为 G。）
 #### &emsp;Xray 的回落应用
-1. [Xray(VLESS+Vision+TLS)+Nginx\Caddy](https://github.com/lxhao61/integrated-examples/tree/main/Xray(VLESS%2BVision%2BTLS)%2BNginx%5CCaddy)（XTLS Vision 应用。标记为 E。）
-2. [Xray(Trojan+RAW+TLS)+Nginx\Caddy](https://github.com/lxhao61/integrated-examples/tree/main/Xray(Trojan%2BRAW%2BTLS)%2BNginx%5CCaddy)（兼容原版 Trojan 的应用。标记为 F。）
+1. [Xray(VLESS+Vision+TLS)+Nginx\Caddy](https://github.com/lxhao61/integrated-examples/tree/new/Xray(VLESS%2BVision%2BTLS)%2BNginx%5CCaddy)（XTLS Vision 应用。标记为 E。）
+2. [Xray(Trojan+RAW+TLS)+Nginx\Caddy](https://github.com/lxhao61/integrated-examples/tree/new/Xray(Trojan%2BRAW%2BTLS)%2BNginx%5CCaddy)（兼容原版 Trojan 的应用。标记为 F。）
 #### &emsp;Xray 的反代 HTTPUpgrade 应用
-1. [Xray(VMess+HTTPUpgrade)+Nginx\Caddy](https://github.com/lxhao61/integrated-examples/tree/main/Xray(VMess%2BHTTPUpgrade)%2BNginx%5CCaddy)（VMess+HTTPUpgrade+TLS 应用。标记为 B。）
-2. [Xray(VLESS+HTTPUpgrade)+Nginx\Caddy](https://github.com/lxhao61/integrated-examples/tree/main/Xray(VLESS%2BHTTPUpgrade)%2BNginx%5CCaddy)（VLESS+HTTPUpgrade+TLS 应用。）
+1. [Xray(VMess+HTTPUpgrade)+Nginx\Caddy](https://github.com/lxhao61/integrated-examples/tree/new/Xray(VMess%2BHTTPUpgrade)%2BNginx%5CCaddy)（VMess+HTTPUpgrade+TLS 应用。标记为 B。）
+2. [Xray(VLESS+HTTPUpgrade)+Nginx\Caddy](https://github.com/lxhao61/integrated-examples/tree/new/Xray(VLESS%2BHTTPUpgrade)%2BNginx%5CCaddy)（VLESS+HTTPUpgrade+TLS 应用。）
 #### &emsp;Xray 的反代 XHTTP 应用
-1. [Xray(VMess+XHTTP)+Nginx\Caddy](https://github.com/lxhao61/integrated-examples/tree/main/Xray(VMess%2BXHTTP)%2BNginx%5CCaddy)（VMess+XHTTP+TLS 应用。）
-2. [Xray(VLESS+XHTTP)+Nginx\Caddy](https://github.com/lxhao61/integrated-examples/tree/main/Xray(VLESS%2BXHTTP)%2BNginx%5CCaddy)（VLESS+XHTTP+TLS 应用。标记为 H。）
+1. [Xray(VMess+XHTTP)+Nginx\Caddy](https://github.com/lxhao61/integrated-examples/tree/new/Xray(VMess%2BXHTTP)%2BNginx%5CCaddy)（VMess+XHTTP+TLS 应用。）
+2. [Xray(VLESS+XHTTP)+Nginx\Caddy](https://github.com/lxhao61/integrated-examples/tree/new/Xray(VLESS%2BXHTTP)%2BNginx%5CCaddy)（VLESS+XHTTP+TLS 应用。标记为 H。）
 #### &emsp;Xray 的 REALITY 应用
-1. [Xray(VLESS+Vision+REALITY)](https://github.com/lxhao61/integrated-examples/tree/main/Xray(VLESS%2BVision%2BREALITY))（REALITY Vision 应用。标记为 M。）
-2. [Xray(VLESS+XHTTP+REALITY)](https://github.com/lxhao61/integrated-examples/tree/main/Xray(VLESS%2BXHTTP%2BREALITY))（VLESS+XHTTP+REALITY 应用。标记为 K。）
-3. [Xray(M+K)](https://github.com/lxhao61/integrated-examples/tree/main/Xray(M+K))（以 REALITY 为核心的组合应用。）
+1. [Xray(VLESS+Vision+REALITY)](https://github.com/lxhao61/integrated-examples/tree/new/Xray(VLESS%2BVision%2BREALITY))（REALITY Vision 应用。标记为 M。）
+2. [Xray(VLESS+XHTTP+REALITY)](https://github.com/lxhao61/integrated-examples/tree/new/Xray(VLESS%2BXHTTP%2BREALITY))（VLESS+XHTTP+REALITY 应用。标记为 K。）
+3. [Xray(M+K)](https://github.com/lxhao61/integrated-examples/tree/new/Xray(M+K))（以 REALITY 为核心的组合应用。）
 #### &emsp;Caddy 的 NaiveProxy/Trojan-Go 应用
-1. [NaiveProxy(Caddy+forwardproxy)](https://github.com/lxhao61/integrated-examples/tree/main/NaiveProxy(Caddy%2Bforwardproxy))（基于插件实现的 NaiveProxy 应用。标记为 N。）
-2. [Trojan-Go(Caddy+caddy-trojan)](https://github.com/lxhao61/integrated-examples/tree/main/Trojan-Go(Caddy%2Bcaddy-trojan))（基于插件实现的 Trojan-Go 应用。标记为 T。）
-3. [Caddy(N+T)](https://github.com/lxhao61/integrated-examples/tree/main/Caddy(N%2BT))（基于插件实现的 NaiveProxy 与 Trojan-Go 组合应用。）
+1. [NaiveProxy(Caddy+forwardproxy)](https://github.com/lxhao61/integrated-examples/tree/new/NaiveProxy(Caddy%2Bforwardproxy))（基于插件实现的 NaiveProxy 应用。标记为 N。）
+2. [Trojan-Go(Caddy+caddy-trojan)](https://github.com/lxhao61/integrated-examples/tree/new/Trojan-Go(Caddy%2Bcaddy-trojan))（基于插件实现的 Trojan-Go 应用。标记为 T。）
+3. [Caddy(N+T)](https://github.com/lxhao61/integrated-examples/tree/new/Caddy(N%2BT))（基于插件实现的 NaiveProxy 与 Trojan-Go 组合应用。）
 #### &emsp;Hysteria 应用
-1. [Hysteria](https://github.com/lxhao61/integrated-examples/tree/main/Hysteria)（基于魔改的 QUIC 协议实现的代理应用。）
+1. [Hysteria](https://github.com/lxhao61/integrated-examples/tree/new/Hysteria)（基于魔改的 QUIC 协议实现的代理应用。）
 
 ### 服务端综合应用配置示例
 #### &emsp;以反代为核心的综合应用
-1. [V2Ray(G+C+A)+Nginx](https://github.com/lxhao61/integrated-examples/tree/main/V2Ray(G%2BC%2BA)%2BNginx)（反代 gRPC、WebSocket 的综合应用。）
-2. [V2Ray(D+G+C+A)+Caddy(N+T)](https://github.com/lxhao61/integrated-examples/tree/main/V2Ray(D%2BG%2BC%2BA)%2BCaddy(N%2BT))（反代 H2C、gRPC、WebSocket 加 NaiveProxy 与 Trojian-Go 的综合应用。）
+1. [V2Ray(G+C+A)+Nginx](https://github.com/lxhao61/integrated-examples/tree/new/V2Ray(G%2BC%2BA)%2BNginx)（反代 gRPC、WebSocket 的综合应用。）
+2. [V2Ray(D+G+C+A)+Caddy(N+T)](https://github.com/lxhao61/integrated-examples/tree/new/V2Ray(D%2BG%2BC%2BA)%2BCaddy(N%2BT))（反代 H2C、gRPC、WebSocket 加 NaiveProxy 与 Trojian-Go 的综合应用。）
 #### &emsp;以 XTLS Vision 为核心的综合应用
-1. [Xray(E+H+A)+Nginx](https://github.com/lxhao61/integrated-examples/tree/main/Xray(E%2BH%2BA)%2BNginx)（回落 Nginx 的综合应用。）
-2. [Xray(E+H+A)+Caddy](https://github.com/lxhao61/integrated-examples/tree/main/Xray(E%2BH%2BA)%2BCaddy)（回落 Caddy 的综合应用。）
+1. [Xray(E+H+A)+Nginx](https://github.com/lxhao61/integrated-examples/tree/new/Xray(E%2BH%2BA)%2BNginx)（回落 Nginx 的综合应用。）
+2. [Xray(E+H+A)+Caddy](https://github.com/lxhao61/integrated-examples/tree/new/Xray(E%2BH%2BA)%2BCaddy)（回落 Caddy 的综合应用。）
 #### &emsp;以 REALITY Vision 为核心的综合应用
-1. [Xray(M+H+K+A)+Nginx](https://github.com/lxhao61/integrated-examples/tree/main/Xray(M%2BH%2BK%2BA)%2BNginx)（由 Nginx 提供证书的综合应用。）
-2. [Xray(M+H+K+A)+Caddy(N+T)](https://github.com/lxhao61/integrated-examples/tree/main/Xray(M%2BH%2BK%2BA)%2BCaddy(N%2BT))（由 Caddy 提供证书的综合应用。）
+1. [Xray(M+H+K+A)+Nginx](https://github.com/lxhao61/integrated-examples/tree/new/Xray(M%2BH%2BK%2BA)%2BNginx)（由 Nginx 提供证书的综合应用。）
+2. [Xray(M+H+K+A)+Caddy(N+T)](https://github.com/lxhao61/integrated-examples/tree/new/Xray(M%2BH%2BK%2BA)%2BCaddy(N%2BT))（由 Caddy 提供证书的综合应用。）
 #### &emsp;由 Nginx/Caddy 兼顾 SNI 分流实现 XTLS Vision 与 Trojan 回落为核心的综合应用
-1. [Xray(E+F+H+A)+Nginx](https://github.com/lxhao61/integrated-examples/tree/main/Xray(E%2BF%2BH%2BA)%2BNginx)（由 Nginx 兼顾 SNI 分流的综合应用。）
-2. [Xray(E+F+H+A)+Caddy(N)](https://github.com/lxhao61/integrated-examples/tree/main/Xray(E%2BF%2BH%2BA)%2BCaddy(N))（由 Caddy 兼顾 SNI 分流的综合应用。）
+1. [Xray(E+F+H+A)+Nginx](https://github.com/lxhao61/integrated-examples/tree/new/Xray(E%2BF%2BH%2BA)%2BNginx)（由 Nginx 兼顾 SNI 分流的综合应用。）
+2. [Xray(E+F+H+A)+Caddy(N)](https://github.com/lxhao61/integrated-examples/tree/new/Xray(E%2BF%2BH%2BA)%2BCaddy(N))（由 Caddy 兼顾 SNI 分流的综合应用。）
 #### &emsp;由 Nginx/Caddy 兼顾 SNI 分流实现 REALITY Vision 与 Trojan 回落为核心的综合应用
-1. [Xray(M+F+H+K+A)+Nginx](https://github.com/lxhao61/integrated-examples/tree/main/Xray(M%2BF%2BH%2BK%2BA)%2BNginx)（由 Nginx 兼顾 SNI 分流的综合应用。）
-2. [Xray(M+F+H+K+A)+Caddy(N)](https://github.com/lxhao61/integrated-examples/tree/main/Xray(M%2BF%2BH%2BK%2BA)%2BCaddy(N))（由 Caddy 兼顾 SNI 分流的综合应用。）
+1. [Xray(M+F+H+K+A)+Nginx](https://github.com/lxhao61/integrated-examples/tree/new/Xray(M%2BF%2BH%2BK%2BA)%2BNginx)（由 Nginx 兼顾 SNI 分流的综合应用。）
+2. [Xray(M+F+H+K+A)+Caddy(N)](https://github.com/lxhao61/integrated-examples/tree/new/Xray(M%2BF%2BH%2BK%2BA)%2BCaddy(N))（由 Caddy 兼顾 SNI 分流的综合应用。）
 #### &emsp;注意（以上所有示例）:
 1. Xray 是 V2Ray（v4 版） 的超集，包含其全部应用（兼容其配置）、还独有 XTLS Vision（主要解决 TLS in TLS 问题）、REALITY（主要解决基于 SNI 名单阻断问题） 等一系列增强应用。
 2. V2Ray/Xray 示例中各应用都配置了屏蔽 BT 流量，如要调整请参考 ‘V2Ray(Other Configuration)’ 中 bt.json 示例。
@@ -78,15 +78,15 @@
 12. Trojan-Go 安卓手机客户端也可以去本人 Releases 中（最早）下载。
 
 ### systemd 服务配置示例
-&emsp;[Service Configuration](https://github.com/lxhao61/integrated-examples/tree/main/Service%20Configuration)（配置软件服务由 systemd 管理。）
+&emsp;[Service Configuration](https://github.com/lxhao61/integrated-examples/tree/new/Service%20Configuration)（配置软件服务由 systemd 管理。）
 
 ### 服务端特殊应用配置示例
-1. [V2Ray(Other Configuration)](https://github.com/lxhao61/integrated-examples/tree/main/V2Ray(Other%20Configuration)) （V2Ray 或 Xray 的特色应用配置方法。）
-2. [Caddy(Other Configuration)](https://github.com/lxhao61/integrated-examples/tree/main/Caddy(Other%20Configuration)) （Caddy 的特色应用配置方法。）
-3. [Fusion Configuration](https://github.com/lxhao61/integrated-examples/tree/main/Fusion%20Configuration) （服务端深度融合配置方法。）
+1. [V2Ray(Other Configuration)](https://github.com/lxhao61/integrated-examples/tree/new/V2Ray(Other%20Configuration)) （V2Ray 或 Xray 的特色应用配置方法。）
+2. [Caddy(Other Configuration)](https://github.com/lxhao61/integrated-examples/tree/new/Caddy(Other%20Configuration)) （Caddy 的特色应用配置方法。）
+3. [Fusion Configuration](https://github.com/lxhao61/integrated-examples/tree/new/Fusion%20Configuration) （服务端深度融合配置方法。）
 
 ### 原版客户端配置示例
-&emsp;[Client Configuration](https://github.com/lxhao61/integrated-examples/tree/main/Client%20Configuration)（若使用第三方客户端参考即可。）
+&emsp;[Client Configuration](https://github.com/lxhao61/integrated-examples/tree/new/Client%20Configuration)（若使用第三方客户端参考即可。）
 
 ### 更新及贡献
 1. 根据科学上网软件更新不定时调整示例，如科学上网软件有新增功能及应用等。
