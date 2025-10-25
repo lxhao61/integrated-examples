@@ -1,9 +1,9 @@
-//1、以反代或 REALITY Vision 为核心应用
+//1、以反代或 REALITY Vision 为核心应用或 NaiveProxy/Trojan-Go 应用
 //原配置：
 //........<省略>........
     "tls": {
       "certificates": {
-        "automate": ["hy.xx.yy","zh.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。（域名名称与数量以实际为准）
+        "automate": ["h2y.example.com","cdn.example.com"] //自动化管理 TLS 证书（包括自动申请与更新证书）。修改为自己的域名。（域名名称与数量以实际为准）
       },
       "automation": {
         "policies": [{
@@ -21,11 +21,11 @@
     }
 //........<省略>........
 
-//以 DNS API 方式申请 TLS 证书（以上配置修改为如下）：
+//以 DNS-01 验证方式申请 TLS 证书（以上配置修改为如下）：
 //........<省略>........
     "tls": {
       "certificates": {
-        "automate": ["*.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。*.xx.yy 表示为通配符域名，修改为自己的域名。
+        "automate": ["*.example.com"] //自动化管理 TLS 证书（包括自动申请与更新证书）。修改为自己的通配符域名。
       },
       "automation": {
         "policies": [{
@@ -36,8 +36,8 @@
               "dns": {
                 "provider": {
                   "name": "tencentcloud",
-                  "secret_id": "DHIDQiplU2NXdfV8bt0xiHdnkX9aoriLm03u", //换成你 tencentcloud 的 SecretId，与下一致。
-                  "secret_key": "5kriPuFPM8h5GE0b4Tny9IH4g6JLJ4cz" //换成你 tencentcloud 的 SecretKey，与下一致。
+                  "secret_id": "DHIDQiplU2NXdfV8bt0xiHdnkX9aoriLm03u", //修改为自己 TencentCloud 的 API ID，与下一致。
+                  "secret_key": "5kriPuFPM8h5GE0b4Tny9IH4g6JLJ4cz" //修改为自己 TencentCloud 的 API 密钥，与下一致。
                 }
               }
             }
@@ -50,8 +50,8 @@
               "dns": {
                 "provider": {
                   "name": "tencentcloud",
-                  "secret_id": "DHIDQiplU2NXdfV8bt0xiHdnkX9aoriLm03u", //换成你 tencentcloud 的 SecretId，与上一致。
-                  "secret_key": "5kriPuFPM8h5GE0b4Tny9IH4g6JLJ4cz" //换成你 tencentcloud 的 SecretKey，与上一致。
+                  "secret_id": "DHIDQiplU2NXdfV8bt0xiHdnkX9aoriLm03u", //修改为自己 TencentCloud 的 API ID，与上一致。
+                  "secret_key": "5kriPuFPM8h5GE0b4Tny9IH4g6JLJ4cz" //修改为自己 TencentCloud 的 API 密钥，与上一致。
                 }
               }
             }
@@ -67,7 +67,7 @@
 //........<省略>........
     "tls": {
       "certificates": {
-        "automate": ["hy.xx.yy","zh.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。（域名名称与数量以实际为准）
+        "automate": ["h3a.example.com","cdn.example.com"] //自动化管理 TLS 证书（包括自动申请与更新证书）。修改为自己的域名。（域名名称与数量以实际为准）
       },
       "automation": {
         "policies": [{
@@ -81,11 +81,11 @@
     }
 //........<省略>........
 
-//以 DNS API 方式申请 TLS 证书（以上配置修改为如下）：
+//以 DNS-01 验证方式申请 TLS 证书（以上配置修改为如下）：
 //........<省略>........
     "tls": {
       "certificates": {
-        "automate": ["*.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。*.xx.yy 表示为通配符域名，修改为自己的域名。
+        "automate": ["*.example.com"] //自动化管理 TLS 证书（包括自动申请与更新证书）。修改为自己的通配符域名。
       },
       "automation": {
         "policies": [{
@@ -97,8 +97,8 @@
               "dns": {
                 "provider": {
                   "name": "tencentcloud",
-                  "secret_id": "DHIDQiplU2NXdfV8bt0xiHdnkX9aoriLm03u", //换成你 tencentcloud 的 SecretId
-                  "secret_key": "5kriPuFPM8h5GE0b4Tny9IH4g6JLJ4cz" //换成你 tencentcloud 的 SecretKey
+                  "secret_id": "DHIDQiplU2NXdfV8bt0xiHdnkX9aoriLm03u", //修改为自己 TencentCloud 的 API ID
+                  "secret_key": "5kriPuFPM8h5GE0b4Tny9IH4g6JLJ4cz" //修改为自己 TencentCloud 的 API 密钥
                 }
               }
             }
@@ -107,6 +107,6 @@
       }
     }
 //........<省略>........
-//注意：
-//1、若根域名为 xx.yy，那么从 Let's Encrypt 申请的通配符 TLS 证书在 “/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/wildcard_.xx.yy” 目录中。/home/tls 为存放 TLS 证书的基本路径，目录随根域名变化。
-//2、若根域名为 xx.yy，那么从 ZeroSSL 申请的通配符 TLS 证书在 “/home/tls/certificates/acme.zerossl.com-v2-dv90/wildcard_.xx.yy” 目录中。/home/tls 为存放 TLS 证书的基本路径，目录随根域名变化。
+//备注：
+//1、若根域名为 example.com，那么从 Let's Encrypt 申请的通配符 TLS 证书在 “/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/wildcard_.example.com” 目录中。/home/tls 为存放 TLS 证书的基本路径，目录随根域名变化。
+//2、若根域名为 example.com，那么从 ZeroSSL 申请的通配符 TLS 证书在 “/home/tls/certificates/acme.zerossl.com-v2-dv90/wildcard_.example.com” 目录中。/home/tls 为存放 TLS 证书的基本路径，目录随根域名变化。

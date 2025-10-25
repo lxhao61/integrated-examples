@@ -1,84 +1,148 @@
 #网盘应用配置
-#配置一
-#........<省略>........
-	@notget {
-		not method GET
+#1、WebDAV 服务器与网站（静态文件服务器）共存配置
+	@notgh {
+		not method GET HEAD
 	}
-	route @notget {
-		basicauth { #可以设置多组用户及密码
-			user JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl #验证用户与密码（示例为 password 的哈希密码），修改为自己的。
+	route @notgh {
+		basic_auth {
+			user JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl #验证用户与密码（示例为 password 的哈希密码），修改为自己的。可以设置多组用户及密码。
 		}
 		webdav {
 			root /home/webdav #修改为 WebDAV 服务器存放文件路径
 		}
 	}
-#........<省略>........
-#备注：
-#1、本配置适合为个人或特定人群提供基本的文件管理服务。仅支持 WebDAV 客户端（有验证）浏览文件，可删除、上传、修改等。
-#2、在本人示例的回落或代理网站配置块之前插增加上边配置块，就可实现 WebDAV 服务器与回落或代理网站共存。
-#3、修改 /home/webdav 的目录权限为 0777，以便客户端具有写入及删除文件权限。
-#4、basicauth 中密码必须使用哈希密码，可用 caddy hash-password --plaintext <password> 命令把普通密码转化为哈希密码并输出。例如：/usr/bin/caddy hash-password --plaintext password
 
-#配置二
-#........<省略>........
 	@host {
-		host zz.xx.yy #限定网盘应用访问，修改为对应域名。
+		host h3a.example.com cdn.example.com #限定域名访问（包括禁止以 IP 方式访问网站），修改为自己的域名。（域名名称与数量以实际为准）
 	}
 	route @host {
-		root * /home/webdav #修改为文件管理服务存放文件路径
-		@get {
-			method GET
-		}
-		header @get {
+		header {
 			Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用 HSTS
 		}
-		file_server @get {
-			browse
+		file_server {
+			root /var/www/html #修改为自己存放的 Web 文件路径
 		}
-		basicauth { #可以设置多组用户及密码
-			user JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl #验证用户与密码（示例为 password 的哈希密码），修改为自己的。
-		}
-		webdav
 	}
-#........<省略>........
 #备注：
-#1、本配置适合为普通人群提供文件分享及专业的文件管理服务。
-#1)、支持 WEB 登录（无验证）浏览文件，可下载、音视频文件在线播放等。
-#2)、支持 WebDAV 客户端（有验证）浏览文件，可删除、上传、修改等。
-#2、本人示例的回落或代理网站配置块都可直接替换为上边配置块，伪装网站改为文件服务器网站。（不推荐）
-#3、在本人示例的回落或代理网站配置块之前增加上边配置块，同步调整证书与域名相关就可实现文件服务器网站与回落或代理网站共存。
-#4、在本人 SNI 分流示例中增加含上述配置块的不同端口站点，同步调整 SNI 分流配置、证书与域名相关就可实现文件服务器网站与代理网站共存。另删除上‘限定网盘应用访问’配置，SNI 分流已配置（不必再次配置）。
-#5、修改 /home/webdav 的目录权限为 0777，以便客户端具有写入及删除文件权限。
-#6、basicauth 中密码必须使用哈希密码，可用caddy hash-password --plaintext <password> 命令把普通密码转化为哈希密码并输出。例如：/usr/bin/caddy hash-password --plaintext password
+#1、使用上面配置替换原示例的网站（静态文件服务器）配置、即可实现 WebDAV 服务器与网站（静态文件服务器）共存。
+#2、修改 /home/webdav 的目录权限为 0777 ，以便客户端具有写入及删除文件权限。
+#3、basic_auth 中密码必须使用哈希密码，可用 caddy hash-password --plaintext <password> 命令把普通密码转化为哈希密码。
+#4、仅支持使用 WebDAV 客户端管理网盘文件，可上传、下载、删除、修改等。
 
-#配置三
-#........<省略>........
-	@host2 {
-		host zz.xx.yy #限定网盘应用访问，修改为对应域名。
+
+#2、WebDAV 服务器与网站（文件列表服务器）共存配置
+	@notgh {
+		not method GET HEAD
 	}
-	route @host2 {
-		root * /home/webdav #修改为文件管理服务存放文件路径
-		@get {
-			method GET
+	route @notgh {
+		basic_auth {
+			user JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl #验证用户与密码（示例为 password 的哈希密码），修改为自己的。可以设置多组用户及密码。
 		}
-		header @get {
+		webdav {
+			root /home/webdav #修改为 WebDAV 服务器存放文件路径
+		}
+	}
+
+	@host {
+		host h3a.example.com cdn.example.com #限定域名访问（包括禁止以 IP 方式访问网站），修改为自己的域名。（域名名称与数量以实际为准）
+	}
+	route @host {
+		header {
 			Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用 HSTS
 		}
-		basicauth { #可以设置多组用户及密码
-			user JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl #验证用户与密码（示例为 password 的哈希密码），修改为自己的。
-		}
-		file_server @get {
+		file_server {
+			root /home/webdav #修改为 WebDAV 服务器存放文件路径
 			browse
 		}
-		webdav
 	}
-#........<省略>........
 #备注：
-#1、本配置适合为个人或特定人群提供专业的文件管理服务。
-#1)、支持 WEB 登录（有验证）浏览文件，可下载、音视频文件在线播放等。
-#2)、支持 WebDAV 客户端（有验证）浏览文件，可删除、上传、修改等。
-#3)、WEB 登录与 WebDAV 客户端，两者用户及密码通用。
-#2、在本人示例的回落或代理网站配置块之前增加上边配置块，同步调整证书与域名相关就可实现文件服务器网站与回落或代理网站共存。
-#3、在本人 SNI 分流示例中增加含上述配置块的不同端口站点，同步调整 SNI 分流配置、证书与域名相关就可实现文件服务器网站与代理网站共存。另删除上‘限定网盘应用访问’配置，SNI 分流已配置（不必再次配置）。
-#4、修改 /home/webdav 的目录权限为 0777，以便客户端具有写入及删除文件权限。
-#5、basicauth 中密码必须使用哈希密码，可用 caddy hash-password --plaintext <password> 命令把普通密码转化为哈希密码并输出。例如：/usr/bin/caddy hash-password --plaintext password
+#1、使用上面配置替换原示例的网站（静态文件服务器）配置、即可实现 WebDAV 服务器与网站（文件列表服务器）共存。
+#2、修改 /home/webdav 的目录权限为 0777 ，以便客户端具有写入及删除文件权限。
+#3、basic_auth 中密码必须使用哈希密码，可用 caddy hash-password --plaintext <password> 命令把普通密码转化为哈希密码。
+#4、支持使用 WebDAV 客户端管理网盘文件，可上传、下载、删除、修改等。
+#5、支持使用浏览器浏览网盘文件（验证无），可下载、在线播放音频/视频等。
+
+
+#3、WebDAV 服务器与网站（静态文件服务器、文件列表服务器）共存配置
+#1)、文件列表服务器基于特定路径访问配置
+	@notgh {
+		not method GET HEAD
+	}
+	route @notgh {
+		basic_auth {
+			user JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl #验证用户与密码（示例为 password 的哈希密码），修改为自己的。可以设置多组用户及密码。
+		}
+		webdav {
+			root /home/webdav #修改为 WebDAV 服务器存放文件路径
+		}
+	}
+
+	@host {
+		host h3a.example.com cdn.example.com #限定域名访问（包括禁止以 IP 方式访问网站），修改为自己的域名。（域名名称与数量以实际为准）
+	}
+	route @host {
+		header {
+			Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用 HSTS
+		}
+		handle_path /dav* { #访问文件列表服务器的路径，修改为自己的。
+			basic_auth {
+				user JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl #验证用户与密码（示例为 password 的哈希密码），修改为自己的。可以设置多组用户及密码。
+			} #访问文件列表服务器验证配置。（选配）
+			file_server {
+				root /home/webdav #修改为 WebDAV 服务器存放文件路径
+				browse
+			}
+		}
+		file_server {
+			root /var/www/html #修改为自己存放的 Web 文件路径
+		}
+	}
+#备注：
+#1、使用上面配置替换原示例的网站（静态文件服务器）配置、即可实现 WebDAV 服务器与网站（静态文件服务器、文件列表服务器）共存。
+#2、修改 /home/webdav 的目录权限为 0777 ，以便客户端具有写入及删除文件权限。
+#3、basic_auth 中密码必须使用哈希密码，可用 caddy hash-password --plaintext <password> 命令把普通密码转化为哈希密码。
+#4、支持使用 WebDAV 客户端管理网盘文件，可上传、下载、删除、修改等。
+#5、支持使用浏览器浏览网盘文件（验证选配），可下载、在线播放音频/视频等。使用方法：域名/特定路径，如 h2a.example.com/dav。
+
+#2)、文件列表服务器基于专用域名访问配置
+	@notgh {
+		not method GET HEAD
+	}
+	route @notgh {
+		basic_auth {
+			user JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl #验证用户与密码（示例为 password 的哈希密码），修改为自己的。可以设置多组用户及密码。
+		}
+		webdav {
+			root /home/webdav #修改为 WebDAV 服务器存放文件路径
+		}
+	}
+
+	@host {
+		host h3a.example.com cdn.example.com dav.example.com #限定域名访问（包括禁止以 IP 方式访问网站），修改为自己的域名。（域名名称与数量以实际为准）
+	}
+	route @host {
+		header {
+			Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" #启用 HSTS
+		}
+		@host1 {
+			host dav.example.com #访问文件列表服务器的专用域名，修改为自己的。
+		}
+		route @host1 {
+			basic_auth {
+				user JDJhJDE0JGMzclpVMkU4bVhMRVRXY0o2a2pmMnVGUDNqcGxGZ3ByY1ZTMEVDbi80N1M0NE93NUZXZXNl #验证用户与密码（示例为 password 的哈希密码），修改为自己的。可以设置多组用户及密码。
+			} #访问文件列表服务器验证配置。（选配）
+			file_server {
+				root /home/webdav #修改为 WebDAV 服务器存放文件路径
+				browse
+			}
+		}
+		file_server {
+			root /var/www/html #修改为自己存放的 Web 文件路径
+		}
+	}
+#备注：
+#1、使用上面配置替换原示例的网站（静态文件服务器）配置、同步调整专用域名的对应配置（如增加证书申请等。），即可实现 WebDAV 服务器与网站（静态文件服务器、文件列表服务器）共存。
+#2、修改 /home/webdav 的目录权限为 0777 ，以便客户端具有写入及删除文件权限。
+#3、basic_auth 中密码必须使用哈希密码，可用 caddy hash-password --plaintext <password> 命令把普通密码转化为哈希密码。
+#4、支持使用 WebDAV 客户端管理网盘文件，可上传、下载、删除、修改等。
+#5、支持使用浏览器浏览网盘文件（验证选配），可下载、在线播放音频/视频等。使用方法：专用域名，如 dav.example.com。

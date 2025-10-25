@@ -1,10 +1,10 @@
-一、限定从 Let's Encrypt 与 ZeroSSL 申请 TLS 证书的配置方法
+一、限定从 Let's Encrypt 与 ZeroSSL 分别申请 TLS 证书的配置方法
 
-此方法可实现不同域名的 TLS 证书由不同 TLS 证书提供商提供、或避开申请免费普通 TLS 证书的域名超过五个问题，配置见 two_caddy.json 文件。
+此方法实现由不同 CA 机构提供 TLS 证书，避免申请免费 TLS 证书的域名超过五个问题，配置见 two_caddy.json 文件。
 
 二、以 DNS-01 验证方式申请 TLS 证书的配置方法
 
-Caddy 以 DNS-01 验证方式申请 TLS 证书，必须带对应 DNS API 插件。本仓库仅提供 cloudflare、tencentcloud、duckdns 三种常见插件配置示例。
+Caddy 以 DNS-01 验证方式申请 TLS 证书，必须带对应 DNS API 插件。本仓库仅提供 cloudflare、duckdns、tencentcloud 三种常见插件配置示例。
 
 注意：
 
@@ -32,10 +32,10 @@ Caddy 使用非自己内置 ACME 客户端提供的 TLS 证书时，其配置见
 
 2、也可用 Caddy 的 SNI 分流共用 TCP 443 端口来解决问题（不同方法，达到相同效果。），相关分流见各自配置示例。
 
-六、反向代理到 HTTP/2 或 HTTPS 网站配置方法
+六、反向代理到 HTTPS 网站配置方法
 
-此配置实现 Caddy 不必启用 WEB 服务，流量伪装与防探测网站由国外 HTTP/2 或 HTTPS 网站提供。配置见 proxyweb_caddy.json 或 proxyweb_Caddyfile 文件。
+此配置实现 Caddy 不需自己启用 Web 服务，流量伪装与防探测网站由国外 HTTPS 网站提供。配置见 proxyweb_caddy.json 或 proxyweb_Caddyfile 文件。
 
 七、网盘应用配置方法
 
-以 caddy-webdav 插件及文件服务应用打造不同的网盘应用（服务端），配置见 webdav_caddy.json 或 webdav_Caddyfile 文件。
+以 caddy-webdav 插件及文件列表服务应用打造不同的网盘应用（服务端），配置见 webdav_caddy.json 或 webdav_Caddyfile 文件。
