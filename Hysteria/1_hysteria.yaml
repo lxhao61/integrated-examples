@@ -1,26 +1,8 @@
-#1、Hysteria 的混淆配置示例
-listen: :2083 #UDP 监听端口
-acme:
-  domains:
-    - xx.yy #修改为自己的域名
-  email: your@email.com #修改为自己的电子邮箱。（选配）
-obfs:
-  type: salamander
-  salamander:
-    password: 3452e3b8k2 #混淆密码，修改为自己的。
-auth:
-  type: password #单用户密码验证模式。若使用多用户密码验证模式，请参考官方示例调整。
-  password: 123a65h7890 #单用户验证密码，修改为自己的。
-#备注：
-#1、如果你的网络针对性屏蔽了 HTTP/3 流量（但允许其他 UDP 流量），可使用本示例或本示例的调整（见下项）来解决。
-#2、本示例以 HTTP-01 验证方式申请与更新 TLS 证书，故独自使用推荐；否则请参考官方文档调整以 DNS-01 验证方式申请与更新 TLS 证书，实现与其它应用共存使用。
-
-
-#2、Hysteria 的 HTTP/3 配置示例
+#1、Hysteria 的 HTTP/3 配置示例
 listen: :443 #HTTP/3 监听端口
 acme:
   domains:
-    - xx.yy #修改为自己的域名
+    - h3a.example.com #修改为自己的域名
   email: your@email.com #修改为自己的电子邮箱。（选配）
 auth:
   type: password #单用户密码验证模式。若使用多用户密码验证模式，请参考官方示例调整。
@@ -31,7 +13,25 @@ masquerade:
   forceHTTPS: true #HTTP 自动跳转 HTTPS 开启
   type: file #静态文件服务器模式
   file:
-    dir: /var/www/html #修改为自己存放的 WEB 文件路径
+    dir: /var/www/html #修改为自己存放的 Web 文件路径
 #备注：
 #1、本示例以 HTTP-01 验证方式申请与更新 TLS 证书、且提供完整的 HTTP/3 伪装网站，故仅独自使用推荐。
 #2、本示例可参考官方文档调整以 DNS-01 验证方式申请与更新 TLS 证书。
+
+
+#2、Hysteria 的混淆配置示例
+listen: :2083 #UDP 监听端口
+acme:
+  domains:
+    - h3y.example.com #修改为自己的域名
+  email: your@email.com #修改为自己的电子邮箱。（选配）
+obfs:
+  type: salamander
+  salamander:
+    password: 3452e3b8k2 #混淆密码，修改为自己的。
+auth:
+  type: password #单用户密码验证模式。若使用多用户密码验证模式，请参考官方示例调整。
+  password: 123a65h7890 #单用户验证密码，修改为自己的。
+#备注：
+#1、如果你的网络针对性屏蔽了 HTTP/3 流量（但允许其他 UDP 流量），可使用本示例来解决。
+#2、本示例以 HTTP-01 验证方式申请与更新 TLS 证书，故独自使用推荐；否则请参考官方文档调整以 DNS-01 验证方式申请与更新 TLS 证书，实现与其它应用共存使用。

@@ -1,8 +1,44 @@
-#1、Hysteria 的混淆配置示例
+#1、Hysteria 的 HTTP/3 配置示例
+#1)、Hysteria 的 HTTP/3 通用配置示例
+listen: :443 #HTTP/3 监听端口
+tls:
+  cert: /home/tls/h3a.example.com/h3a.example.com.crt #修改为自己的证书，绝对路径。
+  key: /home/tls/h3a.example.com/h3a.example.com.key #修改为自己的密钥，绝对路径。
+auth:
+  type: password #单用户密码验证模式。若使用多用户密码验证模式，请参考官方示例调整。
+  password: 123a65h7890 #单用户验证密码，修改为自己的。
+masquerade:
+  type: proxy #反向代理模式
+  proxy:
+    url: https://h3a.example.com #反代到的网站，修改为选定的网站域名。
+    rewriteHost: true
+#备注：
+#1、本示例仅共用 TCP/UDP 443 端口推荐使用，即 Hysteria 使用 UDP 443 端口、其它应用使用 TCP 443 端口（含共用 TCP 443 端口）。
+#2、本示例与本仓库中其它示例共用 TCP/UDP 443 端口时需其它示例的 Nginx/Caddy：若有定向 UDP 转发配置，那么必须删除；若无定向 UDP 转发配置，那么 HTTP/3 启用配置必须删除。另外 Nginx/Caddy 中对应上面证书（域名）的配置：若其中无‘通告 HTTP/3 server 的可用性’配置，那么需添加。
+
+#2)、Hysteria 的 HTTP/3 专用配置示例
+listen: 127.0.0.1:3443 #HTTP/3 本地监听端口
+tls:
+  cert: /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/h2y.example.com/h2y.example.com.crt #修改为自己的证书，绝对路径。
+  key: /home/tls/certificates/acme-v02.api.letsencrypt.org-directory/h2y.example.com/h2y.example.com.key #修改为自己的密钥，绝对路径。
+auth:
+  type: password #单用户密码验证模式。若使用多用户密码验证模式，请参考官方示例调整。
+  password: 123a65h7890 #单用户验证密码，修改为自己的。
+masquerade:
+  type: proxy #反向代理模式
+  proxy:
+    url: https://h2y.example.com #反代到的网站，修改为选定的网站域名。
+    rewriteHost: true
+#备注：
+#1、本示例目前仅推荐与本仓库具有 Caddy 的定向 UDP 转发配置示例共用 UDP 443 端口配置时使用。
+#2、使用本示例需将 Caddy 的定向 UDP 转发配置升级成 SNI 分流共用 UDP 443 端口配置，具体修改见 udpsni_caddy.json 配置。
+
+
+#2、Hysteria 的混淆配置示例
 listen: :2083 #UDP 监听端口
 tls:
-  cert: /home/tls/xx.yy/xx.yy.crt #换成自己的证书，绝对路径。
-  key: /home/tls/xx.yy/xx.yy.key #换成自己的密钥，绝对路径。
+  cert: /home/tls/h3y.example.com/h3y.example.com.crt #修改为自己的证书，绝对路径。
+  key: /home/tls/h3y.example.com/h3y.example.com.key #修改为自己的密钥，绝对路径。
 obfs:
   type: salamander
   salamander:
@@ -13,39 +49,3 @@ auth:
 #备注：
 #1、如果你的网络针对性屏蔽了 HTTP/3 流量（但允许其他 UDP 流量），推荐使用本示例来解决。
 #2、如果 UDP 443 端口已被其它应用占用，可使用本示例来解决。
-
-
-#2、Hysteria 的 HTTP/3 配置示例
-#1)、Hysteria 的 HTTP/3 通用配置示例
-listen: :443 #HTTP/3 监听端口
-tls:
-  cert: /home/tls/h3.xx.yy/h3.xx.yy.crt #换成自己的证书，绝对路径。
-  key: /home/tls/h3.xx.yy/h3.xx.yy.key #换成自己的密钥，绝对路径。
-auth:
-  type: password #单用户密码验证模式。若使用多用户密码验证模式，请参考官方示例调整。
-  password: 123a65h7890 #单用户验证密码，修改为自己的。
-masquerade:
-  type: proxy #反向代理模式
-  proxy:
-    url: https://h3.xx.yy #反代到的网站，修改为选定的网站域名。
-    rewriteHost: true
-#备注：
-#1、本示例仅共用 TCP/UDP 443 端口推荐使用，即 Hysteria 使用 UDP 443 端口、其它应用使用 TCP 443 端口（含共用 TCP 443 端口）。
-#2、本示例与本仓库中其它示例共用 TCP/UDP 443 端口时需其它示例的 Nginx/Caddy：若有定向 UDP 转发配置，那么必须删除；若无定向 UDP 转发配置，那么 HTTP/3 启用配置必须删除。另外 Nginx/Caddy 中对应上面证书（域名）的配置：若其中无‘通告 HTTP/3 server 的可用性’配置，那么需添加。
-
-#2)、Hysteria 的 HTTP/3 专用配置示例
-listen: 127.0.0.1:2443 #HTTP/3 本地监听端口
-tls:
-  cert: "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/hy.xx.yy/hy.xx.yy.crt #换成自己的证书，绝对路径。
-  key: "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/hy.xx.yy/hy.xx.yy.key #换成自己的密钥，绝对路径。
-auth:
-  type: password #单用户密码验证模式。若使用多用户密码验证模式，请参考官方示例调整。
-  password: 123a65h7890 #单用户验证密码，修改为自己的。
-masquerade:
-  type: proxy #反向代理模式
-  proxy:
-    url: https://hy.xx.yy #反代到的网站，修改为选定的网站域名。
-    rewriteHost: true
-#备注：
-#1、本示例目前仅推荐与本仓库具有 Caddy 的定向 UDP 转发配置示例共用 UDP 443 端口配置时使用。
-#2、使用本示例需将 Caddy 的定向 UDP 转发配置升级成 SNI 分流共用 UDP 443 端口配置，具体修改见 udpsni_caddy.json 配置。
