@@ -31,11 +31,12 @@
           "certificates": [
             {
               "ocspStapling": 3600,
-              "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zv.xx.yy/zv.xx.yy.crt", //换成自己的证书，绝对路径。
-              "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zv.xx.yy/zv.xx.yy.key" //换成自己的密钥，绝对路径。
+              "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/h2t.example.com/h2t.example.com.crt", //修改为自己的证书，绝对路径。
+              "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/h2t.example.com/h2t.example.com.key" //修改为自己的密钥，绝对路径。
             }
           ],
-          "minVersion": "1.2"
+          "minVersion": "1.2",
+          "cipherSuites": "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256"
         },
         "rawSettings": {
           "acceptProxyProtocol": true //开启 PROXY protocol 接收，接收 Caddy SNI 分流前真实来源 IP 和端口。
@@ -74,8 +75,8 @@
           "certificates": [
             {
               "ocspStapling": 3600,
-              "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zt.xx.yy/zt.xx.yy.crt", //换成自己的证书，绝对路径。
-              "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/zt.xx.yy/zt.xx.yy.key" //换成自己的密钥，绝对路径。
+              "certificateFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/t2n.example.com/t2n.example.com.crt", //修改为自己的证书，绝对路径。
+              "keyFile": "/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/t2n.example.com/t2n.example.com.key" //修改为自己的密钥，绝对路径。
             }
           ],
           "minVersion": "1.2",
