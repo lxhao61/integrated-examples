@@ -1,6 +1,6 @@
 介绍：
 
-利用 Caddy 支持 SNI 分流特性，对 VLESS+Vision+REALITY、Trojan+RAW+TLS、HTTP/3 server 进行 SNI 分流（四层转发），实现除 Xray 的 mKCP 应用外各应用共用 TCP 443 端口。其中 Caddy 同时为 VLESS+Vision+REALITY 与 Trojan+RAW+TLS 提供 WEB 服务，为 Xray 的 XHTTP、gRPC、HTTPUpgrade 提供反向代理，为 forwardproxy 插件提供正向代理，其应用如下：
+利用 Caddy 支持 SNI 分流特性，对 VLESS+Vision+REALITY、Trojan+RAW+TLS、HTTP/3 server 进行 SNI 分流（四层转发），实现除 Xray 的 mKCP 应用外各应用共用 TCP 443 端口。其中 Caddy 同时为 VLESS+Vision+REALITY 与 Trojan+RAW+TLS 提供 Web 服务，为 Xray 的 XHTTP、gRPC、HTTPUpgrade 提供反向代理，为 forwardproxy 插件提供正向代理，其应用如下：
 
 1、M=VLESS+Vision+REALITY（转发及回落配置，REALITY 所需 TLS 由 Caddy 提供及处理。）
 
