@@ -50,7 +50,7 @@
     {
       "listen": "127.0.0.1",
       "port": 1080,
-      "protocol": "socks", //兼容 Socks 4 、Socks 4a 、Socks 5 。
+      "protocol": "socks", //兼容 SOCKS4、SOCKS4a、SOCKS5。
       "settings": {
         "udp": true
       },
@@ -62,21 +62,7 @@
           "quic"
         ]
       }
-    }, //接收 NaiveProxy 及 Hysteria 转发来的流量配置。若无这些应用，请删除。
-    {
-      "listen": "127.0.0.1",
-      "port": 1081,
-      "protocol": "http",
-      "settings": {},
-      "sniffing": {
-        "enabled": true,
-        "destOverride": [
-          "http",
-          "tls",
-          "quic"
-        ]
-      }
-    }, //接收 Trojan-Go(caddy-trojan 插件) 转发来的流量配置。若无此应用，请删除。
+    }, //接收 NaiveProxy、Trojan-Go(caddy-trojan 插件) 及 Hysteria 转发来的流量配置。若无这些应用，请删除。
     {
       "port": 2052, //监听端口
       "protocol": "vless",
