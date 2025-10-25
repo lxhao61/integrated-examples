@@ -54,8 +54,8 @@
         "network": "raw",
         "security": "reality",
         "realitySettings": {
-          "serverName": "xx.yy", //修改为服务端配置的域名之一
-          "publicKey": "DsQx461u0W36DcLxN0jCuIjt944GeVdtTfPReoUqTwI", //修改为服务端私钥的对应公钥
+          "serverName": "h2r.example.com", //修改为服务端配置的域名之一
+          "password": "DsQx461u0W36DcLxN0jCuIjt944GeVdtTfPReoUqTwI", //修改为服务端私钥对应的公钥（密码）
           "shortId": "", //修改为服务端 shortIds 配置的参数之一
           "spiderX": "", //选填，爬虫初始路径与参数，建议每个客户端不同。
           "fingerprint": "chrome" //模拟 TLS 指纹，可任一 chrome、firefox、safari、ios、edge、qq、random、randomized 选项配置。
