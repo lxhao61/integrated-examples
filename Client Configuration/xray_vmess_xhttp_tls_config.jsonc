@@ -40,7 +40,7 @@
       "settings": {
         "vnext": [
           {
-            "address": "zh.xx.yy", //修改为使用本应用的 CDN 流量中转域名
+            "address": "cdn.example.com", //修改为使用本应用的 CDN 流量中转域名
             "port": 443,
             "users": [
               {
@@ -128,7 +128,7 @@
         "network": "xhttp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "h3.xx.yy", //修改为使用本应用的域名。若上面 address 使用本应用的域名，此项配置可删除。
+          "serverName": "h3a.example.com", //修改为使用本应用的域名。若上面 address 使用本应用的域名，此项配置可删除。
           "alpn": ["h2"], //若服务端支持 HTTP/3 传输其值可改为 h3
           "fingerprint": "chrome" //模拟 TLS 指纹，可任一 chrome、firefox、safari、ios、edge、qq、random、randomized 选项配置。
         },
@@ -204,7 +204,7 @@
         "network": "xhttp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "h3.xx.yy", //修改为使用本应用的域名。若上面 address 使用本应用的域名，此项配置可删除。
+          "serverName": "h3a.example.com", //修改为使用本应用的域名。若上面 address 使用本应用的域名，此项配置可删除。
           "alpn": ["h2"], //若服务端支持 HTTP/3 传输其值可改为 h3
           "fingerprint": "chrome" //模拟 TLS 指纹，可任一 chrome、firefox、safari、ios、edge、qq、random、randomized 选项配置。
         },
@@ -213,7 +213,7 @@
           "path": "/VMSpdG9k", //修改为服务端配置的路径
           "extra": {
             "downloadSettings": {
-              "address": "zh.xx.yy", //修改为使用本应用的 CDN 流量中转域名
+              "address": "cdn.example.com", //修改为使用本应用的 CDN 流量中转域名
               "port": 443,
               "network": "xhttp",
               "security": "tls",
@@ -297,7 +297,7 @@
         "network": "xhttp",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "h3.xx.yy", //修改为使用本应用的域名
+          "serverName": "h3a.example.com", //修改为使用本应用的域名
           "alpn": ["h2"], //若服务端支持 HTTP/3 传输其值可改为 h3
           "fingerprint": "chrome" //模拟 TLS 指纹，可任一 chrome、firefox、safari、ios、edge、qq、random、randomized 选项配置。
         },
@@ -311,7 +311,7 @@
               "network": "xhttp",
               "security": "tls",
               "tlsSettings": {
-                "serverName": "h3.xx.yy", //修改为使用本应用的域名
+                "serverName": "h3a.example.com", //修改为使用本应用的域名
                 "alpn": ["h2"], //若服务端支持 HTTP/3 传输其值可改为 h3
                 "fingerprint": "chrome" //模拟 TLS 指纹，可任一 chrome、firefox、safari、ios、edge、qq、random、randomized 选项配置。
               },
