@@ -30,4 +30,6 @@ Xray 前置（监听 443 端口），利用 VLESS+Vision+REALITY 支持转发给
 
 7、本示例中 T 仅推荐使用 Trojan 应用（不使用 WebSocket 应用）：因为其 WebSocket 应用不支持 WebSocket 0-RTT 与多路复用，且 Xray 官方通告使用 XHTTP 应用替代。
 
-8、配置1：使用 Local Loopback 连接，且启用了 PROXY protocol。配置2：使用 UDS 连接（对应 HTTP/3 server 除外），且启用了 PROXY protocol。
+8、本示例中 T 虽然兼容原版服务端的核心应用，但是原版 Trojan、Trojan-Go 客户端不支持指纹伪造，故不推荐使用原版 Trojan、Trojan-Go 客户端来连接。客户端推荐选用 Xray 客户端，支持指纹伪造。
+
+9、配置1：使用 Local Loopback 连接，且启用了 PROXY protocol。配置2：使用 UDS 连接（对应 HTTP/3 server 除外），且启用了 PROXY protocol。

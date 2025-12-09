@@ -85,7 +85,8 @@
               },
               "upstreams": [{
                 "dial": "127.0.0.1:2023" //转发给本机 VLESS+XHTTP 监听端口
-              }]
+              }],
+              "flush_interval": -1
             }]
           },
           {
