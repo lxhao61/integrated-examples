@@ -50,7 +50,7 @@
     {
       "listen": "127.0.0.1",
       "port": 1080,
-      "protocol": "socks", //兼容 Socks 4 、Socks 4a 、Socks 5, 以及 HTTP 。
+      "protocol": "socks", //兼容 SOCKS4、SOCKS4a、SOCKS5，以及 HTTP。
       "settings": {
         "udp": true
       },

@@ -1,4 +1,4 @@
-//NaiveProxy 流量通过 Socks5 转发给 V2Ray/Xray 处理
+//NaiveProxy 流量通过 SOCKS5 转发给 V2Ray/Xray 处理
 //原配置：
 //........<省略>........
             "handle": [{
