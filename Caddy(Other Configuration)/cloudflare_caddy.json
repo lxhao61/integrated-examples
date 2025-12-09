@@ -1,9 +1,9 @@
-//1、以反代或 REALITY Vision 为核心应用
+//1、以反代或 REALITY Vision 为核心应用或 NaiveProxy/Trojan-Go 应用
 //原配置：
 //........<省略>........
     "tls": {
       "certificates": {
-        "automate": ["hy.xx.yy","zh.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。（域名名称与数量以实际为准）
+        "automate": ["h2y.example.com","cdn.example.com"] //自动化管理 TLS 证书（包括自动申请与更新证书）。修改为自己的域名。（域名名称与数量以实际为准）
       },
       "automation": {
         "policies": [{
@@ -21,11 +21,11 @@
     }
 //........<省略>........
 
-//以 DNS API 方式申请 TLS 证书（以上配置修改为如下）：
+//以 DNS-01 验证方式申请 TLS 证书（以上配置修改为如下）：
 //........<省略>........
     "tls": {
       "certificates": {
-        "automate": ["*.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。*.xx.yy 表示为通配符域名，修改为自己的域名。
+        "automate": ["*.example.com"] //自动化管理 TLS 证书（包括自动申请与更新证书）。修改为自己的通配符域名。
       },
       "automation": {
         "policies": [{
@@ -36,7 +36,7 @@
               "dns": {
                 "provider": {
                   "name": "cloudflare",
-                  "api_token": "e09062f1fd2545555fc8a15fceda2222" //换成你 cloudflare 的 api token，与下一致。
+                  "api_token": "e09062f1fd2545555fc8a15fceda2222" //修改为自己 Cloudflare 的 API 令牌，与下一致。
                 }
               }
             }
@@ -49,7 +49,7 @@
               "dns": {
                 "provider": {
                   "name": "cloudflare",
-                  "api_token": "e09062f1fd2545555fc8a15fceda2222" //换成你 cloudflare 的 api token，与上一致。
+                  "api_token": "e09062f1fd2545555fc8a15fceda2222" //修改为自己 Cloudflare 的 API 令牌，与上一致。
                 }
               }
             }
@@ -65,7 +65,7 @@
 //........<省略>........
     "tls": {
       "certificates": {
-        "automate": ["hy.xx.yy","zh.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。修改为自己的域名。（域名名称与数量以实际为准）
+        "automate": ["h3a.example.com","cdn.example.com"] //自动化管理 TLS 证书（包括自动申请与更新证书）。修改为自己的域名。（域名名称与数量以实际为准）
       },
       "automation": {
         "policies": [{
@@ -79,11 +79,11 @@
     }
 //........<省略>........
 
-//以 DNS API 方式申请 TLS 证书（以上配置修改为如下）：
+//以 DNS-01 验证方式申请 TLS 证书（以上配置修改为如下）：
 //........<省略>........
     "tls": {
       "certificates": {
-        "automate": ["*.xx.yy"] //自动化管理 TLS 证书（包括获取与更新证书）。*.xx.yy 表示为通配符域名，修改为自己的域名。
+        "automate": ["*.example.com"] //自动化管理 TLS 证书（包括自动申请与更新证书）。修改为自己的通配符域名。
       },
       "automation": {
         "policies": [{
@@ -95,7 +95,7 @@
               "dns": {
                 "provider": {
                   "name": "cloudflare",
-                  "api_token": "e09062f1fd2545555fc8a15fceda2222" //换成你 cloudflare 的 api token
+                  "api_token": "e09062f1fd2545555fc8a15fceda2222" //修改为自己 Cloudflare 的 API 令牌
                 }
               }
             }
@@ -104,6 +104,6 @@
       }
     }
 //........<省略>........
-//注意：
-//1、若根域名为 xx.yy，那么从 Let's Encrypt 申请的通配符 TLS 证书在 “/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/wildcard_.xx.yy” 目录中。/home/tls 为存放 TLS 证书的基本路径，目录随根域名变化。
-//2、若根域名为 xx.yy，那么从 ZeroSSL 申请的通配符 TLS 证书在 “/home/tls/certificates/acme.zerossl.com-v2-dv90/wildcard_.xx.yy” 目录中。/home/tls 为存放 TLS 证书的基本路径，目录随根域名变化。
+//备注：
+//1、若根域名为 example.com，那么从 Let's Encrypt 申请的通配符 TLS 证书在 “/home/tls/certificates/acme-v02.api.letsencrypt.org-directory/wildcard_.example.com” 目录中。/home/tls 为存放 TLS 证书的基本路径，目录随根域名变化。
+//2、若根域名为 example.com，那么从 ZeroSSL 申请的通配符 TLS 证书在 “/home/tls/certificates/acme.zerossl.com-v2-dv90/wildcard_.example.com” 目录中。/home/tls 为存放 TLS 证书的基本路径，目录随根域名变化。

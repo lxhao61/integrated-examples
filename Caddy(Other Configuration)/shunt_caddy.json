@@ -1,7 +1,7 @@
 //Caddy 的转发与回落到不同网站配置
 //原配置：
 //........<省略>........
-          { //若为单一应用此‘{’省略
+          { //若原示例为单一回落应用，此 { 可省略、保留上级的 { 即可。
             "handle": [{
               "handler": "headers",
               "response": {
@@ -12,16 +12,16 @@
             },
             {
               "handler": "file_server",
-              "root": "/var/www/html" //修改为自己存放的 WEB 文件路径
+              "root": "/var/www/html" //修改为自己存放的 Web 文件路径
             }]
           }],
 //........<省略>........
 
 //以上配置修改为如下：（示例仅配置了两个网站的转发与回落；如需要多个网站，增加对应参数即可。）
 //........<省略>........
-          { //若为单一应用此‘{’省略
+          { //若原示例为单一回落应用，此 { 可省略、保留上级的 { 即可。
             "match": [{
-              "host": ["za.xx.yy"] //修改为对应网站的域名
+              "host": ["za.example.com"] //修改为对应网站的域名
             }],
             "handle": [{
               "handler": "headers",
@@ -33,12 +33,12 @@
             },
             {
               "handler": "file_server",
-              "root": "/var/www/za" //修改为自己存放的 WEB 文件路径
+              "root": "/var/www/za" //修改为自己存放的 Web 文件路径
             }]
           },
           {
             "match": [{
-              "host": ["zb.xx.yy"] //修改为分流的域名
+              "host": ["zb.example.com"] //修改为分流的域名
             }],
             "handle": [{
               "handler": "headers",
@@ -50,7 +50,7 @@
             },
             {
               "handler": "file_server",
-              "root": "/var/www/zb" //修改为自己存放的 WEB 文件路径
+              "root": "/var/www/zb" //修改为自己存放的 Web 文件路径
             }]
           }],
           "automatic_https": {

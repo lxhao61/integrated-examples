@@ -6,31 +6,31 @@
 #........<省略>........
 }
 
-:443, zh.xx.yy { #zh.xx.yy 修改为自己的域名。注意：逗号与域名之间有一个空格。
+:443, h3a.example.com, cdn.example.com { #修改为自己的域名。注意：逗号与域名之间有一个空格。（域名名称与数量以实际为准）
 #........<省略>........
 	@host {
-		host zh.xx.yy #限定域名访问（包括禁止以 IP 方式访问网站），修改为自己的域名。
-	}
-#........<省略>........
-
-
-#以 DNS API 方式申请 TLS 证书（以上配置修改为如下）：
-{
-#........<省略>........
-	email your@email.com #修改为自己的电子邮箱。（选配）
-	acme_dns duckdns b8a33cc1-1111-2222-3333-b049bf07988f { #换成你 duckdns 的 token
-		override_domain zz.duckdns.org #换成你 duckdns 中配置的 DDNS 域名（二级域名）
+		host h3a.example.com, cdn.example.com #限定域名访问（包括禁止以 IP 方式访问网站），修改为自己的域名。
 	}
 #........<省略>........
 }
 
-:443, *.xx.yy { #*.xx.yy 表示为通配符域名，修改为自己的域名。注意：逗号与域名之间有一个空格。
+#以 DNS-01 验证方式申请 TLS 证书（以上配置修改为如下）：
+{
+#........<省略>........
+	email your@email.com #修改为自己的电子邮箱。（选配）
+	acme_dns duckdns b8a33cc1-1111-2222-3333-b049bf07988f { #修改为自己 DuckDNS 的 API 令牌
+		override_domain zz.duckdns.org #修改为自己在 DuckDNS 中申请的免费 DDNS 域名（二级域名）
+	}
+#........<省略>........
+}
+
+:443, *.xx.yy { #修改为自己的通配符域名。注意：逗号与域名之间有一个空格。
 #........<省略>........
 	@host {
 		host *.xx.yy #限定域名访问（包括禁止以 IP 方式访问网站），修改为自己的域名（根据实际调整，不严谨可直接修改为通配符域名。）。
 	}
 #........<省略>........
-#注意：
+}
+#备注：
 #1、此配置为挑战委托模式，实现无 DNS-01 验证方式的域名委托给有 DNS-01 验证方式的域名申请 TLS 证书。
-#2、挑战委托模式实现条件：*.xx.yy 关联 zz.duckdns.org（CNAME 记录），zz.duckdns.org 关联 VPS IP（A 记录）。
-#3、若不使用挑战委托模式：删除 "override_domain": "zz.duckdns.org" 这条参数及同步删除 "api_token" 参数末尾逗号，对应域名修改为你在 duckdns 中配置的 DDNS 域名。
+#2、挑战委托模式实现条件：*.example.com 关联 zz.duckdns.org（CNAME 记录），zz.duckdns.org 关联 VPS IP（A 记录）。
