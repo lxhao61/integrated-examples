@@ -31,11 +31,11 @@
           "xver": 1, //开启 PROXY protocol 发送，发送真实来源IP和端口给自己的网站。 1 或 2 表示 PROXY protocol 版本。
           "serverNames": [
             "h2r.example.com" //修改为自己的网站域名
-          ], //必填，客户端可用的 serverName 列表，暂不支持 * 通配符。
+          ], //客户端可用的 serverName 列表，暂不支持 * 通配符。
           "privateKey": "iD0BftokWqJ6UhCzVBlK2sI5OjmfWks0PAdU3SLWKUw", //修改为自己执行 ./xray x25519 后生成的一对密钥中私钥
           "shortIds": [
             "" //若有此项，客户端 shortId 可为空。若不为空，可 0 到 f（0123456789abcdef），长度为 2 的倍数，长度上限为 16 。
-          ] //必填，客户端可用的 shortId 列表，可用于区分不同的客户端。
+          ] //客户端可用的 shortId 列表，可用于区分不同的客户端。
         },
         "rawSettings": {
           "acceptProxyProtocol": true //开启 PROXY protocol 接收，接收 Nginx SNI 分流前真实来源 IP 和端口。
