@@ -1,11 +1,11 @@
 介绍：
 
-本示例为 Trojan+RAW+TLS 应用。Xray 服务端前置（监听 443 端口）处理来自墙内的连接请求，如果是合法的 Xray 客户端请求，那么为该请求提供服务（科学上网）；否则将已解除 TLS 的连接请求回落（转发）给 Nginx 或 Caddy，由 Nginx 或 Caddy 为其提供 WEB 服务。
+本示例为 Trojan+RAW+TLS 应用。Xray 服务端前置（监听 443 端口）处理来自墙内的连接请求，如果是合法的 Xray 客户端请求，那么为该请求提供服务（科学上网）；否则将已解除 TLS 的连接请求回落（转发）给 Nginx 或 Caddy，由 Nginx 或 Caddy 为其提供 Web 服务。
 
 原理：
 
-默认流程：Xray client <---------- RAW+TLS ---------> Xray server  
-回落流程：WEB client <------ HTTP/2或HTTPS ------> Xray server <-- H2C或HTTP/1.1 --> Nginx/Caddy（WEB server）
+默认流程：Xray client <---------- RAW+TLS ----------> Xray server  
+回落流程：Web client <-- HTTP/2或HTTP/1.1+TLS --> Xray server <-- H2C或HTTP/1.1 --> Nginx/Caddy（Web server）
 
 注意：
 
@@ -15,7 +15,7 @@
 
 3、Nginx 支持对请求标头的 PROXY 协议处理需要 Nginx 包含 http_realip_module 模块构建。
 
-4、若选用 Nginx 实现应用，不要使用 ACME 客户端在采用本示例的服务器上以 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新 TLS 证书，因 HTTP-01 或 TLS-ALPN-01 验证方式申请与更新 TLS 证书需监听 80 或 443 端口，从而与当前应用端口冲突。
+4、若选用 Nginx 实现应用，ACME 客户端在采用本示例的服务器上以 HTTP-01 验证方式申请与更新 TLS 证书时、建议使用 Nginx 模式来避免端口冲突。
 
 5、Caddy 支持 H2C server 与 HTTP/1.1 server 共用一个端口或一个进程。
 
