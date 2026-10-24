@@ -97,7 +97,7 @@ jobs:
         export GOARCH=${{ matrix.config.GOARCH }} 
         export GOOS=${{ matrix.config.GOOS }} 
         ~/go/bin/xcaddy build \
-          --with github.com/caddyserver/forwardproxy=github.com/klzgrad/forwardproxy@naive \
+          --with github.com/caddyserver/forwardproxy=github.com/ZihaoFU245/forwardproxy@master \
           --with github.com/imgk/caddy-trojan \
           --with github.com/mholt/caddy-webdav \
           --with github.com/WeidiDeng/caddy-cloudflare-ip \
